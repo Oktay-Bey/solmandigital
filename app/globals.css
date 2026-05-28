@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #9b1c1c;
+  --color-accent-hover: #7f1d1d;
+  --color-dark-bg: #0d0d0d;
+  --color-surface: #f5f5f5;
+  --color-border-col: #e0e0e0;
+  --color-muted: #6b6b6b;
+  --font-sans: var(--font-geist-sans);
+}
+
+:root {
+  --accent: #9b1c1c;
+  --accent-hover: #7f1d1d;
+  --dark-bg: #0d0d0d;
+  --dark-bg-2: #161616;
+  --dark-bg-3: #1e1e1e;
+  --surface: #f5f5f5;
+  --border: #e0e0e0;
+  --border-dark: #2a2a2a;
+  --muted: #6b6b6b;
+  --muted-light: #999999;
+  --text: #111111;
+  --text-light: #444444;
+  --text-on-dark: #e8e8e8;
+  --text-muted-on-dark: #888888;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
+  color: var(--text);
+  background: #ffffff;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Layout Grid Classes ─────────────────────────────────────── */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.tier1-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.tier3-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* ── Mobile Responsive ───────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .tier3-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .why-grid,
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-grid,
+  .two-col-grid,
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tier1-grid,
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tier3-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-grid,
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-menu-btn {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+}

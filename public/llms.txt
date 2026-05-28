@@ -1,0 +1,58 @@
+# Solman Digital
+> Türkiye merkezli B2B web geliştirme ve AI otomasyon ajansı
+
+Solman Digital; e-ticaret, Trendyol/marketplace entegrasyonu, AI içerik otomasyonu ve SaaS geliştirme alanlarında Türkiye'ye özel dijital çözümler üreten bir yazılım ajansıdır. 2023'ten bu yana 20+ proje teslim etmiş, hızlı teslimat odaklı bir ekiptir.
+
+## Temel Özellikler
+- 22 farklı hizmet alanı
+- 3+ yıl deneyim
+- Türkiye pazarına özel entegrasyonlar (İyzico, Trendyol, Hepsiburada)
+- Next.js, TypeScript, Tailwind CSS, Supabase, GPT-4o, Claude AI teknoloji yığını
+- MVP projeler 1-2 hafta, tam özellikli projeler plan dahilinde teslim
+- 24 saat içinde geri dönüş garantisi
+
+## Hizmetler
+
+### Tier 1 — Hızlı Teslimat (5-15 iş günü)
+- Kurumsal Web Sitesi Geliştirme: https://solmandigital.com/hizmetler/kurumsal-web-sitesi
+- Landing Page (Açılış Sayfası) Tasarımı: https://solmandigital.com/hizmetler/landing-page-tasarimi
+- E-Ticaret Kurulum: https://solmandigital.com/hizmetler/eticaret-kurulum
+- Trendyol & Marketplace Entegrasyonu: https://solmandigital.com/hizmetler/trendyol-entegrasyonu
+- AI Ürün Açıklama Otomasyonu: https://solmandigital.com/hizmetler/urun-aciklama-otomasyonu
+- İyzico / Stripe Ödeme Entegrasyonu: https://solmandigital.com/hizmetler/odeme-entegrasyonu
+
+### Tier 2 — Orta Vadeli Projeler (2-4 hafta)
+- AI İçerik Otomasyonu: https://solmandigital.com/hizmetler/ai-icerik-otomasyonu
+- AI Müşteri Chatbotu: https://solmandigital.com/hizmetler/ai-musteri-chatbotu
+- Üyelik & Abonelik Sistemi: https://solmandigital.com/hizmetler/uyelik-abonelik-sistemi
+- SaaS Web Uygulama Geliştirme: https://solmandigital.com/hizmetler/saas-web-uygulama
+- Dashboard & Analitik Panel: https://solmandigital.com/hizmetler/dashboard-analitik
+- WordPress Geliştirme: https://solmandigital.com/hizmetler/wordpress-gelistirme
+- Rezervasyon Sistemi: https://solmandigital.com/hizmetler/rezervasyon-sistemi
+
+### Tier 3 — Uzman / Niş Projeler
+- Teknik SEO Altyapısı: https://solmandigital.com/hizmetler/seo-teknik-altyapi
+- Dijital Ürün Satışı: https://solmandigital.com/hizmetler/dijital-urun-satis
+- Haber & İçerik Platformu: https://solmandigital.com/hizmetler/haber-icerik-platformu
+- API Entegrasyonu: https://solmandigital.com/hizmetler/api-entegrasyonu
+- QR Menü (Restoranlar): https://solmandigital.com/hizmetler/qr-menu-restoran
+- YouTube Shorts Otomasyonu: https://solmandigital.com/hizmetler/youtube-shorts-otomasyonu
+- Web Scraping & Veri: https://solmandigital.com/hizmetler/web-scraping-veri
+- Çok Dilli Web Sitesi: https://solmandigital.com/hizmetler/cok-dilli-web-sitesi
+- Ürün Katalog & Stok Yönetimi: https://solmandigital.com/hizmetler/urun-katalog-stok
+
+## Ücretsiz Hizmetler
+- Ücretsiz Web Sitesi SEO Analizi: https://solmandigital.com/ucretsiz-analiz
+- Ücretsiz 30 Dakika Teknik Danışmanlık: https://solmandigital.com/danismanlik
+- E-Ticaret Başlangıç Rehberi (PDF): https://solmandigital.com/indir/e-ticaret-baslangic-rehberi
+
+## İletişim
+- Web: https://solmandigital.com
+- E-posta: info@solmandigital.com
+- Teklif Formu: https://solmandigital.com/iletisim
+- Hizmetler Listesi: https://solmandigital.com/hizmetler
+- Portföy: https://solmandigital.com/portfoy
+- Hakkımızda: https://solmandigital.com/hakkimizda
+
+## Teknoloji Yığını
+Next.js 16, React 19, TypeScript, Tailwind CSS, Supabase, Prisma, OpenAI GPT-4o, Claude AI (Anthropic), İyzico, Stripe, Trendyol API, Hepsiburada API, Vercel

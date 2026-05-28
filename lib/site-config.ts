@@ -1,0 +1,33 @@
+export const siteConfig = {
+  name: "Solman Digital",
+  tagline: "Customized Software Expert",
+  description:
+    "İstanbul merkezli full-stack yazılım uzmanı. E-ticaret, SaaS ve AI otomasyon projelerinizi template kullanmadan sıfırdan kuruyoruz. Doğrudan geliştirici, net takvim, taahhüt edilen teslim.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://solmandigital.com",
+  email: "info@solmandigital.com",
+  address: "Beşiktaş, İstanbul",
+  formspreeId: process.env.NEXT_PUBLIC_FORMSPREE_ID || "",
+  googleVerification: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
+  resendFromEmail: process.env.RESEND_FROM_EMAIL || "info@solmandigital.com",
+  resendAudienceId: process.env.RESEND_AUDIENCE_ID || "",
+  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/solmandigital/30min",
+  social: {
+    linkedin: "https://linkedin.com/company/solmandigital",
+    twitter: "https://twitter.com/solmandigital",
+    github: "https://github.com/solmandigital",
+  },
+  keywords: [
+    "freelance web geliştirici istanbul",
+    "next.js geliştirici beşiktaş",
+    "ai içerik otomasyonu",
+    "saas geliştirme türkiye",
+    "eticaret kurulum",
+    "trendyol api entegrasyonu",
+    "full-stack geliştirici türkiye",
+    "web uygulama geliştirme",
+    "özel yazılım geliştirme istanbul",
+    "e-ticaret yazılım geliştirici",
+    "supabase next.js geliştirici",
+    "yapay zeka otomasyon türkiye",
+  ],
+}
