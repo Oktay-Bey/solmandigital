@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Geist } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 import { siteConfig } from "@/lib/site-config"
 import Header from "@/components/Header"
@@ -114,6 +115,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" className={geist.variable}>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GP2VZFRNF9"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GP2VZFRNF9');
+          `}
+        </Script>
+      </head>
       <body>
         <script
           type="application/ld+json"
