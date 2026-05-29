@@ -51,7 +51,7 @@ const breadcrumbSchema = (service: Service, siteUrl: string) => ({
 
 export default function ServiceDetail({ service, related }: Props) {
   const IconComponent = (Icons as unknown as Record<string, React.ComponentType<{ size?: number; color?: string }>>)[service.icon]
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://solmandigital.com"
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://solmandigital.com.tr"
 
   return (
     <>

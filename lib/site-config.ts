@@ -2,13 +2,14 @@ export const siteConfig = {
   name: "Solman Digital",
   tagline: "Customized Software Expert",
   description:
-    "İstanbul merkezli full-stack yazılım uzmanı. E-ticaret, SaaS ve AI otomasyon projelerinizi template kullanmadan sıfırdan kuruyoruz. Doğrudan geliştirici, net takvim, taahhüt edilen teslim.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://solmandigital.com",
-  email: "info@solmandigital.com",
+    "İstanbul merkezli özel yazılım ofisi. E-ticaret, SaaS ve AI otomasyon projelerinizi template kullanmadan sıfırdan kuruyoruz. Doğrudan uzman erişimi, net takvim, taahhüt edilen teslim.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://solmandigital.com.tr",
+  email: "info@solmandigital.com.tr",
+  adminEmail: process.env.ADMIN_EMAIL || "solmanoktay@gmail.com",
   address: "Beşiktaş, İstanbul",
   formspreeId: process.env.NEXT_PUBLIC_FORMSPREE_ID || "",
   googleVerification: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
-  resendFromEmail: process.env.RESEND_FROM_EMAIL || "info@solmandigital.com",
+  resendFromEmail: process.env.RESEND_FROM_EMAIL || "info@solmandigital.com.tr",
   resendAudienceId: process.env.RESEND_AUDIENCE_ID || "",
   calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/solmandigital/30min",
   social: {
@@ -17,7 +18,7 @@ export const siteConfig = {
     github: "https://github.com/solmandigital",
   },
   keywords: [
-    "freelance web geliştirici istanbul",
+    "yazılım ofisi istanbul",
     "next.js geliştirici beşiktaş",
     "ai içerik otomasyonu",
     "saas geliştirme türkiye",

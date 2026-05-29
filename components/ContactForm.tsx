@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { ArrowRight, CheckCircle2, AlertCircle } from "lucide-react"
 import { services } from "@/lib/data/services"
-import { siteConfig } from "@/lib/site-config"
 
 type FormState = "idle" | "sending" | "success" | "error"
 
@@ -24,21 +23,10 @@ export default function ContactForm() {
     e.preventDefault()
     setState("sending")
 
-    const formspreeId = siteConfig.formspreeId
-    const endpoint = formspreeId
-      ? `https://formspree.io/f/${formspreeId}`
-      : `mailto:${siteConfig.email}`
-
     try {
-      if (!formspreeId) {
-        window.location.href = `mailto:${siteConfig.email}?subject=Proje Teklifi - ${form.hizmet}&body=${encodeURIComponent(`İsim: ${form.isim}\nE-posta: ${form.email}\nHizmet: ${form.hizmet}\n\n${form.mesaj}`)}`
-        setState("success")
-        return
-      }
-
-      const res = await fetch(endpoint, {
+      const res = await fetch("/api/email/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       })
 

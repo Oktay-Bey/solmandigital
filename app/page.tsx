@@ -20,7 +20,7 @@ const homeFaqSchema = {
       name: "Solman Digital ile çalışmanın farkı nedir?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Projenizi anlayan, tasarlayan ve yapan aynı full-stack developer'dır. Birden fazla kişi arasında dolaşan brief'ler, onay döngüleri ya da standart template'ler yok. İşinizin tam ihtiyacına göre sıfırdan yazılım üretilir, net kapsam ve takvimle teslim edilir.",
+        text: "Projenizi anlayan, tasarlayan ve yapan aynı uzmandır. Birden fazla kişi arasında dolaşan brief'ler, onay döngüleri ya da standart template'ler yok. İşinizin tam ihtiyacına göre sıfırdan yazılım üretilir, net kapsam ve takvimle teslim edilir.",
       },
     },
     {
@@ -54,7 +54,7 @@ const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   name: "Solman Digital ile Nasıl Proje Başlatılır?",
-  description: "Full-stack geliştirici Solman Digital ile proje başlatmak için 4 adım.",
+  description: "Solman Digital ile proje başlatmak için 4 adım.",
   step: [
     { "@type": "HowToStep", position: 1, name: "Ücretsiz Görüşme", text: "Projenizi anlatan 15 dakikalık bir görüşme yapıyoruz." },
     { "@type": "HowToStep", position: 2, name: "Teknik Teklif", text: "Kapsam, süre ve fiyat içeren detaylı bir teklif sunuyoruz." },

@@ -6,7 +6,7 @@ type Props = {
   siteUrl?: string
 }
 
-export default function WelcomeEmail({ firstName, downloadUrl, siteUrl = "https://solmandigital.com" }: Props) {
+export default function WelcomeEmail({ firstName, downloadUrl, siteUrl = "https://solmandigital.com.tr" }: Props) {
   return (
     <html lang="tr">
       <head>
@@ -82,9 +82,9 @@ export default function WelcomeEmail({ firstName, downloadUrl, siteUrl = "https:
                 <tr>
                   <td style={{ backgroundColor: "#f5f5f5", borderRadius: "0 0 10px 10px", padding: "24px 40px", borderTop: "1px solid #e0e0e0" }}>
                     <p style={{ margin: 0, fontSize: "12px", color: "#aaaaaa", lineHeight: "1.6" }}>
-                      Bu e-postayı <strong>solmandigital.com</strong> üzerinden bir rehber indirdiğiniz için alıyorsunuz.
+                      Bu e-postayı <strong>solmandigital.com.tr</strong> üzerinden bir rehber indirdiğiniz için alıyorsunuz.
                       <br />
-                      Soru için: <a href="mailto:info@solmandigital.com" style={{ color: "#9b1c1c" }}>info@solmandigital.com</a>
+                      Soru için: <a href="mailto:info@solmandigital.com.tr" style={{ color: "#9b1c1c" }}>info@solmandigital.com.tr</a>
                     </p>
                   </td>
                 </tr>

@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site-config"
 export const metadata: Metadata = {
   title: "Hakkımızda — Solman Digital",
   description:
-    "Solman Digital, full-stack developer ve yazılım uzmanı. İşinize özel, sıfırdan yazılım: e-ticaret, AI otomasyon, SaaS — net kapsam, hızlı teslim.",
+    "Solman Digital, İstanbul merkezli özel yazılım ofisi. İşinize özel, sıfırdan yazılım: e-ticaret, AI otomasyon, SaaS — net kapsam, hızlı teslim.",
   alternates: { canonical: `${siteConfig.url}/hakkimizda` },
   openGraph: { title: "Hakkımızda | Solman Digital", locale: "tr_TR" },
 }
@@ -190,7 +190,7 @@ export default function HakkimizdaPage() {
             </p>
             <p>
               Bu deneyim, &quot;nasıl yapılır&quot; sorusunu önceden çözülmüş kılıyor. İhtiyacı dinleyen,
-              teknik tasarımı yapan ve kodu yazan aynı kişidir. Projeniz tek odak noktasıdır.
+              teknik tasarımı yapan ve kodu yazan aynı uzmandır. Projeniz tek odak noktasıdır.
             </p>
             <p>
               İyzico entegrasyonunda Türk kullanıcı alışkanlıkları, Trendyol API&apos;sinde satıcının

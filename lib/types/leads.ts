@@ -19,3 +19,40 @@ export type ConsultationPayload = {
   companyName: string
   projectBrief: string
 }
+
+export type LeadFunnelType = "web-sitesi" | "trendyol" | "saas" | "ai" | "istanbul-dev"
+
+export type LeadPayload = {
+  funnelType: LeadFunnelType
+  firstName: string
+  email: string
+  phone?: string
+  companyName?: string
+  budget?: string
+  timeline?: string
+  // web-sitesi
+  siteType?: string
+  existingSite?: string
+  brief?: string
+  // trendyol
+  marketplaces?: string
+  monthlyOrders?: string
+  currentSolution?: string
+  urgency?: string
+  specificPain?: string
+  // saas
+  productIdea?: string
+  targetUser?: string
+  fundingStage?: string
+  existingTech?: string
+  // ai
+  aiUseCase?: string
+  currentVolume?: string
+  companySize?: string
+  painPoint?: string
+  // istanbul-dev
+  projectType?: string
+  companyType?: string
+  prefersMeeting?: string
+  projectBrief?: string
+}
