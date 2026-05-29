@@ -117,7 +117,7 @@ export default function RootLayout({
     <html lang="tr" className={geist.variable}>
       <head>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-GP2VZFRNF9"
+          src="https://www.googletagmanager.com/gtag/js?id=G-H2QM5NPTED"
           strategy="afterInteractive"
         />
         <Script id="gtag-init" strategy="afterInteractive">
@@ -125,7 +125,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-GP2VZFRNF9');
+            gtag('config', 'G-H2QM5NPTED');
           `}
         </Script>
       </head>
