@@ -13,6 +13,7 @@ const FUNNEL_LABELS: Record<string, string> = {
   saas: "SaaS Platform",
   ai: "AI Otomasyon",
   "istanbul-dev": "İstanbul Web Developer",
+  "istanbul-local": "İstanbul Local",
 }
 
 function buildAdminHtml(data: LeadPayload): string {
@@ -58,6 +59,13 @@ function buildAdminHtml(data: LeadPayload): string {
       ${row("Proje Türü", data.projectType)}
       ${row("Şirket Tipi", data.companyType)}
       ${row("Görüşme Tercihi", data.prefersMeeting)}
+      ${row("Proje Özeti", data.projectBrief)}
+    `,
+    "istanbul-local": `
+      ${row("Proje Türü", data.projectType)}
+      ${row("Şirket Tipi", data.companyType)}
+      ${row("Görüşme Tercihi", data.prefersMeeting)}
+      ${row("İlçe", data.district)}
       ${row("Proje Özeti", data.projectBrief)}
     `,
   }

@@ -20,7 +20,7 @@ export type ConsultationPayload = {
   projectBrief: string
 }
 
-export type LeadFunnelType = "web-sitesi" | "trendyol" | "saas" | "ai" | "istanbul-dev"
+export type LeadFunnelType = "web-sitesi" | "trendyol" | "saas" | "ai" | "istanbul-dev" | "istanbul-local"
 
 export type LeadPayload = {
   funnelType: LeadFunnelType
@@ -50,9 +50,10 @@ export type LeadPayload = {
   currentVolume?: string
   companySize?: string
   painPoint?: string
-  // istanbul-dev
+  // istanbul-dev / istanbul-local
   projectType?: string
   companyType?: string
   prefersMeeting?: string
   projectBrief?: string
+  district?: string
 }

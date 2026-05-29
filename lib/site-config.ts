@@ -50,6 +50,7 @@ export function getLeadAudienceId(funnelType: string): string {
     saas: siteConfig.resendAudienceLeadsSaas,
     ai: siteConfig.resendAudienceLeadsAi,
     "istanbul-dev": siteConfig.resendAudienceLeadsIstanbul,
+    "istanbul-local": siteConfig.resendAudienceLeadsIstanbul,
   }
   return map[funnelType] || ""
 }

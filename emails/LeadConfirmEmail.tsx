@@ -43,6 +43,13 @@ const contentMap: Record<LeadFunnelType, { subject: string; headline: string; bo
     ctaHref: "/hizmetler",
     ctaText: "Tüm Hizmetleri İncele →",
   },
+  "istanbul-local": {
+    subject: "Mesajınız Alındı | Solman Digital",
+    headline: "Mesajınız İletildi!",
+    body: "Projenizi inceleyeceğiz. İstanbul'da buluşmak ya da Zoom görüşmesi yapmak için <strong>24 saat içinde</strong> size ulaşacağız.",
+    ctaHref: "/hizmetler",
+    ctaText: "Tüm Hizmetleri İncele →",
+  },
 }
 
 export default function LeadConfirmEmail({ firstName, funnelType, siteUrl = "https://solmandigital.com.tr" }: Props) {

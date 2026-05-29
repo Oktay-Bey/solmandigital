@@ -1,91 +1,9 @@
-import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowRight, CheckCircle, X, MapPin } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
-import IstanbulDevLeadForm from "./IstanbulDevLeadForm"
-
-export const metadata: Metadata = {
-  title: "İstanbul Web Developer — Beşiktaş Merkezli Next.js Uzmanı | Solman Digital",
-  description:
-    "İstanbul Beşiktaş merkezli freelance web developer. Next.js, TypeScript, Supabase. Ajans fiyatı yok, freelancer belirsizliği yok. Doğrudan geliştirici ile çalışın.",
-  keywords: [
-    "istanbul web developer",
-    "istanbul freelance yazılımcı",
-    "beşiktaş web geliştirici",
-    "istanbul yazılım şirketi",
-    "freelance web developer istanbul",
-    "istanbul next.js developer",
-    "istanbul yazılım hizmeti",
-    "istanbul web tasarım",
-  ],
-  alternates: { canonical: `${siteConfig.url}/istanbul-web-developer` },
-  openGraph: {
-    title: "İstanbul Web Developer — Beşiktaş Merkezli Next.js Uzmanı",
-    description: "Ajans maliyeti olmadan, freelancer belirsizliği olmadan. İstanbul Beşiktaş merkezli, doğrudan geliştirici.",
-    url: `${siteConfig.url}/istanbul-web-developer`,
-    siteName: siteConfig.name,
-    locale: "tr_TR",
-    type: "website",
-  },
-}
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "LocalBusiness",
-      name: "Solman Digital",
-      description: "İstanbul Beşiktaş merkezli web developer. Next.js, TypeScript ve Supabase ile özel web sitesi ve SaaS uygulaması geliştirme.",
-      url: siteConfig.url,
-      telephone: "",
-      email: siteConfig.email,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Beşiktaş",
-        addressRegion: "İstanbul",
-        addressCountry: "TR",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 41.0432,
-        longitude: 29.0065,
-      },
-      areaServed: [
-        { "@type": "City", name: "İstanbul" },
-        { "@type": "Country", name: "Türkiye" },
-      ],
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "İstanbul dışındaki projeler için de çalışıyor musunuz?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Evet. Tüm Türkiye'ye uzaktan çalışıyoruz. İstanbul için yüz yüze görüşme de yapabiliyoruz.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Ajans mı, freelancer mı, siz neden farklısınız?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Ajans gibi ekip yönetimi masrafı yok. Freelancer gibi güvenilirlik belirsizliği yok. Projeyi baştan sona tek kişi geliştiriyor, net takvim ve sabit fiyat garantisi veriyoruz.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "E-fatura kesiyor musunuz?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Evet. Şirket olarak e-fatura, bireysel olarak e-arşiv fatura kesiyoruz.",
-          },
-        },
-      ],
-    },
-  ],
-}
+import { services } from "@/lib/data/services"
+import type { IstanbulPage } from "@/lib/data/istanbul-pages"
+import IstanbulLocalLeadForm from "./IstanbulLocalLeadForm"
 
 const comparisonRows = [
   {
@@ -114,16 +32,49 @@ const comparisonRows = [
   },
 ]
 
-const techStack = [
-  { name: "Next.js 16", note: "App Router, SSR, edge" },
-  { name: "TypeScript", note: "Tür güvenli, bakımı kolay" },
-  { name: "Supabase", note: "Auth + PostgreSQL" },
-  { name: "Tailwind / Inline", note: "Hızlı, tutarlı UI" },
-  { name: "Vercel", note: "Deploy, CDN, domains" },
-  { name: "Resend", note: "Transactional email" },
-]
+type Props = {
+  config: IstanbulPage
+}
 
-export default function IstanbulWebDeveloperPage() {
+export default function IstanbulLocalPage({ config }: Props) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        name: siteConfig.name,
+        description: config.metaDescription,
+        url: siteConfig.url,
+        email: siteConfig.email,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: config.district ?? "Beşiktaş",
+          addressRegion: "İstanbul",
+          addressCountry: "TR",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: config.geo.latitude,
+          longitude: config.geo.longitude,
+        },
+        hasMap: config.googleMapsUrl,
+        areaServed: config.areaServed.map((name) => ({ "@type": "City", name })),
+        serviceType: config.schemaServiceType,
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: config.faq.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      },
+    ],
+  }
+
+  const featuredServices = services.filter((s) => config.featuredServiceSlugs.includes(s.slug))
+  const locationLabel = config.district ?? "İstanbul"
+
   return (
     <>
       <script
@@ -140,7 +91,7 @@ export default function IstanbulWebDeveloperPage() {
               fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em",
               textTransform: "uppercase", color: "#9b1c1c", margin: 0,
             }}>
-              Beşiktaş, İstanbul · Türkiye&apos;nin Her Yerine Uzaktan
+              {config.heroLabel}
             </p>
           </div>
           <h1 style={{
@@ -148,10 +99,10 @@ export default function IstanbulWebDeveloperPage() {
             fontWeight: 900, color: "#ffffff",
             letterSpacing: "-0.03em", marginBottom: "1.25rem", lineHeight: 1.15,
           }}>
-            İstanbul Web Developer — Doğrudan Geliştirici, Net Takvim
+            {config.heroH1}
           </h1>
           <p style={{ fontSize: "1.05rem", color: "#a0a0a0", lineHeight: 1.75, marginBottom: "2.5rem", maxWidth: 580, margin: "0 auto 2.5rem" }}>
-            Ajans maliyeti olmadan, freelancer güvensizliği olmadan. Projenizi baştan sona tek kişi geliştiriyor — net taahhüt, sabit fiyat.
+            {config.heroSubtitle}
           </p>
           <a
             href="#form"
@@ -216,31 +167,39 @@ export default function IstanbulWebDeveloperPage() {
         </div>
       </section>
 
-      {/* Tech Stack */}
+      {/* Featured Services */}
       <section style={{ padding: "5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: "#111111", marginBottom: "2.5rem", letterSpacing: "-0.02em" }}>
-            Teknoloji Uzmanlığı
+            {locationLabel} İşletmeleri İçin Öne Çıkan Hizmetler
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem" }}>
-            {techStack.map((t) => (
-              <div
-                key={t.name}
-                style={{
-                  backgroundColor: "#ffffff", border: "1px solid #e0e0e0",
-                  borderRadius: 8, padding: "1.25rem",
-                  display: "flex", flexDirection: "column", gap: "0.25rem",
-                }}
+            {featuredServices.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/hizmetler/${service.slug}`}
+                style={{ textDecoration: "none" }}
               >
-                <p style={{ fontWeight: 700, color: "#111111", margin: 0, fontSize: "0.95rem" }}>{t.name}</p>
-                <p style={{ fontSize: "0.8rem", color: "#888888", margin: 0 }}>{t.note}</p>
-              </div>
+                <div style={{
+                  backgroundColor: "#ffffff", border: "1px solid #e0e0e0",
+                  borderRadius: 8, padding: "1.5rem",
+                  display: "flex", flexDirection: "column", gap: "0.5rem",
+                  height: "100%",
+                  transition: "border-color 0.15s",
+                }}>
+                  <p style={{ fontWeight: 700, color: "#111111", margin: 0, fontSize: "0.95rem" }}>{service.title}</p>
+                  <p style={{ fontSize: "0.8rem", color: "#666666", margin: 0, lineHeight: 1.6 }}>{service.shortDesc}</p>
+                  <p style={{ fontSize: "0.8rem", color: "#9b1c1c", margin: "auto 0 0", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                    İncele <ArrowRight size={12} />
+                  </p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How We Work */}
+      {/* Local Trust Signals */}
       <section style={{ padding: "5rem 1.5rem", backgroundColor: "#ffffff" }}>
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: "#111111", marginBottom: "2.5rem", letterSpacing: "-0.02em" }}>
@@ -248,10 +207,26 @@ export default function IstanbulWebDeveloperPage() {
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             {[
-              { icon: "📍", title: "İstanbul'da Yüz Yüze", desc: "Beşiktaş'ta buluşabiliriz. Proje başlangıcında ya da teslimat aşamasında şahsen görüşmeyi tercih ediyoruz." },
-              { icon: "💬", title: "WhatsApp İletişim", desc: "Hızlı güncelleme ve sorular için WhatsApp. E-posta için de dönüş yapıyoruz, ama mesajlaşma daha hızlı." },
-              { icon: "🧾", title: "E-Fatura / E-Arşiv", desc: "Şirketlere e-fatura, bireysel müşterilere e-arşiv fatura. Yasal güvence her iki taraf için de önemli." },
-              { icon: "📋", title: "Yazılı Sözleşme", desc: "Kapsam, fiyat ve takvim her projede sözleşmeye bağlanır. Sürpriz yok." },
+              {
+                icon: "📍",
+                title: `${locationLabel}'da Yüz Yüze`,
+                desc: `${locationLabel} ve çevresinde yüz yüze görüşme organize edebiliyoruz. Proje başlangıcında ya da teslimat aşamasında şahsen görüşmeyi tercih ediyoruz.`,
+              },
+              {
+                icon: "💬",
+                title: "WhatsApp İletişim",
+                desc: "Hızlı güncelleme ve sorular için WhatsApp. E-posta için de dönüş yapıyoruz, ama mesajlaşma daha hızlı.",
+              },
+              {
+                icon: "🧾",
+                title: "E-Fatura / E-Arşiv",
+                desc: "Şirketlere e-fatura, bireysel müşterilere e-arşiv fatura. Yasal güvence her iki taraf için de önemli.",
+              },
+              {
+                icon: "📋",
+                title: "Yazılı Sözleşme",
+                desc: "Kapsam, fiyat ve takvim her projede sözleşmeye bağlanır. Sürpriz yok.",
+              },
             ].map((item) => (
               <div key={item.title} style={{ display: "flex", gap: "1.25rem", alignItems: "flex-start" }}>
                 <span style={{ fontSize: "1.25rem", flexShrink: 0 }}>{item.icon}</span>
@@ -268,7 +243,7 @@ export default function IstanbulWebDeveloperPage() {
       {/* Portfolio Teaser */}
       <section style={{ padding: "3.5rem 1.5rem", backgroundColor: "#f5f5f5", textAlign: "center" }}>
         <p style={{ color: "#666666", fontSize: "0.9rem", marginBottom: "1rem" }}>
-          İstanbul&apos;daki ve diğer projelere göz atın.
+          Geçmiş projelerimize göz atın.
         </p>
         <Link
           href="/portfoy"
@@ -283,8 +258,25 @@ export default function IstanbulWebDeveloperPage() {
         </Link>
       </section>
 
+      {/* FAQ */}
+      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#ffffff" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: "#111111", marginBottom: "2.5rem", letterSpacing: "-0.02em" }}>
+            Sık Sorulan Sorular
+          </h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+            {config.faq.map((item) => (
+              <div key={item.q} style={{ borderBottom: "1px solid #e0e0e0", paddingBottom: "1.5rem" }}>
+                <p style={{ fontWeight: 700, color: "#111111", margin: "0 0 0.5rem", fontSize: "0.95rem" }}>{item.q}</p>
+                <p style={{ color: "#666666", margin: 0, fontSize: "0.875rem", lineHeight: 1.7 }}>{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Form */}
-      <section id="form" style={{ padding: "5rem 1.5rem", backgroundColor: "#ffffff" }}>
+      <section id="form" style={{ padding: "5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
         <div style={{ maxWidth: 600, margin: "0 auto" }}>
           <p style={{
             fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em",
@@ -298,49 +290,8 @@ export default function IstanbulWebDeveloperPage() {
           <p style={{ color: "#666666", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "2rem" }}>
             Projenizi kısaca paylaşın. 24 saat içinde, tercihinize göre Zoom veya yüz yüze görüşme için size ulaşalım.
           </p>
-          <div style={{ backgroundColor: "#f5f5f5", border: "1px solid #e0e0e0", borderRadius: 12, padding: "2.5rem" }}>
-            <IstanbulDevLeadForm />
-          </div>
-        </div>
-      </section>
-
-      {/* Istanbul Local Pages */}
-      <section style={{ padding: "3.5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <p style={{
-            fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em",
-            textTransform: "uppercase", color: "#888888", marginBottom: "1.25rem",
-          }}>
-            İlçe & Hizmet Sayfaları
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.625rem" }}>
-            {[
-              { href: "/istanbul-web-tasarim", label: "İstanbul Web Tasarım" },
-              { href: "/istanbul-e-ticaret-yazilim", label: "İstanbul E-Ticaret Yazılım" },
-              { href: "/istanbul-kurumsal-web-sitesi", label: "İstanbul Kurumsal Web Sitesi" },
-              { href: "/kadikoy-web-tasarim", label: "Kadıköy Web Tasarım" },
-              { href: "/sisli-yazilim-gelistirme", label: "Şişli Yazılım Geliştirme" },
-              { href: "/istanbul-restoran-yazilim", label: "İstanbul Restoran Yazılım" },
-              { href: "/atasehir-yazilim", label: "Ataşehir Yazılım" },
-            ].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                style={{
-                  display: "inline-block",
-                  padding: "0.4rem 0.875rem",
-                  border: "1px solid #e0e0e0",
-                  borderRadius: 6,
-                  backgroundColor: "#ffffff",
-                  color: "#444444",
-                  fontSize: "0.8rem",
-                  fontWeight: 500,
-                  textDecoration: "none",
-                }}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div style={{ backgroundColor: "#ffffff", border: "1px solid #e0e0e0", borderRadius: 12, padding: "2.5rem" }}>
+            <IstanbulLocalLeadForm district={config.district} />
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Mail, ArrowRight, MapPin, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import { services } from "@/lib/data/services"
+import { istanbulPages } from "@/lib/data/istanbul-pages"
 
 export default function Footer() {
   const tier1 = services.filter((s) => s.tier === 1)
@@ -232,6 +233,31 @@ export default function Footer() {
                     style={{ color: "#555555", fontSize: "0.825rem" }}
                   >
                     {s.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* İstanbul Bölgeleri */}
+          <div>
+            <h3
+              style={{
+                color: "#333333",
+                fontWeight: 700,
+                fontSize: "0.65rem",
+                marginBottom: "1rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
+            >
+              İstanbul Bölgeleri
+            </h3>
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              {istanbulPages.map((p) => (
+                <li key={p.slug}>
+                  <Link href={`/${p.slug}`} style={{ color: "#555555", fontSize: "0.825rem" }}>
+                    {p.title}
                   </Link>
                 </li>
               ))}
