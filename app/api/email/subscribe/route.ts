@@ -28,14 +28,15 @@ export async function POST(req: NextRequest) {
       html: emailHtml,
     })
 
-    if (siteConfig.resendAudienceId) {
-      await resend.contacts.create({
-        email,
-        firstName,
-        audienceId: siteConfig.resendAudienceId,
-        unsubscribed: false,
-      })
+    const subscribersAudienceId = siteConfig.resendAudienceSubscribers
+    const audienceOps: Promise<unknown>[] = []
+    if (subscribersAudienceId) {
+      audienceOps.push(resend.contacts.create({ email, firstName, audienceId: subscribersAudienceId, unsubscribed: false }))
     }
+    if (siteConfig.resendAudienceId && siteConfig.resendAudienceId !== subscribersAudienceId) {
+      audienceOps.push(resend.contacts.create({ email, firstName, audienceId: siteConfig.resendAudienceId, unsubscribed: false }))
+    }
+    if (audienceOps.length > 0) await Promise.all(audienceOps)
 
     return NextResponse.json({ success: true })
   } catch (err) {

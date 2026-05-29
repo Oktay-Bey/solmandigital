@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import { Menu, X, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 
 const navLinks = [
@@ -100,6 +100,27 @@ export default function Header() {
           >
             Ücretsiz Analiz
           </Link>
+          <a
+            href={`https://wa.me/${siteConfig.whatsapp.replace("+", "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              marginLeft: "0.25rem",
+              padding: "0.5rem 0.875rem",
+              border: "1px solid #dcfce7",
+              backgroundColor: "#f0fdf4",
+              color: "#16a34a",
+              borderRadius: 6,
+              fontSize: "0.8rem",
+              fontWeight: 600,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.35rem",
+            }}
+          >
+            <MessageCircle size={14} />
+            WhatsApp
+          </a>
           <Link
             href="/iletisim"
             style={{
@@ -187,6 +208,30 @@ export default function Header() {
           >
             Ücretsiz Analiz
           </Link>
+          <a
+            href={`https://wa.me/${siteConfig.whatsapp.replace("+", "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              marginTop: "0.5rem",
+              padding: "0.75rem 1rem",
+              border: "1px solid #dcfce7",
+              backgroundColor: "#f0fdf4",
+              color: "#16a34a",
+              borderRadius: 6,
+              fontSize: "0.95rem",
+              fontWeight: 600,
+              textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "0.5rem",
+            }}
+          >
+            <MessageCircle size={16} />
+            WhatsApp&apos;ta Yaz
+          </a>
           <Link
             href="/iletisim"
             onClick={() => setMenuOpen(false)}

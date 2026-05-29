@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
 import { render } from "@react-email/render"
 import LeadConfirmEmail from "@/emails/LeadConfirmEmail"
-import { siteConfig } from "@/lib/site-config"
+import { siteConfig, getLeadAudienceId } from "@/lib/site-config"
 import type { LeadPayload } from "@/lib/types/leads"
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -111,14 +111,15 @@ export async function POST(req: NextRequest) {
       html: buildAdminHtml(data),
     })
 
-    if (siteConfig.resendAudienceId) {
-      await resend.contacts.create({
-        email,
-        firstName,
-        audienceId: siteConfig.resendAudienceId,
-        unsubscribed: false,
-      })
+    const segmentAudienceId = getLeadAudienceId(funnelType)
+    const audienceOps: Promise<unknown>[] = []
+    if (segmentAudienceId) {
+      audienceOps.push(resend.contacts.create({ email, firstName, audienceId: segmentAudienceId, unsubscribed: false }))
     }
+    if (siteConfig.resendAudienceId && siteConfig.resendAudienceId !== segmentAudienceId) {
+      audienceOps.push(resend.contacts.create({ email, firstName, audienceId: siteConfig.resendAudienceId, unsubscribed: false }))
+    }
+    if (audienceOps.length > 0) await Promise.all(audienceOps)
 
     return NextResponse.json({ success: true })
   } catch (err) {

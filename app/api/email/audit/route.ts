@@ -45,14 +45,15 @@ export async function POST(req: NextRequest) {
       `,
     })
 
-    if (siteConfig.resendAudienceId) {
-      await resend.contacts.create({
-        email,
-        firstName,
-        audienceId: siteConfig.resendAudienceId,
-        unsubscribed: false,
-      })
+    const auditAudienceId = siteConfig.resendAudienceAudit
+    const audienceOps: Promise<unknown>[] = []
+    if (auditAudienceId) {
+      audienceOps.push(resend.contacts.create({ email, firstName, audienceId: auditAudienceId, unsubscribed: false }))
     }
+    if (siteConfig.resendAudienceId && siteConfig.resendAudienceId !== auditAudienceId) {
+      audienceOps.push(resend.contacts.create({ email, firstName, audienceId: siteConfig.resendAudienceId, unsubscribed: false }))
+    }
+    if (audienceOps.length > 0) await Promise.all(audienceOps)
 
     return NextResponse.json({ success: true })
   } catch (err) {

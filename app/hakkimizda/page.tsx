@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site-config"
 export const metadata: Metadata = {
   title: "Hakkımızda — Solman Digital",
   description:
-    "Solman Digital, İstanbul merkezli özel yazılım ofisi. İşinize özel, sıfırdan yazılım: e-ticaret, AI otomasyon, SaaS — net kapsam, hızlı teslim.",
+    "Solman Digital — 15+ canlı proje deneyimiyle özel yazılım ofisi. Sıfırdan e-ticaret, AI otomasyon, SaaS — aynı uzmanla, başından sonuna, net kapsam.",
   alternates: { canonical: `${siteConfig.url}/hakkimizda` },
   openGraph: { title: "Hakkımızda | Solman Digital", locale: "tr_TR" },
 }
@@ -160,7 +160,7 @@ export default function HakkimizdaPage() {
             }}
           >
             <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-            Biz Kimiz
+            Deneyim
           </p>
           <h2
             style={{
@@ -171,7 +171,7 @@ export default function HakkimizdaPage() {
               letterSpacing: "-0.025em",
             }}
           >
-            Hikayemiz
+            Uzmanlık Alanımız
           </h2>
           <div
             style={{
@@ -184,17 +184,18 @@ export default function HakkimizdaPage() {
             }}
           >
             <p>
-              Portföydeki her proje — Trendyol satıcı paneli, WordPress AI içerik motoru, QR menü SaaS,
-              AI haber platformu, rüya günlüğü uygulaması — sıfırdan, template&apos;siz inşa edildi.
-              Her biri gerçek bir iş ihtiyacından doğdu ve canlı ortamda çalışıyor.
+              15&apos;ten fazla canlı proje — Trendyol satıcı paneli, WordPress AI içerik motoru, QR menü SaaS,
+              AI haber platformu — sıfırdan, template&apos;siz inşa edildi. Her biri gerçek bir iş problemini
+              çözdü; standart kalıpların yapamayacağı şekilde.
             </p>
             <p>
-              Bu deneyim, &quot;nasıl yapılır&quot; sorusunu önceden çözülmüş kılıyor. İhtiyacı dinleyen,
-              teknik tasarımı yapan ve kodu yazan aynı uzmandır. Projeniz tek odak noktasıdır.
+              Solman Digital olarak ihtiyacı dinleyen, teknik tasarımı yapan ve kodu yazan aynı uzmandır.
+              PM katmanı, aracı yok — projeniz tek odak noktasıdır, başından teslime kadar.
             </p>
             <p>
               İyzico entegrasyonunda Türk kullanıcı alışkanlıkları, Trendyol API&apos;sinde satıcının
-              operasyonel gerçekliği sahada öğrenildi. Bu bağlam, doğrudan müşteri için değere dönüşüyor.
+              operasyonel gerçekliği sahada kazanıldı. Bu bağlam doğrudan çözüme dönüşür — genel
+              reçeteler değil, işinize özel kararlar.
             </p>
           </div>
         </div>

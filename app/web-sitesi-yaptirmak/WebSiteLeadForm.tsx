@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
+import { inputStyle, labelStyle, submitButtonStyle, onFocus, onBlur } from "@/lib/form-utils"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -47,33 +48,6 @@ export default function WebSiteLeadForm() {
     }
   }
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "0.75rem 1rem",
-    border: "1px solid #e0e0e0",
-    borderRadius: 7,
-    fontSize: "0.9rem",
-    color: "#111111",
-    backgroundColor: "#ffffff",
-    outline: "none",
-    fontFamily: "inherit",
-    boxSizing: "border-box",
-  }
-
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    fontSize: "0.775rem",
-    fontWeight: 700,
-    color: "#444444",
-    marginBottom: "0.5rem",
-    textTransform: "uppercase",
-    letterSpacing: "0.06em",
-  }
-
-  const focus = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
-    (e.target.style.borderColor = "#9b1c1c")
-  const blur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
-    (e.target.style.borderColor = "#e0e0e0")
 
   return (
     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -83,7 +57,7 @@ export default function WebSiteLeadForm() {
           <input
             id="firstName" name="firstName" type="text" required
             value={form.firstName} onChange={handleChange}
-            placeholder="Ahmet" style={inputStyle} onFocus={focus} onBlur={blur}
+            placeholder="Ahmet" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
           />
         </div>
         <div>
@@ -91,7 +65,7 @@ export default function WebSiteLeadForm() {
           <input
             id="email" name="email" type="email" required
             value={form.email} onChange={handleChange}
-            placeholder="ahmet@firma.com" style={inputStyle} onFocus={focus} onBlur={blur}
+            placeholder="ahmet@firma.com" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
           />
         </div>
       </div>
@@ -102,7 +76,7 @@ export default function WebSiteLeadForm() {
           <input
             id="phone" name="phone" type="tel"
             value={form.phone} onChange={handleChange}
-            placeholder="+90 5xx xxx xx xx" style={inputStyle} onFocus={focus} onBlur={blur}
+            placeholder="+90 5xx xxx xx xx" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
           />
         </div>
         <div>
@@ -110,7 +84,7 @@ export default function WebSiteLeadForm() {
           <input
             id="companyName" name="companyName" type="text"
             value={form.companyName} onChange={handleChange}
-            placeholder="Firma Adı" style={inputStyle} onFocus={focus} onBlur={blur}
+            placeholder="Firma Adı" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
           />
         </div>
       </div>
@@ -120,7 +94,7 @@ export default function WebSiteLeadForm() {
         <select
           id="siteType" name="siteType" required
           value={form.siteType} onChange={handleChange}
-          style={{ ...inputStyle, cursor: "pointer" }} onFocus={focus} onBlur={blur}
+          style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
         >
           <option value="">Seçin</option>
           <option value="Kurumsal tanıtım sitesi">Kurumsal tanıtım sitesi</option>
@@ -138,7 +112,7 @@ export default function WebSiteLeadForm() {
           <select
             id="budget" name="budget" required
             value={form.budget} onChange={handleChange}
-            style={{ ...inputStyle, cursor: "pointer" }} onFocus={focus} onBlur={blur}
+            style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
           >
             <option value="">Seçin</option>
             <option value="₺8.000–₺20.000">₺8.000–₺20.000</option>
@@ -152,7 +126,7 @@ export default function WebSiteLeadForm() {
           <select
             id="timeline" name="timeline" required
             value={form.timeline} onChange={handleChange}
-            style={{ ...inputStyle, cursor: "pointer" }} onFocus={focus} onBlur={blur}
+            style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
           >
             <option value="">Seçin</option>
             <option value="Bu ay">Bu ay</option>
@@ -169,7 +143,7 @@ export default function WebSiteLeadForm() {
           id="existingSite" name="existingSite" type="text"
           value={form.existingSite} onChange={handleChange}
           placeholder="https://mevcutsite.com (yoksa boş bırakın)"
-          style={inputStyle} onFocus={focus} onBlur={blur}
+          style={inputStyle} onFocus={onFocus} onBlur={onBlur}
         />
       </div>
 
@@ -181,7 +155,7 @@ export default function WebSiteLeadForm() {
           value={form.brief} onChange={handleChange}
           placeholder="Ör: Muhasebe firması için kurumsal site, 10 sayfa, Türkçe + İngilizce…"
           style={{ ...inputStyle, resize: "vertical", minHeight: 90 }}
-          onFocus={focus} onBlur={blur}
+          onFocus={onFocus} onBlur={onBlur}
         />
       </div>
 
@@ -200,15 +174,7 @@ export default function WebSiteLeadForm() {
       <button
         type="submit"
         disabled={state === "sending"}
-        style={{
-          display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
-          backgroundColor: state === "sending" ? "#c0392b" : "#9b1c1c",
-          color: "#ffffff",
-          padding: "0.875rem 1.5rem",
-          borderRadius: 7, fontWeight: 700, fontSize: "0.875rem",
-          border: "none", cursor: state === "sending" ? "not-allowed" : "pointer",
-          letterSpacing: "0.02em",
-        }}
+        style={submitButtonStyle(state === "sending")}
       >
         {state === "sending" ? "Gönderiliyor…" : "Ücretsiz Fiyat Teklifi Al"}
         {state !== "sending" && <ArrowRight size={16} />}

@@ -91,7 +91,7 @@ const professionalServiceSchema = {
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
-  serviceType: "Web Development Agency",
+  serviceType: "Custom Software Development",
   areaServed: {
     "@type": "Country",
     name: "Turkey",

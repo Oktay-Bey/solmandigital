@@ -15,6 +15,8 @@ const projects = [
   {
     title: "Trendyol Satıcı Paneli",
     category: "Marketplace Entegrasyonu",
+    accent: "#f97316",
+    preview: "📊 Çok kanallı stok senkronizasyonu & satış analitiği",
     desc: "Trendyol ve Hepsiburada API entegrasyonlu, çok kanallı stok senkronizasyonu ve satış analitiği paneli. Recharts ile gerçek zamanlı veri görselleştirmesi.",
     tech: ["Next.js 14", "TypeScript", "Trendyol API", "Recharts", "Zustand"],
     status: "Özel Proje",
@@ -23,6 +25,8 @@ const projects = [
   {
     title: "WordPress AI İçerik Otomasyonu",
     category: "AI & Otomasyon",
+    accent: "#8b5cf6",
+    preview: "🤖 GPT-4o → SEO içerik → WordPress otomatik yayın",
     desc: "GPT-4o ve Serper API ile SEO uyumlu içerik üreten, WordPress'e otomatik yayımlayan sistem. Kaynak doğrulama ve kalite filtresi dahil.",
     tech: ["Next.js 14", "GPT-4o", "Serper API", "WordPress REST API", "Prisma"],
     status: "Canlı",
@@ -31,6 +35,8 @@ const projects = [
   {
     title: "E-Ticaret Platformu",
     category: "E-Ticaret",
+    accent: "#0ea5e9",
+    preview: "🛒 186 SSG ürün · İyzico entegrasyonu · Tam Türkçe",
     desc: "186 SSG ürün, İyzico ödeme entegrasyonu ve tam Türkçe e-ticaret altyapısı. JSON veri dosyaları ile statik üretim.",
     tech: ["Next.js 14", "İyzico", "TypeScript", "SSG"],
     status: "Canlı",
@@ -39,6 +45,8 @@ const projects = [
   {
     title: "AI Haber Platformu",
     category: "İçerik Platformu",
+    accent: "#10b981",
+    preview: "📰 RSS → AI → Otomatik yayın pipeline'ı",
     desc: "Supabase, OpenAI ve RSS pipeline ile çalışan otomatik haber üretim ve yayın sistemi. Google AdSense entegrasyonu.",
     tech: ["Next.js 14", "Supabase", "OpenAI", "RSS", "Vercel Cron"],
     status: "Canlı",
@@ -47,6 +55,8 @@ const projects = [
   {
     title: "QR Menü SaaS",
     category: "SaaS",
+    accent: "#f43f5e",
+    preview: "🍽️ Restoran → QR kod → Dijital menü · Multi-tenant",
     desc: "Çok kiracılı QR menü SaaS platformu. Prisma, NextAuth, QR kod üretimi ve PDF dışa aktarma. Restoranlar için dijital menü altyapısı.",
     tech: ["Next.js", "Prisma", "NextAuth", "QR Code", "PDF"],
     status: "Özel Proje",
@@ -55,6 +65,8 @@ const projects = [
   {
     title: "Rüya Günlüğü SaaS",
     category: "SaaS",
+    accent: "#6366f1",
+    preview: "🌙 Claude AI ile rüya analizi · LemonSqueezy abonelik",
     desc: "Supabase + Claude AI ile rüya analizi yapan SaaS uygulama. LemonSqueezy abonelik sistemi, magic link auth.",
     tech: ["Next.js 14", "Supabase", "Claude AI", "LemonSqueezy"],
     status: "Canlı",
@@ -117,8 +129,30 @@ export default function PortfoyPage() {
                   flexDirection: "column",
                 }}
               >
-                {/* Kırmızı Çizgi Detay */}
-                <div style={{ height: 3, backgroundColor: "#9b1c1c" }} />
+                {/* Renk Başlık Bandı */}
+                <div
+                  style={{
+                    background: `linear-gradient(135deg, ${project.accent}22 0%, ${project.accent}11 100%)`,
+                    borderBottom: `1px solid ${project.accent}33`,
+                    padding: "1.25rem 1.5rem",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.75rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 4,
+                      height: 36,
+                      backgroundColor: project.accent,
+                      borderRadius: 2,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <p style={{ color: "#444444", fontSize: "0.82rem", fontWeight: 500, lineHeight: 1.5 }}>
+                    {project.preview}
+                  </p>
+                </div>
 
                 <div style={{ padding: "1.5rem", flex: 1, display: "flex", flexDirection: "column" }}>
                   {/* Kategori + Durum */}

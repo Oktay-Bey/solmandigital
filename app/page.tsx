@@ -1,8 +1,9 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, Zap, Users, X, CheckCircle2, Globe } from "lucide-react"
+import { ArrowRight, Zap, Users, X, CheckCircle2, Globe, MessageCircle } from "lucide-react"
 import { getServicesByTier } from "@/lib/data/services"
 import ServiceCard from "@/components/ServiceCard"
+import Testimonials from "@/components/Testimonials"
 import { siteConfig } from "@/lib/site-config"
 
 export const metadata: Metadata = {
@@ -67,6 +68,34 @@ const techStack = [
   "Next.js 16", "React 19", "TypeScript", "Tailwind CSS",
   "Supabase", "Prisma", "OpenAI GPT-4o", "Claude AI",
   "İyzico", "Stripe", "Trendyol API", "Vercel",
+]
+
+const pricingCards = [
+  {
+    title: "Web Sitesi",
+    from: "8.000₺",
+    desc: "Kurumsal tanıtım, landing page veya blog. SEO uyumlu, mobil öncelikli.",
+    items: ["5–10 sayfa", "İletişim formu", "Google Analytics", "5 iş günü teslim"],
+    href: "/web-sitesi-yaptirmak",
+    cta: "Teklif Al",
+  },
+  {
+    title: "E-Ticaret",
+    from: "20.000₺",
+    desc: "İyzico / Stripe ödeme, stok yönetimi, sipariş paneli. Trendyol entegrasyonu opsiyonel.",
+    items: ["Ürün kataloğu", "Ödeme entegrasyonu", "Admin paneli", "10–15 iş günü teslim"],
+    href: "/iletisim",
+    cta: "Teklif Al",
+    featured: true,
+  },
+  {
+    title: "SaaS & AI",
+    from: "50.000₺",
+    desc: "Abonelik sistemi, çok kiracılı mimari, OpenAI / Claude entegrasyonu.",
+    items: ["Auth + subscription", "AI pipeline", "Dashboard", "4–8 hafta teslim"],
+    href: "/saas-platform-gelistirme",
+    cta: "Teklif Al",
+  },
 ]
 
 const agencyVsUs = [
@@ -644,6 +673,128 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Başlangıç Fiyatları */}
+      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ marginBottom: "3rem" }}>
+            <p
+              style={{
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                color: "#888888",
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                marginBottom: "0.875rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.75rem",
+              }}
+            >
+              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
+              Başlangıç Fiyatları
+            </p>
+            <h2
+              style={{
+                fontSize: "clamp(1.6rem, 3vw, 2.25rem)",
+                fontWeight: 800,
+                color: "#111111",
+                letterSpacing: "-0.025em",
+                lineHeight: 1.15,
+                maxWidth: 560,
+              }}
+            >
+              Bütçenize uygun çözüm için
+              <br />
+              <span style={{ color: "#9b1c1c" }}>ne kadar bütçe ayırmalısınız?</span>
+            </h2>
+            <p style={{ color: "#6b6b6b", marginTop: "0.875rem", fontSize: "0.9rem", lineHeight: 1.7 }}>
+              Aşağıdaki rakamlar başlangıç noktaları. Projenizin kapsamına göre netleştirilmiş bir teklif sunuyoruz.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))", gap: "1.25rem" }}>
+            {pricingCards.map((card) => (
+              <div
+                key={card.title}
+                style={{
+                  backgroundColor: card.featured ? "#111111" : "#ffffff",
+                  border: card.featured ? "1px solid #9b1c1c" : "1px solid #e0e0e0",
+                  borderRadius: 10,
+                  padding: "2rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                {card.featured && (
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: 16,
+                      right: 16,
+                      backgroundColor: "#9b1c1c",
+                      color: "#fff",
+                      fontSize: "0.6rem",
+                      fontWeight: 700,
+                      padding: "0.2rem 0.6rem",
+                      borderRadius: 4,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    Popüler
+                  </span>
+                )}
+                <p style={{ fontSize: "0.75rem", fontWeight: 700, color: card.featured ? "#888888" : "#9b1c1c", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
+                  {card.title}
+                </p>
+                <p style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: card.featured ? "#ffffff" : "#111111", letterSpacing: "-0.03em", marginBottom: "0.25rem" }}>
+                  {card.from}
+                  <span style={{ fontSize: "0.8rem", fontWeight: 500, color: card.featured ? "#555555" : "#888888" }}>&apos;dan başlayan</span>
+                </p>
+                <p style={{ color: card.featured ? "#888888" : "#6b6b6b", fontSize: "0.85rem", lineHeight: 1.65, marginBottom: "1.5rem", flex: 1 }}>
+                  {card.desc}
+                </p>
+                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.75rem" }}>
+                  {card.items.map((item) => (
+                    <li key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                      <CheckCircle2 size={13} color="#16a34a" style={{ flexShrink: 0 }} />
+                      <span style={{ color: card.featured ? "#aaaaaa" : "#555555", fontSize: "0.825rem" }}>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={card.href}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "0.5rem",
+                    backgroundColor: card.featured ? "#9b1c1c" : "transparent",
+                    color: card.featured ? "#ffffff" : "#111111",
+                    border: card.featured ? "none" : "1px solid #e0e0e0",
+                    padding: "0.75rem 1.25rem",
+                    borderRadius: 7,
+                    fontWeight: 700,
+                    fontSize: "0.875rem",
+                  }}
+                >
+                  {card.cta} <ArrowRight size={14} />
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ marginTop: "1.75rem", color: "#888888", fontSize: "0.8rem", textAlign: "center" }}>
+            Kesin fiyat kapsam görüşmesinden sonra belirlenir. Görüşme ücretsizdir.
+          </p>
+        </div>
+      </section>
+
+      {/* Müşteri Görüşleri */}
+      <Testimonials />
 
       {/* FAQ */}
       <section style={{ padding: "5rem 1.5rem", backgroundColor: "#f5f5f5" }}>

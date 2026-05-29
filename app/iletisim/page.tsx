@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Mail, Clock, MessageCircle } from "lucide-react"
+import { Mail, Clock, MessageCircle, Phone } from "lucide-react"
 import ContactForm from "@/components/ContactForm"
 import { siteConfig } from "@/lib/site-config"
 
@@ -113,6 +113,13 @@ export default function IletisimPage() {
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             {[
               {
+                icon: MessageCircle,
+                title: "WhatsApp ile Yazın",
+                desc: siteConfig.whatsappDisplay,
+                link: `https://wa.me/${siteConfig.whatsapp.replace("+", "")}`,
+                highlight: true,
+              },
+              {
                 icon: Clock,
                 title: "Hızlı Yanıt",
                 desc: "İş günlerinde maksimum 24 saat içinde dönüş yapıyoruz.",
@@ -124,7 +131,7 @@ export default function IletisimPage() {
                 link: `mailto:${siteConfig.email}`,
               },
               {
-                icon: MessageCircle,
+                icon: Phone,
                 title: "Ücretsiz Danışmanlık",
                 desc: "İlk görüşme tamamen ücretsiz. Proje kapsamı, süre ve fiyat konuşuyoruz.",
               },
@@ -132,8 +139,8 @@ export default function IletisimPage() {
               <div
                 key={card.title}
                 style={{
-                  backgroundColor: "#ffffff",
-                  border: "1px solid #e0e0e0",
+                  backgroundColor: (card as { highlight?: boolean }).highlight ? "#f0fdf4" : "#ffffff",
+                  border: `1px solid ${(card as { highlight?: boolean }).highlight ? "#bbf7d0" : "#e0e0e0"}`,
                   borderRadius: 10,
                   padding: "1.375rem",
                   display: "flex",
@@ -145,7 +152,7 @@ export default function IletisimPage() {
                   style={{
                     width: 36,
                     height: 36,
-                    backgroundColor: "#f0f0f0",
+                    backgroundColor: (card as { highlight?: boolean }).highlight ? "#dcfce7" : "#f0f0f0",
                     borderRadius: 7,
                     display: "flex",
                     alignItems: "center",
@@ -153,7 +160,7 @@ export default function IletisimPage() {
                     flexShrink: 0,
                   }}
                 >
-                  <card.icon size={18} color="#333333" />
+                  <card.icon size={18} color={(card as { highlight?: boolean }).highlight ? "#16a34a" : "#333333"} />
                 </div>
                 <div>
                   <h3
@@ -168,7 +175,16 @@ export default function IletisimPage() {
                     {card.title}
                   </h3>
                   {card.link ? (
-                    <a href={card.link} style={{ color: "#9b1c1c", fontSize: "0.825rem", fontWeight: 500 }}>
+                    <a
+                      href={card.link}
+                      target={card.link.startsWith("https") ? "_blank" : undefined}
+                      rel={card.link.startsWith("https") ? "noopener noreferrer" : undefined}
+                      style={{
+                        color: (card as { highlight?: boolean }).highlight ? "#16a34a" : "#9b1c1c",
+                        fontSize: "0.825rem",
+                        fontWeight: 600,
+                      }}
+                    >
                       {card.desc}
                     </a>
                   ) : (

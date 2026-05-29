@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Mail, ArrowRight, MapPin } from "lucide-react"
+import { Mail, ArrowRight, MapPin, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import { services } from "@/lib/data/services"
 
@@ -61,23 +61,45 @@ export default function Footer() {
               Fikrinizi anlatın, size en uygun çözümü ve tahmini süreyi paylaşalım.
             </p>
           </div>
-          <Link
-            href="/iletisim"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              backgroundColor: "#9b1c1c",
-              color: "#ffffff",
-              padding: "0.875rem 1.75rem",
-              borderRadius: 7,
-              fontWeight: 700,
-              fontSize: "0.875rem",
-              flexShrink: 0,
-            }}
-          >
-            Hemen Teklif Al <ArrowRight size={16} />
-          </Link>
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+            <a
+              href={`https://wa.me/${siteConfig.whatsapp.replace("+", "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                backgroundColor: "#15803d",
+                color: "#ffffff",
+                padding: "0.875rem 1.75rem",
+                borderRadius: 7,
+                fontWeight: 700,
+                fontSize: "0.875rem",
+                flexShrink: 0,
+              }}
+            >
+              <MessageCircle size={16} />
+              WhatsApp&apos;ta Yaz
+            </a>
+            <Link
+              href="/iletisim"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                backgroundColor: "#9b1c1c",
+                color: "#ffffff",
+                padding: "0.875rem 1.75rem",
+                borderRadius: 7,
+                fontWeight: 700,
+                fontSize: "0.875rem",
+                flexShrink: 0,
+              }}
+            >
+              Hemen Teklif Al <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -139,6 +161,21 @@ export default function Footer() {
               }}
             >
               <Mail size={13} /> {siteConfig.email}
+            </a>
+            <a
+              href={`https://wa.me/${siteConfig.whatsapp.replace("+", "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: "#16a34a",
+                fontSize: "0.8rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                marginBottom: "0.5rem",
+              }}
+            >
+              <MessageCircle size={13} /> {siteConfig.whatsappDisplay}
             </a>
             <p style={{ color: "#444444", fontSize: "0.8rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <MapPin size={13} /> {siteConfig.address}
