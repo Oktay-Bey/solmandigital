@@ -20,9 +20,6 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   metadataBase: new URL(siteConfig.url),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "tr_TR",
@@ -108,6 +105,68 @@ const professionalServiceSchema = {
   },
 }
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${siteConfig.url}/#localbusiness`,
+  name: siteConfig.name,
+  description: siteConfig.description,
+  url: siteConfig.url,
+  telephone: siteConfig.whatsapp,
+  email: siteConfig.email,
+  image: `${siteConfig.url}/og-image.jpg`,
+  logo: `${siteConfig.url}/logo.png`,
+  foundingDate: "2023",
+  priceRange: "₺₺–₺₺₺",
+  currenciesAccepted: "TRY",
+  paymentAccepted: "Cash, Credit Card, Bank Transfer",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Beşiktaş",
+    addressLocality: "İstanbul",
+    addressRegion: "İstanbul",
+    postalCode: "34349",
+    addressCountry: "TR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 41.0426,
+    longitude: 28.9965,
+  },
+  areaServed: [
+    { "@type": "City", name: "İstanbul" },
+    { "@type": "Country", name: "Turkey" },
+  ],
+  sameAs: [
+    siteConfig.social.linkedin,
+    siteConfig.social.github,
+  ],
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Yazılım Hizmetleri",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Kurumsal Web Sitesi Geliştirme" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "E-Ticaret Kurulum" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "SaaS Web Uygulama Geliştirme" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI İçerik Otomasyonu" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Trendyol & Marketplace Entegrasyonu" } },
+    ],
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    reviewCount: "3",
+    bestRating: "5",
+    worstRating: "1",
+  },
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -141,6 +200,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <Header />
         <main>{children}</main>

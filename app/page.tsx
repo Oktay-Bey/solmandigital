@@ -18,10 +18,18 @@ const homeFaqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Solman Digital ile çalışmanın farkı nedir?",
+      name: "Solman Digital nedir ve ne yapar?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Projenizi anlayan, tasarlayan ve yapan aynı uzmandır. Birden fazla kişi arasında dolaşan brief'ler, onay döngüleri ya da standart template'ler yok. İşinizin tam ihtiyacına göre sıfırdan yazılım üretilir, net kapsam ve takvimle teslim edilir.",
+        text: "Solman Digital, İstanbul Beşiktaş merkezli özel yazılım ofisidir. E-ticaret, SaaS ve yapay zeka otomasyon projelerinde uzmanlaşmıştır. 2023'ten bu yana Türk pazarına yönelik özel yazılım çözümleri üretmektedir. Tüm projeler şablonsuz, sıfırdan geliştirilir.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Solman Digital ile çalışmanın büyük ajanslardan farkı nedir?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Büyük ajanslarda projeniz account manager, tasarımcı, geliştirici ve test ekibi arasında dolaşır. Solman Digital'de projeyi anlayan, tasarlayan ve yapan aynı uzmandır. Bu; iletişim hızını artırır, kapsam kaymasını önler ve teslim tarihini kesinleştirir. Aracı katman yoktur, maliyetler daha düşüktür.",
       },
     },
     {
@@ -29,7 +37,31 @@ const homeFaqSchema = {
       name: "Projeler ne kadar sürede teslim edilir?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Proje türüne göre değişir. Kurumsal web siteleri 5-7 iş günü, e-ticaret siteleri 10-15 iş günü, SaaS uygulamalar 4-8 hafta içinde teslim edilir. Başlamadan önce net bir takvim ve kapsam belirliyoruz.",
+        text: "Proje türüne göre değişir: Kurumsal web siteleri 5-10 iş günü, e-ticaret siteleri 10-15 iş günü, marketplace entegrasyonları 5-10 iş günü, AI otomasyon projeleri 2-3 hafta, SaaS uygulamalar 4-8 hafta içinde teslim edilir. Proje başlamadan önce net takvim belirlenir.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "İstanbul'da web sitesi yaptırmak ne kadar tutar?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Kurumsal web siteleri 8.000 ₺'den, e-ticaret siteleri 20.000 ₺'den, SaaS ve AI platformları 50.000 ₺'den başlamaktadır. Kesin fiyat kapsam görüşmesinden sonra belirlenir. İlk görüşme ücretsizdir.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Trendyol API entegrasyonu nasıl çalışır ve ne gerekiyor?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Onaylı Trendyol satıcı hesabı ve API anahtarı gerekmektedir. Entegrasyon tamamlandığında stok senkronizasyonu, sipariş yönetimi ve fiyat güncellemesi otomatik hale gelir. API başvuru sürecinde teknik rehberlik sağlanır. Süre 5-10 iş günüdür.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Yapay zeka ile web sitesi veya içerik otomasyonu mümkün mü?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Evet. OpenAI GPT-4o ve Claude AI kullanarak Türkçe ürün açıklaması üretimi, haber özeti, SEO içeriği ve müşteri chatbotu sistemleri kurulmaktadır. E-ticaret sitelerinde binlerce ürün için açıklama otomasyonu, haber sitelerinde günlük içerik üretimi gerçekleştirilmiştir.",
       },
     },
     {
@@ -37,16 +69,53 @@ const homeFaqSchema = {
       name: "Teklif almak için ne yapmalıyım?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "İletişim formunu doldurmanız yeterlidir. Projenizi anlatan kısa bir mesaj gönderin, 24 saat içinde size dönüş yapıyoruz.",
+        text: "İletişim formunu doldurun veya WhatsApp üzerinden yazın. Projenizi kısaca anlatan bir mesaj gönderin — 24 saat içinde dönüş yapılır. Görüşme ücretsizdir.",
       },
     },
     {
       "@type": "Question",
-      name: "Trendyol API entegrasyonu için ne gerekiyor?",
+      name: "Proje tesliminden sonra teknik destek var mı?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Onaylı Trendyol satıcı hesabı ve API anahtarı gerekmektedir. API başvuru sürecinde teknik destek sağlıyoruz.",
+        text: "Evet. Tüm projelerde en az 1 ay ücretsiz teknik destek dahildir. Sonrasında ihtiyaca göre bakım anlaşması yapılabilir.",
       },
+    },
+  ],
+}
+
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://solmandigital.com.tr/#organization",
+  name: "Solman Digital",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    reviewCount: "3",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  review: [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Kerem Aydın" },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      reviewBody: "Trendyol ve Hepsiburada entegrasyonunu 2 haftada teslim ettiler. Stok senkronizasyonu artık tamamen otomatik, manuel işlemlerimiz neredeyse sıfıra indi.",
+      datePublished: "2024-09-01",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Selin Öztürk" },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      reviewBody: "Birkaç ajansla görüştük ama doğrudan geliştiriciyle çalışmanın farkı ortaya çıktı. Brief'i anında kavradı, hiç gidip gelmeden 10 günde siteyi canlıya aldık.",
+      datePublished: "2024-11-01",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Murat Çelik" },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      reviewBody: "MVP'mizi 6 haftada bitirdi. Kod kalitesi yüksek, supabase mimarisi temiz. Yatırımcı sunumuna hazır bir ürünle çıktık.",
+      datePublished: "2025-01-01",
     },
   ],
 }
@@ -99,10 +168,10 @@ const pricingCards = [
 ]
 
 const agencyVsUs = [
-  { agency: "Uzun keşif ve brief süreci", us: "15 dk görüşme, aynı gün teklif" },
-  { agency: "Standart template üzerine uyarlama", us: "Sıfırdan, işinize özel yazılım" },
-  { agency: "PM ve account manager üzerinden iletişim", us: "Doğrudan sorumlu geliştiriciyle" },
-  { agency: "Aylarca uzayan takvimler", us: "MVP 1-2 haftada, söz verildiği gibi" },
+  { agency: "Standart proje akışı, sabit adımlar", us: "İşinizi anlayarak, size özel süreç kuruyoruz" },
+  { agency: "Sabit paket çözümler", us: "İhtiyaca göre şekillenen kapsam ve teknoloji" },
+  { agency: "Uzak iletişim katmanları", us: "Doğrudan, başından sonuna aynı uzmanla" },
+  { agency: "Belirsiz takvim ve uzayan süreçler", us: "Net takvim, söz verilen günde teslim" },
 ]
 
 const whyUs = [
@@ -129,10 +198,10 @@ const whyUs = [
 ]
 
 const steps = [
-  { num: "01", title: "Ücretsiz Görüşme", desc: "Projenizi anlamak için kısa, odaklı bir görüşme yapıyoruz." },
-  { num: "02", title: "Teknik Teklif", desc: "Kapsam, süre ve fiyat içeren detaylı bir teklif sunuyoruz." },
-  { num: "03", title: "Geliştirme", desc: "Haftalık ilerleme güncellemeleri ile şeffaf bir süreç yürütüyoruz." },
-  { num: "04", title: "Teslim & Destek", desc: "Deploy, test ve lansman sonrası teknik destek tamamlanır." },
+  { num: "01", title: "İşinizi Anlıyoruz", desc: "Sektörünüzü, sürecinizi ve gerçek ihtiyacınızı dinleyerek başlıyoruz. Kısa, odaklı bir görüşme — size özel kapsam buradan şekilleniyor." },
+  { num: "02", title: "Size Özel Teklif", desc: "Dinlediklerimize göre kapsam, teknoloji seçimi ve takvim belirliyoruz. Standart paket değil, sizin projenize özel bir yol haritası." },
+  { num: "03", title: "Doğrudan Geliştirme", desc: "Aynı uzmanla, aracısız iletişimle ilerliyoruz. Haftalık güncellemeler, şeffaf süreç." },
+  { num: "04", title: "Teslim & Yanınızdayız", desc: "Söz verilen tarihte deploy, test ve lansman. Proje biter, destek bitmez." },
 ]
 
 export default function HomePage() {
@@ -148,6 +217,10 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+      />
 
       {/* Hero */}
       <section style={{ backgroundColor: "#0d0d0d", padding: "6rem 1.5rem 5rem" }}>
@@ -158,9 +231,9 @@ export default function HomePage() {
               style={{
                 fontSize: "0.7rem",
                 fontWeight: 700,
-                color: "#888888",
+                color: "#9b1c1c",
                 textTransform: "uppercase",
-                letterSpacing: "0.12em",
+                letterSpacing: "0.14em",
                 marginBottom: "1.75rem",
                 display: "flex",
                 alignItems: "center",
@@ -175,7 +248,7 @@ export default function HomePage() {
                   backgroundColor: "#9b1c1c",
                 }}
               />
-              Özel Yazılım Uzmanı
+              Kişiye &amp; Firmaya Özel Yazılım Stüdyosu
             </p>
 
             <h1
@@ -188,25 +261,39 @@ export default function HomePage() {
                 letterSpacing: "-0.03em",
               }}
             >
-              Sıfırdan Yazılım,
+              Her İşletme
               <br />
-              Net Takvim,
+              Farklıdır.
               <br />
-              <span style={{ color: "#9b1c1c" }}>Doğrudan Geliştirici</span>
+              <span style={{ color: "#9b1c1c" }}>Yazılımı Da Öyle.</span>
             </h1>
 
             <p
               style={{
                 color: "#888888",
                 fontSize: "1rem",
-                lineHeight: 1.75,
-                marginBottom: "2.5rem",
+                lineHeight: 1.8,
+                marginBottom: "2rem",
                 maxWidth: 480,
               }}
             >
-              Projenizi anlayan, tasarlayan ve hayata geçiren aynı kişiyle çalışırsınız. Template değil, sıfırdan
-              özel yazılım — net kapsam, belirli takvim, söz verilen günde teslim.
+              Trendyol satıcısından SaaS girişimine, e-ticaret mağazasından kurumsal firmaya —
+              her projeyi sizin iş sürecinizi anlayarak, sıfırdan ve sadece size özel inşa ediyoruz.
             </p>
+
+            {/* Özellik çizgileri */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", marginBottom: "2.5rem" }}>
+              {[
+                "Sizi dinleyen aynı uzman, başından sonuna",
+                "Net kapsam ve takvim — söz verilen günde teslim",
+                "Projeniz biter, destek bitmez",
+              ].map((item) => (
+                <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+                  <span style={{ width: 5, height: 5, borderRadius: "50%", backgroundColor: "#9b1c1c", flexShrink: 0 }} />
+                  <span style={{ color: "#aaaaaa", fontSize: "0.875rem" }}>{item}</span>
+                </div>
+              ))}
+            </div>
 
             <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
               <Link
@@ -224,7 +311,7 @@ export default function HomePage() {
                   letterSpacing: "0.01em",
                 }}
               >
-                Ücretsiz Teklif Al <ArrowRight size={16} />
+                Projenizi Anlatalım <ArrowRight size={16} />
               </Link>
               <Link
                 href="/hizmetler"
@@ -245,86 +332,93 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Sağ: Metrikler */}
+          {/* Sağ: Örnek Projeler */}
           <div>
             <div
               style={{
-                backgroundColor: "#161616",
+                backgroundColor: "#111111",
                 border: "1px solid #2a2a2a",
                 borderRadius: 12,
-                padding: "2rem",
+                overflow: "hidden",
               }}
             >
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", backgroundColor: "#2a2a2a" }}>
-                {[
-                  { value: "22", label: "Hizmet Alanı" },
-                  { value: "3+", label: "Yıl Deneyim" },
-                  { value: "15+", label: "Tamamlanan Proje" },
-                  { value: "100%", label: "Müşteri Memnuniyeti" },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    style={{
-                      backgroundColor: "#161616",
-                      padding: "1.75rem 1.5rem",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: "2rem",
-                        fontWeight: 800,
-                        color: "#ffffff",
-                        lineHeight: 1,
-                        letterSpacing: "-0.03em",
-                      }}
-                    >
-                      {stat.value}
-                    </div>
-                    <div style={{ fontSize: "0.75rem", color: "#666666", marginTop: "0.4rem", fontWeight: 500 }}>
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
+              {/* Kart başlığı */}
               <div
                 style={{
-                  marginTop: "1.75rem",
-                  paddingTop: "1.75rem",
-                  borderTop: "1px solid #2a2a2a",
+                  padding: "1.25rem 1.5rem",
+                  borderBottom: "1px solid #1e1e1e",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
                 }}
               >
-                <p
+                <span style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#9b1c1c" }} />
+                <span style={{ color: "#555555", fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                  Her Müşteri İçin Ayrı Çözüm
+                </span>
+              </div>
+
+              {/* Proje örnekleri */}
+              {[
+                {
+                  client: "E-Ticaret Satıcısı",
+                  built: "Trendyol + Hepsiburada çift kanal stok yönetimi",
+                  tag: "API Entegrasyonu",
+                },
+                {
+                  client: "SaaS Girişimi",
+                  built: "Çok kiracılı mimari, abonelik sistemi, AI pipeline",
+                  tag: "Tam Platform",
+                },
+                {
+                  client: "Restoran Zinciri",
+                  built: "QR menü sistemi — şube bazlı yönetim paneli",
+                  tag: "Özel SaaS",
+                },
+                {
+                  client: "Kurumsal Firma",
+                  built: "CRM entegrasyonlu teklif & fatura takip paneli",
+                  tag: "İç Araç",
+                },
+              ].map((project, i) => (
+                <div
+                  key={i}
                   style={{
-                    color: "#555555",
-                    fontSize: "0.7rem",
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    marginBottom: "0.875rem",
+                    padding: "1.25rem 1.5rem",
+                    borderBottom: "1px solid #1a1a1a",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.375rem",
                   }}
                 >
-                  Teknoloji Yığını
-                </p>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-                  {["Next.js 16", "TypeScript", "GPT-4o", "İyzico", "Supabase", "Trendyol API"].map((t) => (
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
+                    <span style={{ color: "#ffffff", fontSize: "0.8rem", fontWeight: 700 }}>{project.client}</span>
                     <span
-                      key={t}
                       style={{
                         backgroundColor: "#1e1e1e",
                         border: "1px solid #2a2a2a",
-                        color: "#888888",
-                        padding: "0.25rem 0.625rem",
+                        color: "#666666",
+                        fontSize: "0.6rem",
+                        fontWeight: 600,
+                        padding: "0.2rem 0.5rem",
                         borderRadius: 4,
-                        fontSize: "0.7rem",
-                        fontWeight: 500,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.08em",
+                        whiteSpace: "nowrap",
                       }}
                     >
-                      {t}
+                      {project.tag}
                     </span>
-                  ))}
+                  </div>
+                  <p style={{ color: "#666666", fontSize: "0.775rem", lineHeight: 1.5 }}>{project.built}</p>
                 </div>
+              ))}
+
+              {/* Alt not */}
+              <div style={{ padding: "1rem 1.5rem" }}>
+                <p style={{ color: "#444444", fontSize: "0.7rem", fontStyle: "italic" }}>
+                  Projeniz burada değil mi? Fark etmez — sıfırdan yazıyoruz.
+                </p>
               </div>
             </div>
           </div>
@@ -356,9 +450,9 @@ export default function HomePage() {
                 lineHeight: 1.2,
               }}
             >
-              Projeniz bir developer&apos;ın elinde başlar,
+              Her proje farklı ihtiyaçla başlar.
               <br />
-              <span style={{ color: "#9b1c1c" }}>aynı elde biter.</span>
+              <span style={{ color: "#9b1c1c" }}>Bizim yaklaşımımız da öyle.</span>
             </h2>
           </div>
 
@@ -579,7 +673,7 @@ export default function HomePage() {
               Nasıl Çalışırız?
             </h2>
             <p style={{ color: "#6b6b6b", marginTop: "0.875rem", fontSize: "0.95rem" }}>
-              Fikrinizden canlıya geçişe 4 adım.
+              Sizi dinleyerek başlıyor, teslim sonrasında da yanınızda kalıyoruz.
             </p>
           </div>
 

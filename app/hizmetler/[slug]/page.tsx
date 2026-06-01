@@ -38,5 +38,57 @@ export default async function HizmetDetayPage({ params }: Props) {
 
   const related = getRelatedServices(slug)
 
-  return <ServiceDetail service={service} related={related} />
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.metaDescription,
+    url: `${siteConfig.url}/hizmetler/${slug}`,
+    provider: {
+      "@type": "LocalBusiness",
+      "@id": `${siteConfig.url}/#localbusiness`,
+      name: siteConfig.name,
+    },
+    areaServed: { "@type": "Country", name: "Turkey" },
+    serviceType: service.category,
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "TRY",
+      seller: { "@type": "Organization", name: siteConfig.name },
+    },
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Hizmetler", item: `${siteConfig.url}/hizmetler` },
+      { "@type": "ListItem", position: 3, name: service.title, item: `${siteConfig.url}/hizmetler/${slug}` },
+    ],
+  }
+
+  const faqSchema = service.faq?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: service.faq.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      }
+    : null
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
+      <ServiceDetail service={service} related={related} />
+    </>
+  )
 }

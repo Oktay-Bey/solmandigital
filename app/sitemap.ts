@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next"
 import { services } from "@/lib/data/services"
 import { istanbulPages } from "@/lib/data/istanbul-pages"
+import { rehberPosts } from "@/lib/data/rehber"
 import { siteConfig } from "@/lib/site-config"
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -38,5 +39,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: p.sitemapPriority,
   }))
 
-  return [...staticPages, ...servicePages, ...istanbulLocalPages]
+  const rehberIndexPage: MetadataRoute.Sitemap = [
+    { url: `${base}/rehber`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.85 },
+  ]
+
+  const rehberDetailPages: MetadataRoute.Sitemap = rehberPosts.map((p) => ({
+    url: `${base}/rehber/${p.slug}`,
+    lastModified: new Date(p.publishDate),
+    changeFrequency: "monthly" as const,
+    priority: 0.80,
+  }))
+
+  return [...staticPages, ...servicePages, ...istanbulLocalPages, ...rehberIndexPage, ...rehberDetailPages]
 }

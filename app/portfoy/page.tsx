@@ -84,9 +84,9 @@ export default function PortfoyPage() {
             style={{
               fontSize: "0.7rem",
               fontWeight: 700,
-              color: "#444444",
+              color: "#9b1c1c",
               textTransform: "uppercase",
-              letterSpacing: "0.12em",
+              letterSpacing: "0.14em",
               marginBottom: "1.25rem",
               display: "flex",
               alignItems: "center",
@@ -94,7 +94,7 @@ export default function PortfoyPage() {
             }}
           >
             <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-            Tamamlanan Projeler
+            Kişiye &amp; Firmaya Özel · Tamamlanan Projeler
           </p>
           <h1
             style={{
@@ -105,10 +105,13 @@ export default function PortfoyPage() {
               letterSpacing: "-0.03em",
             }}
           >
-            Özel Yazılım Projeleri
+            Her Proje, Farklı Bir
+            <br />
+            <span style={{ color: "#9b1c1c" }}>İş İhtiyacından Doğdu</span>
           </h1>
           <p style={{ color: "#666666", fontSize: "0.95rem", lineHeight: 1.75, maxWidth: 520 }}>
-            Her biri sıfırdan inşa edildi — template değil. Gerçek iş ihtiyaçları, gerçek teknik kararlar.
+            Her müşterinin sektörü, kullanıcısı ve operasyonu farklıydı.
+            Buradaki projeler, o farklı ihtiyaçlara verilen özel yanıtlar.
           </p>
         </div>
       </section>
@@ -276,10 +279,10 @@ export default function PortfoyPage() {
               letterSpacing: "-0.025em",
             }}
           >
-            Bir projeniz mi var?
+            Sizin projeniz de burada olabilir
           </h2>
           <p style={{ color: "#555555", marginBottom: "2rem", fontSize: "0.9rem", lineHeight: 1.7 }}>
-            Fikrinizi anlatın, teknik fizibilite ve tahmini süreyi konuşalım.
+            İş ihtiyacınızı anlatalın — size özel teknik değerlendirmeyi ücretsiz yapıyoruz.
           </p>
           <Link
             href="/iletisim"
@@ -295,7 +298,7 @@ export default function PortfoyPage() {
               fontSize: "0.9rem",
             }}
           >
-            Teklif Al <ArrowRight size={16} />
+            Projenizi Anlatalım <ArrowRight size={16} />
           </Link>
         </div>
       </section>

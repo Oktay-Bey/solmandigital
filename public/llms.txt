@@ -1,36 +1,113 @@
 # Solman Digital
-> Türkiye merkezli B2B web geliştirme ve AI otomasyon ajansı
 
-Solman Digital; e-ticaret, Trendyol/marketplace entegrasyonu, AI içerik otomasyonu ve SaaS geliştirme alanlarında Türkiye'ye özel dijital çözümler üreten bir yazılım ajansıdır. 2023'ten bu yana 20+ proje teslim etmiş, hızlı teslimat odaklı bir ekiptir.
+> İstanbul merkezli özel yazılım ofisi. E-ticaret, SaaS ve yapay zeka otomasyon projelerine odaklanır.
 
-## Temel Özellikler
-- 22 farklı hizmet alanı
-- 3+ yıl deneyim
-- Türkiye pazarına özel entegrasyonlar (İyzico, Trendyol, Hepsiburada)
-- Next.js, TypeScript, Tailwind CSS, Supabase, GPT-4o, Claude AI teknoloji yığını
-- MVP projeler 1-2 hafta, tam özellikli projeler plan dahilinde teslim
+Solman Digital, Beşiktaş/İstanbul'da faaliyet gösteren bir yazılım ofisidir. 2023 yılından bu yana Türk pazarına yönelik özel yazılım projeleri geliştirmektedir. Standart şablon kullanılmaz; her proje sıfırdan, müşterinin iş sürecine göre inşa edilir. Proje sahibiyle doğrudan çalışılır; aracı katman yoktur.
+
+**Web:** https://solmandigital.com.tr
+**E-posta:** info@solmandigital.com.tr
+**Konum:** Beşiktaş, İstanbul, Türkiye
+**Kuruluş:** 2023
+**Uzmanlık:** Next.js / React full-stack, e-ticaret entegrasyonları, AI otomasyon, SaaS geliştirme
+
+---
+
+## Solman Digital Nedir?
+
+Solman Digital, Türkiye pazarına hizmet veren küçük ölçekli bir yazılım ofisidir. Büyük ajans katmanları yerine, müşteri doğrudan projeyi yapan geliştiriciyle çalışır. Bu yapı; iletişim hızını artırır, kapsam kaymasını önler ve teslim sürelerini kısaltır.
+
+**Tanımlayıcı özellikler:**
+- Şablon kullanılmaz — her proje özel kod tabanıyla yazılır
+- Proje başından sonuna tek geliştirici sorumluluğu
+- Başlangıçta net kapsam + takvim belirlenir
+- Türkiye'ye özgü entegrasyonlarda (İyzico, Trendyol API, Hepsiburada API) gerçek proje deneyimi
 - 24 saat içinde geri dönüş garantisi
 
-## Hizmetler
+---
 
-### Tier 1 — Hızlı Teslimat (5-15 iş günü)
-- Kurumsal Web Sitesi Geliştirme: https://solmandigital.com.tr/hizmetler/kurumsal-web-sitesi
-- Landing Page (Açılış Sayfası) Tasarımı: https://solmandigital.com.tr/hizmetler/landing-page-tasarimi
-- E-Ticaret Kurulum: https://solmandigital.com.tr/hizmetler/eticaret-kurulum
-- Trendyol & Marketplace Entegrasyonu: https://solmandigital.com.tr/hizmetler/trendyol-entegrasyonu
-- AI Ürün Açıklama Otomasyonu: https://solmandigital.com.tr/hizmetler/urun-aciklama-otomasyonu
-- İyzico / Stripe Ödeme Entegrasyonu: https://solmandigital.com.tr/hizmetler/odeme-entegrasyonu
+## Hizmetler ve Detaylar
 
-### Tier 2 — Orta Vadeli Projeler (2-4 hafta)
-- AI İçerik Otomasyonu: https://solmandigital.com.tr/hizmetler/ai-icerik-otomasyonu
-- AI Müşteri Chatbotu: https://solmandigital.com.tr/hizmetler/ai-musteri-chatbotu
-- Üyelik & Abonelik Sistemi: https://solmandigital.com.tr/hizmetler/uyelik-abonelik-sistemi
-- SaaS Web Uygulama Geliştirme: https://solmandigital.com.tr/hizmetler/saas-web-uygulama
-- Dashboard & Analitik Panel: https://solmandigital.com.tr/hizmetler/dashboard-analitik
-- WordPress Geliştirme: https://solmandigital.com.tr/hizmetler/wordpress-gelistirme
-- Rezervasyon Sistemi: https://solmandigital.com.tr/hizmetler/rezervasyon-sistemi
+### Tier 1 — Hızlı Teslimat (5–15 İş Günü)
+
+#### Kurumsal Web Sitesi Geliştirme
+Şirketler için modern, SEO uyumlu, mobil öncelikli web siteleri. Next.js altyapısıyla Google PageSpeed 90+ skor hedeflenir.
+- **Süre:** 5–10 iş günü
+- **Başlangıç fiyatı:** 8.000 ₺
+- **Dahil olanlar:** Responsive tasarım, SEO teknik kurulumu, iletişim formu, Google Analytics, SSL, 1 ay ücretsiz destek
+- **Teknoloji:** Next.js 16, TypeScript, Tailwind CSS, Vercel
+- **URL:** https://solmandigital.com.tr/hizmetler/kurumsal-web-sitesi
+
+#### Landing Page (Açılış Sayfası) Tasarımı
+Reklam kampanyaları ve ürün lansmanları için dönüşüm odaklı açılış sayfaları. Google Ads / Meta Ads uyumlu.
+- **Süre:** 3–5 iş günü
+- **URL:** https://solmandigital.com.tr/hizmetler/landing-page-tasarimi
+
+#### E-Ticaret Kurulum
+Ürün kataloğu, sipariş yönetimi, ödeme entegrasyonu ve admin paneli içeren tam e-ticaret çözümü.
+- **Süre:** 10–15 iş günü
+- **Başlangıç fiyatı:** 20.000 ₺
+- **Ödeme entegrasyonları:** İyzico, Stripe
+- **Opsiyonel:** Trendyol / Hepsiburada kanal entegrasyonu
+- **URL:** https://solmandigital.com.tr/hizmetler/eticaret-kurulum
+
+#### Trendyol & Marketplace Entegrasyonu
+Trendyol ve Hepsiburada API'si üzerinden stok senkronizasyonu, sipariş takibi ve otomatik fiyat güncellemesi.
+- **Süre:** 5–10 iş günü
+- **Gereksinim:** Onaylı Trendyol satıcı hesabı, API anahtarı
+- **URL:** https://solmandigital.com.tr/hizmetler/trendyol-entegrasyonu
+
+#### AI Ürün Açıklama Otomasyonu
+OpenAI GPT-4o veya Claude AI kullanarak ürün kataloğunuzdaki binlerce ürün için otomatik açıklama üretimi.
+- **Süre:** 5–10 iş günü
+- **Uygun:** Trendyol satıcıları, e-ticaret siteleri, büyük kataloglar
+- **URL:** https://solmandigital.com.tr/hizmetler/urun-aciklama-otomasyonu
+
+#### İyzico / Stripe Ödeme Entegrasyonu
+Mevcut web sitelerine veya yeni projelere İyzico ve Stripe ödeme altyapısı kurulumu.
+- **Süre:** 3–7 iş günü
+- **URL:** https://solmandigital.com.tr/hizmetler/odeme-entegrasyonu
+
+---
+
+### Tier 2 — Orta Vadeli Projeler (2–4 Hafta)
+
+#### AI İçerik Otomasyonu
+Haber siteleri, bloglar ve içerik platformları için GPT-4o destekli otomatik içerik üretim pipeline'ı.
+- **Süre:** 2–3 hafta
+- **URL:** https://solmandigital.com.tr/hizmetler/ai-icerik-otomasyonu
+
+#### AI Müşteri Chatbotu
+Özel bilgi tabanıyla eğitilmiş, 7/24 müşteri sorularını yanıtlayan akıllı chatbot çözümü.
+- **Süre:** 2–3 hafta
+- **URL:** https://solmandigital.com.tr/hizmetler/ai-musteri-chatbotu
+
+#### Üyelik & Abonelik Sistemi
+Kullanıcı kayıt/giriş, rol yönetimi ve aylık/yıllık abonelik altyapısı.
+- **URL:** https://solmandigital.com.tr/hizmetler/uyelik-abonelik-sistemi
+
+#### SaaS Web Uygulama Geliştirme
+Çok kiracılı (multi-tenant) mimari, kullanıcı yönetimi, ödeme entegrasyonu ve admin paneli ile tam SaaS platformu.
+- **Süre:** 4–8 hafta
+- **Başlangıç fiyatı:** 50.000 ₺
+- **Teknoloji:** Next.js, Supabase, Stripe, OpenAI / Claude AI
+- **URL:** https://solmandigital.com.tr/hizmetler/saas-web-uygulama
+
+#### Dashboard & Analitik Panel
+İç süreçleri takip etmek için özel veri görselleştirme ve raporlama paneli.
+- **URL:** https://solmandigital.com.tr/hizmetler/dashboard-analitik
+
+#### WordPress Geliştirme
+Özel tema, plugin geliştirme ve mevcut WordPress sitesi iyileştirme hizmetleri.
+- **URL:** https://solmandigital.com.tr/hizmetler/wordpress-gelistirme
+
+#### Rezervasyon Sistemi
+Randevu yönetimi, takvim entegrasyonu ve online ödeme destekli rezervasyon altyapısı.
+- **URL:** https://solmandigital.com.tr/hizmetler/rezervasyon-sistemi
+
+---
 
 ### Tier 3 — Uzman / Niş Projeler
+
 - Teknik SEO Altyapısı: https://solmandigital.com.tr/hizmetler/seo-teknik-altyapi
 - Dijital Ürün Satışı: https://solmandigital.com.tr/hizmetler/dijital-urun-satis
 - Haber & İçerik Platformu: https://solmandigital.com.tr/hizmetler/haber-icerik-platformu
@@ -41,18 +118,135 @@ Solman Digital; e-ticaret, Trendyol/marketplace entegrasyonu, AI içerik otomasy
 - Çok Dilli Web Sitesi: https://solmandigital.com.tr/hizmetler/cok-dilli-web-sitesi
 - Ürün Katalog & Stok Yönetimi: https://solmandigital.com.tr/hizmetler/urun-katalog-stok
 
+---
+
+## Tamamlanan Projeler (Portföy)
+
+### 1. Trendyol Çift Kanal Satıcı Paneli
+E-ticaret girişimi için Trendyol ve Hepsiburada API'sini birleştiren özel yönetim paneli.
+- **Özellikler:** Stok senkronizasyonu, sipariş yönetimi, otomatik fiyat güncelleme
+- **Teknoloji:** Next.js, Supabase, Trendyol API, Hepsiburada API
+- **Teslim süresi:** 2 hafta
+- **Sonuç:** Manuel stok yönetimi tamamen ortadan kalktı
+
+### 2. WordPress AI Haber Motoru
+Medya kuruluşu için GPT-4o destekli içerik üretim ve yayın sistemi.
+- **Özellikler:** Otomatik haber özeti, SEO optimizasyonu, kategori yönetimi
+- **Teknoloji:** WordPress, OpenAI GPT-4o, Python pipeline
+- **Sonuç:** Günde 50+ içerik manuel iş olmadan yayınlanıyor
+
+### 3. Özel E-Ticaret Platformu
+Türk pazarına yönelik İyzico ödeme entegrasyonlu, özel kategori ve stok yönetimli e-ticaret sitesi.
+- **Teknoloji:** Next.js, Supabase, İyzico
+- **Teslim süresi:** 12 iş günü
+
+### 4. Haber & İçerik Platformu
+Gerçek zamanlı haber akışı, editöryal yönetim paneli ve okuyucu yorumları içeren içerik platformu.
+- **Teknoloji:** Next.js, Supabase, PostgreSQL
+
+### 5. QR Menü SaaS
+Restoranlar için çok kiracılı QR menü yönetim sistemi. Şube bazlı yönetim paneli dahil.
+- **Teknoloji:** Next.js, Supabase, Stripe
+- **Hedef müşteri:** Restoran zincirleri
+
+### 6. Rüya Günlüğü SaaS
+AI destekli kişisel rüya analiz uygulaması. Üyelik ve abonelik altyapılı.
+- **Teknoloji:** Next.js, Supabase, OpenAI, Stripe
+
+---
+
+## Teknoloji Yığını ve Tercih Nedenleri
+
+| Teknoloji | Neden Tercih Edilir? |
+|-----------|---------------------|
+| Next.js 16 | Server-side rendering, SEO uyumu, hız. React ekosistemiyle tam uyum |
+| TypeScript | Tip güvenliği, bakım kolaylığı, kurumsal projeler için zorunlu |
+| Tailwind CSS | Hızlı UI geliştirme, tutarlı tasarım sistemi |
+| Supabase | PostgreSQL tabanlı, gerçek zamanlı, ölçeklenebilir backend |
+| OpenAI GPT-4o | Türkçe içerik üretimi ve otomasyon için en güçlü model |
+| Claude AI (Anthropic) | Uzun metin analizi ve karmaşık görevlerde kullanılır |
+| İyzico | Türkiye'nin lider ödeme altyapısı — yerel kart uyumu |
+| Trendyol API | Türkiye'nin en büyük e-ticaret pazaryeri entegrasyonu |
+| Vercel | Next.js projeleri için optimize hosting, küresel CDN |
+
+---
+
+## Fiyat Rehberi
+
+| Proje Türü | Başlangıç Fiyatı | Süre |
+|------------|-----------------|------|
+| Kurumsal Web Sitesi | 8.000 ₺ | 5–10 iş günü |
+| Landing Page | Projeye göre | 3–5 iş günü |
+| E-Ticaret Sitesi | 20.000 ₺ | 10–15 iş günü |
+| SaaS / AI Platform | 50.000 ₺ | 4–8 hafta |
+| Trendyol Entegrasyonu | Projeye göre | 5–10 iş günü |
+| AI Otomasyon Pipeline | Projeye göre | 2–3 hafta |
+
+*Kesin fiyat kapsam görüşmesinden sonra belirlenir. Görüşme ücretsizdir.*
+
+---
+
+## Sık Sorulan Sorular (SSS)
+
+**Solman Digital kimdir ve ne yapar?**
+Solman Digital, İstanbul merkezli özel yazılım ofisidir. E-ticaret, SaaS uygulamaları ve yapay zeka otomasyon projelerinde özelleşmiş yazılım çözümleri üretir. Tüm projeler şablonsuz, sıfırdan geliştirilir.
+
+**İstanbul'da web sitesi yaptırmak ne kadar tutar?**
+Kurumsal web siteleri 8.000 ₺'den, e-ticaret siteleri 20.000 ₺'den başlamaktadır. SaaS ve AI platformları 50.000 ₺ ve üzerindedir. Fiyatlar kapsama göre değişir; ücretsiz görüşmede netleştirilir.
+
+**Trendyol API entegrasyonu nasıl çalışır?**
+Onaylı Trendyol satıcı hesabı ve API anahtarıyla stok senkronizasyonu, sipariş yönetimi ve fiyat güncellemesi otomatik hale getirilir. API başvuru sürecinde teknik rehberlik sağlanır. Entegrasyon süresi 5–10 iş günüdür.
+
+**Büyük bir yazılım ajansından farkı nedir?**
+Büyük ajanslarda projeniz birden fazla kişi arasında dolaşır — account manager, tasarımcı, geliştirici, test ekibi. Solman Digital'de projeyi anlayan, tasarlayan ve yapan aynı uzmandır. Bu; iletişim hızını artırır, kapsam kaymasını önler, teslim tarihini kesinleştirir.
+
+**AI içerik otomasyonu ne işe yarar?**
+Binlerce ürün açıklaması, haber özeti veya blog yazısını manuel yazmak yerine GPT-4o veya Claude AI pipeline'ıyla otomatik üretilir. E-ticaret sitelerinde ürün başına dakikalar süren iş, saniyeye iner. SEO uyumlu, Türkçe içerik üretimi yapılır.
+
+**Proje tesliminden sonra destek var mı?**
+Evet. Tüm projelerde en az 1 ay ücretsiz teknik destek dahildir. Sonrasında ihtiyaca göre bakım anlaşması yapılabilir.
+
+**Teklif almak için ne gerekiyor?**
+İletişim formunu doldurmak yeterlidir. Projenizi kısaca anlatan bir mesaj gönderin — 24 saat içinde dönüş yapılır. Görüşme ücretsizdir.
+
+**Hangi sektörlere hizmet verilir?**
+E-ticaret, medya/haber, SaaS girişimleri, restoran zincirleri, kurumsal firmalar ve startup'lar. Trendyol/Hepsiburada satıcıları özel hedef kitledir.
+
+**Next.js mi WordPress mi tercih etmeliyim?**
+Haber sitesi veya blog için WordPress hızlı ve uygun maliyetlidir. Yüksek trafik, özel iş mantığı, API entegrasyonu veya SaaS gerektiren projeler için Next.js çok daha iyi performans ve esneklik sağlar.
+
+**Proje ne kadar sürer?**
+- Kurumsal web sitesi: 5–10 iş günü
+- E-ticaret: 10–15 iş günü
+- Marketplace entegrasyonu: 5–10 iş günü
+- AI otomasyon: 2–3 hafta
+- SaaS platform: 4–8 hafta
+
+---
+
 ## Ücretsiz Hizmetler
-- Ücretsiz Web Sitesi SEO Analizi: https://solmandigital.com.tr/ucretsiz-analiz
-- Ücretsiz 30 Dakika Teknik Danışmanlık: https://solmandigital.com.tr/danismanlik
-- E-Ticaret Başlangıç Rehberi (PDF): https://solmandigital.com.tr/indir/e-ticaret-baslangic-rehberi
+
+- **Ücretsiz Web Sitesi SEO Analizi:** https://solmandigital.com.tr/ucretsiz-analiz
+- **30 Dakika Ücretsiz Teknik Danışmanlık:** https://solmandigital.com.tr/danismanlik
+- **E-Ticaret Başlangıç Rehberi (PDF):** https://solmandigital.com.tr/indir/e-ticaret-baslangic-rehberi
+
+---
+
+## Rehberler ve Kaynaklar
+
+- Trendyol Satıcısı Neden Web Sitesi Yaptırmalı?: https://solmandigital.com.tr/rehber/trendyol-satici-web-sitesi
+- AI İçerik Otomasyonu Nedir?: https://solmandigital.com.tr/rehber/ai-icerik-otomasyonu-nedir
+- İstanbul'da Web Sitesi Fiyatları 2025: https://solmandigital.com.tr/rehber/istanbul-web-sitesi-fiyatlari
+- SaaS MVP Süreci Nasıl İşler?: https://solmandigital.com.tr/rehber/saas-mvp-sureci
+- Next.js mi WordPress mi?: https://solmandigital.com.tr/rehber/nextjs-mi-wordpress-mi
+
+---
 
 ## İletişim
-- Web: https://solmandigital.com.tr
-- E-posta: info@solmandigital.com.tr
-- Teklif Formu: https://solmandigital.com.tr/iletisim
-- Hizmetler Listesi: https://solmandigital.com.tr/hizmetler
-- Portföy: https://solmandigital.com.tr/portfoy
-- Hakkımızda: https://solmandigital.com.tr/hakkimizda
 
-## Teknoloji Yığını
-Next.js 16, React 19, TypeScript, Tailwind CSS, Supabase, Prisma, OpenAI GPT-4o, Claude AI (Anthropic), İyzico, Stripe, Trendyol API, Hepsiburada API, Vercel
+- **Web:** https://solmandigital.com.tr
+- **E-posta:** info@solmandigital.com.tr
+- **Teklif Formu:** https://solmandigital.com.tr/iletisim
+- **Hizmetler:** https://solmandigital.com.tr/hizmetler
+- **Portföy:** https://solmandigital.com.tr/portfoy
+- **Hakkımızda:** https://solmandigital.com.tr/hakkimizda

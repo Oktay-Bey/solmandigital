@@ -49,9 +49,9 @@ export default function HizmetlerPage() {
             style={{
               fontSize: "0.7rem",
               fontWeight: 700,
-              color: "#444444",
+              color: "#9b1c1c",
               textTransform: "uppercase",
-              letterSpacing: "0.12em",
+              letterSpacing: "0.14em",
               marginBottom: "1.25rem",
               display: "flex",
               alignItems: "center",
@@ -59,7 +59,7 @@ export default function HizmetlerPage() {
             }}
           >
             <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-            Customized Software Expert
+            Kişiye &amp; Firmaya Özel Yazılım Stüdyosu
           </p>
           <h1
             style={{
@@ -72,11 +72,13 @@ export default function HizmetlerPage() {
               maxWidth: 640,
             }}
           >
-            İşinize Özel Çözümler
+            Her İşletme Farklı İhtiyaçlarla Gelir.
+            <br />
+            <span style={{ color: "#9b1c1c" }}>Hizmetlerimiz De Öyle Şekillenir.</span>
           </h1>
           <p style={{ color: "#666666", fontSize: "0.95rem", lineHeight: 1.75, maxWidth: 560 }}>
-            Her hizmet, iş sürecinize ve hedeflerinize göre sıfırdan tasarlanır. Hazır template değil,
-            gerçekten özelleştirilmiş yazılım — projenizi yapan full-stack developer ile doğrudan.
+            Sektörünüzü, iş sürecinizi ve hedeflerinizi dinleyerek başlıyoruz — ardından tam ihtiyacınıza
+            göre tasarlanmış çözümü sıfırdan inşa ediyoruz. Projenizi yapan uzmanla, doğrudan.
           </p>
         </div>
       </section>
@@ -113,7 +115,7 @@ export default function HizmetlerPage() {
               Hızlı Sonuç Veren Çözümler
             </h2>
             <p style={{ color: "#6b6b6b", fontSize: "0.875rem", maxWidth: 540 }}>
-              Net kapsam, belirli süre, teslim garantisi. Doğrudan yazılım uzmanıyla başlayan ve biten projeler.
+              Hangi hizmetten başlayacağınızı bilmiyor olabilirsiniz — bu tamamen normal. Size özel kapsam belirliyoruz.
             </p>
           </div>
           <div className="tier1-grid">
@@ -156,7 +158,7 @@ export default function HizmetlerPage() {
               Platform & Uygulama Geliştirme
             </h2>
             <p style={{ color: "#6b6b6b", fontSize: "0.875rem", maxWidth: 540 }}>
-              SaaS ürünler, dashboard paneller, abonelik sistemleri — hepsi iş modelinizin tam ihtiyacına göre inşa edilir.
+              SaaS ürünler, dashboard paneller, abonelik sistemleri — iş modelinize ve kullanıcılarınıza özel mimariyle.
             </p>
           </div>
           <div className="services-grid">
@@ -222,10 +224,10 @@ export default function HizmetlerPage() {
               letterSpacing: "-0.025em",
             }}
           >
-            Hangi hizmete ihtiyacınız var?
+            Hangi çözüme ihtiyacınız var?
           </h2>
           <p style={{ color: "#555555", marginBottom: "2rem", fontSize: "0.9rem", lineHeight: 1.7 }}>
-            Projenizi anlatan kısa bir mesaj yeterli. Ücretsiz danışmanlık görüşmesi için hemen yazın.
+            Projenizi anlatan birkaç satır yeterli. Size özel kapsam ve takvimi birlikte belirleyelim.
           </p>
           <Link
             href="/iletisim"

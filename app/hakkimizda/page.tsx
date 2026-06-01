@@ -19,8 +19,8 @@ const values = [
   },
   {
     icon: Code2,
-    title: "Template Değil, Özel Yazılım",
-    desc: "Her proje sıfırdan tasarlanır. İşinizin tam ihtiyacına uyan yazılım, standart kalıplara uydurulmuş değil.",
+    title: "Sizin İçin Tasarlanan Yazılım",
+    desc: "Her proje sıfırdan, sizin iş sürecinizi ve kullanıcılarınızı anlayarak tasarlanır. Kapsam size özel şekillenir.",
   },
   {
     icon: Target,
@@ -37,23 +37,23 @@ const values = [
 const steps = [
   {
     num: "01",
-    title: "Proje Analizi",
-    desc: "Hedeflerinizi, kısıtlarınızı ve iş bağlamını anlamak için kapsamlı bir başlangıç görüşmesi yapıyoruz.",
+    title: "İşinizi Anlıyoruz",
+    desc: "Sektörünüzü, operasyonunuzu ve gerçek ihtiyacınızı dinleyerek başlıyoruz. Bu görüşmeden sizin için özel bir yol haritası çıkar.",
   },
   {
     num: "02",
-    title: "Teknik Tasarım",
-    desc: "Projenize uygun teknoloji yığını seçiyoruz ve detaylı bir proje planı hazırlıyoruz.",
+    title: "Size Özel Tasarım",
+    desc: "Dinlediklerimize göre mimari, teknoloji seçimi ve kapsam belirliyoruz. Her karar, sizin işinize göre alınır.",
   },
   {
     num: "03",
-    title: "Hızlı Geliştirme",
-    desc: "Haftalık güncellemeler ve düzenli demo paylaşımları ile şeffaf bir geliştirme süreci yürütüyoruz.",
+    title: "Doğrudan Geliştirme",
+    desc: "Aynı uzmanla, aracısız iletişimle ilerliyoruz. Haftalık güncellemeler, şeffaf ve öngörülebilir süreç.",
   },
   {
     num: "04",
-    title: "Teslim & Destek",
-    desc: "Canlıya geçiş, kullanıcı eğitimi ve lansman sonrası teknik destek ile süreci tamamlıyoruz.",
+    title: "Teslim & Yanınızdayız",
+    desc: "Söz verilen tarihte deploy, test ve lansman. Proje biter, destek bitmez.",
   },
 ]
 
@@ -68,9 +68,9 @@ export default function HakkimizdaPage() {
               style={{
                 fontSize: "0.7rem",
                 fontWeight: 700,
-                color: "#444444",
+                color: "#9b1c1c",
                 textTransform: "uppercase",
-                letterSpacing: "0.12em",
+                letterSpacing: "0.14em",
                 marginBottom: "1.25rem",
                 display: "flex",
                 alignItems: "center",
@@ -78,7 +78,7 @@ export default function HakkimizdaPage() {
               }}
             >
               <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-              Customized Software Expert
+              Kişiye &amp; Firmaya Özel Yazılım Stüdyosu
             </p>
             <h1
               style={{
@@ -90,15 +90,16 @@ export default function HakkimizdaPage() {
                 letterSpacing: "-0.03em",
               }}
             >
-              İşinize Özel Yazılım
+              Sizi Dinleyerek
               <br />
-              Hızlı, Doğrudan,
+              Başlıyoruz.
               <br />
-              <span style={{ color: "#9b1c1c" }}>Gerçekten Özelleştirilmiş</span>
+              <span style={{ color: "#9b1c1c" }}>Sizin İçin İnşa Ediyoruz.</span>
             </h1>
             <p style={{ color: "#666666", fontSize: "0.95rem", lineHeight: 1.75, maxWidth: 520 }}>
-              Projenizi anlayan, tasarlayan ve kodlayan aynı yazılım uzmanıdır. Sıfırdan,
-              işinizin tam ihtiyacına göre — net kapsam, söz verilen takvim, doğrudan iletişim.
+              Her işletmenin sektörü, kullanıcısı ve operasyonel gerçekliği farklı. Solman Digital olarak
+              önce sizi anlıyor, sonra tam ihtiyacınıza göre yazılım inşa ediyoruz — net kapsam,
+              söz verilen takvim, başından sonuna aynı uzmanla.
             </p>
           </div>
 
@@ -184,18 +185,18 @@ export default function HakkimizdaPage() {
             }}
           >
             <p>
-              15&apos;ten fazla canlı proje — Trendyol satıcı paneli, WordPress AI içerik motoru, QR menü SaaS,
-              AI haber platformu — sıfırdan, template&apos;siz inşa edildi. Her biri gerçek bir iş problemini
-              çözdü; standart kalıpların yapamayacağı şekilde.
+              15&apos;ten fazla proje — Trendyol satıcı paneli, WordPress AI içerik motoru, QR menü SaaS,
+              AI haber platformu — her biri farklı bir müşterinin farklı ihtiyacından doğdu.
+              Her seferinde önce o işletmeyi anladık, sonra çözümü inşa ettik.
             </p>
             <p>
               Solman Digital olarak ihtiyacı dinleyen, teknik tasarımı yapan ve kodu yazan aynı uzmandır.
-              PM katmanı, aracı yok — projeniz tek odak noktasıdır, başından teslime kadar.
+              Aracı yok, katman yok — projeniz başından teslime kadar tek odak noktasıdır.
             </p>
             <p>
               İyzico entegrasyonunda Türk kullanıcı alışkanlıkları, Trendyol API&apos;sinde satıcının
-              operasyonel gerçekliği sahada kazanıldı. Bu bağlam doğrudan çözüme dönüşür — genel
-              reçeteler değil, işinize özel kararlar.
+              operasyonel gerçekliği sahada kazanıldı. Bu bağlam doğrudan çözüme dönüşür —
+              işinize özel kararlar, genel reçeteler değil.
             </p>
           </div>
         </div>
@@ -306,7 +307,7 @@ export default function HakkimizdaPage() {
               Çalışma Sürecimiz
             </h2>
             <p style={{ color: "#6b6b6b", marginTop: "0.75rem", fontSize: "0.875rem" }}>
-              Fikrinizden canlıya geçişe nasıl ilerliyoruz?
+              Sizi anlayarak başlıyor, teslim sonrasında da yanınızda kalıyoruz.
             </p>
           </div>
           <div className="steps-grid">
