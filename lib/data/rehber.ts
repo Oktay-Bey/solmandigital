@@ -401,6 +401,362 @@ export const rehberPosts: RehberPost[] = [
       "next.js e-ticaret türkiye",
     ],
   },
+  {
+    slug: "iyzico-entegrasyonu",
+    title: "İyzico Entegrasyonu: Web Sitenize Türk Kartı Desteği Nasıl Eklenir?",
+    metaTitle: "İyzico Entegrasyonu Nasıl Yapılır? | Solman Digital",
+    metaDescription:
+      "İyzico ödeme entegrasyonu adımları, API kurulumu, test ortamı ve canlıya geçiş. Türkiye'deki e-ticaret projeleri için kapsamlı İyzico rehberi.",
+    description:
+      "Türkiye'de online ödeme almanın standart yolu İyzico. Entegrasyon sürecini, teknik gereksinimleri ve sık karşılaşılan sorunları gerçek proje deneyimiyle aktarıyoruz.",
+    publishDate: "2025-06-01",
+    readTime: 7,
+    sections: [
+      {
+        heading: "İyzico Nedir ve Neden Önemlidir?",
+        body: "İyzico, Türkiye'nin lider online ödeme altyapısıdır. Türk bankaları tarafından ihraç edilen kartların büyük çoğunluğuyla uyumludur ve 3D Secure desteği sunar. E-ticaret sitesi kuran her Türk girişimcinin gündeminde olan soru şudur: İyzico mu, Stripe mi? Türk kartlarından sorunsuz ödeme almak istiyorsanız İyzico zorunludur.",
+      },
+      {
+        heading: "İyzico Entegrasyonu İçin Gerekenler",
+        body: "Entegrasyona başlamadan önce hazır olması gereken belgeler ve hesaplar:",
+        list: [
+          "İyzico merchant hesabı (iyzico.com üzerinden başvuru, onay 1–3 iş günü)",
+          "Vergi levhası ve ticaret sicil belgesi (bireysel ya da kurumsal)",
+          "SSL sertifikası zorunlu — https olmayan site onaylanmaz",
+          "API Key ve Secret Key (merchant panelinden alınır)",
+          "Test ortamı için ayrı sandbox API anahtarları",
+        ],
+      },
+      {
+        heading: "Teknik Entegrasyon Adımları",
+        body: "Next.js tabanlı projelerde İyzico entegrasyonu şu adımları izler:",
+        list: [
+          "iyzipay Node.js paketi kurulumu: npm install iyzipay",
+          "API endpoint oluşturma: /api/payment/checkout — server-side çalışır, API anahtarları client'a açılmaz",
+          "Checkout form token alınması (Initialize Payment isteği)",
+          "İyzico form HTML'inin sayfaya render edilmesi",
+          "Callback URL'de ödeme sonucunun doğrulanması (Retrieve Payment)",
+          "Sipariş durumunun veritabanında güncellenmesi",
+        ],
+      },
+      {
+        heading: "Test Ortamı ve Canlıya Geçiş",
+        body: "İyzico sandbox ortamı gerçek kart numaralarını simüle eder. Geliştirme sürecinde tüm ödeme senaryoları (başarılı, başarısız, 3D Secure) test edilmelidir. Canlıya geçiş için merchant panel üzerinden 'production' API anahtarları alınır ve ortam değişkenleri güncellenir. İyzico'nun review süreci ortalama 2–3 iş günü sürer.",
+      },
+      {
+        heading: "Stripe ile Birlikte Kullanım",
+        body: "Uluslararası müşteriniz varsa veya yabancı kart desteği gerekiyorsa İyzico tek başına yeterli değildir. Bu durumda Stripe + İyzico hibrit yapı kurulur: Türk kartları İyzico'ya, diğerleri Stripe'a yönlendirilir. Kart tipine göre otomatik yönlendirme, ödeme sayfasına müşteri deneyimini bozmadan entegre edilebilir.",
+      },
+      {
+        heading: "Sık Karşılaşılan Sorunlar",
+        body: "Gerçek projelerde en çok karşılaştığımız İyzico entegrasyon sorunları:",
+        list: [
+          "Callback URL ayarı eksik — ödeme sonucu sitenize ulaşmaz",
+          "SSL sertifikası geçersiz veya self-signed — İyzico bağlantıyı reddeder",
+          "API anahtarları production/sandbox karışıklığı",
+          "3D Secure sonrası sipariş durumu güncellenmemesi",
+          "Abonelik (recurring payment) için ayrı İyzico Subscription API entegrasyonu gerekir",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "İyzico entegrasyonu ne kadar sürer?",
+        a: "Deneyimli bir geliştiriciyle 3–7 iş günü yeterlidir. Hesap onay süresi (1–3 gün) bu süreye dahildir. Abonelik sistemi veya özel ödeme akışı eklenecekse 1–2 hafta öngörülür.",
+      },
+      {
+        q: "İyzico komisyon oranları nedir?",
+        a: "İyzico komisyon oranları ciro ve sözleşme türüne göre değişir. Standart oranlar %2–3 aralığındadır. Güncel oranlar için iyzico.com'un fiyatlandırma sayfasına bakılmalıdır.",
+      },
+      {
+        q: "Mevcut web sitemine İyzico eklenebilir mi?",
+        a: "Evet. WordPress/WooCommerce, Next.js veya özel geliştirme ne olursa olsun İyzico entegrasyonu mevcut siteye eklenebilir. Gereksinim: backend API geliştirme imkânı ve SSL.",
+      },
+    ],
+    cta: {
+      text: "İyzico entegrasyonu veya ödeme altyapısı için",
+      href: "/iletisim",
+      label: "Ücretsiz Teknik Görüşme",
+    },
+    keywords: [
+      "iyzico entegrasyonu",
+      "iyzico next.js",
+      "iyzico api kurulumu",
+      "türkiye online ödeme entegrasyonu",
+      "iyzico web sitesi ekleme",
+    ],
+  },
+  {
+    slug: "eticaret-sitesi-acmak-turkiye",
+    title: "Türkiye'de E-Ticaret Sitesi Açmak: Yasal, Teknik ve Pazarlama Adımları",
+    metaTitle: "Türkiye'de E-Ticaret Sitesi Açmak | Solman Digital",
+    metaDescription:
+      "Türkiye'de e-ticaret sitesi açmak için gereken yasal belgeler, teknik altyapı ve pazarlama adımları. Başlangıçtan canlıya kadar kapsamlı rehber.",
+    description:
+      "Türkiye'de online satış yapmak isteyenler için vergi kaydından teknik altyapıya, ödeme sisteminden Google'da görünürlüğe kadar tüm adımlar.",
+    publishDate: "2025-06-05",
+    readTime: 9,
+    sections: [
+      {
+        heading: "Türkiye'de E-Ticaret İçin Yasal Gereksinimler",
+        body: "Türkiye'de online satış yapabilmek için bazı yasal adımlar zorunludur. Bu adımları atlamak vergi cezası ve platform kapanma riskini beraberinde getirir.",
+        list: [
+          "Vergi levhası: Gerçek kişi ya da şirket olarak vergi mükellefi olmak zorunlu",
+          "Esnaf muaflığı: Yıllık belirli bir ciro altındakiler esnaf muaflığından yararlanabilir",
+          "MERSİS kaydı: Şirket kurulumu için Merkezi Sicil Kayıt Sistemi'ne kayıt",
+          "ETBIS kaydı: Elektronik Ticaret Bilgi Sistemi — Türkiye'de e-ticaret yapanlar için zorunlu",
+          "Mesafeli satış sözleşmesi: Yasal zorunluluk, her e-ticaret sitesinde bulunmalı",
+          "Kişisel verilerin korunması (KVKK): Gizlilik politikası ve açık rıza metni gerekli",
+        ],
+      },
+      {
+        heading: "Teknik Altyapı Seçimi",
+        body: "E-ticaret sitesi için doğru teknik altyapı seçimi uzun vadeli maliyeti ve esnekliği belirler.",
+        list: [
+          "Hazır platform (Shopify, İdeasoft, Ticimax): Hızlı başlangıç, kısıtlı özelleştirme, aylık abonelik",
+          "WooCommerce (WordPress): Düşük başlangıç maliyeti, eklenti bağımlılığı, güvenlik yükü",
+          "Özel Next.js geliştirme: Tam kontrol, yüksek performans, API entegrasyonu için ideal",
+          "Alan adı: .com.tr uzantısı Türk pazar için tercih edilir",
+          "Hosting: Vercel veya bulut altyapı (AWS Türkiye bölgesi hız için önemli)",
+          "SSL sertifikası: Ödeme almak için zorunlu",
+        ],
+      },
+      {
+        heading: "Ödeme Altyapısı",
+        body: "Türkiye'de online ödeme almak için ödeme aracı kuruluşu (ÖAK) lisanslı bir hizmet gerekmektedir.",
+        list: [
+          "İyzico: Türk kartları için standart, 1–3 günde onay",
+          "Stripe: Uluslararası kartlar ve dövizli ödemeler",
+          "PayTR: Alternatif Türk ödeme altyapısı",
+          "Kapıda ödeme: Taşıyıcı firma anlaşması gerektirir",
+          "Banka POS entegrasyonu: Büyük hacimli işlemler için doğrudan banka anlaşması",
+        ],
+      },
+      {
+        heading: "Ürün ve Stok Yönetimi",
+        body: "E-ticaret sitesinin operasyonel omurgası stok ve ürün yönetimidir. Başlangıç için basit bir veritabanı yeterlidir; büyürken Trendyol veya Hepsiburada kanalıyla senkronize çalışan çok kanallı bir yapıya geçilebilir.",
+      },
+      {
+        heading: "Google'da Görünürlük: SEO ve Reklamlar",
+        body: "E-ticaret sitesi kurmak yeterli değildir — ziyaretçi getirmek asıl iş. Türkiye e-ticaret trafiğinin iki ana kaynağı Google organik arama ve ücretli reklamlardır.",
+        list: [
+          "Ürün sayfalarında teknik SEO: başlık, meta açıklama, Schema.org Product işaretlemesi",
+          "Google Shopping entegrasyonu (Merchant Center — ürün feed'i)",
+          "Google Ads Search kampanyaları — yüksek niyet aramalar",
+          "Meta Ads (Instagram/Facebook) — görsel ürünler için",
+          "İçerik pazarlaması: rehber ve blog ile organik trafik",
+        ],
+      },
+      {
+        heading: "Trendyol veya Hepsiburada ile Birlikte Çalışmak",
+        body: "Kendi e-ticaret sitesi açmak Trendyol'u terk etmek anlamına gelmez. API entegrasyonuyla stok ve siparişler iki kanalda senkronize tutulabilir. Platform komisyonunu azaltmak için müşterileri yavaş yavaş kendi kanalınıza çekmek uzun vadeli stratejidir.",
+      },
+    ],
+    faq: [
+      {
+        q: "ETBIS kaydı zorunlu mu?",
+        a: "Evet. Türkiye'de e-ticaret yapan tüm işletmeler için Elektronik Ticaret Bilgi Sistemi (ETBIS) kaydı yasal zorunluluktur. Kayıt ücretsizdir ve etbis.eticaret.gov.tr üzerinden yapılır.",
+      },
+      {
+        q: "E-ticaret sitesi açmak ne kadar tutar?",
+        a: "Hazır platform (Shopify/Ticimax): 1.500–3.000 ₺/ay. WooCommerce: 5.000–15.000 ₺ kurulum + hosting. Özel Next.js geliştirme: 20.000 ₺'den başlar. Kapsama göre kesin fiyat ücretsiz görüşmede belirlenir.",
+      },
+      {
+        q: "Şirket kurmadan e-ticaret yapılabilir mi?",
+        a: "Belirli bir ciro limitinin altında esnaf muaflığıyla başlanabilir. Ancak ciro büyüdükçe şirketleşmek vergisel açıdan zorunlu hale gelir. Muhasebeci danışmanlığı alınması önerilir.",
+      },
+    ],
+    cta: {
+      text: "E-ticaret sitenizi sıfırdan kurmak için",
+      href: "/iletisim",
+      label: "Ücretsiz Kapsam Görüşmesi",
+    },
+    keywords: [
+      "türkiye e-ticaret sitesi açmak",
+      "online satış türkiye yasal",
+      "etbis kaydı nedir",
+      "e-ticaret kurulumu istanbul",
+      "türkiye'de e-ticaret nasıl yapılır",
+    ],
+  },
+  {
+    slug: "ai-chatbot-web-sitesi",
+    title: "Web Sitenize AI Chatbot Entegrasyonu: Ne Zaman, Nasıl ve Hangi Teknolojiyle?",
+    metaTitle: "Web Sitesi AI Chatbot Entegrasyonu | Solman Digital",
+    metaDescription:
+      "Web sitenize müşteri hizmetleri chatbotu entegre etmek için doğru teknoloji, maliyet ve süreç rehberi. ChatGPT API ile özel chatbot nasıl kurulur?",
+    description:
+      "Her web sitesi chatbota ihtiyaç duymaz — ama ihtiyaç duyduğunda doğru yapılmazsa hem para hem müşteri kaybettirir. Gerçek proje deneyimiyle hazırlanmış rehber.",
+    publishDate: "2025-06-10",
+    readTime: 8,
+    sections: [
+      {
+        heading: "Hangi Web Sitesi Chatbota İhtiyaç Duyar?",
+        body: "Chatbot her siteye uygun değildir. Aşağıdaki durumlardan biri geçerliyse chatbot entegrasyonu değer yaratır:",
+        list: [
+          "Müşteri hizmetlerine gelen soruların %60'ından fazlası tekrarlayan sorular",
+          "Çalışma saatleri dışında (akşam / hafta sonu) soru gelen siteler",
+          "Ürün kataloğu geniş ve müşteriler 'hangisini almalıyım' diye soruyor",
+          "Rezervasyon veya randevu akışını chatbot üzerinden otomatize etmek isteniyor",
+          "Çok dilli müşteri kitlesi — chatbot anında çeviri yapabilir",
+        ],
+      },
+      {
+        heading: "Chatbot Türleri: Kural Tabanlı mı, AI mı?",
+        body: "İki temel chatbot yaklaşımı vardır. Kural tabanlı (if/else) botlar belirli komutlara yanıt verir; AI tabanlı botlar doğal dili anlar ve öğrenir.",
+        list: [
+          "Kural tabanlı: Hızlı, öngörülebilir, ucuz. SSS yanıtlama için ideal",
+          "AI tabanlı (GPT-4o / Claude): Doğal konuşma, bağlama göre yanıt, karmaşık sorular için uygun",
+          "Hibrit: Basit sorular kural tabanlı, karmaşık sorular AI'ya yönlendirme",
+        ],
+      },
+      {
+        heading: "Özel Bilgi Tabanıyla Çalışan Chatbot (RAG)",
+        body: "Genel bir AI modeli şirketinizin ürünlerini, hizmetlerini veya politikalarını bilmez. Gerçek değer yaratan chatbot, kendi belgelerinizle eğitilmiş olandır. Bu yapıya RAG (Retrieval-Augmented Generation) denir: ChatGPT API'si, sizin veritabanınızdan anlık bilgi çekerek yanıt üretir.",
+        list: [
+          "Ürün kataloğunuz, SSS sayfanız ve politika belgeleriniz vektör veritabanına yüklenir",
+          "Kullanıcı soru sorduğunda ilgili belgeler anlık alınır",
+          "GPT-4o bu belgelere dayanarak yanıt üretir — 'halüsinasyon' riski azalır",
+          "Yeni içerik eklendiğinde veritabanı güncellenir, model yeniden eğitilmez",
+        ],
+      },
+      {
+        heading: "Teknik Kurulum: Next.js ile AI Chatbot",
+        body: "Next.js tabanlı web sitelerinde OpenAI API entegrasyonuyla çalışan chatbot şu bileşenlerden oluşur:",
+        list: [
+          "Frontend: Floating chat widget — React component, Tailwind ile stillendirme",
+          "Backend API: /api/chat endpoint — OpenAI SDK, stream response desteği",
+          "Vektör veritabanı: Supabase pgvector veya Pinecone — bilgi tabanı depolama",
+          "Oturum yönetimi: Konuşma geçmişi context window'a eklenir",
+          "Rate limiting: Kötüye kullanımı önlemek için API çağrısı sınırlaması",
+        ],
+      },
+      {
+        heading: "Maliyet Analizi",
+        body: "AI chatbot maliyeti iki bileşenden oluşur: geliştirme maliyeti ve aylık API kullanım maliyeti. GPT-4o-mini modeli düşük maliyetli ve yüksek kaliteli bir seçenektir. Günde 100 konuşma için aylık OpenAI maliyeti genellikle 20–50 USD aralığında kalır. GPT-4o kullanıldığında bu maliyet 3–5x artar.",
+      },
+      {
+        heading: "Gerçek Proje Örneği",
+        body: "Solman Digital, bir e-ticaret müşterisi için ürün önerme chatbotu geliştirdi. Chatbot; 2.000'den fazla ürün kataloğunu okuyarak müşterilerin 'hangi ürün bana uygun' sorusunu yanıtlıyor. Müşteri hizmetleri yükü %40 azaldı, chatbot çalışma saatleri dışındaki sorularda dönüşüm oranını artırdı.",
+      },
+    ],
+    faq: [
+      {
+        q: "AI chatbot web sitesine entegrasyonu ne kadar sürer?",
+        a: "Basit SSS chatbotu 1 haftada, RAG tabanlı özel bilgi tabanıyla çalışan chatbot 2–3 haftada tamamlanır. Rezervasyon veya ödeme akışıyla entegre chatbotlar 3–4 hafta sürer.",
+      },
+      {
+        q: "ChatGPT'yi doğrudan web siteme ekleyebilir miyim?",
+        a: "ChatGPT arayüzünü doğrudan gömmek mümkün değildir, ancak OpenAI API'si kullanılarak tamamen özelleştirilmiş bir chatbot geliştirilebilir. Bu yöntem hem marka sesini korur hem de şirket verilerinizle eğitilebilir.",
+      },
+      {
+        q: "Chatbot hangi dilleri konuşabilir?",
+        a: "GPT-4o Türkçe dahil 50'den fazla dilde yüksek kalitede yanıt verir. Tek bir chatbot hem Türkçe hem İngilizce hem de diğer dillerde eş zamanlı hizmet verebilir.",
+      },
+    ],
+    cta: {
+      text: "Web sitenize AI chatbot entegrasyonu için",
+      href: "/iletisim",
+      label: "Ücretsiz Teknik Değerlendirme",
+    },
+    keywords: [
+      "web sitesi ai chatbot entegrasyonu",
+      "chatgpt api türkiye",
+      "özel chatbot geliştirme istanbul",
+      "rag chatbot türkçe",
+      "müşteri hizmetleri chatbotu",
+    ],
+  },
+  {
+    slug: "hepsiburada-api-entegrasyonu",
+    title: "Hepsiburada API Entegrasyonu: Satıcılar İçin Teknik Rehber",
+    metaTitle: "Hepsiburada API Entegrasyonu | Solman Digital",
+    metaDescription:
+      "Hepsiburada Marketplace API ile stok senkronizasyonu, sipariş yönetimi ve fiyat güncellemesi. Satıcılar için adım adım teknik rehber.",
+    description:
+      "Hepsiburada'da satış yapıyorsanız ve operasyonel yükü azaltmak istiyorsanız API entegrasyonu kritik bir adımdır. Gerçek proje deneyimiyle hazırlanmış teknik rehber.",
+    publishDate: "2025-06-15",
+    readTime: 7,
+    sections: [
+      {
+        heading: "Hepsiburada API Nedir?",
+        body: "Hepsiburada Marketplace API, satıcıların ürün, stok, sipariş ve fiyat verilerini kendi yazılımlarından yönetmelerine olanak tanıyan programatik bir arayüzdür. Manuel panel girişi yerine tüm işlemler otomatik gerçekleşir. Hem tek satıcı hem de çok kanallı (Trendyol + Hepsiburada) operasyonlar için idealdir.",
+      },
+      {
+        heading: "API Erişim Koşulları",
+        body: "Hepsiburada API'sine erişim için bazı ön koşullar vardır:",
+        list: [
+          "Aktif Hepsiburada merchant hesabı",
+          "Merchant ID ve API anahtarı (merchant panel > API Yönetimi)",
+          "Minimum stok / satış hacmi eşiği (Hepsiburada onay sürecine tabidir)",
+          "Teknik entegrasyon belgesi imzalanması",
+        ],
+      },
+      {
+        heading: "Temel API Fonksiyonları",
+        body: "Hepsiburada API'sinin en çok kullanılan uç noktaları şunlardır:",
+        list: [
+          "Ürün listeleme: Yeni ürün ekle, mevcut ürün güncelle",
+          "Stok güncelleme: Anlık stok miktarı güncellemesi",
+          "Fiyat güncelleme: Toplu veya tekil fiyat değişikliği",
+          "Sipariş çekme: Yeni siparişleri otomatik al",
+          "Kargo güncelleme: Takip numarası ve kargo firması bildirimi",
+          "İptal/İade yönetimi: İade taleplerini programatik işle",
+        ],
+      },
+      {
+        heading: "Trendyol + Hepsiburada Çift Kanal Entegrasyonu",
+        body: "Türkiye'deki büyük e-ticaret satıcılarının önemli bir kısmı hem Trendyol hem Hepsiburada'da satış yapar. Bu iki kanalın stok ve siparişlerini elle yönetmek yüksek hata riskine yol açar. Solman Digital tarafından geliştirilen çift kanal panel; iki platformu tek arayüzden yönetir, stok aşım riskini ortadan kaldırır ve sipariş fulfillment sürecini otomatize eder.",
+      },
+      {
+        heading: "Teknik Mimari",
+        body: "Hepsiburada API entegrasyonu genellikle şu bileşenlerden oluşur:",
+        list: [
+          "Next.js API route veya Node.js servisi — API çağrılarını yönetir",
+          "Cron job (scheduled job) — stok ve fiyat güncelleme döngüsü (15 dk'da bir)",
+          "PostgreSQL veritabanı (Supabase) — sipariş ve stok geçmişi",
+          "Webhook endpoint — Hepsiburada'dan anlık sipariş bildirimi",
+          "Hata yönetimi ve yeniden deneme (retry) mekanizması",
+        ],
+      },
+      {
+        heading: "Sık Karşılaşılan Sorunlar",
+        body: "Entegrasyonlarda en çok karşılaştığımız teknik problemler:",
+        list: [
+          "Rate limiting: API çağrı limitleri aşıldığında 429 hatası — istek kuyruğu gerekli",
+          "Ürün eşleştirme: Kendi veritabanı ile Hepsiburada ürün ID'lerinin tutarlı tutulması",
+          "Stok negatife düşme: Eş zamanlı sipariş durumunda koruma mekanizması şart",
+          "Token yenileme: API token süresi dolduğunda otomatik yenileme",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Hepsiburada API entegrasyonu ne kadar sürer?",
+        a: "Temel entegrasyon (stok + sipariş) 5–7 iş günü. Trendyol ile çift kanal panel dahil kapsamlı bir çözüm 2–3 haftada tamamlanır.",
+      },
+      {
+        q: "Hepsiburada API ücretsiz mi?",
+        a: "API erişimi ücretli değildir; merchant hesabı olan satıcılar Hepsiburada onay sürecinden geçtikten sonra ücretsiz kullanabilir.",
+      },
+      {
+        q: "Trendyol ve Hepsiburada entegrasyonunu aynı sistemde yapabilir misiniz?",
+        a: "Evet. Solman Digital'in tamamladığı referans projelerden biri, iki pazaryerini tek panelde birleştiren çift kanal yönetim sistemidir. Stok, sipariş ve fiyat senkronizasyonu her iki platformda anlık çalışır.",
+      },
+    ],
+    cta: {
+      text: "Hepsiburada veya çift kanal API entegrasyonu için",
+      href: "/iletisim",
+      label: "Teknik Görüşme Talep Et",
+    },
+    keywords: [
+      "hepsiburada api entegrasyonu",
+      "hepsiburada satıcı api",
+      "trendyol hepsiburada çift kanal",
+      "marketplace api türkiye",
+      "hepsiburada stok senkronizasyonu",
+    ],
+  },
 ]
 
 export function getRehberBySlug(slug: string): RehberPost | undefined {

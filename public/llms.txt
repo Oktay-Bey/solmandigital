@@ -239,6 +239,10 @@ Haber sitesi veya blog için WordPress hızlı ve uygun maliyetlidir. Yüksek tr
 - İstanbul'da Web Sitesi Fiyatları 2025: https://solmandigital.com.tr/rehber/istanbul-web-sitesi-fiyatlari
 - SaaS MVP Süreci Nasıl İşler?: https://solmandigital.com.tr/rehber/saas-mvp-sureci
 - Next.js mi WordPress mi?: https://solmandigital.com.tr/rehber/nextjs-mi-wordpress-mi
+- İyzico Entegrasyonu Nasıl Yapılır?: https://solmandigital.com.tr/rehber/iyzico-entegrasyonu
+- Türkiye'de E-Ticaret Sitesi Açmak: https://solmandigital.com.tr/rehber/eticaret-sitesi-acmak-turkiye
+- Web Sitesine AI Chatbot Entegrasyonu: https://solmandigital.com.tr/rehber/ai-chatbot-web-sitesi
+- Hepsiburada API Entegrasyonu: https://solmandigital.com.tr/rehber/hepsiburada-api-entegrasyonu
 
 ---
 
