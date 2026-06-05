@@ -30,14 +30,8 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Solman Digital — İstanbul Full-Stack Yazılım Uzmanı",
-      },
-    ],
+    // OG görseli app/opengraph-image.tsx üzerinden dinamik üretilir;
+    // Next.js bunu tüm alt sayfalara fallback olarak uygular.
   },
   twitter: {
     card: "summary_large_image",
@@ -59,7 +53,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: siteConfig.name,
   url: siteConfig.url,
-  logo: `${siteConfig.url}/logo.png`,
+  logo: `${siteConfig.url}/logo.webp`,
   contactPoint: {
     "@type": "ContactPoint",
     email: siteConfig.email,
@@ -131,8 +125,8 @@ const localBusinessSchema = {
   url: siteConfig.url,
   telephone: siteConfig.whatsapp,
   email: siteConfig.email,
-  image: `${siteConfig.url}/og-image.jpg`,
-  logo: `${siteConfig.url}/logo.png`,
+  image: `${siteConfig.url}/opengraph-image`,
+  logo: `${siteConfig.url}/logo.webp`,
   foundingDate: "2023",
   slogan: "Doğrudan uzman erişimi — katman yok",
   knowsLanguage: ["tr", "en"],

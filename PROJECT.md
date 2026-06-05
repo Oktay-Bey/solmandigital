@@ -1,7 +1,7 @@
 # Solman Digital — Proje Keşif Dokümantasyonu
 
-**Son güncelleme:** 2026-05-29  
-**Güncel faz:** Faz 1 tamamlandı, Faz 2 başlangıç  
+**Son güncelleme:** 2026-06-05  
+**Güncel faz:** Faz 2A tamamlandı (SEO keşfedilebilirlik), Faz 2B hazır  
 **Repo:** `c:\Users\90534\Desktop\solmandigital`
 
 ---
@@ -161,22 +161,41 @@ Landing Page (SEO keyword)
 - Sitemap + robots.txt
 - Testimonials, form utils, LeadMagnetBanner
 
-### 🔄 Faz 2 — Büyüme & Optimizasyon (Başlıyor)
-Olası öncelikler:
-- [ ] Blog / içerik pazarlaması
-- [ ] Portföy içeriklerinin doldurulması
-- [ ] İndirilebilir kaynakların genişletilmesi
-- [ ] Daha fazla lokal SEO sayfası
-- [ ] E-posta otomasyon akışları (Resend sequences)
-- [ ] Conversion optimizasyonu / A/B test
+### ✅ Faz 2A — SEO Keşfedilebilirlik Hızlı Kazanımları (Tamamlandı: 2026-06-05)
+Mevcut olgun içeriği (26 rehber, 22 hizmet) keşfedilebilir kılma odaklı:
+- [x] `/rehber` Header navigasyonuna eklendi (Hizmetler ↔ Projeler arası)
+- [x] `/rehber` Footer "Şirket" listesine eklendi
+- [x] Rehber yazıları arası iç linkleme: `relatedSlugs` alanı + `getRelatedRehber()` helper (açık ilişki yoksa ortak keyword fallback) + "İlgili Rehberler" bloğu (`app/rehber/[slug]/page.tsx`)
+- [x] OG görseli düzeltildi: kırık statik `/og-image.jpg` referansları kaldırıldı, dinamik `app/opengraph-image.tsx` tüm sayfalara fallback. `logo.png` → `public/logo.webp`, schema `image` → dinamik `/opengraph-image`
+- [x] Footer marka sütununa sosyal linkler (LinkedIn / X / GitHub — `siteConfig.social`, `sameAs` görsel sinyali)
+- Not: lucide-react bu sürümde brand ikonu içermiyor; sosyal linkler `in`/`X`/`GH` metin etiketiyle gösterildi
+
+### 🔄 Faz 2B — Büyüme & Optimizasyon (Sonraki)
+Önceliklendirilmiş backlog (etki/efor):
+
+**A. SEO derinleştirme**
+- [ ] Per-page dinamik OG görselleri (5 ana funnel için ayrı `opengraph-image.tsx`)
+- [ ] Görünür breadcrumb komponenti (schema zaten var)
+- [ ] Rehber index kategori/filtreleme (`category` alanı → topical authority)
+- [ ] GSC verisine göre yeni keyword/lokal sayfalar
+
+**B. İçerik motoru** (organik trafiğin asıl çarpanı)
+- [ ] Rehber'i düzenli yayına bağla (aylık 2-4 yazı); her yazıdan hizmete CTA + `relatedSlugs`
+
+**C. Ölçüm & dönüşüm**
+- [ ] GA4 olay takibi (form görüntüleme/gönderim/hata, WhatsApp tık, rehber→hizmet)
+- [ ] Google Search Console bağla + sitemap submit + 30 gün sorgu analizi
+
+**D. Teknik sağlamlık**
+- [ ] `/api/email/*` rate limiting (spam/Resend kotası)
+- [ ] `next/image` ile portföy/case görselleri (Core Web Vitals)
 
 ---
 
 ## Bilinen Eksikler / Açık Noktalar
 
-- Portföy sayfası var, gerçek içerik henüz doldurulmadı
-- Blog / içerik pazarlaması rotası yok
-- `indir/[slug]` için kaç kaynak aktif olduğu belirsiz
+- İçerik pazarlaması `/rehber` altında (26 yazı) — düzenli yeni yazı akışı henüz yok (Faz 2B-B)
+- `indir/[slug]` için yalnızca 1 kaynak aktif (e-ticaret rehberi); genişletilebilir
 - Calendly entegrasyonu production'da test edilmeli
 
 ---

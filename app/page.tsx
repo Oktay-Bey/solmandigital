@@ -29,14 +29,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: "tr_TR",
     type: "website",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Solman Digital — İstanbul Web Yazılım Ofisi",
-      },
-    ],
+    // OG görseli app/opengraph-image.tsx üzerinden dinamik üretilir.
   },
 }
 

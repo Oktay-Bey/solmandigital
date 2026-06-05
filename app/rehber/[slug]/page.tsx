@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowRight, ArrowLeft, Clock } from "lucide-react"
-import { rehberPosts, getRehberBySlug } from "@/lib/data/rehber"
+import { rehberPosts, getRehberBySlug, getRelatedRehber } from "@/lib/data/rehber"
 import { siteConfig } from "@/lib/site-config"
 
 type Props = {
@@ -39,6 +39,8 @@ export default async function RehberDetayPage({ params }: Props) {
   const post = getRehberBySlug(slug)
   if (!post) notFound()
 
+  const related = getRelatedRehber(slug)
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -55,7 +57,7 @@ export default async function RehberDetayPage({ params }: Props) {
       "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.url,
-      logo: { "@type": "ImageObject", url: `${siteConfig.url}/logo.png` },
+      logo: { "@type": "ImageObject", url: `${siteConfig.url}/logo.webp` },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${siteConfig.url}/rehber/${slug}` },
     keywords: post.keywords.join(", "),
@@ -262,6 +264,67 @@ export default async function RehberDetayPage({ params }: Props) {
             {post.cta.label} <ArrowRight size={14} />
           </Link>
         </div>
+
+        {/* İlgili Rehberler */}
+        {related.length > 0 && (
+          <section style={{ marginTop: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: 700,
+                color: "#111111",
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+              }}
+            >
+              İlgili Rehberler
+            </h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              {related.map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/rehber/${r.slug}`}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "1rem",
+                    padding: "1rem 1.25rem",
+                    border: "1px solid #e8e8e8",
+                    borderRadius: 9,
+                    textDecoration: "none",
+                  }}
+                >
+                  <div>
+                    <h3
+                      style={{
+                        fontSize: "0.9rem",
+                        fontWeight: 700,
+                        color: "#111111",
+                        marginBottom: "0.3rem",
+                        lineHeight: 1.35,
+                      }}
+                    >
+                      {r.title}
+                    </h3>
+                    <span
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.25rem",
+                        color: "#aaaaaa",
+                        fontSize: "0.72rem",
+                      }}
+                    >
+                      <Clock size={10} /> {r.readTime} dakika okuma
+                    </span>
+                  </div>
+                  <ArrowRight size={15} color="#9b1c1c" style={{ flexShrink: 0 }} />
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </article>
     </>
   )

@@ -181,6 +181,39 @@ export default function Footer() {
             <p style={{ color: "#444444", fontSize: "0.8rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <MapPin size={13} /> {siteConfig.address}
             </p>
+            {/* Sosyal */}
+            <div style={{ display: "flex", gap: "0.5rem", marginTop: "1.25rem" }}>
+              {[
+                { href: siteConfig.social.linkedin, label: "LinkedIn", short: "in" },
+                { href: siteConfig.social.twitter, label: "Twitter / X", short: "X" },
+                { href: siteConfig.social.github, label: "GitHub", short: "GH" },
+              ].map(({ href, label, short }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  title={label}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minWidth: 32,
+                    height: 32,
+                    padding: "0 0.6rem",
+                    border: "1px solid #2a2a2a",
+                    borderRadius: 6,
+                    color: "#888888",
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    textDecoration: "none",
+                  }}
+                >
+                  {short}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Tier 1 Hizmetler */}
@@ -305,6 +338,7 @@ export default function Footer() {
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {[
                 { href: "/portfoy", label: "Portföy" },
+                { href: "/rehber", label: "Rehber" },
                 { href: "/fiyatlar", label: "Fiyatlar" },
                 { href: "/hakkimizda", label: "Hakkımızda" },
                 { href: "/iletisim", label: "İletişim" },

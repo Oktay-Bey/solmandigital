@@ -14,11 +14,13 @@ export type RehberPost = {
   faq: Array<{ q: string; a: string }>
   cta: { text: string; href: string; label: string }
   keywords: string[]
+  relatedSlugs?: string[]
 }
 
 export const rehberPosts: RehberPost[] = [
   {
     slug: "trendyol-satici-web-sitesi",
+    relatedSlugs: ["hepsiburada-api-entegrasyonu", "trendyol-vs-eticaret-sitesi", "trendyol-komisyon-hesaplama"],
     title: "Trendyol Satıcısı Web Sitesi Yaptırmalı mı?",
     metaTitle: "Trendyol Satıcısı Web Sitesi Yaptırmalı mı? | Solman Digital",
     metaDescription:
@@ -168,6 +170,7 @@ export const rehberPosts: RehberPost[] = [
   },
   {
     slug: "istanbul-web-sitesi-fiyatlari",
+    relatedSlugs: ["kurumsal-web-sitesi-fiyatlari", "web-sitesi-yaptirmak-istiyorum", "nextjs-mi-wordpress-mi"],
     title: "İstanbul'da Web Sitesi Fiyatları 2025 — Gerçekçi Rehber",
     metaTitle: "İstanbul'da Web Sitesi Fiyatları 2025 | Solman Digital",
     metaDescription:
@@ -249,6 +252,7 @@ export const rehberPosts: RehberPost[] = [
   },
   {
     slug: "saas-mvp-sureci",
+    relatedSlugs: ["saas-nedir-turkiye", "nextjs-avantajlari", "freelance-yazilimci-mi-ajans-mi"],
     title: "SaaS MVP Süreci: Türkiye'de Fikrinizi 6 Haftada Ürüne Dönüştürün",
     metaTitle: "SaaS MVP Süreci Türkiye | Solman Digital",
     metaDescription:
@@ -488,6 +492,7 @@ export const rehberPosts: RehberPost[] = [
   },
   {
     slug: "eticaret-sitesi-acmak-turkiye",
+    relatedSlugs: ["iyzico-entegrasyonu", "shopify-alternatifi-turkiye", "woocommerce-vs-nextjs-eticaret"],
     title: "Türkiye'de E-Ticaret Sitesi Açmak: Yasal, Teknik ve Pazarlama Adımları",
     metaTitle: "Türkiye'de E-Ticaret Sitesi Açmak | Solman Digital",
     metaDescription:
@@ -1822,4 +1827,29 @@ export const rehberPosts: RehberPost[] = [
 
 export function getRehberBySlug(slug: string): RehberPost | undefined {
   return rehberPosts.find((p) => p.slug === slug)
+}
+
+// İlgili rehberleri döndürür. Açıkça tanımlı relatedSlugs varsa onları,
+// yoksa ortak keyword'e göre en yakın yazıları seçer (fallback).
+export function getRelatedRehber(slug: string, limit = 3): RehberPost[] {
+  const post = getRehberBySlug(slug)
+  if (!post) return []
+
+  if (post.relatedSlugs?.length) {
+    return post.relatedSlugs
+      .map((s) => getRehberBySlug(s))
+      .filter((p): p is RehberPost => Boolean(p))
+      .slice(0, limit)
+  }
+
+  // Fallback: ortak keyword sayısına göre skorla
+  const others = rehberPosts.filter((p) => p.slug !== slug)
+  return others
+    .map((p) => ({
+      post: p,
+      score: p.keywords.filter((k) => post.keywords.includes(k)).length,
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((x) => x.post)
 }
