@@ -176,11 +176,12 @@ img {
   .btn-outline-dark {
     background-color: transparent;
     color: var(--color-ondark-muted);
-    border: 1px solid var(--color-dark-50);
+    border: 1px solid rgba(255,255,255,0.18);
   }
   .btn-outline-dark:hover {
     color: #ffffff;
-    border-color: var(--color-ink-500);
+    border-color: rgba(255,255,255,0.45);
+    background-color: rgba(255,255,255,0.05);
   }
 
   /* Form inputları */
