@@ -12,16 +12,13 @@ type Props = {
   related: Service[]
 }
 
-const faqSchema = (faq: Service["faq"], serviceTitle: string, serviceUrl: string) => ({
+const faqSchema = (faq: Service["faq"]) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: faq.map((item) => ({
     "@type": "Question",
     name: item.q,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.a,
-    },
+    acceptedAnswer: { "@type": "Answer", text: item.a },
   })),
 })
 
@@ -31,11 +28,7 @@ const serviceSchema = (service: Service, siteUrl: string) => ({
   name: service.title,
   description: service.shortDesc,
   url: `${siteUrl}/hizmetler/${service.slug}`,
-  provider: {
-    "@type": "Organization",
-    name: "Solman Digital",
-    url: siteUrl,
-  },
+  provider: { "@type": "Organization", name: "Solman Digital", url: siteUrl },
   areaServed: { "@type": "Country", name: "Turkey" },
   serviceType: service.category,
 })
@@ -51,168 +44,56 @@ const breadcrumbSchema = (service: Service, siteUrl: string) => ({
 })
 
 export default function ServiceDetail({ service, related }: Props) {
-  const IconComponent = (Icons as unknown as Record<string, React.ComponentType<{ size?: number; color?: string }>>)[service.icon]
+  const IconComponent = (Icons as unknown as Record<string, React.ComponentType<{ size?: number; className?: string }>>)[service.icon]
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://solmandigital.com.tr"
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema(service.faq, service.title, `${siteUrl}/hizmetler/${service.slug}`)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceSchema(service, siteUrl)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema(service, siteUrl)),
-        }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(service.faq)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema(service, siteUrl)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(service, siteUrl)) }} />
 
       {/* Breadcrumb */}
-      <div
-        style={{
-          backgroundColor: "#f5f5f5",
-          borderBottom: "1px solid #e0e0e0",
-          padding: "0.75rem 1.5rem",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.35rem",
-            fontSize: "0.75rem",
-            color: "#888888",
-          }}
-        >
-          <Link href="/" style={{ color: "#888888" }}>Ana Sayfa</Link>
+      <div className="border-b border-ink-200 bg-surface px-6 py-3">
+        <div className="mx-auto flex max-w-[1200px] items-center gap-1.5 text-[0.75rem] text-ink-400">
+          <Link href="/" className="transition-colors hover:text-ink-700">Ana Sayfa</Link>
           <ChevronRight size={13} />
-          <Link href="/hizmetler" style={{ color: "#888888" }}>Hizmetler</Link>
+          <Link href="/hizmetler" className="transition-colors hover:text-ink-700">Hizmetler</Link>
           <ChevronRight size={13} />
-          <span style={{ color: "#111111", fontWeight: 600 }}>{service.title}</span>
+          <span className="font-semibold text-ink-900">{service.title}</span>
         </div>
       </div>
 
       {/* Hero */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "4.5rem 1.5rem" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            <div
-              style={{
-                width: 28,
-                height: 28,
-                backgroundColor: "#1e1e1e",
-                border: "1px solid #2a2a2a",
-                borderRadius: 6,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-              }}
-            >
-              {IconComponent && <IconComponent size={14} color="#888888" />}
+      <section className="bg-dark-500 px-6 py-18">
+        <div className="mx-auto max-w-[900px]">
+          <div className="mb-6 inline-flex items-center gap-2">
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-dark-50 bg-dark-100 text-ink-400">
+              {IconComponent && <IconComponent size={14} />}
             </div>
-            <span
-              style={{
-                color: "#666666",
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
+            <span className="text-[0.7rem] font-bold uppercase tracking-wider text-ink-500">
               {service.category}
             </span>
           </div>
-          <h1
-            style={{
-              fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
-              fontWeight: 800,
-              color: "#ffffff",
-              lineHeight: 1.15,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.03em",
-            }}
-          >
+          <h1 className="mb-5 text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-white">
             {service.title}
           </h1>
-          <p
-            style={{
-              color: "#666666",
-              fontSize: "0.95rem",
-              lineHeight: 1.75,
-              marginBottom: "2rem",
-              maxWidth: 680,
-            }}
-          >
+          <p className="mb-8 max-w-[680px] text-[0.95rem] leading-relaxed text-ondark-muted">
             {service.longDesc.split("\n\n")[0]}
           </p>
-          <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
-            <Link
-              href="/iletisim"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                backgroundColor: "#9b1c1c",
-                color: "#fff",
-                padding: "0.875rem 1.75rem",
-                borderRadius: 7,
-                fontWeight: 700,
-                fontSize: "0.875rem",
-              }}
-            >
+          <div className="flex flex-wrap gap-3.5">
+            <Link href="/iletisim" className="btn btn-primary">
               Teklif Al <ArrowRight size={16} />
             </Link>
             <a
               href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Merhaba, ${service.title} hakkında bilgi almak istiyorum.`)}`}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                backgroundColor: "#25D366",
-                color: "#ffffff",
-                padding: "0.875rem 1.75rem",
-                borderRadius: 7,
-                fontWeight: 700,
-                fontSize: "0.875rem",
-                textDecoration: "none",
-              }}
+              className="btn bg-[#25D366] text-white hover:bg-[#1eb955]"
             >
               <MessageCircle size={16} /> WhatsApp&apos;ta Sor
             </a>
-            <Link
-              href="/hizmetler"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                border: "1px solid #2a2a2a",
-                color: "#888888",
-                padding: "0.875rem 1.75rem",
-                borderRadius: 7,
-                fontWeight: 600,
-                fontSize: "0.875rem",
-              }}
-            >
+            <Link href="/hizmetler" className="btn btn-outline-dark">
               Tüm Hizmetler
             </Link>
           </div>
@@ -220,189 +101,69 @@ export default function ServiceDetail({ service, related }: Props) {
       </section>
 
       {/* İçerik */}
-      <section style={{ padding: "4.5rem 1.5rem", backgroundColor: "#ffffff" }}>
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1fr 360px",
-            gap: "3rem",
-            alignItems: "start",
-          }}
-          className="two-col-grid"
-        >
-          {/* Sol: Açıklama + Özellikler */}
+      <section className="bg-white px-6 py-18">
+        <div className="two-col-grid mx-auto max-w-[1200px] items-start md:!grid-cols-[1fr_360px]">
+          {/* Sol */}
           <div>
             {service.aeoSummary && (
-              <blockquote
-                style={{
-                  borderLeft: "3px solid #9b1c1c",
-                  paddingLeft: "1.25rem",
-                  marginBottom: "2rem",
-                  marginLeft: 0,
-                  marginRight: 0,
-                }}
-              >
-                <p
-                  style={{
-                    color: "#333333",
-                    fontSize: "1rem",
-                    lineHeight: 1.75,
-                    fontStyle: "normal",
-                    fontWeight: 500,
-                  }}
-                >
+              <blockquote className="mx-0 mb-8 border-l-[3px] border-accent-700 pl-5">
+                <p className="text-base font-medium leading-relaxed text-ink-700">
                   {service.aeoSummary}
                 </p>
               </blockquote>
             )}
-            <h2
-              style={{
-                fontSize: "1.375rem",
-                fontWeight: 800,
-                color: "#111111",
-                marginBottom: "1.25rem",
-                letterSpacing: "-0.02em",
-              }}
-            >
+            <h2 className="mb-5 text-[1.375rem] font-extrabold tracking-tight text-ink-900">
               Neler Sunuyoruz?
             </h2>
             {service.longDesc.split("\n\n").map((para, i) => (
-              <p key={i} style={{ color: "#555555", lineHeight: 1.85, marginBottom: "1rem", fontSize: "0.925rem" }}>
+              <p key={i} className="mb-4 text-[0.925rem] leading-loose text-ink-600">
                 {para}
               </p>
             ))}
 
-            <h3
-              style={{
-                fontSize: "1.1rem",
-                fontWeight: 800,
-                color: "#111111",
-                marginTop: "2.5rem",
-                marginBottom: "1rem",
-                letterSpacing: "-0.015em",
-              }}
-            >
+            <h3 className="mb-4 mt-10 text-[1.1rem] font-extrabold tracking-tight text-ink-900">
               Özellikler
             </h3>
             <div className="features-grid">
               {service.features.map((feature) => (
-                <div
-                  key={feature}
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "0.75rem",
-                    padding: "0.875rem 1rem",
-                    backgroundColor: "#f5f5f5",
-                    borderRadius: 8,
-                    border: "1px solid #e0e0e0",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 16,
-                      height: 16,
-                      borderRadius: "50%",
-                      backgroundColor: "#9b1c1c",
-                      flexShrink: 0,
-                      marginTop: 2,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div style={{ width: 6, height: 6, backgroundColor: "#ffffff", borderRadius: "50%" }} />
+                <div key={feature} className="flex items-start gap-3 rounded-lg border border-ink-200 bg-surface px-4 py-3.5">
+                  <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-accent-700">
+                    <div className="h-1.5 w-1.5 rounded-full bg-white" />
                   </div>
-                  <span style={{ color: "#333333", fontSize: "0.875rem", lineHeight: 1.4 }}>{feature}</span>
+                  <span className="text-[0.875rem] leading-snug text-ink-700">{feature}</span>
                 </div>
               ))}
             </div>
 
-            {/* Teknoloji Yığını */}
-            <h3
-              style={{
-                fontSize: "1.1rem",
-                fontWeight: 800,
-                color: "#111111",
-                marginTop: "2.5rem",
-                marginBottom: "1rem",
-                letterSpacing: "-0.015em",
-              }}
-            >
+            <h3 className="mb-4 mt-10 text-[1.1rem] font-extrabold tracking-tight text-ink-900">
               Kullandığımız Teknolojiler
             </h3>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+            <div className="flex flex-wrap gap-2">
               {service.techStack.map((tech) => (
-                <span
-                  key={tech}
-                  style={{
-                    backgroundColor: "#f5f5f5",
-                    color: "#444444",
-                    border: "1px solid #e0e0e0",
-                    padding: "0.375rem 0.875rem",
-                    borderRadius: 5,
-                    fontSize: "0.8rem",
-                    fontWeight: 600,
-                  }}
-                >
+                <span key={tech} className="rounded-[5px] border border-ink-200 bg-surface px-3.5 py-1.5 text-[0.8rem] font-semibold text-ink-600">
                   {tech}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Sağ: Teslimat Kapsamı */}
-          <div style={{ position: "sticky", top: 80 }}>
-            <div
-              style={{
-                backgroundColor: "#f5f5f5",
-                border: "1px solid #e0e0e0",
-                borderRadius: 10,
-                padding: "1.75rem",
-                marginBottom: "1rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "0.7rem",
-                  fontWeight: 800,
-                  color: "#888888",
-                  marginBottom: "1.25rem",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                }}
-              >
+          {/* Sağ */}
+          <div className="sticky top-20">
+            <div className="card mb-4 p-7">
+              <h3 className="mb-5 text-[0.7rem] font-extrabold uppercase tracking-wider text-ink-400">
                 Teslimat Kapsamı
               </h3>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              <ul className="flex list-none flex-col gap-3">
                 {service.deliverables.map((item) => (
-                  <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
-                    <CheckCircle2 size={16} color="#9b1c1c" style={{ flexShrink: 0, marginTop: 2 }} />
-                    <span style={{ color: "#444444", fontSize: "0.875rem", lineHeight: 1.4 }}>{item}</span>
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle2 size={16} color="#9b1c1c" className="mt-0.5 shrink-0" />
+                    <span className="text-[0.875rem] leading-snug text-ink-600">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <Link
-              href="/iletisim"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.5rem",
-                backgroundColor: "#9b1c1c",
-                color: "#fff",
-                padding: "0.9rem 1rem",
-                borderRadius: 8,
-                fontWeight: 700,
-                fontSize: "0.875rem",
-                width: "100%",
-                textAlign: "center",
-              }}
-            >
+            <Link href="/iletisim" className="btn btn-primary w-full">
               Ücretsiz Teklif Al <ArrowRight size={16} />
             </Link>
           </div>
@@ -411,106 +172,46 @@ export default function ServiceDetail({ service, related }: Props) {
 
       {/* Lead Magnet Banner */}
       {categoryLeadMagnetMap[service.category] && (
-        <section style={{ backgroundColor: "#ffffff", padding: "0 1.5rem" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <section className="bg-white px-6">
+          <div className="mx-auto max-w-[1200px]">
             <LeadMagnetBanner {...categoryLeadMagnetMap[service.category]} />
           </div>
         </section>
       )}
 
       {/* SSS */}
-      <section style={{ backgroundColor: "#f5f5f5", padding: "4.5rem 1.5rem" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto" }}>
-          <p
-            style={{
-              fontSize: "0.7rem",
-              fontWeight: 700,
-              color: "#888888",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              marginBottom: "0.875rem",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-            }}
-          >
-            <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-            SSS
-          </p>
-          <h2
-            style={{
-              fontSize: "clamp(1.375rem, 2.5vw, 1.75rem)",
-              fontWeight: 800,
-              color: "#111111",
-              marginBottom: "0.5rem",
-              letterSpacing: "-0.025em",
-            }}
-          >
+      <section className="bg-surface px-6 py-18">
+        <div className="mx-auto max-w-[760px]">
+          <p className="eyebrow mb-3.5">SSS</p>
+          <h2 className="mb-2 text-[clamp(1.375rem,2.5vw,1.75rem)] font-extrabold tracking-tight text-ink-900">
             Sık Sorulan Sorular
           </h2>
-          <p style={{ color: "#888888", marginBottom: "2.5rem", fontSize: "0.875rem" }}>
+          <p className="mb-10 text-[0.875rem] text-ink-400">
             {service.title} hizmeti hakkında merak edilenler
           </p>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div className="flex flex-col">
             {service.faq.map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  borderTop: "1px solid #e0e0e0",
-                  padding: "1.375rem 0",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "0.95rem",
-                    fontWeight: 700,
-                    color: "#111111",
-                    marginBottom: "0.625rem",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
+              <div key={i} className="border-t border-ink-200 py-5.5">
+                <h3 className="mb-2.5 text-[0.95rem] font-bold tracking-tight text-ink-900">
                   {item.q}
                 </h3>
-                <p style={{ color: "#6b6b6b", fontSize: "0.875rem", lineHeight: 1.7 }}>{item.a}</p>
+                <p className="text-[0.875rem] leading-relaxed text-ink-500">{item.a}</p>
               </div>
             ))}
-            <div style={{ borderTop: "1px solid #e0e0e0" }} />
+            <div className="border-t border-ink-200" />
           </div>
         </div>
       </section>
 
       {/* İlgili Hizmetler */}
       {related.length > 0 && (
-        <section style={{ padding: "4.5rem 1.5rem", backgroundColor: "#ffffff" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.75rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-              Benzer Çözümler
-            </p>
-            <h2
-              style={{
-                fontSize: "1.375rem",
-                fontWeight: 800,
-                color: "#111111",
-                marginBottom: "0.5rem",
-                letterSpacing: "-0.02em",
-              }}
-            >
+        <section className="bg-white px-6 py-18">
+          <div className="mx-auto max-w-[1200px]">
+            <p className="eyebrow mb-3">Benzer Çözümler</p>
+            <h2 className="mb-2 text-[1.375rem] font-extrabold tracking-tight text-ink-900">
               İlgili Hizmetler
             </h2>
-            <p style={{ color: "#888888", marginBottom: "2rem", fontSize: "0.875rem" }}>
+            <p className="mb-8 text-[0.875rem] text-ink-400">
               Bu hizmetle birlikte sık tercih edilenler
             </p>
             <div className="related-grid">
@@ -523,36 +224,15 @@ export default function ServiceDetail({ service, related }: Props) {
       )}
 
       {/* Son CTA */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "4.5rem 1.5rem", textAlign: "center" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto" }}>
-          <h2
-            style={{
-              fontSize: "clamp(1.5rem, 3vw, 2rem)",
-              fontWeight: 800,
-              color: "#ffffff",
-              marginBottom: "1rem",
-              letterSpacing: "-0.025em",
-            }}
-          >
+      <section className="bg-dark-500 px-6 py-18 text-center">
+        <div className="mx-auto max-w-[640px]">
+          <h2 className="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-white">
             {service.cta || `${service.title} için bugün teklif alın`}
           </h2>
-          <p style={{ color: "#555555", marginBottom: "2rem", fontSize: "0.9rem", lineHeight: 1.7 }}>
+          <p className="mb-8 text-[0.9rem] leading-relaxed text-ondark-muted">
             Projenizi anlatan kısa bir mesaj yeterli. Size 24 saat içinde dönüş yapıyoruz.
           </p>
-          <Link
-            href="/iletisim"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              backgroundColor: "#9b1c1c",
-              color: "#fff",
-              padding: "0.875rem 2rem",
-              borderRadius: 7,
-              fontWeight: 700,
-              fontSize: "0.875rem",
-            }}
-          >
+          <Link href="/iletisim" className="btn btn-primary !px-8">
             Şimdi İletişime Geç <ArrowRight size={16} />
           </Link>
         </div>

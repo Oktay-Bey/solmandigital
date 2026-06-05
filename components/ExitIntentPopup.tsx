@@ -88,98 +88,51 @@ export default function ExitIntentPopup() {
 
   return (
     <div
-      onClick={(e) => { if (e.target === e.currentTarget) close() }}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 1000,
-        backgroundColor: "rgba(0,0,0,0.72)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "1rem",
+      onClick={(e) => {
+        if (e.target === e.currentTarget) close()
       }}
+      className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/70 p-4"
     >
-      <div
-        style={{
-          backgroundColor: "#111111",
-          border: "1px solid #222222",
-          borderRadius: 12,
-          padding: "2rem",
-          width: "100%",
-          maxWidth: 440,
-          position: "relative",
-        }}
-      >
+      <div className="relative w-full max-w-[440px] rounded-xl border border-dark-50 bg-dark-400 p-8 animate-[slideUp_0.25s_ease]">
         <button
           onClick={close}
           aria-label="Kapat"
-          style={{
-            position: "absolute",
-            top: "1rem",
-            right: "1rem",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            color: "#666666",
-            padding: "0.25rem",
-            display: "flex",
-            alignItems: "center",
-          }}
+          className="absolute right-4 top-4 flex cursor-pointer items-center border-none bg-transparent p-1 text-ink-500 transition-colors hover:text-ondark"
         >
           <X size={18} />
         </button>
 
         {state === "success" ? (
-          <div style={{ textAlign: "center", padding: "1rem 0" }}>
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                backgroundColor: "#052e16",
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "0 auto 1rem",
-              }}
-            >
+          <div className="py-4 text-center">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-950">
               <ArrowRight size={22} color="#4ade80" />
             </div>
-            <h3 style={{ color: "#ffffff", fontWeight: 800, fontSize: "1.1rem", marginBottom: "0.5rem" }}>
+            <h3 className="mb-2 text-[1.1rem] font-extrabold text-white">
               Talebiniz Alındı!
             </h3>
-            <p style={{ color: "#aaaaaa", fontSize: "0.875rem" }}>
+            <p className="text-[0.875rem] text-ondark-muted">
               24 saat içinde analiz sonuçlarınızı e-posta ile ileteceğiz.
             </p>
             <button
               onClick={close}
-              style={{
-                marginTop: "1.25rem",
-                color: "#9b1c1c",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                fontSize: "0.8rem",
-                fontWeight: 600,
-              }}
+              className="mt-5 cursor-pointer border-none bg-transparent text-[0.8rem] font-semibold text-accent-500"
             >
               Kapat
             </button>
           </div>
         ) : (
           <>
-            <p style={{ color: "#9b1c1c", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
+            <p className="mb-2 text-[0.75rem] font-bold uppercase tracking-wider text-accent-500">
               Gitmeden önce...
             </p>
-            <h2 style={{ color: "#ffffff", fontSize: "1.3rem", fontWeight: 800, marginBottom: "0.5rem", lineHeight: 1.3, letterSpacing: "-0.02em" }}>
+            <h2 className="mb-2 text-[1.3rem] font-extrabold leading-tight tracking-tight text-white">
               Sitenizin ücretsiz teknik analizini isteyin
             </h2>
-            <p style={{ color: "#888888", fontSize: "0.875rem", marginBottom: "1.5rem", lineHeight: 1.6 }}>
+            <p className="mb-6 text-[0.875rem] leading-relaxed text-ondark-muted">
               Hız, SEO ve dönüşüm sorunlarını 24 saat içinde raporluyoruz.
             </p>
 
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
               <input
                 name="firstName"
                 type="text"
@@ -187,16 +140,7 @@ export default function ExitIntentPopup() {
                 value={form.firstName}
                 onChange={handleChange}
                 placeholder="Adınız"
-                style={{
-                  padding: "0.75rem 1rem",
-                  borderRadius: 7,
-                  border: "1px solid #333333",
-                  backgroundColor: "#1a1a1a",
-                  color: "#ffffff",
-                  fontSize: "0.875rem",
-                  fontFamily: "inherit",
-                  outline: "none",
-                }}
+                className="input input-dark"
               />
               <input
                 name="email"
@@ -205,20 +149,11 @@ export default function ExitIntentPopup() {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="E-posta adresiniz"
-                style={{
-                  padding: "0.75rem 1rem",
-                  borderRadius: 7,
-                  border: "1px solid #333333",
-                  backgroundColor: "#1a1a1a",
-                  color: "#ffffff",
-                  fontSize: "0.875rem",
-                  fontFamily: "inherit",
-                  outline: "none",
-                }}
+                className="input input-dark"
               />
 
               {state === "error" && (
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#f87171", fontSize: "0.8rem" }}>
+                <div className="flex items-center gap-2 text-[0.8rem] text-red-400">
                   <AlertCircle size={14} />
                   Bir hata oluştu, tekrar deneyin.
                 </div>
@@ -227,41 +162,20 @@ export default function ExitIntentPopup() {
               <button
                 type="submit"
                 disabled={state === "sending"}
-                style={{
-                  backgroundColor: "#9b1c1c",
-                  color: "#ffffff",
-                  padding: "0.875rem",
-                  borderRadius: 7,
-                  fontWeight: 700,
-                  fontSize: "0.875rem",
-                  border: "none",
-                  cursor: state === "sending" ? "not-allowed" : "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "0.5rem",
-                }}
+                className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {state === "sending" ? "Gönderiliyor…" : "Ücretsiz Analiz İste"}
                 {state !== "sending" && <ArrowRight size={15} />}
               </button>
             </form>
 
-            <div style={{ textAlign: "center", marginTop: "1rem" }}>
+            <div className="mt-4 text-center">
               <a
                 href={waHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("click", "whatsapp", "exit_popup")}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.35rem",
-                  color: "#4ade80",
-                  fontSize: "0.8rem",
-                  textDecoration: "none",
-                  fontWeight: 600,
-                }}
+                className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-green-400"
               >
                 <MessageCircle size={14} />
                 Veya WhatsApp&apos;tan yazın

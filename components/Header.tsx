@@ -1,7 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 
@@ -16,126 +17,73 @@ const navLinks = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href)
+
+  const waHref = `https://wa.me/${siteConfig.whatsapp.replace("+", "")}`
 
   return (
     <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 50,
-        backgroundColor: "#ffffff",
-        borderBottom: "1px solid #e0e0e0",
-      }}
+      className={`sticky top-0 z-50 border-b transition-colors duration-200 ${
+        scrolled
+          ? "bg-white/85 backdrop-blur-md border-ink-200 shadow-card"
+          : "bg-white border-ink-200"
+      }`}
     >
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "0 1.5rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          height: 64,
-        }}
-      >
+      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
         {/* Logo */}
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 30,
-              height: 30,
-              backgroundColor: "#111111",
-              borderRadius: 6,
-              color: "#fff",
-              fontWeight: 800,
-              fontSize: "0.85rem",
-              letterSpacing: "-0.5px",
-            }}
-          >
+        <Link href="/" className="flex items-center gap-2">
+          <span className="inline-flex h-[30px] w-[30px] items-center justify-center rounded-md bg-ink-900 text-sm font-extrabold tracking-tight text-white">
             S
           </span>
-          <span style={{ fontWeight: 700, fontSize: "1.05rem", color: "#111111", letterSpacing: "-0.02em" }}>
-            Solman<span style={{ color: "#9b1c1c" }}>Digital</span>
+          <span className="text-[1.05rem] font-bold tracking-tight text-ink-900">
+            Solman<span className="text-accent-700">Digital</span>
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: "0.125rem" }}>
+        <nav className="desktop-nav flex items-center gap-0.5">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              style={{
-                padding: "0.5rem 0.875rem",
-                borderRadius: 6,
-                fontSize: "0.875rem",
-                fontWeight: 500,
-                color: "#555555",
-                transition: "color 0.15s",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#111111"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "#555555"
-              }}
+              className={`rounded-md px-3.5 py-2 text-sm font-medium transition-colors ${
+                isActive(link.href)
+                  ? "text-ink-900"
+                  : "text-ink-500 hover:text-ink-900"
+              }`}
             >
               {link.label}
             </Link>
           ))}
           <Link
             href="/ucretsiz-analiz"
-            style={{
-              marginLeft: "0.5rem",
-              padding: "0.5rem 0.875rem",
-              border: "1px solid #fecaca",
-              backgroundColor: "#fff0f0",
-              color: "#9b1c1c",
-              borderRadius: 6,
-              fontSize: "0.8rem",
-              fontWeight: 600,
-            }}
+            className="ml-2 rounded-md border border-accent-200 bg-accent-50 px-3.5 py-2 text-[0.8rem] font-semibold text-accent-700 transition-colors hover:bg-accent-100"
           >
             Ücretsiz Analiz
           </Link>
           <a
-            href={`https://wa.me/${siteConfig.whatsapp.replace("+", "")}`}
+            href={waHref}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              marginLeft: "0.25rem",
-              padding: "0.5rem 0.875rem",
-              border: "1px solid #dcfce7",
-              backgroundColor: "#f0fdf4",
-              color: "#16a34a",
-              borderRadius: 6,
-              fontSize: "0.8rem",
-              fontWeight: 600,
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.35rem",
-            }}
+            className="ml-1 inline-flex items-center gap-1.5 rounded-md border border-green-200 bg-green-50 px-3.5 py-2 text-[0.8rem] font-semibold text-success transition-colors hover:bg-green-100"
           >
             <MessageCircle size={14} />
             WhatsApp
           </a>
           <Link
             href="/iletisim"
-            style={{
-              marginLeft: "0.5rem",
-              padding: "0.5rem 1.25rem",
-              backgroundColor: "#9b1c1c",
-              color: "#fff",
-              borderRadius: 6,
-              fontSize: "0.875rem",
-              fontWeight: 600,
-              transition: "background-color 0.15s",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#7f1d1d")}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#9b1c1c")}
+            className="ml-2 rounded-md bg-accent-700 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-800"
           >
             Teklif Al
           </Link>
@@ -143,20 +91,10 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="mobile-menu-btn"
+          className="mobile-menu-btn hidden h-11 w-11 items-center justify-center rounded-md border border-ink-200 bg-transparent text-ink-900"
           onClick={() => setMenuOpen(!menuOpen)}
-          style={{
-            display: "none",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "0.5rem",
-            border: "1px solid #e0e0e0",
-            borderRadius: 6,
-            backgroundColor: "transparent",
-            cursor: "pointer",
-            color: "#111111",
-          }}
           aria-label="Menüyü aç/kapat"
+          aria-expanded={menuOpen}
         >
           {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -164,30 +102,15 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div
-          className="mobile-menu"
-          style={{
-            borderTop: "1px solid #e0e0e0",
-            backgroundColor: "#ffffff",
-            padding: "1rem 1.5rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.125rem",
-          }}
-        >
+        <div className="mobile-menu flex flex-col gap-0.5 border-t border-ink-200 bg-white px-6 py-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              style={{
-                padding: "0.75rem 0.75rem",
-                borderRadius: 6,
-                fontSize: "0.95rem",
-                fontWeight: 500,
-                color: "#444444",
-                borderBottom: "1px solid #f0f0f0",
-              }}
+              className={`rounded-md border-b border-ink-100 px-3 py-3 text-[0.95rem] font-medium ${
+                isActive(link.href) ? "text-accent-700" : "text-ink-600"
+              }`}
             >
               {link.label}
             </Link>
@@ -195,40 +118,16 @@ export default function Header() {
           <Link
             href="/ucretsiz-analiz"
             onClick={() => setMenuOpen(false)}
-            style={{
-              marginTop: "0.75rem",
-              padding: "0.75rem 1rem",
-              border: "1px solid #fecaca",
-              backgroundColor: "#fff0f0",
-              color: "#9b1c1c",
-              borderRadius: 6,
-              fontSize: "0.95rem",
-              fontWeight: 600,
-              textAlign: "center",
-            }}
+            className="mt-3 rounded-md border border-accent-200 bg-accent-50 px-4 py-3 text-center text-[0.95rem] font-semibold text-accent-700"
           >
             Ücretsiz Analiz
           </Link>
           <a
-            href={`https://wa.me/${siteConfig.whatsapp.replace("+", "")}`}
+            href={waHref}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
-            style={{
-              marginTop: "0.5rem",
-              padding: "0.75rem 1rem",
-              border: "1px solid #dcfce7",
-              backgroundColor: "#f0fdf4",
-              color: "#16a34a",
-              borderRadius: 6,
-              fontSize: "0.95rem",
-              fontWeight: 600,
-              textAlign: "center",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.5rem",
-            }}
+            className="mt-2 flex items-center justify-center gap-2 rounded-md border border-green-200 bg-green-50 px-4 py-3 text-center text-[0.95rem] font-semibold text-success"
           >
             <MessageCircle size={16} />
             WhatsApp&apos;ta Yaz
@@ -236,16 +135,7 @@ export default function Header() {
           <Link
             href="/iletisim"
             onClick={() => setMenuOpen(false)}
-            style={{
-              marginTop: "0.5rem",
-              padding: "0.75rem 1rem",
-              backgroundColor: "#9b1c1c",
-              color: "#fff",
-              borderRadius: 6,
-              fontSize: "0.95rem",
-              fontWeight: 600,
-              textAlign: "center",
-            }}
+            className="mt-2 rounded-md bg-accent-700 px-4 py-3 text-center text-[0.95rem] font-semibold text-white"
           >
             Teklif Al
           </Link>

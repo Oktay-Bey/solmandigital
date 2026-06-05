@@ -7,13 +7,12 @@ import { trackEvent } from "@/lib/analytics"
 
 export default function StickyCtaBar() {
   const [visible, setVisible] = useState(false)
-  const [dismissed, setDismissed] = useState(false)
+  const [dismissed, setDismissed] = useState(() =>
+    typeof window !== "undefined" && sessionStorage.getItem("solman_cta_bar_closed") === "1"
+  )
 
   useEffect(() => {
-    if (typeof window !== "undefined" && sessionStorage.getItem("solman_cta_bar_closed") === "1") {
-      setDismissed(true)
-      return
-    }
+    if (dismissed) return
 
     const handleScroll = () => {
       const threshold = document.body.scrollHeight * 0.45
@@ -34,53 +33,18 @@ export default function StickyCtaBar() {
   const waHref = `https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=Merhaba%2C%20projem%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum.`
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 40,
-        backgroundColor: "#111111",
-        borderTop: "1px solid #222222",
-        padding: "0.75rem 1.5rem",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: "1rem",
-      }}
-    >
-      <p
-        style={{
-          color: "#aaaaaa",
-          fontSize: "0.8rem",
-          margin: 0,
-          whiteSpace: "nowrap",
-          flexShrink: 0,
-        }}
-      >
+    <div className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-4 border-t border-dark-50 bg-dark-400 px-6 py-3 animate-[slideUp_0.3s_ease]">
+      <p className="m-0 shrink-0 whitespace-nowrap text-[0.8rem] text-ondark-muted">
         Projenizi değerlendirelim:
       </p>
 
-      <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", flexWrap: "wrap" }}>
+      <div className="flex flex-wrap items-center gap-2.5">
         <a
           href={waHref}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackEvent("click", "whatsapp", "sticky_cta")}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.4rem",
-            backgroundColor: "#25D366",
-            color: "#ffffff",
-            padding: "0.5rem 1rem",
-            borderRadius: 6,
-            fontWeight: 700,
-            fontSize: "0.8rem",
-            textDecoration: "none",
-            whiteSpace: "nowrap",
-          }}
+          className="flex items-center gap-1.5 whitespace-nowrap rounded-md bg-[#25D366] px-4 py-2 text-[0.8rem] font-bold text-white transition-colors hover:bg-[#1eb955]"
         >
           <MessageCircle size={14} />
           WhatsApp
@@ -89,19 +53,7 @@ export default function StickyCtaBar() {
         <a
           href="/ucretsiz-analiz"
           onClick={() => trackEvent("click", "cta", "sticky_teklif")}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.4rem",
-            backgroundColor: "#9b1c1c",
-            color: "#ffffff",
-            padding: "0.5rem 1rem",
-            borderRadius: 6,
-            fontWeight: 700,
-            fontSize: "0.8rem",
-            textDecoration: "none",
-            whiteSpace: "nowrap",
-          }}
+          className="flex items-center gap-1.5 whitespace-nowrap rounded-md bg-accent-700 px-4 py-2 text-[0.8rem] font-bold text-white transition-colors hover:bg-accent-800"
         >
           Ücretsiz Analiz
           <ArrowRight size={13} />
@@ -111,16 +63,7 @@ export default function StickyCtaBar() {
       <button
         onClick={dismiss}
         aria-label="Kapat"
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          padding: "0.25rem",
-          color: "#666666",
-          display: "flex",
-          alignItems: "center",
-          flexShrink: 0,
-        }}
+        className="flex shrink-0 cursor-pointer items-center border-none bg-transparent p-1 text-ink-500 transition-colors hover:text-ondark"
       >
         <X size={16} />
       </button>

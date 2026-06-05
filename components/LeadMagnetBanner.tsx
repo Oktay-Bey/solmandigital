@@ -5,27 +5,27 @@ import type { LeadMagnet } from "@/lib/data/leadMagnets"
 const variantConfig = {
   download: {
     icon: Download,
-    bg: "#f0fdf4",
-    border: "#bbf7d0",
+    wrap: "bg-green-50 border-green-200",
+    iconBox: "border-green-200",
     iconColor: "#16a34a",
-    labelColor: "#15803d",
-    label: "Ücretsiz Rehber",
+    label: "text-green-700",
+    text: "Ücretsiz Rehber",
   },
   audit: {
     icon: Search,
-    bg: "#fff8f0",
-    border: "#fde8cc",
+    wrap: "bg-orange-50 border-orange-200",
+    iconBox: "border-orange-200",
     iconColor: "#ea580c",
-    labelColor: "#c2410c",
-    label: "Ücretsiz Analiz",
+    label: "text-orange-700",
+    text: "Ücretsiz Analiz",
   },
   consultation: {
     icon: Calendar,
-    bg: "#f0f5ff",
-    border: "#c7d2fe",
+    wrap: "bg-indigo-50 border-indigo-200",
+    iconBox: "border-indigo-200",
     iconColor: "#4f46e5",
-    labelColor: "#3730a3",
-    label: "Ücretsiz Danışmanlık",
+    label: "text-indigo-800",
+    text: "Ücretsiz Danışmanlık",
   },
 }
 
@@ -34,60 +34,20 @@ export default function LeadMagnetBanner({ title, description, ctaText, ctaHref,
   const IconComponent = cfg.icon
 
   return (
-    <div
-      style={{
-        backgroundColor: cfg.bg,
-        border: `1px solid ${cfg.border}`,
-        borderRadius: 10,
-        padding: "1.5rem 1.75rem",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: "1.5rem",
-        flexWrap: "wrap",
-        margin: "2.5rem 0",
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem", flex: 1 }}>
-        <div
-          style={{
-            width: 40, height: 40,
-            backgroundColor: "rgba(255,255,255,0.8)",
-            border: `1px solid ${cfg.border}`,
-            borderRadius: 8,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            flexShrink: 0,
-          }}
-        >
+    <div className={`my-10 flex flex-wrap items-center justify-between gap-6 rounded-[10px] border px-7 py-6 ${cfg.wrap}`}>
+      <div className="flex flex-1 items-start gap-4">
+        <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border bg-white/80 ${cfg.iconBox}`}>
           <IconComponent size={18} color={cfg.iconColor} />
         </div>
         <div>
-          <p
-            style={{
-              fontSize: "0.65rem", fontWeight: 700, color: cfg.labelColor,
-              textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.25rem",
-            }}
-          >
-            {cfg.label}
+          <p className={`mb-1 text-[0.65rem] font-bold uppercase tracking-wider ${cfg.label}`}>
+            {cfg.text}
           </p>
-          <p style={{ fontSize: "0.95rem", fontWeight: 700, color: "#111111", marginBottom: "0.25rem" }}>
-            {title}
-          </p>
-          <p style={{ fontSize: "0.8rem", color: "#6b6b6b", lineHeight: 1.55 }}>
-            {description}
-          </p>
+          <p className="mb-1 text-[0.95rem] font-bold text-ink-900">{title}</p>
+          <p className="text-[0.8rem] leading-relaxed text-ink-500">{description}</p>
         </div>
       </div>
-      <Link
-        href={ctaHref}
-        style={{
-          display: "inline-flex", alignItems: "center", gap: "0.5rem",
-          backgroundColor: "#9b1c1c", color: "#ffffff",
-          padding: "0.75rem 1.25rem", borderRadius: 7,
-          fontWeight: 700, fontSize: "0.8rem",
-          textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0,
-        }}
-      >
+      <Link href={ctaHref} className="btn btn-primary shrink-0 whitespace-nowrap !px-5 !py-3 text-[0.8rem]">
         {ctaText} <ArrowRight size={14} />
       </Link>
     </div>

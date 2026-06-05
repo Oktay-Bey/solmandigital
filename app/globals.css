@@ -1,31 +1,73 @@
 @import "tailwindcss";
 
+/* ──────────────────────────────────────────────────────────────
+   Solman Digital — Design System (Tailwind v4 @theme tokens)
+   Kimlik: koyu zemin + bordo aksan. Mevcut #9b1c1c korunur,
+   accent-700 olarak konumlanır. Token'lar otomatik utility üretir
+   (bg-accent-700, text-ink-500, shadow-card, text-h1 vb.).
+   ────────────────────────────────────────────────────────────── */
+
 @theme {
-  --color-accent: #9b1c1c;
-  --color-accent-hover: #7f1d1d;
-  --color-dark-bg: #0d0d0d;
+  /* Accent — bordo skala (anchor: #9b1c1c ≈ accent-700) */
+  --color-accent-50: #fdf2f2;
+  --color-accent-100: #fbe0e0;
+  --color-accent-200: #f5bfbf;
+  --color-accent-300: #ec9494;
+  --color-accent-400: #de5f5f;
+  --color-accent-500: #c43838;
+  --color-accent-600: #ad2727;
+  --color-accent-700: #9b1c1c;
+  --color-accent-800: #7f1d1d;
+  --color-accent-900: #631717;
+
+  /* Ink / neutral — metin & yüzey grileri */
+  --color-ink-50: #f7f7f7;
+  --color-ink-100: #ededed;
+  --color-ink-200: #e0e0e0;
+  --color-ink-300: #c4c4c4;
+  --color-ink-400: #999999;
+  --color-ink-500: #6b6b6b;
+  --color-ink-600: #4b4b4b;
+  --color-ink-700: #333333;
+  --color-ink-800: #1f1f1f;
+  --color-ink-900: #111111;
+
+  /* Dark surfaces (koyu bölümler) */
+  --color-dark-50: #2a2a2a;
+  --color-dark-100: #1e1e1e;
+  --color-dark-200: #1a1a1a;
+  --color-dark-300: #161616;
+  --color-dark-400: #111111;
+  --color-dark-500: #0d0d0d;
+
+  /* Koyu zemin üstü metin — WCAG AA uyumlu (≥4.5:1 #0d0d0d üzerinde) */
+  --color-ondark: #e8e8e8;       /* başlık/gövde */
+  --color-ondark-muted: #a8a8a8; /* ikincil — AA geçer (~4.6:1) */
+  --color-ondark-faint: #777777; /* yalnız large/dekoratif */
+
   --color-surface: #f5f5f5;
-  --color-border-col: #e0e0e0;
-  --color-muted: #6b6b6b;
+  --color-success: #16a34a;
+
+  /* Akışkan tipografi (clamp) */
+  --text-eyebrow: 0.7rem;
+  --text-h1: clamp(2.25rem, 1.4rem + 3.4vw, 3.5rem);
+  --text-h2: clamp(1.6rem, 1.1rem + 2.1vw, 2.25rem);
+  --text-h2-dark: clamp(1.4rem, 1rem + 1.6vw, 2rem);
+  --text-h3: 0.95rem;
+
+  /* Radius */
+  --radius-card: 10px;
+  --radius-btn: 7px;
+
+  /* Shadow — ince, katmanlı (premium his) */
+  --shadow-card: 0 1px 2px rgba(17, 17, 17, 0.04), 0 4px 12px rgba(17, 17, 17, 0.05);
+  --shadow-card-hover: 0 4px 8px rgba(17, 17, 17, 0.06), 0 12px 28px rgba(17, 17, 17, 0.10);
+  --shadow-accent: 0 6px 20px rgba(155, 28, 28, 0.25);
+
   --font-sans: var(--font-geist-sans);
 }
 
-:root {
-  --accent: #9b1c1c;
-  --accent-hover: #7f1d1d;
-  --dark-bg: #0d0d0d;
-  --dark-bg-2: #161616;
-  --dark-bg-3: #1e1e1e;
-  --surface: #f5f5f5;
-  --border: #e0e0e0;
-  --border-dark: #2a2a2a;
-  --muted: #6b6b6b;
-  --muted-light: #999999;
-  --text: #111111;
-  --text-light: #444444;
-  --text-on-dark: #e8e8e8;
-  --text-muted-on-dark: #888888;
-}
+/* ── Base ──────────────────────────────────────────────────────── */
 
 *,
 *::before,
@@ -39,7 +81,7 @@ html {
 
 body {
   font-family: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
-  color: var(--text);
+  color: var(--color-ink-900);
   background: #ffffff;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -55,6 +97,133 @@ img {
   height: auto;
 }
 
+/* Görünür klavye focus halkası (a11y) */
+:focus-visible {
+  outline: 2px solid var(--color-accent-600);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Component katmanı — tekrar eden kalıplar ─────────────────── */
+
+@layer components {
+  /* Eyebrow: kırmızı çizgi + uppercase etiket motifi */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: var(--text-eyebrow);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-ink-400);
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background-color: var(--color-accent-700);
+    flex-shrink: 0;
+  }
+  .eyebrow-center {
+    justify-content: center;
+  }
+  .eyebrow-center::after {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background-color: var(--color-accent-700);
+    flex-shrink: 0;
+  }
+
+  /* Butonlar — min dokunma hedefi ≥44px */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-btn);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: background-color 0.18s ease, color 0.18s ease,
+      transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .btn-primary {
+    background-color: var(--color-accent-700);
+    color: #ffffff;
+    border: 1px solid var(--color-accent-700);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-accent-800);
+    box-shadow: var(--shadow-accent);
+    transform: translateY(-1px);
+  }
+  .btn-outline {
+    background-color: transparent;
+    color: var(--color-ink-900);
+    border: 1px solid var(--color-ink-200);
+  }
+  .btn-outline:hover {
+    border-color: var(--color-ink-400);
+    background-color: var(--color-ink-50);
+  }
+  .btn-outline-dark {
+    background-color: transparent;
+    color: var(--color-ondark-muted);
+    border: 1px solid var(--color-dark-50);
+  }
+  .btn-outline-dark:hover {
+    color: #ffffff;
+    border-color: var(--color-ink-500);
+  }
+
+  /* Form inputları */
+  .input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-btn);
+    border: 1px solid var(--color-ink-200);
+    background-color: #ffffff;
+    color: var(--color-ink-900);
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .input:focus {
+    outline: none;
+    border-color: var(--color-accent-600);
+    box-shadow: 0 0 0 3px rgba(155, 28, 28, 0.12);
+  }
+  .input-dark {
+    border-color: var(--color-ink-700);
+    background-color: var(--color-dark-200);
+    color: #ffffff;
+  }
+  .input-dark::placeholder {
+    color: var(--color-ink-500);
+  }
+
+  /* Kart */
+  .card {
+    background-color: #ffffff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .card-interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-ink-300);
+  }
+}
+
 /* ── Layout Grid Classes ─────────────────────────────────────── */
 
 .hero-grid {
@@ -64,12 +233,7 @@ img {
   align-items: center;
 }
 
-.tier1-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
+.tier1-grid,
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -95,12 +259,7 @@ img {
   gap: 1rem;
 }
 
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
-
+.why-grid,
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -117,6 +276,32 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+}
+
+/* ── Keyframes ───────────────────────────────────────────────── */
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ── Scroll Reveal (Reveal komponenti ile kullanılır) ─────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* ── Mobile Responsive ───────────────────────────────────────── */
@@ -176,5 +361,24 @@ img {
 
   .mobile-menu {
     display: none !important;
+  }
+}
+
+/* ── Reduced Motion ──────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

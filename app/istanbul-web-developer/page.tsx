@@ -3,11 +3,12 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle, X, MapPin } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import IstanbulDevLeadForm from "./IstanbulDevLeadForm"
+import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
   title: "İstanbul Web Developer — Beşiktaş Merkezli Next.js Uzmanı | Solman Digital",
   description:
-    "İstanbul Beşiktaş merkezli freelance web developer. Next.js, TypeScript, Supabase. Ajans fiyatı yok, freelancer belirsizliği yok. Doğrudan geliştirici ile çalışın.",
+    "İstanbul Beşiktaş merkezli web geliştirici. Next.js, TypeScript, Supabase. Büyük ofis maliyeti yok, belirsizlik yok. Doğrudan geliştirici ile çalışın.",
   keywords: [
     "istanbul web developer",
     "istanbul freelance yazılımcı",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${siteConfig.url}/istanbul-web-developer` },
   openGraph: {
     title: "İstanbul Web Developer — Beşiktaş Merkezli Next.js Uzmanı",
-    description: "Ajans maliyeti olmadan, freelancer belirsizliği olmadan. İstanbul Beşiktaş merkezli, doğrudan geliştirici.",
+    description: "Büyük ofis maliyeti olmadan, belirsizlik olmadan. İstanbul Beşiktaş merkezli, doğrudan geliştirici.",
     url: `${siteConfig.url}/istanbul-web-developer`,
     siteName: siteConfig.name,
     locale: "tr_TR",
@@ -34,7 +35,7 @@ const jsonLd = {
     {
       "@type": "LocalBusiness",
       name: "Solman Digital",
-      description: "İstanbul Beşiktaş merkezli web developer. Next.js, TypeScript ve Supabase ile özel web sitesi ve SaaS uygulaması geliştirme.",
+      description: "İstanbul Beşiktaş merkezli web geliştirici. Next.js, TypeScript ve Supabase ile özel web sitesi ve SaaS uygulaması geliştirme.",
       url: siteConfig.url,
       telephone: "",
       email: siteConfig.email,
@@ -117,7 +118,7 @@ const techStack = [
   { name: "Next.js 16", note: "App Router, SSR, edge" },
   { name: "TypeScript", note: "Tür güvenli, bakımı kolay" },
   { name: "Supabase", note: "Auth + PostgreSQL" },
-  { name: "Tailwind / Inline", note: "Hızlı, tutarlı UI" },
+  { name: "Tailwind CSS", note: "Hızlı, tutarlı UI" },
   { name: "Vercel", note: "Deploy, CDN, domains" },
   { name: "Resend", note: "Transactional email" },
 ]
@@ -131,235 +132,199 @@ export default function IstanbulWebDeveloperPage() {
       />
 
       {/* Hero */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "6rem 1.5rem 5rem" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", marginBottom: "1.5rem" }}>
-            <MapPin size={14} color="#9b1c1c" />
-            <p style={{
-              fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em",
-              textTransform: "uppercase", color: "#9b1c1c", margin: 0,
-            }}>
-              Beşiktaş, İstanbul · Türkiye&apos;nin Her Yerine Uzaktan
+      <section className="bg-dark-500 px-6 pb-20 pt-24">
+        <div className="mx-auto max-w-[760px] text-center">
+          <Reveal>
+            <div className="mb-6 flex items-center justify-center gap-2">
+              <MapPin size={14} className="text-accent-700" />
+              <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
+                Beşiktaş, İstanbul · Türkiye&apos;nin Her Yerine Uzaktan
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <h1 className="mb-5 text-[clamp(1.75rem,5vw,2.75rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
+              İstanbul Web Developer — Doğrudan Geliştirici, Net Takvim
+            </h1>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="mx-auto mb-10 max-w-[580px] text-[1.05rem] leading-[1.75] text-ondark-muted">
+              Büyük ofis maliyeti olmadan, belirsizlik olmadan. Projenizi baştan sona tek kişi geliştiriyor — net taahhüt, sabit fiyat.
             </p>
-          </div>
-          <h1 style={{
-            fontSize: "clamp(1.75rem, 5vw, 2.75rem)",
-            fontWeight: 900, color: "#ffffff",
-            letterSpacing: "-0.03em", marginBottom: "1.25rem", lineHeight: 1.15,
-          }}>
-            İstanbul Web Developer — Doğrudan Geliştirici, Net Takvim
-          </h1>
-          <p style={{ fontSize: "1.05rem", color: "#a0a0a0", lineHeight: 1.75, marginBottom: "2.5rem", maxWidth: 580, margin: "0 auto 2.5rem" }}>
-            Ajans maliyeti olmadan, freelancer güvensizliği olmadan. Projenizi baştan sona tek kişi geliştiriyor — net taahhüt, sabit fiyat.
-          </p>
-          <a
-            href="#form"
-            style={{
-              display: "inline-flex", alignItems: "center", gap: "0.5rem",
-              backgroundColor: "#9b1c1c", color: "#ffffff",
-              padding: "0.9rem 2rem", borderRadius: 8,
-              fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
-            }}
-          >
-            İletişime Geç <ArrowRight size={16} />
-          </a>
+          </Reveal>
+          <Reveal delay={300}>
+            <a href="#form" className="btn btn-primary">
+              İletişime Geç <ArrowRight size={16} />
+            </a>
+          </Reveal>
         </div>
       </section>
 
       {/* Comparison Table */}
-      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: "#111111", marginBottom: "2.5rem", letterSpacing: "-0.02em" }}>
-            Neden Ne Ajans, Ne Freelancer?
-          </h2>
-          <div style={{ border: "1px solid #e0e0e0", borderRadius: 10, overflow: "hidden" }}>
-            <div style={{
-              display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1.25fr",
-              backgroundColor: "#0d0d0d", padding: "0.875rem 1.25rem", gap: "1rem",
-            }}>
-              {["Kriter", "Ajans", "Freelancer", "Solman Digital"].map((h, i) => (
-                <span key={h} style={{
-                  fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase",
-                  color: i === 3 ? "#9b1c1c" : "#888888",
-                }}>
-                  {h}
-                </span>
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-[900px]">
+          <Reveal>
+            <h2 className="mb-10 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+              Neden Ne Büyük Ofis, Ne de Belirsizlik?
+            </h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="overflow-hidden rounded-[10px] border border-ink-200">
+              <div className="grid grid-cols-[1.5fr_1fr_1fr_1.25fr] gap-4 bg-dark-500 px-5 py-3.5">
+                {["Kriter", "Büyük Ofis", "Belirsiz İş", "Solman Digital"].map((h, i) => (
+                  <span
+                    key={h}
+                    className={`text-[0.7rem] font-bold uppercase ${i === 3 ? "text-accent-700" : "text-ink-500"}`}
+                  >
+                    {h}
+                  </span>
+                ))}
+              </div>
+              {comparisonRows.map((row, i) => (
+                <div
+                  key={row.feature}
+                  className={`grid grid-cols-[1.5fr_1fr_1fr_1.25fr] items-start gap-4 px-5 py-4 ${
+                    i > 0 ? "border-t border-ink-200" : ""
+                  }`}
+                >
+                  <span className="text-[0.875rem] font-semibold text-ink-900">{row.feature}</span>
+                  <div className="flex items-start gap-1.5">
+                    <X size={13} className="mt-0.5 shrink-0 text-ink-400" />
+                    <span className="text-[0.8rem] text-ink-400">{row.agency}</span>
+                  </div>
+                  <div className="flex items-start gap-1.5">
+                    <X size={13} className="mt-0.5 shrink-0 text-ink-400" />
+                    <span className="text-[0.8rem] text-ink-400">{row.freelancer}</span>
+                  </div>
+                  <div className="flex items-start gap-1.5">
+                    <CheckCircle size={13} className="mt-0.5 shrink-0 text-success" />
+                    <span className="text-[0.8rem] font-semibold text-ink-700">{row.us}</span>
+                  </div>
+                </div>
               ))}
             </div>
-            {comparisonRows.map((row, i) => (
-              <div
-                key={row.feature}
-                style={{
-                  display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1.25fr",
-                  padding: "1rem 1.25rem", gap: "1rem",
-                  borderTop: i > 0 ? "1px solid #e0e0e0" : "none",
-                  alignItems: "flex-start",
-                }}
-              >
-                <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "#111111" }}>{row.feature}</span>
-                <div style={{ display: "flex", alignItems: "flex-start", gap: "0.35rem" }}>
-                  <X size={13} color="#aaaaaa" style={{ flexShrink: 0, marginTop: 2 }} />
-                  <span style={{ fontSize: "0.8rem", color: "#888888" }}>{row.agency}</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "flex-start", gap: "0.35rem" }}>
-                  <X size={13} color="#aaaaaa" style={{ flexShrink: 0, marginTop: 2 }} />
-                  <span style={{ fontSize: "0.8rem", color: "#888888" }}>{row.freelancer}</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "flex-start", gap: "0.35rem" }}>
-                  <CheckCircle size={13} color="#16a34a" style={{ flexShrink: 0, marginTop: 2 }} />
-                  <span style={{ fontSize: "0.8rem", color: "#333333", fontWeight: 600 }}>{row.us}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Tech Stack */}
-      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: "#111111", marginBottom: "2.5rem", letterSpacing: "-0.02em" }}>
-            Teknoloji Uzmanlığı
-          </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem" }}>
-            {techStack.map((t) => (
-              <div
-                key={t.name}
-                style={{
-                  backgroundColor: "#ffffff", border: "1px solid #e0e0e0",
-                  borderRadius: 8, padding: "1.25rem",
-                  display: "flex", flexDirection: "column", gap: "0.25rem",
-                }}
-              >
-                <p style={{ fontWeight: 700, color: "#111111", margin: 0, fontSize: "0.95rem" }}>{t.name}</p>
-                <p style={{ fontSize: "0.8rem", color: "#888888", margin: 0 }}>{t.note}</p>
-              </div>
+      <section className="bg-surface px-6 py-20">
+        <div className="mx-auto max-w-[900px]">
+          <Reveal>
+            <h2 className="mb-10 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+              Teknoloji Uzmanlığı
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">
+            {techStack.map((t, i) => (
+              <Reveal key={t.name} delay={i * 80}>
+                <div className="card flex flex-col gap-1">
+                  <p className="text-[0.95rem] font-bold text-ink-900">{t.name}</p>
+                  <p className="text-[0.8rem] text-ink-400">{t.note}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* How We Work */}
-      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto" }}>
-          <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: "#111111", marginBottom: "2.5rem", letterSpacing: "-0.02em" }}>
-            Nasıl Çalışıyoruz?
-          </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-[760px]">
+          <Reveal>
+            <h2 className="mb-10 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+              Nasıl Çalışıyoruz?
+            </h2>
+          </Reveal>
+          <div className="flex flex-col gap-5">
             {[
               { icon: "📍", title: "İstanbul'da Yüz Yüze", desc: "Beşiktaş'ta buluşabiliriz. Proje başlangıcında ya da teslimat aşamasında şahsen görüşmeyi tercih ediyoruz." },
               { icon: "💬", title: "WhatsApp İletişim", desc: "Hızlı güncelleme ve sorular için WhatsApp. E-posta için de dönüş yapıyoruz, ama mesajlaşma daha hızlı." },
               { icon: "🧾", title: "E-Fatura / E-Arşiv", desc: "Şirketlere e-fatura, bireysel müşterilere e-arşiv fatura. Yasal güvence her iki taraf için de önemli." },
               { icon: "📋", title: "Yazılı Sözleşme", desc: "Kapsam, fiyat ve takvim her projede sözleşmeye bağlanır. Sürpriz yok." },
-            ].map((item) => (
-              <div key={item.title} style={{ display: "flex", gap: "1.25rem", alignItems: "flex-start" }}>
-                <span style={{ fontSize: "1.25rem", flexShrink: 0 }}>{item.icon}</span>
-                <div>
-                  <p style={{ fontWeight: 700, color: "#111111", margin: "0 0 0.25rem", fontSize: "0.95rem" }}>{item.title}</p>
-                  <p style={{ color: "#666666", margin: 0, fontSize: "0.875rem", lineHeight: 1.6 }}>{item.desc}</p>
+            ].map((item, i) => (
+              <Reveal key={item.title} delay={i * 100}>
+                <div className="flex items-start gap-5">
+                  <span className="shrink-0 text-[1.25rem]">{item.icon}</span>
+                  <div>
+                    <p className="mb-1 text-[0.95rem] font-bold text-ink-900">{item.title}</p>
+                    <p className="text-[0.875rem] leading-[1.6] text-ink-500">{item.desc}</p>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Portfolio Teaser */}
-      <section style={{ padding: "3.5rem 1.5rem", backgroundColor: "#f5f5f5", textAlign: "center" }}>
-        <p style={{ color: "#666666", fontSize: "0.9rem", marginBottom: "1rem" }}>
-          İstanbul&apos;daki ve diğer projelere göz atın.
-        </p>
-        <Link
-          href="/portfoy"
-          style={{
-            display: "inline-flex", alignItems: "center", gap: "0.5rem",
-            border: "1px solid #e0e0e0", backgroundColor: "#ffffff",
-            color: "#111111", padding: "0.75rem 1.5rem", borderRadius: 8,
-            fontWeight: 600, fontSize: "0.875rem", textDecoration: "none",
-          }}
-        >
-          Portföyü Gör <ArrowRight size={15} />
-        </Link>
+      <section className="bg-surface px-6 py-14 text-center">
+        <Reveal>
+          <p className="mb-4 text-[0.9rem] text-ink-500">
+            İstanbul&apos;daki ve diğer projelere göz atın.
+          </p>
+          <Link href="/portfoy" className="btn btn-outline">
+            Portföyü Gör <ArrowRight size={15} />
+          </Link>
+        </Reveal>
       </section>
 
       {/* Form */}
-      <section id="form" style={{ padding: "5rem 1.5rem", backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: 600, margin: "0 auto" }}>
-          <p style={{
-            fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em",
-            textTransform: "uppercase", color: "#9b1c1c", marginBottom: "0.75rem",
-          }}>
-            İletişim
-          </p>
-          <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 1.875rem)", fontWeight: 800, color: "#111111", marginBottom: "0.75rem", letterSpacing: "-0.02em" }}>
-            Projeyi Anlatalım
-          </h2>
-          <p style={{ color: "#666666", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "2rem" }}>
-            Projenizi kısaca paylaşın. 24 saat içinde, tercihinize göre Zoom veya yüz yüze görüşme için size ulaşalım.
-          </p>
-          <div style={{ backgroundColor: "#f5f5f5", border: "1px solid #e0e0e0", borderRadius: 12, padding: "2.5rem" }}>
+      <section id="form" className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-[600px]">
+          <Reveal>
+            <p className="eyebrow mb-3">İletişim</p>
+            <h2 className="mb-3 text-[clamp(1.5rem,3vw,1.875rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+              Projeyi Anlatalım
+            </h2>
+            <p className="mb-8 text-[0.9rem] leading-[1.7] text-ink-500">
+              Projenizi kısaca paylaşın. 24 saat içinde, tercihinize göre Zoom veya yüz yüze görüşme için size ulaşalım.
+            </p>
+          </Reveal>
+          <div className="rounded-[12px] border border-ink-200 bg-surface p-10">
             <IstanbulDevLeadForm />
           </div>
         </div>
       </section>
 
       {/* Istanbul Local Pages */}
-      <section style={{ padding: "3.5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <p style={{
-            fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em",
-            textTransform: "uppercase", color: "#888888", marginBottom: "1.25rem",
-          }}>
-            İlçe & Hizmet Sayfaları
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.625rem" }}>
-            {[
-              { href: "/istanbul-web-tasarim", label: "İstanbul Web Tasarım" },
-              { href: "/istanbul-e-ticaret-yazilim", label: "İstanbul E-Ticaret Yazılım" },
-              { href: "/istanbul-kurumsal-web-sitesi", label: "İstanbul Kurumsal Web Sitesi" },
-              { href: "/kadikoy-web-tasarim", label: "Kadıköy Web Tasarım" },
-              { href: "/sisli-yazilim-gelistirme", label: "Şişli Yazılım Geliştirme" },
-              { href: "/istanbul-restoran-yazilim", label: "İstanbul Restoran Yazılım" },
-              { href: "/atasehir-yazilim", label: "Ataşehir Yazılım" },
-            ].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                style={{
-                  display: "inline-block",
-                  padding: "0.4rem 0.875rem",
-                  border: "1px solid #e0e0e0",
-                  borderRadius: 6,
-                  backgroundColor: "#ffffff",
-                  color: "#444444",
-                  fontSize: "0.8rem",
-                  fontWeight: 500,
-                  textDecoration: "none",
-                }}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+      <section className="bg-surface px-6 py-14">
+        <div className="mx-auto max-w-[900px]">
+          <Reveal>
+            <p className="eyebrow mb-5">İlçe & Hizmet Sayfaları</p>
+            <div className="flex flex-wrap gap-2.5">
+              {[
+                { href: "/istanbul-web-tasarim", label: "İstanbul Web Tasarım" },
+                { href: "/istanbul-e-ticaret-yazilim", label: "İstanbul E-Ticaret Yazılım" },
+                { href: "/istanbul-kurumsal-web-sitesi", label: "İstanbul Kurumsal Web Sitesi" },
+                { href: "/kadikoy-web-tasarim", label: "Kadıköy Web Tasarım" },
+                { href: "/sisli-yazilim-gelistirme", label: "Şişli Yazılım Geliştirme" },
+                { href: "/istanbul-restoran-yazilim", label: "İstanbul Restoran Yazılım" },
+                { href: "/atasehir-yazilim", label: "Ataşehir Yazılım" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-[6px] border border-ink-200 bg-white px-3.5 py-1.5 text-[0.8rem] font-medium text-ink-600 transition-colors hover:border-ink-400 hover:text-ink-900"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Services CTA */}
-      <section style={{ padding: "3rem 1.5rem", backgroundColor: "#0d0d0d", textAlign: "center" }}>
-        <p style={{ color: "#a0a0a0", fontSize: "0.9rem", marginBottom: "1rem" }}>
-          Sunduğumuz hizmetlerin tamamına göz atmak ister misiniz?
-        </p>
-        <Link
-          href="/hizmetler"
-          style={{
-            display: "inline-flex", alignItems: "center", gap: "0.5rem",
-            border: "1px solid #444", color: "#ffffff",
-            padding: "0.75rem 1.5rem", borderRadius: 8,
-            fontWeight: 600, fontSize: "0.875rem", textDecoration: "none",
-          }}
-        >
-          Tüm Hizmetler <ArrowRight size={15} />
-        </Link>
+      <section className="bg-dark-500 px-6 py-12 text-center">
+        <div className="mx-auto max-w-[560px]">
+          <p className="mb-4 text-[0.9rem] text-ondark-muted">
+            Sunduğumuz hizmetlerin tamamına göz atmak ister misiniz?
+          </p>
+          <Link href="/hizmetler" className="btn btn-outline-dark">
+            Tüm Hizmetler <ArrowRight size={15} />
+          </Link>
+        </div>
       </section>
     </>
   )

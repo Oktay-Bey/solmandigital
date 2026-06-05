@@ -1,4 +1,5 @@
 import { Star } from "lucide-react"
+import Reveal from "@/components/Reveal"
 
 const testimonials = [
   {
@@ -12,14 +13,14 @@ const testimonials = [
     name: "Selin Öztürk",
     role: "Genel Müdür",
     company: "Kurumsal Hizmetler",
-    text: "Birkaç ajansla görüştük ama doğrudan geliştiriciyle çalışmanın farkı ortaya çıktı. Brief'i anında kavradı, hiç gidip gelmeden 10 günde siteyi canlıya aldık.",
+    text: "Birkaç firmayla görüştük ama doğrudan uzmanla çalışmanın farkı ortaya çıktı. Brief'i anında kavradı, hiç gidip gelmeden 10 günde siteyi canlıya aldık.",
     stars: 5,
   },
   {
     name: "Murat Çelik",
     role: "CTO",
     company: "SaaS Startup",
-    text: "MVP'mizi 6 haftada bitirdi. Kod kalitesi yüksek, supabase mimarisi temiz. Yatırımcı sunumuna hazır bir ürünle çıktık.",
+    text: "MVP'mizi 6 haftada bitirdiler. Kod kalitesi yüksek, supabase mimarisi temiz. Yatırımcı sunumuna hazır bir ürünle çıktık.",
     stars: 5,
   },
   {
@@ -33,7 +34,7 @@ const testimonials = [
     name: "Berk Yıldız",
     role: "Genel Müdür",
     company: "İstanbul Restoran Grubu",
-    text: "QR menü sistemini iki şubeye birden kurdu. Artık menü güncellemesini telefonumdan dakikalar içinde yapıyorum, baskı maliyetimiz sıfırlandı.",
+    text: "QR menü sistemini iki şubeye birden kurdular. Artık menü güncellemesini telefonumdan dakikalar içinde yapıyorum, baskı maliyetimiz sıfırlandı.",
     stars: 5,
   },
   {
@@ -47,113 +48,44 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section style={{ padding: "5rem 1.5rem", backgroundColor: "#0d0d0d", borderTop: "1px solid #1a1a1a" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ marginBottom: "3rem" }}>
-          <p
-            style={{
-              fontSize: "0.7rem",
-              fontWeight: 700,
-              color: "#555555",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              marginBottom: "0.875rem",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-            }}
-          >
-            <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-            Müşteri Görüşleri
-          </p>
-          <h2
-            style={{
-              fontSize: "clamp(1.6rem, 3vw, 2.25rem)",
-              fontWeight: 800,
-              color: "#ffffff",
-              letterSpacing: "-0.025em",
-              lineHeight: 1.15,
-              maxWidth: 560,
-            }}
-          >
+    <section className="border-t border-dark-200 bg-dark-500 px-6 py-20">
+      <div className="mx-auto max-w-[1200px]">
+        <div className="mb-12">
+          <p className="eyebrow mb-3.5 !text-ink-500">Müşteri Görüşleri</p>
+          <h2 className="max-w-[560px] text-h2 font-extrabold leading-tight tracking-tight text-white">
             Birlikte çalıştığımız
             <br />
-            <span style={{ color: "#9b1c1c" }}>ne dediler?</span>
+            <span className="text-accent-700">ne dediler?</span>
           </h2>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "1.25rem",
-          }}
-        >
-          {testimonials.map((t) => (
-            <div
-              key={t.name}
-              style={{
-                backgroundColor: "#161616",
-                border: "1px solid #2a2a2a",
-                borderRadius: 10,
-                padding: "1.75rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-              }}
-            >
-              <div style={{ display: "flex", gap: "0.25rem" }}>
-                {Array.from({ length: t.stars }).map((_, i) => (
-                  <Star key={i} size={14} color="#f59e0b" fill="#f59e0b" />
-                ))}
-              </div>
-
-              <p
-                style={{
-                  color: "#aaaaaa",
-                  fontSize: "0.875rem",
-                  lineHeight: 1.7,
-                  flex: 1,
-                  fontStyle: "italic",
-                }}
-              >
-                &ldquo;{t.text}&rdquo;
-              </p>
-
-              <div
-                style={{
-                  paddingTop: "1rem",
-                  borderTop: "1px solid #222222",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.75rem",
-                }}
-              >
-                <div
-                  style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: "50%",
-                    backgroundColor: "#9b1c1c",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#fff",
-                    fontWeight: 800,
-                    fontSize: "0.875rem",
-                    flexShrink: 0,
-                  }}
-                >
-                  {t.name[0]}
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
+          {testimonials.map((t, i) => (
+            <Reveal key={t.name} delay={(i % 3) * 80}>
+              <div className="flex h-full flex-col gap-4 rounded-[10px] border border-dark-50 bg-dark-300 p-7 transition-colors hover:border-ink-600">
+                <div className="flex gap-1">
+                  {Array.from({ length: t.stars }).map((_, j) => (
+                    <Star key={j} size={14} color="#f59e0b" fill="#f59e0b" />
+                  ))}
                 </div>
-                <div>
-                  <p style={{ color: "#ffffff", fontSize: "0.825rem", fontWeight: 700 }}>{t.name}</p>
-                  <p style={{ color: "#555555", fontSize: "0.75rem" }}>
-                    {t.role} · {t.company}
-                  </p>
+
+                <p className="flex-1 text-[0.875rem] italic leading-relaxed text-ondark-muted">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+
+                <div className="flex items-center gap-3 border-t border-dark-50 pt-4">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-700 text-[0.875rem] font-extrabold text-white">
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <p className="text-[0.825rem] font-bold text-white">{t.name}</p>
+                    <p className="text-[0.75rem] text-ink-500">
+                      {t.role} · {t.company}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

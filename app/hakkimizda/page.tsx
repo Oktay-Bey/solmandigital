@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowRight, Code2, Zap, Target, Heart } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
+import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
   title: "Hakkımızda — Solman Digital",
@@ -69,329 +70,161 @@ export default function HakkimizdaPage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "4.5rem 1.5rem" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }} className="hero-grid">
-          <div>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#9b1c1c",
-                textTransform: "uppercase",
-                letterSpacing: "0.14em",
-                marginBottom: "1.25rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
+      <section className="bg-dark-500 px-6 py-18">
+        <div className="hero-grid mx-auto max-w-[1200px]">
+          <Reveal delay={0}>
+            <p className="eyebrow mb-5 !text-accent-700">
               Kişiye &amp; Firmaya Özel Yazılım Stüdyosu
             </p>
-            <h1
-              style={{
-                fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
-                fontWeight: 800,
-                color: "#ffffff",
-                lineHeight: 1.15,
-                marginBottom: "1.25rem",
-                letterSpacing: "-0.03em",
-              }}
-            >
+            <h1 className="mb-5 text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-tight text-white">
               Sizi Dinleyerek
               <br />
               Başlıyoruz.
               <br />
-              <span style={{ color: "#9b1c1c" }}>Sizin İçin İnşa Ediyoruz.</span>
+              <span className="text-accent-700">Sizin İçin İnşa Ediyoruz.</span>
             </h1>
-            <p style={{ color: "#666666", fontSize: "0.95rem", lineHeight: 1.75, maxWidth: 520 }}>
+            <p className="max-w-[520px] text-[0.95rem] leading-[1.75] text-ink-500">
               Her işletmenin sektörü, kullanıcısı ve operasyonel gerçekliği farklı. Solman Digital olarak
               önce sizi anlıyor, sonra tam ihtiyacınıza göre yazılım inşa ediyoruz — net kapsam,
               söz verilen takvim, başından sonuna aynı uzmanla.
             </p>
-          </div>
+          </Reveal>
 
-          <div
-            style={{
-              backgroundColor: "#161616",
-              border: "1px solid #2a2a2a",
-              borderRadius: 10,
-              overflow: "hidden",
-            }}
-          >
-            {[
-              { label: "Tamamlanan Proje", value: "15+" },
-              { label: "Hizmet Alanı", value: "22" },
-              { label: "Teknoloji", value: "15+" },
-              { label: "Konum", value: "BEŞİKTAŞ" },
-            ].map((stat, i) => (
-              <div
-                key={stat.label}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  padding: "1.125rem 1.5rem",
-                  borderBottom: i < 3 ? "1px solid #1e1e1e" : "none",
-                }}
-              >
-                <span style={{ color: "#555555", fontSize: "0.85rem" }}>{stat.label}</span>
-                <span
-                  style={{
-                    color: "#ffffff",
-                    fontWeight: 800,
-                    fontSize: "1.25rem",
-                    letterSpacing: "-0.02em",
-                  }}
+          <Reveal delay={100}>
+            <div className="overflow-hidden rounded-[10px] border border-dark-50 bg-dark-300">
+              {[
+                { label: "Tamamlanan Proje", value: "15+" },
+                { label: "Hizmet Alanı", value: "22" },
+                { label: "Teknoloji", value: "15+" },
+                { label: "Konum", value: "BEŞİKTAŞ" },
+              ].map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className={`flex items-center justify-between px-6 py-4.5 ${
+                    i < 3 ? "border-b border-dark-100" : ""
+                  }`}
                 >
-                  <span style={{ color: "#9b1c1c" }}>{stat.value}</span>
-                </span>
-              </div>
-            ))}
-          </div>
+                  <span className="text-[0.85rem] text-ondark-faint">{stat.label}</span>
+                  <span className="text-xl font-extrabold tracking-tight text-accent-700">
+                    {stat.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Hikayemiz */}
-      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto" }}>
-          <p
-            style={{
-              fontSize: "0.7rem",
-              fontWeight: 700,
-              color: "#888888",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              marginBottom: "1rem",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-            }}
-          >
-            <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-            Deneyim
-          </p>
-          <h2
-            style={{
-              fontSize: "clamp(1.5rem, 3vw, 2rem)",
-              fontWeight: 800,
-              color: "#111111",
-              marginBottom: "2rem",
-              letterSpacing: "-0.025em",
-            }}
-          >
-            Uzmanlık Alanımız
-          </h2>
-          <div
-            style={{
-              color: "#555555",
-              fontSize: "0.95rem",
-              lineHeight: 1.85,
-              display: "flex",
-              flexDirection: "column",
-              gap: "1.25rem",
-            }}
-          >
-            <p>
-              15&apos;ten fazla proje — Trendyol satıcı paneli, WordPress AI içerik motoru, QR menü SaaS,
-              AI haber platformu — her biri farklı bir müşterinin farklı ihtiyacından doğdu.
-              Her seferinde önce o işletmeyi anladık, sonra çözümü inşa ettik.
-            </p>
-            <p>
-              Solman Digital olarak ihtiyacı dinleyen, teknik tasarımı yapan ve kodu yazan aynı uzmandır.
-              Aracı yok, katman yok — projeniz başından teslime kadar tek odak noktasıdır.
-            </p>
-            <p>
-              İyzico entegrasyonunda Türk kullanıcı alışkanlıkları, Trendyol API&apos;sinde satıcının
-              operasyonel gerçekliği sahada kazanıldı. Bu bağlam doğrudan çözüme dönüşür —
-              işinize özel kararlar, genel reçeteler değil.
-            </p>
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-[760px]">
+          <Reveal delay={0}>
+            <p className="eyebrow mb-4">Deneyim</p>
+            <h2 className="mb-8 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-ink-900">
+              Uzmanlık Alanımız
+            </h2>
+          </Reveal>
+          <div className="flex flex-col gap-5 text-[0.95rem] leading-loose text-ink-600">
+            <Reveal delay={0}>
+              <p>
+                15&apos;ten fazla proje — Trendyol satıcı paneli, WordPress AI içerik motoru, QR menü SaaS,
+                AI haber platformu — her biri farklı bir müşterinin farklı ihtiyacından doğdu.
+                Her seferinde önce o işletmeyi anladık, sonra çözümü inşa ettik.
+              </p>
+            </Reveal>
+            <Reveal delay={100}>
+              <p>
+                Solman Digital olarak ihtiyacı dinleyen, teknik tasarımı yapan ve kodu yazan aynı uzmandır.
+                Aracı yok, katman yok — projeniz başından teslime kadar tek odak noktasıdır.
+              </p>
+            </Reveal>
+            <Reveal delay={200}>
+              <p>
+                İyzico entegrasyonunda Türk kullanıcı alışkanlıkları, Trendyol API&apos;sinde satıcının
+                operasyonel gerçekliği sahada kazanıldı. Bu bağlam doğrudan çözüme dönüşür —
+                işinize özel kararlar, genel reçeteler değil.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* Değerlerimiz */}
-      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ marginBottom: "3rem" }}>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.875rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-              İlkelerimiz
-            </p>
-            <h2
-              style={{
-                fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                fontWeight: 800,
-                color: "#111111",
-                letterSpacing: "-0.025em",
-              }}
-            >
-              Değerlerimiz
-            </h2>
-          </div>
+      <section className="bg-surface px-6 py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <Reveal delay={0}>
+            <div className="mb-12">
+              <p className="eyebrow mb-3.5">İlkelerimiz</p>
+              <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-ink-900">
+                Değerlerimiz
+              </h2>
+            </div>
+          </Reveal>
           <div className="why-grid">
-            {values.map((v) => (
-              <div
-                key={v.title}
-                style={{
-                  backgroundColor: "#ffffff",
-                  border: "1px solid #e0e0e0",
-                  borderRadius: 10,
-                  padding: "1.75rem",
-                }}
-              >
-                <div
-                  style={{
-                    width: 36,
-                    height: 36,
-                    backgroundColor: "#f0f0f0",
-                    borderRadius: 7,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: "1.25rem",
-                  }}
-                >
-                  <v.icon size={18} color="#333333" />
+            {values.map((v, i) => (
+              <Reveal key={v.title} delay={i * 100}>
+                <div className="card rounded-[10px] p-7">
+                  <div className="mb-5 flex h-9 w-9 items-center justify-center rounded-[7px] bg-ink-100">
+                    <v.icon size={18} className="text-ink-700" />
+                  </div>
+                  <h3 className="mb-2 text-[0.95rem] font-bold tracking-tight text-ink-900">
+                    {v.title}
+                  </h3>
+                  <p className="text-[0.85rem] leading-[1.65] text-ink-500">{v.desc}</p>
                 </div>
-                <h3
-                  style={{
-                    fontSize: "0.95rem",
-                    fontWeight: 700,
-                    color: "#111111",
-                    marginBottom: "0.5rem",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {v.title}
-                </h3>
-                <p style={{ color: "#6b6b6b", fontSize: "0.85rem", lineHeight: 1.65 }}>{v.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Nasıl Çalışırız */}
-      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ marginBottom: "3.5rem" }}>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.875rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-              Metodoloji
-            </p>
-            <h2
-              style={{
-                fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                fontWeight: 800,
-                color: "#111111",
-                letterSpacing: "-0.025em",
-              }}
-            >
-              Çalışma Sürecimiz
-            </h2>
-            <p style={{ color: "#6b6b6b", marginTop: "0.75rem", fontSize: "0.875rem" }}>
-              Sizi anlayarak başlıyor, teslim sonrasında da yanınızda kalıyoruz.
-            </p>
-          </div>
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <Reveal delay={0}>
+            <div className="mb-14">
+              <p className="eyebrow mb-3.5">Metodoloji</p>
+              <h2 className="mb-3 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-ink-900">
+                Çalışma Sürecimiz
+              </h2>
+              <p className="text-[0.875rem] text-ink-500">
+                Sizi anlayarak başlıyor, teslim sonrasında da yanınızda kalıyoruz.
+              </p>
+            </div>
+          </Reveal>
           <div className="steps-grid">
-            {steps.map((step) => (
-              <div key={step.num}>
-                <div
-                  style={{
-                    fontSize: "3rem",
-                    fontWeight: 800,
-                    color: "#f0f0f0",
-                    lineHeight: 1,
-                    marginBottom: "1rem",
-                    letterSpacing: "-0.04em",
-                  }}
-                >
-                  {step.num}
+            {steps.map((step, i) => (
+              <Reveal key={step.num} delay={i * 100}>
+                <div>
+                  <div className="mb-4 text-[3rem] font-extrabold leading-none tracking-[-0.04em] text-ink-100">
+                    {step.num}
+                  </div>
+                  <div className="mb-3.5 h-0.5 w-5 bg-accent-700" />
+                  <h3 className="mb-2 text-[0.95rem] font-bold tracking-tight text-ink-900">
+                    {step.title}
+                  </h3>
+                  <p className="text-[0.85rem] leading-[1.65] text-ink-500">{step.desc}</p>
                 </div>
-                <div
-                  style={{
-                    width: 20,
-                    height: 2,
-                    backgroundColor: "#9b1c1c",
-                    marginBottom: "0.875rem",
-                  }}
-                />
-                <h3
-                  style={{
-                    fontSize: "0.95rem",
-                    fontWeight: 700,
-                    color: "#111111",
-                    marginBottom: "0.5rem",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {step.title}
-                </h3>
-                <p style={{ color: "#6b6b6b", fontSize: "0.85rem", lineHeight: 1.65 }}>{step.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "5rem 1.5rem", textAlign: "center" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto" }}>
-          <h2
-            style={{
-              fontSize: "clamp(1.5rem, 3vw, 2rem)",
-              fontWeight: 800,
-              color: "#ffffff",
-              marginBottom: "1rem",
-              letterSpacing: "-0.025em",
-            }}
-          >
-            Birlikte çalışalım
-          </h2>
-          <p style={{ color: "#555555", marginBottom: "2rem", fontSize: "0.9rem", lineHeight: 1.7 }}>
-            Projenizi anlatın, en uygun çözümü birlikte planlayalım.
-          </p>
-          <Link
-            href="/iletisim"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              backgroundColor: "#9b1c1c",
-              color: "#fff",
-              padding: "0.875rem 2rem",
-              borderRadius: 7,
-              fontWeight: 700,
-              fontSize: "0.9rem",
-            }}
-          >
-            İletişime Geç <ArrowRight size={16} />
-          </Link>
+      <section className="bg-dark-500 px-6 py-20 text-center">
+        <div className="mx-auto max-w-[640px]">
+          <Reveal delay={0}>
+            <h2 className="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-white">
+              Birlikte çalışalım
+            </h2>
+            <p className="mb-8 text-[0.9rem] leading-[1.7] text-ondark-faint">
+              Projenizi anlatın, en uygun çözümü birlikte planlayalım.
+            </p>
+            <Link href="/iletisim" className="btn btn-primary !px-8">
+              İletişime Geç <ArrowRight size={16} />
+            </Link>
+          </Reveal>
         </div>
       </section>
     </>

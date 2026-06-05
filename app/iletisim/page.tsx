@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowRight, MessageCircle, Mail, Clock, CheckCircle2, Shield } from "lucide-react"
 import ContactForm from "@/components/ContactForm"
 import { siteConfig } from "@/lib/site-config"
+import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
   title: "İletişim — Projenizi Birlikte Planlayalım",
@@ -41,424 +42,225 @@ export default function IletisimPage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "5rem 1.5rem 4rem" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <section className="bg-dark-500 px-6 pb-16 pt-20">
+        <div className="mx-auto max-w-[1200px]">
           {/* Üst rozet */}
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "1.5rem",
-              marginBottom: "2rem",
-              flexWrap: "wrap",
-            }}
-          >
-            {[
-              { label: "İlk Görüşme Ücretsiz" },
-              { label: "24s İçinde Dönüş" },
-              { label: "Taahhütsüz" },
-            ].map((badge) => (
-              <div
-                key={badge.label}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  backgroundColor: "#161616",
-                  border: "1px solid #2a2a2a",
-                  borderRadius: 20,
-                  padding: "0.35rem 0.875rem",
-                }}
-              >
-                <span style={{ width: 6, height: 6, borderRadius: "50%", backgroundColor: "#16a34a" }} />
-                <span style={{ color: "#aaaaaa", fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.04em" }}>
-                  {badge.label}
-                </span>
-              </div>
-            ))}
-          </div>
+          <Reveal>
+            <div className="mb-8 inline-flex flex-wrap items-center gap-6">
+              {[
+                { label: "İlk Görüşme Ücretsiz" },
+                { label: "24s İçinde Dönüş" },
+                { label: "Taahhütsüz" },
+              ].map((badge) => (
+                <div
+                  key={badge.label}
+                  className="flex items-center gap-1.5 rounded-full border border-dark-50 bg-dark-300 px-3.5 py-1.5"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-success" />
+                  <span className="text-[0.72rem] font-semibold tracking-wide text-ink-400">
+                    {badge.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
 
-          <h1
-            style={{
-              fontSize: "clamp(2rem, 5vw, 3.25rem)",
-              fontWeight: 800,
-              color: "#ffffff",
-              lineHeight: 1.1,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.03em",
-              maxWidth: 700,
-            }}
-          >
-            Projenizi birlikte
-            <br />
-            <span style={{ color: "#9b1c1c" }}>planlayalım.</span>
-          </h1>
+          <Reveal delay={100}>
+            <h1 className="mb-5 max-w-[700px] text-[clamp(2rem,5vw,3.25rem)] font-extrabold leading-[1.1] tracking-tight text-white">
+              Projenizi birlikte
+              <br />
+              <span className="text-accent-700">planlayalım.</span>
+            </h1>
+          </Reveal>
 
-          <p
-            style={{
-              color: "#777777",
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              maxWidth: 560,
-              marginBottom: "0",
-            }}
-          >
-            Bu bir satış görüşmesi değil. Projenizi dinleyeceğiz, teknik açıdan değerlendireceğiz
-            ve size dürüst bir görüş sunacağız — ister devam edin, ister etmeyin.
-          </p>
+          <Reveal delay={200}>
+            <p className="max-w-[560px] text-base leading-loose text-ondark-muted">
+              Bu bir satış görüşmesi değil. Projenizi dinleyeceğiz, teknik açıdan değerlendireceğiz
+              ve size dürüst bir görüş sunacağız — ister devam edin, ister etmeyin.
+            </p>
+          </Reveal>
         </div>
       </section>
 
       {/* Ana İçerik */}
-      <section style={{ padding: "3.5rem 1.5rem 5rem", backgroundColor: "#f5f5f5" }}>
-        <div
-          style={{
-            maxWidth: 1040,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1fr 340px",
-            gap: "2rem",
-            alignItems: "start",
-          }}
-          className="two-col-grid"
-        >
+      <section className="bg-surface px-6 pb-20 pt-14">
+        <div className="two-col-grid mx-auto max-w-[1040px] items-start md:!grid-cols-[1fr_340px]">
           {/* Sol: Form */}
-          <div>
-            <div
-              style={{
-                backgroundColor: "#ffffff",
-                border: "1px solid #e0e0e0",
-                borderRadius: 12,
-                padding: "2.5rem",
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: "1.2rem",
-                  fontWeight: 800,
-                  color: "#111111",
-                  marginBottom: "0.375rem",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Projenizi Anlatın
-              </h2>
-              <p style={{ color: "#999999", fontSize: "0.825rem", marginBottom: "2rem", lineHeight: 1.6 }}>
-                Teknik bilgi gerekmez. &quot;Şunu yapmak istiyorum&quot; yeterli — geri kalanını biz soracağız.
-              </p>
-              <ContactForm />
-            </div>
+          <Reveal>
+            <div>
+              <div className="rounded-xl border border-ink-200 bg-white p-10">
+                <h2 className="mb-1.5 text-[1.2rem] font-extrabold tracking-tight text-ink-900">
+                  Projenizi Anlatın
+                </h2>
+                <p className="mb-8 text-[0.825rem] leading-relaxed text-ink-400">
+                  Teknik bilgi gerekmez. &quot;Şunu yapmak istiyorum&quot; yeterli — geri kalanını biz soracağız.
+                </p>
+                <ContactForm />
+              </div>
 
-            {/* Güvence çizgisi */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                marginTop: "1rem",
-                padding: "0 0.25rem",
-              }}
-            >
-              <Shield size={13} color="#aaaaaa" />
-              <span style={{ color: "#aaaaaa", fontSize: "0.72rem" }}>
-                Bilgileriniz üçüncü taraflarla paylaşılmaz. Spam göndermiyoruz.
-              </span>
+              {/* Güvence çizgisi */}
+              <div className="mt-4 flex items-center gap-2 px-1">
+                <Shield size={13} className="text-ink-400" />
+                <span className="text-[0.72rem] text-ink-400">
+                  Bilgileriniz üçüncü taraflarla paylaşılmaz. Spam göndermiyoruz.
+                </span>
+              </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Sağ: Sidebar */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <div className="flex flex-col gap-4">
             {/* WhatsApp — En Öncelikli */}
-            <a
-              href={`https://wa.me/${siteConfig.whatsapp.replace("+", "")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "block",
-                backgroundColor: "#0d1f13",
-                border: "1px solid #166534",
-                borderRadius: 10,
-                padding: "1.5rem",
-                textDecoration: "none",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
-                <div
-                  style={{
-                    width: 38,
-                    height: 38,
-                    backgroundColor: "#166534",
-                    borderRadius: 8,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}
-                >
-                  <MessageCircle size={18} color="#4ade80" />
+            <Reveal delay={100}>
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp.replace("+", "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-[10px] border border-[#166534] bg-[#0d1f13] p-6"
+              >
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg bg-[#166534]">
+                    <MessageCircle size={18} className="text-[#4ade80]" />
+                  </div>
+                  <div>
+                    <p className="text-[0.75rem] font-bold uppercase tracking-wider text-[#4ade80]">
+                      En Hızlı Yol
+                    </p>
+                    <p className="text-[0.9rem] font-bold text-white">WhatsApp ile Yazın</p>
+                  </div>
                 </div>
-                <div>
-                  <p style={{ color: "#4ade80", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                    En Hızlı Yol
-                  </p>
-                  <p style={{ color: "#ffffff", fontSize: "0.9rem", fontWeight: 700 }}>WhatsApp ile Yazın</p>
+                <p className="mb-3.5 text-[0.8rem] leading-snug text-[#86efac]">
+                  Birkaç mesajla projenizi paylaşın — hemen değerlendiriyoruz.
+                </p>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[0.85rem] font-bold text-[#4ade80]">{siteConfig.whatsappDisplay}</span>
+                  <ArrowRight size={14} className="text-[#4ade80]" />
                 </div>
-              </div>
-              <p style={{ color: "#86efac", fontSize: "0.8rem", marginBottom: "0.875rem", lineHeight: 1.5 }}>
-                Birkaç mesajla projenizi paylaşın — hemen değerlendiriyoruz.
-              </p>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-                <span style={{ color: "#4ade80", fontSize: "0.85rem", fontWeight: 700 }}>{siteConfig.whatsappDisplay}</span>
-                <ArrowRight size={14} color="#4ade80" />
-              </div>
-            </a>
+              </a>
+            </Reveal>
 
             {/* Sonraki Adımlar */}
-            <div
-              style={{
-                backgroundColor: "#ffffff",
-                border: "1px solid #e0e0e0",
-                borderRadius: 10,
-                padding: "1.5rem",
-              }}
-            >
-              <p
-                style={{
-                  fontSize: "0.7rem",
-                  fontWeight: 700,
-                  color: "#888888",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  marginBottom: "1.25rem",
-                }}
-              >
-                Sonra Ne Olur?
-              </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                {nextSteps.map((step) => (
-                  <div key={step.num} style={{ display: "flex", gap: "0.875rem" }}>
-                    <span
-                      style={{
-                        fontSize: "0.65rem",
-                        fontWeight: 800,
-                        color: "#9b1c1c",
-                        minWidth: 20,
-                        paddingTop: "0.1rem",
-                        letterSpacing: "0.04em",
-                      }}
-                    >
-                      {step.num}
-                    </span>
-                    <div>
-                      <p style={{ fontSize: "0.82rem", fontWeight: 700, color: "#111111", marginBottom: "0.2rem" }}>
-                        {step.title}
-                      </p>
-                      <p style={{ fontSize: "0.775rem", color: "#888888", lineHeight: 1.5 }}>{step.desc}</p>
+            <Reveal delay={150}>
+              <div className="rounded-[10px] border border-ink-200 bg-white p-6">
+                <p className="mb-5 text-[0.7rem] font-bold uppercase tracking-wider text-ink-400">
+                  Sonra Ne Olur?
+                </p>
+                <div className="flex flex-col gap-4">
+                  {nextSteps.map((step) => (
+                    <div key={step.num} className="flex gap-3.5">
+                      <span className="min-w-5 pt-0.5 text-[0.65rem] font-extrabold tracking-wide text-accent-700">
+                        {step.num}
+                      </span>
+                      <div>
+                        <p className="mb-0.5 text-[0.82rem] font-bold text-ink-900">
+                          {step.title}
+                        </p>
+                        <p className="text-[0.775rem] leading-snug text-ink-400">{step.desc}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            </Reveal>
 
             {/* Yanıt Garantisi */}
-            <div
-              style={{
-                backgroundColor: "#ffffff",
-                border: "1px solid #e0e0e0",
-                borderRadius: 10,
-                padding: "1.25rem 1.5rem",
-                display: "flex",
-                gap: "0.875rem",
-                alignItems: "flex-start",
-              }}
-            >
-              <div
-                style={{
-                  width: 34,
-                  height: 34,
-                  backgroundColor: "#f0f0f0",
-                  borderRadius: 7,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <Clock size={16} color="#333333" />
+            <Reveal delay={200}>
+              <div className="flex items-start gap-3.5 rounded-[10px] border border-ink-200 bg-white px-6 py-5">
+                <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[7px] bg-ink-100">
+                  <Clock size={16} className="text-ink-700" />
+                </div>
+                <div>
+                  <p className="mb-0.5 text-[0.82rem] font-bold text-ink-900">
+                    24 Saat İçinde Dönüş
+                  </p>
+                  <p className="text-[0.775rem] leading-snug text-ink-400">
+                    İş günlerinde mesajınıza en geç 24 saat içinde yanıt veriyoruz.
+                  </p>
+                </div>
               </div>
-              <div>
-                <p style={{ fontSize: "0.82rem", fontWeight: 700, color: "#111111", marginBottom: "0.2rem" }}>
-                  24 Saat İçinde Dönüş
-                </p>
-                <p style={{ fontSize: "0.775rem", color: "#888888", lineHeight: 1.5 }}>
-                  İş günlerinde mesajınıza en geç 24 saat içinde yanıt veriyoruz.
-                </p>
-              </div>
-            </div>
+            </Reveal>
 
             {/* E-posta */}
-            <div
-              style={{
-                backgroundColor: "#ffffff",
-                border: "1px solid #e0e0e0",
-                borderRadius: 10,
-                padding: "1.25rem 1.5rem",
-                display: "flex",
-                gap: "0.875rem",
-                alignItems: "flex-start",
-              }}
-            >
-              <div
-                style={{
-                  width: 34,
-                  height: 34,
-                  backgroundColor: "#f0f0f0",
-                  borderRadius: 7,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <Mail size={16} color="#333333" />
+            <Reveal delay={250}>
+              <div className="flex items-start gap-3.5 rounded-[10px] border border-ink-200 bg-white px-6 py-5">
+                <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[7px] bg-ink-100">
+                  <Mail size={16} className="text-ink-700" />
+                </div>
+                <div>
+                  <p className="mb-0.5 text-[0.82rem] font-bold text-ink-900">
+                    E-posta ile de yazabilirsiniz
+                  </p>
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="text-[0.8rem] font-semibold text-accent-700"
+                  >
+                    {siteConfig.email}
+                  </a>
+                </div>
               </div>
-              <div>
-                <p style={{ fontSize: "0.82rem", fontWeight: 700, color: "#111111", marginBottom: "0.2rem" }}>
-                  E-posta ile de yazabilirsiniz
-                </p>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  style={{ color: "#9b1c1c", fontSize: "0.8rem", fontWeight: 600 }}
-                >
-                  {siteConfig.email}
-                </a>
-              </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* Güven Bloku */}
-      <section style={{ backgroundColor: "#ffffff", borderTop: "1px solid #ebebeb", padding: "3.5rem 1.5rem" }}>
-        <div style={{ maxWidth: 1040, margin: "0 auto" }}>
-          <p
-            style={{
-              fontSize: "0.7rem",
-              fontWeight: 700,
-              color: "#888888",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              marginBottom: "2rem",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-            }}
-          >
-            <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-            Neden Şimdi Yazmalısınız?
-          </p>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: "1.5rem",
-            }}
-          >
+      <section className="border-t border-ink-100 bg-white px-6 py-14">
+        <div className="mx-auto max-w-[1040px]">
+          <Reveal>
+            <p className="eyebrow mb-8">Neden Şimdi Yazmalısınız?</p>
+          </Reveal>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
             {[
               {
-                icon: CheckCircle2,
                 title: "Fikir aşamasında olmanız yeterli",
                 desc: "Detaylı teknik bilgi veya hazır kapsam belgesi gerekmez. Neye ihtiyaç duyduğunuzu birlikte netleştiriyoruz.",
               },
               {
-                icon: CheckCircle2,
                 title: "Projenizi yapacak kişiyle konuşuyorsunuz",
                 desc: "Satış temsilcisi değil — sizi dinleyen ve projenizi inşa edecek uzmanla doğrudan iletişim.",
               },
               {
-                icon: CheckCircle2,
                 title: "Değerlendirme tamamen ücretsiz",
                 desc: "İlk görüşme ve teknik fizibilite değerlendirmesi için hiçbir ücret alınmaz, taahhüt beklenmez.",
               },
               {
-                icon: CheckCircle2,
                 title: "Karar vermek zorunda değilsiniz",
                 desc: "Teklifi aldıktan sonra düşünmek, beklemek ya da vazgeçmek tamamen serbestsiniz.",
               },
-            ].map((item) => (
-              <div key={item.title} style={{ display: "flex", gap: "0.875rem" }}>
-                <item.icon size={18} color="#16a34a" style={{ flexShrink: 0, marginTop: "0.1rem" }} />
-                <div>
-                  <p style={{ fontSize: "0.875rem", fontWeight: 700, color: "#111111", marginBottom: "0.3rem" }}>
-                    {item.title}
-                  </p>
-                  <p style={{ fontSize: "0.8rem", color: "#777777", lineHeight: 1.6 }}>{item.desc}</p>
+            ].map((item, i) => (
+              <Reveal key={item.title} delay={i * 100}>
+                <div className="flex gap-3.5">
+                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-success" />
+                  <div>
+                    <p className="mb-1 text-[0.875rem] font-bold text-ink-900">
+                      {item.title}
+                    </p>
+                    <p className="text-[0.8rem] leading-relaxed text-ink-500">{item.desc}</p>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Alt CTA */}
-      <section
-        style={{
-          backgroundColor: "#0d0d0d",
-          padding: "4rem 1.5rem",
-          textAlign: "center",
-          borderTop: "1px solid #1a1a1a",
-        }}
-      >
-        <div style={{ maxWidth: 560, margin: "0 auto" }}>
-          <p style={{ color: "#555555", fontSize: "0.85rem", marginBottom: "0.75rem", letterSpacing: "0.04em" }}>
+      <section className="border-t border-dark-200 bg-dark-500 px-6 py-16 text-center">
+        <div className="mx-auto max-w-[560px]">
+          <p className="mb-3 text-[0.85rem] tracking-wide text-ondark-muted">
             Hâlâ kararsızsanız
           </p>
-          <h2
-            style={{
-              fontSize: "clamp(1.4rem, 3vw, 1.875rem)",
-              fontWeight: 800,
-              color: "#ffffff",
-              marginBottom: "1rem",
-              letterSpacing: "-0.025em",
-              lineHeight: 1.2,
-            }}
-          >
+          <h2 className="mb-4 text-[clamp(1.4rem,3vw,1.875rem)] font-extrabold leading-tight tracking-tight text-white">
             Önce hizmetlerimize göz atın
           </h2>
-          <p style={{ color: "#555555", fontSize: "0.875rem", marginBottom: "2rem", lineHeight: 1.7 }}>
+          <p className="mb-8 text-[0.875rem] leading-relaxed text-ondark-muted">
             Ne tür projeler geliştirdiğimizi görmek, karar vermenizi kolaylaştırabilir.
           </p>
-          <div style={{ display: "flex", gap: "0.875rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link
-              href="/portfoy"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                backgroundColor: "#9b1c1c",
-                color: "#fff",
-                padding: "0.875rem 1.75rem",
-                borderRadius: 7,
-                fontWeight: 700,
-                fontSize: "0.875rem",
-              }}
-            >
+          <div className="flex flex-wrap justify-center gap-3.5">
+            <Link href="/portfoy" className="btn btn-primary">
               Projeleri İncele <ArrowRight size={15} />
             </Link>
-            <Link
-              href="/hizmetler"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                border: "1px solid #2a2a2a",
-                color: "#888888",
-                padding: "0.875rem 1.75rem",
-                borderRadius: 7,
-                fontWeight: 600,
-                fontSize: "0.875rem",
-              }}
-            >
+            <Link href="/hizmetler" className="btn btn-outline-dark">
               Hizmetler
             </Link>
           </div>

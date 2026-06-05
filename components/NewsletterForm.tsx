@@ -46,36 +46,13 @@ export default function NewsletterForm({ variant, source, heading, subtext }: Pr
     }
   }
 
-  const inputBase: React.CSSProperties = {
-    flex: 1,
-    minWidth: 0,
-    padding: "0.75rem 1rem",
-    borderRadius: 7,
-    fontSize: "0.875rem",
-    outline: "none",
-    transition: "border-color 0.15s",
-    fontFamily: "inherit",
-  }
-
-  const lightInput: React.CSSProperties = {
-    ...inputBase,
-    border: "1px solid #e0e0e0",
-    color: "#111111",
-    backgroundColor: "#ffffff",
-  }
-
-  const darkInput: React.CSSProperties = {
-    ...inputBase,
-    border: "1px solid #2a2a2a",
-    color: "#e8e8e8",
-    backgroundColor: "#1a1a1a",
-  }
+  const inputCls = `input flex-1 min-w-0 ${isDark ? "input-dark" : ""}`
 
   if (state === "success") {
     return (
-      <div style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+      <div className="flex items-center gap-2.5">
         <CheckCircle2 size={18} color="#16a34a" />
-        <p style={{ color: isDark ? "#888888" : "#444444", fontSize: "0.875rem", fontWeight: 600 }}>
+        <p className={`text-[0.875rem] font-semibold ${isDark ? "text-ondark-muted" : "text-ink-600"}`}>
           Teşekkürler! Rehber e-postanıza gönderildi.
         </p>
       </div>
@@ -85,55 +62,25 @@ export default function NewsletterForm({ variant, source, heading, subtext }: Pr
   return (
     <div>
       {heading && (
-        <h3 style={{ fontSize: "1rem", fontWeight: 800, color: isDark ? "#e8e8e8" : "#111111", marginBottom: "0.375rem", letterSpacing: "-0.01em" }}>
+        <h3 className={`mb-1.5 text-base font-extrabold tracking-tight ${isDark ? "text-ondark" : "text-ink-900"}`}>
           {heading}
         </h3>
       )}
       {subtext && (
-        <p style={{ color: isDark ? "#666666" : "#6b6b6b", fontSize: "0.85rem", marginBottom: "1rem", lineHeight: 1.6 }}>
+        <p className={`mb-4 text-[0.85rem] leading-relaxed ${isDark ? "text-ink-500" : "text-ink-500"}`}>
           {subtext}
         </p>
       )}
-      <form onSubmit={handleSubmit} style={{ display: "flex", gap: "0.625rem", flexWrap: "wrap" }}>
-        <input
-          name="firstName"
-          type="text"
-          placeholder="Adınız"
-          value={form.firstName}
-          onChange={handleChange}
-          style={isDark ? darkInput : lightInput}
-          onFocus={(e) => (e.target.style.borderColor = "#9b1c1c")}
-          onBlur={(e) => (e.target.style.borderColor = isDark ? "#2a2a2a" : "#e0e0e0")}
-        />
-        <input
-          name="email"
-          type="email"
-          required
-          placeholder="E-posta adresiniz *"
-          value={form.email}
-          onChange={handleChange}
-          style={isDark ? darkInput : lightInput}
-          onFocus={(e) => (e.target.style.borderColor = "#9b1c1c")}
-          onBlur={(e) => (e.target.style.borderColor = isDark ? "#2a2a2a" : "#e0e0e0")}
-        />
-        <button
-          type="submit"
-          disabled={state === "sending"}
-          style={{
-            display: "inline-flex", alignItems: "center", gap: "0.4rem",
-            backgroundColor: "#9b1c1c", color: "#ffffff",
-            padding: "0.75rem 1.25rem", borderRadius: 7,
-            fontWeight: 700, fontSize: "0.875rem",
-            border: "none", cursor: state === "sending" ? "not-allowed" : "pointer",
-            whiteSpace: "nowrap", flexShrink: 0,
-          }}
-        >
+      <form onSubmit={handleSubmit} className="flex flex-wrap gap-2.5">
+        <input name="firstName" type="text" placeholder="Adınız" value={form.firstName} onChange={handleChange} className={inputCls} />
+        <input name="email" type="email" required placeholder="E-posta adresiniz *" value={form.email} onChange={handleChange} className={inputCls} />
+        <button type="submit" disabled={state === "sending"} className="btn btn-primary shrink-0 whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-80">
           {state === "sending" ? "Gönderiliyor…" : "İndir"}
           {state !== "sending" && <ArrowRight size={14} />}
         </button>
       </form>
       {state === "error" && (
-        <p style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#9b1c1c", fontSize: "0.8rem", marginTop: "0.5rem" }}>
+        <p className="mt-2 flex items-center gap-1.5 text-[0.8rem] text-accent-600">
           <AlertCircle size={13} /> Hata oluştu, tekrar deneyin.
         </p>
       )}

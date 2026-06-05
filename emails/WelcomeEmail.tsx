@@ -35,7 +35,7 @@ export default function WelcomeEmail({ firstName, downloadUrl, siteUrl = "https:
                       Merhaba {firstName}! 👋
                     </h1>
                     <p style={{ margin: "0 0 24px", fontSize: "15px", color: "#555555", lineHeight: "1.7" }}>
-                      <strong>E-Ticaret Başlangıç Rehberi</strong>'ni indirdiğiniz için teşekkürler. Türkiye'de e-ticaret kurmanın 47 adımını içeren bu rehber aşağıdaki butona tıklayarak indirebilirsiniz.
+                      <strong>E-Ticaret Başlangıç Rehberi</strong>&apos;ni indirdiğiniz için teşekkürler. Türkiye&apos;de e-ticaret kurmanın 47 adımını içeren bu rehber aşağıdaki butona tıklayarak indirebilirsiniz.
                     </p>
 
                     <table width="100%" cellPadding={0} cellSpacing={0}>

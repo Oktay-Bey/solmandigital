@@ -7,30 +7,28 @@ import { trackEvent } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "success" | "error"
 
+const labelCls =
+  "mb-2 block text-[0.775rem] font-bold uppercase tracking-wide text-ink-600"
+
 export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle")
-  const [form, setForm] = useState({
-    isim: "",
-    email: "",
-    hizmet: "",
-    mesaj: "",
-  })
+  const [form, setForm] = useState({ isim: "", email: "", hizmet: "", mesaj: "" })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setState("sending")
-
     try {
       const res = await fetch("/api/email/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       })
-
       if (res.ok) {
         trackEvent("form_submit", "lead", "contact")
         setState("success")
@@ -43,63 +41,16 @@ export default function ContactForm() {
     }
   }
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "0.75rem 1rem",
-    border: "1px solid #e0e0e0",
-    borderRadius: 7,
-    fontSize: "0.9rem",
-    color: "#111111",
-    backgroundColor: "#ffffff",
-    outline: "none",
-    transition: "border-color 0.15s",
-    fontFamily: "inherit",
-  }
-
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    fontSize: "0.775rem",
-    fontWeight: 700,
-    color: "#444444",
-    marginBottom: "0.5rem",
-    textTransform: "uppercase",
-    letterSpacing: "0.06em",
-  }
-
   if (state === "success") {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "3rem",
-          textAlign: "center",
-          border: "1px solid #e0e0e0",
-          backgroundColor: "#f5f5f5",
-          borderRadius: 10,
-        }}
-      >
-        <div
-          style={{
-            width: 48,
-            height: 48,
-            backgroundColor: "#f0fdf4",
-            border: "1px solid #bbf7d0",
-            borderRadius: "50%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: "1rem",
-          }}
-        >
+      <div className="flex flex-col items-center justify-center rounded-[10px] border border-ink-200 bg-surface p-12 text-center">
+        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-green-200 bg-green-50">
           <CheckCircle2 size={24} color="#16a34a" />
         </div>
-        <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#111111", marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>
+        <h3 className="mb-2 text-[1.1rem] font-extrabold tracking-tight text-ink-900">
           Mesajınız İletildi!
         </h3>
-        <p style={{ color: "#6b6b6b", fontSize: "0.875rem" }}>
+        <p className="text-[0.875rem] text-ink-500">
           24 saat içinde size dönüş yapacağız.
         </p>
       </div>
@@ -107,121 +58,46 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div>
-        <label htmlFor="isim" style={labelStyle}>Adınız Soyadınız</label>
-        <input
-          id="isim"
-          name="isim"
-          type="text"
-          required
-          value={form.isim}
-          onChange={handleChange}
-          placeholder="Ahmet Yılmaz"
-          style={inputStyle}
-          onFocus={(e) => (e.target.style.borderColor = "#9b1c1c")}
-          onBlur={(e) => (e.target.style.borderColor = "#e0e0e0")}
-        />
+        <label htmlFor="isim" className={labelCls}>Adınız Soyadınız</label>
+        <input id="isim" name="isim" type="text" required value={form.isim} onChange={handleChange} placeholder="Ahmet Yılmaz" className="input" />
       </div>
 
       <div>
-        <label htmlFor="email" style={labelStyle}>E-posta Adresiniz</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          value={form.email}
-          onChange={handleChange}
-          placeholder="ahmet@firma.com"
-          style={inputStyle}
-          onFocus={(e) => (e.target.style.borderColor = "#9b1c1c")}
-          onBlur={(e) => (e.target.style.borderColor = "#e0e0e0")}
-        />
+        <label htmlFor="email" className={labelCls}>E-posta Adresiniz</label>
+        <input id="email" name="email" type="email" required value={form.email} onChange={handleChange} placeholder="ahmet@firma.com" className="input" />
       </div>
 
       <div>
-        <label htmlFor="hizmet" style={labelStyle}>İlgilendiğiniz Hizmet</label>
-        <select
-          id="hizmet"
-          name="hizmet"
-          required
-          value={form.hizmet}
-          onChange={handleChange}
-          style={{ ...inputStyle, cursor: "pointer" }}
-          onFocus={(e) => (e.target.style.borderColor = "#9b1c1c")}
-          onBlur={(e) => (e.target.style.borderColor = "#e0e0e0")}
-        >
+        <label htmlFor="hizmet" className={labelCls}>İlgilendiğiniz Hizmet</label>
+        <select id="hizmet" name="hizmet" required value={form.hizmet} onChange={handleChange} className="input cursor-pointer">
           <option value="">Hizmet seçin…</option>
           {services.map((s) => (
-            <option key={s.slug} value={s.title}>
-              {s.title}
-            </option>
+            <option key={s.slug} value={s.title}>{s.title}</option>
           ))}
           <option value="Diğer">Diğer / Emin değilim</option>
         </select>
       </div>
 
       <div>
-        <label htmlFor="mesaj" style={labelStyle}>Projenizi Anlatın</label>
-        <textarea
-          id="mesaj"
-          name="mesaj"
-          required
-          rows={5}
-          value={form.mesaj}
-          onChange={handleChange}
-          placeholder="Projenizden kısaca bahsedin: ne yapmak istiyorsunuz, varsa teknik detaylar, tahmini süre beklentiniz..."
-          style={{ ...inputStyle, resize: "vertical", minHeight: 120 }}
-          onFocus={(e) => (e.target.style.borderColor = "#9b1c1c")}
-          onBlur={(e) => (e.target.style.borderColor = "#e0e0e0")}
-        />
+        <label htmlFor="mesaj" className={labelCls}>Projenizi Anlatın</label>
+        <textarea id="mesaj" name="mesaj" required rows={5} value={form.mesaj} onChange={handleChange} placeholder="Projenizden kısaca bahsedin: ne yapmak istiyorsunuz, varsa teknik detaylar, tahmini süre beklentiniz..." className="input min-h-[120px] resize-y" />
       </div>
 
       {state === "error" && (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-            padding: "0.875rem 1rem",
-            backgroundColor: "#fff5f5",
-            border: "1px solid #fecaca",
-            borderRadius: 7,
-            color: "#9b1c1c",
-            fontSize: "0.875rem",
-          }}
-        >
+        <div className="flex items-center gap-2 rounded-[7px] border border-accent-200 bg-accent-50 px-4 py-3.5 text-[0.875rem] text-accent-700">
           <AlertCircle size={16} />
           Gönderme sırasında bir hata oluştu. Lütfen tekrar deneyin.
         </div>
       )}
 
-      <button
-        type="submit"
-        disabled={state === "sending"}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "0.5rem",
-          backgroundColor: state === "sending" ? "#c0392b" : "#9b1c1c",
-          color: "#ffffff",
-          padding: "0.875rem 1.5rem",
-          borderRadius: 7,
-          fontWeight: 700,
-          fontSize: "0.875rem",
-          border: "none",
-          cursor: state === "sending" ? "not-allowed" : "pointer",
-          transition: "background-color 0.15s",
-          letterSpacing: "0.02em",
-        }}
-      >
+      <button type="submit" disabled={state === "sending"} className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-80">
         {state === "sending" ? "Gönderiliyor…" : "Teklif İste"}
         {state !== "sending" && <ArrowRight size={16} />}
       </button>
 
-      <p style={{ fontSize: "0.72rem", color: "#aaaaaa", textAlign: "center" }}>
+      <p className="text-center text-[0.72rem] text-ink-400">
         Bilgileriniz üçüncü taraflarla paylaşılmaz. 24 saat içinde dönüş yapılır.
       </p>
     </form>

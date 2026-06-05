@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Search, Zap, BarChart3, CheckCircle2 } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import AuditForm from "./AuditForm"
+import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
   title: "Ücretsiz Web Sitesi SEO & Performans Analizi | Solman Digital",
@@ -66,108 +67,85 @@ export default function UcretsizAnalizPage() {
       />
 
       {/* Hero */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "5rem 1.5rem" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
-          <p
-            style={{
-              fontSize: "0.7rem", fontWeight: 700, color: "#9b1c1c",
-              textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "1.25rem",
-            }}
-          >
-            Ücretsiz Hizmet
-          </p>
-          <h1
-            style={{
-              fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 800,
-              color: "#ffffff", lineHeight: 1.15, marginBottom: "1.25rem",
-              letterSpacing: "-0.03em",
-            }}
-          >
-            Web Sitenizin Ücretsiz<br />
-            <span style={{ color: "#9b1c1c" }}>SEO & Performans Analizi</span>
-          </h1>
-          <p style={{ color: "#666666", fontSize: "1rem", lineHeight: 1.75, maxWidth: 560, margin: "0 auto" }}>
-            Teknik SEO sorunlarını, sayfa hızı problemlerini ve rakip açıklarını tespit edin.
-            24 saat içinde detaylı rapor e-posta adresinize gönderilir.
-          </p>
+      <section className="bg-dark-500 px-6 py-20">
+        <div className="mx-auto max-w-[760px] text-center">
+          <Reveal>
+            <p className="mb-5 text-[0.7rem] font-bold uppercase tracking-wider text-accent-700">
+              Ücretsiz Hizmet
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h1 className="mb-5 text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-white">
+              Web Sitenizin Ücretsiz<br />
+              <span className="text-accent-700">SEO & Performans Analizi</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="mx-auto max-w-[560px] text-base leading-loose text-ink-500">
+              Teknik SEO sorunlarını, sayfa hızı problemlerini ve rakip açıklarını tespit edin.
+              24 saat içinde detaylı rapor e-posta adresinize gönderilir.
+            </p>
+          </Reveal>
         </div>
       </section>
 
       {/* Ne Alacaksınız */}
-      <section style={{ padding: "4rem 1.5rem", backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <h2
-            style={{
-              fontSize: "1.375rem", fontWeight: 800, color: "#111111",
-              letterSpacing: "-0.02em", textAlign: "center", marginBottom: "2.5rem",
-            }}
-          >
+      <section className="bg-white px-6 py-16">
+        <div className="mx-auto max-w-[1100px]">
+          <h2 className="mb-10 text-center text-[1.375rem] font-extrabold tracking-tight text-ink-900">
             Analizde Neler İnceleniyor?
           </h2>
-          <div className="audit-features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
-            {auditFeatures.map((item) => (
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+            {auditFeatures.map((item, i) => (
+              <Reveal key={item.title} delay={i * 100}>
               <div
-                key={item.title}
-                style={{
-                  backgroundColor: "#f5f5f5", border: "1px solid #e0e0e0",
-                  borderRadius: 10, padding: "1.75rem",
-                }}
+                className="rounded-[10px] border border-ink-200 bg-surface p-7"
               >
-                <div
-                  style={{
-                    width: 40, height: 40, backgroundColor: "#fff0f0",
-                    border: "1px solid #fecaca", borderRadius: 8,
-                    display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem",
-                  }}
-                >
+                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-[8px] border border-accent-200 bg-accent-50">
                   <item.icon size={20} color="#9b1c1c" />
                 </div>
-                <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#111111", marginBottom: "0.5rem" }}>
+                <h3 className="mb-2 text-[0.95rem] font-bold text-ink-900">
                   {item.title}
                 </h3>
-                <p style={{ color: "#6b6b6b", fontSize: "0.85rem", lineHeight: 1.65 }}>{item.desc}</p>
+                <p className="text-[0.85rem] leading-relaxed text-ink-500">{item.desc}</p>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Form */}
-      <section style={{ padding: "4rem 1.5rem", backgroundColor: "#f5f5f5" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto" }}>
-          <div style={{ marginBottom: "2rem", textAlign: "center" }}>
-            <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#111111", letterSpacing: "-0.02em", marginBottom: "0.625rem" }}>
+      <section className="bg-surface px-6 py-16">
+        <div className="mx-auto max-w-[640px]">
+          <div className="mb-8 text-center">
+            <h2 className="mb-2.5 text-[1.375rem] font-extrabold tracking-tight text-ink-900">
               Analiz Talep Edin
             </h2>
-            <p style={{ color: "#6b6b6b", fontSize: "0.9rem" }}>
+            <p className="text-[0.9rem] text-ink-500">
               Formu doldurun, 24 saat içinde dönüş yapıyoruz.
             </p>
           </div>
 
-          <div
-            style={{
-              backgroundColor: "#ffffff", border: "1px solid #e0e0e0",
-              borderRadius: 12, padding: "2.5rem",
-            }}
-          >
+          <div className="rounded-[12px] border border-ink-200 bg-white p-10">
             <AuditForm />
           </div>
         </div>
       </section>
 
       {/* Güven Rozetleri */}
-      <section style={{ padding: "2.5rem 1.5rem", backgroundColor: "#0d0d0d", borderTop: "1px solid #1a1a1a" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto" }}>
-          <div style={{ display: "flex", justifyContent: "center", gap: "2rem", flexWrap: "wrap" }}>
+      <section className="border-t border-dark-200 bg-dark-500 px-6 py-10">
+        <div className="mx-auto max-w-[760px]">
+          <div className="flex flex-wrap justify-center gap-8">
             {[
               "24 saat içinde rapor",
               "Tamamen ücretsiz",
               "Bağlayıcı değil",
               "Bilgileriniz paylaşılmaz",
             ].map((badge) => (
-              <div key={badge} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <div key={badge} className="flex items-center gap-2">
                 <CheckCircle2 size={14} color="#16a34a" />
-                <span style={{ color: "#888888", fontSize: "0.8rem", fontWeight: 500 }}>{badge}</span>
+                <span className="text-[0.8rem] font-medium text-ink-400">{badge}</span>
               </div>
             ))}
           </div>

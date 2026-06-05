@@ -4,11 +4,12 @@ import { ArrowRight } from "lucide-react"
 import { services, getServicesByTier } from "@/lib/data/services"
 import ServiceCard from "@/components/ServiceCard"
 import { siteConfig } from "@/lib/site-config"
+import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
   title: "Hizmetler — İşinize Özel Yazılım Çözümleri",
   description:
-    "Full-stack developer ile işinize özel yazılım. E-ticaret, Trendyol entegrasyonu, AI otomasyon, SaaS ve daha fazlası. Her proje sıfırdan inşa edilir.",
+    "Solman Digital ile işinize özel yazılım. E-ticaret, Trendyol entegrasyonu, AI otomasyon, SaaS ve daha fazlası. Her proje sıfırdan inşa edilir.",
   keywords: [
     "yazılım hizmetleri istanbul",
     "web geliştirme hizmetleri",
@@ -53,208 +54,111 @@ export default function HizmetlerPage() {
       />
 
       {/* Hero */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "4.5rem 1.5rem" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <p
-            style={{
-              fontSize: "0.7rem",
-              fontWeight: 700,
-              color: "#9b1c1c",
-              textTransform: "uppercase",
-              letterSpacing: "0.14em",
-              marginBottom: "1.25rem",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-            }}
-          >
-            <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-            Kişiye &amp; Firmaya Özel Yazılım Stüdyosu
-          </p>
-          <h1
-            style={{
-              fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
-              fontWeight: 800,
-              color: "#ffffff",
-              lineHeight: 1.15,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.03em",
-              maxWidth: 640,
-            }}
-          >
-            Her İşletme Farklı İhtiyaçlarla Gelir.
-            <br />
-            <span style={{ color: "#9b1c1c" }}>Hizmetlerimiz De Öyle Şekillenir.</span>
-          </h1>
-          <p style={{ color: "#666666", fontSize: "0.95rem", lineHeight: 1.75, maxWidth: 560 }}>
-            Sektörünüzü, iş sürecinizi ve hedeflerinizi dinleyerek başlıyoruz — ardından tam ihtiyacınıza
-            göre tasarlanmış çözümü sıfırdan inşa ediyoruz. Projenizi yapan uzmanla, doğrudan.
-          </p>
+      <section className="bg-dark-500 px-6 py-18">
+        <div className="mx-auto max-w-[1200px]">
+          <Reveal delay={0}>
+            <p className="eyebrow mb-5 !text-accent-700">
+              Kişiye &amp; Firmaya Özel Yazılım Stüdyosu
+            </p>
+            <h1 className="mb-5 max-w-[640px] text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-tight text-white">
+              Her İşletme Farklı İhtiyaçlarla Gelir.
+              <br />
+              <span className="text-accent-700">Hizmetlerimiz De Öyle Şekillenir.</span>
+            </h1>
+            <p className="max-w-[560px] text-[0.95rem] leading-[1.75] text-ink-500">
+              Sektörünüzü, iş sürecinizi ve hedeflerinizi dinleyerek başlıyoruz — ardından tam ihtiyacınıza
+              göre tasarlanmış çözümü sıfırdan inşa ediyoruz. Projenizi yapan uzmanla, doğrudan.
+            </p>
+          </Reveal>
         </div>
       </section>
 
       {/* Tier 1 — Popüler */}
-      <section style={{ padding: "4.5rem 1.5rem", backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ marginBottom: "2.5rem" }}>
-            <p
-              style={{
-                fontSize: "0.65rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.75rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 20, height: 1, backgroundColor: "#9b1c1c" }} />
-              En Çok Tercih Edilenler
-            </p>
-            <h2
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: 800,
-                color: "#111111",
-                letterSpacing: "-0.02em",
-                marginBottom: "0.5rem",
-              }}
-            >
-              Hızlı Sonuç Veren Çözümler
-            </h2>
-            <p style={{ color: "#6b6b6b", fontSize: "0.875rem", maxWidth: 540 }}>
-              Hangi hizmetten başlayacağınızı bilmiyor olabilirsiniz — bu tamamen normal. Size özel kapsam belirliyoruz.
-            </p>
-          </div>
+      <section className="bg-white px-6 py-18">
+        <div className="mx-auto max-w-[1200px]">
+          <Reveal delay={0}>
+            <div className="mb-10">
+              <p className="eyebrow mb-3">En Çok Tercih Edilenler</p>
+              <h2 className="mb-2 text-2xl font-extrabold tracking-tight text-ink-900">
+                Hızlı Sonuç Veren Çözümler
+              </h2>
+              <p className="max-w-[540px] text-[0.875rem] text-ink-500">
+                Hangi hizmetten başlayacağınızı bilmiyor olabilirsiniz — bu tamamen normal. Size özel kapsam belirliyoruz.
+              </p>
+            </div>
+          </Reveal>
           <div className="tier1-grid">
-            {tier1.map((s) => (
-              <ServiceCard key={s.slug} service={s} featured />
+            {tier1.map((s, i) => (
+              <Reveal key={s.slug} delay={i * 100}>
+                <ServiceCard service={s} featured />
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Tier 2 — Orta Vadeli */}
-      <section style={{ padding: "4.5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ marginBottom: "2.5rem" }}>
-            <p
-              style={{
-                fontSize: "0.65rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.75rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 20, height: 1, backgroundColor: "#9b1c1c" }} />
-              Platform & Uygulama
-            </p>
-            <h2
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: 800,
-                color: "#111111",
-                letterSpacing: "-0.02em",
-                marginBottom: "0.5rem",
-              }}
-            >
-              Platform & Uygulama Geliştirme
-            </h2>
-            <p style={{ color: "#6b6b6b", fontSize: "0.875rem", maxWidth: 540 }}>
-              SaaS ürünler, dashboard paneller, abonelik sistemleri — iş modelinize ve kullanıcılarınıza özel mimariyle.
-            </p>
-          </div>
+      <section className="bg-surface px-6 py-18">
+        <div className="mx-auto max-w-[1200px]">
+          <Reveal delay={0}>
+            <div className="mb-10">
+              <p className="eyebrow mb-3">Platform &amp; Uygulama</p>
+              <h2 className="mb-2 text-2xl font-extrabold tracking-tight text-ink-900">
+                Platform &amp; Uygulama Geliştirme
+              </h2>
+              <p className="max-w-[540px] text-[0.875rem] text-ink-500">
+                SaaS ürünler, dashboard paneller, abonelik sistemleri — iş modelinize ve kullanıcılarınıza özel mimariyle.
+              </p>
+            </div>
+          </Reveal>
           <div className="services-grid">
-            {tier2.map((s) => (
-              <ServiceCard key={s.slug} service={s} />
+            {tier2.map((s, i) => (
+              <Reveal key={s.slug} delay={(i % 3) * 100}>
+                <ServiceCard service={s} />
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Tier 3 — Niche */}
-      <section style={{ padding: "4.5rem 1.5rem", backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ marginBottom: "2.5rem" }}>
-            <p
-              style={{
-                fontSize: "0.65rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.75rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 20, height: 1, backgroundColor: "#9b1c1c" }} />
-              Özel Çözümler
-            </p>
-            <h2
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: 800,
-                color: "#111111",
-                letterSpacing: "-0.02em",
-                marginBottom: "0.5rem",
-              }}
-            >
-              Niche & Özelleşmiş Hizmetler
-            </h2>
-            <p style={{ color: "#6b6b6b", fontSize: "0.875rem", maxWidth: 540 }}>
-              Sektöre özel ve daha teknik altyapı gerektiren özelleştirilmiş dijital çözümler.
-            </p>
-          </div>
+      <section className="bg-white px-6 py-18">
+        <div className="mx-auto max-w-[1200px]">
+          <Reveal delay={0}>
+            <div className="mb-10">
+              <p className="eyebrow mb-3">Özel Çözümler</p>
+              <h2 className="mb-2 text-2xl font-extrabold tracking-tight text-ink-900">
+                Niche &amp; Özelleşmiş Hizmetler
+              </h2>
+              <p className="max-w-[540px] text-[0.875rem] text-ink-500">
+                Sektöre özel ve daha teknik altyapı gerektiren özelleştirilmiş dijital çözümler.
+              </p>
+            </div>
+          </Reveal>
           <div className="tier3-grid">
-            {tier3.map((s) => (
-              <ServiceCard key={s.slug} service={s} />
+            {tier3.map((s, i) => (
+              <Reveal key={s.slug} delay={(i % 3) * 100}>
+                <ServiceCard service={s} />
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "4.5rem 1.5rem", textAlign: "center" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto" }}>
-          <h2
-            style={{
-              fontSize: "clamp(1.5rem, 3vw, 2rem)",
-              fontWeight: 800,
-              color: "#ffffff",
-              marginBottom: "1rem",
-              letterSpacing: "-0.025em",
-            }}
-          >
-            Hangi çözüme ihtiyacınız var?
-          </h2>
-          <p style={{ color: "#555555", marginBottom: "2rem", fontSize: "0.9rem", lineHeight: 1.7 }}>
-            Projenizi anlatan birkaç satır yeterli. Size özel kapsam ve takvimi birlikte belirleyelim.
-          </p>
-          <Link
-            href="/iletisim"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              backgroundColor: "#9b1c1c",
-              color: "#ffffff",
-              padding: "0.875rem 2rem",
-              borderRadius: 7,
-              fontWeight: 700,
-              fontSize: "0.9rem",
-            }}
-          >
-            Ücretsiz Danışmanlık Al <ArrowRight size={16} />
-          </Link>
+      <section className="bg-dark-500 px-6 py-18 text-center">
+        <div className="mx-auto max-w-[640px]">
+          <Reveal delay={0}>
+            <h2 className="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-white">
+              Hangi çözüme ihtiyacınız var?
+            </h2>
+            <p className="mb-8 text-[0.9rem] leading-relaxed text-ondark-faint">
+              Projenizi anlatan birkaç satır yeterli. Size özel kapsam ve takvimi birlikte belirleyelim.
+            </p>
+            <Link href="/iletisim" className="btn btn-primary !px-8">
+              Ücretsiz Danışmanlık Al <ArrowRight size={16} />
+            </Link>
+          </Reveal>
         </div>
       </section>
     </>

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { ArrowRight, ArrowLeft, Clock } from "lucide-react"
 import { rehberPosts, getRehberBySlug, getRelatedRehber } from "@/lib/data/rehber"
 import { siteConfig } from "@/lib/site-config"
+import Reveal from "@/components/Reveal"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -89,104 +90,52 @@ export default async function RehberDetayPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <article style={{ padding: "4rem 1.5rem 6rem", backgroundColor: "#ffffff", maxWidth: 760, margin: "0 auto" }}>
+      <article className="mx-auto max-w-[760px] bg-white px-6 pb-24 pt-16">
         {/* Geri link */}
+        <Reveal delay={0}>
         <Link
           href="/rehber"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.375rem",
-            color: "#888888",
-            fontSize: "0.8rem",
-            textDecoration: "none",
-            marginBottom: "2.5rem",
-          }}
+          className="mb-10 inline-flex items-center gap-1.5 text-[0.8rem] text-ink-400 transition-colors hover:text-ink-700"
         >
           <ArrowLeft size={13} /> Tüm Rehberler
         </Link>
+        </Reveal>
 
         {/* Meta */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
-          <span
-            style={{
-              backgroundColor: "#fef2f2",
-              color: "#9b1c1c",
-              fontSize: "0.65rem",
-              fontWeight: 700,
-              padding: "0.2rem 0.6rem",
-              borderRadius: 4,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-            }}
-          >
+        <div className="mb-5 flex items-center gap-3">
+          <span className="rounded bg-accent-50 px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-accent-700">
             Rehber
           </span>
-          <span style={{ display: "flex", alignItems: "center", gap: "0.25rem", color: "#aaaaaa", fontSize: "0.75rem" }}>
+          <span className="flex items-center gap-1 text-[0.75rem] text-ink-400">
             <Clock size={11} /> {post.readTime} dakika okuma
           </span>
         </div>
 
         {/* Başlık */}
-        <h1
-          style={{
-            fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-            fontWeight: 800,
-            color: "#111111",
-            letterSpacing: "-0.03em",
-            lineHeight: 1.15,
-            marginBottom: "1.25rem",
-          }}
-        >
+        <h1 className="mb-5 text-[clamp(1.75rem,4vw,2.5rem)] font-extrabold leading-[1.15] tracking-tight text-ink-900">
           {post.title}
         </h1>
 
         {/* Özet */}
-        <p
-          style={{
-            color: "#555555",
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "3rem",
-            borderLeft: "3px solid #9b1c1c",
-            paddingLeft: "1.25rem",
-          }}
-        >
+        <p className="mb-12 border-l-[3px] border-accent-700 pl-5 text-base leading-loose text-ink-600">
           {post.description}
         </p>
 
         {/* Bölümler */}
         {post.sections.map((section, i) => (
-          <section key={i} style={{ marginBottom: "2.5rem" }}>
-            <h2
-              style={{
-                fontSize: "1.2rem",
-                fontWeight: 700,
-                color: "#111111",
-                letterSpacing: "-0.02em",
-                marginBottom: "0.875rem",
-              }}
-            >
+          <section key={i} className="mb-10">
+            <h2 className="mb-3.5 text-[1.2rem] font-bold tracking-tight text-ink-900">
               {section.heading}
             </h2>
-            <p style={{ color: "#555555", fontSize: "0.9rem", lineHeight: 1.8, marginBottom: section.list ? "1rem" : 0 }}>
+            <p className={`text-[0.9rem] leading-loose text-ink-600 ${section.list ? "mb-4" : ""}`}>
               {section.body}
             </p>
             {section.list && (
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem", paddingLeft: 0 }}>
+              <ul className="flex list-none flex-col gap-2 pl-0">
                 {section.list.map((item, j) => (
-                  <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: "0.625rem" }}>
-                    <span
-                      style={{
-                        width: 5,
-                        height: 5,
-                        borderRadius: "50%",
-                        backgroundColor: "#9b1c1c",
-                        flexShrink: 0,
-                        marginTop: "0.45rem",
-                      }}
-                    />
-                    <span style={{ color: "#555555", fontSize: "0.875rem", lineHeight: 1.7 }}>{item}</span>
+                  <li key={j} className="flex items-start gap-2.5">
+                    <span className="mt-[0.45rem] h-[5px] w-[5px] shrink-0 rounded-full bg-accent-700" />
+                    <span className="text-[0.875rem] leading-relaxed text-ink-600">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -195,131 +144,53 @@ export default async function RehberDetayPage({ params }: Props) {
         ))}
 
         {/* SSS */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2
-            style={{
-              fontSize: "1.2rem",
-              fontWeight: 700,
-              color: "#111111",
-              letterSpacing: "-0.02em",
-              marginBottom: "1.25rem",
-            }}
-          >
+        <section className="mb-12">
+          <h2 className="mb-5 text-[1.2rem] font-bold tracking-tight text-ink-900">
             Sık Sorulan Sorular
           </h2>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div className="flex flex-col">
             {post.faq.map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  borderTop: "1px solid #e0e0e0",
-                  padding: "1.25rem 0",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "0.9rem",
-                    fontWeight: 700,
-                    color: "#111111",
-                    marginBottom: "0.5rem",
-                  }}
-                >
+              <div key={i} className="border-t border-ink-200 py-5">
+                <h3 className="mb-2 text-[0.9rem] font-bold text-ink-900">
                   {item.q}
                 </h3>
-                <p style={{ color: "#6b6b6b", fontSize: "0.875rem", lineHeight: 1.7 }}>{item.a}</p>
+                <p className="text-[0.875rem] leading-relaxed text-ink-500">{item.a}</p>
               </div>
             ))}
-            <div style={{ borderTop: "1px solid #e0e0e0" }} />
+            <div className="border-t border-ink-200" />
           </div>
         </section>
 
         {/* CTA */}
-        <div
-          style={{
-            backgroundColor: "#111111",
-            borderRadius: 10,
-            padding: "2rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-          }}
-        >
-          <p style={{ color: "#aaaaaa", fontSize: "0.85rem", lineHeight: 1.65 }}>{post.cta.text}</p>
-          <Link
-            href={post.cta.href}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              backgroundColor: "#9b1c1c",
-              color: "#ffffff",
-              padding: "0.75rem 1.5rem",
-              borderRadius: 7,
-              fontWeight: 700,
-              fontSize: "0.875rem",
-              textDecoration: "none",
-              alignSelf: "flex-start",
-            }}
-          >
+        <div className="flex flex-col gap-4 rounded-[10px] bg-dark-400 p-8">
+          <p className="text-[0.85rem] leading-relaxed text-ondark-muted">{post.cta.text}</p>
+          <Link href={post.cta.href} className="btn btn-primary self-start">
             {post.cta.label} <ArrowRight size={14} />
           </Link>
         </div>
 
         {/* İlgili Rehberler */}
         {related.length > 0 && (
-          <section style={{ marginTop: "3.5rem" }}>
-            <h2
-              style={{
-                fontSize: "1.2rem",
-                fontWeight: 700,
-                color: "#111111",
-                letterSpacing: "-0.02em",
-                marginBottom: "1.25rem",
-              }}
-            >
+          <section className="mt-14">
+            <h2 className="mb-5 text-[1.2rem] font-bold tracking-tight text-ink-900">
               İlgili Rehberler
             </h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <div className="flex flex-col gap-3">
               {related.map((r) => (
                 <Link
                   key={r.slug}
                   href={`/rehber/${r.slug}`}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: "1rem",
-                    padding: "1rem 1.25rem",
-                    border: "1px solid #e8e8e8",
-                    borderRadius: 9,
-                    textDecoration: "none",
-                  }}
+                  className="flex items-center justify-between gap-4 rounded-[9px] border border-ink-200 px-5 py-4 transition-colors hover:border-ink-400"
                 >
                   <div>
-                    <h3
-                      style={{
-                        fontSize: "0.9rem",
-                        fontWeight: 700,
-                        color: "#111111",
-                        marginBottom: "0.3rem",
-                        lineHeight: 1.35,
-                      }}
-                    >
+                    <h3 className="mb-1 text-[0.9rem] font-bold leading-tight tracking-tight text-ink-900">
                       {r.title}
                     </h3>
-                    <span
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.25rem",
-                        color: "#aaaaaa",
-                        fontSize: "0.72rem",
-                      }}
-                    >
+                    <span className="flex items-center gap-1 text-[0.72rem] text-ink-400">
                       <Clock size={10} /> {r.readTime} dakika okuma
                     </span>
                   </div>
-                  <ArrowRight size={15} color="#9b1c1c" style={{ flexShrink: 0 }} />
+                  <ArrowRight size={15} color="#9b1c1c" className="shrink-0" />
                 </Link>
               ))}
             </div>

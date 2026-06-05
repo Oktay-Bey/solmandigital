@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowRight, Clock } from "lucide-react"
 import { rehberPosts } from "@/lib/data/rehber"
 import { siteConfig } from "@/lib/site-config"
+import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
   title: `Yazılım & Dijital Rehberler | ${siteConfig.name}`,
@@ -32,84 +33,39 @@ export const metadata: Metadata = {
 
 export default function RehberPage() {
   return (
-    <section style={{ padding: "5rem 1.5rem", backgroundColor: "#ffffff", minHeight: "60vh" }}>
-      <div style={{ maxWidth: 860, margin: "0 auto" }}>
-        <p
-          style={{
-            fontSize: "0.7rem",
-            fontWeight: 700,
-            color: "#888888",
-            textTransform: "uppercase",
-            letterSpacing: "0.12em",
-            marginBottom: "0.875rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.75rem",
-          }}
-        >
-          <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-          Rehberler
-        </p>
-        <h1
-          style={{
-            fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
-            fontWeight: 800,
-            color: "#111111",
-            letterSpacing: "-0.03em",
-            marginBottom: "1rem",
-            lineHeight: 1.1,
-          }}
-        >
-          Yazılım & Dijital Rehberler
-        </h1>
-        <p style={{ color: "#6b6b6b", fontSize: "0.95rem", lineHeight: 1.75, marginBottom: "3.5rem", maxWidth: 560 }}>
-          Trendyol entegrasyonu, AI otomasyon, SaaS MVP süreci ve web sitesi fiyatları hakkında gerçek proje deneyimiyle hazırlanmış kaynaklar.
-        </p>
+    <section className="min-h-[60vh] bg-white px-6 py-20">
+      <div className="mx-auto max-w-[860px]">
+        <Reveal delay={0}>
+          <p className="eyebrow mb-3.5">Rehberler</p>
+          <h1 className="mb-4 text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.1] tracking-tight text-ink-900">
+            Yazılım &amp; Dijital Rehberler
+          </h1>
+          <p className="mb-14 max-w-[560px] text-[0.95rem] leading-[1.75] text-ink-500">
+            Trendyol entegrasyonu, AI otomasyon, SaaS MVP süreci ve web sitesi fiyatları hakkında gerçek proje deneyimiyle hazırlanmış kaynaklar.
+          </p>
+        </Reveal>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-          {rehberPosts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/rehber/${post.slug}`}
-              style={{ textDecoration: "none" }}
-            >
-              <div
-                style={{
-                  border: "1px solid #e0e0e0",
-                  borderRadius: 10,
-                  padding: "1.75rem 2rem",
-                  backgroundColor: "#ffffff",
-                  transition: "border-color 0.15s",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  gap: "1.5rem",
-                }}
-              >
-                <div style={{ flex: 1 }}>
-                  <h2
-                    style={{
-                      fontSize: "1rem",
-                      fontWeight: 700,
-                      color: "#111111",
-                      marginBottom: "0.5rem",
-                      letterSpacing: "-0.01em",
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {post.title}
-                  </h2>
-                  <p style={{ color: "#6b6b6b", fontSize: "0.85rem", lineHeight: 1.65, marginBottom: "0.75rem" }}>
-                    {post.description}
-                  </p>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <Clock size={12} color="#aaaaaa" />
-                    <span style={{ color: "#aaaaaa", fontSize: "0.75rem" }}>{post.readTime} dakika okuma</span>
+        <div className="flex flex-col gap-5">
+          {rehberPosts.map((post, i) => (
+            <Reveal key={post.slug} delay={i * 50}>
+              <Link href={`/rehber/${post.slug}`}>
+                <div className="card-interactive flex items-center justify-between gap-6 rounded-[10px] border border-ink-200 bg-white px-8 py-7 transition-colors hover:border-ink-400">
+                  <div className="flex-1">
+                    <h2 className="mb-2 text-base font-bold leading-tight tracking-tight text-ink-900">
+                      {post.title}
+                    </h2>
+                    <p className="mb-3 text-[0.85rem] leading-relaxed text-ink-500">
+                      {post.description}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <Clock size={12} className="text-ink-400" />
+                      <span className="text-[0.75rem] text-ink-400">{post.readTime} dakika okuma</span>
+                    </div>
                   </div>
+                  <ArrowRight size={18} className="shrink-0 text-accent-700" />
                 </div>
-                <ArrowRight size={18} color="#9b1c1c" style={{ flexShrink: 0 }} />
-              </div>
-            </Link>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </div>

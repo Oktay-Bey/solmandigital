@@ -4,6 +4,25 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
 
+# Skill Kütüphanesi (Desktop/skills)
+
+Masaüstündeki `C:\Users\90534\Desktop\skills` klasöründe çeşitli yeteneklere sahip
+ajan/skill tanımları bulunur (UI tasarım sistemi, senior-frontend, a11y-audit,
+apple-hig-expert, page-cro, landing-page-generator vb.). Plan veya uygulama
+sırasında ilgili olanları tespit edip **referans** olarak kullanabilirsin
+(kodu körü körüne kopyalama — projeye uyarla). Bu klasör projenin parçası değildir,
+yalnızca bir bilgi/araç kaynağıdır.
+
+# Solman Digital — Tasarım Sistemi
+
+- Renk/spacing/radius/gölge token'ları `app/globals.css` `@theme` bloğunda tanımlı.
+- Yeni UI yazarken **inline `style={{}}` kullanma** — token'lı Tailwind utility
+  (`bg-accent-700`, `text-ink-500`, `shadow-card`) veya `@layer components`
+  sınıflarını (`.btn-primary`, `.btn-outline`, `.card`, `.eyebrow`) kullan.
+- Koyu zemin metinde `--color-ondark` / `ondark-muted` kullan (WCAG AA).
+- Animasyon: ince/profesyonel. Scroll-reveal için `components/Reveal.tsx`.
+  `prefers-reduced-motion` globalde devre dışı bırakılır — buna saygı duy.
+
 # Solman Digital — Marka Sesi Kuralları
 
 ## Entity & Kişi Dili

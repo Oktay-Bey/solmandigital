@@ -4,7 +4,6 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
-import { inputStyle, labelStyle, submitButtonStyle, onFocus, onBlur } from "@/lib/form-utils"
 import { trackEvent } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
@@ -12,6 +11,9 @@ type FormState = "idle" | "sending" | "error"
 type FormData = Pick<LeadPayload, "firstName" | "email" | "phone" | "companyName" | "monthlyOrders" | "currentSolution" | "urgency" | "specificPain">
 
 const MARKETPLACES = ["Trendyol", "Hepsiburada", "Amazon TR", "N11", "Çiçeksepeti", "Diğer"]
+
+const labelCls =
+  "mb-2 block text-[0.775rem] font-bold uppercase tracking-wide text-ink-600"
 
 export default function TrendyolLeadForm() {
   const router = useRouter()
@@ -65,48 +67,48 @@ export default function TrendyolLeadForm() {
 
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-two-col">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="firstName" style={labelStyle}>Adınız *</label>
+          <label htmlFor="firstName" className={labelCls}>Adınız *</label>
           <input
             id="firstName" name="firstName" type="text" required
             value={form.firstName} onChange={handleChange}
-            placeholder="Ahmet" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+            placeholder="Ahmet" className="input"
           />
         </div>
         <div>
-          <label htmlFor="email" style={labelStyle}>E-posta *</label>
+          <label htmlFor="email" className={labelCls}>E-posta *</label>
           <input
             id="email" name="email" type="email" required
             value={form.email} onChange={handleChange}
-            placeholder="ahmet@firma.com" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+            placeholder="ahmet@firma.com" className="input"
           />
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-two-col">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="phone" style={labelStyle}>Telefon / WhatsApp</label>
+          <label htmlFor="phone" className={labelCls}>Telefon / WhatsApp</label>
           <input
             id="phone" name="phone" type="tel"
             value={form.phone} onChange={handleChange}
-            placeholder="+90 5xx xxx xx xx" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+            placeholder="+90 5xx xxx xx xx" className="input"
           />
         </div>
         <div>
-          <label htmlFor="companyName" style={labelStyle}>Firma Adı</label>
+          <label htmlFor="companyName" className={labelCls}>Firma Adı</label>
           <input
             id="companyName" name="companyName" type="text"
             value={form.companyName} onChange={handleChange}
-            placeholder="Firma Adı" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+            placeholder="Firma Adı" className="input"
           />
         </div>
       </div>
 
       <div>
-        <p style={labelStyle}>Hangi marketplace'lerde satış yapıyorsunuz? *</p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+        <p className={labelCls}>Hangi marketplace&apos;lerde satış yapıyorsunuz? *</p>
+        <div className="flex flex-wrap gap-2">
           {MARKETPLACES.map((m) => {
             const selected = selectedMarkets.includes(m)
             return (
@@ -114,17 +116,11 @@ export default function TrendyolLeadForm() {
                 key={m}
                 type="button"
                 onClick={() => toggleMarket(m)}
-                style={{
-                  padding: "0.45rem 1rem",
-                  borderRadius: 6,
-                  fontSize: "0.825rem",
-                  fontWeight: 600,
-                  border: selected ? "1px solid #9b1c1c" : "1px solid #e0e0e0",
-                  backgroundColor: selected ? "#fff5f5" : "#ffffff",
-                  color: selected ? "#9b1c1c" : "#444444",
-                  cursor: "pointer",
-                  fontFamily: "inherit",
-                }}
+                className={`cursor-pointer rounded-md border px-4 py-[0.45rem] text-[0.825rem] font-semibold transition-colors ${
+                  selected
+                    ? "border-accent-700 bg-accent-50 text-accent-700"
+                    : "border-ink-200 bg-white text-ink-600 hover:border-ink-400"
+                }`}
               >
                 {m}
               </button>
@@ -132,17 +128,17 @@ export default function TrendyolLeadForm() {
           })}
         </div>
         {selectedMarkets.length === 0 && (
-          <p style={{ fontSize: "0.75rem", color: "#9b1c1c", marginTop: "0.4rem" }}>En az bir marketplace seçin</p>
+          <p className="mt-1.5 text-[0.75rem] text-accent-700">En az bir marketplace seçin</p>
         )}
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-two-col">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="monthlyOrders" style={labelStyle}>Aylık ortalama sipariş sayısı? *</label>
+          <label htmlFor="monthlyOrders" className={labelCls}>Aylık ortalama sipariş sayısı? *</label>
           <select
             id="monthlyOrders" name="monthlyOrders" required
             value={form.monthlyOrders} onChange={handleChange}
-            style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
+            className="input cursor-pointer"
           >
             <option value="">Seçin</option>
             <option value="0-50">0–50</option>
@@ -152,11 +148,11 @@ export default function TrendyolLeadForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="urgency" style={labelStyle}>Ne zaman başlamak istiyorsunuz? *</label>
+          <label htmlFor="urgency" className={labelCls}>Ne zaman başlamak istiyorsunuz? *</label>
           <select
             id="urgency" name="urgency" required
             value={form.urgency} onChange={handleChange}
-            style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
+            className="input cursor-pointer"
           >
             <option value="">Seçin</option>
             <option value="Hemen">Hemen</option>
@@ -167,11 +163,11 @@ export default function TrendyolLeadForm() {
       </div>
 
       <div>
-        <label htmlFor="currentSolution" style={labelStyle}>Şu an ne kullanıyorsunuz?</label>
+        <label htmlFor="currentSolution" className={labelCls}>Şu an ne kullanıyorsunuz?</label>
         <select
           id="currentSolution" name="currentSolution"
           value={form.currentSolution} onChange={handleChange}
-          style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
+          className="input cursor-pointer"
         >
           <option value="">Seçin (opsiyonel)</option>
           <option value="Manuel yönetiyorum">Manuel yönetiyorum</option>
@@ -182,24 +178,18 @@ export default function TrendyolLeadForm() {
       </div>
 
       <div>
-        <label htmlFor="specificPain" style={labelStyle}>En büyük sorunuz nedir?</label>
+        <label htmlFor="specificPain" className={labelCls}>En büyük sorunuz nedir?</label>
         <textarea
           id="specificPain" name="specificPain"
           rows={3}
           value={form.specificPain} onChange={handleChange}
           placeholder="Ör: stok tutarsızlıkları yüzünden sürekli iptal alıyoruz…"
-          style={{ ...inputStyle, resize: "vertical", minHeight: 90 }}
-          onFocus={onFocus} onBlur={onBlur}
+          className="input min-h-[90px] resize-y"
         />
       </div>
 
       {state === "error" && (
-        <div style={{
-          display: "flex", alignItems: "center", gap: "0.5rem",
-          padding: "0.875rem 1rem",
-          backgroundColor: "#fff5f5", border: "1px solid #fecaca",
-          borderRadius: 7, color: "#9b1c1c", fontSize: "0.875rem",
-        }}>
+        <div className="flex items-center gap-2 rounded-[7px] border border-accent-200 bg-accent-50 px-4 py-3.5 text-[0.875rem] text-accent-700">
           <AlertCircle size={16} />
           Gönderme sırasında bir hata oluştu. Lütfen tekrar deneyin.
         </div>
@@ -208,13 +198,13 @@ export default function TrendyolLeadForm() {
       <button
         type="submit"
         disabled={state === "sending" || selectedMarkets.length === 0}
-        style={{ ...submitButtonStyle(state === "sending"), opacity: selectedMarkets.length === 0 ? 0.6 : 1, cursor: (state === "sending" || selectedMarkets.length === 0) ? "not-allowed" : "pointer" }}
+        className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-60"
       >
         {state === "sending" ? "Gönderiliyor…" : "Entegrasyon Teklifi Al"}
         {state !== "sending" && <ArrowRight size={16} />}
       </button>
 
-      <p style={{ fontSize: "0.72rem", color: "#aaaaaa", textAlign: "center" }}>
+      <p className="text-center text-[0.72rem] text-ink-400">
         Bilgileriniz üçüncü taraflarla paylaşılmaz. 24 saat içinde dönüş yapılır.
       </p>
     </form>

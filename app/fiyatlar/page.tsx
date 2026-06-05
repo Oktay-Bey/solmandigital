@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowRight, CheckCircle2, X } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
+import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
   title: "Web Sitesi & Yazılım Fiyatları 2025 | Solman Digital",
@@ -131,310 +132,138 @@ export default function FiyatlarPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <main style={{ backgroundColor: "#0d0d0d", minHeight: "100vh" }}>
+      <main className="min-h-screen bg-dark-500">
         {/* Hero */}
-        <section style={{ padding: "5rem 1.5rem 3rem", borderBottom: "1px solid #1a1a1a" }}>
-          <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#555555",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "1rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-              Fiyatlar
-              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-            </p>
-            <h1
-              style={{
-                fontSize: "clamp(2rem, 5vw, 3.25rem)",
-                fontWeight: 900,
-                color: "#ffffff",
-                letterSpacing: "-0.03em",
-                lineHeight: 1.1,
-                marginBottom: "1.25rem",
-              }}
-            >
-              Net fiyatlar,
-              <br />
-              <span style={{ color: "#9b1c1c" }}>sürpriz maliyet yok</span>
-            </h1>
-            <p
-              style={{
-                color: "#777777",
-                fontSize: "1rem",
-                lineHeight: 1.7,
-                maxWidth: 540,
-                margin: "0 auto 2rem",
-              }}
-            >
-              Belirtilen rakamlar başlangıç fiyatıdır. Kesin tutar kapsam görüşmesinde belirlenir.
-              İlk görüşme ücretsizdir — risk almadan başlayın.
-            </p>
-            <Link
-              href="/ucretsiz-analiz"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                backgroundColor: "#9b1c1c",
-                color: "#ffffff",
-                padding: "0.875rem 1.75rem",
-                borderRadius: 8,
-                fontWeight: 700,
-                fontSize: "0.875rem",
-                textDecoration: "none",
-              }}
-            >
-              Ücretsiz Kapsam Görüşmesi
-              <ArrowRight size={16} />
-            </Link>
+        <section className="border-b border-dark-200 px-6 pb-12 pt-20">
+          <div className="mx-auto max-w-[760px] text-center">
+            <Reveal>
+              <p className="eyebrow eyebrow-center mb-4">Fiyatlar</p>
+            </Reveal>
+            <Reveal delay={100}>
+              <h1 className="mb-5 text-[clamp(2rem,5vw,3.25rem)] font-black leading-[1.1] tracking-tight text-white">
+                Net fiyatlar,
+                <br />
+                <span className="text-accent-700">sürpriz maliyet yok</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="mx-auto mb-8 max-w-[540px] text-base leading-relaxed text-ondark-muted">
+                Belirtilen rakamlar başlangıç fiyatıdır. Kesin tutar kapsam görüşmesinde belirlenir.
+                İlk görüşme ücretsizdir — risk almadan başlayın.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <Link href="/ucretsiz-analiz" className="btn btn-primary">
+                Ücretsiz Kapsam Görüşmesi
+                <ArrowRight size={16} />
+              </Link>
+            </Reveal>
           </div>
         </section>
 
         {/* Pricing Cards */}
-        <section style={{ padding: "4rem 1.5rem" }}>
-          <div
-            style={{
-              maxWidth: 1200,
-              margin: "0 auto",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "1.5rem",
-              alignItems: "start",
-            }}
-          >
-            {tiers.map((tier) => (
-              <div
-                key={tier.name}
-                style={{
-                  backgroundColor: tier.highlight ? "#161616" : "#111111",
-                  border: tier.highlight ? "1px solid #9b1c1c" : "1px solid #222222",
-                  borderRadius: 12,
-                  padding: "2rem",
-                  position: "relative",
-                }}
-              >
-                {tier.highlight && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: -12,
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      backgroundColor: "#9b1c1c",
-                      color: "#ffffff",
-                      fontSize: "0.65rem",
-                      fontWeight: 700,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.1em",
-                      padding: "0.3rem 0.875rem",
-                      borderRadius: 20,
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    En Popüler
-                  </div>
-                )}
+        <section className="px-6 py-16">
+          <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-start gap-6">
+            {tiers.map((tier, i) => (
+              <Reveal key={tier.name} delay={i * 100}>
+                <div
+                  className={`relative rounded-[12px] p-8 ${
+                    tier.highlight ? "border border-accent-700 bg-dark-300" : "border border-dark-50 bg-dark-400"
+                  }`}
+                >
+                  {tier.highlight && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-[20px] bg-accent-700 px-3.5 py-1.5 text-[0.65rem] font-bold uppercase tracking-wider text-white">
+                      En Popüler
+                    </div>
+                  )}
 
-                <p
-                  style={{
-                    color: "#555555",
-                    fontSize: "0.7rem",
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {tier.name}
-                </p>
-                <p
-                  style={{
-                    fontSize: "2.25rem",
-                    fontWeight: 900,
-                    color: "#ffffff",
-                    letterSpacing: "-0.03em",
-                    lineHeight: 1,
-                    marginBottom: "0.25rem",
-                  }}
-                >
-                  {tier.price}
-                  <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "#555555" }}>&apos;dan</span>
-                </p>
-                <p style={{ color: "#888888", fontSize: "0.825rem", marginBottom: "0.375rem" }}>
-                  {tier.subtitle}
-                </p>
-                <p
-                  style={{
-                    color: "#9b1c1c",
-                    fontSize: "0.775rem",
-                    fontWeight: 600,
-                    marginBottom: "1.75rem",
-                  }}
-                >
-                  ⏱ {tier.timeline}
-                </p>
-
-                <div style={{ marginBottom: "1.5rem" }}>
-                  <p
-                    style={{
-                      color: "#555555",
-                      fontSize: "0.68rem",
-                      fontWeight: 700,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                      marginBottom: "0.75rem",
-                    }}
-                  >
-                    Dahil
+                  <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-wider text-ink-500">
+                    {tier.name}
                   </p>
-                  <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-                    {tier.features.map((f) => (
-                      <li
-                        key={f}
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: "0.625rem",
-                          color: "#cccccc",
-                          fontSize: "0.825rem",
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        <CheckCircle2
-                          size={15}
-                          color="#4ade80"
-                          style={{ flexShrink: 0, marginTop: 2 }}
-                        />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <p className="mb-1 text-[2.25rem] font-black leading-none tracking-tight text-white">
+                    {tier.price}
+                    <span className="text-[0.875rem] font-semibold text-ink-500">&apos;dan</span>
+                  </p>
+                  <p className="mb-1.5 text-[0.825rem] text-ink-400">
+                    {tier.subtitle}
+                  </p>
+                  <p className="mb-7 text-[0.775rem] font-semibold text-accent-700">
+                    ⏱ {tier.timeline}
+                  </p>
 
-                {tier.notIncluded.length > 0 && (
-                  <div style={{ marginBottom: "1.75rem" }}>
-                    <p
-                      style={{
-                        color: "#333333",
-                        fontSize: "0.68rem",
-                        fontWeight: 700,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.08em",
-                        marginBottom: "0.75rem",
-                      }}
-                    >
-                      Dahil Değil
+                  <div className="mb-6">
+                    <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-wider text-ink-500">
+                      Dahil
                     </p>
-                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                      {tier.notIncluded.map((f) => (
+                    <ul className="flex list-none flex-col gap-2.5">
+                      {tier.features.map((f) => (
                         <li
                           key={f}
-                          style={{
-                            display: "flex",
-                            alignItems: "flex-start",
-                            gap: "0.625rem",
-                            color: "#444444",
-                            fontSize: "0.8rem",
-                            lineHeight: 1.5,
-                          }}
+                          className="flex items-start gap-2.5 text-[0.825rem] leading-normal text-ink-300"
                         >
-                          <X size={14} color="#444444" style={{ flexShrink: 0, marginTop: 2 }} />
+                          <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-[#4ade80]" />
                           {f}
                         </li>
                       ))}
                     </ul>
                   </div>
-                )}
 
-                <Link
-                  href={tier.ctaHref}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "0.5rem",
-                    backgroundColor: tier.highlight ? "#9b1c1c" : "#1a1a1a",
-                    border: tier.highlight ? "none" : "1px solid #333333",
-                    color: "#ffffff",
-                    padding: "0.875rem",
-                    borderRadius: 8,
-                    fontWeight: 700,
-                    fontSize: "0.875rem",
-                    textDecoration: "none",
-                    width: "100%",
-                    boxSizing: "border-box",
-                  }}
-                >
-                  {tier.cta}
-                  <ArrowRight size={15} />
-                </Link>
-              </div>
+                  {tier.notIncluded.length > 0 && (
+                    <div className="mb-7">
+                      <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-wider text-ink-700">
+                        Dahil Değil
+                      </p>
+                      <ul className="flex list-none flex-col gap-2">
+                        {tier.notIncluded.map((f) => (
+                          <li
+                            key={f}
+                            className="flex items-start gap-2.5 text-[0.8rem] leading-normal text-ink-600"
+                          >
+                            <X size={14} className="mt-0.5 shrink-0 text-ink-700" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <Link
+                    href={tier.ctaHref}
+                    className={`btn w-full ${tier.highlight ? "btn-primary" : "btn-outline-dark"}`}
+                  >
+                    {tier.cta}
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
+              </Reveal>
             ))}
           </div>
         </section>
 
         {/* FAQ */}
-        <section style={{ padding: "4rem 1.5rem 5rem", borderTop: "1px solid #1a1a1a" }}>
-          <div style={{ maxWidth: 700, margin: "0 auto" }}>
-            <h2
-              style={{
-                fontSize: "1.75rem",
-                fontWeight: 800,
-                color: "#ffffff",
-                letterSpacing: "-0.025em",
-                marginBottom: "2.5rem",
-                textAlign: "center",
-              }}
-            >
-              Sık Sorulan Sorular
-            </h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+        <section className="border-t border-dark-200 px-6 pb-20 pt-16">
+          <div className="mx-auto max-w-[700px]">
+            <Reveal>
+              <h2 className="mb-10 text-center text-[1.75rem] font-extrabold tracking-tight text-white">
+                Sık Sorulan Sorular
+              </h2>
+            </Reveal>
+            <div className="flex flex-col gap-6">
               {faqItems.map((item) => (
-                <div key={item.q} style={{ borderBottom: "1px solid #1a1a1a", paddingBottom: "1.5rem" }}>
-                  <h3
-                    style={{
-                      color: "#ffffff",
-                      fontSize: "0.95rem",
-                      fontWeight: 700,
-                      marginBottom: "0.625rem",
-                    }}
-                  >
+                <div key={item.q} className="border-b border-dark-200 pb-6">
+                  <h3 className="mb-2.5 text-[0.95rem] font-bold text-white">
                     {item.q}
                   </h3>
-                  <p style={{ color: "#777777", fontSize: "0.875rem", lineHeight: 1.7 }}>{item.a}</p>
+                  <p className="text-[0.875rem] leading-relaxed text-ondark-muted">{item.a}</p>
                 </div>
               ))}
             </div>
 
-            <div style={{ marginTop: "3rem", textAlign: "center" }}>
-              <p style={{ color: "#666666", fontSize: "0.875rem", marginBottom: "1.25rem" }}>
+            <div className="mt-12 text-center">
+              <p className="mb-5 text-[0.875rem] text-ink-500">
                 Projeniz bu paketlere tam uymuyorsa özel fiyat talep edin.
               </p>
-              <Link
-                href="/ucretsiz-analiz"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  backgroundColor: "#9b1c1c",
-                  color: "#ffffff",
-                  padding: "0.875rem 1.75rem",
-                  borderRadius: 8,
-                  fontWeight: 700,
-                  fontSize: "0.875rem",
-                  textDecoration: "none",
-                }}
-              >
+              <Link href="/ucretsiz-analiz" className="btn btn-primary">
                 Ücretsiz Analiz İste
                 <ArrowRight size={16} />
               </Link>

@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, Zap, Users, X, CheckCircle2, Globe, MessageCircle } from "lucide-react"
+import { ArrowRight, Zap, Users, X, CheckCircle2, Globe } from "lucide-react"
 import { getServicesByTier } from "@/lib/data/services"
 import ServiceCard from "@/components/ServiceCard"
 import Testimonials from "@/components/Testimonials"
 import SocialProofCounters from "@/components/SocialProofCounters"
+import Reveal from "@/components/Reveal"
 import { siteConfig } from "@/lib/site-config"
 
 export const metadata: Metadata = {
@@ -29,7 +30,6 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: "tr_TR",
     type: "website",
-    // OG görseli app/opengraph-image.tsx üzerinden dinamik üretilir.
   },
 }
 
@@ -188,124 +188,66 @@ const steps = [
   { num: "04", title: "Teslim & Yanınızdayız", desc: "Söz verilen tarihte deploy, test ve lansman. Proje biter, destek bitmez." },
 ]
 
+const heroProjects = [
+  { client: "E-Ticaret Satıcısı", built: "Trendyol + Hepsiburada çift kanal stok yönetimi", tag: "API Entegrasyonu" },
+  { client: "SaaS Girişimi", built: "Çok kiracılı mimari, abonelik sistemi, AI pipeline", tag: "Tam Platform" },
+  { client: "Restoran Zinciri", built: "QR menü sistemi — şube bazlı yönetim paneli", tag: "Özel SaaS" },
+  { client: "Kurumsal Firma", built: "CRM entegrasyonlu teklif & fatura takip paneli", tag: "İç Araç" },
+]
+
 export default function HomePage() {
   const tier1 = getServicesByTier(1)
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
       {/* Hero */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "6rem 1.5rem 5rem" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }} className="hero-grid">
+      <section className="relative overflow-hidden bg-dark-500 px-6 pb-20 pt-24">
+        {/* radial glow */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-40 -top-40 h-[480px] w-[480px] rounded-full opacity-60 blur-[120px]"
+          style={{ background: "radial-gradient(circle, rgba(155,28,28,0.35) 0%, transparent 70%)" }}
+        />
+        <div className="relative mx-auto hero-grid max-w-[1200px]">
           {/* Sol */}
           <div>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#9b1c1c",
-                textTransform: "uppercase",
-                letterSpacing: "0.14em",
-                marginBottom: "1.75rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-block",
-                  width: 24,
-                  height: 1,
-                  backgroundColor: "#9b1c1c",
-                }}
-              />
+            <p className="eyebrow mb-7 !text-accent-500">
               Kişiye &amp; Firmaya Özel Yazılım Stüdyosu
             </p>
 
-            <h1
-              style={{
-                fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
-                fontWeight: 800,
-                color: "#ffffff",
-                lineHeight: 1.1,
-                marginBottom: "1.5rem",
-                letterSpacing: "-0.03em",
-              }}
-            >
+            <h1 className="mb-6 text-h1 font-extrabold leading-[1.1] tracking-tight text-white">
               Her İşletme
               <br />
               Farklıdır.
               <br />
-              <span style={{ color: "#9b1c1c" }}>Yazılımı Da Öyle.</span>
+              <span className="text-accent-600">Yazılımı Da Öyle.</span>
             </h1>
 
-            <p
-              style={{
-                color: "#888888",
-                fontSize: "1rem",
-                lineHeight: 1.8,
-                marginBottom: "2rem",
-                maxWidth: 480,
-              }}
-            >
+            <p className="mb-8 max-w-[480px] text-base leading-relaxed text-ondark-muted">
               Her projeyi sizin iş sürecinizi anlayarak, sıfırdan ve sadece size özel inşa ediyoruz. Trendyol satıcısından kurumsal firmaya — aynı uzman, net takvim.
             </p>
 
-            {/* Özellik çizgileri */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", marginBottom: "2.5rem" }}>
+            <div className="mb-10 flex flex-col gap-2.5">
               {[
                 "Sizi dinleyen aynı uzman, başından sonuna",
                 "Net kapsam ve takvim — söz verilen günde teslim",
                 "Projeniz biter, destek bitmez",
               ].map((item) => (
-                <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
-                  <span style={{ width: 5, height: 5, borderRadius: "50%", backgroundColor: "#9b1c1c", flexShrink: 0 }} />
-                  <span style={{ color: "#aaaaaa", fontSize: "0.875rem" }}>{item}</span>
+                <div key={item} className="flex items-center gap-2.5">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-600" />
+                  <span className="text-[0.875rem] text-ondark-muted">{item}</span>
                 </div>
               ))}
             </div>
 
-            <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
-              <Link
-                href="/iletisim"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  backgroundColor: "#9b1c1c",
-                  color: "#fff",
-                  padding: "0.875rem 1.75rem",
-                  borderRadius: 7,
-                  fontWeight: 700,
-                  fontSize: "0.9rem",
-                  letterSpacing: "0.01em",
-                }}
-              >
+            <div className="flex flex-wrap gap-3.5">
+              <Link href="/iletisim" className="btn btn-primary">
                 Projenizi Anlatalım <ArrowRight size={16} />
               </Link>
-              <Link
-                href="/hizmetler"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  border: "1px solid #2a2a2a",
-                  color: "#cccccc",
-                  padding: "0.875rem 1.75rem",
-                  borderRadius: 7,
-                  fontWeight: 600,
-                  fontSize: "0.9rem",
-                }}
-              >
+              <Link href="/hizmetler" className="btn btn-outline-dark">
                 Tüm Hizmetler
               </Link>
             </div>
@@ -313,89 +255,28 @@ export default function HomePage() {
 
           {/* Sağ: Örnek Projeler */}
           <div>
-            <div
-              style={{
-                backgroundColor: "#111111",
-                border: "1px solid #2a2a2a",
-                borderRadius: 12,
-                overflow: "hidden",
-              }}
-            >
-              {/* Kart başlığı */}
-              <div
-                style={{
-                  padding: "1.25rem 1.5rem",
-                  borderBottom: "1px solid #1e1e1e",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                }}
-              >
-                <span style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#9b1c1c" }} />
-                <span style={{ color: "#555555", fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+            <div className="overflow-hidden rounded-xl border border-dark-50 bg-dark-400 shadow-card-hover">
+              <div className="flex items-center gap-2 border-b border-dark-100 px-6 py-5">
+                <span className="h-2 w-2 rounded-full bg-accent-700" />
+                <span className="text-[0.7rem] font-bold uppercase tracking-wider text-ink-600">
                   Her Müşteri İçin Ayrı Çözüm
                 </span>
               </div>
 
-              {/* Proje örnekleri */}
-              {[
-                {
-                  client: "E-Ticaret Satıcısı",
-                  built: "Trendyol + Hepsiburada çift kanal stok yönetimi",
-                  tag: "API Entegrasyonu",
-                },
-                {
-                  client: "SaaS Girişimi",
-                  built: "Çok kiracılı mimari, abonelik sistemi, AI pipeline",
-                  tag: "Tam Platform",
-                },
-                {
-                  client: "Restoran Zinciri",
-                  built: "QR menü sistemi — şube bazlı yönetim paneli",
-                  tag: "Özel SaaS",
-                },
-                {
-                  client: "Kurumsal Firma",
-                  built: "CRM entegrasyonlu teklif & fatura takip paneli",
-                  tag: "İç Araç",
-                },
-              ].map((project, i) => (
-                <div
-                  key={i}
-                  style={{
-                    padding: "1.25rem 1.5rem",
-                    borderBottom: "1px solid #1a1a1a",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.375rem",
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
-                    <span style={{ color: "#ffffff", fontSize: "0.8rem", fontWeight: 700 }}>{project.client}</span>
-                    <span
-                      style={{
-                        backgroundColor: "#1e1e1e",
-                        border: "1px solid #2a2a2a",
-                        color: "#666666",
-                        fontSize: "0.6rem",
-                        fontWeight: 600,
-                        padding: "0.2rem 0.5rem",
-                        borderRadius: 4,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.08em",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
+              {heroProjects.map((project, i) => (
+                <div key={i} className="flex flex-col gap-1.5 border-b border-dark-200 px-6 py-5 transition-colors hover:bg-dark-300">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[0.8rem] font-bold text-white">{project.client}</span>
+                    <span className="whitespace-nowrap rounded border border-dark-50 bg-dark-100 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wider text-ink-500">
                       {project.tag}
                     </span>
                   </div>
-                  <p style={{ color: "#666666", fontSize: "0.775rem", lineHeight: 1.5 }}>{project.built}</p>
+                  <p className="text-[0.775rem] leading-relaxed text-ink-500">{project.built}</p>
                 </div>
               ))}
 
-              {/* Alt not */}
-              <div style={{ padding: "1rem 1.5rem" }}>
-                <p style={{ color: "#444444", fontSize: "0.7rem", fontStyle: "italic" }}>
+              <div className="px-6 py-4">
+                <p className="text-[0.7rem] italic text-ink-600">
                   Projeniz burada değil mi? Fark etmez — sıfırdan yazıyoruz.
                 </p>
               </div>
@@ -405,140 +286,68 @@ export default function HomePage() {
       </section>
 
       {/* Ajans vs Biz */}
-      <section style={{ padding: "4.5rem 1.5rem", backgroundColor: "#111111", borderTop: "1px solid #1e1e1e" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <div style={{ marginBottom: "2.5rem", textAlign: "center" }}>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.875rem",
-              }}
-            >
-              Nasıl Çalışırız?
-            </p>
-            <h2
-              style={{
-                fontSize: "clamp(1.4rem, 3vw, 2rem)",
-                fontWeight: 800,
-                color: "#ffffff",
-                letterSpacing: "-0.025em",
-                lineHeight: 1.2,
-              }}
-            >
+      <section className="border-t border-dark-100 bg-dark-400 px-6 py-18">
+        <div className="mx-auto max-w-[900px]">
+          <div className="mb-10 text-center">
+            <p className="eyebrow eyebrow-center mb-3.5 !text-ink-400">Nasıl Çalışırız?</p>
+            <h2 className="text-h2-dark font-extrabold leading-tight tracking-tight text-white">
               Her proje farklı ihtiyaçla başlar.
               <br />
-              <span style={{ color: "#9b1c1c" }}>Bizim yaklaşımımız da öyle.</span>
+              <span className="text-accent-600">Bizim yaklaşımımız da öyle.</span>
             </h2>
           </div>
 
-          <div style={{ display: "grid", gap: "0.75rem" }}>
-            {/* Başlık satırı */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "1rem",
-                padding: "0 1rem",
-              }}
-            >
-              <span style={{ fontSize: "0.65rem", fontWeight: 700, color: "#555555", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+          <div className="grid gap-3">
+            <div className="grid grid-cols-2 gap-4 px-4">
+              <span className="text-[0.65rem] font-bold uppercase tracking-wider text-ink-600">
                 Geleneksel Yaklaşım
               </span>
-              <span style={{ fontSize: "0.65rem", fontWeight: 700, color: "#9b1c1c", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+              <span className="text-[0.65rem] font-bold uppercase tracking-wider text-accent-600">
                 Solman Digital
               </span>
             </div>
 
             {agencyVsUs.map((row, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "1rem",
-                  backgroundColor: "#161616",
-                  border: "1px solid #1e1e1e",
-                  borderRadius: 8,
-                  padding: "1rem 1rem",
-                  alignItems: "center",
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <X size={13} color="#555555" style={{ flexShrink: 0 }} />
-                  <span style={{ color: "#666666", fontSize: "0.85rem" }}>{row.agency}</span>
+              <Reveal key={i} delay={i * 60}>
+                <div className="grid grid-cols-2 items-center gap-4 rounded-lg border border-dark-100 bg-dark-300 px-4 py-4">
+                  <div className="flex items-center gap-2">
+                    <X size={13} color="#555555" className="shrink-0" />
+                    <span className="text-[0.85rem] text-ink-500">{row.agency}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 size={13} color="#16a34a" className="shrink-0" />
+                    <span className="text-[0.85rem] font-medium text-ondark-muted">{row.us}</span>
+                  </div>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <CheckCircle2 size={13} color="#16a34a" style={{ flexShrink: 0 }} />
-                  <span style={{ color: "#cccccc", fontSize: "0.85rem", fontWeight: 500 }}>{row.us}</span>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Tier 1 Hizmetler */}
-      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ marginBottom: "3rem" }}>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.875rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-              En Çok Tercih Edilenler
-            </p>
-            <h2
-              style={{
-                fontSize: "clamp(1.6rem, 3vw, 2.25rem)",
-                fontWeight: 800,
-                color: "#111111",
-                letterSpacing: "-0.025em",
-                lineHeight: 1.15,
-                maxWidth: 560,
-              }}
-            >
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="mb-12">
+            <p className="eyebrow mb-3.5">En Çok Tercih Edilenler</p>
+            <h2 className="max-w-[560px] text-h2 font-extrabold leading-tight tracking-tight text-ink-900">
               Hızlı Sonuç Veren Hizmetler
             </h2>
-            <p style={{ color: "#6b6b6b", marginTop: "0.875rem", maxWidth: 520, fontSize: "0.95rem", lineHeight: 1.7 }}>
+            <p className="mt-3.5 max-w-[520px] text-[0.95rem] leading-relaxed text-ink-500">
               Kısa sürede proje başlatmak ve somut iş sonuçları almak isteyen işletmeler için.
             </p>
           </div>
 
           <div className="tier1-grid">
-            {tier1.map((s) => (
-              <ServiceCard key={s.slug} service={s} featured />
+            {tier1.map((s, i) => (
+              <Reveal key={s.slug} delay={(i % 3) * 80}>
+                <ServiceCard service={s} featured />
+              </Reveal>
             ))}
           </div>
 
-          <div style={{ marginTop: "2.5rem" }}>
-            <Link
-              href="/hizmetler"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                border: "1px solid #e0e0e0",
-                color: "#111111",
-                padding: "0.75rem 1.5rem",
-                borderRadius: 7,
-                fontWeight: 600,
-                fontSize: "0.875rem",
-              }}
-            >
+          <div className="mt-10">
+            <Link href="/hizmetler" className="btn btn-outline">
               Tüm 22 Hizmeti Gör <ArrowRight size={16} />
             </Link>
           </div>
@@ -546,199 +355,76 @@ export default function HomePage() {
       </section>
 
       {/* Neden Biz */}
-      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ marginBottom: "3rem" }}>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.875rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-              Fark Yaratan Unsurlar
-            </p>
-            <h2
-              style={{
-                fontSize: "clamp(1.6rem, 3vw, 2.25rem)",
-                fontWeight: 800,
-                color: "#111111",
-                letterSpacing: "-0.025em",
-                maxWidth: 560,
-              }}
-            >
-              Bir full-stack developer ile çalışmanın farkı
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="mb-12">
+            <p className="eyebrow mb-3.5">Fark Yaratan Unsurlar</p>
+            <h2 className="max-w-[560px] text-h2 font-extrabold tracking-tight text-ink-900">
+              Doğrudan uzmanla çalışmanın farkı
             </h2>
           </div>
 
           <div className="why-grid">
             {whyUs.map((item, i) => (
-              <div
-                key={item.title}
-                style={{
-                  backgroundColor: "#ffffff",
-                  border: "1px solid #e0e0e0",
-                  borderRadius: 10,
-                  padding: "1.75rem",
-                }}
-              >
-                <div
-                  style={{
-                    width: 36,
-                    height: 36,
-                    backgroundColor: "#f0f0f0",
-                    borderRadius: 7,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: "1.25rem",
-                  }}
-                >
-                  <item.icon size={18} color="#333333" />
+              <Reveal key={item.title} delay={(i % 4) * 70}>
+                <div className="card h-full p-7">
+                  <div className="mb-5 flex h-9 w-9 items-center justify-center rounded-md bg-ink-100 text-ink-700">
+                    <item.icon size={18} />
+                  </div>
+                  <h3 className="mb-2 text-[0.95rem] font-bold tracking-tight text-ink-900">
+                    {item.title}
+                  </h3>
+                  <p className="text-[0.85rem] leading-relaxed text-ink-500">{item.desc}</p>
                 </div>
-                <h3
-                  style={{
-                    fontSize: "0.95rem",
-                    fontWeight: 700,
-                    color: "#111111",
-                    marginBottom: "0.5rem",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p style={{ color: "#6b6b6b", fontSize: "0.85rem", lineHeight: 1.65 }}>{item.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Nasıl Çalışırız */}
-      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ marginBottom: "3.5rem" }}>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.875rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-              Süreç
-            </p>
-            <h2
-              style={{
-                fontSize: "clamp(1.6rem, 3vw, 2.25rem)",
-                fontWeight: 800,
-                color: "#111111",
-                letterSpacing: "-0.025em",
-              }}
-            >
+      <section className="bg-surface px-6 py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="mb-14">
+            <p className="eyebrow mb-3.5">Süreç</p>
+            <h2 className="text-h2 font-extrabold tracking-tight text-ink-900">
               Nasıl Çalışırız?
             </h2>
-            <p style={{ color: "#6b6b6b", marginTop: "0.875rem", fontSize: "0.95rem" }}>
+            <p className="mt-3.5 text-[0.95rem] text-ink-500">
               Sizi dinleyerek başlıyor, teslim sonrasında da yanınızda kalıyoruz.
             </p>
           </div>
 
           <div className="steps-grid">
             {steps.map((step, i) => (
-              <div key={step.num} style={{ position: "relative" }}>
-                <div
-                  style={{
-                    fontSize: "3rem",
-                    fontWeight: 800,
-                    color: "#f0f0f0",
-                    lineHeight: 1,
-                    marginBottom: "1rem",
-                    letterSpacing: "-0.04em",
-                  }}
-                >
-                  {step.num}
+              <Reveal key={step.num} delay={(i % 4) * 70}>
+                <div className="relative">
+                  <div className="mb-4 text-[3rem] font-extrabold leading-none tracking-tight text-ink-100">
+                    {step.num}
+                  </div>
+                  <div className="mb-3.5 h-0.5 w-5 bg-accent-700" />
+                  <h3 className="mb-2 text-[0.95rem] font-bold tracking-tight text-ink-900">
+                    {step.title}
+                  </h3>
+                  <p className="text-[0.85rem] leading-relaxed text-ink-500">{step.desc}</p>
                 </div>
-                <div
-                  style={{
-                    width: 20,
-                    height: 2,
-                    backgroundColor: "#9b1c1c",
-                    marginBottom: "0.875rem",
-                  }}
-                />
-                <h3
-                  style={{
-                    fontSize: "0.95rem",
-                    fontWeight: 700,
-                    color: "#111111",
-                    marginBottom: "0.5rem",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {step.title}
-                </h3>
-                <p style={{ color: "#6b6b6b", fontSize: "0.85rem", lineHeight: 1.65 }}>{step.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Tech Stack */}
-      <section
-        style={{
-          padding: "2.5rem 1.5rem",
-          backgroundColor: "#0d0d0d",
-          borderTop: "1px solid #1a1a1a",
-        }}
-      >
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "2rem", flexWrap: "wrap" }}>
-            <p
-              style={{
-                color: "#444444",
-                fontSize: "0.65rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                whiteSpace: "nowrap",
-                flexShrink: 0,
-              }}
-            >
+      <section className="border-t border-dark-200 bg-dark-500 px-6 py-10">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="flex flex-wrap items-center gap-8">
+            <p className="shrink-0 whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-wider text-ink-600">
               Kullandığımız Teknolojiler
             </p>
-            <div
-              style={{
-                width: 1,
-                height: 16,
-                backgroundColor: "#2a2a2a",
-                flexShrink: 0,
-              }}
-            />
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.625rem" }}>
+            <div className="h-4 w-px shrink-0 bg-dark-50" />
+            <div className="flex flex-wrap gap-2.5">
               {techStack.map((tech) => (
-                <span
-                  key={tech}
-                  style={{
-                    color: "#555555",
-                    fontSize: "0.8rem",
-                    fontWeight: 500,
-                    transition: "color 0.15s",
-                  }}
-                >
+                <span key={tech} className="text-[0.8rem] font-medium text-ink-500 transition-colors hover:text-ondark-muted">
                   {tech}
                 </span>
               ))}
@@ -748,119 +434,65 @@ export default function HomePage() {
       </section>
 
       {/* Başlangıç Fiyatları */}
-      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ marginBottom: "3rem" }}>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.875rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-              Başlangıç Fiyatları
-            </p>
-            <h2
-              style={{
-                fontSize: "clamp(1.6rem, 3vw, 2.25rem)",
-                fontWeight: 800,
-                color: "#111111",
-                letterSpacing: "-0.025em",
-                lineHeight: 1.15,
-                maxWidth: 560,
-              }}
-            >
+      <section className="bg-surface px-6 py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="mb-12">
+            <p className="eyebrow mb-3.5">Başlangıç Fiyatları</p>
+            <h2 className="max-w-[560px] text-h2 font-extrabold leading-tight tracking-tight text-ink-900">
               Bütçenize uygun çözüm için
               <br />
-              <span style={{ color: "#9b1c1c" }}>ne kadar bütçe ayırmalısınız?</span>
+              <span className="text-accent-700">ne kadar bütçe ayırmalısınız?</span>
             </h2>
-            <p style={{ color: "#6b6b6b", marginTop: "0.875rem", fontSize: "0.9rem", lineHeight: 1.7 }}>
+            <p className="mt-3.5 text-[0.9rem] leading-relaxed text-ink-500">
               Aşağıdaki rakamlar başlangıç noktaları. Projenizin kapsamına göre netleştirilmiş bir teklif sunuyoruz.
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))", gap: "1.25rem" }}>
-            {pricingCards.map((card) => (
-              <div
-                key={card.title}
-                style={{
-                  backgroundColor: card.featured ? "#111111" : "#ffffff",
-                  border: card.featured ? "1px solid #9b1c1c" : "1px solid #e0e0e0",
-                  borderRadius: 10,
-                  padding: "2rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                {card.featured && (
-                  <span
-                    style={{
-                      position: "absolute",
-                      top: 16,
-                      right: 16,
-                      backgroundColor: "#9b1c1c",
-                      color: "#fff",
-                      fontSize: "0.6rem",
-                      fontWeight: 700,
-                      padding: "0.2rem 0.6rem",
-                      borderRadius: 4,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                    }}
-                  >
-                    Popüler
-                  </span>
-                )}
-                <p style={{ fontSize: "0.75rem", fontWeight: 700, color: card.featured ? "#888888" : "#9b1c1c", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
-                  {card.title}
-                </p>
-                <p style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: card.featured ? "#ffffff" : "#111111", letterSpacing: "-0.03em", marginBottom: "0.25rem" }}>
-                  {card.from}
-                  <span style={{ fontSize: "0.8rem", fontWeight: 500, color: card.featured ? "#555555" : "#888888" }}>&apos;dan başlayan</span>
-                </p>
-                <p style={{ color: card.featured ? "#888888" : "#6b6b6b", fontSize: "0.85rem", lineHeight: 1.65, marginBottom: "1.5rem", flex: 1 }}>
-                  {card.desc}
-                </p>
-                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.75rem" }}>
-                  {card.items.map((item) => (
-                    <li key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                      <CheckCircle2 size={13} color="#16a34a" style={{ flexShrink: 0 }} />
-                      <span style={{ color: card.featured ? "#aaaaaa" : "#555555", fontSize: "0.825rem" }}>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href={card.href}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "0.5rem",
-                    backgroundColor: card.featured ? "#9b1c1c" : "transparent",
-                    color: card.featured ? "#ffffff" : "#111111",
-                    border: card.featured ? "none" : "1px solid #e0e0e0",
-                    padding: "0.75rem 1.25rem",
-                    borderRadius: 7,
-                    fontWeight: 700,
-                    fontSize: "0.875rem",
-                  }}
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-5">
+            {pricingCards.map((card, i) => (
+              <Reveal key={card.title} delay={(i % 3) * 80}>
+                <div
+                  className={`relative flex h-full flex-col overflow-hidden rounded-[10px] p-8 ${
+                    card.featured
+                      ? "border border-accent-700 bg-dark-400 shadow-card-hover"
+                      : "card"
+                  }`}
                 >
-                  {card.cta} <ArrowRight size={14} />
-                </Link>
-              </div>
+                  {card.featured && (
+                    <span className="absolute right-4 top-4 rounded bg-accent-700 px-2.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-wider text-white">
+                      Popüler
+                    </span>
+                  )}
+                  <p className={`mb-2 text-[0.75rem] font-bold uppercase tracking-wider ${card.featured ? "text-ink-400" : "text-accent-700"}`}>
+                    {card.title}
+                  </p>
+                  <p className={`mb-1 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight ${card.featured ? "text-white" : "text-ink-900"}`}>
+                    {card.from}
+                    <span className={`text-[0.8rem] font-medium ${card.featured ? "text-ink-500" : "text-ink-400"}`}>&apos;dan başlayan</span>
+                  </p>
+                  <p className={`mb-6 flex-1 text-[0.85rem] leading-relaxed ${card.featured ? "text-ondark-muted" : "text-ink-500"}`}>
+                    {card.desc}
+                  </p>
+                  <ul className="mb-7 flex list-none flex-col gap-2">
+                    {card.items.map((item) => (
+                      <li key={item} className="flex items-center gap-2">
+                        <CheckCircle2 size={13} color="#16a34a" className="shrink-0" />
+                        <span className={`text-[0.825rem] ${card.featured ? "text-ondark-muted" : "text-ink-600"}`}>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={card.href}
+                    className={`btn ${card.featured ? "btn-primary" : "btn-outline"}`}
+                  >
+                    {card.cta} <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </Reveal>
             ))}
           </div>
 
-          <p style={{ marginTop: "1.75rem", color: "#888888", fontSize: "0.8rem", textAlign: "center" }}>
+          <p className="mt-7 text-center text-[0.8rem] text-ink-400">
             Kesin fiyat kapsam görüşmesinden sonra belirlenir. Görüşme ücretsizdir.
           </p>
         </div>
@@ -871,150 +503,48 @@ export default function HomePage() {
       <Testimonials />
 
       {/* FAQ */}
-      <section style={{ padding: "5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto" }}>
-          <div style={{ marginBottom: "3rem" }}>
-            <p
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                color: "#888888",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: "0.875rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-              SSS
-            </p>
-            <h2
-              style={{
-                fontSize: "clamp(1.6rem, 3vw, 2.25rem)",
-                fontWeight: 800,
-                color: "#111111",
-                letterSpacing: "-0.025em",
-              }}
-            >
+      <section className="bg-surface px-6 py-20">
+        <div className="mx-auto max-w-[760px]">
+          <div className="mb-12">
+            <p className="eyebrow mb-3.5">SSS</p>
+            <h2 className="text-h2 font-extrabold tracking-tight text-ink-900">
               Sık Sorulan Sorular
             </h2>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div className="flex flex-col">
             {homeFaqSchema.mainEntity.map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  borderTop: "1px solid #e0e0e0",
-                  padding: "1.5rem 0",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "0.95rem",
-                    fontWeight: 700,
-                    color: "#111111",
-                    marginBottom: "0.625rem",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
+              <div key={i} className="border-t border-ink-200 py-6">
+                <h3 className="mb-2.5 text-[0.95rem] font-bold tracking-tight text-ink-900">
                   {item.name}
                 </h3>
-                <p style={{ color: "#6b6b6b", fontSize: "0.875rem", lineHeight: 1.7 }}>
+                <p className="text-[0.875rem] leading-relaxed text-ink-500">
                   {item.acceptedAnswer.text}
                 </p>
               </div>
             ))}
-            <div style={{ borderTop: "1px solid #e0e0e0" }} />
+            <div className="border-t border-ink-200" />
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section
-        style={{
-          backgroundColor: "#0d0d0d",
-          padding: "6rem 1.5rem",
-          textAlign: "center",
-          borderTop: "1px solid #1a1a1a",
-        }}
-      >
-        <div style={{ maxWidth: 640, margin: "0 auto" }}>
-          <p
-            style={{
-              fontSize: "0.7rem",
-              fontWeight: 700,
-              color: "#444444",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              marginBottom: "1.5rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.75rem",
-            }}
-          >
-            <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-            Başlayalım
-            <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-          </p>
-          <h2
-            style={{
-              fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
-              fontWeight: 800,
-              color: "#ffffff",
-              marginBottom: "1.25rem",
-              lineHeight: 1.1,
-              letterSpacing: "-0.03em",
-            }}
-          >
+      <section className="border-t border-dark-200 bg-dark-500 px-6 py-24 text-center">
+        <div className="mx-auto max-w-[640px]">
+          <p className="eyebrow eyebrow-center mb-6 !text-ink-600">Başlayalım</p>
+          <h2 className="mb-5 text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-white">
             Projenizi hayata geçirelim
           </h2>
-          <p
-            style={{
-              color: "#666666",
-              fontSize: "0.95rem",
-              marginBottom: "2.5rem",
-              lineHeight: 1.75,
-            }}
-          >
+          <p className="mb-10 text-[0.95rem] leading-relaxed text-ondark-muted">
             Birkaç satırlık mesajınız yeterli.
             <br />
             24 saat içinde ücretsiz danışmanlık için dönüş yapıyoruz.
           </p>
-          <div style={{ display: "flex", gap: "0.875rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link
-              href="/iletisim"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                backgroundColor: "#9b1c1c",
-                color: "#fff",
-                padding: "0.875rem 2rem",
-                borderRadius: 7,
-                fontWeight: 700,
-                fontSize: "0.9rem",
-              }}
-            >
+          <div className="flex flex-wrap justify-center gap-3.5">
+            <Link href="/iletisim" className="btn btn-primary !px-8">
               Teklif Al <ArrowRight size={16} />
             </Link>
-            <Link
-              href="/hizmetler"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                border: "1px solid #2a2a2a",
-                color: "#888888",
-                padding: "0.875rem 2rem",
-                borderRadius: 7,
-                fontWeight: 600,
-                fontSize: "0.9rem",
-              }}
-            >
+            <Link href="/hizmetler" className="btn btn-outline-dark !px-8">
               Hizmetleri İncele
             </Link>
           </div>

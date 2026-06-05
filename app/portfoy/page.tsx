@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowRight, ExternalLink } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
+import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
   title: "Projeler — Tamamlanan Çalışmalar",
@@ -86,228 +87,120 @@ export default function PortfoyPage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "4.5rem 1.5rem" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <p
-            style={{
-              fontSize: "0.7rem",
-              fontWeight: 700,
-              color: "#9b1c1c",
-              textTransform: "uppercase",
-              letterSpacing: "0.14em",
-              marginBottom: "1.25rem",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-            }}
-          >
-            <span style={{ display: "inline-block", width: 24, height: 1, backgroundColor: "#9b1c1c" }} />
-            Kişiye &amp; Firmaya Özel · Tamamlanan Projeler
-          </p>
-          <h1
-            style={{
-              fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-              fontWeight: 800,
-              color: "#ffffff",
-              marginBottom: "1rem",
-              letterSpacing: "-0.03em",
-            }}
-          >
-            Her Proje, Farklı Bir
-            <br />
-            <span style={{ color: "#9b1c1c" }}>İş İhtiyacından Doğdu</span>
-          </h1>
-          <p style={{ color: "#666666", fontSize: "0.95rem", lineHeight: 1.75, maxWidth: 520 }}>
-            Her müşterinin sektörü, kullanıcısı ve operasyonu farklıydı.
-            Buradaki projeler, o farklı ihtiyaçlara verilen özel yanıtlar.
-          </p>
+      <section className="bg-dark-500 px-6 py-18">
+        <div className="mx-auto max-w-[1200px]">
+          <Reveal delay={0}>
+            <p className="eyebrow mb-5 !text-accent-700">
+              Kişiye &amp; Firmaya Özel · Tamamlanan Projeler
+            </p>
+            <h1 className="mb-4 text-[clamp(1.75rem,4vw,2.5rem)] font-extrabold tracking-tight text-white">
+              Her Proje, Farklı Bir
+              <br />
+              <span className="text-accent-700">İş İhtiyacından Doğdu</span>
+            </h1>
+            <p className="max-w-[520px] text-[0.95rem] leading-[1.75] text-ink-500">
+              Her müşterinin sektörü, kullanıcısı ve operasyonu farklıydı.
+              Buradaki projeler, o farklı ihtiyaçlara verilen özel yanıtlar.
+            </p>
+          </Reveal>
         </div>
       </section>
 
       {/* Projeler */}
-      <section style={{ padding: "4.5rem 1.5rem", backgroundColor: "#f5f5f5" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <section className="bg-surface px-6 py-18">
+        <div className="mx-auto max-w-[1200px]">
           <div className="services-grid">
-            {projects.map((project) => (
-              <div
-                key={project.title}
-                style={{
-                  backgroundColor: "#ffffff",
-                  border: "1px solid #e0e0e0",
-                  borderRadius: 10,
-                  overflow: "hidden",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                {/* Renk Başlık Bandı */}
-                <div
-                  style={{
-                    background: `linear-gradient(135deg, ${project.accent}22 0%, ${project.accent}11 100%)`,
-                    borderBottom: `1px solid ${project.accent}33`,
-                    padding: "1.25rem 1.5rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.75rem",
-                  }}
-                >
+            {projects.map((project, i) => (
+              <Reveal key={project.title} delay={(i % 3) * 100}>
+                <div className="flex h-full flex-col overflow-hidden rounded-[10px] border border-ink-200 bg-white shadow-card">
+                  {/* Renk Başlık Bandı — proje verisine özgü gradyan, korunur */}
                   <div
+                    className="flex items-center gap-3 px-6 py-5"
                     style={{
-                      width: 4,
-                      height: 36,
-                      backgroundColor: project.accent,
-                      borderRadius: 2,
-                      flexShrink: 0,
-                    }}
-                  />
-                  <p style={{ color: "#444444", fontSize: "0.82rem", fontWeight: 500, lineHeight: 1.5 }}>
-                    {project.preview}
-                  </p>
-                </div>
-
-                <div style={{ padding: "1.5rem", flex: 1, display: "flex", flexDirection: "column" }}>
-                  {/* Kategori + Durum */}
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      marginBottom: "0.875rem",
+                      background: `linear-gradient(135deg, ${project.accent}22 0%, ${project.accent}11 100%)`,
+                      borderBottom: `1px solid ${project.accent}33`,
                     }}
                   >
-                    <span
-                      style={{
-                        fontSize: "0.65rem",
-                        fontWeight: 700,
-                        color: "#888888",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.08em",
-                      }}
-                    >
-                      {project.category}
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "0.65rem",
-                        fontWeight: 700,
-                        padding: "0.2rem 0.6rem",
-                        borderRadius: 4,
-                        backgroundColor: project.status === "Canlı" ? "#f0fdf4" : "#f5f5f5",
-                        color: project.status === "Canlı" ? "#16a34a" : "#888888",
-                        border: project.status === "Canlı" ? "1px solid #bbf7d0" : "1px solid #e0e0e0",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.06em",
-                      }}
-                    >
-                      {project.status}
-                    </span>
+                    <div
+                      className="h-9 w-1 shrink-0 rounded-sm"
+                      style={{ backgroundColor: project.accent }}
+                    />
+                    <p className="text-[0.82rem] font-medium leading-snug text-ink-600">
+                      {project.preview}
+                    </p>
                   </div>
 
-                  <h3
-                    style={{
-                      fontSize: "1rem",
-                      fontWeight: 700,
-                      color: "#111111",
-                      marginBottom: "0.75rem",
-                      letterSpacing: "-0.01em",
-                    }}
-                  >
-                    {project.title}
-                  </h3>
-
-                  <p
-                    style={{
-                      color: "#6b6b6b",
-                      fontSize: "0.85rem",
-                      lineHeight: 1.65,
-                      marginBottom: "1.25rem",
-                      flex: 1,
-                    }}
-                  >
-                    {project.desc}
-                  </p>
-
-                  {/* Tech Stack */}
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", marginBottom: "1.25rem" }}>
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        style={{
-                          backgroundColor: "#f5f5f5",
-                          color: "#555555",
-                          fontSize: "0.68rem",
-                          fontWeight: 600,
-                          padding: "0.2rem 0.6rem",
-                          borderRadius: 4,
-                          border: "1px solid #e8e8e8",
-                        }}
-                      >
-                        {t}
+                  <div className="flex flex-1 flex-col p-6">
+                    {/* Kategori + Durum */}
+                    <div className="mb-3.5 flex items-center justify-between">
+                      <span className="text-[0.65rem] font-bold uppercase tracking-wider text-ink-400">
+                        {project.category}
                       </span>
-                    ))}
-                  </div>
+                      <span
+                        className={`rounded border px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider ${
+                          project.status === "Canlı"
+                            ? "border-[#bbf7d0] bg-[#f0fdf4] text-success"
+                            : "border-ink-200 bg-surface text-ink-400"
+                        }`}
+                      >
+                        {project.status}
+                      </span>
+                    </div>
 
-                  {project.url ? (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.35rem",
-                        color: "#9b1c1c",
-                        fontSize: "0.75rem",
-                        fontWeight: 700,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.04em",
-                      }}
-                    >
-                      Projeyi Gör <ExternalLink size={13} />
-                    </a>
-                  ) : (
-                    <span style={{ color: "#cccccc", fontSize: "0.75rem", fontWeight: 500 }}>NDA kapsamında</span>
-                  )}
+                    <h3 className="mb-3 text-base font-bold tracking-tight text-ink-900">
+                      {project.title}
+                    </h3>
+
+                    <p className="mb-5 flex-1 text-[0.85rem] leading-relaxed text-ink-500">
+                      {project.desc}
+                    </p>
+
+                    {/* Tech Stack */}
+                    <div className="mb-5 flex flex-wrap gap-1.5">
+                      {project.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="rounded border border-ink-200 bg-surface px-2.5 py-0.5 text-[0.68rem] font-semibold text-ink-500"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    {project.url ? (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-[0.75rem] font-bold uppercase tracking-wide text-accent-700"
+                      >
+                        Projeyi Gör <ExternalLink size={13} />
+                      </a>
+                    ) : (
+                      <span className="text-[0.75rem] font-medium text-ink-300">NDA kapsamında</span>
+                    )}
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section style={{ backgroundColor: "#0d0d0d", padding: "4.5rem 1.5rem", textAlign: "center" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto" }}>
-          <h2
-            style={{
-              fontSize: "clamp(1.5rem, 3vw, 2rem)",
-              fontWeight: 800,
-              color: "#ffffff",
-              marginBottom: "1rem",
-              letterSpacing: "-0.025em",
-            }}
-          >
-            Sizin projeniz de burada olabilir
-          </h2>
-          <p style={{ color: "#555555", marginBottom: "2rem", fontSize: "0.9rem", lineHeight: 1.7 }}>
-            İş ihtiyacınızı anlatalın — size özel teknik değerlendirmeyi ücretsiz yapıyoruz.
-          </p>
-          <Link
-            href="/iletisim"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              backgroundColor: "#9b1c1c",
-              color: "#ffffff",
-              padding: "0.875rem 2rem",
-              borderRadius: 7,
-              fontWeight: 700,
-              fontSize: "0.9rem",
-            }}
-          >
-            Projenizi Anlatalım <ArrowRight size={16} />
-          </Link>
+      <section className="bg-dark-500 px-6 py-18 text-center">
+        <div className="mx-auto max-w-[640px]">
+          <Reveal delay={0}>
+            <h2 className="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-white">
+              Sizin projeniz de burada olabilir
+            </h2>
+            <p className="mb-8 text-[0.9rem] leading-relaxed text-ondark-faint">
+              İş ihtiyacınızı anlatalın — size özel teknik değerlendirmeyi ücretsiz yapıyoruz.
+            </p>
+            <Link href="/iletisim" className="btn btn-primary !px-8">
+              Projenizi Anlatalım <ArrowRight size={16} />
+            </Link>
+          </Reveal>
         </div>
       </section>
     </>

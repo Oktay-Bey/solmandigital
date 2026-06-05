@@ -8,96 +8,37 @@ export default function Footer() {
   const tier1 = services.filter((s) => s.tier === 1)
   const tier2 = services.filter((s) => s.tier === 2)
   const tier3 = services.filter((s) => s.tier === 3)
+  const waHref = `https://wa.me/${siteConfig.whatsapp.replace("+", "")}`
+
+  const linkCls = "text-[0.825rem] text-ink-500 transition-colors hover:text-ondark"
+  const headingCls =
+    "mb-4 text-[0.65rem] font-bold uppercase tracking-wider text-ink-700"
 
   return (
     <footer>
       {/* CTA Band */}
-      <div
-        style={{
-          backgroundColor: "#111111",
-          borderTop: "1px solid #1e1e1e",
-          padding: "3.5rem 1.5rem",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "2rem",
-            flexWrap: "wrap",
-          }}
-        >
+      <div className="border-t border-dark-100 bg-dark-400 px-6 py-14">
+        <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-8">
           <div>
-            <p
-              style={{
-                fontSize: "0.65rem",
-                fontWeight: 700,
-                color: "#444444",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                marginBottom: "0.5rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-              }}
-            >
-              <span style={{ display: "inline-block", width: 16, height: 1, backgroundColor: "#9b1c1c" }} />
-              Ücretsiz Danışmanlık
-            </p>
-            <h2
-              style={{
-                fontSize: "clamp(1.25rem, 2.5vw, 1.625rem)",
-                fontWeight: 800,
-                color: "#ffffff",
-                letterSpacing: "-0.025em",
-                lineHeight: 1.2,
-              }}
-            >
+            <p className="eyebrow mb-2 !text-ink-600">Ücretsiz Danışmanlık</p>
+            <h2 className="text-h2-dark font-extrabold leading-tight tracking-tight text-white">
               Projeniz için ücretsiz danışmanlık alın
             </h2>
-            <p style={{ color: "#555555", marginTop: "0.5rem", fontSize: "0.875rem" }}>
+            <p className="mt-2 text-sm text-ondark-faint">
               Fikrinizi anlatın, size en uygun çözümü ve tahmini süreyi paylaşalım.
             </p>
           </div>
-          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+          <div className="flex flex-wrap gap-3">
             <a
-              href={`https://wa.me/${siteConfig.whatsapp.replace("+", "")}`}
+              href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                backgroundColor: "#15803d",
-                color: "#ffffff",
-                padding: "0.875rem 1.75rem",
-                borderRadius: 7,
-                fontWeight: 700,
-                fontSize: "0.875rem",
-                flexShrink: 0,
-              }}
+              className="btn shrink-0 bg-green-700 text-white hover:bg-green-800"
             >
               <MessageCircle size={16} />
               WhatsApp&apos;ta Yaz
             </a>
-            <Link
-              href="/iletisim"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                backgroundColor: "#9b1c1c",
-                color: "#ffffff",
-                padding: "0.875rem 1.75rem",
-                borderRadius: 7,
-                fontWeight: 700,
-                fontSize: "0.875rem",
-                flexShrink: 0,
-              }}
-            >
+            <Link href="/iletisim" className="btn btn-primary shrink-0">
               Hemen Teklif Al <ArrowRight size={16} />
             </Link>
           </div>
@@ -105,84 +46,40 @@ export default function Footer() {
       </div>
 
       {/* Footer Links */}
-      <div style={{ backgroundColor: "#0d0d0d", padding: "3.5rem 1.5rem 2rem", borderTop: "1px solid #1a1a1a" }}>
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
-            gap: "2.5rem",
-          }}
-        >
+      <div className="border-t border-dark-200 bg-dark-500 px-6 pb-8 pt-14">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(190px,1fr))] gap-10">
           {/* Brand */}
           <div>
-            <Link
-              href="/"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                marginBottom: "1.125rem",
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 28,
-                  height: 28,
-                  backgroundColor: "#1e1e1e",
-                  border: "1px solid #2a2a2a",
-                  borderRadius: 6,
-                  color: "#fff",
-                  fontWeight: 800,
-                  fontSize: "0.8rem",
-                }}
-              >
+            <Link href="/" className="mb-4.5 flex items-center gap-2">
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-dark-50 bg-dark-100 text-[0.8rem] font-extrabold text-white">
                 S
               </span>
-              <span style={{ fontWeight: 700, fontSize: "1rem", color: "#e8e8e8", letterSpacing: "-0.02em" }}>
-                Solman<span style={{ color: "#9b1c1c" }}>Digital</span>
+              <span className="text-base font-bold tracking-tight text-ondark">
+                Solman<span className="text-accent-700">Digital</span>
               </span>
             </Link>
-            <p style={{ color: "#555555", fontSize: "0.825rem", lineHeight: 1.65, marginBottom: "1.25rem" }}>
-              Web, AI ve otomasyon alanında full-stack geliştirici.
+            <p className="mb-5 text-[0.825rem] leading-relaxed text-ink-500">
+              Web, AI ve otomasyon alanında özel yazılım geliştiren yazılım ofisi.
             </p>
             <a
               href={`mailto:${siteConfig.email}`}
-              style={{
-                color: "#555555",
-                fontSize: "0.8rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                marginBottom: "0.5rem",
-              }}
+              className="mb-2 flex items-center gap-2 text-[0.8rem] text-ink-500 transition-colors hover:text-ondark"
             >
               <Mail size={13} /> {siteConfig.email}
             </a>
             <a
-              href={`https://wa.me/${siteConfig.whatsapp.replace("+", "")}`}
+              href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                color: "#16a34a",
-                fontSize: "0.8rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                marginBottom: "0.5rem",
-              }}
+              className="mb-2 flex items-center gap-2 text-[0.8rem] text-success transition-colors hover:text-green-400"
             >
               <MessageCircle size={13} /> {siteConfig.whatsappDisplay}
             </a>
-            <p style={{ color: "#444444", fontSize: "0.8rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <p className="flex items-center gap-2 text-[0.8rem] text-ink-600">
               <MapPin size={13} /> {siteConfig.address}
             </p>
             {/* Sosyal */}
-            <div style={{ display: "flex", gap: "0.5rem", marginTop: "1.25rem" }}>
+            <div className="mt-5 flex gap-2">
               {[
                 { href: siteConfig.social.linkedin, label: "LinkedIn", short: "in" },
                 { href: siteConfig.social.twitter, label: "Twitter / X", short: "X" },
@@ -195,20 +92,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   aria-label={label}
                   title={label}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    minWidth: 32,
-                    height: 32,
-                    padding: "0 0.6rem",
-                    border: "1px solid #2a2a2a",
-                    borderRadius: 6,
-                    color: "#888888",
-                    fontSize: "0.72rem",
-                    fontWeight: 700,
-                    textDecoration: "none",
-                  }}
+                  className="inline-flex h-8 min-w-8 items-center justify-center rounded-md border border-dark-50 px-2.5 text-[0.72rem] font-bold text-ink-400 transition-colors hover:border-ink-500 hover:text-ondark"
                 >
                   {short}
                 </a>
@@ -218,25 +102,11 @@ export default function Footer() {
 
           {/* Tier 1 Hizmetler */}
           <div>
-            <h3
-              style={{
-                color: "#333333",
-                fontWeight: 700,
-                fontSize: "0.65rem",
-                marginBottom: "1rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
-              Popüler Hizmetler
-            </h3>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <h3 className={headingCls}>Popüler Hizmetler</h3>
+            <ul className="flex list-none flex-col gap-2">
               {tier1.map((s) => (
                 <li key={s.slug}>
-                  <Link
-                    href={`/hizmetler/${s.slug}`}
-                    style={{ color: "#555555", fontSize: "0.825rem" }}
-                  >
+                  <Link href={`/hizmetler/${s.slug}`} className={linkCls}>
                     {s.title}
                   </Link>
                 </li>
@@ -246,25 +116,11 @@ export default function Footer() {
 
           {/* Tier 2 Hizmetler */}
           <div>
-            <h3
-              style={{
-                color: "#333333",
-                fontWeight: 700,
-                fontSize: "0.65rem",
-                marginBottom: "1rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
-              Diğer Hizmetler
-            </h3>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <h3 className={headingCls}>Diğer Hizmetler</h3>
+            <ul className="flex list-none flex-col gap-2">
               {tier2.map((s) => (
                 <li key={s.slug}>
-                  <Link
-                    href={`/hizmetler/${s.slug}`}
-                    style={{ color: "#555555", fontSize: "0.825rem" }}
-                  >
+                  <Link href={`/hizmetler/${s.slug}`} className={linkCls}>
                     {s.title}
                   </Link>
                 </li>
@@ -274,22 +130,11 @@ export default function Footer() {
 
           {/* İstanbul Bölgeleri */}
           <div>
-            <h3
-              style={{
-                color: "#333333",
-                fontWeight: 700,
-                fontSize: "0.65rem",
-                marginBottom: "1rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
-              İstanbul Bölgeleri
-            </h3>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <h3 className={headingCls}>İstanbul Bölgeleri</h3>
+            <ul className="flex list-none flex-col gap-2">
               {istanbulPages.map((p) => (
                 <li key={p.slug}>
-                  <Link href={`/${p.slug}`} style={{ color: "#555555", fontSize: "0.825rem" }}>
+                  <Link href={`/${p.slug}`} className={linkCls}>
                     {p.title}
                   </Link>
                 </li>
@@ -299,43 +144,18 @@ export default function Footer() {
 
           {/* Tier 3 + Sayfalar */}
           <div>
-            <h3
-              style={{
-                color: "#333333",
-                fontWeight: 700,
-                fontSize: "0.65rem",
-                marginBottom: "1rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
-              Özel Çözümler
-            </h3>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.5rem" }}>
+            <h3 className={headingCls}>Özel Çözümler</h3>
+            <ul className="mb-6 flex list-none flex-col gap-2">
               {tier3.map((s) => (
                 <li key={s.slug}>
-                  <Link
-                    href={`/hizmetler/${s.slug}`}
-                    style={{ color: "#555555", fontSize: "0.825rem" }}
-                  >
+                  <Link href={`/hizmetler/${s.slug}`} className={linkCls}>
                     {s.title}
                   </Link>
                 </li>
               ))}
             </ul>
-            <h3
-              style={{
-                color: "#333333",
-                fontWeight: 700,
-                fontSize: "0.65rem",
-                marginBottom: "1rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
-              Şirket
-            </h3>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <h3 className={headingCls}>Şirket</h3>
+            <ul className="flex list-none flex-col gap-2">
               {[
                 { href: "/portfoy", label: "Portföy" },
                 { href: "/rehber", label: "Rehber" },
@@ -344,10 +164,7 @@ export default function Footer() {
                 { href: "/iletisim", label: "İletişim" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    style={{ color: "#555555", fontSize: "0.825rem" }}
-                  >
+                  <Link href={link.href} className={linkCls}>
                     {link.label}
                   </Link>
                 </li>
@@ -357,23 +174,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "2.5rem auto 0",
-            paddingTop: "1.5rem",
-            borderTop: "1px solid #1a1a1a",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "1rem",
-          }}
-        >
-          <p style={{ color: "#333333", fontSize: "0.75rem" }}>
+        <div className="mx-auto mt-10 flex max-w-[1200px] flex-wrap items-center justify-between gap-4 border-t border-dark-200 pt-6">
+          <p className="text-xs text-ink-700">
             © {new Date().getFullYear()} {siteConfig.name}. Tüm hakları saklıdır.
           </p>
-          <p style={{ color: "#2a2a2a", fontSize: "0.75rem" }}>
+          <p className="text-xs text-dark-50">
             Next.js 16 · TypeScript · Tailwind CSS
           </p>
         </div>

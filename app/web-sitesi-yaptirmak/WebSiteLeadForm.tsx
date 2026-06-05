@@ -4,12 +4,14 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
-import { inputStyle, labelStyle, submitButtonStyle, onFocus, onBlur } from "@/lib/form-utils"
 import { trackEvent } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
 type FormData = Pick<LeadPayload, "firstName" | "email" | "phone" | "companyName" | "siteType" | "budget" | "timeline" | "existingSite" | "brief">
+
+const labelCls =
+  "mb-2 block text-[0.775rem] font-bold uppercase tracking-wide text-ink-600"
 
 export default function WebSiteLeadForm() {
   const router = useRouter()
@@ -52,51 +54,51 @@ export default function WebSiteLeadForm() {
 
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-two-col">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="firstName" style={labelStyle}>Adınız *</label>
+          <label htmlFor="firstName" className={labelCls}>Adınız *</label>
           <input
             id="firstName" name="firstName" type="text" required
             value={form.firstName} onChange={handleChange}
-            placeholder="Ahmet" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+            placeholder="Ahmet" className="input"
           />
         </div>
         <div>
-          <label htmlFor="email" style={labelStyle}>E-posta *</label>
+          <label htmlFor="email" className={labelCls}>E-posta *</label>
           <input
             id="email" name="email" type="email" required
             value={form.email} onChange={handleChange}
-            placeholder="ahmet@firma.com" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+            placeholder="ahmet@firma.com" className="input"
           />
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-two-col">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="phone" style={labelStyle}>Telefon / WhatsApp</label>
+          <label htmlFor="phone" className={labelCls}>Telefon / WhatsApp</label>
           <input
             id="phone" name="phone" type="tel"
             value={form.phone} onChange={handleChange}
-            placeholder="+90 5xx xxx xx xx" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+            placeholder="+90 5xx xxx xx xx" className="input"
           />
         </div>
         <div>
-          <label htmlFor="companyName" style={labelStyle}>Firma / Marka Adı</label>
+          <label htmlFor="companyName" className={labelCls}>Firma / Marka Adı</label>
           <input
             id="companyName" name="companyName" type="text"
             value={form.companyName} onChange={handleChange}
-            placeholder="Firma Adı" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+            placeholder="Firma Adı" className="input"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="siteType" style={labelStyle}>Ne tür site istiyorsunuz? *</label>
+        <label htmlFor="siteType" className={labelCls}>Ne tür site istiyorsunuz? *</label>
         <select
           id="siteType" name="siteType" required
           value={form.siteType} onChange={handleChange}
-          style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
+          className="input cursor-pointer"
         >
           <option value="">Seçin</option>
           <option value="Kurumsal tanıtım sitesi">Kurumsal tanıtım sitesi</option>
@@ -108,13 +110,13 @@ export default function WebSiteLeadForm() {
         </select>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-two-col">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="budget" style={labelStyle}>Tahmini bütçeniz? *</label>
+          <label htmlFor="budget" className={labelCls}>Tahmini bütçeniz? *</label>
           <select
             id="budget" name="budget" required
             value={form.budget} onChange={handleChange}
-            style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
+            className="input cursor-pointer"
           >
             <option value="">Seçin</option>
             <option value="₺8.000–₺20.000">₺8.000–₺20.000</option>
@@ -124,11 +126,11 @@ export default function WebSiteLeadForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="timeline" style={labelStyle}>Ne zaman başlamak istiyorsunuz? *</label>
+          <label htmlFor="timeline" className={labelCls}>Ne zaman başlamak istiyorsunuz? *</label>
           <select
             id="timeline" name="timeline" required
             value={form.timeline} onChange={handleChange}
-            style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
+            className="input cursor-pointer"
           >
             <option value="">Seçin</option>
             <option value="Bu ay">Bu ay</option>
@@ -140,34 +142,28 @@ export default function WebSiteLeadForm() {
       </div>
 
       <div>
-        <label htmlFor="existingSite" style={labelStyle}>Mevcut web siteniz var mı?</label>
+        <label htmlFor="existingSite" className={labelCls}>Mevcut web siteniz var mı?</label>
         <input
           id="existingSite" name="existingSite" type="text"
           value={form.existingSite} onChange={handleChange}
           placeholder="https://mevcutsite.com (yoksa boş bırakın)"
-          style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+          className="input"
         />
       </div>
 
       <div>
-        <label htmlFor="brief" style={labelStyle}>Projeniz hakkında kısaca anlatın</label>
+        <label htmlFor="brief" className={labelCls}>Projeniz hakkında kısaca anlatın</label>
         <textarea
           id="brief" name="brief"
           rows={3}
           value={form.brief} onChange={handleChange}
           placeholder="Ör: Muhasebe firması için kurumsal site, 10 sayfa, Türkçe + İngilizce…"
-          style={{ ...inputStyle, resize: "vertical", minHeight: 90 }}
-          onFocus={onFocus} onBlur={onBlur}
+          className="input min-h-[90px] resize-y"
         />
       </div>
 
       {state === "error" && (
-        <div style={{
-          display: "flex", alignItems: "center", gap: "0.5rem",
-          padding: "0.875rem 1rem",
-          backgroundColor: "#fff5f5", border: "1px solid #fecaca",
-          borderRadius: 7, color: "#9b1c1c", fontSize: "0.875rem",
-        }}>
+        <div className="flex items-center gap-2 rounded-[7px] border border-accent-200 bg-accent-50 px-4 py-3.5 text-[0.875rem] text-accent-700">
           <AlertCircle size={16} />
           Gönderme sırasında bir hata oluştu. Lütfen tekrar deneyin.
         </div>
@@ -176,13 +172,13 @@ export default function WebSiteLeadForm() {
       <button
         type="submit"
         disabled={state === "sending"}
-        style={submitButtonStyle(state === "sending")}
+        className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-80"
       >
         {state === "sending" ? "Gönderiliyor…" : "Ücretsiz Fiyat Teklifi Al"}
         {state !== "sending" && <ArrowRight size={16} />}
       </button>
 
-      <p style={{ fontSize: "0.72rem", color: "#aaaaaa", textAlign: "center" }}>
+      <p className="text-center text-[0.72rem] text-ink-400">
         Bilgileriniz üçüncü taraflarla paylaşılmaz. 24 saat içinde dönüş yapılır.
       </p>
     </form>

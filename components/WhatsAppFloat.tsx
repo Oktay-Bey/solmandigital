@@ -14,30 +14,7 @@ export default function WhatsAppFloat() {
       rel="noopener noreferrer"
       onClick={() => trackEvent("click", "whatsapp", "float")}
       aria-label="WhatsApp ile iletişime geç"
-      style={{
-        position: "fixed",
-        bottom: 90,
-        right: 24,
-        width: 52,
-        height: 52,
-        borderRadius: "50%",
-        backgroundColor: "#25D366",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        boxShadow: "0 4px 16px rgba(37,211,102,0.35)",
-        zIndex: 45,
-        transition: "transform 0.15s, box-shadow 0.15s",
-        textDecoration: "none",
-      }}
-      onMouseEnter={(e) => {
-        ;(e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.1)"
-        ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 6px 20px rgba(37,211,102,0.5)"
-      }}
-      onMouseLeave={(e) => {
-        ;(e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)"
-        ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 16px rgba(37,211,102,0.35)"
-      }}
+      className="fixed bottom-[90px] right-6 z-[45] flex h-[52px] w-[52px] items-center justify-center rounded-full bg-[#25D366] shadow-[0_4px_16px_rgba(37,211,102,0.35)] transition-transform duration-150 hover:scale-110 hover:shadow-[0_6px_20px_rgba(37,211,102,0.5)]"
     >
       <MessageCircle size={24} color="#ffffff" fill="#ffffff" />
     </a>

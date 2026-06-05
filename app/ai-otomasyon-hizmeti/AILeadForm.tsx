@@ -4,12 +4,14 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
-import { inputStyle, labelStyle, submitButtonStyle, onFocus, onBlur } from "@/lib/form-utils"
 import { trackEvent } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
 type FormData = Pick<LeadPayload, "firstName" | "email" | "aiUseCase" | "currentVolume" | "companySize" | "timeline" | "budget" | "painPoint">
+
+const labelCls =
+  "mb-2 block text-[0.775rem] font-bold uppercase tracking-wide text-ink-600"
 
 export default function AILeadForm() {
   const router = useRouter()
@@ -51,32 +53,32 @@ export default function AILeadForm() {
 
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-two-col">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="firstName" style={labelStyle}>Adınız *</label>
+          <label htmlFor="firstName" className={labelCls}>Adınız *</label>
           <input
             id="firstName" name="firstName" type="text" required
             value={form.firstName} onChange={handleChange}
-            placeholder="Ahmet" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+            placeholder="Ahmet" className="input"
           />
         </div>
         <div>
-          <label htmlFor="email" style={labelStyle}>E-posta *</label>
+          <label htmlFor="email" className={labelCls}>E-posta *</label>
           <input
             id="email" name="email" type="email" required
             value={form.email} onChange={handleChange}
-            placeholder="ahmet@firma.com" style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+            placeholder="ahmet@firma.com" className="input"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="aiUseCase" style={labelStyle}>Hangi alanda AI kullanmak istiyorsunuz? *</label>
+        <label htmlFor="aiUseCase" className={labelCls}>Hangi alanda AI kullanmak istiyorsunuz? *</label>
         <select
           id="aiUseCase" name="aiUseCase" required
           value={form.aiUseCase} onChange={handleChange}
-          style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
+          className="input cursor-pointer"
         >
           <option value="">Seçin</option>
           <option value="İçerik / blog yazımı">İçerik / blog yazımı</option>
@@ -89,22 +91,22 @@ export default function AILeadForm() {
       </div>
 
       <div>
-        <label htmlFor="currentVolume" style={labelStyle}>Şu an bu işi ne kadar sıklıkla yapıyorsunuz? *</label>
+        <label htmlFor="currentVolume" className={labelCls}>Şu an bu işi ne kadar sıklıkla yapıyorsunuz? *</label>
         <input
           id="currentVolume" name="currentVolume" type="text" required
           value={form.currentVolume} onChange={handleChange}
           placeholder="ör: haftada 50 ürün açıklaması, ayda 8 blog yazısı"
-          style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+          className="input"
         />
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-two-col">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="companySize" style={labelStyle}>Şirket büyüklüğü? *</label>
+          <label htmlFor="companySize" className={labelCls}>Şirket büyüklüğü? *</label>
           <select
             id="companySize" name="companySize" required
             value={form.companySize} onChange={handleChange}
-            style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
+            className="input cursor-pointer"
           >
             <option value="">Seçin</option>
             <option value="1-5 kişi (solopreneur)">1-5 kişi (solopreneur)</option>
@@ -114,11 +116,11 @@ export default function AILeadForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="timeline" style={labelStyle}>Ne zaman başlamak istiyorsunuz? *</label>
+          <label htmlFor="timeline" className={labelCls}>Ne zaman başlamak istiyorsunuz? *</label>
           <select
             id="timeline" name="timeline" required
             value={form.timeline} onChange={handleChange}
-            style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
+            className="input cursor-pointer"
           >
             <option value="">Seçin</option>
             <option value="Hemen">Hemen</option>
@@ -129,11 +131,11 @@ export default function AILeadForm() {
       </div>
 
       <div>
-        <label htmlFor="budget" style={labelStyle}>Bütçe aralığı</label>
+        <label htmlFor="budget" className={labelCls}>Bütçe aralığı</label>
         <select
           id="budget" name="budget"
           value={form.budget} onChange={handleChange}
-          style={{ ...inputStyle, cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur}
+          className="input cursor-pointer"
         >
           <option value="">Belirtmek istemiyorum</option>
           <option value="₺15.000–₺40.000">₺15.000–₺40.000</option>
@@ -144,24 +146,18 @@ export default function AILeadForm() {
       </div>
 
       <div>
-        <label htmlFor="painPoint" style={labelStyle}>En çok zaman harcadığınız tekrar eden iş nedir?</label>
+        <label htmlFor="painPoint" className={labelCls}>En çok zaman harcadığınız tekrar eden iş nedir?</label>
         <textarea
           id="painPoint" name="painPoint"
           rows={3}
           value={form.painPoint} onChange={handleChange}
           placeholder="Ör: her gün yüzlerce ürün açıklaması yazmak zorundayım…"
-          style={{ ...inputStyle, resize: "vertical", minHeight: 90 }}
-          onFocus={onFocus} onBlur={onBlur}
+          className="input min-h-[90px] resize-y"
         />
       </div>
 
       {state === "error" && (
-        <div style={{
-          display: "flex", alignItems: "center", gap: "0.5rem",
-          padding: "0.875rem 1rem",
-          backgroundColor: "#fff5f5", border: "1px solid #fecaca",
-          borderRadius: 7, color: "#9b1c1c", fontSize: "0.875rem",
-        }}>
+        <div className="flex items-center gap-2 rounded-[7px] border border-accent-200 bg-accent-50 px-4 py-3.5 text-[0.875rem] text-accent-700">
           <AlertCircle size={16} />
           Gönderme sırasında bir hata oluştu. Lütfen tekrar deneyin.
         </div>
@@ -170,13 +166,13 @@ export default function AILeadForm() {
       <button
         type="submit"
         disabled={state === "sending"}
-        style={submitButtonStyle(state === "sending")}
+        className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-80"
       >
         {state === "sending" ? "Gönderiliyor…" : "Ücretsiz AI Analizi İste"}
         {state !== "sending" && <ArrowRight size={16} />}
       </button>
 
-      <p style={{ fontSize: "0.72rem", color: "#aaaaaa", textAlign: "center" }}>
+      <p className="text-center text-[0.72rem] text-ink-400">
         Bilgileriniz üçüncü taraflarla paylaşılmaz. 24 saat içinde dönüş yapılır.
       </p>
     </form>
