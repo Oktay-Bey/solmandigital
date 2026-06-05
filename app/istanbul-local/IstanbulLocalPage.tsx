@@ -41,23 +41,11 @@ export default function IstanbulLocalPage({ config }: Props) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
-        name: siteConfig.name,
+        "@type": "Service",
+        name: `${config.schemaServiceType} — ${config.title}`,
         description: config.metaDescription,
-        url: siteConfig.url,
-        email: siteConfig.email,
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: config.district ?? "Beşiktaş",
-          addressRegion: "İstanbul",
-          addressCountry: "TR",
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: config.geo.latitude,
-          longitude: config.geo.longitude,
-        },
-        hasMap: config.googleMapsUrl,
+        url: `${siteConfig.url}/${config.slug}`,
+        provider: { "@id": `${siteConfig.url}/#localbusiness` },
         areaServed: config.areaServed.map((name) => ({ "@type": "City", name })),
         serviceType: config.schemaServiceType,
       },
@@ -68,6 +56,13 @@ export default function IstanbulLocalPage({ config }: Props) {
           name: item.q,
           acceptedAnswer: { "@type": "Answer", text: item.a },
         })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: siteConfig.url },
+          { "@type": "ListItem", position: 2, name: config.title, item: `${siteConfig.url}/${config.slug}` },
+        ],
       },
     ],
   }
@@ -115,6 +110,18 @@ export default function IstanbulLocalPage({ config }: Props) {
           >
             İletişime Geç <ArrowRight size={16} />
           </a>
+        </div>
+      </section>
+
+      {/* Unique Section — bölgeye özel içerik */}
+      <section style={{ padding: "3.5rem 1.5rem 0", backgroundColor: "#ffffff" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <h2 style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", fontWeight: 800, color: "#111111", marginBottom: "1rem", letterSpacing: "-0.02em" }}>
+            {config.uniqueSection.heading}
+          </h2>
+          <p style={{ color: "#555555", fontSize: "0.975rem", lineHeight: 1.8 }}>
+            {config.uniqueSection.body}
+          </p>
         </div>
       </section>
 

@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   title: "Hizmetler — İşinize Özel Yazılım Çözümleri",
   description:
     "Full-stack developer ile işinize özel yazılım. E-ticaret, Trendyol entegrasyonu, AI otomasyon, SaaS ve daha fazlası. Her proje sıfırdan inşa edilir.",
+  keywords: [
+    "yazılım hizmetleri istanbul",
+    "web geliştirme hizmetleri",
+    "e-ticaret yazılım",
+    "saas geliştirme türkiye",
+    "ai otomasyon hizmeti",
+    "trendyol entegrasyonu",
+    "özel yazılım çözümleri",
+    "next.js geliştirici",
+  ],
   alternates: { canonical: `${siteConfig.url}/hizmetler` },
   openGraph: {
     title: "Hizmetler | Solman Digital",

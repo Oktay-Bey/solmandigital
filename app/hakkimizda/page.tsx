@@ -7,6 +7,14 @@ export const metadata: Metadata = {
   title: "Hakkımızda — Solman Digital",
   description:
     "Solman Digital — 15+ canlı proje deneyimiyle özel yazılım ofisi. Sıfırdan e-ticaret, AI otomasyon, SaaS — aynı uzmanla, başından sonuna, net kapsam.",
+  keywords: [
+    "solman digital",
+    "istanbul yazılım ofisi",
+    "full stack developer istanbul",
+    "yazılım ofisi beşiktaş",
+    "özel yazılım geliştirme",
+    "doğrudan geliştirici",
+  ],
   alternates: { canonical: `${siteConfig.url}/hakkimizda` },
   openGraph: { title: "Hakkımızda | Solman Digital", locale: "tr_TR" },
 }

@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Solman Digital",
-  tagline: "Customized Software Expert",
+  tagline: "İstanbul Yazılım Ofisi",
   description:
-    "İstanbul merkezli özel yazılım ofisi. E-ticaret, SaaS ve AI otomasyon projelerinizi template kullanmadan sıfırdan kuruyoruz. Doğrudan uzman erişimi, net takvim, taahhüt edilen teslim.",
+    "Web sitesi yaptırma, e-ticaret ve SaaS geliştirme — İstanbul merkezli özel yazılım ofisi. Template yok, sıfırdan geliştirme. Doğrudan uzman erişimi, net takvim, taahhüt edilen teslim.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://solmandigital.com.tr",
   email: "info@solmandigital.com.tr",
   whatsapp: "+905439675250",
@@ -40,6 +40,13 @@ export const siteConfig = {
     "e-ticaret yazılım geliştirici",
     "supabase next.js geliştirici",
     "yapay zeka otomasyon türkiye",
+    "web sitesi fiyatları",
+    "istanbul yazılım şirketi",
+    "özel yazılım geliştirme",
+    "e-ticaret sitesi kurulum",
+    "next.js developer istanbul",
+    "freelance yazılımcı istanbul",
+    "dijital dönüşüm istanbul",
   ],
 }
 

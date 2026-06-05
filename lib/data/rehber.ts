@@ -85,8 +85,8 @@ export const rehberPosts: RehberPost[] = [
     ],
     cta: {
       text: "Trendyol satıcısı olarak web sitesi ve API entegrasyonu hakkında",
-      href: "/iletisim",
-      label: "Ücretsiz Danışmanlık Al",
+      href: "/trendyol-entegrasyonu",
+      label: "Trendyol Entegrasyonu Hizmeti",
     },
     keywords: [
       "trendyol satıcı web sitesi",
@@ -155,8 +155,8 @@ export const rehberPosts: RehberPost[] = [
     ],
     cta: {
       text: "AI içerik otomasyonu projeniz için",
-      href: "/iletisim",
-      label: "Ücretsiz Görüşme Talep Et",
+      href: "/ai-otomasyon-hizmeti",
+      label: "AI Otomasyon Hizmeti",
     },
     keywords: [
       "ai içerik otomasyonu",
@@ -237,8 +237,8 @@ export const rehberPosts: RehberPost[] = [
     ],
     cta: {
       text: "Projeniz için net kapsam ve fiyat almak ister misiniz?",
-      href: "/iletisim",
-      label: "Ücretsiz Teklif Al",
+      href: "/web-sitesi-yaptirmak",
+      label: "Web Sitesi Yaptırma Hizmeti",
     },
     keywords: [
       "istanbul web sitesi fiyatları",
@@ -313,8 +313,8 @@ export const rehberPosts: RehberPost[] = [
     ],
     cta: {
       text: "SaaS fikrinizi ürüne dönüştürmek için",
-      href: "/iletisim",
-      label: "Ücretsiz Kapsam Görüşmesi",
+      href: "/saas-platform-gelistirme",
+      label: "SaaS Platform Geliştirme",
     },
     keywords: [
       "saas mvp türkiye",
@@ -391,8 +391,8 @@ export const rehberPosts: RehberPost[] = [
     ],
     cta: {
       text: "Projeniz için hangi teknoloji doğru — beraber belirleyelim",
-      href: "/iletisim",
-      label: "Ücretsiz Teknik Danışmanlık",
+      href: "/web-sitesi-yaptirmak",
+      label: "Web Sitesi Yaptırma Hizmeti",
     },
     keywords: [
       "next.js mi wordpress mi",
@@ -475,8 +475,8 @@ export const rehberPosts: RehberPost[] = [
     ],
     cta: {
       text: "İyzico entegrasyonu veya ödeme altyapısı için",
-      href: "/iletisim",
-      label: "Ücretsiz Teknik Görüşme",
+      href: "/hizmetler/odeme-entegrasyonu",
+      label: "Ödeme Entegrasyonu Hizmeti",
     },
     keywords: [
       "iyzico entegrasyonu",
@@ -568,8 +568,8 @@ export const rehberPosts: RehberPost[] = [
     ],
     cta: {
       text: "E-ticaret sitenizi sıfırdan kurmak için",
-      href: "/iletisim",
-      label: "Ücretsiz Kapsam Görüşmesi",
+      href: "/istanbul-e-ticaret-yazilim",
+      label: "E-Ticaret Yazılım Hizmeti",
     },
     keywords: [
       "türkiye e-ticaret sitesi açmak",
@@ -656,8 +656,8 @@ export const rehberPosts: RehberPost[] = [
     ],
     cta: {
       text: "Web sitenize AI chatbot entegrasyonu için",
-      href: "/iletisim",
-      label: "Ücretsiz Teknik Değerlendirme",
+      href: "/ai-otomasyon-hizmeti",
+      label: "AI Otomasyon Hizmeti",
     },
     keywords: [
       "web sitesi ai chatbot entegrasyonu",
@@ -746,8 +746,8 @@ export const rehberPosts: RehberPost[] = [
     ],
     cta: {
       text: "Hepsiburada veya çift kanal API entegrasyonu için",
-      href: "/iletisim",
-      label: "Teknik Görüşme Talep Et",
+      href: "/trendyol-entegrasyonu",
+      label: "Marketplace Entegrasyon Hizmeti",
     },
     keywords: [
       "hepsiburada api entegrasyonu",
@@ -755,6 +755,1067 @@ export const rehberPosts: RehberPost[] = [
       "trendyol hepsiburada çift kanal",
       "marketplace api türkiye",
       "hepsiburada stok senkronizasyonu",
+    ],
+  },
+  {
+    slug: "freelance-yazilimci-mi-ajans-mi",
+    title: "Freelance Yazılımcı mı, Ajans mı? 2025'te Doğru Seçim",
+    metaTitle: "Freelance Yazılımcı mı Ajans mı? Doğru Seçim Rehberi | Solman Digital",
+    metaDescription:
+      "Yazılım projeniz için freelance yazılımcı mı yoksa ajans mı tercih etmelisiniz? Maliyet, güvenilirlik ve proje yönetimi karşılaştırması — gerçek deneyimle.",
+    description:
+      "Proje başlangıcında alınan bu karar sonuçları büyük ölçüde belirler. Fiyat, güvenilirlik ve iletişim açısından hangi modelin hangi projeye uygun olduğunu karşılaştırdık.",
+    publishDate: "2026-06-01",
+    readTime: 6,
+    sections: [
+      {
+        heading: "Temel Fark: Kim Sorumlu?",
+        body: "Freelance yazılımcı ile ajans arasındaki en kritik fark sorumluluk yapısıdır. Freelancer'da tek kişi hem geliştirme hem iletişim hem teslimatı üstlenir. Ajansda bu sorumluluk dağılır — bazen bu avantaj, bazen dezavantaj olur.",
+      },
+      {
+        heading: "Freelance Yazılımcının Avantajları ve Riskleri",
+        body: "Freelancer çalışmak hız ve maliyet açısından cazip görünür.",
+        list: [
+          "✅ Doğrudan iletişim — e-posta veya WhatsApp ile anında ulaşabilirsiniz",
+          "✅ Ajans overhead maliyeti yok — genellikle daha düşük fiyat",
+          "✅ Küçük ve net kapsamlı projeler için ideal",
+          "❌ Başka iş alabilir — takvim kayabilir",
+          "❌ Hastalık, tatil veya vefat durumunda proje sahipsiz kalır",
+          "❌ Deneyim ve kalite düzeyi CV'yi okumadan bilinmez",
+          "❌ Yasal güvence sınırlı — sözleşme genellikle yok",
+        ],
+      },
+      {
+        heading: "Ajansın Avantajları ve Riskleri",
+        body: "Ajanslar kurumsal projelerin ihtiyaçlarına yanıt verecek şekilde yapılanmıştır.",
+        list: [
+          "✅ Yedekleme kaynağı var — biri çıkarsa başkası devralır",
+          "✅ Sözleşme, e-fatura, kurumsal güvence",
+          "✅ Büyük ve uzun vadeli projeler için uygun yapı",
+          "❌ Overhead maliyeti yüksek — gerçek maliyetin 2–3 katı fiyatlandırma",
+          "❌ Account manager katmanı — projeyi anlatan ile yapan farklı kişi",
+          "❌ Küçük projeler ajansın öncelik listesine girmeyebilir",
+          "❌ İletişim süreci yavaşlar, revizyon döngüleri uzar",
+        ],
+      },
+      {
+        heading: "Üçüncü Model: Özel Yazılım Ofisi",
+        body: "Freelancer ile ajans arasındaki boşluğu dolduran bir model vardır: küçük ve uzmanlaşmış yazılım ofisi. Bu modelde tek bir uzman projenin tamamına sahip çıkar ancak iş süreçleri ajans standardında kurgulanmıştır. Sözleşme var, e-fatura var, net takvim var — fakat account manager, PM ve toplantı katmanları yok.",
+      },
+      {
+        heading: "Hangi Model Hangi Projeye Uygun?",
+        body: "Proje tipine göre en uygun çalışma modelini seçin:",
+        list: [
+          "Basit landing page veya küçük tanıtım sitesi → Freelancer (hız + fiyat)",
+          "E-ticaret, SaaS veya entegrasyon gerektiren orta ölçekli proje → Özel yazılım ofisi",
+          "Büyük kurumsal sistem veya çok ekipli yazılım → Orta-büyük ajans",
+          "Kritik ve devam eden bakım gerektiren sistem → Sözleşmeli yazılım ofisi veya ajans",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Freelance yazılımcı nasıl bulunur?",
+        a: "Upwork, Bionluk, LinkedIn ve GitHub profillerinden freelancer aranabilir. Referans proje ve kod örnekleri mutlaka incelenmeli; kısa bir ücretli test görevi ilk değerlendirme için etkilidir.",
+      },
+      {
+        q: "Solman Digital hangi modelde çalışıyor?",
+        a: "Solman Digital, freelancer ile ajans arasındaki modelde çalışır: tek uzman, doğrudan iletişim, ajans güvencesi. Sözleşme, e-fatura ve net takvim standarttır.",
+      },
+      {
+        q: "Yazılım projesinde en sık hangi sorunlar yaşanıyor?",
+        a: "En yaygın sorunlar: kapsam belirsizliği (ne yapılacağı netleştirilmeden başlanması), iletişim kopukluğu ve takvim kaymaları. Bunların tümü proje başlangıcında yazılı kapsam belgesi ve takvim taahhüdüyle önlenebilir.",
+      },
+    ],
+    cta: {
+      text: "Projeniz için doğrudan geliştirici ile çalışmak ister misiniz?",
+      href: "/istanbul-web-developer",
+      label: "İstanbul Web Developer",
+    },
+    keywords: [
+      "freelance yazılımcı istanbul",
+      "yazılım ajansı mı freelancer mı",
+      "yazılım projesi için kim tutmalıyım",
+      "istanbul yazılım şirketi karşılaştırma",
+      "freelance developer türkiye",
+    ],
+  },
+  {
+    slug: "web-sitesi-seo-teknikleri",
+    title: "Web Sitenizi Google'a Tanıtın: Teknik SEO Başlangıç Rehberi",
+    metaTitle: "Web Sitesi SEO Teknikleri Başlangıç Rehberi | Solman Digital",
+    metaDescription:
+      "Web sitesi SEO nasıl yapılır? Teknik SEO temelleri, title etiketleri, schema.org ve sayfa hızı optimizasyonu. İstanbul işletmeleri için pratik rehber.",
+    description:
+      "Google'da görünmek için ne yapmanız gerektiğini teknik karmaşıklık olmadan anlatan, gerçek proje deneyimiyle hazırlanmış başlangıç rehberi.",
+    publishDate: "2026-06-03",
+    readTime: 7,
+    sections: [
+      {
+        heading: "SEO Nedir ve Neden Önemlidir?",
+        body: "SEO (Search Engine Optimization), web sitenizin Google gibi arama motorlarında daha üst sıralarda görünmesi için yapılan çalışmaların bütünüdür. Her ay milyonlarca Türk kullanıcı Google'da 'istanbul web sitesi yaptırma', 'e-ticaret kurulum' gibi sorgular giriyor. Bu sorgularda üst sıralarda yer almak, reklam bütçesi ödemeden müşteriye ulaşmak anlamına gelir.",
+      },
+      {
+        heading: "Teknik SEO'nun 5 Temeli",
+        body: "Teknik SEO, Google bot'unun sitenizi doğru anlayıp dizinlemesi için gereken altyapıdır. Bu 5 temel doğru kurulmadan içerik ne kadar iyi olursa olsun sıralama kazanmak güçleşir.",
+        list: [
+          "Title etiketi: Her sayfa için benzersiz, anahtar kelime içeren başlık (50-60 karakter). Tarayıcı sekmesinde ve Google arama sonuçlarında görünen en kritik SEO alanıdır.",
+          "Meta açıklama: Arama sonucunda başlık altında görünen özet metin (150-160 karakter). Sıralamayı doğrudan etkilemez ancak tıklama oranını (CTR) belirler.",
+          "Canonical URL: Aynı içeriğin birden fazla URL'de yayınlandığı durumlarda Google'a 'asıl sayfa bu' diye işaret eder. Yanlış kurulum duplicate content cezasına yol açar.",
+          "robots.txt: Google bot'a hangi sayfaların taranacağını, hangilerinin atlanacağını söyler. /api/, /tesekkurler/ gibi dizinleri disallow etmek tarama bütçesini korur.",
+          "Sitemap.xml: Tüm sayfa listesini Google'a sunar. Özellikle yeni yayınlanan içeriklerin hızlı keşfedilmesi için kritik — manuel submit ile Google Search Console'dan hızlandırılabilir.",
+        ],
+      },
+      {
+        heading: "Sayfa Hızı ve Core Web Vitals",
+        body: "Google, Mayıs 2021'den itibaren sayfa deneyimi sinyallerini (Core Web Vitals) sıralama faktörü olarak kullanıyor. Üç temel metrik: LCP (Largest Contentful Paint — sayfanın ana içeriğinin yükleme süresi, hedef: 2.5s altı), INP (Interaction to Next Paint — kullanıcı etkileşim yanıt süresi, hedef: 200ms altı) ve CLS (Cumulative Layout Shift — sayfa yüklenirken görsel kayma miktarı, hedef: 0.1 altı). Ölçüm için PageSpeed Insights (pagespeed.web.dev) ve Google Search Console'un 'Core Web Vitals' raporu kullanılır. Next.js ile geliştirilen ve Vercel'de barındırılan siteler bu metriklerde WordPress'e kıyasla belirgin avantaj sağlar.",
+      },
+      {
+        heading: "Schema.org ile Zengin Snippet",
+        body: "Schema.org işaretlemesi, Google'ın sayfanızı daha iyi anlamasını sağlar ve SERP'de yıldızlı puanlar, SSS akordeonları veya fiyat bilgisi gibi zengin görseller oluşturur. En değerli şemalar şunlardır:",
+        list: [
+          "FAQPage: SSS içeren sayfalar için — accordion görünümü sağlar",
+          "LocalBusiness: İstanbul işletmeleri için kritik — harita entegrasyonu",
+          "Service: Hizmet sayfaları için",
+          "Article: Blog ve rehber içerikleri için",
+          "BreadcrumbList: Navigasyon hiyerarşisi gösterimi",
+        ],
+      },
+      {
+        heading: "İç Bağlantı Stratejisi",
+        body: "İç bağlantılar (internal links), sitenizin en değerli sayfalarına PageRank akışı sağlar. Rehber yazılarınız ilgili hizmet sayfanıza, hizmet sayfalarınız da birbirine bağlanmalıdır. 'Trendyol entegrasyonu' içeren bir blog yazısında Trendyol hizmet sayfanıza bağlantı verilmesi hem kullanıcı deneyimini hem de SEO'yu güçlendirir.",
+      },
+      {
+        heading: "Yerel SEO: İstanbul İşletmeleri İçin",
+        body: "İstanbul'daki fiziksel işletmeler için yerel SEO, Google Haritalar ve 'istanbul + [hizmet]' sorgularında görünürlük sağlar. Adım adım yapılması gerekenler:",
+        list: [
+          "Google Business Profile (GBP) kaydı: maps.google.com/business üzerinden ücretsiz kaydolun, adres ve iletişim bilgilerini doğrulayın",
+          "NAP tutarlılığı: İsim, adres ve telefon numarası web sitenizde, GBP'de ve sosyal medyada birebir aynı olmalı",
+          "Yerel anahtar kelimeli landing page: '[ilçe] + [hizmet]' formatında sayfalar (ör. 'kadıköy web tasarım') organik yerel trafiği doğrudan çeker",
+          "Schema.org LocalBusiness: Web sitenizin kaynak kodunda JSON-LD ile işaretleme — Google'ın yerel sonuçlarda sitenizi göstermesini kolaylaştırır",
+          "Müşteri yorumları: GBP'de biriken gerçek yorumlar hem sıralamayı hem de tıklanma oranını artırır",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "SEO sonuçları ne kadar sürede görülür?",
+        a: "Teknik SEO düzeltmeleri (robots.txt, canonical, sayfa hızı) genellikle 2–4 hafta içinde etkisini gösterir. Organik sıralama artışı; rekabete ve içerik kalitesine bağlı olarak 3–6 ay sürebilir. Yeni siteler için 6–12 ay gerçekçi bir beklentidir.",
+      },
+      {
+        q: "WordPress sitesi için teknik SEO nasıl yapılır?",
+        a: "WordPress'te Yoast SEO veya RankMath eklentisi ile temel teknik SEO yapılabilir. Sayfa hızı için WP Rocket veya önbellekleme eklentileri, resim optimizasyonu için Smush kullanılabilir. Ancak Next.js tabanlı bir siteyle kıyaslandığında performans farkı belirgindir.",
+      },
+      {
+        q: "Solman Digital SEO hizmeti veriyor mu?",
+        a: "Evet. Teknik SEO altyapısı kurulumu — meta etiketleri, schema.org, sitemap, canonical URL, robots.txt ve sayfa hızı optimizasyonu — tüm projelerimizde standarttır. Ayrıca mevcut siteniz için bağımsız teknik SEO denetimi hizmeti de sunuyoruz.",
+      },
+    ],
+    cta: {
+      text: "Web sitenizin teknik SEO altyapısını güçlendirmek için",
+      href: "/hizmetler/seo-teknik-altyapi",
+      label: "Teknik SEO Hizmeti",
+    },
+    keywords: [
+      "web sitesi seo teknikleri",
+      "teknik seo nedir",
+      "google seo istanbul",
+      "schema.org nedir",
+      "web sitesi google sıralaması",
+      "core web vitals türkçe",
+    ],
+  },
+  // ─── YENİ YAZILAR ─────────────────────────────────────────────────────────
+  {
+    slug: "web-sitesi-yaptirmak-istiyorum",
+    title: "Web Sitesi Yaptırmak İstiyorum: Nereden Başlamalıyım?",
+    metaTitle: "Web Sitesi Yaptırmak İstiyorum: Nereden Başlamalıyım? | Solman Digital",
+    metaDescription:
+      "Web sitesi yaptırmak için adım adım rehber. Bütçe, içerik, teknik gereksinimler ve doğru geliştirici seçimi hakkında pratik bilgiler.",
+    description:
+      "İlk kez web sitesi yaptıracaklar için hazırlanmış kapsamlı başlangıç rehberi. Bütçeden teknik gereksinimlere, tasarımdan yayına kadar her adım.",
+    publishDate: "2026-05-01",
+    readTime: 7,
+    sections: [
+      {
+        heading: "Web Sitesi Yaptırmadan Önce Yanıtlamanız Gereken 5 Soru",
+        body: "Web sitesi yaptırmak bir yatırımdır. Doğru kararı vermek için önce ihtiyacınızı netleştirmeniz gerekir.",
+        list: [
+          "Sitenizin temel amacı nedir? (tanıtım, satış, randevu, lead toplama)",
+          "Hedef kitleniz kim? (bireysel, KOBİ, kurumsal)",
+          "Bütçeniz nedir? (tasarım, geliştirme, yıllık bakım)",
+          "İçeriği siz mi hazırlayacaksınız, yoksa destek mi istiyorsunuz?",
+          "Canlıya geçiş süreniz var mı?",
+        ],
+      },
+      {
+        heading: "Şablon mu, Özel Geliştirme mi?",
+        body: "Piyasada iki temel yaklaşım var: WordPress veya Wix gibi şablon tabanlı sistemler ile Next.js gibi teknolojilerle sıfırdan geliştirme. Her birinin avantajları farklıdır.",
+        list: [
+          "Şablon sistemler daha hızlı kurulur ancak performans ve özelleştirme sınırlıdır",
+          "Özel geliştirme daha yavaş başlar ama sonuçta tam kontrol size aittir",
+          "Google PageSpeed skorları özel geliştirmede genellikle çok daha yüksektir",
+          "E-ticaret veya SaaS gibi karmaşık projelerde şablon yetersiz kalır",
+        ],
+      },
+      {
+        heading: "Doğru Geliştiriciyi Nasıl Seçersiniz?",
+        body: "Türkiye'de web geliştirici seçimi kritik bir karardır. Yüzlerce seçenek arasında doğruyu bulmak zaman alır.",
+        list: [
+          "Portföyünü inceleyin — gerçek canlı projeler mi yoksa mock-up'lar mı?",
+          "Referans isteyin ve müşterileri arayın",
+          "Kapsam belgesi yazıp yazmadığını sorun",
+          "Teslim sonrası destek koşullarını netleştirin",
+          "Fiyat en düşük olanı seçmeyin — orta bütçe çoğunlukla en iyi değer sunar",
+        ],
+      },
+      {
+        heading: "Bütçenizi Nasıl Planlamalısınız?",
+        body: "Web sitesi maliyeti tek seferlik değildir. İlk geliştirme dışında yıllık bakım ve hosting masraflarını da hesaba katın.",
+        list: [
+          "Kurumsal tanıtım sitesi: ₺8.000–₺25.000",
+          "E-ticaret sitesi: ₺20.000–₺60.000",
+          "SaaS platform: ₺50.000+",
+          "Yıllık domain + hosting: ₺2.000–₺5.000",
+          "Yıllık bakım ve güncelleme: projenin %10–15'i",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Web sitesi yaptırmak ne kadar sürer?",
+        a: "Kurumsal tanıtım siteleri 5–10 iş günü, e-ticaret siteleri 10–15 iş günü, SaaS platformlar 4–8 hafta içinde teslim edilir. Süre, kapsam ve içerik hazırlığına bağlı değişir.",
+      },
+      {
+        q: "Web sitemin içeriğini kim yazacak?",
+        a: "İçeriği siz hazırlayabilirsiniz ya da ücretli içerik yazımı hizmeti talep edebilirsiniz. Temel metinleri siz sağlarsanız geliştirme süreci hızlanır.",
+      },
+      {
+        q: "Web sitemi canlıya aldıktan sonra değişiklik yapabilir miyim?",
+        a: "Evet. İçerik yönetim sistemi (CMS) entegrasyonu ile metin ve görsel güncellemelerini kendiniz yapabilirsiniz. Teknik değişiklikler için geliştiriciyle çalışmaya devam edebilirsiniz.",
+      },
+    ],
+    cta: { text: "Web Sitesi Projenizi Başlatın", href: "/web-sitesi-yaptirmak", label: "Teklif Al" },
+    keywords: [
+      "web sitesi yaptırmak istiyorum",
+      "web sitesi yaptırma rehberi",
+      "web sitesi fiyatları",
+      "web geliştirici seçimi",
+      "web sitesi nasıl yaptırılır",
+    ],
+  },
+  {
+    slug: "kurumsal-web-sitesi-fiyatlari",
+    title: "Kurumsal Web Sitesi Fiyatları 2025 — Ne Kadar Bütçe Ayırmalısınız?",
+    metaTitle: "Kurumsal Web Sitesi Fiyatları 2025 | Solman Digital",
+    metaDescription:
+      "Kurumsal web sitesi fiyatları: ₺8.000'dan başlayan maliyetler, etki eden faktörler ve bütçe planlaması. 2025 Türkiye piyasası güncel rehberi.",
+    description:
+      "Kurumsal web sitesi fiyatları nelere göre değişir? 2025 Türkiye piyasasında gerçekçi bütçe planlaması için kapsamlı rehber.",
+    publishDate: "2026-05-05",
+    readTime: 6,
+    sections: [
+      {
+        heading: "Kurumsal Web Sitesi Fiyatını Belirleyen Faktörler",
+        body: "Web sitesi fiyatları tek tip değildir. Projenin kapsamına göre ₺5.000 ile ₺100.000 arasında değişebilir.",
+        list: [
+          "Sayfa sayısı: 5 sayfalık site ile 30 sayfalık site aynı fiyatta olmaz",
+          "Özel işlevler: rezervasyon, üyelik, ödeme sistemi ekstra maliyet getirir",
+          "Tasarım: hazır şablon veya özgün tasarım farkı büyüktür",
+          "İçerik: metin ve görsel hazırlığı dahil mi değil mi?",
+          "SEO kurulumu: teknik altyapı standart mı, kapsamlı mı?",
+        ],
+      },
+      {
+        heading: "2025 Türkiye'de Kurumsal Web Sitesi Fiyat Aralıkları",
+        body: "Piyasada üç temel segment bulunmaktadır. Fiyatlar, geliştirici deneyimi ve kapsama göre farklılaşır.",
+        list: [
+          "Ekonomik (şablon, WordPress): ₺3.000–₺8.000",
+          "Orta segment (özel tasarım + WordPress): ₺8.000–₺20.000",
+          "Premium (Next.js, özel geliştirme): ₺15.000–₺40.000",
+          "Kurumsal büyük ölçek: ₺40.000+",
+        ],
+      },
+      {
+        heading: "Ucuz Web Sitesinin Gizli Maliyetleri",
+        body: "Düşük fiyatlı teklifler başlangıçta cazip görünür ancak uzun vadede daha pahalıya gelebilir.",
+        list: [
+          "Yavaş yükleme hızı → Google sıralamada düşüş → müşteri kaybı",
+          "Güvenlik açıkları → veri ihlali riski",
+          "Şablon kısıtlamaları → özellik eklemek zorlaşır",
+          "Bakım ücreti: ayda ₺500–₺2.000 + eklenti lisansları",
+          "Revizyon ücretleri: her küçük değişiklik için ek fatura",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Kurumsal web sitesi için en uygun bütçe ne kadar?",
+        a: "Ciddi bir işletme için ₺12.000–₺25.000 arası gerçekçi bir başlangıç bütçesidir. Bu aralıkta özel tasarım, SEO kurulumu ve 1 yıl destek alınabilir.",
+      },
+      {
+        q: "Fiyata KDV dahil mi?",
+        a: "Çoğu geliştirici fiyatları KDV hariç belirtir. Teklife KDV (%20) eklendiğinde gerçek maliyeti hesaplamamız gerekir.",
+      },
+      {
+        q: "Web sitesi için yıllık ne kadar bütçe ayrılmalı?",
+        a: "Domain (₺500–₺1.000), hosting (₺1.500–₺4.000) ve bakım/güncelleme (proje bedelinin %10–15'i) için yıllık ₺3.000–₺8.000 bütçe planlamak mantıklıdır.",
+      },
+    ],
+    cta: { text: "Fiyat Teklifi Alın", href: "/fiyatlar", label: "Fiyatlar" },
+    keywords: [
+      "kurumsal web sitesi fiyatları",
+      "web sitesi ne kadar tutar",
+      "web sitesi maliyeti türkiye",
+      "kurumsal site fiyat",
+      "web geliştirme ücreti",
+    ],
+  },
+  {
+    slug: "landing-page-nedir",
+    title: "Landing Page Nedir ve Dönüşümü Nasıl Artırır?",
+    metaTitle: "Landing Page Nedir? Dönüşümü Artıran Sayfa Tasarımı | Solman Digital",
+    metaDescription:
+      "Landing page nedir, kurumsal siteden farkı nedir, nasıl tasarlanır? Yüksek dönüşüm oranı için dikkat edilmesi gerekenler.",
+    description:
+      "Landing page ile normal web sitesi arasındaki fark nedir? Reklam kampanyalarınız için dönüşüm odaklı sayfa nasıl tasarlanır?",
+    publishDate: "2026-05-10",
+    readTime: 5,
+    sections: [
+      {
+        heading: "Landing Page Nedir?",
+        body: "Landing page (açılış sayfası), ziyaretçiyi tek bir eyleme yönlendirmek için tasarlanmış, odaklanmış bir web sayfasıdır. Kurumsal sitenizde 10 sayfa varken landing page tek bir hedefe — form doldurmak, satın almak, randevu almak — odaklanır.",
+        list: [
+          "Tek CTA (call-to-action): ziyaretçi ne yapacağını bilir",
+          "Dağıtıcı navigasyon yok: dikkat dağıtacak linkler kaldırılır",
+          "Mesaj–reklam uyumu: Google Ads metni ile sayfa içeriği eşleşir",
+          "Hız öncelikli: 1 saniyenin altında yükleme hedeflenir",
+        ],
+      },
+      {
+        heading: "Yüksek Dönüşümlü Landing Page Elementleri",
+        body: "İyi bir landing page, ziyaretçinin zihinsel sürecine eşlik eder: dikkat → ilgi → arzu → eylem.",
+        list: [
+          "Güçlü başlık: faydayı 6 kelimede anlatır",
+          "Alt başlık: şüpheyi giderir, detay verir",
+          "Sosyal kanıt: referanslar, sayılar, logolar",
+          "Özellikler yerine faydalar: 'ne' değil 'ne işe yarar'",
+          "Form veya buton: ekran ortasında ve sayfanın altında",
+          "Güven sinyalleri: SSL logosu, garanti, iade politikası",
+        ],
+      },
+      {
+        heading: "Landing Page vs Kurumsal Site: Hangisi Gerekli?",
+        body: "İkisi birbirini dışlamaz. Kurumsal siteniz marka bilinirliği için, landing page'iniz ise reklam kampanyaları için çalışır.",
+        list: [
+          "Google/Meta reklam çalıştırıyorsanız landing page zorunludur",
+          "Organik SEO için kurumsal site veya blog daha etkilidir",
+          "Sezonluk kampanyalar için her seferinde yeni landing page oluşturabilirsiniz",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Landing page maliyeti ne kadar?",
+        a: "Tek sayfa, dönüşüm odaklı bir landing page ₺5.000–₺12.000 arasında değişir. A/B test altyapısı ve analitik kurulumu ekstra maliyet getirebilir.",
+      },
+      {
+        q: "Landing page ne kadar sürede hazırlanır?",
+        a: "İçerik hazır olduğunda 3–7 iş günü içinde canlıya alınabilir.",
+      },
+      {
+        q: "Her reklam kampanyası için ayrı landing page mi gerekir?",
+        a: "Evet, mümkünse her kampanya veya hedef kitle segmenti için ayrı landing page oluşturmak dönüşüm oranını artırır.",
+      },
+    ],
+    cta: { text: "Landing Page Projesi Başlatın", href: "/hizmetler/landing-page-tasarimi", label: "Detay" },
+    keywords: [
+      "landing page nedir",
+      "açılış sayfası nedir",
+      "landing page tasarım",
+      "dönüşüm odaklı sayfa",
+      "google ads landing page",
+    ],
+  },
+  {
+    slug: "trendyol-komisyon-hesaplama",
+    title: "Trendyol Komisyon Oranları 2025 ve Kâr Hesaplama Rehberi",
+    metaTitle: "Trendyol Komisyon Oranları 2025 | Kâr Hesaplama Rehberi | Solman Digital",
+    metaDescription:
+      "Trendyol komisyon oranları 2025. Kategori bazlı komisyonlar, iade maliyetleri ve gerçek kâr marjınızı hesaplama rehberi.",
+    description:
+      "Trendyol'da satış yapan veya yapmayı planlayan satıcılar için komisyon oranları, gizli maliyetler ve kâr marjı hesaplama rehberi.",
+    publishDate: "2026-05-15",
+    readTime: 6,
+    sections: [
+      {
+        heading: "Trendyol Komisyon Oranları Nasıl Belirlenir?",
+        body: "Trendyol'un komisyon oranları sabit değildir; kategoriye, kampanyalara ve satıcı profiline göre değişir. 2025 itibarıyla komisyon oranları %8 ile %25 arasında seyrediyor.",
+        list: [
+          "Elektronik: %8–%12",
+          "Giyim ve tekstil: %18–%22",
+          "Kozmetik ve kişisel bakım: %15–%20",
+          "Ev ve yaşam: %12–%18",
+          "Gıda ve içecek: %10–%15",
+          "Kampanya dönemlerinde (11.11, Çifte Alışveriş) ek indirim zorunluluğu doğabilir",
+        ],
+      },
+      {
+        heading: "Gizli Maliyetler: Komisyon Dışında Ne Ödüyorsunuz?",
+        body: "Trendyol'da satış maliyeti sadece komisyondan ibaret değildir. Gerçek kâr marjınızı hesaplamak için tüm kalemleri dikkate almalısınız.",
+        list: [
+          "Reklam harcamaları (Sponsored Products): satışın %5–%15'i",
+          "İade işlem ücreti: iade başına ₺15–₺30",
+          "Kargo: ücretsiz kargo kampanyasında satıcı üstlenir",
+          "Ambalaj ve paketleme maliyeti",
+          "Stok maliyeti: platform depolarında bekletme ücreti",
+        ],
+      },
+      {
+        heading: "Trendyol Kâr Marjı Hesaplama Formülü",
+        body: "Gerçek kâr marjınızı şu formülle hesaplayabilirsiniz: Kâr = Satış Fiyatı − Ürün Maliyeti − Komisyon − Kargo − Reklam − Ambalaj − İade Payı",
+        list: [
+          "Örnek: ₺200 satış fiyatı, ₺80 maliyet, %18 komisyon (₺36), ₺12 kargo = ₺72 brüt kâr",
+          "%10 reklam (₺20) ve %5 iade payı (₺10) düşülünce net kâr ₺42 → %21 marj",
+          "Marjınız %15'in altındaysa kendi sitenizi açmayı değerlendirin",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Trendyol komisyonları ne zaman değişir?",
+        a: "Trendyol komisyon oranlarını her yıl başında ve kampanya dönemlerinde güncelleyebilir. Mağaza panelinden güncel oranları takip etmeniz önerilir.",
+      },
+      {
+        q: "Trendyol'da iade oranı yüksek çıkarsa ne yapmalıyım?",
+        a: "Yüksek iade, ürün açıklaması veya görsel uyumsuzluğundan kaynaklanıyorsa içerik güncellemesi gerekir. Sistematik bir sorun varsa kendi e-ticaret sitenize yönelmeyi düşünebilirsiniz.",
+      },
+      {
+        q: "Trendyol entegrasyonu ne işe yarar?",
+        a: "Trendyol API entegrasyonu; stok, sipariş ve fiyat yönetimini otomatikleştirir. Manuel giriş hataları ortadan kalkar, operasyonel maliyet düşer.",
+      },
+    ],
+    cta: { text: "Trendyol Entegrasyonu Hakkında Bilgi Al", href: "/trendyol-entegrasyonu", label: "Detay" },
+    keywords: [
+      "trendyol komisyon oranları 2025",
+      "trendyol kâr hesaplama",
+      "trendyol satıcı maliyetleri",
+      "trendyol komisyon kategoriler",
+      "trendyol net kâr marjı",
+    ],
+  },
+  {
+    slug: "saas-nedir-turkiye",
+    title: "SaaS Nedir? Türkiye'de SaaS Girişimine Başlamak",
+    metaTitle: "SaaS Nedir? Türkiye'de SaaS Girişimine Başlamak | Solman Digital",
+    metaDescription:
+      "SaaS nedir, nasıl çalışır? Türkiye'de SaaS girişimi kurmak için MVP stratejisi, fiyatlandırma modelleri ve teknik gereksinimler.",
+    description:
+      "Software as a Service (SaaS) modelini Türkiye'de uygulamak isteyenler için kapsamlı başlangıç rehberi.",
+    publishDate: "2026-05-20",
+    readTime: 8,
+    sections: [
+      {
+        heading: "SaaS Nedir?",
+        body: "SaaS (Software as a Service), yazılımın kullanıcıya internet üzerinden abonelik modeliyle sunulduğu bir dağıtım modelidir. Kullanıcılar yazılımı satın almak yerine aylık veya yıllık ödeme yapar.",
+        list: [
+          "Örnekler: Slack, Notion, HubSpot, Figma",
+          "Türkiye'den örnekler: Parasut, Faprika, İyzico",
+          "Avantajı: tahmin edilebilir gelir (MRR/ARR)",
+          "Dezavantajı: müşteri edinim maliyeti yüksek, churn takibi gerektirir",
+        ],
+      },
+      {
+        heading: "Türkiye'de SaaS Girişimi İçin Pazar Değerlendirmesi",
+        body: "Türkiye SaaS pazarı henüz olgunlaşmamış ama hızla büyüyor. KOBİ'lerin dijitalleşme ihtiyacı ve artan internet penetrasyonu fırsatlar yaratıyor.",
+        list: [
+          "Hedef segment: 50–500 çalışanlı KOBİ'ler en verimli müşteri segmenti",
+          "Fiyatlandırma: Türkiye'de aylık ₺500–₺2.000 arası paketler yaygın",
+          "Ödeme: İyzico veya Stripe entegrasyonu zorunlu",
+          "Yerelleştirme: Türkçe UI, TRY fiyatlandırma, yerel vergi mevzuatı",
+        ],
+      },
+      {
+        heading: "SaaS MVP'nizi Nasıl Oluşturursunuz?",
+        body: "MVP (Minimum Viable Product) stratejisi, en az özellikle pazara girip müşteri geri bildirimiyle ürünü geliştirmektir.",
+        list: [
+          "Tek bir problemi çözün: geniş kapsam MVP'yi yavaşlatır",
+          "Auth + billing + core özellik: 3 temel modül önce kurulmalı",
+          "Supabase veya Firebase: backend altyapısını hızlandırır",
+          "Stripe veya İyzico: ödeme entegrasyonu baştan kurulmalı",
+          "İlk 10 müşteri: doğrudan satış, sosyal medya veya LinkedIn outreach",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "SaaS geliştirme maliyeti ne kadar?",
+        a: "Temel bir SaaS MVP'si ₺50.000–₺120.000 arasında geliştirilebilir. Auth, ödeme sistemi ve core özellik dahil. Karmaşık iş süreçleri fiyatı artırır.",
+      },
+      {
+        q: "SaaS projesi ne kadar sürede tamamlanır?",
+        a: "4–8 hafta arası MVP için gerçekçi bir süre. Tam ürün ise 3–6 aylık bir süreç gerektirebilir.",
+      },
+      {
+        q: "Türkiye'de SaaS için hangi ödeme altyapısı kullanılmalı?",
+        a: "Türk müşteriler için İyzico, yurt dışı müşteriler için Stripe önerilir. Her ikisini de destekleyen bir altyapı kurmak uzun vadede avantajlıdır.",
+      },
+    ],
+    cta: { text: "SaaS Projenizi Konuşalım", href: "/saas-platform-gelistirme", label: "Detay" },
+    keywords: [
+      "saas nedir türkiye",
+      "saas girişimi nasıl kurulur",
+      "saas mvp geliştirme",
+      "türkiye saas pazarı",
+      "saas fiyatlandırma modeli",
+    ],
+  },
+  {
+    slug: "shopify-alternatifi-turkiye",
+    title: "Shopify'a Türk Alternatifi Var mı? 2025 Karşılaştırma",
+    metaTitle: "Shopify Alternatifi Türkiye 2025 | Solman Digital",
+    metaDescription:
+      "Türkiye'de Shopify yerine kullanılabilecek e-ticaret çözümleri. WooCommerce, özel Next.js geliştirme ve yerli platformların karşılaştırması.",
+    description:
+      "Shopify'ın Türkiye'deki kısıtlamaları neler? Daha iyi alternatifler var mı? 2025 güncel karşılaştırma.",
+    publishDate: "2026-05-25",
+    readTime: 6,
+    sections: [
+      {
+        heading: "Shopify'ın Türkiye'deki Sorunları",
+        body: "Shopify dünyada lider e-ticaret platformu olsa da Türkiye pazarı için ciddi dezavantajları bulunuyor.",
+        list: [
+          "Ödeme: İyzico entegrasyonu resmi olarak desteklenmiyor, ek entegrasyon gerekiyor",
+          "Fiyat: aylık 29–79 USD + %2 işlem ücreti ciddi maliyet",
+          "Döviz riski: kur değişimlerinde aylık ödeme dalgalanıyor",
+          "Vergi: Türkiye'ye özel KDV ve fatura yapısı yetersiz",
+          "Kargo: MNG, Yurtiçi, Aras entegrasyonları ek uygulama gerektiriyor",
+        ],
+      },
+      {
+        heading: "Türkiye İçin En İyi Shopify Alternatifleri",
+        body: "Türk e-ticaret girişimcileri için farklı ihtiyaçlara göre çeşitli alternatifler mevcut.",
+        list: [
+          "WooCommerce (WordPress): açık kaynak, tam yerleşik İyzico entegrasyonu var, sınırsız ürün",
+          "İdeaSoft / T-Soft: yerli platform, Türkiye'ye özel ödeme ve kargo entegrasyonları",
+          "Next.js özel geliştirme: tam kontrol, en yüksek performans, aylık platform ücreti yok",
+          "OpenCart: basit projeler için düşük maliyetli seçenek",
+        ],
+      },
+      {
+        heading: "Özel Geliştirme Ne Zaman Mantıklı?",
+        body: "Aylık platform ücreti ödemek istemiyorsanız ve işiniz büyüdükçe kısıtlamalarla karşılaşıyorsanız özel geliştirme doğru tercih.",
+        list: [
+          "Aylık 200+ sipariş: platform komisyonları önemli maliyet oluşturur",
+          "Özel sipariş akışı: B2B, toptan, kampanya yönetimi",
+          "Trendyol/Hepsiburada senkronizasyonu: API bağlantısı için esneklik şart",
+          "Marka kimliği: şablon görünümünden kurtulmak isteyenler için",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Shopify'dan özel siteye geçmek ne kadar sürer?",
+        a: "Ürün aktarımı ve yeni site geliştirmesi birlikte 3–5 hafta sürer. SEO sürekliliği için yönlendirme (redirect) planlaması önemlidir.",
+      },
+      {
+        q: "Özel e-ticaret sitesi Shopify'dan pahalı mı?",
+        a: "Başlangıç maliyeti daha yüksektir (₺20.000+) ancak aylık platform ücreti ve komisyon yoktur. 12–18 ay içinde genellikle başabaş noktasına ulaşılır.",
+      },
+      {
+        q: "İyzico entegrasyonu için hangi platform daha uygun?",
+        a: "WooCommerce'in resmi İyzico eklentisi var. Özel geliştirmede ise İyzico API doğrudan entegre edilir — en temiz ve güvenilir yöntem budur.",
+      },
+    ],
+    cta: { text: "E-Ticaret Projenizi Konuşalım", href: "/hizmetler/eticaret-kurulum", label: "Detay" },
+    keywords: [
+      "shopify alternatifi türkiye",
+      "shopify türkiye sorunları",
+      "shopify yerine ne kullanmalı",
+      "türkiye e-ticaret platformu",
+      "woocommerce vs shopify türkiye",
+    ],
+  },
+  {
+    slug: "google-ads-vs-seo",
+    title: "Google Ads mi SEO mu? Türk KOBİ'ler İçin Doğru Seçim",
+    metaTitle: "Google Ads mı SEO mu? Türk KOBİ'ler İçin Rehber | Solman Digital",
+    metaDescription:
+      "Google Ads ve SEO arasındaki farklar, maliyetler ve Türkiye'deki KOBİ'ler için hangisinin daha uygun olduğu.",
+    description:
+      "Dijital pazarlama bütçenizi nereye harcamalısınız? Google Ads anlık sonuç, SEO ise uzun vadeli kazanç sağlar.",
+    publishDate: "2026-05-28",
+    readTime: 5,
+    sections: [
+      {
+        heading: "Google Ads ile SEO'nun Temel Farkı",
+        body: "Google Ads (tıklama başına ödeme) ile SEO (organik arama) farklı zaman ufuklarında çalışır. Biri hız, diğeri sürdürülebilirlik sunar.",
+        list: [
+          "Google Ads: kampanya aktifken trafik gelir, durdurunca sıfırlanır",
+          "SEO: 3–6 ay sonra etki gösterir, bırakıldıktan sonra da trafik devam eder",
+          "Google Ads: her tıklama için ödeme; Türkiye'de ₺3–₺30 arası CPC",
+          "SEO: kurulum maliyeti var, sonra organik trafik ücretsizdir",
+        ],
+      },
+      {
+        heading: "Hangi Durumda Google Ads Seçilmeli?",
+        body: "Hızlı sonuç gereken durumlarda Google Ads avantajlıdır.",
+        list: [
+          "Yeni lansman: organik trafik için zaman yoksa reklam zorunlu",
+          "Sezonluk kampanya: belirli bir dönem için hedefli trafik",
+          "Yüksek rekabetli anahtar kelimeler: organik çıkmak yıllar alır",
+          "Test aşaması: landing page'in işe yarayıp yaramadığını hızlı test edin",
+        ],
+      },
+      {
+        heading: "Hangi Durumda SEO Seçilmeli?",
+        body: "Uzun vadeli müşteri edinimi ve düşük marjinal maliyetle büyümek isteyenler için SEO vazgeçilmezdir.",
+        list: [
+          "İçerik odaklı sektörler: hukuk, sağlık, eğitim, finans",
+          "Yerel hizmetler: 'Kadıköy tamirci' gibi lokasyonlu aramalar",
+          "Blog ve rehber içeriği: sorun çözücü yazılar yıllarca trafik üretir",
+          "Bütçe kısıtlı KOBİ'ler: aylık reklam faturasını taşıyamayanlar",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Google Ads ve SEO'yu aynı anda yürütmek mümkün mü?",
+        a: "Evet ve önerilir. Kısa vadede Ads ile trafik kazanırken, SEO ile uzun vadeli organik varlık inşa edilir.",
+      },
+      {
+        q: "Türkiye'de SEO ajansı ne kadar tutar?",
+        a: "Aylık ₺3.000–₺15.000 arası ciddi SEO çalışması yaptırılabilir. Teknik SEO + içerik üretimi + link building üçlüsü birlikte yürütülmelidir.",
+      },
+      {
+        q: "Web sitemin SEO'su için ne yapmalıyım?",
+        a: "Önce teknik SEO altyapısını (hız, schema, sitemap) kurun, ardından hedef anahtar kelimelere yönelik içerik üretin. Solman Digital ile ücretsiz analiz talep edebilirsiniz.",
+      },
+    ],
+    cta: { text: "Ücretsiz SEO Analizi İsteyin", href: "/ucretsiz-analiz", label: "Analiz" },
+    keywords: [
+      "google ads mi seo mu",
+      "google ads vs seo türkiye",
+      "dijital pazarlama kobi",
+      "seo maliyet türkiye",
+      "google ads cpc türkiye",
+    ],
+  },
+  {
+    slug: "chatgpt-isletme-kullanimi",
+    title: "ChatGPT ve Claude'u İşletmenizde Kullanmanın 10 Yolu",
+    metaTitle: "ChatGPT ve Claude'u İşletmenizde Kullanmanın 10 Yolu | Solman Digital",
+    metaDescription:
+      "AI araçlarını işletmenizde nasıl kullanabilirsiniz? ChatGPT, Claude ve GPT-4o ile verimlilik artırmanın 10 pratik yolu.",
+    description:
+      "Yapay zeka araçlarını işletme süreçlerinize entegre etmenin pratik yolları. Örnekler ve uygulama rehberi.",
+    publishDate: "2026-06-01",
+    readTime: 7,
+    sections: [
+      {
+        heading: "AI Araçları İşletme Verimliliğini Nasıl Artırır?",
+        body: "ChatGPT ve Claude gibi büyük dil modelleri, rutin bilgi işleme görevlerini otomatikleştirerek çalışanların stratejik işlere odaklanmasını sağlar.",
+        list: [
+          "İçerik üretimi: blog yazısı, ürün açıklaması, e-posta şablonları",
+          "Müşteri hizmetleri: sık sorulan sorulara otomatik yanıt",
+          "Veri analizi: rapor özetleme, tablo yorumlama",
+          "Yazışma: teklif mektubu, resmi e-posta taslakları",
+          "Araştırma: pazar araştırması, rakip analizi özetleme",
+        ],
+      },
+      {
+        heading: "İşletmeler İçin 10 Pratik AI Kullanım Alanı",
+        body: "Türk KOBİ'lerin en çok fayda gördüğü AI uygulama alanları şunlardır:",
+        list: [
+          "1. Ürün açıklamaları: Trendyol/e-ticaret için yüzlerce ürün açıklaması saniyeler içinde",
+          "2. SEO blog içeriği: anahtar kelime odaklı makaleler",
+          "3. Sosyal medya paylaşımları: haftalık içerik takvimi hazırlama",
+          "4. Müşteri e-posta şablonları: sipariş onayı, geri bildirim talebi",
+          "5. Sözleşme taslakları: hukuki gözden geçirme için ham metin",
+          "6. Rakip analizi: rakip web sitelerinin özetlenmesi",
+          "7. İş planı ve sunum: yatırımcı deck taslakları",
+          "8. Veri yorumlama: Excel/CSV verilerinden içgörü çıkarma",
+          "9. Eğitim materyali: çalışan onboarding dökümanları",
+          "10. Chatbot: web sitenizde 7/24 müşteri yanıtlama",
+        ],
+      },
+      {
+        heading: "AI Otomasyonu: Bir Sonraki Adım",
+        body: "Tek seferlik AI kullanımından öte, iş süreçlerinizi otomatikleştiren kalıcı sistemler kurabilirsiniz.",
+        list: [
+          "GPT-4o API entegrasyonu ile içerik üretimini otomatikleştirin",
+          "Webhook'larla sipariş/müşteri olaylarına AI yanıtı tetikleyin",
+          "Vektör veritabanı ile şirket bilgisini AI'ya öğretin",
+          "CRM'e bağlı AI asistan ile satış sürecini hızlandırın",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "ChatGPT mi yoksa Claude mi kullanmalıyım?",
+        a: "Her ikisi de güçlüdür. ChatGPT (GPT-4o) uzun içerik üretiminde, Claude ise karmaşık analiz ve kod yazımında öne çıkar. İkisini de test edip ihtiyacınıza uygun olanı tercih edin.",
+      },
+      {
+        q: "AI otomasyon sistemi ne kadar tutarında kurulur?",
+        a: "Basit bir içerik otomasyonu ₺15.000–₺30.000, karmaşık iş süreci otomasyonu ₺40.000–₺80.000 arasında kurulabilir.",
+      },
+      {
+        q: "AI araçları Türkçe için ne kadar başarılı?",
+        a: "GPT-4o ve Claude 3.5 Sonnet, Türkçe'de İngilizce'ye yakın kalitede çıktı üretiyor. Teknik veya hukuki metinlerde insan gözden geçirmesi önerilir.",
+      },
+    ],
+    cta: { text: "AI Otomasyon Çözümleri", href: "/ai-otomasyon-hizmeti", label: "Detay" },
+    keywords: [
+      "chatgpt işletme kullanımı",
+      "claude yapay zeka türkiye",
+      "ai otomasyon küçük işletme",
+      "gpt-4o türkçe kullanım",
+      "yapay zeka iş verimliliği",
+    ],
+  },
+  {
+    slug: "nextjs-avantajlari",
+    title: "Next.js'in 7 Avantajı: Neden 2025'te Hâlâ En İyi Seçim?",
+    metaTitle: "Next.js Avantajları 2025: Neden En İyi Web Çerçevesi? | Solman Digital",
+    metaDescription:
+      "Next.js'in diğer web teknolojilerine göre avantajları. Performans, SEO, geliştirici deneyimi ve ölçeklenebilirlik açısından kapsamlı karşılaştırma.",
+    description:
+      "Next.js neden bu kadar popüler? 2025'te web projelerinde neden WordPress veya diğer alternatiflere tercih edilmeli?",
+    publishDate: "2026-06-03",
+    readTime: 6,
+    sections: [
+      {
+        heading: "Next.js Nedir ve Neden Önemli?",
+        body: "Next.js, React tabanlı bir web uygulama çerçevesidir. 2024 itibarıyla dünya genelinde en çok kullanılan web framework'lerinden biri konumundadır.",
+        list: [
+          "Vercel tarafından geliştiriliyor ve destekleniyor",
+          "Server Side Rendering (SSR) ve Static Site Generation (SSG) desteği",
+          "App Router ile server components mimarisi",
+          "Büyük şirketler kullananlar: TikTok, Twitch, Hulu, Linear",
+        ],
+      },
+      {
+        heading: "7 Temel Avantaj",
+        body: "Next.js'i rakiplerinden ayıran özellikler hem teknik hem de iş boyutunda önemli avantajlar sağlar.",
+        list: [
+          "1. SEO: server-side rendering ile Google botu sayfayı tam okur",
+          "2. Hız: otomatik kod bölme, lazy loading, image optimizasyonu",
+          "3. Tek kod tabanı: frontend + backend aynı projede",
+          "4. Edge fonksiyonları: middleware ile coğrafi yönlendirme, A/B test",
+          "5. TypeScript: tür güvenliği ile daha az hata",
+          "6. Vercel deploy: git push ile otomatik deploy, sıfır konfigürasyon",
+          "7. Geniş ekosistem: 1.000+ hazır kütüphane ve bileşen",
+        ],
+      },
+      {
+        heading: "Next.js vs WordPress: Hangisini Seçmeli?",
+        body: "Bu iki teknoloji farklı ihtiyaçlara hizmet eder. Seçim projenin niteliğine bağlıdır.",
+        list: [
+          "İçerik ağırlıklı blog veya haber sitesi → WordPress hâlâ geçerli",
+          "Performans kritikse veya özel özellik gerekiyorsa → Next.js",
+          "E-ticaret veya SaaS → Next.js açık ara üstün",
+          "Teknik ekip yoksa ve basit içerik yeterliyse → WordPress + Elementor",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Next.js öğrenmesi zor mudur?",
+        a: "React biliyorsanız Next.js'e geçiş 1–2 hafta içinde tamamlanabilir. Sıfırdan başlayanlar için 2–3 aylık yoğun öğrenim gerekir.",
+      },
+      {
+        q: "Next.js ile WordPress aynı maliyette mi?",
+        a: "Next.js geliştirme genellikle daha pahalıdır ancak aylık eklenti ve lisans maliyeti yoktur. Vercel üzerinde ücretsiz hosting yapılabilir.",
+      },
+      {
+        q: "Next.js projem için Vercel zorunlu mu?",
+        a: "Hayır. AWS, Google Cloud, Railway gibi platformlara da deploy edilebilir. Vercel en kolay ve optimize seçenek olduğu için yaygın tercih ediliyor.",
+      },
+    ],
+    cta: { text: "Next.js Projenizi Başlatın", href: "/hizmetler/kurumsal-web-sitesi", label: "Detay" },
+    keywords: [
+      "next.js avantajları",
+      "next.js neden kullanılır",
+      "next.js vs wordpress",
+      "next.js seo performans",
+      "react next.js farkı",
+    ],
+  },
+  // ─── KARŞILAŞTIRMA YAZILARI ────────────────────────────────────────────────
+  {
+    slug: "trendyol-vs-eticaret-sitesi",
+    title: "Trendyol'da Satmak mı, Kendi E-Ticaret Siteniz mi?",
+    metaTitle: "Trendyol vs Kendi E-Ticaret Sitesi: Hangisi Daha İyi? | Solman Digital",
+    metaDescription:
+      "Trendyol ile kendi e-ticaret sitesinin avantajları ve dezavantajları. Hangi satış kanalı işinize daha uygun?",
+    description:
+      "Trendyol'da satış yapmak mı, kendi sitenizi açmak mı? İkisini birlikte yürütmek mümkün mü? Detaylı karşılaştırma.",
+    publishDate: "2026-06-04",
+    readTime: 6,
+    sections: [
+      {
+        heading: "Trendyol'un Avantajları ve Dezavantajları",
+        body: "Trendyol, Türkiye'de 35 milyonun üzerinde aktif alıcıya ulaşan hazır bir müşteri kitlesine sahip.",
+        list: [
+          "Avantaj: kurulum kolay, müşteri trafiği hazır",
+          "Avantaj: lojistik altyapısı mevcut (Trendyol Express)",
+          "Dezavantaj: %8–%22 komisyon oranı",
+          "Dezavantaj: müşteri verisi size ait değil",
+          "Dezavantaj: marka kimliğinizi öne çıkaramazsınız",
+          "Dezavantaj: platform politika değişikliklerinden doğrudan etkilenirsiniz",
+        ],
+      },
+      {
+        heading: "Kendi E-Ticaret Sitesinin Avantajları ve Dezavantajları",
+        body: "Bağımsız e-ticaret siteniz, uzun vadede marka ve müşteri verisi oluşturmanın tek yoludur.",
+        list: [
+          "Avantaj: komisyon yok, kâr marjınız daha yüksek",
+          "Avantaj: müşteri e-postalarını toplayıp CRM kurabilirsiniz",
+          "Avantaj: kendi fiyat ve kampanya politikanız",
+          "Dezavantaj: trafik sıfırdan inşa edilmeli",
+          "Dezavantaj: başlangıç yatırımı gerekli",
+          "Dezavantaj: teknik yönetim ve bakım sorumluluğu",
+        ],
+      },
+      {
+        heading: "İkisini Birlikte Yürütmek: Omnichannel Strateji",
+        body: "En akıllıca strateji, Trendyol'u trafik kaynağı olarak kullanırken kendi sitenizi müşteri sadakati merkezi yapmaktır.",
+        list: [
+          "Trendyol'dan gelen müşteriyi kendi sitenize yönlendirin",
+          "Özel ürünler veya fiyatlar ile kendi sitenizde alışverişi teşvik edin",
+          "Trendyol + kendi siteniz + e-posta listesi üçgenini kurun",
+          "Stok senkronizasyonu için API entegrasyonu şart",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Trendyol'dan kendi sitemde satışa geçiş zor mu?",
+        a: "Zor değil, planlama gerektiriyor. Önce kendi sitenizi kurun, ikisini paralel yürütün. Müşteri davranışına göre kanallar arasındaki oranı ayarlayın.",
+      },
+      {
+        q: "Kendi e-ticaret sitesi ne zaman kârlı olur?",
+        a: "Aylık 150–200 sipariş üzerinde kendi site genellikle platform komisyonunu karşılar. Ödeme alt yapısı + hosting maliyeti 12–18 ayda başa başa gelir.",
+      },
+      {
+        q: "Trendyol ve kendi sitemi nasıl senkronize ederim?",
+        a: "Solman Digital'in Trendyol entegrasyon çözümü ile stok, fiyat ve sipariş verilerini otomatik senkronize edebilirsiniz.",
+      },
+    ],
+    cta: { text: "E-Ticaret Stratejinizi Konuşalım", href: "/trendyol-entegrasyonu", label: "Detay" },
+    keywords: [
+      "trendyol vs kendi e-ticaret sitesi",
+      "trendyol alternatifi",
+      "kendi e-ticaret sitesi açmak",
+      "trendyol komisyon yüksek",
+      "omnichannel e-ticaret türkiye",
+    ],
+  },
+  {
+    slug: "woocommerce-vs-nextjs-eticaret",
+    title: "WooCommerce mi Next.js mi? E-Ticaret Seçim Rehberi",
+    metaTitle: "WooCommerce vs Next.js E-Ticaret 2025 | Solman Digital",
+    metaDescription:
+      "WooCommerce ve Next.js tabanlı e-ticaret çözümlerinin karşılaştırması. Performans, maliyet, ölçeklenebilirlik ve bakım kolaylığı.",
+    description:
+      "E-ticaret projeniz için WooCommerce mi yoksa özel Next.js geliştirme mi doğru? Kapsamlı karşılaştırma rehberi.",
+    publishDate: "2026-06-05",
+    readTime: 6,
+    sections: [
+      {
+        heading: "WooCommerce Nedir ve Kimlere Uygundur?",
+        body: "WooCommerce, WordPress üzerine kurulu açık kaynaklı bir e-ticaret eklentisidir. Dünya genelinde 5 milyonun üzerinde aktif kurulum bulunmaktadır.",
+        list: [
+          "Teknik bilgi az olanlara uygun: kurulum arayüzü basit",
+          "Eklenti ekosistemi zengin: ödeme, kargo, CRM entegrasyonları hazır",
+          "Türkiye için İyzico resmi eklentisi mevcut",
+          "Dezavantaj: eklenti çakışmaları, yavaş yükleme (optimize edilmezse)",
+          "Dezavantaj: aylık hosting + eklenti lisans maliyeti birikir",
+        ],
+      },
+      {
+        heading: "Next.js E-Ticaret Nedir ve Kimlere Uygundur?",
+        body: "Next.js ile geliştirilen e-ticaret siteleri sıfırdan, özelleştirilmiş altyapıyla inşa edilir. Performans ve esneklik ön plandadır.",
+        list: [
+          "Google PageSpeed 95+: hız, dönüşüm oranını doğrudan etkiler",
+          "Aylık platform ücreti yok: Vercel ücretsiz tier ile çalışabilir",
+          "Tam özelleştirme: sipariş akışı, ödeme sayfası, upsell tamamen size özel",
+          "Dezavantaj: geliştirme maliyeti daha yüksek",
+          "Dezavantaj: değişiklik için geliştirici gerekiyor",
+        ],
+      },
+      {
+        heading: "Karar Rehberi: Hangisini Seçmeli?",
+        body: "Kararı belirleyen 4 ana faktör: bütçe, teknik ekip, ürün sayısı ve büyüme hedefi.",
+        list: [
+          "Bütçe < ₺15.000 ve ekip yok → WooCommerce başlangıç için makul",
+          "Bütçe ₺20.000+ ve ölçeklenme hedefi var → Next.js uzun vadede kazandırır",
+          "1.000+ SKU → Next.js'in statik sayfa üretimi (SSG) SEO'yu uçurur",
+          "Hızlı başlamak istiyorum → WooCommerce daha kısa sürede canlıya girer",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "WooCommerce'ten Next.js'e geçiş mümkün mü?",
+        a: "Evet. Ürün, sipariş ve müşteri verileri aktarılabilir. Geçiş süreci 4–6 hafta alır ve SEO kaybını önlemek için redirect planlaması gerektirir.",
+      },
+      {
+        q: "WooCommerce'in aylık maliyeti ne kadar?",
+        a: "Hosting (₺500–₺2.000) + gerekli eklentiler (₺1.000–₺3.000/ay) hesaba katıldığında yıllık ₺18.000–₺60.000 maliyet oluşabilir.",
+      },
+      {
+        q: "Next.js e-ticaret için hangi ödeme sistemleri desteklenir?",
+        a: "İyzico, Stripe, Paytr ve PayTR entegrasyonları Next.js projesine doğrudan API ile bağlanabilir. Hiçbir eklentiye bağımlılık yoktur.",
+      },
+    ],
+    cta: { text: "E-Ticaret Projeniz İçin Teklif Alın", href: "/hizmetler/eticaret-kurulum", label: "Detay" },
+    keywords: [
+      "woocommerce vs next.js",
+      "woocommerce mi next.js mi e-ticaret",
+      "next.js e-ticaret türkiye",
+      "woocommerce alternatifi",
+      "e-ticaret platform karşılaştırma",
+    ],
+  },
+  {
+    slug: "shopify-vs-ozel-gelistirme",
+    title: "Shopify vs Özel Geliştirme: Hangisi Sizin İçin?",
+    metaTitle: "Shopify vs Özel Geliştirme 2025 | Solman Digital",
+    metaDescription:
+      "Shopify ile özel e-ticaret geliştirme arasında seçim yapmanıza yardımcı olacak kapsamlı karşılaştırma.",
+    description:
+      "Shopify'ın aylık aboneliği mi, yoksa özel bir e-ticaret platformu mu? Hangi seçenek işletmenizin büyüklüğüne uygun?",
+    publishDate: "2026-06-05",
+    readTime: 5,
+    sections: [
+      {
+        heading: "Shopify'ın Artıları ve Eksileri",
+        body: "Shopify, hazır altyapısı ile hızlı kurulum ve uygulama mağazasıyla tanınır. Ama her işletme için doğru tercih değildir.",
+        list: [
+          "Artı: 30 dakikada kurulum, teknik bilgi gerektirmez",
+          "Artı: 8.000+ uygulama ile genişletilebilir",
+          "Artı: güvenlik ve hosting Shopify tarafından yönetilir",
+          "Eksi: aylık $29–$299 + %0.5–2 işlem ücreti",
+          "Eksi: Türkiye'de İyzico entegrasyonu doğrudan yok",
+          "Eksi: tam özelleştirme kısıtlı — şablona bağımlısınız",
+        ],
+      },
+      {
+        heading: "Özel Geliştirmenin Artıları ve Eksileri",
+        body: "Next.js ile sıfırdan geliştirilen bir e-ticaret sitesi, uzun vadede size tam kontrol sunar.",
+        list: [
+          "Artı: aylık platform ücreti yok",
+          "Artı: her özellik tamamen size özel",
+          "Artı: performans: PageSpeed 95+",
+          "Artı: Türkiye'ye özel kargo ve ödeme entegrasyonu",
+          "Eksi: yüksek başlangıç maliyeti (₺20.000+)",
+          "Eksi: değişiklik için geliştirici desteği gerekiyor",
+        ],
+      },
+      {
+        heading: "Karar Kriteri: Hangi İşletme Hangisini Seçmeli?",
+        body: "Seçim genellikle aylık sipariş hacmi ve büyüme hızına göre belirlenir.",
+        list: [
+          "Aylık < 50 sipariş → Shopify yeterlidir, başlangıç için pratik",
+          "Aylık 50–200 sipariş → her iki seçenek de değerlendirilebilir",
+          "Aylık > 200 sipariş → işlem ücretleri toplamda özel geliştirmeyi karlı kılar",
+          "B2B veya toptan satış → Shopify yetersiz, özel geliştirme şart",
+          "Trendyol senkronizasyonu gerekiyorsa → özel çözüm zorunlu",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Shopify'dan özel siteye geçiş ne kadar sürer?",
+        a: "Ürün aktarımı + yeni geliştirme + test süreci birlikte 3–5 hafta sürer. SEO redirect planlaması bu süreye dahil edilmeli.",
+      },
+      {
+        q: "Özel geliştirme kaç ayda Shopify maliyetini karşılar?",
+        a: "Ortalama $79/ay Shopify + %1 işlem ücreti hesabıyla, aylık 300+ sipariş olan bir mağaza 12–18 ayda özel geliştirmeyi amorti eder.",
+      },
+      {
+        q: "Shopify Türkiye'de yasal mı?",
+        a: "Evet yasal. Ancak Türkiye'de fatura düzenleme, KDV hesaplama ve İyzico entegrasyonu için ek konfigürasyon veya yazılım gerekebilir.",
+      },
+    ],
+    cta: { text: "E-Ticaret Projeniz İçin Danışın", href: "/hizmetler/eticaret-kurulum", label: "Detay" },
+    keywords: [
+      "shopify vs özel geliştirme",
+      "shopify türkiye maliyet",
+      "shopify alternatifi next.js",
+      "shopify işlem ücreti",
+      "shopify türkiye e-ticaret",
+    ],
+  },
+  {
+    slug: "iyzico-vs-stripe",
+    title: "İyzico vs Stripe: Türk E-Ticaret Sitesi İçin Hangisi?",
+    metaTitle: "İyzico vs Stripe: Türk E-Ticaret İçin Hangisi? | Solman Digital",
+    metaDescription:
+      "İyzico ve Stripe arasındaki farklar: komisyon oranları, kurulum kolaylığı, Türkiye uyumluluğu ve hangi durumlarda hangisi tercih edilmeli.",
+    description:
+      "E-ticaret siteniz için ödeme altyapısı seçerken İyzico mu Stripe mi sorusunun cevabı.",
+    publishDate: "2026-06-05",
+    readTime: 5,
+    sections: [
+      {
+        heading: "İyzico: Türkiye'nin Yerli Ödeme Altyapısı",
+        body: "İyzico, Türk bankacılık sistemiyle tam uyumlu, yerel taksit desteği ve güçlü fraud korumasıyla öne çıkıyor.",
+        list: [
+          "Türk bankaları ve kredi kartlarıyla doğal uyum",
+          "Taksitli ödeme: 3–12 taksit seçeneği",
+          "TL üzerinden işlem: kur riski yok",
+          "Komisyon: işlem başına %2.85 + KDV (hacme göre değişir)",
+          "Yerleşim: T+1 iş günü (ertesi gün hesabınızda)",
+          "Müşteri tanıma skoru ile fraud tespiti",
+        ],
+      },
+      {
+        heading: "Stripe: Global Ödeme Altyapısı",
+        body: "Stripe, güçlü API'si ve 135+ ülke desteğiyle uluslararası satış yapanlar için ideal.",
+        list: [
+          "API kalitesi: en gelişmiş ödeme API'si",
+          "Uluslararası kart desteği: Visa, Mastercard, Amex, WeChat Pay",
+          "Komisyon: %2.9 + $0.30 (yurt dışı kartlarda daha yüksek)",
+          "Dezavantaj: TL taksit desteği yok",
+          "Dezavantaj: Türkiye'de bazı banka kartları ek sorun çıkarabilir",
+          "Yerleşim: 2 iş günü",
+        ],
+      },
+      {
+        heading: "Hangisini Seçmeli?",
+        body: "Kararı müşteri profiliniz ve satış hacminiz belirler.",
+        list: [
+          "Sadece Türk müşteri hedefliyorsanız → İyzico zorunlu, taksit büyük avantaj",
+          "Yurt dışı satış yapıyorsanız → Stripe veya ikisi birlikte",
+          "SaaS abonelik modeli → Stripe'ın subscription altyapısı çok güçlü",
+          "B2C e-ticaret → İyzico dönüşüm oranlarını artırır",
+          "Her ikisini de desteklemek en esnek çözüm",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "İyzico ve Stripe'ı aynı projede kullanabilir miyim?",
+        a: "Evet. Kullanıcının konumuna veya tercihine göre ödeme yöntemini otomatik seçen bir sistem kurulabilir.",
+      },
+      {
+        q: "İyzico entegrasyonu ne kadar sürer?",
+        a: "Mevcut bir e-ticaret projesine İyzico entegrasyonu 2–5 iş günü içinde tamamlanabilir.",
+      },
+      {
+        q: "Stripe Türkiye'de şirket sahibi olmadan kullanılabilir mi?",
+        a: "Hayır. Stripe Türkiye'deki alıcılar için Türk vergi kimliği ve banka hesabı gerektirir.",
+      },
+    ],
+    cta: { text: "Ödeme Entegrasyonu Hakkında Danışın", href: "/hizmetler/odeme-entegrasyonu", label: "Detay" },
+    keywords: [
+      "iyzico vs stripe türkiye",
+      "iyzico komisyon oranları",
+      "stripe türkiye kullanımı",
+      "e-ticaret ödeme sistemi",
+      "iyzico stripe karşılaştırma",
     ],
   },
 ]

@@ -7,11 +7,20 @@ export const metadata: Metadata = {
   title: "Ücretsiz 30 Dakika Teknik Danışmanlık | Solman Digital",
   description:
     "Projenizi 30 dakikada planlayın. Ücretsiz teknik danışmanlık seansı — proje kapsamı, teknoloji seçimi ve bütçe tahmini. Satış değil, teknik rehberlik.",
+  keywords: [
+    "ücretsiz yazılım danışmanlığı",
+    "teknik danışmanlık istanbul",
+    "proje planlama danışmanlık",
+    "yazılım fizibilite",
+    "ücretsiz teknik görüşme",
+    "web projesi planlama",
+  ],
   alternates: { canonical: `${siteConfig.url}/danismanlik` },
   openGraph: {
     title: "Ücretsiz 30 Dakika Teknik Danışmanlık",
     description: "Proje kapsamı, teknoloji seçimi ve bütçe tahmini — ücretsiz ve bağlayıcı değil.",
     url: `${siteConfig.url}/danismanlik`,
+    locale: "tr_TR",
   },
 }
 

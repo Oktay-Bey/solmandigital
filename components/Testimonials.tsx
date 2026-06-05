@@ -22,6 +22,27 @@ const testimonials = [
     text: "MVP'mizi 6 haftada bitirdi. Kod kalitesi yüksek, supabase mimarisi temiz. Yatırımcı sunumuna hazır bir ürünle çıktık.",
     stars: 5,
   },
+  {
+    name: "Ayşe Kara",
+    role: "E-Ticaret Müdürü",
+    company: "Tekstil Firması",
+    text: "Trendyol ile kendi sitemiz arasındaki stok senkronizasyonu artık tamamen otomatik. Yanlış stok satışı sorunu tamamen ortadan kalktı, iade işlemleri %70 azaldı.",
+    stars: 5,
+  },
+  {
+    name: "Berk Yıldız",
+    role: "Genel Müdür",
+    company: "İstanbul Restoran Grubu",
+    text: "QR menü sistemini iki şubeye birden kurdu. Artık menü güncellemesini telefonumdan dakikalar içinde yapıyorum, baskı maliyetimiz sıfırlandı.",
+    stars: 5,
+  },
+  {
+    name: "Deniz Arslan",
+    role: "Pazarlama Direktörü",
+    company: "B2B Yazılım Şirketi",
+    text: "AI içerik otomasyon sistemini kurduktan sonra blog trafiğimiz 3 ayda 4 kat arttı. GPT-4o pipeline'ı gerçekten çalışıyor, editör ihtiyacımız minimuma indi.",
+    stars: 5,
+  },
 ]
 
 export default function Testimonials() {

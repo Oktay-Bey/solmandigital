@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { CheckCircle2, ArrowRight, ChevronRight } from "lucide-react"
+import { CheckCircle2, ArrowRight, ChevronRight, MessageCircle } from "lucide-react"
+import { siteConfig } from "@/lib/site-config"
 import * as Icons from "lucide-react"
 import type { Service } from "@/lib/data/services"
 import ServiceCard from "./ServiceCard"
@@ -179,6 +180,25 @@ export default function ServiceDetail({ service, related }: Props) {
             >
               Teklif Al <ArrowRight size={16} />
             </Link>
+            <a
+              href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Merhaba, ${service.title} hakkında bilgi almak istiyorum.`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                backgroundColor: "#25D366",
+                color: "#ffffff",
+                padding: "0.875rem 1.75rem",
+                borderRadius: 7,
+                fontWeight: 700,
+                fontSize: "0.875rem",
+                textDecoration: "none",
+              }}
+            >
+              <MessageCircle size={16} /> WhatsApp&apos;ta Sor
+            </a>
             <Link
               href="/hizmetler"
               style={{

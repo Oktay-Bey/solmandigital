@@ -7,6 +7,14 @@ export const metadata: Metadata = {
   title: "Projeler — Tamamlanan Çalışmalar",
   description:
     "Next.js, AI ve otomasyon alanında geliştirilen projeler. E-ticaret, SaaS, haber platformu ve marketplace entegrasyonu örnekleri.",
+  keywords: [
+    "next.js proje örnekleri",
+    "yazılım portföyü",
+    "e-ticaret proje",
+    "saas uygulama örnekleri",
+    "marketplace entegrasyon örnekleri",
+    "trendyol proje",
+  ],
   alternates: { canonical: `${siteConfig.url}/portfoy` },
   openGraph: { title: "Projeler | Solman Digital", locale: "tr_TR" },
 }

@@ -4,12 +4,40 @@ import { ArrowRight, Zap, Users, X, CheckCircle2, Globe, MessageCircle } from "l
 import { getServicesByTier } from "@/lib/data/services"
 import ServiceCard from "@/components/ServiceCard"
 import Testimonials from "@/components/Testimonials"
+import SocialProofCounters from "@/components/SocialProofCounters"
 import { siteConfig } from "@/lib/site-config"
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} — ${siteConfig.tagline}`,
-  description: siteConfig.description,
+  title: "Solman Digital — İstanbul Özel Yazılım Ofisi | E-Ticaret, SaaS, AI",
+  description:
+    "İstanbul merkezli özel yazılım ofisi. E-ticaret, SaaS ve AI otomasyon projelerini sıfırdan, şablonsuz geliştiriyoruz. Doğrudan uzman erişimi, net takvim, taahhüt edilen teslim.",
+  keywords: [
+    "solman digital",
+    "özel yazılım geliştirme istanbul",
+    "yazılım ofisi istanbul",
+    "full stack developer istanbul",
+    "ai otomasyon",
+    "trendyol entegrasyonu",
+    "next.js developer",
+  ],
   alternates: { canonical: siteConfig.url },
+  openGraph: {
+    title: "Solman Digital — İstanbul Özel Yazılım Ofisi",
+    description:
+      "İstanbul merkezli özel yazılım ofisi. E-ticaret, SaaS ve AI otomasyon — sıfırdan, şablonsuz, doğrudan uzmanla.",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "tr_TR",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Solman Digital — İstanbul Web Yazılım Ofisi",
+      },
+    ],
+  },
 }
 
 const homeFaqSchema = {
@@ -79,43 +107,6 @@ const homeFaqSchema = {
         "@type": "Answer",
         text: "Evet. Tüm projelerde en az 1 ay ücretsiz teknik destek dahildir. Sonrasında ihtiyaca göre bakım anlaşması yapılabilir.",
       },
-    },
-  ],
-}
-
-const reviewSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://solmandigital.com.tr/#organization",
-  name: "Solman Digital",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    reviewCount: "3",
-    bestRating: "5",
-    worstRating: "1",
-  },
-  review: [
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Kerem Aydın" },
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody: "Trendyol ve Hepsiburada entegrasyonunu 2 haftada teslim ettiler. Stok senkronizasyonu artık tamamen otomatik, manuel işlemlerimiz neredeyse sıfıra indi.",
-      datePublished: "2024-09-01",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Selin Öztürk" },
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody: "Birkaç ajansla görüştük ama doğrudan geliştiriciyle çalışmanın farkı ortaya çıktı. Brief'i anında kavradı, hiç gidip gelmeden 10 günde siteyi canlıya aldık.",
-      datePublished: "2024-11-01",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Murat Çelik" },
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody: "MVP'mizi 6 haftada bitirdi. Kod kalitesi yüksek, supabase mimarisi temiz. Yatırımcı sunumuna hazır bir ürünle çıktık.",
-      datePublished: "2025-01-01",
     },
   ],
 }
@@ -217,10 +208,6 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-      />
 
       {/* Hero */}
       <section style={{ backgroundColor: "#0d0d0d", padding: "6rem 1.5rem 5rem" }}>
@@ -277,8 +264,7 @@ export default function HomePage() {
                 maxWidth: 480,
               }}
             >
-              Trendyol satıcısından SaaS girişimine, e-ticaret mağazasından kurumsal firmaya —
-              her projeyi sizin iş sürecinizi anlayarak, sıfırdan ve sadece size özel inşa ediyoruz.
+              Her projeyi sizin iş sürecinizi anlayarak, sıfırdan ve sadece size özel inşa ediyoruz. Trendyol satıcısından kurumsal firmaya — aynı uzman, net takvim.
             </p>
 
             {/* Özellik çizgileri */}
@@ -888,6 +874,7 @@ export default function HomePage() {
       </section>
 
       {/* Müşteri Görüşleri */}
+      <SocialProofCounters />
       <Testimonials />
 
       {/* FAQ */}

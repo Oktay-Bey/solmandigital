@@ -5,6 +5,9 @@ import "./globals.css"
 import { siteConfig } from "@/lib/site-config"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import WhatsAppFloat from "@/components/WhatsAppFloat"
+import StickyCtaBar from "@/components/StickyCtaBar"
+import ExitIntentPopup from "@/components/ExitIntentPopup"
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -73,6 +76,11 @@ const organizationSchema = {
     "Web Scraping",
     "Dashboard Development",
   ],
+  sameAs: [
+    siteConfig.social.linkedin,
+    siteConfig.social.twitter,
+    siteConfig.social.github,
+  ],
 }
 
 const websiteSchema = {
@@ -80,6 +88,15 @@ const websiteSchema = {
   "@type": "WebSite",
   name: siteConfig.name,
   url: siteConfig.url,
+  inLanguage: "tr-TR",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${siteConfig.url}/rehber?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
 }
 
 const professionalServiceSchema = {
@@ -117,6 +134,8 @@ const localBusinessSchema = {
   image: `${siteConfig.url}/og-image.jpg`,
   logo: `${siteConfig.url}/logo.png`,
   foundingDate: "2023",
+  slogan: "Doğrudan uzman erişimi — katman yok",
+  knowsLanguage: ["tr", "en"],
   priceRange: "₺₺–₺₺₺",
   currenciesAccepted: "TRY",
   paymentAccepted: "Cash, Credit Card, Bank Transfer",
@@ -157,13 +176,6 @@ const localBusinessSchema = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI İçerik Otomasyonu" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Trendyol & Marketplace Entegrasyonu" } },
     ],
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    reviewCount: "3",
-    bestRating: "5",
-    worstRating: "1",
   },
 }
 
@@ -208,6 +220,9 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <WhatsAppFloat />
+        <StickyCtaBar />
+        <ExitIntentPopup />
       </body>
     </html>
   )

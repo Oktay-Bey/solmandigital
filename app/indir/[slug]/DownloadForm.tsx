@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { SubscribePayload } from "@/lib/types/leads"
+import { trackEvent } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -34,6 +35,7 @@ export default function DownloadForm() {
       })
 
       if (res.ok) {
+        trackEvent("form_submit", "lead", "download")
         router.push("/tesekkurler?type=newsletter")
       } else {
         setState("error")

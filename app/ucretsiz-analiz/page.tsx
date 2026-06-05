@@ -7,11 +7,20 @@ export const metadata: Metadata = {
   title: "Ücretsiz Web Sitesi SEO & Performans Analizi | Solman Digital",
   description:
     "Web sitenizin teknik SEO, sayfa hızı ve rakip analizini ücretsiz yaptırın. 24 saat içinde detaylı rapor e-postanıza gönderilir.",
+  keywords: [
+    "ücretsiz seo analizi",
+    "web sitesi teknik analiz",
+    "site hız analizi",
+    "rakip analizi",
+    "ücretsiz web sitesi denetimi",
+    "seo denetim raporu",
+  ],
   alternates: { canonical: `${siteConfig.url}/ucretsiz-analiz` },
   openGraph: {
     title: "Ücretsiz Web Sitesi SEO & Performans Analizi",
     description: "Teknik SEO, sayfa hızı ve rakip analizi — ücretsiz. 24 saatte rapor.",
     url: `${siteConfig.url}/ucretsiz-analiz`,
+    locale: "tr_TR",
   },
 }
 

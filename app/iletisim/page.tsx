@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   title: "İletişim — Projenizi Birlikte Planlayalım",
   description:
     "Projenizi anlatın, size özel ücretsiz değerlendirme yapıyoruz. 24 saat içinde dönüş, taahhütsüz görüşme.",
+  keywords: [
+    "solman digital iletişim",
+    "yazılım teklifi al",
+    "istanbul web geliştirici iletişim",
+    "ücretsiz yazılım görüşmesi",
+    "web sitesi teklifi",
+  ],
   alternates: { canonical: `${siteConfig.url}/iletisim` },
   openGraph: { title: "İletişim | Solman Digital", locale: "tr_TR" },
 }

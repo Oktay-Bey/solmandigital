@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { ArrowRight, CheckCircle2, AlertCircle } from "lucide-react"
 import { services } from "@/lib/data/services"
+import { trackEvent } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "success" | "error"
 
@@ -31,6 +32,7 @@ export default function ContactForm() {
       })
 
       if (res.ok) {
+        trackEvent("form_submit", "lead", "contact")
         setState("success")
         setForm({ isim: "", email: "", hizmet: "", mesaj: "" })
       } else {

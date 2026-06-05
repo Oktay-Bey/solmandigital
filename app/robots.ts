@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site-config"
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/" },
+      { userAgent: "*", allow: "/", disallow: ["/tesekkurler", "/api/"] },
       {
         userAgent: [
           "GPTBot",

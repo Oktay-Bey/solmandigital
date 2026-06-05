@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import { services } from "@/lib/data/services"
 import type { AuditPayload } from "@/lib/types/leads"
+import { trackEvent } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -35,6 +36,7 @@ export default function AuditForm() {
       })
 
       if (res.ok) {
+        trackEvent("form_submit", "lead", "audit")
         router.push("/tesekkurler?type=audit")
       } else {
         setState("error")

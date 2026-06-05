@@ -305,6 +305,7 @@ export default function Footer() {
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {[
                 { href: "/portfoy", label: "Portföy" },
+                { href: "/fiyatlar", label: "Fiyatlar" },
                 { href: "/hakkimizda", label: "Hakkımızda" },
                 { href: "/iletisim", label: "İletişim" },
               ].map((link) => (

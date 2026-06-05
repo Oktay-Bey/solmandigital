@@ -70,7 +70,7 @@ export default function OGImage() {
             lineHeight: 1.5,
           }}
         >
-          Customized Software Expert · Web, AI & Otomasyon
+          İstanbul Yazılım Ofisi · Web, AI & Otomasyon
         </div>
 
         {/* Badge'ler */}

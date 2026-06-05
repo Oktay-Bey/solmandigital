@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
 import { inputStyle, labelStyle, submitButtonStyle, onFocus, onBlur } from "@/lib/form-utils"
+import { trackEvent } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -39,6 +40,7 @@ export default function WebSiteLeadForm() {
         body: JSON.stringify({ ...form, funnelType: "web-sitesi" }),
       })
       if (res.ok) {
+        trackEvent("form_submit", "lead", "web-sitesi")
         router.push("/tesekkurler?type=web-sitesi")
       } else {
         setState("error")

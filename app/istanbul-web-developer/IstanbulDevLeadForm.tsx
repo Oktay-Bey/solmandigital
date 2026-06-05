@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
 import { inputStyle, labelStyle, submitButtonStyle, onFocus, onBlur } from "@/lib/form-utils"
+import { trackEvent } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -38,6 +39,7 @@ export default function IstanbulDevLeadForm() {
         body: JSON.stringify({ ...form, funnelType: "istanbul-dev" }),
       })
       if (res.ok) {
+        trackEvent("form_submit", "lead", "istanbul-dev")
         router.push("/tesekkurler?type=istanbul-dev")
       } else {
         setState("error")
