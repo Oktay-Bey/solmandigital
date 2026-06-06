@@ -69,6 +69,14 @@ const contentMap = {
     nextCta: "Hizmetleri İncele",
     nextHref: "/hizmetler",
   },
+  "istanbul-local": {
+    title: "Talebiniz Alındı!",
+    body: "Projenizi inceleyeceğiz. İstanbul'da yüz yüze veya Zoom görüşmesi için 24 saat içinde size ulaşacağız. Acil durumlarda WhatsApp veya info@solmandigital.com.tr adresine yazabilirsiniz.",
+    nextTitle: "Sıradaki Adım",
+    nextDesc: "Görüşme beklemeden projenizi daha iyi anlayalım: 30 dakikalık ücretsiz danışmanlık seansı için randevu alın.",
+    nextCta: "Ücretsiz Danışmanlık Rezervasyonu",
+    nextHref: "/danismanlik",
+  },
 }
 
 export default function TesekkurlerContent() {

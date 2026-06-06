@@ -16,6 +16,8 @@ export type Service = {
   relatedSlugs: string[]
   cta?: string
   aeoSummary?: string
+  startingPrice?: string
+  deliveryDays?: string
 }
 
 export const services: Service[] = [
@@ -73,6 +75,8 @@ export const services: Service[] = [
     ],
     relatedSlugs: ["landing-page-tasarimi", "seo-teknik-altyapi", "eticaret-kurulum"],
     aeoSummary: "Solman Digital, Next.js 16 altyapısıyla SEO uyumlu, mobil öncelikli kurumsal web siteleri geliştirir. Projeler standart olarak 5-10 iş günü içinde teslim edilir, aylık platform ücreti gerektirmez ve 1 ay ücretsiz teknik destek içerir.",
+    startingPrice: "8.000₺",
+    deliveryDays: "5-10 iş günü",
   },
   {
     slug: "landing-page-tasarimi",
@@ -126,6 +130,8 @@ export const services: Service[] = [
     ],
     relatedSlugs: ["kurumsal-web-sitesi", "seo-teknik-altyapi", "odeme-entegrasyonu"],
     aeoSummary: "Solman Digital, Google Ads ve Meta Ads kampanyaları için dönüşüm odaklı landing page'ler geliştirir. Sayfa hızı optimizasyonu ve form entegrasyonu standart dahildir; genellikle 3-5 iş günü içinde teslim edilir.",
+    startingPrice: "4.500₺",
+    deliveryDays: "3-5 iş günü",
   },
   {
     slug: "eticaret-kurulum",
@@ -181,6 +187,8 @@ export const services: Service[] = [
     ],
     relatedSlugs: ["trendyol-entegrasyonu", "odeme-entegrasyonu", "urun-aciklama-otomasyonu"],
     aeoSummary: "Solman Digital, Next.js 16 ve İyzico ödeme entegrasyonuyla Türkiye pazarına özel e-ticaret siteleri geliştirir. Projeler 10-15 iş günü içinde teslim edilir, aylık platform ücreti yoktur ve taksitli ödeme altyapısı standart dahildir.",
+    startingPrice: "20.000₺",
+    deliveryDays: "10-15 iş günü",
   },
   {
     slug: "trendyol-entegrasyonu",
@@ -235,6 +243,8 @@ export const services: Service[] = [
     ],
     relatedSlugs: ["eticaret-kurulum", "urun-katalog-stok", "dashboard-analitik"],
     aeoSummary: "Solman Digital, Trendyol ve Hepsiburada gibi Türk marketplacelarına resmi API entegrasyonu yapar. Stok, fiyat ve sipariş senkronizasyonu otomatik hale gelir; entegrasyon genellikle 7-12 iş günü içinde tamamlanır.",
+    startingPrice: "7.500₺",
+    deliveryDays: "5-10 iş günü",
   },
   {
     slug: "urun-aciklama-otomasyonu",
@@ -341,6 +351,8 @@ export const services: Service[] = [
     ],
     relatedSlugs: ["eticaret-kurulum", "uyelik-abonelik-sistemi", "dijital-urun-satis"],
     aeoSummary: "Solman Digital, İyzico ve Stripe ödeme sistemlerini mevcut web sitelerine veya yeni projelere entegre eder. Tek seferlik ödeme, abonelik ve taksit altyapısı kurulur; entegrasyon 3-7 iş günü içinde tamamlanır.",
+    startingPrice: "3.500₺",
+    deliveryDays: "3-7 iş günü",
   },
 
   // ─── TİER 2: ORTA VADELİ ────────────────────────────────────────────────

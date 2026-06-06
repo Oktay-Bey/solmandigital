@@ -1,11 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
 import { inputStyle, labelStyle, submitButtonStyle, onFocus, onBlur } from "@/lib/form-utils"
-import { trackEvent } from "@/lib/analytics"
+import { trackEvent, getGclid } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -21,6 +21,8 @@ type Props = {
 export default function IstanbulLocalLeadForm({ district }: Props) {
   const router = useRouter()
   const [state, setState] = useState<FormState>("idle")
+  const [gclid, setGclid] = useState<string | null>(null)
+  useEffect(() => { setGclid(getGclid()) }, [])
   const [form, setForm] = useState<FormData>({
     firstName: "",
     email: "",
@@ -43,7 +45,7 @@ export default function IstanbulLocalLeadForm({ district }: Props) {
       const res = await fetch("/api/email/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, funnelType: "istanbul-local", district: district ?? "İstanbul" }),
+        body: JSON.stringify({ ...form, funnelType: "istanbul-local", district: district ?? "İstanbul", gclid }),
       })
       if (res.ok) {
         trackEvent("form_submit", "lead", "istanbul-local")

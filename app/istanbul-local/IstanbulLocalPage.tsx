@@ -100,6 +100,32 @@ export default function IstanbulLocalPage({ config }: Props) {
         </div>
       </section>
 
+      {/* Fiyat Bant */}
+      {featuredServices.some((s) => s.startingPrice) && (
+        <section className="border-b border-ink-200 bg-white px-6 py-8">
+          <div className="mx-auto max-w-[900px]">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+              <p className="shrink-0 text-[0.7rem] font-bold uppercase tracking-wider text-ink-400">
+                Başlangıç Fiyatları
+              </p>
+              <div className="flex flex-wrap gap-4">
+                {featuredServices
+                  .filter((s) => s.startingPrice)
+                  .map((s) => (
+                    <div key={s.slug} className="flex items-baseline gap-1.5">
+                      <span className="text-[0.8rem] font-semibold text-ink-900">{s.startingPrice}</span>
+                      <span className="text-[0.75rem] text-ink-400">— {s.title.split(" ").slice(0, 3).join(" ")}</span>
+                    </div>
+                  ))}
+              </div>
+              <a href="#form" className="ml-auto shrink-0 text-[0.8rem] font-semibold text-accent-700 underline underline-offset-2">
+                Teklif Al →
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Unique Section */}
       <section className="bg-white px-6 pt-14">
         <div className="mx-auto max-w-[760px]">
