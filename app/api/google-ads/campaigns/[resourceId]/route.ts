@@ -1,5 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
-import { updateCampaignStatus, deleteCampaign } from "@/lib/google-ads/campaigns";
+import { updateCampaignStatus, deleteCampaign, updateCampaignBudget, addAdGroupsToCampaign, listAdGroups, deleteAdGroup } from "@/lib/google-ads/campaigns";
+import type { AdGroupInput } from "@/lib/google-ads/campaigns";
+
+// GET /api/google-ads/campaigns/[resourceId] — ad group listesi
+export async function GET(
+  _req: NextRequest,
+  { params }: { params: Promise<{ resourceId: string }> }
+) {
+  try {
+    const { resourceId } = await params;
+    const campaignId = decodeURIComponent(resourceId);
+    const adGroups = await listAdGroups(campaignId);
+    return NextResponse.json({ adGroups });
+  } catch (err) {
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : "Bilinmeyen hata" },
+      { status: 500 }
+    );
+  }
+}
 
 // PATCH /api/google-ads/campaigns/[resourceId]
 // Body: { status: "ENABLED" | "PAUSED" }
@@ -11,17 +30,32 @@ export async function PATCH(
   try {
     const { resourceId } = await params;
     const campaignId = decodeURIComponent(resourceId);
-    const { status } = await req.json();
+    const rawBody = await req.arrayBuffer();
+    const body = JSON.parse(new TextDecoder("utf-8").decode(rawBody));
+    console.log("[PATCH] first headline:", body?.adGroups?.[0]?.headlines?.[0]);
+    const { status, dailyBudgetTL, adGroups } = body as {
+      status?: string;
+      dailyBudgetTL?: number;
+      adGroups?: AdGroupInput[];
+    };
 
-    if (status !== "ENABLED" && status !== "PAUSED") {
-      return NextResponse.json(
-        { error: "status 'ENABLED' veya 'PAUSED' olmalıdır." },
-        { status: 400 }
-      );
+    if (status) {
+      if (status !== "ENABLED" && status !== "PAUSED") {
+        return NextResponse.json({ error: "status 'ENABLED' veya 'PAUSED' olmalıdır." }, { status: 400 });
+      }
+      await updateCampaignStatus(campaignId, status as "ENABLED" | "PAUSED");
     }
 
-    await updateCampaignStatus(campaignId, status);
-    return NextResponse.json({ success: true, campaignId, status });
+    if (dailyBudgetTL) {
+      await updateCampaignBudget(campaignId, dailyBudgetTL);
+    }
+
+    if (adGroups?.length) {
+      const added = await addAdGroupsToCampaign(campaignId, adGroups);
+      return NextResponse.json({ success: true, campaignId, adGroupsAdded: added });
+    }
+
+    return NextResponse.json({ success: true, campaignId, status, dailyBudgetTL });
   } catch (err) {
     return NextResponse.json(
       { error: err instanceof Error ? err.message : "Bilinmeyen hata" },

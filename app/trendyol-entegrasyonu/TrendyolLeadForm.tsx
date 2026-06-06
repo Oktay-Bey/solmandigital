@@ -1,10 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
-import { trackEvent } from "@/lib/analytics"
+import { trackEvent, getGclid } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -18,6 +18,8 @@ const labelCls =
 export default function TrendyolLeadForm() {
   const router = useRouter()
   const [state, setState] = useState<FormState>("idle")
+  const [gclid, setGclid] = useState<string | null>(null)
+  useEffect(() => { setGclid(getGclid()) }, [])
   const [selectedMarkets, setSelectedMarkets] = useState<string[]>([])
   const [form, setForm] = useState<FormData>({
     firstName: "",
@@ -52,6 +54,7 @@ export default function TrendyolLeadForm() {
           ...form,
           funnelType: "trendyol",
           marketplaces: selectedMarkets.join(", "),
+          gclid,
         }),
       })
       if (res.ok) {

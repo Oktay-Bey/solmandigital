@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
+import { trackLead, uploadGoogleAdsConversion } from "@/lib/ga4"
 import { render } from "@react-email/render"
 import LeadConfirmEmail from "@/emails/LeadConfirmEmail"
 import { siteConfig, getLeadAudienceId } from "@/lib/site-config"
@@ -80,8 +81,8 @@ function buildAdminHtml(data: LeadPayload): string {
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
-    const body = (await req.json()) as Partial<LeadPayload>
-    const { funnelType, firstName, email } = body
+    const body = (await req.json()) as Partial<LeadPayload> & { gclid?: string }
+    const { funnelType, firstName, email, gclid } = body
 
     if (!email || !EMAIL_REGEX.test(email)) {
       return NextResponse.json({ error: "Geçerli bir e-posta adresi girin." }, { status: 400 })
@@ -128,6 +129,10 @@ export async function POST(req: NextRequest) {
       audienceOps.push(resend.contacts.create({ email, firstName, audienceId: siteConfig.resendAudienceId, unsubscribed: false }))
     }
     if (audienceOps.length > 0) await Promise.all(audienceOps)
+
+    const clientId = req.cookies.get("_ga")?.value?.replace(/^GA\d+\.\d+\./, "") ?? req.headers.get("x-forwarded-for") ?? "unknown";
+    trackLead(clientId, { form_type: funnelType, page: `/${funnelType}` }).catch(() => {});
+    if (gclid) uploadGoogleAdsConversion({ gclid, conversionValue: 500 }).catch(() => {});
 
     return NextResponse.json({ success: true })
   } catch (err) {

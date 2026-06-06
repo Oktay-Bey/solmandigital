@@ -20,17 +20,19 @@ export async function POST(req: NextRequest) {
   try {
     const input: FullCampaignInput = await req.json();
 
-    if (!input.campaignName || !input.targetUrl || !input.headlines?.length) {
+    if (!input.campaignName || !input.dailyBudgetTL) {
       return NextResponse.json(
-        { error: "campaignName, targetUrl ve headlines zorunlu." },
+        { error: "campaignName ve dailyBudgetTL zorunlu." },
         { status: 400 }
       );
     }
-    if (input.headlines.length < 3) {
-      return NextResponse.json({ error: "En az 3 headline gerekli." }, { status: 400 });
-    }
-    if (!input.descriptions || input.descriptions.length < 2) {
-      return NextResponse.json({ error: "En az 2 description gerekli." }, { status: 400 });
+    const hasAdGroups = input.adGroups && input.adGroups.length > 0;
+    const hasLegacyFields = input.targetUrl && input.headlines?.length && input.descriptions?.length;
+    if (!hasAdGroups && !hasLegacyFields) {
+      return NextResponse.json(
+        { error: "adGroups array veya targetUrl+headlines+descriptions gerekli." },
+        { status: 400 }
+      );
     }
 
     const result = await createFullCampaign(input);

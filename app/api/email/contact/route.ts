@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
 import { siteConfig } from "@/lib/site-config"
+import { trackLead, uploadGoogleAdsConversion } from "@/lib/ga4"
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -8,7 +9,7 @@ export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const body = await req.json()
-    const { isim, email, hizmet, mesaj } = body as Record<string, string>
+    const { isim, email, hizmet, mesaj, gclid } = body as Record<string, string>
 
     if (!email || !EMAIL_REGEX.test(email)) {
       return NextResponse.json({ error: "Geçerli bir e-posta adresi girin." }, { status: 400 })
@@ -59,6 +60,10 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     })
+
+    const clientId = req.cookies.get("_ga")?.value?.replace(/^GA\d+\.\d+\./, "") ?? req.headers.get("x-forwarded-for") ?? "unknown";
+    trackLead(clientId, { form_type: "contact", page: "/iletisim" }).catch(() => {});
+    if (gclid) uploadGoogleAdsConversion({ gclid, conversionValue: 500 }).catch(() => {});
 
     return NextResponse.json({ success: true })
   } catch (err) {

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
 import { siteConfig } from "@/lib/site-config"
+import { trackLead } from "@/lib/ga4"
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -41,6 +42,9 @@ export async function POST(req: NextRequest) {
         <p><strong>Kaynak:</strong> Exit-Intent Popup</p>
       `,
     })
+
+    const clientId = req.cookies.get("_ga")?.value?.replace(/^GA\d+\.\d+\./, "") ?? req.headers.get("x-forwarded-for") ?? "unknown";
+    trackLead(clientId, { form_type: "exit_popup", page: "/" }).catch(() => {});
 
     return NextResponse.json({ success: true })
   } catch (err) {

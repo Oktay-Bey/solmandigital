@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ArrowRight, CheckCircle2, AlertCircle } from "lucide-react"
 import { services } from "@/lib/data/services"
-import { trackEvent } from "@/lib/analytics"
+import { trackEvent, getGclid } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "success" | "error"
 
@@ -13,6 +13,9 @@ const labelCls =
 export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle")
   const [form, setForm] = useState({ isim: "", email: "", hizmet: "", mesaj: "" })
+  const [gclid, setGclid] = useState<string | null>(null)
+
+  useEffect(() => { setGclid(getGclid()) }, [])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -27,7 +30,7 @@ export default function ContactForm() {
       const res = await fetch("/api/email/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, gclid }),
       })
       if (res.ok) {
         trackEvent("form_submit", "lead", "contact")

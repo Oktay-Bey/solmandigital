@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
+import { trackLead } from "@/lib/ga4"
 import { render } from "@react-email/render"
 import AuditConfirmEmail from "@/emails/AuditConfirmEmail"
 import { siteConfig } from "@/lib/site-config"
@@ -54,6 +55,9 @@ export async function POST(req: NextRequest) {
       audienceOps.push(resend.contacts.create({ email, firstName, audienceId: siteConfig.resendAudienceId, unsubscribed: false }))
     }
     if (audienceOps.length > 0) await Promise.all(audienceOps)
+
+    const clientId = req.cookies.get("_ga")?.value?.replace(/^GA\d+\.\d+\./, "") ?? req.headers.get("x-forwarded-for") ?? "unknown";
+    trackLead(clientId, { form_type: "audit", page: "/ucretsiz-analiz" }).catch(() => {});
 
     return NextResponse.json({ success: true })
   } catch (err) {
