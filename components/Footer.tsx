@@ -11,7 +11,7 @@ export default function Footer() {
   const waHref = `https://wa.me/${siteConfig.whatsapp.replace("+", "")}`
 
   const linkCls = "text-[0.825rem] text-ondark-muted transition-colors hover:text-ondark"
-  const headingCls = "mb-3.5 text-[0.65rem] font-bold uppercase tracking-wider text-ink-500"
+  const headingCls = "mb-3.5 text-[0.65rem] font-bold uppercase tracking-wider text-ondark-muted"
 
   return (
     <footer className="border-t border-dark-300 bg-dark-500">
@@ -119,7 +119,7 @@ export default function Footer() {
           <p className="text-[0.75rem] text-ondark-muted">
             © {new Date().getFullYear()} {siteConfig.name}. Tüm hakları saklıdır.
           </p>
-          <p className="text-[0.75rem] text-ink-500">
+          <p className="text-[0.75rem] text-ondark-muted">
             Next.js · TypeScript · Tailwind CSS
           </p>
         </div>
