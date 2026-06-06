@@ -174,7 +174,7 @@ export default function IstanbulWebDeveloperPage() {
                 {["Kriter", "Büyük Ofis", "Belirsiz İş", "Solman Digital"].map((h, i) => (
                   <span
                     key={h}
-                    className={`text-[0.7rem] font-bold uppercase ${i === 3 ? "text-accent-700" : "text-ink-500"}`}
+                    className={`text-[0.7rem] font-bold uppercase ${i === 3 ? "text-accent-500" : "text-ondark-muted"}`}
                   >
                     {h}
                   </span>

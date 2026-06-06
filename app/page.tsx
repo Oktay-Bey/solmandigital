@@ -258,7 +258,7 @@ export default function HomePage() {
             <div className="overflow-hidden rounded-xl border border-dark-50 bg-dark-400 shadow-card-hover">
               <div className="flex items-center gap-2 border-b border-dark-100 px-6 py-5">
                 <span className="h-2 w-2 rounded-full bg-accent-700" />
-                <span className="text-[0.7rem] font-bold uppercase tracking-wider text-ink-600">
+                <span className="text-[0.7rem] font-bold uppercase tracking-wider text-ondark-muted">
                   Her Müşteri İçin Ayrı Çözüm
                 </span>
               </div>
@@ -267,16 +267,16 @@ export default function HomePage() {
                 <div key={i} className="flex flex-col gap-1.5 border-b border-dark-200 px-6 py-5 transition-colors hover:bg-dark-300">
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-[0.8rem] font-bold text-white">{project.client}</span>
-                    <span className="whitespace-nowrap rounded border border-dark-50 bg-dark-100 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wider text-ink-500">
+                    <span className="whitespace-nowrap rounded border border-dark-50 bg-dark-100 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wider text-ondark-muted">
                       {project.tag}
                     </span>
                   </div>
-                  <p className="text-[0.775rem] leading-relaxed text-ink-500">{project.built}</p>
+                  <p className="text-[0.775rem] leading-relaxed text-ondark-muted">{project.built}</p>
                 </div>
               ))}
 
               <div className="px-6 py-4">
-                <p className="text-[0.7rem] italic text-ink-600">
+                <p className="text-[0.7rem] italic text-ondark-muted">
                   Projeniz burada değil mi? Fark etmez — sıfırdan yazıyoruz.
                 </p>
               </div>
@@ -289,7 +289,7 @@ export default function HomePage() {
       <section className="border-t border-dark-100 bg-dark-400 px-6 py-18">
         <div className="mx-auto max-w-[900px]">
           <div className="mb-10 text-center">
-            <p className="eyebrow eyebrow-center mb-3.5 !text-ink-400">Nasıl Çalışırız?</p>
+            <p className="eyebrow eyebrow-center mb-3.5 !text-ondark-muted">Nasıl Çalışırız?</p>
             <h2 className="text-h2-dark font-extrabold leading-tight tracking-tight text-white">
               Her proje farklı ihtiyaçla başlar.
               <br />
@@ -299,7 +299,7 @@ export default function HomePage() {
 
           <div className="grid gap-3">
             <div className="grid grid-cols-2 gap-4 px-4">
-              <span className="text-[0.65rem] font-bold uppercase tracking-wider text-ink-600">
+              <span className="text-[0.65rem] font-bold uppercase tracking-wider text-ondark-muted">
                 Geleneksel Yaklaşım
               </span>
               <span className="text-[0.65rem] font-bold uppercase tracking-wider text-accent-600">
@@ -311,8 +311,8 @@ export default function HomePage() {
               <Reveal key={i} delay={i * 60}>
                 <div className="grid grid-cols-2 items-center gap-4 rounded-lg border border-dark-100 bg-dark-300 px-4 py-4">
                   <div className="flex items-center gap-2">
-                    <X size={13} color="#555555" className="shrink-0" />
-                    <span className="text-[0.85rem] text-ink-500">{row.agency}</span>
+                    <X size={13} color="#666666" className="shrink-0" />
+                    <span className="text-[0.85rem] text-ondark-muted">{row.agency}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 size={13} color="#16a34a" className="shrink-0" />
@@ -418,13 +418,13 @@ export default function HomePage() {
       <section className="border-t border-dark-200 bg-dark-500 px-6 py-10">
         <div className="mx-auto max-w-[1200px]">
           <div className="flex flex-wrap items-center gap-8">
-            <p className="shrink-0 whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-wider text-ink-600">
+            <p className="shrink-0 whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-wider text-ondark-muted">
               Kullandığımız Teknolojiler
             </p>
             <div className="h-4 w-px shrink-0 bg-dark-50" />
             <div className="flex flex-wrap gap-2.5">
               {techStack.map((tech) => (
-                <span key={tech} className="text-[0.8rem] font-medium text-ink-500 transition-colors hover:text-ondark-muted">
+                <span key={tech} className="text-[0.8rem] font-medium text-ondark-muted transition-colors hover:text-ondark">
                   {tech}
                 </span>
               ))}

@@ -121,7 +121,7 @@ export default function IstanbulLocalPage({ config }: Props) {
           <div className="overflow-hidden rounded-[10px] border border-ink-200 shadow-card">
             <div className="grid grid-cols-[1.5fr_1fr_1fr_1.25fr] gap-4 bg-dark-500 px-5 py-3.5">
               {["Kriter", "Ajans", "Freelancer", "Solman Digital"].map((h, i) => (
-                <span key={h} className={`text-[0.7rem] font-bold uppercase ${i === 3 ? "text-accent-500" : "text-ink-400"}`}>
+                <span key={h} className={`text-[0.7rem] font-bold uppercase ${i === 3 ? "text-accent-500" : "text-ondark-muted"}`}>
                   {h}
                 </span>
               ))}

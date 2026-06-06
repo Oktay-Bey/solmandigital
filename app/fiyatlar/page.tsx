@@ -177,14 +177,14 @@ export default function FiyatlarPage() {
                     </div>
                   )}
 
-                  <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-wider text-ink-500">
+                  <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-wider text-ondark-muted">
                     {tier.name}
                   </p>
                   <p className="mb-1 text-[2.25rem] font-black leading-none tracking-tight text-white">
                     {tier.price}
-                    <span className="text-[0.875rem] font-semibold text-ink-500">&apos;dan</span>
+                    <span className="text-[0.875rem] font-semibold text-ondark-muted">&apos;dan</span>
                   </p>
-                  <p className="mb-1.5 text-[0.825rem] text-ink-400">
+                  <p className="mb-1.5 text-[0.825rem] text-ondark-muted">
                     {tier.subtitle}
                   </p>
                   <p className="mb-7 text-[0.775rem] font-semibold text-accent-700">
@@ -192,14 +192,14 @@ export default function FiyatlarPage() {
                   </p>
 
                   <div className="mb-6">
-                    <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-wider text-ink-500">
+                    <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-wider text-ondark-muted">
                       Dahil
                     </p>
                     <ul className="flex list-none flex-col gap-2.5">
                       {tier.features.map((f) => (
                         <li
                           key={f}
-                          className="flex items-start gap-2.5 text-[0.825rem] leading-normal text-ink-300"
+                          className="flex items-start gap-2.5 text-[0.825rem] leading-normal text-ondark"
                         >
                           <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-[#4ade80]" />
                           {f}
@@ -210,16 +210,16 @@ export default function FiyatlarPage() {
 
                   {tier.notIncluded.length > 0 && (
                     <div className="mb-7">
-                      <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-wider text-ink-700">
+                      <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-wider text-ondark-muted">
                         Dahil Değil
                       </p>
                       <ul className="flex list-none flex-col gap-2">
                         {tier.notIncluded.map((f) => (
                           <li
                             key={f}
-                            className="flex items-start gap-2.5 text-[0.8rem] leading-normal text-ink-600"
+                            className="flex items-start gap-2.5 text-[0.8rem] leading-normal text-ondark-muted"
                           >
-                            <X size={14} className="mt-0.5 shrink-0 text-ink-700" />
+                            <X size={14} className="mt-0.5 shrink-0 text-ondark-muted" />
                             {f}
                           </li>
                         ))}
@@ -260,7 +260,7 @@ export default function FiyatlarPage() {
             </div>
 
             <div className="mt-12 text-center">
-              <p className="mb-5 text-[0.875rem] text-ink-500">
+              <p className="mb-5 text-[0.875rem] text-ondark-muted">
                 Projeniz bu paketlere tam uymuyorsa özel fiyat talep edin.
               </p>
               <Link href="/ucretsiz-analiz" className="btn btn-primary">

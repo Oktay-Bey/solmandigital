@@ -208,8 +208,8 @@ export default function WebSitesiYaptirmakPage() {
           <Reveal delay={100}>
             <div className="overflow-hidden rounded-[10px] border border-ink-200 bg-white">
               <div className="grid grid-cols-[2fr_1fr_1fr] bg-dark-500 px-5 py-3.5">
-                <span className="text-[0.75rem] font-bold uppercase text-ink-400">Özellik</span>
-                <span className="text-center text-[0.75rem] font-bold uppercase text-ink-400">Şablon</span>
+                <span className="text-[0.75rem] font-bold uppercase text-ondark-muted">Özellik</span>
+                <span className="text-center text-[0.75rem] font-bold uppercase text-ondark-muted">Şablon</span>
                 <span className="text-center text-[0.75rem] font-bold uppercase text-accent-700">Özel Kod</span>
               </div>
               {comparison.map((row, i) => (
