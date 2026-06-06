@@ -47,7 +47,7 @@ export default function Header() {
             S
           </span>
           <span className="text-[1.05rem] font-bold tracking-tight text-ink-900">
-            Solman<span className="text-accent-700">Digital</span>
+            Solman
           </span>
         </Link>
 
