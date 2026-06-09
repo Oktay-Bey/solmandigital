@@ -8,6 +8,8 @@ import Reveal from "@/components/Reveal"
 
 type Props = { params: Promise<{ slug: string }> }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   return downloads.map((d) => ({ slug: d.slug }))
 }

@@ -10,6 +10,8 @@ type Props = {
   params: Promise<{ slug: string }>
 }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   return rehberPosts.map((p) => ({ slug: p.slug }))
 }
