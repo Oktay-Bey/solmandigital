@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
 import { inputStyle, labelStyle, submitButtonStyle, onFocus, onBlur } from "@/lib/form-utils"
-import { trackEvent, getGclid } from "@/lib/analytics"
+import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -49,6 +49,7 @@ export default function IstanbulLocalLeadForm({ district }: Props) {
       })
       if (res.ok) {
         trackEvent("form_submit", "lead", "istanbul-local")
+        trackLeadConversion("istanbul-local")
         router.push("/tesekkurler?type=istanbul-local")
       } else {
         setState("error")

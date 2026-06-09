@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
-import { trackEvent, getGclid } from "@/lib/analytics"
+import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -45,6 +45,7 @@ export default function SaasLeadForm() {
       })
       if (res.ok) {
         trackEvent("form_submit", "lead", "saas")
+        trackLeadConversion("saas")
         router.push("/tesekkurler?type=saas")
       } else {
         setState("error")
