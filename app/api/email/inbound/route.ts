@@ -8,10 +8,9 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
 
-    const from = body.from ?? "Bilinmeyen Gönderici"
-    const subject = body.subject ?? "(Konu yok)"
-    const text = body.text ?? ""
-    const html = body.html ?? `<pre>${text}</pre>`
+    const data = body.data ?? body
+    const from = data.from ?? "Bilinmeyen Gönderici"
+    const subject = data.subject ?? "(Konu yok)"
 
     await resend.emails.send({
       from: `Solman Digital <${siteConfig.resendFromEmail}>`,
@@ -20,8 +19,7 @@ export async function POST(req: NextRequest) {
       html: `
         <p><strong>Gönderen:</strong> ${from}</p>
         <p><strong>Konu:</strong> ${subject}</p>
-        <hr />
-        ${html}
+        <p><em>Mail içeriği Resend tarafından iletilmiyor. Yanıt vermek için gönderene doğrudan yazın: ${from}</em></p>
       `,
     })
 
