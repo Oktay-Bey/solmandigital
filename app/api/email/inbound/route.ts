@@ -16,7 +16,6 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: `Solman Digital <${siteConfig.resendFromEmail}>`,
       to: siteConfig.adminEmail,
-      replyTo: from,
       subject: `[Gelen Mail] ${subject}`,
       html: `
         <p><strong>Gönderen:</strong> ${from}</p>
