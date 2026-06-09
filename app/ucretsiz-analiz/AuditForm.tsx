@@ -1,11 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import { services } from "@/lib/data/services"
 import type { AuditPayload } from "@/lib/types/leads"
-import { trackEvent } from "@/lib/analytics"
+import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -15,6 +15,8 @@ const labelCls =
 export default function AuditForm() {
   const router = useRouter()
   const [state, setState] = useState<FormState>("idle")
+  const [gclid, setGclid] = useState<string | null>(null)
+  useEffect(() => { setGclid(getGclid()) }, [])
   const [form, setForm] = useState<AuditPayload>({
     firstName: "",
     email: "",
@@ -35,11 +37,12 @@ export default function AuditForm() {
       const res = await fetch("/api/email/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, gclid }),
       })
 
       if (res.ok) {
         trackEvent("form_submit", "lead", "audit")
+        trackLeadConversion("audit")
         router.push("/tesekkurler?type=audit")
       } else {
         setState("error")

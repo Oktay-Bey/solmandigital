@@ -1,10 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
-import { trackEvent } from "@/lib/analytics"
+import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -16,6 +16,8 @@ const labelCls =
 export default function IstanbulDevLeadForm() {
   const router = useRouter()
   const [state, setState] = useState<FormState>("idle")
+  const [gclid, setGclid] = useState<string | null>(null)
+  useEffect(() => { setGclid(getGclid()) }, [])
   const [form, setForm] = useState<FormData>({
     firstName: "",
     email: "",
@@ -38,10 +40,11 @@ export default function IstanbulDevLeadForm() {
       const res = await fetch("/api/email/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, funnelType: "istanbul-dev" }),
+        body: JSON.stringify({ ...form, funnelType: "istanbul-dev", gclid }),
       })
       if (res.ok) {
         trackEvent("form_submit", "lead", "istanbul-dev")
+        trackLeadConversion("istanbul-dev")
         router.push("/tesekkurler?type=istanbul-dev")
       } else {
         setState("error")

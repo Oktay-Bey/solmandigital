@@ -236,6 +236,96 @@ export async function addAdGroupsToCampaign(
   return results;
 }
 
+export interface AdGroupAdSummary {
+  adGroupId: string;
+  adGroupName: string;
+  adId: string;
+  adGroupResource: string;
+  finalUrls: string[];
+  headlines: { text: string }[];
+  descriptions: { text: string }[];
+}
+
+export async function listAdGroupAds(campaignId: string): Promise<AdGroupAdSummary[]> {
+  const customer = getCustomer();
+  const result = await customer.query(`
+    SELECT
+      ad_group.id, ad_group.name, ad_group.resource_name,
+      ad_group_ad.ad.id, ad_group_ad.ad.final_urls,
+      ad_group_ad.ad.responsive_search_ad.headlines,
+      ad_group_ad.ad.responsive_search_ad.descriptions,
+      ad_group_ad.status
+    FROM ad_group_ad
+    WHERE campaign.id = '${campaignId}'
+      AND ad_group_ad.status != 'REMOVED'
+      AND ad_group.status != 'REMOVED'
+    ORDER BY ad_group.name
+  `);
+  return result.map((row: IGoogleAdsRow) => ({
+    adGroupId: String(row.ad_group?.id ?? ""),
+    adGroupName: String(row.ad_group?.name ?? ""),
+    adId: String((row as unknown as { ad_group_ad: { ad: { id: unknown } } }).ad_group_ad?.ad?.id ?? ""),
+    adGroupResource: String(row.ad_group?.resource_name ?? ""),
+    finalUrls: ((row as unknown as { ad_group_ad: { ad: { final_urls: string[] } } }).ad_group_ad?.ad?.final_urls ?? []) as string[],
+    headlines: ((row as unknown as { ad_group_ad: { ad: { responsive_search_ad: { headlines: { text: string }[] } } } }).ad_group_ad?.ad?.responsive_search_ad?.headlines ?? []).map((h: { text: string }) => ({ text: h.text ?? "" })),
+    descriptions: ((row as unknown as { ad_group_ad: { ad: { responsive_search_ad: { descriptions: { text: string }[] } } } }).ad_group_ad?.ad?.responsive_search_ad?.descriptions ?? []).map((d: { text: string }) => ({ text: d.text ?? "" })),
+  }));
+}
+
+export interface SitelinkInput {
+  linkText: string;      // max 25 karakter
+  description1: string;  // max 35 karakter
+  description2: string;  // max 35 karakter
+  finalUrl: string;
+}
+
+export async function addSitelinks(
+  campaignId: string,
+  sitelinks: SitelinkInput[],
+): Promise<{ linkText: string; assetResource: string; campaignAssetResource: string }[]> {
+  const cid = process.env.GOOGLE_ADS_CUSTOMER_ID!;
+  const campaignResource = `customers/${cid}/campaigns/${campaignId}`;
+  const results: { linkText: string; assetResource: string; campaignAssetResource: string }[] = [];
+
+  for (const sl of sitelinks) {
+    // Adım A — Sitelink asset oluştur
+    const assetRes = await adsRestPost("mutate", {
+      mutateOperations: [{
+        assetOperation: {
+          create: {
+            finalUrls: [sl.finalUrl],
+            sitelinkAsset: {
+              link_text: sl.linkText,
+              description1: sl.description1,
+              description2: sl.description2,
+            },
+          },
+        },
+      }],
+    }) as { mutateOperationResponses: { assetResult: { resourceName: string } }[] };
+    const assetResource = assetRes.mutateOperationResponses[0].assetResult.resourceName;
+
+    // Adım B — Campaign'a bağla
+    const campaignAssetRes = await adsRestPost("mutate", {
+      mutateOperations: [{
+        campaignAssetOperation: {
+          create: {
+            campaign: campaignResource,
+            asset: assetResource,
+            fieldType: "SITELINK",
+          },
+        },
+      }],
+    }) as { mutateOperationResponses: { campaignAssetResult: { resourceName: string } }[] };
+    const campaignAssetResource = campaignAssetRes.mutateOperationResponses[0].campaignAssetResult.resourceName;
+
+    console.log("[google-ads] Sitelink OK:", sl.linkText, "→", assetResource);
+    results.push({ linkText: sl.linkText, assetResource, campaignAssetResource });
+  }
+
+  return results;
+}
+
 export async function updateCampaignStatus(campaignId: string, status: "ENABLED" | "PAUSED"): Promise<void> {
   const customer = getCustomer();
   await customer.campaigns.update([{
@@ -416,4 +506,60 @@ export async function createFullCampaign(input: FullCampaignInput): Promise<{
   }
 
   return { budgetResource, campaignResource, adGroups: adGroupResults };
+}
+
+export type DatePeriod = "TODAY" | "YESTERDAY" | "LAST_7_DAYS" | "LAST_30_DAYS";
+
+export interface CampaignMetrics {
+  id: string;
+  name: string;
+  status: string;
+  budgetTL: number;
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  avgCpcTL: number;
+  costTL: number;
+  conversions: number;
+  costPerConversionTL: number;
+  searchImpressionShare: number;
+}
+
+export async function getCampaignMetrics(period: DatePeriod = "LAST_7_DAYS"): Promise<CampaignMetrics[]> {
+  const customer = getCustomer();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const rows: any[] = await customer.query(`
+    SELECT
+      campaign.id,
+      campaign.name,
+      campaign.status,
+      campaign_budget.amount_micros,
+      metrics.clicks,
+      metrics.impressions,
+      metrics.ctr,
+      metrics.average_cpc,
+      metrics.cost_micros,
+      metrics.conversions,
+      metrics.cost_per_conversion,
+      metrics.search_impression_share
+    FROM campaign
+    WHERE segments.date DURING ${period}
+      AND campaign.status != 'REMOVED'
+    ORDER BY metrics.cost_micros DESC
+  `);
+
+  return rows.map((row) => ({
+    id: String(row.campaign?.id ?? ""),
+    name: String(row.campaign?.name ?? ""),
+    status: String(row.campaign?.status ?? ""),
+    budgetTL: Number(row.campaign_budget?.amount_micros ?? 0) / 1_000_000,
+    clicks: Number(row.metrics?.clicks ?? 0),
+    impressions: Number(row.metrics?.impressions ?? 0),
+    ctr: Number(row.metrics?.ctr ?? 0),
+    avgCpcTL: Number(row.metrics?.average_cpc ?? 0) / 1_000_000,
+    costTL: Number(row.metrics?.cost_micros ?? 0) / 1_000_000,
+    conversions: Number(row.metrics?.conversions ?? 0),
+    costPerConversionTL: Number(row.metrics?.cost_per_conversion ?? 0) / 1_000_000,
+    searchImpressionShare: Number(row.metrics?.search_impression_share ?? 0),
+  }));
 }

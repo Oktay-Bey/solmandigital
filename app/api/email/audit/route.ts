@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
-import { trackLead } from "@/lib/ga4"
+import { trackLead, uploadGoogleAdsConversion } from "@/lib/ga4"
 import { render } from "@react-email/render"
 import AuditConfirmEmail from "@/emails/AuditConfirmEmail"
 import { siteConfig } from "@/lib/site-config"
@@ -11,8 +11,8 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
-    const body = (await req.json()) as Partial<AuditPayload>
-    const { firstName, email, websiteUrl, serviceInterest, currentProblem } = body
+    const body = (await req.json()) as Partial<AuditPayload> & { gclid?: string }
+    const { firstName, email, websiteUrl, serviceInterest, currentProblem, gclid } = body
 
     if (!email || !EMAIL_REGEX.test(email)) {
       return NextResponse.json({ error: "Geçerli bir e-posta adresi girin." }, { status: 400 })
@@ -58,6 +58,7 @@ export async function POST(req: NextRequest) {
 
     const clientId = req.cookies.get("_ga")?.value?.replace(/^GA\d+\.\d+\./, "") ?? req.headers.get("x-forwarded-for") ?? "unknown";
     trackLead(clientId, { form_type: "audit", page: "/ucretsiz-analiz" }).catch(() => {});
+    if (gclid) uploadGoogleAdsConversion({ gclid, conversionValue: 500 }).catch(() => {});
 
     return NextResponse.json({ success: true })
   } catch (err) {
