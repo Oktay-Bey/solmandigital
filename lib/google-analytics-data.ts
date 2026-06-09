@@ -1,5 +1,4 @@
 import { google } from "googleapis";
-import type { JSONClient } from "google-auth-library/build/src/auth/googleauth";
 
 const PROPERTY_ID = "properties/539436083";
 
@@ -16,7 +15,8 @@ interface GA4ReportData {
   rows?: GA4Row[];
 }
 
-function getAuthClient(): JSONClient {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getAuthClient(): any {
   const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
   if (!raw) throw new Error("GOOGLE_SERVICE_ACCOUNT_JSON env değişkeni tanımlı değil.");
 
@@ -24,7 +24,7 @@ function getAuthClient(): JSONClient {
   return new google.auth.GoogleAuth({
     credentials,
     scopes: ["https://www.googleapis.com/auth/analytics.readonly"],
-  }) as unknown as JSONClient;
+  });
 }
 
 function dateString(daysAgo: number): string {
