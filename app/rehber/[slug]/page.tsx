@@ -253,9 +253,21 @@ export default async function RehberDetayPage({ params }: Props) {
         {/* ── CTA ──────────────────────────────────────────────── */}
         <div className="mb-14 flex flex-col gap-4 rounded-[10px] bg-dark-400 p-8">
           <p className="text-[0.85rem] leading-relaxed text-ondark-muted">{post.cta.text}</p>
-          <Link href={post.cta.href} className="btn btn-primary self-start">
-            {post.cta.label} <ArrowRight size={14} />
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link href={post.cta.href} className="btn btn-primary self-start">
+              {post.cta.label} <ArrowRight size={14} />
+            </Link>
+            {post.ctaSecondary && (
+              <a
+                href={post.ctaSecondary.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 self-start rounded-[8px] border border-accent-200 bg-accent-50 px-4 py-2 text-[0.8rem] font-semibold text-accent-700 transition-colors hover:border-accent-300 hover:bg-accent-100"
+              >
+                {post.ctaSecondary.label} →
+              </a>
+            )}
+          </div>
         </div>
 
         {/* ── TicaretHub Araç Cross-Promo (trendyol + e-ticaret kategorileri) ── */}

@@ -244,6 +244,35 @@ export default function HakkimizdaPage() {
         </div>
       </section>
 
+      {/* #26 TicaretHub Ekosistemi */}
+      <section className="border-t border-ink-200 bg-surface px-6 py-16">
+        <div className="mx-auto max-w-[760px]">
+          <Reveal>
+            <p className="eyebrow mb-3">Ekosistem</p>
+            <h2 className="mb-4 text-[1.5rem] font-extrabold tracking-tight text-ink-900">
+              TicaretHub ile Birlikte Çalışıyoruz
+            </h2>
+            <p className="mb-6 text-[0.9rem] leading-[1.75] text-ink-600">
+              Solman Digital&apos;ın geliştirdiği{" "}
+              <a href="https://ticarethub.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-accent-700 hover:underline">TicaretHub</a>
+              {" "}— Trendyol satıcıları için komisyon hesaplama, kâr analizi ve AI içerik araçları sunan bir SaaS platform. Hazır araçlarla başlamak isteyenler için self-serve giriş noktası; büyüyünce özel geliştirmeye ihtiyaç duyulduğunda Solman Digital devreye giriyor.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <div className="rounded-[8px] border border-ink-200 bg-white px-4 py-3 text-[0.825rem] text-ink-600">
+                <span className="font-bold text-ink-900">TicaretHub</span> — Self-serve e-ticaret araçları
+              </div>
+              <div className="rounded-[8px] border border-ink-200 bg-white px-4 py-3 text-[0.825rem] text-ink-600">
+                <span className="font-bold text-ink-900">Solman Digital</span> — Özel yazılım geliştirme
+              </div>
+              <a href="https://ticarethub.com" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-[8px] border border-accent-200 bg-accent-50 px-4 py-3 text-[0.825rem] font-semibold text-accent-700 hover:border-accent-300">
+                TicaretHub&apos;u İncele →
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-dark-500 px-6 py-20 text-center">
         <div className="mx-auto max-w-[640px]">

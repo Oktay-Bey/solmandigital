@@ -50,6 +50,13 @@ const contentMap: Record<LeadFunnelType, { subject: string; headline: string; bo
     ctaHref: "/hizmetler",
     ctaText: "Tüm Hizmetleri İncele →",
   },
+  "ticarethub-referral": {
+    subject: "TicaretHub'dan Bir Adım İleri — Solman Digital",
+    headline: "Doğru Yerdesiniz!",
+    body: "TicaretHub araçlarını denedikten sonra özel bir çözüme ihtiyaç duyduğunuzu fark ettiniz — bu gayet normal bir büyüme adımı. Solman Digital olarak <strong>24 saat içinde</strong> size özel teknik değerlendirmeyi paylaşacağız.",
+    ctaHref: "/danismanlik",
+    ctaText: "Ücretsiz Danışmanlık Rezervasyonu Yap →",
+  },
 }
 
 export default function LeadConfirmEmail({ firstName, funnelType, siteUrl = "https://solmandigital.com.tr" }: Props) {

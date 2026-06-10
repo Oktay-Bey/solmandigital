@@ -299,6 +299,47 @@ export default function FiyatlarPage() {
             </div>
           </div>
         </section>
+
+        {/* #27 TicaretHub vs Solman Digital — Self-serve karşılaştırma */}
+        <section className="border-t border-dark-200 px-6 py-12">
+          <div className="mx-auto max-w-[700px]">
+            <Reveal>
+              <h2 className="mb-6 text-center text-[1.25rem] font-extrabold tracking-tight text-white">
+                Hangisi Size Uygun?
+              </h2>
+            </Reveal>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <Reveal delay={0}>
+                <div className="rounded-[10px] border border-dark-50 bg-dark-400 p-6">
+                  <p className="mb-1 text-[0.65rem] font-bold uppercase tracking-wider text-ondark-muted">Self-Serve</p>
+                  <p className="mb-3 text-base font-bold text-white">
+                    <a href="https://ticarethub.com" target="_blank" rel="noopener noreferrer" className="text-accent-700 hover:underline">TicaretHub</a>
+                  </p>
+                  <ul className="flex flex-col gap-2 text-[0.825rem] text-ondark-muted">
+                    <li>✓ Kayıt ol, hemen kullan</li>
+                    <li>✓ Komisyon & kâr hesaplama araçları</li>
+                    <li>✓ AI ürün açıklaması motoru</li>
+                    <li>✓ Aylık ₺499&apos;dan başlar</li>
+                    <li className="text-ondark-faint">✗ Özel entegrasyon yok</li>
+                  </ul>
+                </div>
+              </Reveal>
+              <Reveal delay={100}>
+                <div className="rounded-[10px] border border-accent-700 bg-dark-300 p-6">
+                  <p className="mb-1 text-[0.65rem] font-bold uppercase tracking-wider text-ondark-muted">Özel Geliştirme</p>
+                  <p className="mb-3 text-base font-bold text-accent-700">Solman Digital</p>
+                  <ul className="flex flex-col gap-2 text-[0.825rem] text-ondark-muted">
+                    <li>✓ Sizin altyapınıza özel kurulum</li>
+                    <li>✓ API entegrasyonu & özel dashboard</li>
+                    <li>✓ Mevcut sisteme entegre</li>
+                    <li>✓ ₺8.000&apos;dan başlar, tek seferlik</li>
+                    <li>✓ Kaynak kodu sizde kalır</li>
+                  </ul>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </section>
       </main>
     </>
   )

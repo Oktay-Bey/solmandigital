@@ -15,6 +15,7 @@ const FUNNEL_LABELS: Record<string, string> = {
   ai: "AI Otomasyon",
   "istanbul-dev": "İstanbul Web Developer",
   "istanbul-local": "İstanbul Local",
+  "ticarethub-referral": "TicaretHub Referral",
 }
 
 function buildAdminHtml(data: LeadPayload): string {
@@ -81,8 +82,9 @@ function buildAdminHtml(data: LeadPayload): string {
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
-    const body = (await req.json()) as Partial<LeadPayload> & { gclid?: string }
-    const { funnelType, firstName, email, gclid } = body
+    const body = (await req.json()) as Partial<LeadPayload> & { gclid?: string; utmSource?: string }
+    const { funnelType, firstName, email, gclid, utmSource } = body
+    const referralSource = utmSource ?? req.headers.get("referer") ?? ""
 
     if (!email || !EMAIL_REGEX.test(email)) {
       return NextResponse.json({ error: "Geçerli bir e-posta adresi girin." }, { status: 400 })
@@ -111,7 +113,7 @@ export async function POST(req: NextRequest) {
       from: `Solman Digital <${siteConfig.resendFromEmail}>`,
       to: siteConfig.adminEmail,
       replyTo: email,
-      subject: `[Lead: ${funnelType}] ${firstName} — ${data.budget ?? "bütçe belirtilmedi"}`,
+      subject: `[Lead: ${funnelType}${referralSource.includes("ticarethub") ? " 🔗TH" : ""}] ${firstName} — ${data.budget ?? "bütçe belirtilmedi"}`,
       headers: {
         "X-Priority": "1",
         "X-MSMail-Priority": "High",

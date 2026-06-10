@@ -370,6 +370,7 @@ Sık kullanılan Türkiye lokasyonları:
 | İstanbul | 1012867 |
 | Ankara | 1012908 |
 | İzmir | 1012962 |
+| Kuzey Makedonya (ülke) | 2807 |
 
 Geo target ID'leri `campaignCriteria.create()` ile **protobuf** üzerinden eklenebilir (encoding sorunu yoktur):
 

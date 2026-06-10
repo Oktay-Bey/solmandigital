@@ -133,6 +133,23 @@ export default function DanismanlikPage() {
           </div>
         </div>
       </section>
+
+      {/* TicaretHub Self-Serve Cross-Promo */}
+      <section className="border-t border-ink-200 bg-surface px-6 py-10">
+        <div className="mx-auto max-w-[760px]">
+          <Reveal>
+            <p className="mb-2 text-[0.78rem] leading-[1.65] text-ink-500">
+              Henüz danışmaya hazır değilseniz,{" "}
+              <a href="https://ticarethub.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-accent-700 hover:underline">TicaretHub</a>
+              &apos;un ücretsiz araçlarıyla kendi başınıza başlayabilirsiniz — komisyon hesaplama, kâr analizi ve AI içerik üretimi için kayıt gerektirmez.
+            </p>
+            <a href="https://ticarethub.com" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-accent-700 hover:underline">
+              TicaretHub ücretsiz araçları →
+            </a>
+          </Reveal>
+        </div>
+      </section>
     </>
   )
 }

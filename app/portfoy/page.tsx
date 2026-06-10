@@ -34,42 +34,49 @@ const jsonLd = {
   name: "Solman Digital Portföy",
   description: "Solman Digital tarafından geliştirilen Next.js, AI ve marketplace entegrasyon projeleri",
   url: `${siteConfig.url}/portfoy`,
-  numberOfItems: 6,
+  numberOfItems: 8,
   itemListElement: [
     {
       "@type": "ListItem",
       position: 1,
+      name: "TicaretHub — E-Ticaret SaaS",
+      description: "Trendyol satıcıları için komisyon hesaplama, AI içerik motoru ve kâr analizi SaaS platformu.",
+      url: "https://ticarethub.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
       name: "Trendyol Satıcı Paneli",
       description: "Trendyol ve Hepsiburada API entegrasyonlu çok kanallı stok senkronizasyonu ve satış analitiği paneli.",
     },
     {
       "@type": "ListItem",
-      position: 2,
+      position: 4,
       name: "WordPress AI İçerik Otomasyonu",
       description: "GPT-4o ile SEO içerik üreten ve WordPress'e otomatik yayımlayan otomasyon sistemi.",
     },
     {
       "@type": "ListItem",
-      position: 3,
+      position: 5,
       name: "ShoppinHere E-Ticaret",
       description: "238 ürün, İyzico ödeme entegrasyonu ve tam Türkçe e-ticaret platformu.",
       url: "https://shoppinhere.com",
     },
     {
       "@type": "ListItem",
-      position: 4,
+      position: 6,
       name: "AI Haber Platformu",
       description: "Supabase, OpenAI ve RSS pipeline ile otomatik haber üretim ve yayın sistemi.",
     },
     {
       "@type": "ListItem",
-      position: 5,
+      position: 7,
       name: "QR Menü SaaS",
       description: "Çok kiracılı QR menü SaaS platformu, restoranlara dijital menü altyapısı.",
     },
     {
       "@type": "ListItem",
-      position: 6,
+      position: 8,
       name: "Rüya Günlüğü SaaS",
       description: "Claude AI ile rüya analizi yapan SaaS uygulama, LemonSqueezy abonelik sistemi.",
     },
@@ -77,6 +84,17 @@ const jsonLd = {
 }
 
 const projects = [
+  {
+    title: "TicaretHub — E-Ticaret SaaS",
+    category: "SaaS Platform",
+    accent: "#f97316",
+    preview: "🛒 Trendyol satıcıları için komisyon, AI içerik & kâr analizi SaaS",
+    desc: "Trendyol ve diğer pazaryerlerinde satış yapan işletmeler için SaaS platform. Komisyon hesaplama, AI ürün açıklaması, kâr analizi ve WooCommerce entegrasyonu araçları.",
+    metrics: ["15+ ücretsiz araç", "AI içerik motoru dahil", "Canlıda — ticarethub.com"],
+    tech: ["Next.js 16", "React 19", "Clerk", "Supabase", "İyzico", "Stripe"],
+    status: "Canlı",
+    url: "https://ticarethub.com",
+  },
   {
     title: "Trendyol Satıcı Paneli",
     category: "Marketplace Entegrasyonu",
@@ -158,7 +176,7 @@ export default function PortfoyPage() {
         <div className="mx-auto max-w-[1200px]">
           <Reveal delay={0}>
             <p className="eyebrow mb-5 !text-accent-700">
-              6 Tamamlanmış Proje · E-Ticaret · SaaS · AI Otomasyon
+              7 Tamamlanmış Proje · E-Ticaret · SaaS · AI Otomasyon
             </p>
             <h1 className="mb-4 text-[clamp(1.75rem,4vw,2.5rem)] font-extrabold tracking-tight text-white">
               Her Proje, Farklı Bir
@@ -175,7 +193,7 @@ export default function PortfoyPage() {
           <Reveal delay={150}>
             <div className="mt-10 flex flex-wrap gap-8">
               {[
-                { label: "Tamamlanan Proje", value: "6" },
+                { label: "Tamamlanan Proje", value: "7" },
                 { label: "Canlıda Çalışan", value: "4" },
                 { label: "Farklı Sektör", value: "5" },
               ].map((stat) => (

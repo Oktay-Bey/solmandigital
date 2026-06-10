@@ -351,6 +351,41 @@ export default function WebSitesiYaptirmakPage() {
           </div>
         </div>
       </section>
+
+      {/* TicaretHub Cross-Promo */}
+      <section className="border-t border-ink-200 bg-white px-6 py-12">
+        <div className="mx-auto max-w-[900px]">
+          <Reveal>
+            <div className="rounded-[10px] border border-ink-200 bg-surface p-6">
+              <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">
+                Mağazanız Var mı?
+              </p>
+              <p className="mb-3 text-[0.9rem] font-bold text-ink-900">
+                Trendyol veya WooCommerce satıcısıysanız
+              </p>
+              <p className="mb-5 max-w-[520px] text-[0.825rem] leading-[1.65] text-ink-500">
+                Web sitesi yaptırmadan önce mevcut e-ticaret kanallarınızı optimize etmek ister misiniz?{" "}
+                <a href="https://ticarethub.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-accent-700 hover:underline">TicaretHub</a>
+                &apos;un ücretsiz araçlarıyla Trendyol komisyonlarınızı, kâr marjınızı ve entegrasyon seçeneklerini analiz edebilirsiniz.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <a href="https://ticarethub.com/trendyol-komisyon-hesaplama" target="_blank" rel="noopener noreferrer"
+                  className="rounded-[6px] border border-ink-200 bg-white px-3 py-2 text-[0.775rem] font-semibold text-ink-700 transition-colors hover:border-accent-300 hover:text-accent-700">
+                  Komisyon Hesapla →
+                </a>
+                <a href="https://ticarethub.com/woocommerce-entegrasyonu" target="_blank" rel="noopener noreferrer"
+                  className="rounded-[6px] border border-ink-200 bg-white px-3 py-2 text-[0.775rem] font-semibold text-ink-700 transition-colors hover:border-accent-300 hover:text-accent-700">
+                  WooCommerce Entegrasyonu →
+                </a>
+                <a href="https://ticarethub.com/pazaryeri-komisyon-karsilastirma" target="_blank" rel="noopener noreferrer"
+                  className="rounded-[6px] border border-ink-200 bg-white px-3 py-2 text-[0.775rem] font-semibold text-ink-700 transition-colors hover:border-accent-300 hover:text-accent-700">
+                  Pazaryeri Karşılaştır →
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
     </>
   )
 }

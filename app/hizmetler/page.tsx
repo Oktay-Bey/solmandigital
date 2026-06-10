@@ -73,6 +73,36 @@ export default function HizmetlerPage() {
         </div>
       </section>
 
+      {/* #29 Dual Path — TicaretHub self-serve vs Solman Digital özel geliştirme */}
+      <section className="border-t border-dark-200 bg-dark-400 px-6 py-10">
+        <div className="mx-auto max-w-[1200px]">
+          <Reveal>
+            <div className="flex flex-wrap items-center justify-between gap-6 rounded-[10px] border border-dark-50 p-6">
+              <div>
+                <p className="mb-1.5 text-[0.7rem] font-bold uppercase tracking-wider text-ondark-muted">
+                  Nereden Başlayacağınızı Bilmiyor musunuz?
+                </p>
+                <p className="text-[0.95rem] font-semibold text-ondark">
+                  Hazır araçlarla denemek isteyenler için{" "}
+                  <a href="https://ticarethub.com" target="_blank" rel="noopener noreferrer" className="font-bold text-accent-700 hover:underline">
+                    TicaretHub
+                  </a>
+                  {" "}— Trendyol komisyon, kâr analizi ve AI içerik araçları, kayıt gerektirmez.
+                </p>
+              </div>
+              <a
+                href="https://ticarethub.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 rounded-[8px] border border-accent-700 px-5 py-2.5 text-[0.85rem] font-bold text-accent-700 transition-colors hover:bg-accent-700 hover:text-white"
+              >
+                TicaretHub&apos;u Dene →
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Tier 1 — Popüler */}
       <section className="bg-white px-6 py-18">
         <div className="mx-auto max-w-[1200px]">

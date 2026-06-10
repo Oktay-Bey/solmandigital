@@ -27,6 +27,7 @@ export type RehberPost = {
   }>
   faq: Array<{ q: string; a: string }>
   cta: { text: string; href: string; label: string }
+  ctaSecondary?: { text: string; href: string; label: string }
   keywords: string[]
   relatedSlugs?: string[]
 }
@@ -108,6 +109,11 @@ export const rehberPosts: RehberPost[] = [
       href: "/trendyol-entegrasyonu",
       label: "Trendyol Entegrasyonu Hizmeti",
     },
+    ctaSecondary: {
+      text: "Önce rakamları kendiniz hesaplayın",
+      href: "https://ticarethub.com/trendyol-komisyon-hesaplama",
+      label: "TicaretHub Ücretsiz Araçlar",
+    },
     keywords: [
       "trendyol satıcı web sitesi",
       "trendyol api entegrasyonu",
@@ -181,6 +187,11 @@ export const rehberPosts: RehberPost[] = [
       text: "AI içerik otomasyonu projeniz için",
       href: "/ai-otomasyon-hizmeti",
       label: "AI Otomasyon Hizmeti",
+    },
+    ctaSecondary: {
+      text: "Hazır AI araçlarını hemen deneyin",
+      href: "https://ticarethub.com/yapay-zeka-icerik-motoru",
+      label: "TicaretHub AI İçerik Motoru",
     },
     keywords: [
       "ai içerik otomasyonu",
@@ -709,6 +720,11 @@ export const rehberPosts: RehberPost[] = [
       text: "Web sitenize AI chatbot entegrasyonu için",
       href: "/ai-otomasyon-hizmeti",
       label: "AI Otomasyon Hizmeti",
+    },
+    ctaSecondary: {
+      text: "E-ticaret AI araçlarını ücretsiz deneyin",
+      href: "https://ticarethub.com/ucretsiz-yapay-zeka-e-ticaret",
+      label: "TicaretHub Ücretsiz AI Araçları",
     },
     keywords: [
       "web sitesi ai chatbot entegrasyonu",
@@ -1251,6 +1267,11 @@ export const rehberPosts: RehberPost[] = [
       },
     ],
     cta: { text: "Trendyol Entegrasyonu Hakkında Bilgi Al", href: "/trendyol-entegrasyonu", label: "Detay" },
+    ctaSecondary: {
+      text: "Komisyon hesaplamasını kendiniz yapın",
+      href: "https://ticarethub.com/trendyol-komisyon-hesaplama",
+      label: "TicaretHub Komisyon Hesapla",
+    },
     keywords: [
       "trendyol komisyon oranları 2025",
       "trendyol kâr hesaplama",
@@ -1658,6 +1679,11 @@ export const rehberPosts: RehberPost[] = [
       },
     ],
     cta: { text: "E-Ticaret Stratejinizi Konuşalım", href: "/trendyol-entegrasyonu", label: "Detay" },
+    ctaSecondary: {
+      text: "Pazaryeri karşılaştırmasını ücretsiz yapın",
+      href: "https://ticarethub.com/pazaryeri-komisyon-karsilastirma",
+      label: "TicaretHub Pazaryeri Karşılaştır",
+    },
     keywords: [
       "trendyol vs kendi e-ticaret sitesi",
       "trendyol alternatifi",

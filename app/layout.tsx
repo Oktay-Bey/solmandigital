@@ -74,7 +74,16 @@ const organizationSchema = {
     siteConfig.social.linkedin,
     siteConfig.social.twitter,
     siteConfig.social.github,
+    "https://ticarethub.com",
   ],
+  makesOffer: {
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name: "Özel Yazılım Geliştirme",
+      description: "TicaretHub ekosistemindeki kullanıcılar için özel entegrasyon, SaaS ve kurumsal yazılım geliştirme.",
+    },
+  },
 }
 
 const websiteSchema = {

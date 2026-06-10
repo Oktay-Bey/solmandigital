@@ -20,7 +20,7 @@ export type ConsultationPayload = {
   projectBrief: string
 }
 
-export type LeadFunnelType = "web-sitesi" | "trendyol" | "saas" | "ai" | "istanbul-dev" | "istanbul-local"
+export type LeadFunnelType = "web-sitesi" | "trendyol" | "saas" | "ai" | "istanbul-dev" | "istanbul-local" | "ticarethub-referral"
 
 export type LeadPayload = {
   funnelType: LeadFunnelType

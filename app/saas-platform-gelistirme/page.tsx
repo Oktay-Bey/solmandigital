@@ -273,6 +273,31 @@ export default function SaasPlatformGelistirmePage() {
           </Link>
         </div>
       </section>
+
+      {/* TicaretHub — SaaS Örnek & Araçlar */}
+      <section className="border-t border-ink-200 bg-white px-6 py-12">
+        <div className="mx-auto max-w-[760px]">
+          <Reveal>
+            <div className="rounded-[10px] border border-ink-200 bg-surface p-6">
+              <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">
+                Canlı SaaS Örneği
+              </p>
+              <p className="mb-3 text-[0.9rem] font-bold text-ink-900">
+                TicaretHub — Türk e-ticaret satıcıları için SaaS platform
+              </p>
+              <p className="mb-5 max-w-[520px] text-[0.825rem] leading-[1.65] text-ink-500">
+                Ürettiğimiz SaaS ürünlerden biri olan{" "}
+                <a href="https://ticarethub.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-accent-700 hover:underline">TicaretHub</a>
+                , e-ticaret satıcılarına araçlar, entegrasyonlar ve yapay zeka özellikleri sunar. Kendi SaaS projeniz için somut referans olarak inceleyebilirsiniz.
+              </p>
+              <a href="https://ticarethub.com" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-accent-700 hover:underline">
+                TicaretHub&apos;u incele →
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
     </>
   )
 }

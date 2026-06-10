@@ -13,6 +13,14 @@ sırasında ilgili olanları tespit edip **referans** olarak kullanabilirsin
 (kodu körü körüne kopyalama — projeye uyarla). Bu klasör projenin parçası değildir,
 yalnızca bir bilgi/araç kaynağıdır.
 
+# Email Otomasyonu (Lead Outreach)
+
+Kişiselleştirilmiş cold outreach pipeline'ı kurulu — altyapı, içerik kuralları,
+takip sistemi ve batch süreci `EMAIL-OTOMASYON.md` dosyasında. Yeni lead batch'i,
+mail içeriği veya gönderim işi öncesi o dosyayı oku. Kritik: korku temelli ton
+yasak, her teknik iddia gönderilmeden doğrulanır, önizleme onayı olmadan gerçek
+alıcıya mail gitmez.
+
 # Solman Digital — Tasarım Sistemi
 
 - Renk/spacing/radius/gölge token'ları `app/globals.css` `@theme` bloğunda tanımlı.

@@ -357,7 +357,7 @@ export async function createFullCampaign(input: FullCampaignInput): Promise<{
   let budgetResource: string;
   try {
     const budgetRes = await customer.campaignBudgets.create([{
-      name: `${input.campaignName} - Bütçe`,
+      name: `${input.campaignName} - Bütçe ${Date.now()}`,
       amount_micros: Math.round(input.dailyBudgetTL * 1_000_000),
       delivery_method: 2, // STANDARD
     }]);
@@ -374,17 +374,16 @@ export async function createFullCampaign(input: FullCampaignInput): Promise<{
     const campaignPayload = {
       name: input.campaignName,
       status: "PAUSED",
-      advertisingChannelType: "SEARCH",
-      campaignBudget: budgetResource,
-      manualCpc: {},
-      containsEuPoliticalAdvertising: 3, // DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING
-      networkSettings: {
-        targetGoogleSearch: true,
-        targetSearchNetwork: true,
-        targetContentNetwork: false,
+      advertising_channel_type: "SEARCH",
+      campaign_budget: budgetResource,
+      manual_cpc: {},
+      contains_eu_political_advertising: 3, // DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING
+      network_settings: {
+        target_google_search: true,
+        target_search_network: true,
+        target_content_network: false,
       },
-      ...(input.startDate ? { startDate: input.startDate } : {}),
-      ...(input.endDate ? { endDate: input.endDate } : {}),
+      // start_date ve end_date alanları REST API v23'te desteklenmiyor — kampanya hemen başlar
     };
     const campaignRestRes = await adsRestPost("mutate", {
       mutateOperations: [{ campaignOperation: { create: campaignPayload } }],
