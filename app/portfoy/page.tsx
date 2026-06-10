@@ -1,23 +1,79 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, ExternalLink } from "lucide-react"
+import { ArrowRight, ExternalLink, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
-  title: "Projeler — Tamamlanan Çalışmalar",
+  title: "Portföy — Tamamlanan Projeler | Solman Digital",
   description:
-    "Next.js, AI ve otomasyon alanında geliştirilen projeler. E-ticaret, SaaS, haber platformu ve marketplace entegrasyonu örnekleri.",
+    "Next.js, AI otomasyon ve marketplace entegrasyonu alanında 6 tamamlanmış proje. E-ticaret, SaaS, içerik platformu ve çok kanallı satış paneli örnekleri.",
   keywords: [
     "next.js proje örnekleri",
-    "yazılım portföyü",
-    "e-ticaret proje",
+    "yazılım portföyü istanbul",
+    "e-ticaret proje örneği",
     "saas uygulama örnekleri",
     "marketplace entegrasyon örnekleri",
-    "trendyol proje",
+    "ai otomasyon proje",
+    "trendyol api proje",
   ],
   alternates: { canonical: `${siteConfig.url}/portfoy` },
-  openGraph: { title: "Projeler | Solman Digital", locale: "tr_TR" },
+  openGraph: {
+    title: "Portföy — Tamamlanan Projeler | Solman Digital",
+    description: "Next.js, AI ve marketplace entegrasyonu alanında 6 tamamlanmış proje.",
+    url: `${siteConfig.url}/portfoy`,
+    siteName: siteConfig.name,
+    locale: "tr_TR",
+    type: "website",
+  },
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Solman Digital Portföy",
+  description: "Solman Digital tarafından geliştirilen Next.js, AI ve marketplace entegrasyon projeleri",
+  url: `${siteConfig.url}/portfoy`,
+  numberOfItems: 6,
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Trendyol Satıcı Paneli",
+      description: "Trendyol ve Hepsiburada API entegrasyonlu çok kanallı stok senkronizasyonu ve satış analitiği paneli.",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "WordPress AI İçerik Otomasyonu",
+      description: "GPT-4o ile SEO içerik üreten ve WordPress'e otomatik yayımlayan otomasyon sistemi.",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "ShoppinHere E-Ticaret",
+      description: "238 ürün, İyzico ödeme entegrasyonu ve tam Türkçe e-ticaret platformu.",
+      url: "https://shoppinhere.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      name: "AI Haber Platformu",
+      description: "Supabase, OpenAI ve RSS pipeline ile otomatik haber üretim ve yayın sistemi.",
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      name: "QR Menü SaaS",
+      description: "Çok kiracılı QR menü SaaS platformu, restoranlara dijital menü altyapısı.",
+    },
+    {
+      "@type": "ListItem",
+      position: 6,
+      name: "Rüya Günlüğü SaaS",
+      description: "Claude AI ile rüya analizi yapan SaaS uygulama, LemonSqueezy abonelik sistemi.",
+    },
+  ],
 }
 
 const projects = [
@@ -27,6 +83,7 @@ const projects = [
     accent: "#f97316",
     preview: "📊 Çok kanallı stok senkronizasyonu & satış analitiği",
     desc: "Trendyol ve Hepsiburada API entegrasyonlu, çok kanallı stok senkronizasyonu ve satış analitiği paneli. Recharts ile gerçek zamanlı veri görselleştirmesi.",
+    metrics: ["2 platform · tek panel", "Gerçek zamanlı stok sync", "Sipariş & iade takibi"],
     tech: ["Next.js 14", "TypeScript", "Trendyol API", "Recharts", "Zustand"],
     status: "Özel Proje",
     url: null,
@@ -37,26 +94,29 @@ const projects = [
     accent: "#8b5cf6",
     preview: "🤖 GPT-4o → SEO içerik → WordPress otomatik yayın",
     desc: "GPT-4o ve Serper API ile SEO uyumlu içerik üreten, WordPress'e otomatik yayımlayan sistem. Kaynak doğrulama ve kalite filtresi dahil.",
+    metrics: ["Saatte 10+ makale", "Kaynak doğrulama katmanı", "WordPress REST API entegrasyonu"],
     tech: ["Next.js 14", "GPT-4o", "Serper API", "WordPress REST API", "Prisma"],
     status: "Canlı",
     url: null,
   },
   {
-    title: "E-Ticaret Platformu",
+    title: "ShoppinHere E-Ticaret",
     category: "E-Ticaret",
     accent: "#0ea5e9",
-    preview: "🛒 186 SSG ürün · İyzico entegrasyonu · Tam Türkçe",
-    desc: "186 SSG ürün, İyzico ödeme entegrasyonu ve tam Türkçe e-ticaret altyapısı. JSON veri dosyaları ile statik üretim.",
-    tech: ["Next.js 14", "İyzico", "TypeScript", "SSG"],
+    preview: "🛒 238 ürün · İyzico & CJ entegrasyonu · USA dropshipping",
+    desc: "238 ürünlü USA dropshipping platformu. İyzico ödeme, CJ Dropshipping entegrasyonu, SSG ile 100/100 Lighthouse performansı.",
+    metrics: ["238 SSG ürün", "CJ Dropshipping otomatik stok", "< 1 sn yükleme süresi"],
+    tech: ["Next.js 14", "İyzico", "CJ Dropshipping API", "PostgreSQL", "Redis"],
     status: "Canlı",
-    url: null,
+    url: "https://shoppinhere.com",
   },
   {
     title: "AI Haber Platformu",
     category: "İçerik Platformu",
     accent: "#10b981",
     preview: "📰 RSS → AI → Otomatik yayın pipeline'ı",
-    desc: "Supabase, OpenAI ve RSS pipeline ile çalışan otomatik haber üretim ve yayın sistemi. Google AdSense entegrasyonu.",
+    desc: "Supabase, OpenAI ve RSS pipeline ile çalışan otomatik haber üretim ve yayın sistemi. Saatlik fetch, Google AdSense entegrasyonu.",
+    metrics: ["Saatlik otomatik yayın", "9 kategori · çoklu RSS", "Google AdSense entegre"],
     tech: ["Next.js 14", "Supabase", "OpenAI", "RSS", "Vercel Cron"],
     status: "Canlı",
     url: null,
@@ -67,7 +127,8 @@ const projects = [
     accent: "#f43f5e",
     preview: "🍽️ Restoran → QR kod → Dijital menü · Multi-tenant",
     desc: "Çok kiracılı QR menü SaaS platformu. Prisma, NextAuth, QR kod üretimi ve PDF dışa aktarma. Restoranlar için dijital menü altyapısı.",
-    tech: ["Next.js", "Prisma", "NextAuth", "QR Code", "PDF"],
+    metrics: ["Multi-tenant mimari", "QR + PDF dışa aktarma", "Masa & kampanya yönetimi"],
+    tech: ["Next.js 16", "Prisma", "NextAuth v5", "QR Code", "PDF"],
     status: "Özel Proje",
     url: null,
   },
@@ -76,8 +137,9 @@ const projects = [
     category: "SaaS",
     accent: "#6366f1",
     preview: "🌙 Claude AI ile rüya analizi · LemonSqueezy abonelik",
-    desc: "Supabase + Claude AI ile rüya analizi yapan SaaS uygulama. LemonSqueezy abonelik sistemi, magic link auth.",
-    tech: ["Next.js 14", "Supabase", "Claude AI", "LemonSqueezy"],
+    desc: "Supabase + Claude AI ile rüya analizi yapan SaaS uygulama. LemonSqueezy abonelik sistemi, magic link auth ve freemium gate.",
+    metrics: ["Claude AI analiz motoru", "Freemium + abonelik", "Magic link kimlik doğrulama"],
+    tech: ["Next.js 14", "Supabase", "Claude Sonnet", "LemonSqueezy"],
     status: "Canlı",
     url: null,
   },
@@ -86,12 +148,17 @@ const projects = [
 export default function PortfoyPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero */}
       <section className="bg-dark-500 px-6 py-18">
         <div className="mx-auto max-w-[1200px]">
           <Reveal delay={0}>
             <p className="eyebrow mb-5 !text-accent-700">
-              Kişiye &amp; Firmaya Özel · Tamamlanan Projeler
+              6 Tamamlanmış Proje · E-Ticaret · SaaS · AI Otomasyon
             </p>
             <h1 className="mb-4 text-[clamp(1.75rem,4vw,2.5rem)] font-extrabold tracking-tight text-white">
               Her Proje, Farklı Bir
@@ -102,6 +169,22 @@ export default function PortfoyPage() {
               Her müşterinin sektörü, kullanıcısı ve operasyonu farklıydı.
               Buradaki projeler, o farklı ihtiyaçlara verilen özel yanıtlar.
             </p>
+          </Reveal>
+
+          {/* Stats */}
+          <Reveal delay={150}>
+            <div className="mt-10 flex flex-wrap gap-8">
+              {[
+                { label: "Tamamlanan Proje", value: "6" },
+                { label: "Canlıda Çalışan", value: "4" },
+                { label: "Farklı Sektör", value: "5" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-[1.75rem] font-black tracking-tight text-accent-700">{stat.value}</p>
+                  <p className="text-[0.75rem] font-medium text-ink-500">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </Reveal>
         </div>
       </section>
@@ -151,9 +234,18 @@ export default function PortfoyPage() {
                       {project.title}
                     </h3>
 
-                    <p className="mb-5 flex-1 text-[0.85rem] leading-relaxed text-ink-500">
+                    <p className="mb-4 flex-1 text-[0.85rem] leading-relaxed text-ink-500">
                       {project.desc}
                     </p>
+
+                    {/* Metrics */}
+                    <div className="mb-5 flex flex-col gap-1.5">
+                      {project.metrics.map((m) => (
+                        <p key={m} className="text-[0.78rem] font-medium text-ink-600">
+                          <span className="mr-1.5 text-accent-700">→</span>{m}
+                        </p>
+                      ))}
+                    </div>
 
                     {/* Tech Stack */}
                     <div className="mb-5 flex flex-wrap gap-1.5">
@@ -197,9 +289,19 @@ export default function PortfoyPage() {
             <p className="mb-8 text-[0.9rem] leading-relaxed text-ondark-faint">
               İş ihtiyacınızı anlatalın — size özel teknik değerlendirmeyi ücretsiz yapıyoruz.
             </p>
-            <Link href="/iletisim" className="btn btn-primary !px-8">
-              Projenizi Anlatalım <ArrowRight size={16} />
-            </Link>
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <Link href="/iletisim" className="btn btn-primary !px-8">
+                Projenizi Anlatalım <ArrowRight size={16} />
+              </Link>
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, portföyü inceledim, proje hakkında bilgi almak istiyorum.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+              >
+                <MessageCircle size={15} /> WhatsApp ile Yazın
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>

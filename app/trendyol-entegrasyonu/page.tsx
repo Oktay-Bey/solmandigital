@@ -105,7 +105,7 @@ const features = [
   "Stok uyarı sistemi (kritik seviye bildirimi)",
 ]
 
-const marketplaces = ["Trendyol", "Hepsiburada", "Amazon TR", "N11", "Çiçeksepeti"]
+const marketplaces = ["Trendyol", "Hepsiburada", "eBay", "Amazon TR", "N11", "Çiçeksepeti", "Etsy"]
 
 export default function TrendyolEntegrasyonuPage() {
   return (
@@ -129,14 +129,29 @@ export default function TrendyolEntegrasyonuPage() {
             </h1>
           </Reveal>
           <Reveal delay={200}>
-            <p className="mx-auto mb-10 max-w-[580px] text-[1.05rem] leading-[1.75] text-ondark-muted">
+            <p className="mx-auto mb-6 max-w-[580px] text-[1.05rem] leading-[1.75] text-ondark-muted">
               Her sabah 3-4 ayrı paneli açarak sipariş mi kontrol ediyorsunuz? Özel satıcı paneliyle tüm marketplace&apos;leri tek ekrandan yönetin.
             </p>
           </Reveal>
+          <Reveal delay={250}>
+            <p className="mx-auto mb-10 text-[0.82rem] text-ondark-faint">
+              Trendyol · Hepsiburada · eBay · Amazon TR · N11 · Etsy — 7–15 iş günü teslim
+            </p>
+          </Reveal>
           <Reveal delay={300}>
-            <a href="#form" className="btn btn-primary">
-              Entegrasyon Teklifi Al <ArrowRight size={16} />
-            </a>
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <a href="#form" className="btn btn-primary">
+                Entegrasyon Teklifi Al <ArrowRight size={16} />
+              </a>
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+              >
+                WhatsApp ile Yazın
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -262,12 +277,13 @@ export default function TrendyolEntegrasyonuPage() {
           </Reveal>
           <div className="flex flex-col">
             {[
-              { q: "Trendyol entegrasyonu ne kadar sürer?", a: "Tek marketplace için 7-10 iş günü, birden fazla marketplace için 12-15 iş günü." },
-              { q: "Hangi marketplace'lerle çalışıyorsunuz?", a: "Trendyol, Hepsiburada, Amazon Türkiye, N11 ve Çiçeksepeti API entegrasyonu yapıyoruz." },
-              { q: "Mevcut e-ticaret sitemle entegre edebilir misiniz?", a: "Evet. WordPress/WooCommerce, Shopify ve özel sistemlerle entegrasyon yapabiliyoruz." },
+              { q: "Trendyol entegrasyonu ne kadar sürer?", a: "Tek marketplace için 7–10 iş günü, birden fazla marketplace (Trendyol + Hepsiburada + eBay gibi) için 12–15 iş günü teslim ediyoruz." },
+              { q: "Hangi marketplace'lerle çalışıyorsunuz?", a: "Trendyol, Hepsiburada, eBay, Amazon Türkiye, N11, Çiçeksepeti ve Etsy API entegrasyonu yapıyoruz. Listelenmeyenler için de teknik değerlendirme yapıyoruz." },
+              { q: "Mevcut e-ticaret sitemle entegre edebilir misiniz?", a: "Evet. WordPress/WooCommerce, Shopify ve özel geliştirilmiş sistemlerle entegrasyon yapabiliyoruz. Mevcut altyapınızı değerlendirmek için teklifle birlikte teknik analiz sunuyoruz." },
+              { q: "eBay ve Etsy gibi uluslararası platformları da kapsıyor mu?", a: "Evet. eBay ve Etsy API entegrasyonları da kapsamımızdadır. Uluslararası platformlar için döviz yönetimi ve uluslararası kargo entegrasyonu ayrıca ele alınır." },
             ].map((faq) => (
               <div key={faq.q} className="border-b border-ink-200 py-5">
-                <p className="mb-2 text-[0.95rem] font-bold text-ink-900">{faq.q}</p>
+                <h3 className="mb-2 text-[0.95rem] font-bold text-ink-900">{faq.q}</h3>
                 <p className="text-[0.875rem] leading-[1.65] text-ink-500">{faq.a}</p>
               </div>
             ))}

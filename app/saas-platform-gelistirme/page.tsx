@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, CheckCircle } from "lucide-react"
+import { ArrowRight, CheckCircle, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import SaasLeadForm from "./SaasLeadForm"
 import Reveal from "@/components/Reveal"
@@ -120,9 +120,19 @@ export default function SaasPlatformGelistirmePage() {
             </p>
           </Reveal>
           <Reveal delay={300}>
-            <a href="#form" className="btn btn-primary">
-              SaaS Proje Teklifi Al <ArrowRight size={16} />
-            </a>
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <a href="#form" className="btn btn-primary">
+                SaaS Proje Teklifi Al <ArrowRight size={16} />
+              </a>
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, SaaS platform geliştirmek istiyorum, bilgi almak istiyorum.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+              >
+                <MessageCircle size={15} /> WhatsApp ile Yazın
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -210,8 +220,32 @@ export default function SaasPlatformGelistirmePage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="bg-surface px-6 py-16">
+        <div className="mx-auto max-w-[720px]">
+          <Reveal>
+            <h2 className="mb-8 text-[1.5rem] font-extrabold tracking-[-0.02em] text-ink-900">
+              Sık Sorulan Sorular
+            </h2>
+          </Reveal>
+          <div className="flex flex-col">
+            {[
+              { q: "SaaS MVP kaç haftada hazır olur?", a: "Kapsama göre 4–8 hafta. Auth, dashboard ve Stripe abonelik sistemi içeren temel bir MVP için 4 hafta yeterlidir. Karmaşık iş mantığı veya üçüncü taraf entegrasyonları gerektiren projeler 6–8 haftaya uzayabilir." },
+              { q: "Hangi teknoloji stack kullanıyorsunuz?", a: "Next.js 16, Supabase (auth + PostgreSQL), Stripe (abonelik), Vercel (hosting). Bu stack, hızlı geliştirme ve düşük operasyonel yük sağlar. Farklı tercihleriniz varsa proje öncesinde birlikte değerlendiririz." },
+              { q: "Multi-tenant mimari kurabilir misiniz?", a: "Evet. Subdomain tabanlı (firma.uygulama.com) veya path tabanlı (/firma/...) her iki mimarıyi de geliştiriyoruz. Supabase Row Level Security ile kiracılar arası veri izolasyonu sağlanır." },
+              { q: "Kaynak kod bize mi ait olur?", a: "Evet, kaynak kod tamamen sizindir. GitHub reponuza aktarılır, aylık lisans veya platform ücreti ödemeniz gerekmez. İstediğiniz geliştirici ile sonrasında çalışabilirsiniz." },
+            ].map((faq) => (
+              <div key={faq.q} className="border-b border-ink-200 py-5">
+                <h3 className="mb-2 text-[0.95rem] font-bold text-ink-900">{faq.q}</h3>
+                <p className="text-[0.875rem] leading-[1.65] text-ink-500">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Form */}
-      <section id="form" className="bg-surface px-6 py-20">
+      <section id="form" className="bg-white px-6 py-20">
         <div className="mx-auto max-w-[600px]">
           <Reveal>
             <p className="eyebrow mb-3">Proje Teklifi</p>

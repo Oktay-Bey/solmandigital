@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, CheckCircle, X, MapPin } from "lucide-react"
+import { ArrowRight, CheckCircle, X, MapPin, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import { services } from "@/lib/data/services"
 import type { IstanbulPage } from "@/lib/data/istanbul-pages"
@@ -94,9 +94,19 @@ export default function IstanbulLocalPage({ config }: Props) {
           <p className="mx-auto mb-10 max-w-[580px] text-[1.05rem] leading-relaxed text-ondark-muted">
             {config.heroSubtitle}
           </p>
-          <a href="#form" className="btn btn-primary !px-8">
-            İletişime Geç <ArrowRight size={16} />
-          </a>
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <a href="#form" className="btn btn-primary !px-8">
+              İletişime Geç <ArrowRight size={16} />
+            </a>
+            <a
+              href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Merhaba, ${config.district ?? "İstanbul"} için proje hakkında bilgi almak istiyorum.`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+            >
+              <MessageCircle size={15} /> WhatsApp ile Yazın
+            </a>
+          </div>
         </div>
       </section>
 
@@ -260,7 +270,7 @@ export default function IstanbulLocalPage({ config }: Props) {
           <div className="flex flex-col gap-6">
             {config.faq.map((item) => (
               <div key={item.q} className="border-b border-ink-200 pb-6">
-                <p className="m-0 mb-2 text-[0.95rem] font-bold text-ink-900">{item.q}</p>
+                <h3 className="m-0 mb-2 text-[0.95rem] font-bold text-ink-900">{item.q}</h3>
                 <p className="m-0 text-[0.875rem] leading-relaxed text-ink-500">{item.a}</p>
               </div>
             ))}

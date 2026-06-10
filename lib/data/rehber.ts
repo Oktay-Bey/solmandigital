@@ -1,10 +1,24 @@
+export type RehberCategory =
+  | "trendyol"
+  | "e-ticaret"
+  | "saas"
+  | "yapay-zeka"
+  | "web-sitesi"
+  | "karsilastirma"
+  | "dijital-pazarlama"
+
 export type RehberPost = {
   slug: string
   title: string
   metaTitle: string
   metaDescription: string
   description: string
+  /** Kısa, doğrudan cevap — AI arama motorları bu bloğu öne çıkarır (max ~200 kelime) */
+  summary?: string
   publishDate: string
+  /** Yoksa publishDate kullanılır */
+  updatedDate?: string
+  category?: RehberCategory
   readTime: number
   sections: Array<{
     heading: string
@@ -20,6 +34,7 @@ export type RehberPost = {
 export const rehberPosts: RehberPost[] = [
   {
     slug: "trendyol-satici-web-sitesi",
+    category: "trendyol",
     relatedSlugs: ["hepsiburada-api-entegrasyonu", "trendyol-vs-eticaret-sitesi", "trendyol-komisyon-hesaplama"],
     title: "Trendyol Satıcısı Web Sitesi Yaptırmalı mı?",
     metaTitle: "Trendyol Satıcısı Web Sitesi Yaptırmalı mı? | Solman Digital",
@@ -27,7 +42,10 @@ export const rehberPosts: RehberPost[] = [
       "Trendyol satıcıları için bağımsız web sitesi kurmanın avantajları, doğru zamanlama ve teknik gereksinimler. Gerçek proje deneyimiyle hazırlanmış rehber.",
     description:
       "Trendyol mağazanız büyürken platformdan bağımsız bir dijital varlık oluşturmak kritik hale gelir. Bu rehberde neden, ne zaman ve nasıl sorusuna yanıt veriyoruz.",
-    publishDate: "2025-05-01",
+    summary:
+      "Aylık 50.000 ₺+ satış hacmine ulaşmış Trendyol satıcıları için bağımsız web sitesi kurmak komisyon maliyetini düşürür, müşteri verisini sahiplendirir ve marka görünürlüğünü artırır. Trendyol API entegrasyonu ile stok senkronizasyonu sağlanarak iki kanalı eş zamanlı yönetmek mümkündür.",
+    publishDate: "2026-05-01",
+    updatedDate: "2026-06-10",
     readTime: 6,
     sections: [
       {
@@ -99,13 +117,17 @@ export const rehberPosts: RehberPost[] = [
   },
   {
     slug: "ai-icerik-otomasyonu-nedir",
+    category: "yapay-zeka",
     title: "AI İçerik Otomasyonu Nedir? E-Ticaret ve Haber Siteleri İçin Kullanım Rehberi",
     metaTitle: "AI İçerik Otomasyonu Nedir? | Solman Digital",
     metaDescription:
       "OpenAI GPT-4o ve Claude AI ile Türkçe ürün açıklaması, haber özeti ve SEO içeriği otomasyonu. Gerçek proje örnekleriyle kapsamlı rehber.",
     description:
       "Binlerce ürün açıklamasını, haber özetini veya SEO içeriğini tek tek yazmak yerine yapay zeka pipeline'ıyla otomatize etmek artık mümkün. Gerçek proje deneyimiyle hazırlanmış rehber.",
-    publishDate: "2025-05-10",
+    summary:
+      "AI içerik otomasyonu, GPT-4o veya Claude AI gibi büyük dil modellerini kullanarak ürün açıklaması, haber özeti ve SEO metinlerini otomatik üretir. Solman Digital tarafından geliştirilen projelerde günde 50+ Türkçe haber içeriği sıfır insan müdahalesiyle yayınlanmaktadır. Basit bir pipeline 5–10 iş günü içinde kurulur.",
+    publishDate: "2026-05-10",
+    updatedDate: "2026-06-10",
     readTime: 7,
     sections: [
       {
@@ -170,14 +192,18 @@ export const rehberPosts: RehberPost[] = [
   },
   {
     slug: "istanbul-web-sitesi-fiyatlari",
+    category: "web-sitesi",
     relatedSlugs: ["kurumsal-web-sitesi-fiyatlari", "web-sitesi-yaptirmak-istiyorum", "nextjs-mi-wordpress-mi"],
-    title: "İstanbul'da Web Sitesi Fiyatları 2025 — Gerçekçi Rehber",
-    metaTitle: "İstanbul'da Web Sitesi Fiyatları 2025 | Solman Digital",
+    title: "İstanbul'da Web Sitesi Fiyatları 2026 — Gerçekçi Rehber",
+    metaTitle: "İstanbul'da Web Sitesi Fiyatları 2026 | Solman Digital",
     metaDescription:
-      "İstanbul'da kurumsal web sitesi, e-ticaret ve SaaS proje fiyatları. Ajans, serbest geliştirici ve özel yazılım ofisi karşılaştırması. 2025 güncel rakamlar.",
+      "İstanbul'da kurumsal web sitesi, e-ticaret ve SaaS proje fiyatları. Ajans, serbest geliştirici ve özel yazılım ofisi karşılaştırması. 2026 güncel rakamlar.",
     description:
       "İstanbul'da web sitesi yaptırmak isteyenler için gerçekçi fiyat aralıkları, ne etkiler, nasıl karşılaştırılır. Belirsiz tekliflere son.",
-    publishDate: "2025-05-15",
+    summary:
+      "İstanbul'da kurumsal web sitesi fiyatları 2026 itibarıyla 15.000 ₺ ile 120.000 ₺ arasında değişmektedir. Fiyatı belirleyen üç ana etken: projeyi kimin yaptığı (ajans, freelancer, yazılım ofisi), teknoloji seçimi (WordPress vs. Next.js) ve özellik kapsamıdır. Aynı kapsam için ajans teklifi ile yazılım ofisi teklifi arasında %40–60 fark olabilir.",
+    publishDate: "2026-05-15",
+    updatedDate: "2026-06-10",
     readTime: 8,
     sections: [
       {
@@ -252,6 +278,7 @@ export const rehberPosts: RehberPost[] = [
   },
   {
     slug: "saas-mvp-sureci",
+    category: "saas",
     relatedSlugs: ["saas-nedir-turkiye", "nextjs-avantajlari", "freelance-yazilimci-mi-ajans-mi"],
     title: "SaaS MVP Süreci: Türkiye'de Fikrinizi 6 Haftada Ürüne Dönüştürün",
     metaTitle: "SaaS MVP Süreci Türkiye | Solman Digital",
@@ -259,7 +286,10 @@ export const rehberPosts: RehberPost[] = [
       "SaaS MVP nedir, nasıl planlanır, ne kadar sürer? Türkiye pazarına yönelik SaaS geliştirme sürecinin gerçekçi rehberi. Abonelik, çok kiracılı mimari ve fiyatlandırma.",
     description:
       "Fikrinizi minimum geliştirme süresinde, gerçek kullanıcıyla test edilebilir bir ürüne dönüştürmenin sistematik yolu.",
-    publishDate: "2025-05-20",
+    summary:
+      "SaaS MVP'yi sıfırdan 6 haftada piyasaya sürmek mümkündür: ilk 2 hafta kapsam tanımı ve tasarım, sonraki 4 hafta çekirdek geliştirme ve ilk kullanıcı testi. Türkiye pazarında SaaS fiyatlandırması aylık 99–499 ₺ arasında konumlandırılırken çok kiracılı (multi-tenant) mimari tercih edilmesi ölçekleme maliyetini önemli ölçüde düşürür.",
+    publishDate: "2026-05-20",
+    updatedDate: "2026-06-10",
     readTime: 9,
     sections: [
       {
@@ -330,13 +360,17 @@ export const rehberPosts: RehberPost[] = [
   },
   {
     slug: "nextjs-mi-wordpress-mi",
+    category: "karsilastirma",
     title: "Next.js mi WordPress mi? Projenize Uygun Teknolojiyi Seçin",
     metaTitle: "Next.js mi WordPress mi? | Solman Digital",
     metaDescription:
       "Next.js ve WordPress arasında fark nedir? Hangi proje için hangisi doğru seçimdir? Gerçek proje deneyimiyle hazırlanmış karşılaştırma rehberi.",
     description:
       "Her projeye Next.js gerekmez, her projeye WordPress yetmez. Doğru teknolojiyi seçmenin sistematik yolu.",
-    publishDate: "2025-05-25",
+    summary:
+      "İçerik ağırlıklı bloglar ve basit kurumsal siteler için WordPress hâlâ güçlü bir seçimdir; ancak e-ticaret, SaaS veya yüksek performans gerektiren projelerde Next.js açık ara üstündür. Temel kural: özelleştirilmiş işlevsellik veya SEO performansı öncelikliyse Next.js, hızlı içerik yönetimi ve eklenti ekosistemi öncelikliyse WordPress tercih edilir.",
+    publishDate: "2026-05-25",
+    updatedDate: "2026-06-10",
     readTime: 7,
     sections: [
       {
@@ -407,13 +441,17 @@ export const rehberPosts: RehberPost[] = [
   },
   {
     slug: "iyzico-entegrasyonu",
+    category: "e-ticaret",
     title: "İyzico Entegrasyonu: Web Sitenize Türk Kartı Desteği Nasıl Eklenir?",
     metaTitle: "İyzico Entegrasyonu Nasıl Yapılır? | Solman Digital",
     metaDescription:
       "İyzico ödeme entegrasyonu adımları, API kurulumu, test ortamı ve canlıya geçiş. Türkiye'deki e-ticaret projeleri için kapsamlı İyzico rehberi.",
     description:
       "Türkiye'de online ödeme almanın standart yolu İyzico. Entegrasyon sürecini, teknik gereksinimleri ve sık karşılaşılan sorunları gerçek proje deneyimiyle aktarıyoruz.",
-    publishDate: "2025-06-01",
+    summary:
+      "İyzico entegrasyonu 3 aşamadan oluşur: sandbox hesabı açıp API anahtarı almak (1 gün), ödeme akışını test ortamında kurmak (2–4 gün), canlı hesap onayı ve yayına geçiş (3–5 iş günü). Türkiye'deki e-ticaret projelerinin büyük çoğunluğunda İyzico, yerel kart uyumluluğu ve 3D Secure desteği nedeniyle standart tercih olmaktadır.",
+    publishDate: "2026-06-01",
+    updatedDate: "2026-06-10",
     readTime: 7,
     sections: [
       {
@@ -492,6 +530,7 @@ export const rehberPosts: RehberPost[] = [
   },
   {
     slug: "eticaret-sitesi-acmak-turkiye",
+    category: "e-ticaret",
     relatedSlugs: ["iyzico-entegrasyonu", "shopify-alternatifi-turkiye", "woocommerce-vs-nextjs-eticaret"],
     title: "Türkiye'de E-Ticaret Sitesi Açmak: Yasal, Teknik ve Pazarlama Adımları",
     metaTitle: "Türkiye'de E-Ticaret Sitesi Açmak | Solman Digital",
@@ -499,7 +538,10 @@ export const rehberPosts: RehberPost[] = [
       "Türkiye'de e-ticaret sitesi açmak için gereken yasal belgeler, teknik altyapı ve pazarlama adımları. Başlangıçtan canlıya kadar kapsamlı rehber.",
     description:
       "Türkiye'de online satış yapmak isteyenler için vergi kaydından teknik altyapıya, ödeme sisteminden Google'da görünürlüğe kadar tüm adımlar.",
-    publishDate: "2025-06-05",
+    summary:
+      "Türkiye'de e-ticaret sitesi açmak için önce vergi levhası ve e-ticaret sözleşmesi gerekmektedir. Teknik altyapıda İyzico veya PayTR ile ödeme entegrasyonu zorunlu, SSL sertifikası ve KVKK uyumu şarttır. Hazır platform (Shopify/Ticimax) ile 1–2 haftada, özel yazılımla 3–6 haftada canlıya geçmek mümkündür.",
+    publishDate: "2026-06-05",
+    updatedDate: "2026-06-10",
     readTime: 9,
     sections: [
       {
@@ -586,13 +628,17 @@ export const rehberPosts: RehberPost[] = [
   },
   {
     slug: "ai-chatbot-web-sitesi",
+    category: "yapay-zeka",
     title: "Web Sitenize AI Chatbot Entegrasyonu: Ne Zaman, Nasıl ve Hangi Teknolojiyle?",
     metaTitle: "Web Sitesi AI Chatbot Entegrasyonu | Solman Digital",
     metaDescription:
       "Web sitenize müşteri hizmetleri chatbotu entegre etmek için doğru teknoloji, maliyet ve süreç rehberi. ChatGPT API ile özel chatbot nasıl kurulur?",
     description:
       "Her web sitesi chatbota ihtiyaç duymaz — ama ihtiyaç duyduğunda doğru yapılmazsa hem para hem müşteri kaybettirir. Gerçek proje deneyimiyle hazırlanmış rehber.",
-    publishDate: "2025-06-10",
+    summary:
+      "Web sitesi AI chatbotu üç kategoriye ayrılır: hazır widget (Intercom, Tidio — aylık 30–100$), yarı özel GPT tabanlı (ChatGPT API + özel prompt — 3–5 gün kurulum), tam özel RAG chatbot (kendi verilerinizle — 3–6 hafta). Chatbot yatırımı ancak günde 20+ tekrarlayan müşteri sorusu olan sitelerde karşılığını verir.",
+    publishDate: "2026-06-10",
+    updatedDate: "2026-06-10",
     readTime: 8,
     sections: [
       {
@@ -674,13 +720,17 @@ export const rehberPosts: RehberPost[] = [
   },
   {
     slug: "hepsiburada-api-entegrasyonu",
+    category: "e-ticaret",
     title: "Hepsiburada API Entegrasyonu: Satıcılar İçin Teknik Rehber",
     metaTitle: "Hepsiburada API Entegrasyonu | Solman Digital",
     metaDescription:
       "Hepsiburada Marketplace API ile stok senkronizasyonu, sipariş yönetimi ve fiyat güncellemesi. Satıcılar için adım adım teknik rehber.",
     description:
       "Hepsiburada'da satış yapıyorsanız ve operasyonel yükü azaltmak istiyorsanız API entegrasyonu kritik bir adımdır. Gerçek proje deneyimiyle hazırlanmış teknik rehber.",
-    publishDate: "2025-06-15",
+    summary:
+      "Hepsiburada Marketplace API, OAuth 2.0 kimlik doğrulaması ile çalışır ve stok, fiyat, sipariş ve kargo takibini otomatize eder. Temel entegrasyon 5–8 iş günü içinde tamamlanır; çift yönlü stok senkronizasyonu için webhook yapılandırması gereklidir. 500+ SKU'yu olan satıcılar için API entegrasyonu operasyonel hatayı %80 oranında azaltır.",
+    publishDate: "2026-06-10",
+    updatedDate: "2026-06-10",
     readTime: 7,
     sections: [
       {
@@ -1821,6 +1871,556 @@ export const rehberPosts: RehberPost[] = [
       "stripe türkiye kullanımı",
       "e-ticaret ödeme sistemi",
       "iyzico stripe karşılaştırma",
+    ],
+  },
+
+  // ─── MARKETPLACE API REHBERLERİ ───────────────────────────────────────────
+  {
+    slug: "etsy-api-entegrasyonu-turkiye",
+    category: "e-ticaret",
+    relatedSlugs: ["ebay-api-entegrasyonu-turkiye", "hepsiburada-api-entegrasyonu", "eticaret-sitesi-acmak-turkiye"],
+    title: "Etsy API Entegrasyonu: Türk El Yapımı Satıcıları İçin Teknik Rehber",
+    metaTitle: "Etsy API Entegrasyonu Türkiye | Solman Digital",
+    metaDescription:
+      "Etsy Open API v3 ile ürün listeleme, sipariş yönetimi ve stok senkronizasyonu. Türk el yapımı ve el sanatları satıcıları için OAuth 2.0, sandbox ve canlıya geçiş rehberi.",
+    description:
+      "El yapımı ürün veya özgün tasarımlarınızı Etsy üzerinden dünya pazarına sunuyorsanız, API entegrasyonuyla yönetim yükünü drastik biçimde azaltabilirsiniz.",
+    summary:
+      "Etsy Open API v3, OAuth 2.0 kimlik doğrulaması ile çalışır ve ürün listeleme (Listing API), sipariş alma (Receipt API) ve mağaza analitiği (Shop API) sunar. Türk satıcılar için kritik not: Etsy USD bazlı çalışır, ödeme alımı için Payoneer veya Wise hesabı zorunludur. Temel API entegrasyonu 1–2 haftada tamamlanır; 200+ aktif ürünü olan mağazalar için API kullanımı manuel panele göre haftada 5–8 saat tasarruf sağlar.",
+    publishDate: "2026-06-10",
+    updatedDate: "2026-06-10",
+    readTime: 8,
+    sections: [
+      {
+        heading: "Etsy API Neden Kullanılır?",
+        body: "Etsy'nin yönetim paneli küçük hacimler için yeterlidir; ancak ürün sayısı ve sipariş akışı büyüdükçe API entegrasyonu zorunlu hale gelir.",
+        list: [
+          "Ürün listeleme ve varyant yönetimini toplu yapma",
+          "Sipariş bildirimlerini kendi sisteminize almak",
+          "Stok seviyelerini WooCommerce / ERP ile senkronize etmek",
+          "Mağaza istatistiklerini kendi raporlama aracınıza taşımak",
+          "Fiyat güncellemelerini döviz kuruna göre otomatize etmek (USD bazlı)",
+        ],
+      },
+      {
+        heading: "Etsy API v3 Mimarisi",
+        body: "Etsy 2023 itibarıyla eski v2 API'yi emekliye aldı. Tüm yeni entegrasyonlar Etsy Open API v3 (REST, JSON) üzerinden yapılmalıdır.",
+        list: [
+          "Listing API — ürün oluşturma, güncelleme, fotoğraf yükleme, varyant yönetimi",
+          "Receipt API — sipariş okuma, durum güncelleme, kargo takibi",
+          "Shop API — mağaza bilgisi, istatistik ve favori listesi",
+          "Taxonomy API — ürün kategorisi ve özellik değerleri",
+          "Rate limit: dakikada 10 istek (Basic), dakikada 100 istek (Advanced — başvuru gerekir)",
+        ],
+      },
+      {
+        heading: "OAuth 2.0 Kurulumu",
+        body: "Etsy API erişimi için Etsy Developer hesabı açıp uygulama oluşturmanız gerekir. Onay süreci genellikle 1–3 iş günü içinde tamamlanır.",
+        list: [
+          "1. etsy.com/developers → 'Create a New App' ile uygulama oluşturun",
+          "2. Keystring (API Key) ve Shared Secret alın",
+          "3. PKCE destekli Authorization Code Flow ile kullanıcı token'ı üretin",
+          "4. Access Token (1 saat) + Refresh Token süresiz → yenileme mekanizması zorunlu",
+          "5. Scopes: listings_r, listings_w, transactions_r, shops_r seçin",
+          "6. Redirect URI'yi uygulamanıza kaydedin (localhost test için geçerli)",
+        ],
+      },
+      {
+        heading: "Türk Satıcıların Dikkat Etmesi Gerekenler",
+        body: "Etsy Türkiye'de doğrudan banka hesabına ödeme yapmamaktadır. Bu durum Türk satıcılar için ek adımlar gerektirir.",
+        list: [
+          "Ödeme alımı: Payoneer veya Wise USD hesabı açılmalı — kurulum 3–5 iş günü",
+          "KDV: Etsy, AB müşterilerine otomatik KDV ekler; Türkiye'de ek yükümlülük yok",
+          "Kargo: Etsy'nin yerleşik kargo hesabı Türkiye'yi desteklemez — PTT veya Yurtiçi entegrasyonu ayrıca yapılmalı",
+          "Döviz kuru: Ürün fiyatları USD girilmeli; TL maliyet hesabı için otomatik kur güncellemesi scripti önerilir",
+          "Satış kotası: Yeni Etsy mağazaları ilk 3 ayda 250 liste limiti ile başlar",
+        ],
+      },
+      {
+        heading: "Entegrasyon Adımları ve Süre",
+        body: "Solman Digital tarafından gerçekleştirilen Etsy API projelerinde standart zaman çizelgesi şu şekildedir:",
+        list: [
+          "Gün 1–2: OAuth kurulumu, API bağlantı testi, mağaza veri doğrulama",
+          "Gün 3–5: Listing API — toplu ürün okuma / güncelleme / fotoğraf yükleme",
+          "Gün 6–8: Receipt API — sipariş webhook, kargo takibi, durum güncelleme",
+          "Gün 9–10: Stok senkronizasyonu (WooCommerce / ERP bağlantısı)",
+          "Gün 11–12: Test, hata yönetimi, monitoring kurulumu",
+          "Toplam: 200 SKU'ya kadar mağazalar için 10–12 iş günü",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Etsy API ücretsiz mi?",
+        a: "Etsy Open API v3 kullanımı ücretsizdir. Satışlarda Etsy'nin standart komisyonu (%6.5 + listeleme ücreti 0.20 USD/ürün) geçerlidir. API kullanımı ayrıca ücretlendirilmez.",
+      },
+      {
+        q: "Türkiye'den Etsy mağazası açılabilir mi?",
+        a: "Evet. Türkiye, Etsy'nin desteklediği ülkeler arasındadır. Ödeme alımı için Payoneer veya Wise gibi bir ödeme aracısına ihtiyaç duyulur; doğrudan Türk banka hesabına ödeme yapılmamaktadır.",
+      },
+      {
+        q: "WooCommerce ile Etsy entegrasyonu nasıl çalışır?",
+        a: "WooCommerce'deki ürün ve stok verileri Etsy API üzerinden senkronize edilir. Sipariş geldiğinde WooCommerce'e otomatik aktarılır. Bu iki yönlü senkronizasyon sayesinde tek noktadan yönetim mümkün olur.",
+      },
+      {
+        q: "Etsy mağazamı Trendyol ile eş zamanlı çalıştırabilir miyim?",
+        a: "Evet. Çok kanallı satış otomasyonunda Trendyol + Etsy + Hepsiburada aynı stok ve sipariş akışı üzerinden yönetilebilir. Bu tür çok kanallı projeler genellikle 3–4 haftada tamamlanır.",
+      },
+    ],
+    cta: {
+      text: "Etsy API entegrasyonu veya çok kanallı marketplace otomasyonu için",
+      href: "/trendyol-entegrasyonu",
+      label: "Entegrasyon Teklifi Al",
+    },
+    keywords: [
+      "etsy api entegrasyonu",
+      "etsy api türkiye",
+      "etsy türkiye satış",
+      "etsy woocommerce entegrasyonu",
+      "etsy open api v3",
+      "türk satıcı etsy",
+    ],
+  },
+  {
+    slug: "ebay-api-entegrasyonu-turkiye",
+    category: "e-ticaret",
+    relatedSlugs: ["hepsiburada-api-entegrasyonu", "trendyol-satici-web-sitesi", "woocommerce-vs-nextjs-eticaret"],
+    title: "eBay API Entegrasyonu: Türk Satıcılar İçin Adım Adım Teknik Rehber",
+    metaTitle: "eBay API Entegrasyonu Türkiye | Solman Digital",
+    metaDescription:
+      "eBay Seller API ile ürün listeleme, stok senkronizasyonu ve sipariş yönetimi. Türk satıcılar için OAuth 2.0, sandbox kurulumu ve canlıya geçiş rehberi.",
+    description:
+      "eBay API entegrasyonuyla ürün yönetimini, sipariş takibini ve fiyatlamayı otomatize edebilirsiniz. Türk satıcıların sıklıkla karşılaştığı teknik engellere odaklanan gerçekçi bir rehber.",
+    summary:
+      "eBay API entegrasyonu üç katmandan oluşur: kimlik doğrulama (OAuth 2.0), katalog yönetimi (Inventory API) ve sipariş akışı (Fulfillment API). Türk satıcılar için en kritik adım eBay global hesabı açıp hesabı doğrulatmaktır; bu süreç 3–7 iş günü sürer. Teknik entegrasyon sonrasında 500+ SKU'lu mağazalarda sipariş işleme süresi %70 oranında kısalmaktadır.",
+    publishDate: "2026-06-10",
+    updatedDate: "2026-06-10",
+    readTime: 9,
+    sections: [
+      {
+        heading: "eBay API Neden Kullanılır?",
+        body: "Manuel eBay yönetimi; ürün sayısı arttıkça sürdürülemez hale gelir. eBay API, satıcıların kendi yazılımları veya ERP sistemleriyle eBay'i entegre etmesini sağlar.",
+        list: [
+          "Ürün listeleme ve güncellemeyi toplu olarak otomatize etmek",
+          "Stok seviyelerini kendi sisteminizle senkronize tutmak",
+          "Sipariş bildirimleri almak ve kargo takibi güncellemek",
+          "Fiyat optimizasyonu için rakip verisi çekmek",
+          "eBay mağazası performans raporlarına programatik erişim",
+        ],
+      },
+      {
+        heading: "eBay API Türleri: Hangisi Ne İşe Yarar?",
+        body: "eBay, RESTful yapıda modüler API'ler sunar. Her modül belirli bir iş sürecini kapsar.",
+        list: [
+          "Inventory API — ürün ve stok yönetimi (çok lokasyon desteği dahil)",
+          "Fulfillment API — sipariş alma, güncelleme ve kargo takibi",
+          "Account API — ödeme ve hesap yapılandırması",
+          "Buy API — alıcı tarafı arama ve ürün sorguları",
+          "Sell Feed API — toplu ürün yükleme için CSV/JSON feed işleme",
+          "Analytics API — satış ve görünürlük raporları",
+        ],
+      },
+      {
+        heading: "OAuth 2.0 ile Kimlik Doğrulama",
+        body: "eBay API tüm isteklerde OAuth 2.0 token gerektirir. İki token tipi vardır: Application Token (kullanıcı oturumu gerektirmeyen işlemler) ve User Token (satıcı adına işlem yapılan tüm write endpoint'leri).",
+        list: [
+          "1. eBay Developer Program'a kayıt olun (developer.ebay.com)",
+          "2. Production Application oluşturun, Client ID ve Client Secret alın",
+          "3. Sandbox ortamında test hesabı açın",
+          "4. Authorization Code Flow ile satıcı izni alın",
+          "5. Access Token (2 saat) ve Refresh Token (18 ay) saklayın",
+          "6. Token yenileme (refresh) mekanizmasını sunucu tarafında otomatize edin",
+        ],
+      },
+      {
+        heading: "Sandbox Ortamında Test Süreci",
+        body: "eBay, canlı hesabı etkilemeden API'yi test edebileceğiniz tam işlevsel bir sandbox ortamı sunar. Sandbox'ta sahte alıcı ve satıcı hesapları oluşturulabilir.",
+        list: [
+          "Sandbox URL: api.sandbox.ebay.com (production: api.ebay.com)",
+          "Sandbox token'ı production token'ından bağımsız üretilir",
+          "Gerçek para hareketi yoktur — test ödemeleri simüle edilir",
+          "Tüm Inventory ve Fulfillment endpoint'leri sandbox'ta mevcuttur",
+          "Tavsiye: sandbox'ta en az 50 ürün, 10 sipariş senaryosu test edilmeli",
+        ],
+      },
+      {
+        heading: "Türk Satıcıların Sık Karşılaştığı Teknik Engeller",
+        body: "eBay entegrasyonunda Türk satıcıların özellikle yaşadığı sorunlar teknik ve hesap doğrulama kaynaklıdır.",
+        list: [
+          "Hesap kısıtlaması: yeni eBay hesapları ilk 90 günde liste limiti ile başlar",
+          "Ödeme entegrasyonu: eBay Managed Payments zorunlu, Türk banka hesabıyla 7–14 gün onay süreci",
+          "Kargo entegrasyonu: uluslararası kargo fiyat hesabı için ShipEngine veya EasyPost API önerilir",
+          "Döviz yönetimi: USD/GBP/EUR fiyatlandırma için otomatik kur güncelleme scripti gerekir",
+          "Rate limiting: saatte 5.000 API çağrısı limiti — toplu işlemlerde queue yapısı şart",
+        ],
+      },
+      {
+        heading: "Entegrasyon Süreci ve Zaman Çizelgesi",
+        body: "Solman Digital tarafından gerçekleştirilen eBay API projelerinde standart süreç şu şekilde işlemektedir:",
+        list: [
+          "Hafta 1: OAuth kurulumu + sandbox entegrasyonu + Inventory API testi",
+          "Hafta 2: Fulfillment API + sipariş webhook'ları + kargo takibi",
+          "Hafta 3: Production geçiş + stres testi + hata yönetimi",
+          "Hafta 4: İzleme panosu + alert sistemi + dokümantasyon",
+          "Toplam: 500 SKU'ya kadar projeler genellikle 3–4 haftada canlıya geçer",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "eBay API kullanmak için ücret ödeniyor mu?",
+        a: "eBay API'nin kendisi ücretsizdir. Ancak eBay üzerinden yapılan satışlarda standart satıcı komisyonları (%8–15, kategoriye göre değişir) geçerlidir. API çağrı limitleri aşıldığında ek ücret değil kısıtlama uygulanır.",
+      },
+      {
+        q: "Türkiye'den eBay'de satış yapabilir miyim?",
+        a: "Evet, Türkiye'den eBay global satıcı hesabı açılabilir. eBay Managed Payments sistemi Türkiye'yi desteklemektedir; ancak hesap doğrulama ve ödeme hesabı onayı 7–14 iş günü sürebilir.",
+      },
+      {
+        q: "WooCommerce veya Shopify ile eBay entegrasyonu mümkün mü?",
+        a: "Evet. WooCommerce için CedCommerce eBay Integration eklentisi, Shopify için eBay Channel app hazır çözümler sunar. Özel ERP entegrasyonu veya yüksek SKU hacmi için doğrudan API tercih edilir.",
+      },
+      {
+        q: "eBay API entegrasyonu ne kadar sürer?",
+        a: "Temel stok + sipariş entegrasyonu 3–4 haftada tamamlanır. Çok kanallı (Trendyol + Hepsiburada + eBay) senkronizasyon içeren projelerde süre 6–8 haftaya uzayabilir.",
+      },
+    ],
+    cta: {
+      text: "eBay API entegrasyonu ve çok kanallı satış otomasyonu için",
+      href: "/trendyol-entegrasyonu",
+      label: "Entegrasyon Hizmeti",
+    },
+    keywords: [
+      "ebay api entegrasyonu",
+      "ebay api türkiye",
+      "ebay seller api",
+      "ebay inventory api",
+      "ebay oauth 2.0",
+      "türk satıcı ebay entegrasyon",
+    ],
+  },
+
+  {
+    slug: "amazon-turkiye-seller-api",
+    category: "e-ticaret",
+    relatedSlugs: ["hepsiburada-api-entegrasyonu", "trendyol-satici-web-sitesi", "ebay-api-entegrasyonu-turkiye"],
+    title: "Amazon Türkiye Seller API: Satıcılar İçin Entegrasyon Rehberi",
+    metaTitle: "Amazon Türkiye Seller API Entegrasyonu | Solman Digital",
+    metaDescription:
+      "Amazon SP-API (Selling Partner API) ile ürün listeleme, sipariş yönetimi ve stok senkronizasyonu. Amazon Türkiye satıcıları için OAuth LWA, sandbox ve canlı entegrasyon rehberi.",
+    description:
+      "Amazon Türkiye'de satış yapıyorsanız Selling Partner API ile manuel işlemleri ortadan kaldırabilir, operasyonel yükü ciddi biçimde azaltabilirsiniz.",
+    summary:
+      "Amazon SP-API (Selling Partner API), eski MWS'nin yerini alan modern REST tabanlı Amazon entegrasyon altyapısıdır. Login with Amazon (LWA) OAuth ile çalışır; Orders, Catalog, FBA Inventory ve Listings API'leri en çok kullanılan modüllerdir. Türkiye'de Amazon satıcısı olmak için Amazon.com.tr satıcı hesabı zorunludur; SP-API erişimi için ayrıca Amazon Developer Central'da uygulama oluşturulup onay alınması gerekir (3–7 iş günü).",
+    publishDate: "2026-06-10",
+    updatedDate: "2026-06-10",
+    readTime: 9,
+    sections: [
+      {
+        heading: "Amazon SP-API Nedir, MWS'den Farkı Ne?",
+        body: "Amazon 2022 itibarıyla eski Marketplace Web Service (MWS) API'yi resmi olarak kapattı. Tüm yeni entegrasyonlar Selling Partner API (SP-API) üzerinden yapılmalıdır. SP-API, REST mimarisi ve modern OAuth 2.0 (LWA) kimlik doğrulaması kullanır.",
+        list: [
+          "MWS: SOAP tabanlı, karmaşık imzalama — artık kullanılamaz",
+          "SP-API: RESTful, JSON, LWA OAuth 2.0 — güncel ve zorunlu",
+          "Rol tabanlı erişim: her API modülü ayrı izin gerektirir",
+          "Sandbox: her modül için ayrı test ortamı mevcut",
+          "Rate limiting: her endpoint için bağımsız token bucket sistemi",
+        ],
+      },
+      {
+        heading: "Temel SP-API Modülleri",
+        body: "Amazon SP-API, her iş sürecine özel modüler API'lerden oluşur. En çok kullanılan modüller şunlardır:",
+        list: [
+          "Orders API — sipariş listesi, sipariş detayı, sipariş öğeleri",
+          "Listings Items API — ürün oluşturma, güncelleme, silme",
+          "Catalog Items API — Amazon ürün kataloğunda arama ve detay",
+          "FBA Inventory API — FBA stok seviyeleri ve yerleşim bilgisi",
+          "Fulfillment Outbound API — Amazon kargo ile sipariş gönderme",
+          "Reports API — satış, stok ve performans raporlarının toplu çekimi",
+          "Notifications API — gerçek zamanlı sipariş ve fiyat bildirimleri (webhook benzeri)",
+        ],
+      },
+      {
+        heading: "LWA OAuth 2.0 Kurulumu",
+        body: "SP-API, 'Login with Amazon' (LWA) OAuth 2.0 protokolünü kullanır. Uygulama kaydı ve satıcı yetkilendirmesi için Amazon Developer Central üzerinden işlem yapılır.",
+        list: [
+          "1. sellercentral.amazon.com.tr → 'Uygulamalar ve Hizmetler' → 'Uygulamaları Geliştir'",
+          "2. IAM ARN oluşturun (AWS hesabı zorunlu) ve Developer Central'a ekleyin",
+          "3. Uygulama oluşturduktan sonra Client ID ve Client Secret alın",
+          "4. Authorization Code Grant ile satıcı izni alın → Refresh Token üretin",
+          "5. Refresh Token ile Access Token alın (1 saatte sona erer, otomatik yenileme zorunlu)",
+          "6. Her API çağrısında 'x-amz-access-token' header'ı ekleyin",
+        ],
+      },
+      {
+        heading: "Amazon Türkiye Özel Notlar",
+        body: "Amazon.com.tr (marketplace ID: A33AVAJ2PDY3EV), Amazon'un genel SP-API altyapısını kullanır ancak Türkiye'ye özgü bazı durumlar söz konusudur.",
+        list: [
+          "FBA Türkiye: Amazon fulfillment merkezi İstanbul Çerkezköy'de — FBA entegrasyonu mümkün",
+          "Dil: Listing içerikleri Türkçe olmalı; A+ içerik Türkiye'de destekleniyor",
+          "Komisyon: kategoriye göre %8–15, FBA kullanılırsa kargo + depolama ücreti eklenir",
+          "VAT: Türkiye KDV kuralları geçerli; B2B satışlar için vergi numarası zorunlu",
+          "Brand Registry: kendi markanız varsa marka tescili ile A+ içerik ve Sponsored Brand reklamları açılır",
+        ],
+      },
+      {
+        heading: "Entegrasyon Süreci",
+        body: "Solman Digital tarafından gerçekleştirilen Amazon SP-API projelerinde standart zaman çizelgesi şu şekildedir:",
+        list: [
+          "Gün 1–2: Developer Central başvurusu, IAM kurulumu, LWA OAuth testi",
+          "Gün 3–5: Orders API — sipariş çekme, durum güncelleme, Notifications API webhook kurulumu",
+          "Gün 6–8: Listings API — ürün oluşturma, güncelleme; Catalog API ile ASIN eşleştirme",
+          "Gün 9–10: FBA Inventory API veya kendi kargo entegrasyonu",
+          "Gün 11–12: Reports API ile satış/performans dashboard'u",
+          "Gün 13–15: Stres testi, rate limit yönetimi, monitoring ve dokümantasyon",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Amazon SP-API'ye başvuru ücretsiz mi?",
+        a: "Amazon Developer hesabı açmak ve SP-API başvurusu yapmak ücretsizdir. Başvuru onayı 3–7 iş günü sürer. Amazon satıcı hesabı ücretleri (aylık plan veya bireysel plan) ayrıca geçerlidir.",
+      },
+      {
+        q: "Amazon Türkiye ile diğer Amazon pazar yerlerini aynı API ile yönetebilir miyim?",
+        a: "Evet. SP-API çok pazar yeri destekler. Aynı uygulama kimlik bilgileriyle Amazon.com.tr, Amazon.de, Amazon.co.uk gibi farklı marketplace'leri yönetebilirsiniz; her pazar yeri için ayrı yetkilendirme gerekir.",
+      },
+      {
+        q: "WooCommerce veya Trendyol ile Amazon entegrasyonu mümkün mü?",
+        a: "Evet. Trendyol + Amazon + Hepsiburada çok kanallı senkronizasyonu tek panel üzerinden yönetmek mümkündür. Bu tür çok kanallı projeler genellikle 4–6 haftada tamamlanır.",
+      },
+      {
+        q: "Amazon FBA ile kendi depomdan satış farkı nedir?",
+        a: "FBA'da ürünleri Amazon deposuna gönderirsiniz, kargo ve müşteri hizmetlerini Amazon üstlenir; ek maliyet vardır ama Prime rozeti kazanırsınız. Kendi deponuzdan (FBM) satışta tam kontrol sizde, operasyonel yük daha fazladır. SP-API her iki modeli de destekler.",
+      },
+    ],
+    cta: {
+      text: "Amazon Türkiye API entegrasyonu veya çok kanallı marketplace otomasyonu için",
+      href: "/trendyol-entegrasyonu",
+      label: "Entegrasyon Teklifi Al",
+    },
+    keywords: [
+      "amazon türkiye seller api",
+      "amazon sp-api entegrasyon",
+      "amazon türkiye api entegrasyonu",
+      "amazon selling partner api",
+      "amazon lwa oauth",
+      "amazon marketplace türkiye",
+    ],
+  },
+
+  {
+    slug: "n11-api-entegrasyonu",
+    category: "e-ticaret",
+    relatedSlugs: ["hepsiburada-api-entegrasyonu", "trendyol-satici-web-sitesi", "amazon-turkiye-seller-api"],
+    title: "N11 API Entegrasyonu: Satıcılar İçin Stok ve Sipariş Otomasyonu",
+    metaTitle: "N11 API Entegrasyonu | Solman Digital",
+    metaDescription:
+      "N11 Marketplace API ile ürün yönetimi, stok senkronizasyonu ve sipariş takibi. N11 satıcıları için API bağlantısı, SOAP/REST farkları ve entegrasyon rehberi.",
+    description:
+      "N11 mağazanızı manuel yönetmek yerine API entegrasyonuyla otomatize edebilir, hata oranını düşürüp operasyonel verimliliği artırabilirsiniz.",
+    summary:
+      "N11 API, SOAP (eski) ve REST (yeni) olmak üzere iki protokol sunar; yeni projeler için REST API tercih edilmelidir. Ürün listeleme, stok güncelleme ve sipariş yönetimi temel kullanım senaryolarıdır. N11 API erişimi için aktif N11 satıcı hesabı ve API key talebi gereklidir (1–2 iş günü onay). 1.000+ SKU'lu mağazalarda API entegrasyonu haftalık 10–15 saatlik manuel işlem yükünü ortadan kaldırır.",
+    publishDate: "2026-06-10",
+    updatedDate: "2026-06-10",
+    readTime: 7,
+    sections: [
+      {
+        heading: "N11 API'nin Kapsamı",
+        body: "N11 Marketplace API, satıcıların kendi yazılımları veya ERP sistemleri üzerinden N11 operasyonlarını yönetmesini sağlar. API erişimi N11 Satıcı Merkezi üzerinden talep edilir.",
+        list: [
+          "Ürün Servisi — ürün oluşturma, güncelleme, silme, kategori bilgisi",
+          "Sipariş Servisi — sipariş listesi, detay, durum güncelleme",
+          "Kargo Servisi — kargo kodu oluşturma, takip numarası güncelleme",
+          "Stok Servisi — anlık stok güncelleme, toplu stok yönetimi",
+          "Sorgu Servisi — satış raporları ve performans verileri",
+        ],
+      },
+      {
+        heading: "SOAP mu, REST mi?",
+        body: "N11, uzun yıllar SOAP tabanlı API kullandı. Yeni API altyapısı REST'e geçiş yapılmıştır; ancak bazı eski metodlar hâlâ SOAP olarak sunulmaktadır.",
+        list: [
+          "SOAP API: XML tabanlı, eski entegrasyonlar için hâlâ çalışır",
+          "REST API: JSON tabanlı, daha hızlı geliştirme, yeni projeler için önerilir",
+          "Authentication: her istekte appKey + appSecret header ile iletilir",
+          "N11 API endpoint: api.n11.com (production) — sandbox ortamı sınırlı",
+          "Rate limit: dakikada 60 istek (hesap tipine göre değişebilir)",
+        ],
+      },
+      {
+        heading: "API Key Alma ve Başlangıç",
+        body: "N11 API erişimi için Satıcı Merkezi üzerinden talep açılması ve onay beklenmesi gerekir.",
+        list: [
+          "1. satici.n11.com → 'Entegrasyon Merkezi' → 'API Başvurusu'",
+          "2. Başvuruda mağaza bilgileri ve kullanım amacı belirtilir",
+          "3. 1–2 iş günü içinde appKey ve appSecret e-posta ile iletilir",
+          "4. Her API isteğinde header'a appKey + appSecret eklenir",
+          "5. Test: Postman ile /ProductService/getProductList endpoint'i çağrılabilir",
+        ],
+      },
+      {
+        heading: "Yaygın Entegrasyon Senaryoları",
+        body: "N11 API entegrasyonunda en çok kullanılan senaryolar ve teknik notlar:",
+        list: [
+          "Toplu stok güncelleme: /StockService/updateStockByStockSellerCode — SKU bazlı, toplu işlem destekli",
+          "Sipariş çekme: /OrderService/orderList — tarih aralığı filtresi ile",
+          "Fiyat güncelleme: /ProductService/updateProductBasic — ürün ID ile hedefli güncelleme",
+          "Kargo bildirimi: /ShipmentService/updateShipment — kargo şirketi kodu + takip numarası",
+          "Kategori eşleştirme: /CategoryService/getTopLevelCategories → alt kategori ağacı",
+        ],
+      },
+      {
+        heading: "N11 + Trendyol + Hepsiburada: Çok Kanallı Yönetim",
+        body: "Çok sayıda platformda satış yapan satıcılar için tek merkezi panel, her platform API'sine ayrı ayrı entegre olan bir çözümden çok daha verimlidir.",
+        list: [
+          "Tek stok havuzu: N11, Trendyol ve Hepsiburada stoğu merkezi veritabanından senkronize",
+          "Birleşik sipariş akışı: tüm platformlardan gelen siparişler tek ekranda",
+          "Otomatik fiyat güncelleme: kur değişikliğine göre tüm platformlara eş zamanlı yansıtma",
+          "Tek kargo akışı: barkod oluşturma ve kargo bildirimi tek noktadan",
+          "Çok kanallı proje süresi: 4–6 hafta (3 platform, 500–2.000 SKU)",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "N11 API ücretsiz mi?",
+        a: "Evet, N11 API erişimi aktif satıcılar için ücretsizdir. N11'deki satışlardan alınan komisyon oranları (%8–12, kategoriye göre) API kullanımını etkilemez.",
+      },
+      {
+        q: "N11 API sandbox ortamı var mı?",
+        a: "N11'in tam işlevsel bir sandbox ortamı yoktur. Test işlemleri için test mağazası açılması veya production ortamında minimal miktarda ürün ve sipariş üzerinden test yapılması önerilir.",
+      },
+      {
+        q: "N11 entegrasyonu WooCommerce ile uyumlu mu?",
+        a: "Evet. WooCommerce'den N11'e ürün ve stok senkronizasyonu mümkündür. N11'den WooCommerce'e sipariş aktarımı da desteklenir. Entegrasyon süresi tek yönlü için 5–7 iş günü, çift yönlü için 8–12 iş günüdür.",
+      },
+      {
+        q: "N11 entegrasyonu ne kadar sürer?",
+        a: "Yalnızca N11 entegrasyonu 5–8 iş günü içinde tamamlanır. Trendyol + Hepsiburada + N11 gibi çok kanallı projeler 3–5 haftada canlıya geçer.",
+      },
+    ],
+    cta: {
+      text: "N11 API entegrasyonu veya çok kanallı marketplace otomasyonu için",
+      href: "/trendyol-entegrasyonu",
+      label: "Entegrasyon Teklifi Al",
+    },
+    keywords: [
+      "n11 api entegrasyonu",
+      "n11 marketplace api",
+      "n11 satıcı api",
+      "n11 stok senkronizasyonu",
+      "n11 sipariş yönetimi api",
+      "n11 woocommerce entegrasyon",
+    ],
+  },
+
+  {
+    slug: "cok-kanalli-marketplace-karsilastirma",
+    category: "karsilastirma",
+    relatedSlugs: ["trendyol-satici-web-sitesi", "ebay-api-entegrasyonu-turkiye", "etsy-api-entegrasyonu-turkiye"],
+    title: "Trendyol mu, eBay mı, Etsy mi? Hangi Platform, Hangi Ürün İçin?",
+    metaTitle: "Trendyol vs eBay vs Etsy: Hangi Marketplace? | Solman Digital",
+    metaDescription:
+      "Trendyol, eBay ve Etsy arasındaki farkları, komisyon yapılarını ve ürün-platform uyumunu karşılaştırın. Türk satıcılar için platform seçim rehberi.",
+    description:
+      "Her marketplace farklı bir alıcı kitlesine ve ürün tipine hitap eder. Yanlış platformda satış yapmak, düşük dönüşüm ve yüksek komisyon demektir.",
+    summary:
+      "Trendyol Türkiye'nin en büyük yerel marketplace'idir ve kitle tüketim ürünleri (tekstil, elektronik, ev) için hâlâ en yüksek hacmi sunar. eBay, özellikle koleksiyon ürünleri, ikinci el, nadir parçalar ve niş elektronik için Batı pazarına (ABD, Avrupa) erişim kapısıdır. Etsy ise el yapımı, vintage ve kişiselleştirilmiş ürünlerde küresel premium alıcı kitlesine ulaşır. Platform seçiminin yanlış yapılması, doğru ürünü yanlış izleyici karşısında konumlandırır; dönüşüm düşer, komisyon yükü artar.",
+    publishDate: "2026-06-10",
+    updatedDate: "2026-06-10",
+    readTime: 8,
+    sections: [
+      {
+        heading: "Trendyol: Türkiye'de Hacim, Türkiye'de Rekabet",
+        body: "Trendyol, 2024 itibarıyla 30 milyonun üzerinde aktif alıcıyla Türkiye'nin tartışmasız lideri. Kitlesel ürünlerde en kısa sürede en fazla satışa ulaşmak için doğru zemin. Ancak rekabetin yoğunluğu ve fiyat baskısı, düşük marjlı ürünleri ciddi şekilde zorluyor.",
+        list: [
+          "Güçlü olduğu kategoriler: tekstil, elektronik, kozmetik, ev ürünleri, spor",
+          "Zayıf olduğu alan: niş/el yapımı ürünler — alıcı kitlesi fiyata duyarlı",
+          "Komisyon: %8–25 (kategoriye göre), reklam zorunluluğu giderek artıyor",
+          "Lojistik: Trendyol Express ile hızlı kargo → müşteri memnuniyeti yüksek",
+          "Sipariş hacmi: günlük 3–5+ milyon sipariş işleniyor (2024 verisi)",
+          "Uluslararası: Trendyol yalnızca Türkiye'ye satış — ihracat için yetersiz",
+        ],
+      },
+      {
+        heading: "eBay: Niş, Koleksiyon ve İkinci El İçin Küresel Pazar",
+        body: "eBay'in 135+ milyon aktif alıcısı (çoğunlukla ABD ve Batı Avrupa) koleksiyon ürünleri, ikinci el elektronik, otomotiv parçaları ve vintage için Trendyol'un karşılayamayacağı talebi temsil ediyor.",
+        list: [
+          "Güçlü olduğu kategoriler: koleksiyon, vintage, ikinci el, nadir parça, otomotiv",
+          "Zayıf olduğu alan: standart kitlesel ürünler — Amazon ile güçlü rekabet var",
+          "Komisyon: %13.25 (çoğu kategori) + $0.30 işlem ücreti, Türk satıcı için PayPal/Payoneer zorunlu",
+          "Kargo: Türkiye'den uluslararası gönderim → Yurtiçi Kargo veya PTT ile 7–14 gün",
+          "Müzayede formatı: eBay'e özgü, nadir ürünleri piyasa üzerinde fiyatlamak için ideal",
+          "API olgunluğu: RESTful eBay API güçlü; stok/sipariş otomasyonu için hazır",
+        ],
+      },
+      {
+        heading: "Etsy: El Yapımı ve Premium Niş İçin Doğru Sahne",
+        body: "Etsy, 96 milyon aktif alıcısıyla el yapımı, kişiselleştirilmiş ve vintage ürünlerde dünyanın en büyük platform. Alıcı kitlesi fiyata değil, hikâyeye ve özgünlüğe duyarlı — bu da ortalama sepet değerini yukarı taşıyor.",
+        list: [
+          "Güçlü olduğu kategoriler: takı, hediyelik, tekstil, tablo, kişiselleştirilmiş ürün",
+          "Zayıf olduğu alan: kitlesel/seri üretim ürünler — Etsy politikasına aykırı olabilir",
+          "Komisyon: %6.5 işlem + %3 + $0.25 ödeme işlem ücreti (toplam ~%10)",
+          "Reklam: Etsy Ads + Offsite Ads — trafik kalitesi yüksek, CPC düşük",
+          "Dil: İngilizce listing zorunlu, Türkçe destek yok",
+          "Kargo: Etsy Shipping Label (ABD içi) veya manuel uluslararası kargo",
+        ],
+      },
+      {
+        heading: "Platform Seçim Matrisi: Hangi Ürün, Hangi Platform?",
+        body: "Aşağıdaki matris, ürün tipine göre platform önceliğini göstermektedir. Çoklu platform yönetimi API entegrasyonu olmadan sürdürülemez hâle gelir.",
+        list: [
+          "Tekstil/moda (seri üretim) → Trendyol önce, Hepsiburada ikinci",
+          "El yapımı takı/hediyelik → Etsy önce, kâr marjı korunur",
+          "İkinci el elektronik/koleksiyon → eBay önce, eBay müzayedesi ikinci",
+          "Vintage ve antika → Etsy + eBay kombinasyonu, Trendyol uygunsuz",
+          "Otomotiv yedek parça → eBay Motors (ABD) + Trendyol (TR) paralel",
+          "Kitlesel kozmetik → Trendyol + Hepsiburada, uluslararası için Amazon",
+          "Dijital ürün/print-on-demand → yalnızca Etsy (Trendyol/eBay desteklemez)",
+        ],
+      },
+      {
+        heading: "Çok Kanallı Satış: Otomasyon Olmadan Olmaz",
+        body: "İki veya daha fazla platformda satış yapmak, stok ve sipariş senkronizasyonu olmadan ciddi operasyonel yük yaratır. Her platformun API'si farklı; merkezi bir senkronizasyon katmanı olmadan manuel yönetim kaçınılmaz olarak hata üretir.",
+        list: [
+          "Stok çakışması: Trendyol ve eBay'de aynı ürün aynı anda satılırsa negatif stok riski",
+          "Çözüm: merkezi stok havuzu → her platforma anlık stok push",
+          "Sipariş akışı: tüm platformlardan gelen siparişler tek dashboard'da",
+          "Fiyat yönetimi: kur değişikliğinde eBay/Etsy fiyatlarını otomatik güncelle",
+          "Entegrasyon süresi: Trendyol + eBay + Etsy üçlü proje → 5–7 hafta",
+          "Sonuç: manuel 3 panel yerine tek panel, hata oranı sıfıra yakın",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Trendyol ve Etsy'de aynı anda satış yapabilir miyim?",
+        a: "Evet. Ancak stok senkronizasyonu olmadan aynı ürünü iki platformda tutmak risklidir. Merkezi stok yönetimi ile hem Trendyol hem Etsy'de sorunsuz satış yapılabilir. Özellikle el yapımı ürünlerde Etsy, Trendyol'dan %30–50 daha yüksek ortalama satış fiyatı sunabilir.",
+      },
+      {
+        q: "Türkiye'den eBay satışı nasıl yapılır?",
+        a: "eBay satıcı hesabı açmak için Türkiye'den kayıt yapılabilir, ancak ödeme için Payoneer veya uluslararası banka hesabı zorunludur. Kargo için Yurtiçi Kargo'nun uluslararası servisi veya PTT kullanılabilir. eBay API entegrasyonu ile stok ve sipariş yönetimi otomatik hâle getirilebilir.",
+      },
+      {
+        q: "Etsy komisyonları Trendyol'dan fazla mı?",
+        a: "Toplam maliyet olarak benzer seviyelerdedir (%10 vs %8–15). Fark şudur: Etsy alıcı kitlesi fiyata daha az duyarlı olduğu için ortalama sepet değeri ve kâr marjı Trendyol'a göre genellikle daha yüksektir.",
+      },
+      {
+        q: "Hangi platform entegrasyonu daha kolaydır?",
+        a: "Trendyol API en gelişmiş Türkçe dokümantasyona sahip; sandbox ortamı güçlüdür. eBay REST API olgun ve kapsamlıdır. Etsy API ise daha basit bir kapsama sahip olmakla birlikte OAuth 2.0 ile modern bir yapıya geçmiştir. Üç platformu tek entegrasyonla yönetmek için bize ulaşın.",
+      },
+    ],
+    cta: {
+      text: "Trendyol, eBay ve Etsy entegrasyonu veya çok kanallı marketplace otomasyonu için",
+      href: "/trendyol-entegrasyonu",
+      label: "Entegrasyon Teklifi Al",
+    },
+    keywords: [
+      "trendyol ebay etsy karşılaştırma",
+      "hangi marketplace daha iyi",
+      "çok kanallı satış türkiye",
+      "trendyol vs etsy",
+      "ebay türkiye satış",
+      "marketplace platform seçimi",
     ],
   },
 ]

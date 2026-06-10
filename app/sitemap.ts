@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const rehberDetailPages: MetadataRoute.Sitemap = rehberPosts.map((p) => ({
     url: `${base}/rehber/${p.slug}`,
-    lastModified: new Date(p.publishDate),
+    lastModified: new Date(p.updatedDate ?? p.publishDate),
     changeFrequency: "monthly" as const,
     priority: 0.80,
   }))

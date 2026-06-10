@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, CheckCircle, X } from "lucide-react"
+import { ArrowRight, CheckCircle, X, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import WebSiteLeadForm from "./WebSiteLeadForm"
 import Reveal from "@/components/Reveal"
@@ -143,9 +143,19 @@ export default function WebSitesiYaptirmakPage() {
             </p>
           </Reveal>
           <Reveal delay={300}>
-            <a href="#form" className="btn btn-primary">
-              Ücretsiz Fiyat Teklifi Al <ArrowRight size={16} />
-            </a>
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <a href="#form" className="btn btn-primary">
+                Ücretsiz Fiyat Teklifi Al <ArrowRight size={16} />
+              </a>
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, web sitesi yaptırmak istiyorum, fiyat öğrenmek istiyorum.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+              >
+                <MessageCircle size={15} /> WhatsApp ile Yazın
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -281,8 +291,32 @@ export default function WebSitesiYaptirmakPage() {
         </Reveal>
       </section>
 
+      {/* FAQ */}
+      <section className="bg-white px-6 py-16">
+        <div className="mx-auto max-w-[720px]">
+          <Reveal>
+            <h2 className="mb-8 text-[1.5rem] font-extrabold tracking-[-0.02em] text-ink-900">
+              Sık Sorulan Sorular
+            </h2>
+          </Reveal>
+          <div className="flex flex-col">
+            {[
+              { q: "Kurumsal web sitesi fiyatları ne kadar?", a: "Landing page için ₺8.000–₺15.000, kurumsal tanıtım sitesi için ₺15.000–₺35.000, e-ticaret sitesi için ₺25.000–₺60.000 arasında değişmektedir. Sabit fiyat garantisi veriyoruz; teklif sonrası fiyat değişmez." },
+              { q: "Web sitesi kaç günde teslim edilir?", a: "Landing page ve basit kurumsal siteler 5–7 iş günü, kapsamlı kurumsal siteler 10–15 iş günü içinde teslim edilir. Proje kapsamını teklif aşamasında netleştirir, takvimi yazılı olarak sunuyoruz." },
+              { q: "WordPress şablon mu kullanıyorsunuz?", a: "Hayır. Her projeyi Next.js ile sıfırdan geliştiriyoruz. Kaynak kod tamamen size aittir, aylık platform ücreti yoktur. Şablon sitelerde yaşanan yavaşlık ve güvenlik sorunlarını bu yaklaşımla ortadan kaldırıyoruz." },
+              { q: "Teslim sonrası destek veriyor musunuz?", a: "Evet. Tüm projelere 1 ay ücretsiz teknik destek dahildir. Sonrasında aylık bakım paketi alabilir ya da kaynak kodla kendi geliştiricinizle devam edebilirsiniz." },
+            ].map((faq) => (
+              <div key={faq.q} className="border-b border-ink-200 py-5">
+                <h3 className="mb-2 text-[0.95rem] font-bold text-ink-900">{faq.q}</h3>
+                <p className="text-[0.875rem] leading-[1.65] text-ink-500">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Form */}
-      <section id="form" className="bg-white px-6 py-20">
+      <section id="form" className="bg-surface px-6 py-20">
         <div className="mx-auto max-w-[600px]">
           <Reveal>
             <p className="eyebrow mb-3">Ücretsiz Teklif</p>

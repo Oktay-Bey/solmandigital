@@ -1,7 +1,5 @@
 import type { Metadata } from "next"
-import { rehberPosts } from "@/lib/data/rehber"
 import { siteConfig } from "@/lib/site-config"
-import RehberPageClient from "./RehberPageClient"
 
 export const metadata: Metadata = {
   title: `Yazılım & Dijital Rehberler | ${siteConfig.name}`,
@@ -28,22 +26,4 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     type: "website",
   },
-}
-
-export default function RehberPage() {
-  return (
-    <section className="min-h-[60vh] bg-white px-6 py-20">
-      <div className="mx-auto max-w-[860px]">
-        <p className="eyebrow mb-3.5">Rehberler</p>
-        <h1 className="mb-4 text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.1] tracking-tight text-ink-900">
-          Yazılım &amp; Dijital Rehberler
-        </h1>
-        <p className="mb-10 max-w-[560px] text-[0.95rem] leading-[1.75] text-ink-500">
-          Trendyol entegrasyonu, AI otomasyon, SaaS MVP süreci ve web sitesi fiyatları hakkında gerçek proje deneyimiyle hazırlanmış kaynaklar.
-        </p>
-
-        <RehberPageClient posts={rehberPosts} />
-      </div>
-    </section>
-  )
 }
