@@ -83,8 +83,8 @@ const tiers: PricingTier[] = [
       "1 ay ücretsiz teknik destek",
     ],
     notIncluded: ["Ödeme sistemi (ayrı paket)", "Blog veya CMS yönetimi"],
-    cta: "Fiyat Teklifi Al",
-    ctaHref: "/web-sitesi-yaptirmak",
+    cta: "Teklif Al",
+    ctaHref: "/iletisim",
   },
   {
     name: "E-Ticaret",
@@ -103,7 +103,7 @@ const tiers: PricingTier[] = [
       "1 ay ücretsiz teknik destek",
     ],
     notIncluded: ["Ürün fotoğrafçılığı ve içerik yazımı", "Pazaryeri aylık bakım ücreti"],
-    cta: "E-Ticaret Teklifi Al",
+    cta: "Teklif Al",
     ctaHref: "/iletisim",
   },
   {
@@ -120,8 +120,8 @@ const tiers: PricingTier[] = [
       "1 ay ücretsiz teknik destek",
     ],
     notIncluded: ["Yeni e-ticaret sitesi geliştirme", "Pazaryeri hesap açılışı"],
-    cta: "Trendyol Entegrasyon Teklifi",
-    ctaHref: "/trendyol-entegrasyonu",
+    cta: "Teklif Al",
+    ctaHref: "/iletisim",
   },
   {
     name: "SaaS & AI",
@@ -139,8 +139,8 @@ const tiers: PricingTier[] = [
       "3 ay ücretsiz teknik destek",
     ],
     notIncluded: ["Sunucu/cloud maliyetleri", "İçerik üretimi ve pazarlama"],
-    cta: "SaaS Teklifi Al",
-    ctaHref: "/saas-platform-gelistirme",
+    cta: "Teklif Al",
+    ctaHref: "/iletisim",
   },
 ]
 
@@ -173,7 +173,7 @@ export default function FiyatlarPage() {
             </Reveal>
             <Reveal delay={300}>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link href="/ucretsiz-analiz" className="btn btn-primary">
+                <Link href="/iletisim" className="btn btn-primary">
                   Ücretsiz Kapsam Görüşmesi
                   <ArrowRight size={16} />
                 </Link>
@@ -269,6 +269,27 @@ export default function FiyatlarPage() {
           </div>
         </section>
 
+        {/* WhatsApp inline */}
+        <section className="px-6 pb-4">
+          <div className="mx-auto max-w-[700px]">
+            <Reveal>
+              <div className="flex items-center justify-between gap-4 rounded-[10px] border border-dark-50 bg-dark-400 px-6 py-4">
+                <p className="text-[0.875rem] text-ondark-muted">
+                  Hızlı karar vermek ister misiniz?
+                </p>
+                <a
+                  href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, fiyat hakkında bilgi almak istiyorum.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline-dark shrink-0 whitespace-nowrap text-[0.8rem]"
+                >
+                  <MessageCircle size={14} /> WhatsApp&apos;tan yazın
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="border-t border-dark-200 px-6 pb-20 pt-16">
           <div className="mx-auto max-w-[700px]">
@@ -292,8 +313,8 @@ export default function FiyatlarPage() {
               <p className="mb-5 text-[0.875rem] text-ondark-muted">
                 Projeniz bu paketlere tam uymuyorsa özel fiyat talep edin.
               </p>
-              <Link href="/ucretsiz-analiz" className="btn btn-primary">
-                Ücretsiz Analiz İste
+              <Link href="/iletisim" className="btn btn-primary">
+                Teklif Al
                 <ArrowRight size={16} />
               </Link>
             </div>

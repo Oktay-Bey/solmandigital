@@ -129,27 +129,50 @@ export default function AIOtomasyonPage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark-500 px-6 pb-20 pt-24">
-        <div className="mx-auto max-w-[760px] text-center">
-          <Reveal>
-            <p className="mb-6 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
-              GPT-4o · Claude · Özel AI Sistemleri
-            </p>
-          </Reveal>
-          <Reveal delay={100}>
-            <h1 className="mb-5 text-[clamp(2rem,5vw,3rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
-              Yapay Zeka ile İş Süreçlerinizi Otomatize Edin
-            </h1>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="mx-auto mb-10 max-w-[600px] text-[1.05rem] leading-[1.75] text-ondark-muted">
-              Günde kaç saatinizi tekrar eden işlere harcıyorsunuz? İçerik üretimi, ürün açıklamaları, müşteri soruları — bunların hepsini AI ile otomatize edebilirsiniz.
-            </p>
-          </Reveal>
-          <Reveal delay={300}>
-            <a href="#form" className="btn btn-primary">
-              Ücretsiz AI Analizi İste <ArrowRight size={16} />
-            </a>
+      <section className="bg-dark-500 px-6 pb-16 pt-24">
+        <div className="mx-auto grid max-w-[1100px] grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* Sol: başlık + değer önerisi */}
+          <div>
+            <Reveal>
+              <p className="mb-5 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
+                GPT-4o · Claude · Özel AI Sistemleri
+              </p>
+            </Reveal>
+            <Reveal delay={100}>
+              <h1 className="mb-5 text-[clamp(2rem,4vw,2.75rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
+                Yapay Zeka ile İş Süreçlerinizi Otomatize Edin
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="mb-7 text-[1rem] leading-[1.75] text-ondark-muted">
+                Günde kaç saatinizi tekrar eden işlere harcıyorsunuz? İçerik üretimi, ürün açıklamaları, müşteri soruları — bunların hepsini AI ile otomatize edebilirsiniz.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <ul className="flex flex-col gap-2.5">
+                {[
+                  "İçerik otomasyonu: haftada 3 saat → 20 dakika",
+                  "200 ürün açıklaması: 40 saat → 2 saat",
+                  "Müşteri soruları: %60 destek maliyeti azalır",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-[0.875rem] text-ondark-muted">
+                    <span className="mt-0.5 shrink-0 text-[#4ade80]">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          {/* Sağ: form */}
+          <Reveal delay={150}>
+            <div className="rounded-[14px] border border-dark-50 bg-white p-8 shadow-xl">
+              <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">Ücretsiz Analiz</p>
+              <h2 className="mb-5 text-[1.15rem] font-extrabold tracking-tight text-ink-900">
+                Otomasyon potansiyelinizi keşfedin
+              </h2>
+              <AILeadForm />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -295,24 +318,6 @@ export default function AIOtomasyonPage() {
                 </div>
               </Reveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Form */}
-      <section id="form" className="bg-surface px-6 py-20">
-        <div className="mx-auto max-w-[600px]">
-          <Reveal>
-            <p className="eyebrow mb-3">Ücretsiz Analiz</p>
-            <h2 className="mb-3 text-[clamp(1.5rem,3vw,1.875rem)] font-extrabold tracking-[-0.02em] text-ink-900">
-              Otomasyon Potansiyelinizi Keşfedin
-            </h2>
-            <p className="mb-8 text-[0.9rem] leading-[1.7] text-ink-500">
-              Hangi süreçlerinizin otomasyon potansiyeli taşıdığını ücretsiz analiz ediyoruz.
-            </p>
-          </Reveal>
-          <div className="rounded-[12px] border border-ink-200 bg-white p-10">
-            <AILeadForm />
           </div>
         </div>
       </section>

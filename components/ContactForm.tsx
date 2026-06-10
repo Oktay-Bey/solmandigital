@@ -1,16 +1,18 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ArrowRight, CheckCircle2, AlertCircle } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { ArrowRight, AlertCircle } from "lucide-react"
 import { services } from "@/lib/data/services"
 import { trackEvent, getGclid } from "@/lib/analytics"
 
-type FormState = "idle" | "sending" | "success" | "error"
+type FormState = "idle" | "sending" | "error"
 
 const labelCls =
   "mb-2 block text-[0.775rem] font-bold uppercase tracking-wide text-ink-600"
 
 export default function ContactForm() {
+  const router = useRouter()
   const [state, setState] = useState<FormState>("idle")
   const [form, setForm] = useState({ isim: "", email: "", hizmet: "", mesaj: "" })
   const [gclid, setGclid] = useState<string | null>(null)
@@ -34,30 +36,13 @@ export default function ContactForm() {
       })
       if (res.ok) {
         trackEvent("form_submit", "lead", "contact")
-        setState("success")
-        setForm({ isim: "", email: "", hizmet: "", mesaj: "" })
+        router.push("/tesekkurler?type=consultation")
       } else {
         setState("error")
       }
     } catch {
       setState("error")
     }
-  }
-
-  if (state === "success") {
-    return (
-      <div className="flex flex-col items-center justify-center rounded-[10px] border border-ink-200 bg-surface p-12 text-center">
-        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-green-200 bg-green-50">
-          <CheckCircle2 size={24} color="#16a34a" />
-        </div>
-        <h3 className="mb-2 text-[1.1rem] font-extrabold tracking-tight text-ink-900">
-          Mesajınız İletildi!
-        </h3>
-        <p className="text-[0.875rem] text-ink-500">
-          24 saat içinde size dönüş yapacağız.
-        </p>
-      </div>
-    )
   }
 
   return (

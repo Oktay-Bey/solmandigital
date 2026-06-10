@@ -22,8 +22,8 @@ const contentMap = {
     nextHref: "/danismanlik",
   },
   consultation: {
-    title: "Görüşme Talebiniz Alındı!",
-    body: "En kısa sürede takvim linki ile size dönüş yapacağız. Acil durumlarda info@solmandigital.com.tr adresine e-posta gönderebilirsiniz.",
+    title: "Mesajınız İletildi!",
+    body: "24 saat içinde size dönüş yapacağız. Acil durumlarda WhatsApp'tan yazabilirsiniz: +90 543 967 52 50",
     nextTitle: "Hizmetleri İnceleyin",
     nextDesc: "Görüşme öncesinde sunduğumuz tüm hizmetleri inceleyebilirsiniz.",
     nextCta: "Tüm Hizmetleri Gör",
@@ -76,6 +76,14 @@ const contentMap = {
     nextDesc: "Görüşme beklemeden projenizi daha iyi anlayalım: 30 dakikalık ücretsiz danışmanlık seansı için randevu alın.",
     nextCta: "Ücretsiz Danışmanlık Rezervasyonu",
     nextHref: "/danismanlik",
+  },
+  partnership: {
+    title: "Partnership Request Received!",
+    body: "We'll review your agency profile and get back within 24 hours with a tailored proposal. In the meantime, feel free to browse our portfolio.",
+    nextTitle: "While You Wait",
+    nextDesc: "See the projects we've shipped — web apps, SaaS products, AI integrations and e-commerce platforms.",
+    nextCta: "View Portfolio",
+    nextHref: "/portfoy",
   },
 }
 
