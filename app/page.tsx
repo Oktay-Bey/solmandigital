@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, Zap, Users, X, CheckCircle2, Globe } from "lucide-react"
+import { ArrowRight, Zap, Users, X, CheckCircle2, Globe, MessageCircle } from "lucide-react"
 import { getServicesByTier } from "@/lib/data/services"
 import ServiceCard from "@/components/ServiceCard"
 import Testimonials from "@/components/Testimonials"
@@ -247,9 +247,14 @@ export default function HomePage() {
               <Link href="/iletisim" className="btn btn-primary">
                 Projenizi Anlatalım <ArrowRight size={16} />
               </Link>
-              <Link href="/hizmetler" className="btn btn-outline-dark">
-                Tüm Hizmetler
-              </Link>
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, proje hakkında bilgi almak istiyorum.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline-dark"
+              >
+                <MessageCircle size={15} /> WhatsApp
+              </a>
             </div>
           </div>
 
@@ -544,9 +549,14 @@ export default function HomePage() {
             <Link href="/iletisim" className="btn btn-primary !px-8">
               Teklif Al <ArrowRight size={16} />
             </Link>
-            <Link href="/hizmetler" className="btn btn-outline-dark !px-8">
-              Hizmetleri İncele
-            </Link>
+            <a
+              href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, proje hakkında bilgi almak istiyorum.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline-dark !px-8"
+            >
+              <MessageCircle size={15} /> WhatsApp
+            </a>
           </div>
         </div>
       </section>

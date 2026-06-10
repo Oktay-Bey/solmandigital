@@ -2423,6 +2423,207 @@ export const rehberPosts: RehberPost[] = [
       "marketplace platform seçimi",
     ],
   },
+  {
+    slug: "wix-vs-ozel-web-sitesi",
+    title: "Wix ile Özel Web Sitesi Arasındaki Fark: Hangisi Sizin İçin Doğru?",
+    metaTitle: "Wix vs Özel Web Sitesi 2026 | Hangisi Daha İyi? | Solman Digital",
+    metaDescription:
+      "Wix ile özel yazılım arasındaki temel farklar: performans, SEO, maliyet ve ölçeklenebilirlik. Türk işletmeleri için kapsamlı karşılaştırma.",
+    description:
+      "Wix kolay kurulum sunar ama performans, SEO ve ölçeklenebilirlik açısından özel geliştirmeye kıyasla ciddi kısıtlamalar içerir. Bu karşılaştırma, hangi seçeneğin işletmeniz için doğru olduğunu netleştiriyor.",
+    summary:
+      "Wix kullanımı kolay bir web sitesi platformudur; ancak performans, SEO ve ölçeklenebilirlik açısından özel geliştirmeye göre ciddi kısıtlamalar sunar. Wix siteler ortalama 3–6 saniye yüklenirken, Next.js ile geliştirilen özel siteler 1 saniyenin altında kalır. Aylık 15–80 USD Wix ücreti yerine tek seferlik özel geliştirme yatırımı, uzun vadede hem maliyet hem de performans avantajı sağlar.",
+    publishDate: "2026-06-10",
+    updatedDate: "2026-06-10",
+    readTime: 7,
+    category: "karsilastirma",
+    sections: [
+      {
+        heading: "Wix Nedir ve Kim İçin Uygundur?",
+        body: "Wix, sürükle-bırak arayüzüyle web sitesi oluşturmayı kolaylaştıran bir SaaS platformdur. Teknik bilgi gerektirmez; ancak bu kolaylık bazı köklü kısıtlamalarla birlikte gelir. Wix, kişisel blog, küçük etkinlik sayfası veya portföy sitesi için makul bir başlangıç noktasıdır. Ancak kurumsal bir işletme, e-ticaret mağazası veya SEO'ya ciddi yatırım yapmak isteyen bir şirket için Wix'in sınırları çok çabuk görünür hale gelir.",
+      },
+      {
+        heading: "Performans Farkı",
+        body: "Wix siteler, platform mimarisi gereği Google PageSpeed Insights'ta genellikle 40–65 puan alır. Next.js ile özel geliştirilen siteler ise 90–100 puan bandında çalışır. Bu fark soyut değil: 3 saniye yükleme süresine sahip bir site, ziyaretçilerinin %53'ünü sayfayı yüklemeden kaybeder (Google araştırması). Yavaş site = daha az lead, daha düşük dönüşüm.",
+        list: [
+          "Wix: ortalama yükleme süresi 3–6 saniye",
+          "Next.js özel: ortalama yükleme süresi < 1 saniye",
+          "Core Web Vitals: Wix çoğunlukla 'Needs Improvement', özel kod 'Good'",
+          "Mobil performans: Wix'in otomatik mobil optimizasyonu sınırlı",
+        ],
+      },
+      {
+        heading: "SEO Performansı",
+        body: "Wix son yıllarda SEO araçlarını geliştirdi; ancak teknik SEO açısından hâlâ ciddi kısıtlamalar var. Sayfa kaynak kodu JavaScript ağır, render işlemi client-side gerçekleşiyor. Google botu bu sayfaları tarayabilir ama indexleme gecikmesi ve crawl bütçesi sorunları yaşanır. Özel geliştirmede server-side rendering, yapılandırılmış veri (schema.org), özel sitemap ve canonical URL kontrolü tam olarak uygulanabilir.",
+      },
+      {
+        heading: "Maliyet Karşılaştırması",
+        body: "Wix'in aylık maliyeti plan seçimine göre değişir ve yıllar içinde birikerek önemli bir harcamaya dönüşür.",
+        list: [
+          "Wix Temel: ~15 USD/ay → 5 yılda ~900 USD",
+          "Wix Business: ~35 USD/ay → 5 yılda ~2.100 USD",
+          "Wix Business Elite: ~80 USD/ay → 5 yılda ~4.800 USD",
+          "Özel Next.js site: tek seferlik ₺8.000–₺35.000, sonrasında sadece hosting (~$20/ay Vercel)",
+        ],
+      },
+      {
+        heading: "Ölçeklenebilirlik ve Özelleştirme",
+        body: "Wix uygulamalar ve widget'larla genişletilebilir; ancak temelden özelleştirme yapamazsınız. Trendyol API entegrasyonu, özel ödeme akışı, çok dilli içerik yönetimi veya kullanıcı girişi gibi ihtiyaçlar Wix'te ya hiç mümkün değildir ya da sınırlıdır. Özel geliştirmede tüm bu özellikler sıfırdan veya mevcut kütüphanelerle uygulanabilir.",
+      },
+      {
+        heading: "Veri Sahipliği ve Taşınabilirlik",
+        body: "Wix'te sitenizi başka bir platforma taşıyamazsınız. Wix'i bırakırsanız sitenizi sıfırdan yeniden yapmanız gerekir. Özel geliştirmede kaynak kod tamamen size aittir; GitHub reponuza aktarılır, istediğiniz hosting'e deploy edilebilir.",
+      },
+      {
+        heading: "Türk İşletmeler İçin Kritik Not",
+        body: "Türkiye'ye özel entegrasyonlar (İyzico ödeme, Trendyol API, e-fatura) Wix üzerinde mümkün değildir. Yerel ödeme altyapısı, Türkçe SEO optimizasyonu ve yerel KOBİ ihtiyaçlarına tam uyum için özel geliştirme şarttır.",
+      },
+      {
+        heading: "Sonuç: Hangisi Ne Zaman?",
+        body: "Wix'i tercih edin: Kişisel blog, kısa süreli etkinlik sayfası, teknik desteği olmayan bireyler için başlangıç noktası olarak. Özel geliştirmeyi tercih edin: Kurumsal kimlik, e-ticaret, SEO odaklı içerik sitesi, API entegrasyonu veya ölçeklenebilir bir platform ihtiyacınız varsa.",
+      },
+    ],
+    faq: [
+      {
+        q: "Wix'ten özel siteye geçiş yapabilir miyim?",
+        a: "Evet, ancak içerik aktarımı manuel yapılır. Wix veritabanınızı doğrudan dışa aktaramazsınız. İçerik ve görseller kopyalanarak yeni siteye taşınır. Solman Digital bu geçiş sürecini proje kapsamına dahil ederek yönetir.",
+      },
+      {
+        q: "Wix'te SEO yapılabilir mi?",
+        a: "Temel SEO araçları mevcut (meta başlık, description, sitemap). Ancak Core Web Vitals, schema.org, server-side rendering ve sayfa hızı gibi teknik SEO faktörlerinde özel geliştirme açık ara önde. Rekabetçi anahtar kelimeler için Wix ile üst sıralara çıkmak oldukça zordur.",
+      },
+      {
+        q: "Özel web sitesi ne kadar tutar?",
+        a: "Landing page ₺8.000–₺15.000, kurumsal site ₺15.000–₺35.000 arasında değişir. Tek seferlik ödeme, aylık platform ücreti yok. Wix'in 5 yıllık toplam maliyetiyle kıyaslandığında çoğu zaman özel geliştirme daha avantajlıdır.",
+      },
+    ],
+    keywords: [
+      "wix vs özel web sitesi",
+      "wix mi yoksa özel kod mu",
+      "wix alternatifi türkiye",
+      "wix seo sorunu",
+      "wix next.js karşılaştırma",
+    ],
+    cta: {
+      text: "Wix'ten daha hızlı, SEO uyumlu özel web sitesi için",
+      href: "/web-sitesi-yaptirmak",
+      label: "Web Sitesi Fiyat Teklifi Al",
+    },
+    relatedSlugs: ["nextjs-mi-wordpress-mi", "shopify-vs-ozel-gelistirme", "web-sitesi-yaptirmak-istiyorum"],
+  },
+  {
+    slug: "web-sitesi-maliyeti-2026",
+    title: "Web Sitesi Maliyeti 2026: Türkiye'de Gerçek Fiyatlar",
+    metaTitle: "Web Sitesi Maliyeti 2026 Türkiye | Kurumsal & E-Ticaret Fiyatları | Solman Digital",
+    metaDescription:
+      "2026 yılında Türkiye'de web sitesi yaptırmak ne kadar tutar? Landing page, kurumsal site, e-ticaret ve SaaS için gerçek fiyat aralıkları ve nelerin maliyeti etkilediği.",
+    description:
+      "2026 yılında Türkiye'de web sitesi maliyeti proje türüne, tercih edilen geliştirici tipine ve entegrasyonlara göre büyük farklılık gösteriyor. Bu rehber, gerçek fiyat aralıklarını ve gizli maliyetleri ortaya koyuyor.",
+    summary:
+      "2026 yılında Türkiye'de web sitesi maliyeti proje türüne göre büyük farklılık gösterir: Landing page ₺8.000–₺15.000, kurumsal site ₺15.000–₺35.000, e-ticaret ₺25.000–₺60.000, SaaS platform ₺50.000 ve üzeri. Freelancer, ajans ve özel yazılım ofisi seçeneklerinin her birinin farklı fiyat-kalite dengesi vardır. Fiyatı belirleyen faktörler: sayfa sayısı, entegrasyonlar, tasarım özgünlüğü ve teslim süresi.",
+    publishDate: "2026-06-10",
+    updatedDate: "2026-06-10",
+    readTime: 8,
+    category: "web-sitesi",
+    sections: [
+      {
+        heading: "2026'da Web Sitesi Fiyatlarını Etkileyen Faktörler",
+        body: "Web sitesi maliyeti tek bir rakamla ifade edilemez. Fiyatı belirleyen başlıca etkenler şunlardır: proje türü (statik site, e-ticaret, SaaS), sayfa sayısı, tasarım özgünlüğü (şablon vs. sıfırdan), üçüncü taraf entegrasyonlar (ödeme sistemi, API, CRM), teslim süresi ve hizmet veren tarafın yapısı (freelancer, ajans, yazılım ofisi).",
+      },
+      {
+        heading: "Landing Page Maliyeti",
+        body: "Landing page, tek sayfalık dönüşüm odaklı siteler için en hızlı ve uygun maliyetli seçenektir.",
+        list: [
+          "Şablon tabanlı: ₺3.000–₺6.000 (Wix, Webflow gibi platformlar)",
+          "Freelancer (özel tasarım): ₺5.000–₺12.000",
+          "Yazılım ofisi (Next.js, sıfırdan): ₺8.000–₺15.000",
+          "Teslim süresi: 3–7 iş günü",
+        ],
+      },
+      {
+        heading: "Kurumsal Web Sitesi Maliyeti",
+        body: "5–15 sayfalık kurumsal tanıtım siteleri, şirket kimliğini taşıyan ve SEO altyapısı sağlam projelerdir.",
+        list: [
+          "Freelancer: ₺8.000–₺20.000",
+          "Orta ölçekli ajans: ₺25.000–₺60.000 (overhead dahil)",
+          "Yazılım ofisi (özel, SEO uyumlu): ₺15.000–₺35.000",
+          "Teslim süresi: 7–15 iş günü",
+        ],
+      },
+      {
+        heading: "E-Ticaret Sitesi Maliyeti",
+        body: "Ödeme entegrasyonu, ürün kataloğu ve sipariş yönetimi içeren projeler için maliyetler daha geniş bir banda yayılır.",
+        list: [
+          "Shopify/Ticimax: ₺5.000–₺15.000 kurulum + aylık platform ücreti",
+          "WooCommerce: ₺10.000–₺25.000 (hosting + geliştirme)",
+          "Özel Next.js e-ticaret: ₺25.000–₺60.000 (tek seferlik, platform ücreti yok)",
+          "Trendyol entegrasyonu dahil: +₺5.000–₺15.000",
+          "Teslim süresi: 10–20 iş günü",
+        ],
+      },
+      {
+        heading: "SaaS Platform Maliyeti",
+        body: "Auth, abonelik sistemi ve çok kiracılı mimari içeren SaaS platformlar en kapsamlı projelerdir.",
+        list: [
+          "MVP (temel özellikler): ₺50.000–₺100.000",
+          "Tam platform (gelişmiş): ₺100.000+",
+          "Teslim süresi: 4–12 hafta",
+          "Yıllık bakım: proje bütçesinin %15–20'si",
+        ],
+      },
+      {
+        heading: "Freelancer mı, Ajans mı, Yazılım Ofisi mi?",
+        body: "Her seçeneğin farklı avantajları ve riskleri vardır.",
+        list: [
+          "Freelancer: Düşük fiyat, ancak süreç yönetimi ve garantisi belirsiz. Küçük, net kapsamlı projeler için uygundur.",
+          "Büyük ajans: Kurumsal güvence ve geniş ekip, ancak ajans markupı fiyatı %40–80 artırır. Proje yöneticisi katmanı iletişimi yavaşlatır.",
+          "Yazılım ofisi (Solman Digital gibi): Doğrudan uzman erişimi, ajans markupı yok, garantili teslim. Orta-büyük projeler için en iyi fiyat/kalite dengesi.",
+        ],
+      },
+      {
+        heading: "Gizli Maliyetler: Nelere Dikkat Etmeli?",
+        body: "Web sitesi maliyeti sadece geliştirme ücretiyle bitmiyor. Aşağıdaki kalemleri toplam bütçenize dahil edin:",
+        list: [
+          "Domain: yılda ₺200–₺1.500",
+          "Hosting: ₺200–₺2.000/ay (Vercel, VPS gibi seçeneklere göre değişir)",
+          "SSL sertifikası: genellikle hosting'e dahil, ücretsiz (Let's Encrypt)",
+          "Aylık bakım ve güncellemeler: proje bütçesinin %10–15'i/yıl",
+          "SEO çalışması: ₺3.000–₺10.000/ay (ajans tercihe bağlı)",
+        ],
+      },
+      {
+        heading: "Doğru Teklifi Almak İçin Sormanız Gereken Sorular",
+        body: "Fiyat teklifi alırken belirsizliği ortadan kaldırmak için şu soruları sorun: Kaynak kod size mi ait? Teslim tarihi sözleşmede yazılı mı? Revizyon hakları kaç tur? 1. yıl sonrası bakım ücreti var mı? Hosting size mi, onlara mı aittir?",
+      },
+    ],
+    faq: [
+      {
+        q: "2026'da web sitesi yaptırmak ne kadar tutar?",
+        a: "Landing page ₺8.000–₺15.000, kurumsal site ₺15.000–₺35.000, e-ticaret ₺25.000–₺60.000, SaaS platform ₺50.000 ve üzeri. Fiyat; sayfa sayısı, entegrasyonlar ve hizmet sağlayıcı tipine göre değişir.",
+      },
+      {
+        q: "Ucuz web sitesi yaptırmak riskli midir?",
+        a: "Evet. ₺3.000–₺5.000 altındaki teklifler genellikle şablon siteleri, düşük kaliteli hosting veya belirsiz kapsam içerir. Teslim sonrası teknik sorunlarda destek alamamak ve siteyi baştan yaptırmak zorunda kalmak daha pahalıya mal olur.",
+      },
+      {
+        q: "Yıllık bakım ücreti ödemeden site çalışmaya devam eder mi?",
+        a: "Evet, çoğu projede site bakımsız da çalışır. Ancak güvenlik yamaları, framework güncellemeleri ve içerik değişiklikleri için ya kendi geliştiricinizin olması ya da bir bakım anlaşması yapılması önerilir.",
+      },
+    ],
+    keywords: [
+      "web sitesi maliyeti 2026",
+      "web sitesi fiyatları türkiye",
+      "kurumsal web sitesi ne kadar tutar",
+      "e-ticaret sitesi maliyeti",
+      "web sitesi yaptırmak 2026",
+    ],
+    cta: {
+      text: "Projeniz için gerçek fiyat almak istiyorsanız",
+      href: "/ucretsiz-analiz",
+      label: "Ücretsiz Analiz ve Fiyat Teklifi",
+    },
+    relatedSlugs: ["istanbul-web-sitesi-fiyatlari", "wix-vs-ozel-web-sitesi", "web-sitesi-yaptirmak-istiyorum"],
+  },
 ]
 
 export function getRehberBySlug(slug: string): RehberPost | undefined {
