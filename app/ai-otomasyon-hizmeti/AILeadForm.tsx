@@ -87,6 +87,7 @@ export default function AILeadForm() {
           <option value="İçerik / blog yazımı">İçerik / blog yazımı</option>
           <option value="Ürün açıklamaları">Ürün açıklamaları</option>
           <option value="Müşteri hizmetleri chatbotu">Müşteri hizmetleri chatbotu</option>
+          <option value="CRM / müşteri yönetimi">CRM / müşteri yönetimi</option>
           <option value="Video / sosyal medya içeriği">Video / sosyal medya içeriği</option>
           <option value="İş süreçleri / veri işleme">İş süreçleri / veri işleme</option>
           <option value="Emin değilim, konuşalım">Emin değilim, konuşalım</option>
@@ -169,14 +170,14 @@ export default function AILeadForm() {
       <button
         type="submit"
         disabled={state === "sending"}
-        className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-80"
+        className="btn btn-primary w-full text-base disabled:cursor-not-allowed disabled:opacity-80"
       >
         {state === "sending" ? "Gönderiliyor…" : "Ücretsiz AI Analizi İste"}
-        {state !== "sending" && <ArrowRight size={16} />}
+        {state !== "sending" && <ArrowRight size={18} />}
       </button>
 
       <p className="text-center text-[0.72rem] text-ink-400">
-        Bilgileriniz üçüncü taraflarla paylaşılmaz. 24 saat içinde dönüş yapılır.
+        Yanıt garantisi 24 saat&nbsp;•&nbsp;Taahhütsüz&nbsp;•&nbsp;Türkçe destek
       </p>
     </form>
   )
