@@ -77,9 +77,6 @@ const jsonLd = {
         { "@type": "City", name: "İstanbul" },
         { "@type": "Country", name: "Türkiye" },
       ],
-      sameAs: [
-        `https://www.google.com/maps/place/Solman+Digital+Yaz%C4%B1l%C4%B1m+ve+Web+Dan%C4%B1%C5%9Fmanl%C4%B1k/@38.9754833,29.8446948,6z/data=!3m1!4b1!4m6!3m5!1s0x6510ea0dd486ba21:0xb7d4416c9d7d695d!8m2!3d39.0863079!4d35.1293295!16s%2Fg%2F11npr09dcq`,
-      ],
     },
     {
       "@type": "FAQPage",
