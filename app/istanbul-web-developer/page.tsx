@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, CheckCircle, X, MapPin } from "lucide-react"
+import { ArrowRight, CheckCircle, X, MapPin, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import IstanbulDevLeadForm from "./IstanbulDevLeadForm"
 import Reveal from "@/components/Reveal"
@@ -29,6 +29,29 @@ export const metadata: Metadata = {
   },
 }
 
+const faqItems = [
+  {
+    q: "İstanbul dışındaki projeler için de çalışıyor musunuz?",
+    a: "Evet. Tüm Türkiye'ye uzaktan çalışıyoruz. İstanbul için yüz yüze görüşme de yapabiliyoruz.",
+  },
+  {
+    q: "Ajans mı, freelancer mı, siz neden farklısınız?",
+    a: "Ajans gibi ekip yönetimi masrafı yok. Freelancer gibi güvenilirlik belirsizliği yok. Projeyi baştan sona tek kişi geliştiriyor, net takvim ve sabit fiyat garantisi veriyoruz.",
+  },
+  {
+    q: "E-fatura kesiyor musunuz?",
+    a: "Evet. Şirket olarak e-fatura, bireysel olarak e-arşiv fatura kesiyoruz.",
+  },
+  {
+    q: "Proje teslim süresi ne kadar?",
+    a: "Kurumsal web sitesi 5–10 iş günü, e-ticaret 10–15 iş günü, SaaS ve AI platformlar 4–8 hafta. Kapsam görüşmesinde kesin takvim yazılı olarak belirlenir.",
+  },
+  {
+    q: "İstanbul'da yüz yüze görüşme yapılabiliyor mu?",
+    a: "Evet. Beşiktaş merkezliyiz; proje başlangıcında veya teslim aşamasında İstanbul içinde yüz yüze görüşme yapabiliyoruz.",
+  },
+]
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -37,7 +60,7 @@ const jsonLd = {
       name: "Solman Digital",
       description: "İstanbul Beşiktaş merkezli web geliştirici. Next.js, TypeScript ve Supabase ile özel web sitesi ve SaaS uygulaması geliştirme.",
       url: siteConfig.url,
-      telephone: "",
+      telephone: siteConfig.whatsapp,
       email: siteConfig.email,
       address: {
         "@type": "PostalAddress",
@@ -57,32 +80,11 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "İstanbul dışındaki projeler için de çalışıyor musunuz?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Evet. Tüm Türkiye'ye uzaktan çalışıyoruz. İstanbul için yüz yüze görüşme de yapabiliyoruz.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Ajans mı, freelancer mı, siz neden farklısınız?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Ajans gibi ekip yönetimi masrafı yok. Freelancer gibi güvenilirlik belirsizliği yok. Projeyi baştan sona tek kişi geliştiriyor, net takvim ve sabit fiyat garantisi veriyoruz.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "E-fatura kesiyor musunuz?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Evet. Şirket olarak e-fatura, bireysel olarak e-arşiv fatura kesiyoruz.",
-          },
-        },
-      ],
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
     },
   ],
 }
@@ -153,9 +155,19 @@ export default function IstanbulWebDeveloperPage() {
             </p>
           </Reveal>
           <Reveal delay={300}>
-            <a href="#form" className="btn btn-primary">
-              İletişime Geç <ArrowRight size={16} />
-            </a>
+            <div className="flex flex-wrap justify-center gap-3">
+              <a href="#form" className="btn btn-primary">
+                İletişime Geç <ArrowRight size={16} />
+              </a>
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, İstanbul web geliştirme projesi hakkında bilgi almak istiyorum.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline-dark"
+              >
+                <MessageCircle size={15} /> WhatsApp
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -257,6 +269,28 @@ export default function IstanbulWebDeveloperPage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-[760px]">
+          <Reveal>
+            <p className="eyebrow mb-4">SSS</p>
+            <h2 className="mb-10 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+              Sık Sorulan Sorular
+            </h2>
+          </Reveal>
+          <div className="flex flex-col gap-0">
+            {faqItems.map((item, i) => (
+              <Reveal key={item.q} delay={i * 80}>
+                <div className="border-b border-ink-200 py-6">
+                  <h3 className="mb-2.5 text-[0.95rem] font-bold text-ink-900">{item.q}</h3>
+                  <p className="text-[0.875rem] leading-relaxed text-ink-500">{item.a}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Portfolio Teaser */}
       <section className="bg-surface px-6 py-14 text-center">
         <Reveal>
@@ -299,8 +333,13 @@ export default function IstanbulWebDeveloperPage() {
                 { href: "/istanbul-kurumsal-web-sitesi", label: "İstanbul Kurumsal Web Sitesi" },
                 { href: "/kadikoy-web-tasarim", label: "Kadıköy Web Tasarım" },
                 { href: "/sisli-yazilim-gelistirme", label: "Şişli Yazılım Geliştirme" },
+                { href: "/besiktas-yazilim-gelistirme", label: "Beşiktaş Yazılım Geliştirme" },
+                { href: "/umraniye-yazilim-gelistirme", label: "Ümraniye Yazılım" },
+                { href: "/kartal-web-tasarim", label: "Kartal Web Tasarım" },
+                { href: "/zeytinburnu-web-tasarim", label: "Zeytinburnu Web Tasarım" },
+                { href: "/eyupsultan-web-tasarim", label: "Eyüpsultan Web Tasarım" },
+                { href: "/bahcelievler-web-tasarim", label: "Bahçelievler Web Tasarım" },
                 { href: "/istanbul-restoran-yazilim", label: "İstanbul Restoran Yazılım" },
-                { href: "/atasehir-yazilim", label: "Ataşehir Yazılım" },
               ].map((link) => (
                 <Link
                   key={link.href}
