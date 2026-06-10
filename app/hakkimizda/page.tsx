@@ -1,23 +1,52 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, Code2, Zap, Target, Heart } from "lucide-react"
+import { ArrowRight, Code2, Zap, Target, Heart, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
-  title: "Hakkımızda — Solman Digital",
+  title: "Hakkımızda — Solman Digital | İstanbul Özel Yazılım Ofisi",
   description:
-    "Solman Digital — 15+ canlı proje deneyimiyle özel yazılım ofisi. Sıfırdan e-ticaret, AI otomasyon, SaaS — aynı uzmanla, başından sonuna, net kapsam.",
+    "Solman Digital — İstanbul Beşiktaş merkezli özel yazılım ofisi. 50+ proje, e-ticaret, AI otomasyon, SaaS — aynı uzmanla, başından sonuna, net kapsam, taahhüt edilen teslim.",
   keywords: [
-    "solman digital",
+    "solman digital hakkında",
     "istanbul yazılım ofisi",
     "full stack developer istanbul",
     "yazılım ofisi beşiktaş",
     "özel yazılım geliştirme",
-    "doğrudan geliştirici",
+    "doğrudan geliştirici istanbul",
+    "next.js uzman istanbul",
   ],
   alternates: { canonical: `${siteConfig.url}/hakkimizda` },
-  openGraph: { title: "Hakkımızda | Solman Digital", locale: "tr_TR" },
+  openGraph: {
+    title: "Hakkımızda | Solman Digital — İstanbul Özel Yazılım Ofisi",
+    description: "İstanbul Beşiktaş merkezli özel yazılım ofisi. 50+ proje deneyimi, doğrudan uzman erişimi.",
+    url: `${siteConfig.url}/hakkimizda`,
+    siteName: siteConfig.name,
+    locale: "tr_TR",
+    type: "website",
+  },
+}
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${siteConfig.url}/#localbusiness`,
+  name: "Solman Digital",
+  description: "İstanbul Beşiktaş merkezli özel yazılım ofisi. E-ticaret, SaaS ve AI otomasyon alanında uzman.",
+  url: siteConfig.url,
+  telephone: siteConfig.whatsapp,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Beşiktaş",
+    addressRegion: "İstanbul",
+    addressCountry: "TR",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: 41.0426, longitude: 28.9965 },
+  areaServed: { "@type": "Country", name: "Türkiye" },
+  foundingDate: "2023",
+  knowsAbout: ["Next.js", "E-Ticaret Yazılım", "SaaS Geliştirme", "AI Otomasyon", "Trendyol API Entegrasyonu"],
+  sameAs: [`https://github.com/Oktay-Bey`],
 }
 
 const values = [
@@ -69,6 +98,10 @@ const steps = [
 export default function HakkimizdaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+      />
       {/* Hero */}
       <section className="bg-dark-500 px-6 py-18">
         <div className="hero-grid mx-auto max-w-[1200px]">
@@ -93,7 +126,7 @@ export default function HakkimizdaPage() {
           <Reveal delay={100}>
             <div className="overflow-hidden rounded-[10px] border border-dark-50 bg-dark-300">
               {[
-                { label: "Tamamlanan Proje", value: "15+" },
+                { label: "Tamamlanan Proje", value: "50+" },
                 { label: "Hizmet Alanı", value: "22" },
                 { label: "Teknoloji", value: "15+" },
                 { label: "Konum", value: "BEŞİKTAŞ" },
@@ -127,8 +160,8 @@ export default function HakkimizdaPage() {
           <div className="flex flex-col gap-5 text-[0.95rem] leading-loose text-ink-600">
             <Reveal delay={0}>
               <p>
-                15&apos;ten fazla proje — Trendyol satıcı paneli, WordPress AI içerik motoru, QR menü SaaS,
-                AI haber platformu — her biri farklı bir müşterinin farklı ihtiyacından doğdu.
+                50&apos;den fazla proje — Trendyol satıcı paneli, WordPress AI içerik motoru, QR menü SaaS,
+                AI haber platformu, e-ticaret mağazaları — her biri farklı bir müşterinin farklı ihtiyacından doğdu.
                 Her seferinde önce o işletmeyi anladık, sonra çözümü inşa ettik.
               </p>
             </Reveal>
@@ -221,9 +254,19 @@ export default function HakkimizdaPage() {
             <p className="mb-8 text-[0.9rem] leading-[1.7] text-ondark-faint">
               Projenizi anlatın, en uygun çözümü birlikte planlayalım.
             </p>
-            <Link href="/iletisim" className="btn btn-primary !px-8">
-              İletişime Geç <ArrowRight size={16} />
-            </Link>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href="/ucretsiz-analiz" className="btn btn-primary !px-8">
+                Ücretsiz Analiz İste <ArrowRight size={16} />
+              </Link>
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, proje hakkında bilgi almak istiyorum.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline-dark"
+              >
+                <MessageCircle size={15} /> WhatsApp
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>

@@ -1,24 +1,26 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, CheckCircle2, X } from "lucide-react"
+import { ArrowRight, CheckCircle2, X, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
-  title: "Web Sitesi & Yazılım Fiyatları 2025 | Solman Digital",
+  title: "Web Sitesi & Yazılım Fiyatları 2026 | Solman Digital",
   description:
-    "Kurumsal web sitesi, e-ticaret, SaaS ve AI otomasyon fiyatları. ₺8.000'dan başlayan fiyatlarla profesyonel yazılım geliştirme. Ücretsiz kapsam görüşmesi.",
+    "Kurumsal web sitesi, e-ticaret, SaaS ve AI otomasyon fiyatları 2026. ₺8.000'dan başlayan fiyatlarla profesyonel yazılım geliştirme. Ücretsiz kapsam görüşmesi.",
   keywords: [
-    "web sitesi fiyatları 2025",
+    "web sitesi fiyatları 2026",
     "kurumsal web sitesi ne kadar",
     "e-ticaret sitesi fiyatı",
     "saas geliştirme maliyeti",
     "yazılım geliştirme fiyatları istanbul",
-    "web sitesi yaptırma fiyatı",
+    "web sitesi yaptırma fiyatı 2026",
+    "trendyol entegrasyonu fiyatı",
+    "ai otomasyon maliyeti",
   ],
   alternates: { canonical: `${siteConfig.url}/fiyatlar` },
   openGraph: {
-    title: "Web Sitesi & Yazılım Fiyatları 2025 | Solman Digital",
+    title: "Web Sitesi & Yazılım Fiyatları 2026 | Solman Digital",
     description: "₺8.000'dan başlayan kurumsal web sitesi, e-ticaret ve SaaS fiyatları. Ücretsiz kapsam görüşmesi.",
     url: `${siteConfig.url}/fiyatlar`,
     siteName: siteConfig.name,
@@ -82,7 +84,7 @@ const tiers: PricingTier[] = [
     ],
     notIncluded: ["Ödeme sistemi (ayrı paket)", "Blog veya CMS yönetimi"],
     cta: "Fiyat Teklifi Al",
-    ctaHref: "/iletisim",
+    ctaHref: "/web-sitesi-yaptirmak",
   },
   {
     name: "E-Ticaret",
@@ -94,7 +96,7 @@ const tiers: PricingTier[] = [
       "Ürün kataloğu + sepet + ödeme akışı",
       "İyzico veya Stripe ödeme entegrasyonu",
       "Admin paneli (ürün/sipariş yönetimi)",
-      "Trendyol/Hepsiburada senkronizasyonu (opsiyonel)",
+      "Trendyol/Hepsiburada senkronizasyonu (opsiyonel +₺8.000)",
       "Stok & varyant yönetimi",
       "SEO + performans kurulumu",
       "SSL + Vercel deploy",
@@ -103,6 +105,23 @@ const tiers: PricingTier[] = [
     notIncluded: ["Ürün fotoğrafçılığı ve içerik yazımı", "Pazaryeri aylık bakım ücreti"],
     cta: "E-Ticaret Teklifi Al",
     ctaHref: "/iletisim",
+  },
+  {
+    name: "Marketplace Entegrasyonu",
+    price: "₺8.000",
+    subtitle: "Trendyol, Hepsiburada, n11 API",
+    timeline: "5–10 iş günü",
+    features: [
+      "Trendyol / Hepsiburada / n11 API bağlantısı",
+      "Otomatik stok & fiyat senkronizasyonu",
+      "Sipariş yönetim dashboard'u",
+      "Webhook ile gerçek zamanlı güncelleme",
+      "Çoklu pazaryeri tek panelden yönetim",
+      "1 ay ücretsiz teknik destek",
+    ],
+    notIncluded: ["Yeni e-ticaret sitesi geliştirme", "Pazaryeri hesap açılışı"],
+    cta: "Trendyol Entegrasyon Teklifi",
+    ctaHref: "/trendyol-entegrasyonu",
   },
   {
     name: "SaaS & AI",
@@ -153,10 +172,20 @@ export default function FiyatlarPage() {
               </p>
             </Reveal>
             <Reveal delay={300}>
-              <Link href="/ucretsiz-analiz" className="btn btn-primary">
-                Ücretsiz Kapsam Görüşmesi
-                <ArrowRight size={16} />
-              </Link>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link href="/ucretsiz-analiz" className="btn btn-primary">
+                  Ücretsiz Kapsam Görüşmesi
+                  <ArrowRight size={16} />
+                </Link>
+                <a
+                  href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, fiyat hakkında bilgi almak istiyorum.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline-dark"
+                >
+                  <MessageCircle size={15} /> WhatsApp
+                </a>
+              </div>
             </Reveal>
           </div>
         </section>
