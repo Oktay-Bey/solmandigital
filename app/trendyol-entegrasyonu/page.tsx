@@ -298,6 +298,64 @@ export default function TrendyolEntegrasyonuPage() {
           </div>
         </div>
       </section>
+
+      {/* TicaretHub Cross-Promo */}
+      <section className="border-t border-ink-200 bg-white px-6 py-14">
+        <div className="mx-auto max-w-[720px]">
+          <Reveal>
+            <p className="eyebrow mb-3">Ücretsiz Araçlar</p>
+            <h2 className="mb-3 text-[1.25rem] font-extrabold tracking-[-0.02em] text-ink-900">
+              Önce Rakamları Kendiniz Görmek İster misiniz?
+            </h2>
+            <p className="mb-8 max-w-[540px] text-[0.875rem] leading-[1.7] text-ink-500">
+              Entegrasyon kararı vermeden önce Trendyol&apos;daki kâr marjınızı, komisyon maliyetinizi ve fiyat stratejinizi hesaplamak için kardeş platform{" "}
+              <a
+                href="https://ticarethub.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-accent-700 underline underline-offset-2"
+              >
+                TicaretHub
+              </a>
+              &apos;un ücretsiz araçlarını kullanabilirsiniz.
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
+              {[
+                {
+                  href: "https://ticarethub.com/trendyol-komisyon-hesaplama",
+                  label: "Komisyon Hesaplama",
+                  desc: "Kategoriye göre net komisyon oranı",
+                },
+                {
+                  href: "https://ticarethub.com/trendyol-kar-analizi",
+                  label: "Kâr Analizi",
+                  desc: "Ürün bazında kâr/zarar simülasyonu",
+                },
+                {
+                  href: "https://ticarethub.com/trendyol-fiyat-hesaplama",
+                  label: "Fiyat Hesaplama",
+                  desc: "Hedef kâra göre satış fiyatı hesapla",
+                },
+              ].map((tool) => (
+                <a
+                  key={tool.href}
+                  href={tool.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group rounded-[8px] border border-ink-200 bg-surface p-5 transition-colors hover:border-accent-300 hover:bg-accent-50"
+                >
+                  <p className="mb-1 text-[0.875rem] font-bold text-ink-900 group-hover:text-accent-700">
+                    {tool.label} →
+                  </p>
+                  <p className="text-[0.8rem] leading-[1.55] text-ink-500">{tool.desc}</p>
+                </a>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
     </>
   )
 }

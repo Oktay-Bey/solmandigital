@@ -258,6 +258,88 @@ export default async function RehberDetayPage({ params }: Props) {
           </Link>
         </div>
 
+        {/* ── TicaretHub Araç Cross-Promo (trendyol + e-ticaret kategorileri) ── */}
+        {(post.category === "trendyol" || post.category === "e-ticaret") && (
+          <div className="mb-12 rounded-[10px] border border-ink-200 bg-surface p-6">
+            <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">
+              Ücretsiz Araçlar
+            </p>
+            <p className="mb-4 text-[0.9rem] font-bold text-ink-900">
+              Rakamları Kendiniz Hesaplayın
+            </p>
+            <p className="mb-5 text-[0.8rem] leading-[1.65] text-ink-500">
+              Entegrasyon veya geliştirme kararı vermeden önce{" "}
+              <a
+                href="https://ticarethub.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-accent-700 hover:underline"
+              >
+                TicaretHub
+              </a>
+              &apos;un ücretsiz hesaplama araçlarıyla mevcut durumunuzu analiz edebilirsiniz.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {post.category === "trendyol" && (
+                <>
+                  <a
+                    href="https://ticarethub.com/trendyol-komisyon-hesaplama"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-[6px] border border-ink-200 bg-white px-3 py-2 text-[0.775rem] font-semibold text-ink-700 transition-colors hover:border-accent-300 hover:text-accent-700"
+                  >
+                    Komisyon Hesaplama →
+                  </a>
+                  <a
+                    href="https://ticarethub.com/trendyol-kar-analizi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-[6px] border border-ink-200 bg-white px-3 py-2 text-[0.775rem] font-semibold text-ink-700 transition-colors hover:border-accent-300 hover:text-accent-700"
+                  >
+                    Kâr Analizi →
+                  </a>
+                  <a
+                    href="https://ticarethub.com/trendyol-fiyat-hesaplama"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-[6px] border border-ink-200 bg-white px-3 py-2 text-[0.775rem] font-semibold text-ink-700 transition-colors hover:border-accent-300 hover:text-accent-700"
+                  >
+                    Fiyat Hesaplama →
+                  </a>
+                </>
+              )}
+              {post.category === "e-ticaret" && (
+                <>
+                  <a
+                    href="https://ticarethub.com/pazaryeri-komisyon-karsilastirma"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-[6px] border border-ink-200 bg-white px-3 py-2 text-[0.775rem] font-semibold text-ink-700 transition-colors hover:border-accent-300 hover:text-accent-700"
+                  >
+                    Pazaryeri Komisyon Karşılaştır →
+                  </a>
+                  <a
+                    href="https://ticarethub.com/trendyol-entegrasyonu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-[6px] border border-ink-200 bg-white px-3 py-2 text-[0.775rem] font-semibold text-ink-700 transition-colors hover:border-accent-300 hover:text-accent-700"
+                  >
+                    Trendyol Entegrasyonu →
+                  </a>
+                  <a
+                    href="https://ticarethub.com/yapay-zeka-urun-aciklamasi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-[6px] border border-ink-200 bg-white px-3 py-2 text-[0.775rem] font-semibold text-ink-700 transition-colors hover:border-accent-300 hover:text-accent-700"
+                  >
+                    AI Ürün Açıklaması →
+                  </a>
+                </>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* ── İlgili Rehberler ─────────────────────────────────── */}
         {related.length > 0 && (
           <section className="mt-4" aria-labelledby="related-heading">

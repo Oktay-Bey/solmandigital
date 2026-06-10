@@ -210,6 +210,64 @@ export default function AIOtomasyonPage() {
         </div>
       </section>
 
+      {/* TicaretHub Cross-Promo */}
+      <section className="border-t border-ink-200 bg-white px-6 py-14">
+        <div className="mx-auto max-w-[900px]">
+          <Reveal>
+            <div className="rounded-[12px] border border-accent-200 bg-accent-50 p-8 sm:p-10">
+              <p className="eyebrow mb-3">Önce Kendiniz Deneyin</p>
+              <h2 className="mb-3 text-[1.15rem] font-extrabold tracking-[-0.02em] text-ink-900">
+                Küçük Ölçekte Başlamak Mı İstiyorsunuz?
+              </h2>
+              <p className="mb-7 max-w-[560px] text-[0.875rem] leading-[1.7] text-ink-600">
+                Özel otomasyon geliştirmeden önce yapay zekanın e-ticaret süreçlerinize nasıl uyduğunu test etmek isterseniz,{" "}
+                <a
+                  href="https://ticarethub.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-accent-700 underline underline-offset-2"
+                >
+                  TicaretHub
+                </a>
+                &apos;un hazır AI araçlarıyla hemen başlayabilirsiniz.
+              </p>
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-3">
+                {[
+                  {
+                    href: "https://ticarethub.com/yapay-zeka-icerik-motoru",
+                    label: "AI İçerik Motoru",
+                    desc: "Blog ve sosyal medya içeriği üret",
+                  },
+                  {
+                    href: "https://ticarethub.com/yapay-zeka-urun-aciklamasi",
+                    label: "Ürün Açıklama Üretici",
+                    desc: "Trendyol/Hepsiburada için SEO içerik",
+                  },
+                  {
+                    href: "https://ticarethub.com/ucretsiz-yapay-zeka-e-ticaret",
+                    label: "Ücretsiz AI Araçları",
+                    desc: "E-ticaret için tüm AI araçları",
+                  },
+                ].map((tool) => (
+                  <a
+                    key={tool.href}
+                    href={tool.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group rounded-[8px] border border-accent-200 bg-white p-4 transition-colors hover:border-accent-400 hover:bg-accent-100"
+                  >
+                    <p className="mb-1 text-[0.825rem] font-bold text-ink-900 group-hover:text-accent-700">
+                      {tool.label} →
+                    </p>
+                    <p className="text-[0.775rem] leading-[1.5] text-ink-500">{tool.desc}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Süreç */}
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-[760px]">

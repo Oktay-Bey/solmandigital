@@ -85,6 +85,15 @@ export default function Footer() {
               { href: "/iletisim", label: "İletişim" },
               { href: "/ucretsiz-analiz", label: "Ücretsiz Analiz" },
             ].map((l) => <ColLink key={l.href} href={l.href}>{l.label}</ColLink>)}
+            <div style={{ margin: "4px 0", height: 1, backgroundColor: "#1e1e1e" }} />
+            <a
+              href="https://ticarethub.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontSize: "0.825rem", color: "#666", textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}
+            >
+              TicaretHub ↗
+            </a>
           </Col>
 
         </div>
