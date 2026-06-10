@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { ArrowRight, AlertCircle } from "lucide-react"
+import { ArrowRight, AlertCircle, ChevronDown } from "lucide-react"
 import { services } from "@/lib/data/services"
 import type { AuditPayload } from "@/lib/types/leads"
 import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
@@ -15,6 +15,7 @@ const labelCls =
 export default function AuditForm() {
   const router = useRouter()
   const [state, setState] = useState<FormState>("idle")
+  const [expanded, setExpanded] = useState(false)
   const [gclid, setGclid] = useState<string | null>(null)
   useEffect(() => { setGclid(getGclid()) }, [])
   const [form, setForm] = useState<AuditPayload>({
@@ -54,6 +55,7 @@ export default function AuditForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      {/* Zorunlu alanlar */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="firstName" className={labelCls}>Adınız *</label>
@@ -61,7 +63,7 @@ export default function AuditForm() {
             id="firstName" name="firstName" type="text" required
             value={form.firstName} onChange={handleChange}
             placeholder="Ahmet"
-            className="input"
+            className="input text-[16px]"
           />
         </div>
         <div>
@@ -70,7 +72,7 @@ export default function AuditForm() {
             id="email" name="email" type="email" required
             value={form.email} onChange={handleChange}
             placeholder="ahmet@firma.com"
-            className="input"
+            className="input text-[16px]"
           />
         </div>
       </div>
@@ -81,33 +83,52 @@ export default function AuditForm() {
           id="websiteUrl" name="websiteUrl" type="url" required
           value={form.websiteUrl} onChange={handleChange}
           placeholder="https://firmaniz.com"
-          className="input"
+          className="input text-[16px]"
         />
       </div>
 
+      {/* Opsiyonel detaylar */}
       <div>
-        <label htmlFor="serviceInterest" className={labelCls}>İlgilendiğiniz Hizmet</label>
-        <select
-          id="serviceInterest" name="serviceInterest"
-          value={form.serviceInterest} onChange={handleChange}
-          className="input cursor-pointer"
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="flex w-full items-center justify-between rounded-[8px] border border-ink-200 bg-surface px-4 py-3 text-[0.8rem] font-semibold text-ink-600 hover:border-ink-300 transition-colors"
         >
-          <option value="">Hizmet seçin (opsiyonel)</option>
-          {services.map((s) => (
-            <option key={s.slug} value={s.title}>{s.title}</option>
-          ))}
-        </select>
-      </div>
+          <span>Detay eklemek ister misiniz? (opsiyonel)</span>
+          <ChevronDown
+            size={16}
+            className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
+          />
+        </button>
 
-      <div>
-        <label htmlFor="currentProblem" className={labelCls}>Mevcut Sorunuz Nedir?</label>
-        <textarea
-          id="currentProblem" name="currentProblem"
-          rows={4}
-          value={form.currentProblem} onChange={handleChange}
-          placeholder="Sitenizle ilgili yaşadığınız sorunu veya iyileştirmek istediğiniz alanı kısaca anlatın…"
-          className="input min-h-[100px] resize-y"
-        />
+        {expanded && (
+          <div className="mt-3 flex flex-col gap-4 rounded-[8px] border border-ink-200 bg-surface px-4 py-4">
+            <div>
+              <label htmlFor="serviceInterest" className={labelCls}>İlgilendiğiniz Hizmet</label>
+              <select
+                id="serviceInterest" name="serviceInterest"
+                value={form.serviceInterest} onChange={handleChange}
+                className="input cursor-pointer text-[16px]"
+              >
+                <option value="">Hizmet seçin (opsiyonel)</option>
+                {services.map((s) => (
+                  <option key={s.slug} value={s.title}>{s.title}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="currentProblem" className={labelCls}>Mevcut Sorunuz Nedir?</label>
+              <textarea
+                id="currentProblem" name="currentProblem"
+                rows={3}
+                value={form.currentProblem} onChange={handleChange}
+                placeholder="Sitenizle ilgili yaşadığınız sorunu kısaca anlatın…"
+                className="input min-h-[90px] resize-y text-[16px]"
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       {state === "error" && (
@@ -118,7 +139,7 @@ export default function AuditForm() {
       )}
 
       <button type="submit" disabled={state === "sending"} className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-80">
-        {state === "sending" ? "Gönderiliyor…" : "Ücretsiz Analiz İste"}
+        {state === "sending" ? "Gönderiliyor…" : "Analizi Başlat"}
         {state !== "sending" && <ArrowRight size={16} />}
       </button>
 

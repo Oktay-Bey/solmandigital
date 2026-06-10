@@ -101,14 +101,13 @@ export default function UcretsizAnalizPage() {
           </Reveal>
           <Reveal delay={100}>
             <h1 className="mb-5 text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-white">
-              Web Sitenizin Ücretsiz<br />
-              <span className="text-accent-700">SEO & Performans Analizi</span>
+              Web sitenizi ücretsiz analiz ediyoruz —{" "}
+              <span className="text-accent-700">24 saatte sonuç</span>
             </h1>
           </Reveal>
           <Reveal delay={200}>
-            <p className="mx-auto max-w-[560px] text-base leading-loose text-ondark-muted">
-              Teknik SEO sorunlarını, sayfa hızı problemlerini ve rakip açıklarını tespit edin.
-              24 saat içinde detaylı rapor e-posta adresinize gönderilir.
+            <p className="mx-auto max-w-[520px] text-base leading-loose text-ondark-muted">
+              Teknik SEO sorunları, sayfa hızı ve rakip karşılaştırması. Somut bulgular, öncelikli aksiyon listesiyle.
             </p>
           </Reveal>
           <Reveal delay={280}>

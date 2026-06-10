@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle2, X, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
+import FiyatlarLeadForm from "./FiyatlarLeadForm"
 
 export const metadata: Metadata = {
   title: "Web Sitesi & Yazılım Fiyatları 2026 | Solman Digital",
@@ -64,6 +65,7 @@ type PricingTier = {
   cta: string
   ctaHref: string
   highlight?: boolean
+  waMsg: string
 }
 
 const tiers: PricingTier[] = [
@@ -85,6 +87,7 @@ const tiers: PricingTier[] = [
     notIncluded: ["Ödeme sistemi (ayrı paket)", "Blog veya CMS yönetimi"],
     cta: "Teklif Al",
     ctaHref: "/iletisim",
+    waMsg: "Merhaba, Web Sitesi paketi hakkında fiyat teklifi almak istiyorum (₺8.000 başlangıç).",
   },
   {
     name: "E-Ticaret",
@@ -105,6 +108,7 @@ const tiers: PricingTier[] = [
     notIncluded: ["Ürün fotoğrafçılığı ve içerik yazımı", "Pazaryeri aylık bakım ücreti"],
     cta: "Teklif Al",
     ctaHref: "/iletisim",
+    waMsg: "Merhaba, E-Ticaret paketi hakkında fiyat teklifi almak istiyorum (₺20.000 başlangıç).",
   },
   {
     name: "Marketplace Entegrasyonu",
@@ -122,6 +126,7 @@ const tiers: PricingTier[] = [
     notIncluded: ["Yeni e-ticaret sitesi geliştirme", "Pazaryeri hesap açılışı"],
     cta: "Teklif Al",
     ctaHref: "/iletisim",
+    waMsg: "Merhaba, Marketplace Entegrasyonu paketi hakkında fiyat teklifi almak istiyorum (₺8.000 başlangıç).",
   },
   {
     name: "SaaS & AI",
@@ -141,6 +146,7 @@ const tiers: PricingTier[] = [
     notIncluded: ["Sunucu/cloud maliyetleri", "İçerik üretimi ve pazarlama"],
     cta: "Teklif Al",
     ctaHref: "/iletisim",
+    waMsg: "Merhaba, SaaS & AI paketi hakkında fiyat teklifi almak istiyorum (₺50.000 başlangıç).",
   },
 ]
 
@@ -151,7 +157,22 @@ export default function FiyatlarPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <main className="min-h-screen bg-dark-500">
+      {/* Sticky mobile WhatsApp bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between gap-3 border-t border-dark-200 bg-dark-500 px-4 py-3 shadow-2xl sm:hidden">
+        <p className="text-[0.78rem] leading-tight text-ondark-muted">
+          Hızlı fiyat almak<br />ister misiniz?
+        </p>
+        <a
+          href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, fiyat teklifi almak istiyorum.")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary shrink-0 py-2 text-[0.82rem]"
+        >
+          <MessageCircle size={14} /> WhatsApp
+        </a>
+      </div>
+
+      <main className="min-h-screen bg-dark-500 pb-20 sm:pb-0">
         {/* Hero */}
         <section className="border-b border-dark-200 px-6 pb-12 pt-20">
           <div className="mx-auto max-w-[760px] text-center">
@@ -186,6 +207,11 @@ export default function FiyatlarPage() {
                   <MessageCircle size={15} /> WhatsApp
                 </a>
               </div>
+            </Reveal>
+
+            {/* Mini inline form */}
+            <Reveal delay={380}>
+              <FiyatlarLeadForm />
             </Reveal>
           </div>
         </section>
@@ -263,6 +289,14 @@ export default function FiyatlarPage() {
                     {tier.cta}
                     <ArrowRight size={15} />
                   </Link>
+                  <a
+                    href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(tier.waMsg)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 flex items-center justify-center gap-2 text-[0.78rem] font-medium text-ondark-muted hover:text-white transition-colors"
+                  >
+                    <MessageCircle size={13} /> Bu paketi istiyorum
+                  </a>
                 </div>
               </Reveal>
             ))}
@@ -365,3 +399,4 @@ export default function FiyatlarPage() {
     </>
   )
 }
+

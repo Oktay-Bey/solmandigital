@@ -135,17 +135,19 @@ export default function AIOtomasyonPage() {
           <div>
             <Reveal>
               <p className="mb-5 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
-                GPT-4o · Claude · Özel AI Sistemleri
+                3–6 Hafta Kurulum · GPT-4o · Claude
               </p>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mb-5 text-[clamp(2rem,4vw,2.75rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
-                Yapay Zeka ile İş Süreçlerinizi Otomatize Edin
+                Yapay Zeka Otomasyon Hizmeti — İstanbul
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p className="mb-7 text-[1rem] leading-[1.75] text-ondark-muted">
-                Günde kaç saatinizi tekrar eden işlere harcıyorsunuz? İçerik üretimi, ürün açıklamaları, müşteri soruları — bunların hepsini AI ile otomatize edebilirsiniz.
+                İçerik üretimi, ürün açıklamaları, müşteri soruları — tekrar eden iş yükünüzü AI ile otomatize ediyoruz.{" "}
+                <span className="font-semibold text-white">₺15.000&apos;dan başlayan paketler,</span>{" "}
+                3–6 hafta kurulum.
               </p>
             </Reveal>
             <Reveal delay={300}>
