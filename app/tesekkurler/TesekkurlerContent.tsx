@@ -79,6 +79,14 @@ const contentMap = {
     nextCta: "Ücretsiz Danışmanlık Rezervasyonu",
     nextHref: "/danismanlik",
   },
+  "contact-en": {
+    title: "Message received!",
+    body: "We'll review your project and get back to you within 24 hours. For anything urgent, reach us on WhatsApp: +90 543 967 52 50",
+    nextTitle: "While you wait",
+    nextDesc: "See the projects we've shipped — web apps, SaaS products, AI integrations and e-commerce platforms.",
+    nextCta: "View Portfolio",
+    nextHref: "/portfoy",
+  },
   partnership: {
     title: "Partnership Request Received!",
     body: "We'll review your agency profile and get back within 24 hours with a tailored proposal. In the meantime, feel free to browse our portfolio.",

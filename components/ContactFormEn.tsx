@@ -38,11 +38,11 @@ export default function ContactFormEn() {
       const res = await fetch("/api/email/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, gclid }),
+        body: JSON.stringify({ ...form, gclid, lang: "en" }),
       })
       if (res.ok) {
         trackEvent("form_submit", "lead", "contact-en")
-        router.push("/tesekkurler?type=consultation")
+        router.push("/tesekkurler?type=contact-en")
       } else {
         setState("error")
       }

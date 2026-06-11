@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { updateCampaignStatus, deleteCampaign, updateCampaignBudget, addAdGroupsToCampaign, listAdGroups, deleteAdGroup } from "@/lib/google-ads/campaigns";
+import { updateCampaignStatus, deleteCampaign, updateCampaignBudget, addAdGroupsToCampaign, listAdGroups, deleteAdGroup, addLanguageTargets } from "@/lib/google-ads/campaigns";
 import type { AdGroupInput } from "@/lib/google-ads/campaigns";
 
 // GET /api/google-ads/campaigns/[resourceId] — ad group listesi
@@ -33,10 +33,11 @@ export async function PATCH(
     const rawBody = await req.arrayBuffer();
     const body = JSON.parse(new TextDecoder("utf-8").decode(rawBody));
     console.log("[PATCH] first headline:", body?.adGroups?.[0]?.headlines?.[0]);
-    const { status, dailyBudgetTL, adGroups } = body as {
+    const { status, dailyBudgetTL, adGroups, languageIds } = body as {
       status?: string;
       dailyBudgetTL?: number;
       adGroups?: AdGroupInput[];
+      languageIds?: number[];
     };
 
     if (status) {
@@ -48,6 +49,10 @@ export async function PATCH(
 
     if (dailyBudgetTL) {
       await updateCampaignBudget(campaignId, dailyBudgetTL);
+    }
+
+    if (languageIds?.length) {
+      await addLanguageTargets(campaignId, languageIds);
     }
 
     if (adGroups?.length) {

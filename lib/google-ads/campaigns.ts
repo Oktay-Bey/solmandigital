@@ -326,6 +326,24 @@ export async function addSitelinks(
   return results;
 }
 
+// Language constant ID'leri: İngilizce=1000, Türkçe=1037, Rusça=1031, Sırpça=1035
+export async function addLanguageTargets(campaignId: string, languageIds: number[]): Promise<void> {
+  const customer = getCustomer();
+  const cid = process.env.GOOGLE_ADS_CUSTOMER_ID!;
+  const campaignResource = `customers/${cid}/campaigns/${campaignId}`;
+  for (const langId of languageIds) {
+    try {
+      await customer.campaignCriteria.create([{
+        campaign: campaignResource,
+        language: { language_constant: `languageConstants/${langId}` },
+      }]);
+      console.log("[google-ads] Language target OK:", langId);
+    } catch (e) {
+      console.warn("[google-ads] Language target SKIPPED:", langId, e);
+    }
+  }
+}
+
 export async function updateCampaignStatus(campaignId: string, status: "ENABLED" | "PAUSED"): Promise<void> {
   const customer = getCustomer();
   await customer.campaigns.update([{

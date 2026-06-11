@@ -6,9 +6,9 @@ import AILeadForm from "./AILeadForm"
 import Reveal from "@/components/Reveal"
 
 export const metadata: Metadata = {
-  title: "Yapay Zeka & AI Otomasyon Hizmeti | Solman Digital İstanbul",
+  title: "AI Otomasyon Hizmeti — 3 Haftada Canlıya | Solman Digital İstanbul",
   description:
-    "GPT-4o ile içerik otomasyonu, chatbot, ürün açıklama üretimi ve iş süreçleri otomasyonu. Türkiye'de AI entegrasyonu — somut ROI, 3-6 hafta kurulum.",
+    "Tekrarlayan iş yükünüzü AI ile otomatize edin: içerik üretimi, ürün açıklamaları, müşteri chatbotu. GPT-4o & Claude entegrasyonu, 3–6 hafta kurulum, somut ROI.",
   keywords: [
     "yapay zeka otomasyon",
     "ai içerik otomasyonu",
@@ -140,14 +140,14 @@ export default function AIOtomasyonPage() {
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mb-5 text-[clamp(2rem,4vw,2.75rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
-                Yapay Zeka Otomasyon Hizmeti — İstanbul
+                Tekrarlayan İş Yükünüzü AI ile Otomatize Edin — 3 Haftada Canlıya
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p className="mb-7 text-[1rem] leading-[1.75] text-ondark-muted">
                 İçerik üretimi, ürün açıklamaları, müşteri soruları — tekrar eden iş yükünüzü AI ile otomatize ediyoruz.{" "}
-                <span className="font-semibold text-white">₺15.000&apos;dan başlayan paketler,</span>{" "}
-                3–6 hafta kurulum.
+                <span className="font-semibold text-white">3–6 hafta kurulum,</span>{" "}
+                somut ROI hedefiyle.
               </p>
             </Reveal>
             <Reveal delay={300}>
@@ -170,9 +170,13 @@ export default function AIOtomasyonPage() {
           <Reveal delay={150}>
             <div className="rounded-[14px] border border-dark-50 bg-white p-8 shadow-xl">
               <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">Ücretsiz Analiz</p>
-              <h2 className="mb-5 text-[1.15rem] font-extrabold tracking-tight text-ink-900">
+              <h2 className="mb-3 text-[1.15rem] font-extrabold tracking-tight text-ink-900">
                 Otomasyon potansiyelinizi keşfedin
               </h2>
+              <p className="mb-5 flex items-center gap-1.5 text-[0.78rem] text-ink-500">
+                <span className="text-[#16a34a]">●</span>
+                Son 30 günde 5 firma sürece başladı
+              </p>
               <AILeadForm />
             </div>
           </Reveal>
@@ -321,6 +325,40 @@ export default function AIOtomasyonPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Fiyatlandırma */}
+      <section className="bg-surface px-6 py-20">
+        <div className="mx-auto max-w-[760px]">
+          <Reveal>
+            <p className="eyebrow mb-3">Fiyatlandırma</p>
+            <h2 className="mb-3 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+              Sabit Paket, Sürpriz Fatura Yok
+            </h2>
+            <p className="mb-10 text-[0.9rem] leading-[1.7] text-ink-500">
+              Proje kapsamı netleştikten sonra sabit fiyat teklifi sunulur — saat bazlı faturalandırma yoktur.
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5">
+              {[
+                { label: "Tek Süreç", price: "₺15.000", desc: "İçerik üretimi, chatbot veya ürün açıklaması — tek bir süreçte otomasyon.", highlight: false },
+                { label: "Çoklu Süreç", price: "₺25.000+", desc: "Birden fazla iş akışı, CRM entegrasyonu veya özel AI pipeline.", highlight: true },
+              ].map((pkg) => (
+                <div
+                  key={pkg.label}
+                  className={`rounded-[12px] border p-7 ${pkg.highlight ? "border-accent-400 bg-accent-50" : "border-ink-200 bg-white"}`}
+                >
+                  <p className={`mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] ${pkg.highlight ? "text-accent-700" : "text-ink-400"}`}>
+                    {pkg.label}
+                  </p>
+                  <p className="mb-3 text-[1.75rem] font-black tracking-[-0.03em] text-ink-900">{pkg.price}</p>
+                  <p className="text-[0.85rem] leading-[1.6] text-ink-500">{pkg.desc}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 

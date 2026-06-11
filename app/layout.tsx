@@ -199,7 +199,23 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-H2QM5NPTED');
+
+            (function() {
+              var utm = new URLSearchParams(window.location.search).get('utm_medium');
+              if (utm === 'email') {
+                var fired = false;
+                function _fireGA4() {
+                  if (fired) return; fired = true;
+                  gtag('config', 'G-H2QM5NPTED');
+                }
+                ['mousemove','scroll','keydown','touchstart','click'].forEach(function(e) {
+                  document.addEventListener(e, _fireGA4, {once: true, passive: true});
+                });
+                setTimeout(_fireGA4, 8000);
+              } else {
+                gtag('config', 'G-H2QM5NPTED');
+              }
+            })();
           `}
         </Script>
       </head>

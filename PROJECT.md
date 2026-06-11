@@ -1,6 +1,6 @@
 # Solman Digital — Proje Keşif Dokümantasyonu
 
-**Son güncelleme:** 2026-06-05  
+**Son güncelleme:** 2026-06-10  
 **Güncel faz:** Faz 2A tamamlandı (SEO keşfedilebilirlik), Faz 2B hazır  
 **Repo:** `c:\Users\90534\Desktop\solmandigital`
 
@@ -20,7 +20,8 @@ Solman Digital'in kurumsal + lead generation web sitesi. Hedef: organik SEO traf
 | UI | React | 19.2.4 |
 | Dil | TypeScript | ^5 |
 | Stil | Tailwind CSS | v4 |
-| E-posta | Resend + React Email | resend ^6.12 |
+| E-posta (inbound) | Resend + React Email | resend ^6.12 |
+| E-posta (outreach) | Brevo API (transactional) | HTTP doğrudan |
 | İkon | lucide-react | ^1.17 |
 | Deploy | Vercel | — |
 | Analytics | Google Analytics 4 | G-H2QM5NPTED |
@@ -189,6 +190,27 @@ Mevcut olgun içeriği (26 rehber, 22 hizmet) keşfedilebilir kılma odaklı:
 **D. Teknik sağlamlık**
 - [ ] `/api/email/*` rate limiting (spam/Resend kotası)
 - [ ] `next/image` ile portföy/case görselleri (Core Web Vitals)
+
+---
+
+## Email Outreach Otomasyonu
+
+Cold outreach pipeline'ı kurulu ve aktif. Detay: `EMAIL-OTOMASYON.md`
+
+**Özet:**
+- **Altyapı:** Brevo API (300/gün ücretsiz) — lokal script'ten doğrudan çağrı
+- **DNS:** SPF + DKIM + DMARC — `solmandigital.com.tr` authenticated ✓
+- **Şablon:** Kompakt white label partnership maili — bölgeye özel ton, WhatsApp CTA
+- **Toplam gönderilen:** ~443 mail (13 batch, 2026-06-10)
+- **Kapsanan ülkeler:** TR · UK · DACH · Nordics · Benelux · FR · ES · IT · IE · PL · PT · US · CA · AU · NZ
+
+**Kritik scriptler:**
+```
+scripts/email-push.mjs          → gönderici (Brevo API)
+scripts/build-mails-batch-N.mjs → her batch için mail üretici
+scripts/suppress-list.json      → bounce/unsubscribe listesi
+scripts/us-leads-100.json       → 104 US ajansı lead havuzu
+```
 
 ---
 
