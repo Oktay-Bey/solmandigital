@@ -4,7 +4,7 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 1)
+**Son güncelleme:** 2026-06-16 (Iteration 2)
 **Veri penceresi:** Son 30 gün
 
 ---
@@ -78,11 +78,15 @@ CRO hedefi.
 - [x] Bu rapor oluşturuldu
 
 ## 4. Roadmap (öncelik sırası)
-1. **`/fiyatlar` CRO** (%87 bounce, 86 PV) — fiyat şoku/çıkışı azalt; net lead capture + güven sinyalleri.
-2. **`/ai-otomasyon-hizmeti` CRO** (%82 bounce, 146 PV — #1 landing) — above-the-fold değer + form.
-3. **Exit-intent / mikro-conversion** — bounce eden trafiğin bir kısmını yakala.
+1. ~~**`/fiyatlar` CRO**~~ ✅ Iteration 2 (commit a290477) — paket CTA→on-page form, güven şeridi, form çerçevesi.
+2. **`/ai-otomasyon-hizmeti` CRO** (%82 bounce, 146 PV — #1 landing) — above-the-fold değer + form. **← SIRADAKİ**
+3. **Exit-intent / mikro-conversion** — bounce eden trafiğin bir kısmını yakala (ExitIntentPopup mevcut, /fiyatlar+/ai'de devrede mi kontrol et).
 4. **Google Ads re-auth sonrası** — kampanya/keyword/negatif optimizasyonu (token gelince).
 5. **İç linkleme & içerik derinliği** — ~1.27 PV/kullanıcı çok düşük; rehber↔hizmet çapraz linkleme.
+
+## 4b. Iteration 2 (tamamlandı, commit a290477)
+/fiyatlar: tier CTA'ları #fiyat-form'a kaydırır (cross-page friction kaldırıldı), risk-reversal
+güven şeridi, inline form değer başlığı + "bağlayıcı değil" copy ile çerçevelendi. Build yeşil.
 
 ## 5. Loop Notları
 - Mod: otonom, dinamik tempolu; sürekli çalışır, kısa aralık.
