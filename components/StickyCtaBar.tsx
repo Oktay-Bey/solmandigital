@@ -43,7 +43,7 @@ export default function StickyCtaBar() {
           href={waHref}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => trackEvent("click", "whatsapp", "sticky_cta")}
+          onClick={() => trackEvent("whatsapp_click", "engagement", "sticky_cta")}
           className="flex items-center gap-1.5 whitespace-nowrap rounded-md bg-[#25D366] px-4 py-2 text-[0.8rem] font-bold text-white transition-colors hover:bg-[#1eb955]"
         >
           <MessageCircle size={14} />
@@ -52,7 +52,7 @@ export default function StickyCtaBar() {
 
         <a
           href="/ucretsiz-analiz"
-          onClick={() => trackEvent("click", "cta", "sticky_teklif")}
+          onClick={() => trackEvent("cta_click", "engagement", "sticky_teklif")}
           className="flex items-center gap-1.5 whitespace-nowrap rounded-md bg-accent-700 px-4 py-2 text-[0.8rem] font-bold text-white transition-colors hover:bg-accent-800"
         >
           Ücretsiz Analiz

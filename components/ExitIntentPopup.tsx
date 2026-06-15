@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { X, ArrowRight, MessageCircle, AlertCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
-import { trackEvent } from "@/lib/analytics"
+import { trackEvent, trackLeadConversion } from "@/lib/analytics"
 
 const COOKIE_KEY = "solman_exit_v1"
 const COOKIE_DAYS = 7
@@ -73,6 +73,7 @@ export default function ExitIntentPopup() {
       })
       if (res.ok) {
         trackEvent("form_submit", "lead", "exit-popup")
+        trackLeadConversion("exit-popup")
         setFormState("success")
       } else {
         setFormState("error")
@@ -174,7 +175,7 @@ export default function ExitIntentPopup() {
                 href={waHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackEvent("click", "whatsapp", "exit_popup")}
+                onClick={() => trackEvent("whatsapp_click", "engagement", "exit_popup")}
                 className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-green-400"
               >
                 <MessageCircle size={14} />
