@@ -58,11 +58,11 @@ export default function AuditForm() {
       {/* Zorunlu alanlar */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="firstName" className={labelCls}>Adınız *</label>
+          <label htmlFor="firstName" className={labelCls}>Adınız</label>
           <input
-            id="firstName" name="firstName" type="text" required
+            id="firstName" name="firstName" type="text"
             value={form.firstName} onChange={handleChange}
-            placeholder="Ahmet"
+            placeholder="Ahmet (opsiyonel)"
             className="input text-[16px]"
           />
         </div>

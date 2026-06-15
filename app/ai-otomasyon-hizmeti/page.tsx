@@ -166,8 +166,8 @@ export default function AIOtomasyonPage() {
             </Reveal>
           </div>
 
-          {/* Sağ: form */}
-          <Reveal delay={150}>
+          {/* Sağ: form — mobilde içeriğin hemen altına gelir (order-first lg:order-last) */}
+          <Reveal delay={150} className="order-first lg:order-last">
             <div className="rounded-[14px] border border-dark-50 bg-white p-8 shadow-xl">
               <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">Ücretsiz Analiz</p>
               <h2 className="mb-3 text-[1.15rem] font-extrabold tracking-tight text-ink-900">

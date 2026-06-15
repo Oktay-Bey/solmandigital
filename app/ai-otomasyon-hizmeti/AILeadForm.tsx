@@ -91,22 +91,28 @@ export default function AILeadForm() {
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div>
-            <label htmlFor="aiUseCase" className={labelCls}>
-              Hangi alanda AI kullanmak istiyorsunuz? *
-            </label>
-            <select
-              id="aiUseCase" name="aiUseCase" required
-              value={form.aiUseCase} onChange={handleChange}
-              className="input cursor-pointer text-[16px]"
-            >
-              <option value="">Seçin</option>
-              <option value="İçerik / blog yazımı">İçerik / blog yazımı</option>
-              <option value="Ürün açıklamaları">Ürün açıklamaları</option>
-              <option value="Müşteri hizmetleri chatbotu">Müşteri hizmetleri chatbotu</option>
-              <option value="CRM / müşteri yönetimi">CRM / müşteri yönetimi</option>
-              <option value="İş süreçleri / veri işleme">İş süreçleri / veri işleme</option>
-              <option value="Emin değilim, konuşalım">Emin değilim, konuşalım</option>
-            </select>
+            <label className={labelCls}>Hangi alanda AI kullanmak istiyorsunuz? *</label>
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { value: "İçerik / blog yazımı", label: "İçerik & Blog" },
+                { value: "Ürün açıklamaları", label: "Ürün Açıklamaları" },
+                { value: "Müşteri hizmetleri chatbotu", label: "Müşteri Chatbotu" },
+                { value: "Emin değilim, konuşalım", label: "Emin değilim" },
+              ].map((opt) => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => setForm((prev) => ({ ...prev, aiUseCase: opt.value }))}
+                  className={`rounded-[8px] border px-3 py-3 text-left text-[0.8rem] font-semibold transition-colors ${
+                    form.aiUseCase === opt.value
+                      ? "border-accent-600 bg-accent-50 text-accent-700"
+                      : "border-ink-200 bg-white text-ink-700 hover:border-accent-300"
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {state === "error" && (
@@ -118,8 +124,8 @@ export default function AILeadForm() {
 
           <button
             type="submit"
-            disabled={state === "sending"}
-            className="btn btn-primary w-full text-base disabled:cursor-not-allowed disabled:opacity-80"
+            disabled={state === "sending" || !form.aiUseCase}
+            className="btn btn-primary w-full text-base disabled:cursor-not-allowed disabled:opacity-60"
           >
             {state === "sending" ? "Gönderiliyor…" : "Ücretsiz AI Analizi İste"}
             {state !== "sending" && <ArrowRight size={18} />}

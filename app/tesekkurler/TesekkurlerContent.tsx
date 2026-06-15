@@ -1,10 +1,8 @@
 "use client"
 
 import { useSearchParams } from "next/navigation"
-import { useEffect } from "react"
 import Link from "next/link"
 import { CheckCircle2, ArrowRight } from "lucide-react"
-import { trackLeadConversion } from "@/lib/analytics"
 
 const contentMap = {
   newsletter: {
@@ -110,10 +108,6 @@ export default function TesekkurlerContent() {
   const type = (params.get("type") as keyof typeof contentMap) || "newsletter"
   const content = contentMap[type] || contentMap.newsletter
 
-  useEffect(() => {
-    // Sayfa yüklenince Google Ads conversion'ı bir kez daha tetikle (backup)
-    trackLeadConversion(type)
-  }, [type])
 
   return (
     <div style={{ maxWidth: 520, width: "100%", textAlign: "center" }}>

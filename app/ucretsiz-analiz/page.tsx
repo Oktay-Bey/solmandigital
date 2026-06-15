@@ -91,37 +91,68 @@ export default function UcretsizAnalizPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(auditSchema) }}
       />
 
-      {/* Hero */}
-      <section className="bg-dark-500 px-6 py-20">
-        <div className="mx-auto max-w-[760px] text-center">
-          <Reveal>
-            <p className="mb-5 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
-              Ücretsiz · Bağlayıcı Değil
-            </p>
-          </Reveal>
-          <Reveal delay={100}>
-            <h1 className="mb-5 text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-white">
-              Web sitenizi ücretsiz analiz ediyoruz —{" "}
-              <span className="text-accent-700">24 saatte sonuç</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="mx-auto max-w-[520px] text-base leading-loose text-ondark-muted">
-              Teknik SEO sorunları, sayfa hızı ve rakip karşılaştırması. Somut bulgular, öncelikli aksiyon listesiyle.
-            </p>
-          </Reveal>
-          <Reveal delay={280}>
-            <div className="mt-8 flex flex-wrap justify-center gap-5">
-              {[
-                { icon: Clock, text: "24 saat içinde" },
-                { icon: Shield, text: "Bilgileriniz paylaşılmaz" },
-                { icon: CheckCircle2, text: "Tamamen ücretsiz" },
-              ].map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-1.5">
-                  <Icon size={14} className="text-success" />
-                  <span className="text-[0.8rem] font-medium text-ondark-muted">{text}</span>
-                </div>
-              ))}
+      {/* Hero — split layout: sol değer önerisi, sağ form */}
+      <section className="bg-dark-500 px-6 pb-16 pt-24">
+        <div className="mx-auto grid max-w-[1100px] grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* Sol: başlık + ne alacaksın */}
+          <div>
+            <Reveal>
+              <p className="mb-5 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
+                Ücretsiz · Bağlayıcı Değil
+              </p>
+            </Reveal>
+            <Reveal delay={100}>
+              <h1 className="mb-5 text-[clamp(1.75rem,4vw,2.5rem)] font-extrabold leading-tight tracking-tight text-white">
+                Web sitenizi ücretsiz analiz ediyoruz —{" "}
+                <span className="text-accent-700">24 saatte sonuç</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={180}>
+              <p className="mb-6 text-[0.95rem] leading-loose text-ondark-muted">
+                Analiz raporunuzda şunları bulacaksınız:
+              </p>
+              <ul className="flex flex-col gap-3">
+                {[
+                  "Kaybettiğiniz organik trafik kaynakları",
+                  "En kritik 3 teknik SEO hatası ve çözümü",
+                  "Sektörünüzdeki rakiple görünürlük karşılaştırması",
+                  "Core Web Vitals skoru ve sayfa hızı engelleri",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-[0.875rem] text-ondark-muted">
+                    <span className="mt-0.5 shrink-0 text-[#4ade80]">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal delay={280}>
+              <div className="mt-7 flex flex-wrap gap-5">
+                {[
+                  { icon: Clock, text: "24 saat içinde" },
+                  { icon: Shield, text: "Bilgileriniz paylaşılmaz" },
+                  { icon: CheckCircle2, text: "Tamamen ücretsiz" },
+                ].map(({ icon: Icon, text }) => (
+                  <div key={text} className="flex items-center gap-1.5">
+                    <Icon size={14} className="text-success" />
+                    <span className="text-[0.8rem] font-medium text-ondark-muted">{text}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Sağ: form */}
+          <Reveal delay={150} className="order-first lg:order-last">
+            <div className="rounded-[14px] border border-dark-50 bg-white p-8 shadow-xl">
+              <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">Ücretsiz Analiz</p>
+              <h2 className="mb-3 text-[1.1rem] font-extrabold tracking-tight text-ink-900">
+                Sitenizin analiz raporunu alın
+              </h2>
+              <p className="mb-5 flex items-center gap-1.5 text-[0.78rem] text-ink-500">
+                <span className="text-[#16a34a]">●</span>
+                24 saat içinde e-postanıza gönderilir
+              </p>
+              <AuditForm />
             </div>
           </Reveal>
         </div>
@@ -192,51 +223,21 @@ export default function UcretsizAnalizPage() {
         </div>
       </section>
 
-      {/* Form */}
-      <section className="bg-surface px-6 py-16" id="form">
-        <div className="mx-auto max-w-[640px]">
-
-          {/* Trust signals above form */}
-          <Reveal>
-            <div className="mb-6 rounded-[10px] border border-accent-200 bg-accent-50 px-6 py-4">
-              <p className="text-[0.82rem] leading-[1.6] text-accent-800">
-                <span className="font-bold">Son analiz:</span> İstanbul&apos;lu bir e-ticaret sitesinde 23 kritik SEO hatası tespit edildi — rakibine kıyasla %40 daha düşük görünürlük nedeni bulundu.
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={80}>
-            <div className="mb-8 text-center">
-              <h2 className="mb-2.5 text-[1.375rem] font-extrabold tracking-tight text-ink-900">
-                Ücretsiz Analiz Talep Edin
-              </h2>
-              <p className="text-[0.9rem] text-ink-500">
-                Formu doldurun, 24 saat içinde dönüş yapıyoruz.
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <div className="rounded-[12px] border border-ink-200 bg-white p-10">
-              <AuditForm />
-            </div>
-          </Reveal>
-
-          {/* WhatsApp alternative */}
-          <Reveal delay={180}>
-            <div className="mt-6 flex flex-col items-center gap-2">
-              <p className="text-[0.8rem] text-ink-400">veya hızlı iletişim için</p>
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, web sitem için ücretsiz analiz talep etmek istiyorum.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-[8px] border border-ink-200 bg-white px-5 py-3 text-[0.85rem] font-semibold text-ink-700 hover:border-accent-300 hover:text-accent-700 transition-colors"
-              >
-                <MessageCircle size={16} />
-                WhatsApp ile Yazın
-              </a>
-            </div>
-          </Reveal>
+      {/* Alt CTA */}
+      <section className="bg-dark-500 px-6 py-12 text-center">
+        <div className="mx-auto max-w-[520px]">
+          <p className="mb-4 text-[0.9rem] text-ondark-muted">
+            Formu doldurmak yerine doğrudan konuşmayı tercih ederseniz:
+          </p>
+          <a
+            href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, web sitem için ücretsiz analiz talep etmek istiyorum.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-[8px] bg-[#25D366] px-6 py-3 text-[0.9rem] font-bold text-white transition-colors hover:bg-[#1eb955]"
+          >
+            <MessageCircle size={16} />
+            WhatsApp ile Yazın
+          </a>
         </div>
       </section>
     </>
