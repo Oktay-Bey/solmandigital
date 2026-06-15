@@ -21,7 +21,8 @@ export const siteConfig = {
   resendAudienceAudit: process.env.RESEND_AUDIENCE_AUDIT || "",
   resendAudienceConsultation: process.env.RESEND_AUDIENCE_CONSULTATION || "",
   resendAudienceSubscribers: process.env.RESEND_AUDIENCE_SUBSCRIBERS || "",
-  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/solmandigital/30min",
+  // BOM/zero-width temizliği → env değerinde ﻿ olduğunda "/en/﻿https:/calendly..." kırık route'unu önler
+  calendlyUrl: (process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/solmandigital/30min").replace(/[﻿​]/g, "").trim(),
   social: {
     linkedin: "https://linkedin.com/company/solmandigital",
     twitter: "https://twitter.com/solmandigital",

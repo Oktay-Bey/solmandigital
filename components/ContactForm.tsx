@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import { services } from "@/lib/data/services"
-import { trackEvent, getGclid } from "@/lib/analytics"
+import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -36,6 +36,7 @@ export default function ContactForm() {
       })
       if (res.ok) {
         trackEvent("form_submit", "lead", "contact")
+        trackLeadConversion("contact")
         router.push("/tesekkurler?type=consultation")
       } else {
         setState("error")

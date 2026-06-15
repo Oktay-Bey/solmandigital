@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
-import { trackEvent, getGclid } from "@/lib/analytics"
+import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -42,6 +42,7 @@ export default function ContactFormEn() {
       })
       if (res.ok) {
         trackEvent("form_submit", "lead", "contact-en")
+        trackLeadConversion("contact-en")
         router.push("/tesekkurler?type=contact-en")
       } else {
         setState("error")
