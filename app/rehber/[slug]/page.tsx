@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Fragment } from "react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowRight, ArrowLeft, Clock, CalendarDays, RefreshCw, ChevronRight } from "lucide-react"
@@ -172,8 +173,8 @@ export default async function RehberDetayPage({ params }: Props) {
 
         {/* ── Bölümler ─────────────────────────────────────────── */}
         {post.sections.map((section, i) => (
-          <>
-            <section key={i} className="mb-10">
+          <Fragment key={i}>
+            <section className="mb-10">
               <h2 className="mb-3.5 text-[1.2rem] font-bold tracking-tight text-ink-900">
                 {section.heading}
               </h2>
@@ -193,9 +194,8 @@ export default async function RehberDetayPage({ params }: Props) {
             </section>
 
             {/* Mid-article CTA: 3. bölümden sonra, yalnızca bölüm sayısı ≥5 ise */}
-            {i === 2 && post.sections.length >= 5 && (
+            {i === 2 && post.sections.length >= 4 && (
               <aside
-                key="mid-cta"
                 className="mb-10 flex flex-col gap-3 rounded-[10px] border border-accent-200 bg-accent-50 px-7 py-6 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div>
@@ -214,7 +214,7 @@ export default async function RehberDetayPage({ params }: Props) {
                 </Link>
               </aside>
             )}
-          </>
+          </Fragment>
         ))}
 
         {/* ── SSS (FAQ) — h3 hierarchy, AEO için şart ──────────── */}

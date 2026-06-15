@@ -4,6 +4,7 @@ import { ArrowRight, FileText, ShoppingCart, Bot } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import AILeadForm from "./AILeadForm"
 import Reveal from "@/components/Reveal"
+import RelatedGuides from "@/components/RelatedGuides"
 
 export const metadata: Metadata = {
   title: "AI Otomasyon Hizmeti — 3 Haftada Canlıya | Solman Digital İstanbul",
@@ -361,6 +362,13 @@ export default function AIOtomasyonPage() {
           </Reveal>
         </div>
       </section>
+
+      {/* İlgili Rehberler — içeriğe next-click, bounce ↓ */}
+      <RelatedGuides
+        category="yapay-zeka"
+        title="AI Otomasyonu Hakkında Rehberler"
+        intro="Otomasyon kararı vermeden önce, gerçek proje deneyiminden derlenen rehberlerimize göz atın."
+      />
 
       {/* Secondary CTA */}
       <section className="bg-dark-500 px-6 py-12 text-center">

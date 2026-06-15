@@ -2680,3 +2680,8 @@ export function getRelatedRehber(slug: string, limit = 3): RehberPost[] {
     .slice(0, limit)
     .map((x) => x.post)
 }
+
+// Belirli bir kategorideki rehberleri döndürür (landing → içerik iç linkleme için).
+export function getRehberByCategory(category: RehberCategory, limit = 3): RehberPost[] {
+  return rehberPosts.filter((p) => p.category === category).slice(0, limit)
+}
