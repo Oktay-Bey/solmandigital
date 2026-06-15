@@ -4,7 +4,7 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 3)
+**Son güncelleme:** 2026-06-16 (Iteration 4)
 **Veri penceresi:** Son 30 gün
 
 ---
@@ -93,6 +93,15 @@ ExitIntentPopup (global) artık `qualify_lead` atıyor → exit-intent lead'leri
 WhatsApp event adı `whatsapp_click` ile hizalandı; StickyCtaBar `cta_click`. Artık TÜM giriş
 noktaları (form / contact / exit-popup / whatsapp) doğru ve beacon ile ölçülüyor.
 **Sonuç:** Conversion measurement katmanı tamamlandı; bundan sonra gerçek CR iyileştirme.
+
+## 4d. Iteration 4 (tamamlandı, commit 68f5713) — Bekleyen CRO'yu canlıya alma
+Bitmiş ama commit edilmemiş conversion işi deploy edilmiyordu → /ai-otomasyon-hizmeti (#1 landing)
+eski versiyonla ölçülüyordu. Ship edildi: AILeadForm buton grid, ai+ucretsiz-analiz split hero,
+AuditForm firstName opsiyonel, TesekkurlerContent tek-atış (çift sayım önlendi), WhatsAppFloat event fix.
+**⚠️ Doğrulama gerek:** 24-48h içinde GA4'te `qualify_lead` > 0 görünmeli. Hâlâ 0 ise GA4 admin'de
+`qualify_lead` "key event" olarak kayıtlı mı + gtag yükleniyor mu derin debug gerekir.
+**Not:** Google Ads route.ts/campaigns.ts ve EMAIL-OTOMASYON.md hâlâ uncommitted — ayrı konu,
+karıştırılmadı.
 
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
