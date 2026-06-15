@@ -4,7 +4,7 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 2)
+**Son güncelleme:** 2026-06-16 (Iteration 3)
 **Veri penceresi:** Son 30 gün
 
 ---
@@ -87,6 +87,18 @@ CRO hedefi.
 ## 4b. Iteration 2 (tamamlandı, commit a290477)
 /fiyatlar: tier CTA'ları #fiyat-form'a kaydırır (cross-page friction kaldırıldı), risk-reversal
 güven şeridi, inline form değer başlığı + "bağlayıcı değil" copy ile çerçevelendi. Build yeşil.
+
+## 4c. Iteration 3 (tamamlandı, commit c709fd9) — Ölçüm bütünlüğü
+ExitIntentPopup (global) artık `qualify_lead` atıyor → exit-intent lead'leri Ads dönüşümü sayılır.
+WhatsApp event adı `whatsapp_click` ile hizalandı; StickyCtaBar `cta_click`. Artık TÜM giriş
+noktaları (form / contact / exit-popup / whatsapp) doğru ve beacon ile ölçülüyor.
+**Sonuç:** Conversion measurement katmanı tamamlandı; bundan sonra gerçek CR iyileştirme.
+
+## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
+PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
+canonical durum dosyası. Bu loop aynısını MONETIZATION-REPORT.md ile sürdürür. Monetization hattı:
+SEO trafiği → landing → form/qualify_lead → e-posta funnel → satış. Şu an darboğaz: landing bounce
+(%73-87) ve düşük CR (%0.7). Ölçüm artık doğru → sıradaki kaldıraç #1 trafik sayfasının CR'si.
 
 ## 5. Loop Notları
 - Mod: otonom, dinamik tempolu; sürekli çalışır, kısa aralık.
