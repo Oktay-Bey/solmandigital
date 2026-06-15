@@ -4,7 +4,7 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 4)
+**Son güncelleme:** 2026-06-16 (Iteration 5)
 **Veri penceresi:** Son 30 gün
 
 ---
@@ -102,6 +102,12 @@ AuditForm firstName opsiyonel, TesekkurlerContent tek-atış (çift sayım önle
 `qualify_lead` "key event" olarak kayıtlı mı + gtag yükleniyor mu derin debug gerekir.
 **Not:** Google Ads route.ts/campaigns.ts ve EMAIL-OTOMASYON.md hâlâ uncommitted — ayrı konu,
 karıştırılmadı.
+
+## 4e. Iteration 5 (tamamlandı, commit 06b20ce) — İçerik derinliği iç linkleme
+RelatedGuides component + getRehberByCategory helper. /ai-otomasyon-hizmeti'ye "yapay-zeka"
+rehber bloğu (next-click → bounce ↓, PV/kullanıcı ↑). rehber/[slug]: React key warning fix +
+mid-CTA eşiği 5→4. **Sıradaki:** RelatedGuides'ı diğer landing'lere yay (/fiyatlar→web-sitesi,
+/web-sitesi-yaptirmak, /saas-platform-gelistirme, /trendyol-entegrasyonu).
 
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
