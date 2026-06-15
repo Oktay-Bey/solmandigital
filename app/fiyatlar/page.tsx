@@ -86,7 +86,7 @@ const tiers: PricingTier[] = [
     ],
     notIncluded: ["Ödeme sistemi (ayrı paket)", "Blog veya CMS yönetimi"],
     cta: "Teklif Al",
-    ctaHref: "/iletisim",
+    ctaHref: "#fiyat-form",
     waMsg: "Merhaba, Web Sitesi paketi hakkında fiyat teklifi almak istiyorum (₺8.000 başlangıç).",
   },
   {
@@ -107,7 +107,7 @@ const tiers: PricingTier[] = [
     ],
     notIncluded: ["Ürün fotoğrafçılığı ve içerik yazımı", "Pazaryeri aylık bakım ücreti"],
     cta: "Teklif Al",
-    ctaHref: "/iletisim",
+    ctaHref: "#fiyat-form",
     waMsg: "Merhaba, E-Ticaret paketi hakkında fiyat teklifi almak istiyorum (₺20.000 başlangıç).",
   },
   {
@@ -125,7 +125,7 @@ const tiers: PricingTier[] = [
     ],
     notIncluded: ["Yeni e-ticaret sitesi geliştirme", "Pazaryeri hesap açılışı"],
     cta: "Teklif Al",
-    ctaHref: "/iletisim",
+    ctaHref: "#fiyat-form",
     waMsg: "Merhaba, Marketplace Entegrasyonu paketi hakkında fiyat teklifi almak istiyorum (₺8.000 başlangıç).",
   },
   {
@@ -145,7 +145,7 @@ const tiers: PricingTier[] = [
     ],
     notIncluded: ["Sunucu/cloud maliyetleri", "İçerik üretimi ve pazarlama"],
     cta: "Teklif Al",
-    ctaHref: "/iletisim",
+    ctaHref: "#fiyat-form",
     waMsg: "Merhaba, SaaS & AI paketi hakkında fiyat teklifi almak istiyorum (₺50.000 başlangıç).",
   },
 ]
@@ -209,9 +209,40 @@ export default function FiyatlarPage() {
               </div>
             </Reveal>
 
-            {/* Mini inline form */}
+            {/* Risk-reversal güven şeridi */}
+            <Reveal delay={340}>
+              <ul className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[0.78rem] text-ondark-muted">
+                {[
+                  "Sabit fiyat, sürpriz maliyet yok",
+                  "Kaynak kodu tamamen sizde",
+                  "İlk görüşme ücretsiz",
+                ].map((t) => (
+                  <li key={t} className="flex items-center gap-1.5">
+                    <CheckCircle2 size={13} className="text-[#4ade80]" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+
+            {/* Mini inline form — paket CTA'larının kaydığı hedef */}
             <Reveal delay={380}>
-              <FiyatlarLeadForm />
+              <div
+                id="fiyat-form"
+                className="mt-12 scroll-mt-24 rounded-[14px] border border-dark-50 bg-dark-400 p-6 text-left sm:p-8"
+              >
+                <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">
+                  Sana Özel Fiyat
+                </p>
+                <h2 className="mb-1.5 text-[1.1rem] font-extrabold tracking-tight text-white">
+                  30 saniyede net teklif alın
+                </h2>
+                <p className="mb-5 text-[0.8rem] leading-relaxed text-ondark-muted">
+                  Paketler başlangıç fiyatıdır — projenizin kapsamına göre net rakamı 24 saatte
+                  e-postanıza gönderiyoruz. Bağlayıcı değil.
+                </p>
+                <FiyatlarLeadForm />
+              </div>
             </Reveal>
           </div>
         </section>
@@ -282,13 +313,13 @@ export default function FiyatlarPage() {
                     </div>
                   )}
 
-                  <Link
+                  <a
                     href={tier.ctaHref}
                     className={`btn w-full ${tier.highlight ? "btn-primary" : "btn-outline-dark"}`}
                   >
                     {tier.cta}
                     <ArrowRight size={15} />
-                  </Link>
+                  </a>
                   <a
                     href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(tier.waMsg)}`}
                     target="_blank"
@@ -347,10 +378,10 @@ export default function FiyatlarPage() {
               <p className="mb-5 text-[0.875rem] text-ondark-muted">
                 Projeniz bu paketlere tam uymuyorsa özel fiyat talep edin.
               </p>
-              <Link href="/iletisim" className="btn btn-primary">
+              <a href="#fiyat-form" className="btn btn-primary">
                 Teklif Al
                 <ArrowRight size={16} />
-              </Link>
+              </a>
             </div>
           </div>
         </section>
