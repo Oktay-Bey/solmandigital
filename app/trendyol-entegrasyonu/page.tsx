@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/site-config"
 import TrendyolLeadForm from "./TrendyolLeadForm"
 import Reveal from "@/components/Reveal"
 import RelatedGuides from "@/components/RelatedGuides"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 export const metadata: Metadata = {
   title: "Trendyol API Entegrasyonu & Satıcı Paneli | Solman Digital",
@@ -144,14 +145,12 @@ export default function TrendyolEntegrasyonuPage() {
               <a href="#form" className="btn btn-primary">
                 Entegrasyon Teklifi Al <ArrowRight size={16} />
               </a>
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                source="trendyol_hero"
                 className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
               >
                 WhatsApp ile Yazın
-              </a>
+              </WhatsAppLink>
             </div>
           </Reveal>
         </div>

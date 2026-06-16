@@ -3,6 +3,7 @@ import { Search, Zap, BarChart3, CheckCircle2, Clock, Shield, MessageCircle } fr
 import { siteConfig } from "@/lib/site-config"
 import AuditForm from "./AuditForm"
 import Reveal from "@/components/Reveal"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 export const metadata: Metadata = {
   title: "Ücretsiz Web Sitesi SEO & Performans Analizi | Solman Digital",
@@ -229,15 +230,14 @@ export default function UcretsizAnalizPage() {
           <p className="mb-4 text-[0.9rem] text-ondark-muted">
             Formu doldurmak yerine doğrudan konuşmayı tercih ederseniz:
           </p>
-          <a
-            href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, web sitem için ücretsiz analiz talep etmek istiyorum.")}`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <WhatsAppLink
+            message="Merhaba, web sitem için ücretsiz analiz talep etmek istiyorum."
+            source="audit_inline"
             className="inline-flex items-center gap-2 rounded-[8px] bg-[#25D366] px-6 py-3 text-[0.9rem] font-bold text-white transition-colors hover:bg-[#1eb955]"
           >
             <MessageCircle size={16} />
             WhatsApp ile Yazın
-          </a>
+          </WhatsAppLink>
         </div>
       </section>
     </>

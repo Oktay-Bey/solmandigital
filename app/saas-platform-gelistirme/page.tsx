@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/site-config"
 import SaasLeadForm from "./SaasLeadForm"
 import Reveal from "@/components/Reveal"
 import RelatedGuides from "@/components/RelatedGuides"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 export const metadata: Metadata = {
   title: "SaaS Platform Geliştirme Türkiye — MVP'den Ürüne | Solman Digital",
@@ -125,14 +126,13 @@ export default function SaasPlatformGelistirmePage() {
               <a href="#form" className="btn btn-primary">
                 SaaS Proje Teklifi Al <ArrowRight size={16} />
               </a>
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, SaaS platform geliştirmek istiyorum, bilgi almak istiyorum.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                message="Merhaba, SaaS platform geliştirmek istiyorum, bilgi almak istiyorum."
+                source="saas_hero"
                 className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
               >
                 <MessageCircle size={15} /> WhatsApp ile Yazın
-              </a>
+              </WhatsAppLink>
             </div>
           </Reveal>
         </div>

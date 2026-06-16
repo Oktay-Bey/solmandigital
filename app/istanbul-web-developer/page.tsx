@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, X, MapPin, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import IstanbulDevLeadForm from "./IstanbulDevLeadForm"
 import Reveal from "@/components/Reveal"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 export const metadata: Metadata = {
   title: "İstanbul Web Developer — Beşiktaş Merkezli Next.js Uzmanı | Solman Digital",
@@ -159,14 +160,13 @@ export default function IstanbulWebDeveloperPage() {
               <a href="#form" className="btn btn-primary">
                 İletişime Geç <ArrowRight size={16} />
               </a>
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, İstanbul web geliştirme projesi hakkında bilgi almak istiyorum.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                message="Merhaba, İstanbul web geliştirme projesi hakkında bilgi almak istiyorum."
+                source="istanbul_dev_hero"
                 className="btn btn-outline-dark"
               >
                 <MessageCircle size={15} /> WhatsApp
-              </a>
+              </WhatsAppLink>
             </div>
           </Reveal>
         </div>
