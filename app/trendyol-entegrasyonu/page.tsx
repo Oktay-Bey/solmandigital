@@ -4,6 +4,7 @@ import { ArrowRight, Package, RefreshCw, AlertTriangle, CheckCircle } from "luci
 import { siteConfig } from "@/lib/site-config"
 import TrendyolLeadForm from "./TrendyolLeadForm"
 import Reveal from "@/components/Reveal"
+import RelatedGuides from "@/components/RelatedGuides"
 
 export const metadata: Metadata = {
   title: "Trendyol API Entegrasyonu & Satıcı Paneli | Solman Digital",
@@ -298,6 +299,8 @@ export default function TrendyolEntegrasyonuPage() {
           </div>
         </div>
       </section>
+
+      <RelatedGuides category={["trendyol", "e-ticaret"]} title="Trendyol & Entegrasyon Rehberleri" />
 
       {/* TicaretHub Cross-Promo */}
       <section className="border-t border-ink-200 bg-white px-6 py-14">

@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import SaasLeadForm from "./SaasLeadForm"
 import Reveal from "@/components/Reveal"
+import RelatedGuides from "@/components/RelatedGuides"
 
 export const metadata: Metadata = {
   title: "SaaS Platform Geliştirme Türkiye — MVP'den Ürüne | Solman Digital",
@@ -273,6 +274,8 @@ export default function SaasPlatformGelistirmePage() {
           </Link>
         </div>
       </section>
+
+      <RelatedGuides category={["saas", "karsilastirma", "web-sitesi"]} title="SaaS Geliştirme Hakkında Rehberler" />
 
       {/* TicaretHub — SaaS Örnek & Araçlar */}
       <section className="border-t border-ink-200 bg-white px-6 py-12">

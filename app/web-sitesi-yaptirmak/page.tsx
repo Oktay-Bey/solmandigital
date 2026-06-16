@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, X, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import WebSiteLeadForm from "./WebSiteLeadForm"
 import Reveal from "@/components/Reveal"
+import RelatedGuides from "@/components/RelatedGuides"
 
 export const metadata: Metadata = {
   title: "Web Sitesi Yaptırmak | Kurumsal Web Sitesi Fiyatları 2025 | Solman Digital",
@@ -351,6 +352,8 @@ export default function WebSitesiYaptirmakPage() {
           </div>
         </div>
       </section>
+
+      <RelatedGuides category={["web-sitesi", "karsilastirma"]} title="Web Sitesi Yaptırmadan Önce" />
 
       {/* TicaretHub Cross-Promo */}
       <section className="border-t border-ink-200 bg-white px-6 py-12">

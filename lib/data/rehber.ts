@@ -2681,7 +2681,23 @@ export function getRelatedRehber(slug: string, limit = 3): RehberPost[] {
     .map((x) => x.post)
 }
 
-// Belirli bir kategorideki rehberleri döndürür (landing → içerik iç linkleme için).
-export function getRehberByCategory(category: RehberCategory, limit = 3): RehberPost[] {
-  return rehberPosts.filter((p) => p.category === category).slice(0, limit)
+// Bir veya birden çok kategorideki rehberleri sırayla döndürür (landing → içerik iç linkleme).
+// Tek kategori ince (1 yazı) ise fallback kategorilerden tamamlanır; tekrarlar elenir.
+export function getRehberByCategory(
+  category: RehberCategory | RehberCategory[],
+  limit = 3
+): RehberPost[] {
+  const cats = Array.isArray(category) ? category : [category]
+  const seen = new Set<string>()
+  const out: RehberPost[] = []
+  for (const cat of cats) {
+    for (const p of rehberPosts) {
+      if (p.category === cat && !seen.has(p.slug)) {
+        seen.add(p.slug)
+        out.push(p)
+        if (out.length >= limit) return out
+      }
+    }
+  }
+  return out
 }

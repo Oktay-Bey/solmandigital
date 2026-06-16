@@ -365,7 +365,7 @@ export default function AIOtomasyonPage() {
 
       {/* İlgili Rehberler — içeriğe next-click, bounce ↓ */}
       <RelatedGuides
-        category="yapay-zeka"
+        category={["yapay-zeka", "e-ticaret"]}
         title="AI Otomasyonu Hakkında Rehberler"
         intro="Otomasyon kararı vermeden önce, gerçek proje deneyiminden derlenen rehberlerimize göz atın."
       />

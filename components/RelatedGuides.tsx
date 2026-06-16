@@ -4,7 +4,7 @@ import { getRehberByCategory } from "@/lib/data/rehber"
 import type { RehberCategory } from "@/lib/data/rehber"
 
 type Props = {
-  category: RehberCategory
+  category: RehberCategory | RehberCategory[]
   title?: string
   intro?: string
   limit?: number
