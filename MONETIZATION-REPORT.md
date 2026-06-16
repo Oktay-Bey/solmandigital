@@ -4,7 +4,23 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 13)
+**Son güncelleme:** 2026-06-16 (Iteration 14 — konsolidasyon)
+
+## 0. DEPLOY-HAZIR ÖZET (25 commit, build yeşil)
+13 iterasyonun monetization işi tamamlandı ve canlıya çıkmayı bekliyor:
+1. **Conversion ölçüm onarımı** — qualify_lead beacon transport (30 gündür kaybolan Ads sinyali),
+   contact/exit-popup dönüşümleri, tek-atış model, event-adı tutarlılığı.
+2. **CRO** — /fiyatlar (paket CTA→on-page form, güven şeridi), /ai + /ucretsiz-analiz split hero,
+   AILeadForm buton grid, AuditForm friction azaltma.
+3. **İçerik derinliği** — RelatedGuides (tüm ana landing + /fiyatlar + ~16 ilçe sayfası), çoklu
+   kategori fallback, rehber key-bug fix + mid-CTA eşiği.
+4. **WhatsApp ölçümü %100** — WhatsAppLink ile site geneli tıklama takibi (source bazlı).
+5. **Pipeline koruması** — email API rate limiting (spam/kota suistimali).
+6. **Veri bug** — Calendly BOM route fix.
+
+**Tek gate: kullanıcı.** (a) `git push origin master` onayı → 25 commit canlıya + Vercel deploy,
+(b) deploy sonrası GA4 `qualify_lead > 0` doğrulaması, (c) Google Ads OAuth re-auth (invalid_grant).
+Bunlar olmadan deploy-bağımsız yüksek-değer iş tükendi; loop maintenance/bekleme moduna geçti.
 
 > ⚠️ **DEPLOY BEKLİYOR:** Lokal `master`, `origin/master`'dan 12 commit ileride. Tüm bu
 > session'ın monetization işi (conversion fix'leri, CRO, RelatedGuides) **canlıda değil**.
