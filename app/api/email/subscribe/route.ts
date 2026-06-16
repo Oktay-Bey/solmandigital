@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
+import { rateLimit, getClientIp } from "@/lib/rate-limit"
 import { render } from "@react-email/render"
 import WelcomeEmail from "@/emails/WelcomeEmail"
 import { siteConfig } from "@/lib/site-config"
@@ -8,6 +9,13 @@ import type { SubscribePayload } from "@/lib/types/leads"
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(req: NextRequest) {
+  const rl = rateLimit(`email:subscribe:${getClientIp(req)}`, 5, 60_000)
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "Çok fazla istek gönderildi. Lütfen biraz sonra tekrar deneyin." },
+      { status: 429, headers: { "Retry-After": String(rl.retryAfter) } },
+    )
+  }
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const body = (await req.json()) as Partial<SubscribePayload>

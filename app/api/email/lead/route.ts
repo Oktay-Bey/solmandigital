@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
+import { rateLimit, getClientIp } from "@/lib/rate-limit"
 import { trackLead, uploadGoogleAdsConversion } from "@/lib/ga4"
 import { render } from "@react-email/render"
 import LeadConfirmEmail from "@/emails/LeadConfirmEmail"
@@ -80,6 +81,13 @@ function buildAdminHtml(data: LeadPayload): string {
 }
 
 export async function POST(req: NextRequest) {
+  const rl = rateLimit(`email:lead:${getClientIp(req)}`, 5, 60_000)
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "Çok fazla istek gönderildi. Lütfen biraz sonra tekrar deneyin." },
+      { status: 429, headers: { "Retry-After": String(rl.retryAfter) } },
+    )
+  }
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const body = (await req.json()) as Partial<LeadPayload> & { gclid?: string; utmSource?: string }
