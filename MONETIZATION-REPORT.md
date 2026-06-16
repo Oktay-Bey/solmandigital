@@ -4,7 +4,7 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 8)
+**Son güncelleme:** 2026-06-16 (Iteration 9)
 
 > ⚠️ **DEPLOY BEKLİYOR:** Lokal `master`, `origin/master`'dan 12 commit ileride. Tüm bu
 > session'ın monetization işi (conversion fix'leri, CRO, RelatedGuides) **canlıda değil**.
@@ -133,6 +133,11 @@ Kalite taraması: başka key-bug/img-alt yok, codebase temiz. WhatsAppLink clien
 oluşturuldu (whatsapp_click + source). Anasayfa + /fiyatlar inline WhatsApp anchor'ları geçirildi
 → WhatsApp lead kanalı artık ölçülüyor. **Sıradaki:** WhatsAppLink'i kalan landing'lere yay
 (ai, web-sitesi, saas, trendyol, istanbul, contact), sonra anasayfa hero inline form / sosyal kanıt.
+
+## 4i. Iteration 9 (tamamlandı, commit 83e2685) — WhatsAppLink yayılımı
+ucretsiz-analiz, istanbul-web-developer, web-sitesi-yaptirmak, saas, trendyol WhatsApp anchor'ları
+WhatsAppLink'e geçirildi. **Kalan wa.me (8):** contact, iletisim (kompleks blok), en/web-design,
+en/ai-automation-service, en/white-label, portfoy, hakkimizda, istanbul-local → sıradaki tick.
 
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
