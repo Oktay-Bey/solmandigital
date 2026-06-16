@@ -4,7 +4,7 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 12)
+**Son güncelleme:** 2026-06-16 (Iteration 13)
 
 > ⚠️ **DEPLOY BEKLİYOR:** Lokal `master`, `origin/master`'dan 12 commit ileride. Tüm bu
 > session'ın monetization işi (conversion fix'leri, CRO, RelatedGuides) **canlıda değil**.
@@ -161,9 +161,12 @@ contact, exit-popup, tek-atış), /fiyatlar + /ai CRO, RelatedGuides (tüm ana l
 ~16 ilçe), site geneli WhatsApp ölçümü.
 **Kullanıcı-gate'li:** deploy (push onayı), GA4 qualify_lead doğrulaması (deploy sonrası),
 Google Ads re-auth (OAuth).
-**Sıradaki deploy-bağımsız yüksek-değer (PROJECT.md Faz 2B):** (1) /api/email/* rate limiting
-(lead pipeline'ı spam/Brevo kota suistimalinden korur), (2) per-page OG görselleri, (3) görünür
-breadcrumb komponenti, (4) anasayfa hero inline lead capture CRO.
+**Sıradaki deploy-bağımsız yüksek-değer (PROJECT.md Faz 2B):** ~~(1) rate limiting~~ ✅ It.13,
+(2) per-page OG görselleri, (3) görünür breadcrumb komponenti, (4) anasayfa hero inline lead CRO.
+
+## 4n. Iteration 13 (tamamlandı, commit 31f8ced) — Email API rate limiting
+lib/rate-limit.ts (in-memory, 5 istek/60sn/IP) → lead/audit/contact/consultation/subscribe/popup
+korundu. Form spam + Brevo/Resend kota suistimali engellenir (429 + Retry-After).
 
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
