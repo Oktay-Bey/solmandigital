@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle, MessageCircle, Star } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 export const metadata: Metadata = {
   title: "Web Design & Development — Solman Digital",
@@ -142,8 +143,6 @@ const faqs = [
 ]
 
 export default function EnWebDesignPage() {
-  const waLink = `https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi, I'd like to discuss a website project.")}`
-
   return (
     <>
       <script
@@ -175,14 +174,13 @@ export default function EnWebDesignPage() {
               <a href="#contact" className="btn btn-primary">
                 Book Free Consultation <ArrowRight size={16} />
               </a>
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                message="Hi, I'd like to discuss a website project."
+                source="web_en_cta"
                 className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
               >
                 <MessageCircle size={15} /> WhatsApp
-              </a>
+              </WhatsAppLink>
             </div>
           </Reveal>
         </div>
@@ -253,9 +251,9 @@ export default function EnWebDesignPage() {
           <Reveal delay={200}>
             <p className="mt-6 text-center text-[0.8rem] text-ink-400">
               Need something more specific?{" "}
-              <a href={waLink} target="_blank" rel="noopener noreferrer" className="font-semibold text-accent-700 hover:underline">
+              <WhatsAppLink message="Hi, I'd like to discuss a website project." source="web_en_inline" className="font-semibold text-accent-700 hover:underline">
                 Let&apos;s talk →
-              </a>
+              </WhatsAppLink>
             </p>
           </Reveal>
         </div>
@@ -389,14 +387,13 @@ export default function EnWebDesignPage() {
               >
                 Book Free 30-Min Call <ArrowRight size={16} />
               </a>
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                message="Hi, I'd like to discuss a website project."
+                source="web_en_cta"
                 className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
               >
                 <MessageCircle size={15} /> WhatsApp
-              </a>
+              </WhatsAppLink>
             </div>
             <p className="mt-6 text-[0.8rem] text-ondark-muted">
               Or email us at{" "}

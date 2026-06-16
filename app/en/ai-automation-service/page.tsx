@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle, MessageCircle, Star, Zap, Bot, BarChart3, Clock } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 export const metadata: Metadata = {
   title: "AI Automation Service — Solman Digital",
@@ -160,8 +161,6 @@ const faqs = [
 ]
 
 export default function EnAIAutomationPage() {
-  const waLink = `https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi, I'd like to discuss an AI automation project.")}`
-
   return (
     <>
       <script
@@ -193,14 +192,13 @@ export default function EnAIAutomationPage() {
               <a href="#contact" className="btn btn-primary">
                 Get Free AI Audit <ArrowRight size={16} />
               </a>
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                message="Hi, I'd like to discuss an AI automation project."
+                source="ai_en_cta"
                 className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
               >
                 <MessageCircle size={15} /> WhatsApp
-              </a>
+              </WhatsAppLink>
             </div>
           </Reveal>
           <Reveal delay={400}>
@@ -319,9 +317,9 @@ export default function EnAIAutomationPage() {
           <Reveal delay={300}>
             <p className="mt-6 text-center text-[0.8rem] text-ink-400">
               Not sure which package fits?{" "}
-              <a href={waLink} target="_blank" rel="noopener noreferrer" className="font-semibold text-accent-700 hover:underline">
+              <WhatsAppLink message="Hi, I'd like to discuss an AI automation project." source="ai_en_inline" className="font-semibold text-accent-700 hover:underline">
                 Book a free AI audit →
-              </a>
+              </WhatsAppLink>
             </p>
           </Reveal>
         </div>
@@ -401,14 +399,13 @@ export default function EnAIAutomationPage() {
               >
                 Book Free AI Audit Call <ArrowRight size={16} />
               </a>
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                message="Hi, I'd like to discuss an AI automation project."
+                source="ai_en_cta"
                 className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
               >
                 <MessageCircle size={15} /> WhatsApp
-              </a>
+              </WhatsAppLink>
             </div>
             <p className="mt-6 text-[0.8rem] text-ondark-muted">
               Or email us at{" "}
