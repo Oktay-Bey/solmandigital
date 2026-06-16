@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { Search, Zap, BarChart3, CheckCircle2, Clock, Shield, MessageCircle } from "lucide-react"
+import Link from "next/link"
+import { Search, Zap, BarChart3, CheckCircle2, Clock, Shield, MessageCircle, Globe, Bot, ShoppingCart, ArrowRight } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import AuditForm from "./AuditForm"
 import Reveal from "@/components/Reveal"
@@ -104,20 +105,21 @@ export default function UcretsizAnalizPage() {
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mb-5 text-[clamp(1.75rem,4vw,2.5rem)] font-extrabold leading-tight tracking-tight text-white">
-                Web sitenizi ücretsiz analiz ediyoruz —{" "}
-                <span className="text-accent-700">24 saatte sonuç</span>
+                Sitenizdeki engelleri teşhis edip{" "}
+                <span className="text-accent-700">çözümü planlıyoruz</span>
               </h1>
             </Reveal>
             <Reveal delay={180}>
               <p className="mb-6 text-[0.95rem] leading-loose text-ondark-muted">
-                Analiz raporunuzda şunları bulacaksınız:
+                Ücretsiz analiz, çözümün ilk adımı: önce sitenizi inceliyoruz, ardından
+                hangi işin hangi sonucu getireceğini somut adımlarla planlıyoruz.
               </p>
               <ul className="flex flex-col gap-3">
                 {[
-                  "Kaybettiğiniz organik trafik kaynakları",
-                  "En kritik 3 teknik SEO hatası ve çözümü",
-                  "Sektörünüzdeki rakiple görünürlük karşılaştırması",
-                  "Core Web Vitals skoru ve sayfa hızı engelleri",
+                  "Kaybettiğiniz organik trafiğin nereden geri kazanılacağı",
+                  "En kritik 3 teknik hata ve hangi çözümle giderileceği",
+                  "Rakiple görünürlük farkı ve kapatma planı",
+                  "Sayfa hızı engelleri ve net iyileştirme adımları",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-[0.875rem] text-ondark-muted">
                     <span className="mt-0.5 shrink-0 text-[#4ade80]">✓</span>
@@ -147,11 +149,11 @@ export default function UcretsizAnalizPage() {
             <div className="rounded-[14px] border border-dark-50 bg-white p-8 shadow-xl">
               <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">Ücretsiz Analiz</p>
               <h2 className="mb-3 text-[1.1rem] font-extrabold tracking-tight text-ink-900">
-                Sitenizin analiz raporunu alın
+                Analizi başlatın, çözümü birlikte planlayalım
               </h2>
               <p className="mb-5 flex items-center gap-1.5 text-[0.78rem] text-ink-500">
                 <span className="text-[#16a34a]">●</span>
-                24 saat içinde e-postanıza gönderilir
+                24 saat içinde bulgular ve öncelikli adımlar e-postanıza gelir
               </p>
               <AuditForm />
             </div>
@@ -199,8 +201,77 @@ export default function UcretsizAnalizPage() {
         </div>
       </section>
 
-      {/* Nasıl İşler */}
+      {/* Analizden Sonra — hizmet köprüsü */}
       <section className="bg-white px-6 py-16">
+        <div className="mx-auto max-w-[1100px]">
+          <Reveal>
+            <p className="mb-2 text-center text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
+              Analizden Sonra
+            </p>
+            <h2 className="mb-3 text-center text-[1.375rem] font-extrabold tracking-tight text-ink-900">
+              Bulguları somut işe dönüştürüyoruz
+            </h2>
+            <p className="mx-auto mb-10 max-w-[620px] text-center text-[0.9rem] leading-relaxed text-ink-500">
+              Analiz, sorunu görmenizi sağlar. Ardından çözümü hangi hizmetle, hangi
+              sürede ve hangi sonuçla teslim edeceğimizi sabit fiyatla planlıyoruz.
+            </p>
+          </Reveal>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+            {[
+              {
+                icon: Globe,
+                title: "Site yavaş veya dönüştürmüyor",
+                desc: "Hızlı, SEO uyumlu kurumsal site veya dönüşüm odaklı yenileme ile trafiği müşteriye çeviriyoruz.",
+                cta: "Web Sitesi Geliştirme",
+                href: "/web-sitesi-yaptirmak",
+              },
+              {
+                icon: Bot,
+                title: "Manuel işler zaman yiyor",
+                desc: "İçerik, müşteri yanıtı ve tekrarlayan süreçleri AI otomasyonla devralıp ekibinizi serbest bırakıyoruz.",
+                cta: "AI Otomasyon Çözümleri",
+                href: "/ai-otomasyon-hizmeti",
+              },
+              {
+                icon: ShoppingCart,
+                title: "Satış kanalları dağınık",
+                desc: "E-ticaret kurulumu ve Trendyol/Hepsiburada entegrasyonuyla stok, sipariş ve satışı tek panele topluyoruz.",
+                cta: "E-Ticaret & Entegrasyon",
+                href: "/trendyol-entegrasyonu",
+              },
+            ].map((item, i) => (
+              <Reveal key={item.title} delay={i * 100}>
+                <div className="flex h-full flex-col rounded-[10px] border border-ink-200 bg-surface p-7">
+                  <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-[8px] border border-accent-200 bg-accent-50">
+                    <item.icon size={20} color="#9b1c1c" />
+                  </div>
+                  <h3 className="mb-2 text-[0.95rem] font-bold text-ink-900">{item.title}</h3>
+                  <p className="mb-5 flex-1 text-[0.85rem] leading-relaxed text-ink-500">{item.desc}</p>
+                  <Link
+                    href={item.href}
+                    className="inline-flex items-center gap-1.5 text-[0.82rem] font-bold text-accent-700 transition-colors hover:text-accent-900"
+                  >
+                    {item.cta}
+                    <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={150}>
+            <p className="mt-10 text-center text-[0.85rem] text-ink-500">
+              Tüm hizmetleri görmek isterseniz{" "}
+              <Link href="/hizmetler" className="font-bold text-accent-700 underline-offset-2 hover:underline">
+                hizmetler sayfamızı
+              </Link>{" "}
+              inceleyebilirsiniz.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Nasıl İşler */}
+      <section className="bg-surface px-6 py-16">
         <div className="mx-auto max-w-[760px]">
           <Reveal>
             <h2 className="mb-10 text-center text-[1.375rem] font-extrabold tracking-tight text-ink-900">

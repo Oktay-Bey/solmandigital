@@ -241,6 +241,7 @@ export interface AdGroupAdSummary {
   adGroupName: string;
   adId: string;
   adGroupResource: string;
+  status: number;          // 2=ENABLED 3=PAUSED
   finalUrls: string[];
   headlines: { text: string }[];
   descriptions: { text: string }[];
@@ -266,6 +267,7 @@ export async function listAdGroupAds(campaignId: string): Promise<AdGroupAdSumma
     adGroupName: String(row.ad_group?.name ?? ""),
     adId: String((row as unknown as { ad_group_ad: { ad: { id: unknown } } }).ad_group_ad?.ad?.id ?? ""),
     adGroupResource: String(row.ad_group?.resource_name ?? ""),
+    status: Number((row as unknown as { ad_group_ad: { status: number } }).ad_group_ad?.status ?? 0),
     finalUrls: ((row as unknown as { ad_group_ad: { ad: { final_urls: string[] } } }).ad_group_ad?.ad?.final_urls ?? []) as string[],
     headlines: ((row as unknown as { ad_group_ad: { ad: { responsive_search_ad: { headlines: { text: string }[] } } } }).ad_group_ad?.ad?.responsive_search_ad?.headlines ?? []).map((h: { text: string }) => ({ text: h.text ?? "" })),
     descriptions: ((row as unknown as { ad_group_ad: { ad: { responsive_search_ad: { descriptions: { text: string }[] } } } }).ad_group_ad?.ad?.responsive_search_ad?.descriptions ?? []).map((d: { text: string }) => ({ text: d.text ?? "" })),
@@ -324,6 +326,224 @@ export async function addSitelinks(
   }
 
   return results;
+}
+
+// Callout asset ekle (≤25 karakter her biri). REST mutate (UTF-8, Türkçe güvenli).
+export async function addCallouts(campaignId: string, callouts: string[]): Promise<number> {
+  const cid = process.env.GOOGLE_ADS_CUSTOMER_ID!;
+  const campaignResource = `customers/${cid}/campaigns/${campaignId}`;
+  let added = 0;
+  for (const text of callouts) {
+    const assetRes = await adsRestPost("mutate", {
+      mutateOperations: [{
+        assetOperation: { create: { calloutAsset: { calloutText: text } } },
+      }],
+    }) as { mutateOperationResponses: { assetResult: { resourceName: string } }[] };
+    const assetResource = assetRes.mutateOperationResponses[0].assetResult.resourceName;
+    await adsRestPost("mutate", {
+      mutateOperations: [{
+        campaignAssetOperation: { create: { campaign: campaignResource, asset: assetResource, fieldType: "CALLOUT" } },
+      }],
+    });
+    added++;
+  }
+  return added;
+}
+
+// Structured snippet asset ekle. header örn. "Hizmetler"/"Services", values ≤25 char.
+export async function addStructuredSnippet(campaignId: string, header: string, values: string[]): Promise<string> {
+  const cid = process.env.GOOGLE_ADS_CUSTOMER_ID!;
+  const campaignResource = `customers/${cid}/campaigns/${campaignId}`;
+  const assetRes = await adsRestPost("mutate", {
+    mutateOperations: [{
+      assetOperation: { create: { structuredSnippetAsset: { header, values } } },
+    }],
+  }) as { mutateOperationResponses: { assetResult: { resourceName: string } }[] };
+  const assetResource = assetRes.mutateOperationResponses[0].assetResult.resourceName;
+  await adsRestPost("mutate", {
+    mutateOperations: [{
+      campaignAssetOperation: { create: { campaign: campaignResource, asset: assetResource, fieldType: "STRUCTURED_SNIPPET" } },
+    }],
+  });
+  return assetResource;
+}
+
+// Mevcut ENABLED SITELINK assetlerini campaign_asset bağıyla listele
+export async function listSitelinks(campaignId: string): Promise<
+  { linkText: string; description1: string; description2: string; finalUrls: string[]; campaignAssetResource: string }[]
+> {
+  const customer = getCustomer();
+  const rows = await customer.query(`
+    SELECT campaign.id, campaign_asset.resource_name,
+      asset.sitelink_asset.link_text, asset.sitelink_asset.description1,
+      asset.sitelink_asset.description2, asset.final_urls
+    FROM campaign_asset
+    WHERE campaign.id='${campaignId}'
+      AND campaign_asset.field_type='SITELINK'
+      AND campaign_asset.status='ENABLED'
+  `) as unknown as Array<{
+    campaign_asset: { resource_name: string };
+    asset: { sitelink_asset: { link_text: string; description1: string; description2: string }; final_urls: string[] };
+  }>;
+  return rows.map((r) => ({
+    linkText: r.asset?.sitelink_asset?.link_text ?? "",
+    description1: r.asset?.sitelink_asset?.description1 ?? "",
+    description2: r.asset?.sitelink_asset?.description2 ?? "",
+    finalUrls: r.asset?.final_urls ?? [],
+    campaignAssetResource: r.campaign_asset?.resource_name ?? "",
+  }));
+}
+
+// ── RSA Türkçe karakter düzeltme + satış-niyeti güçlendirme ───────────────
+// Protobuf-dönemi reklamlarda Türkçe karakter kaybolmuş ("Ucretsiz", "Surec").
+// RSA metni değişmez → eski reklamı duraklat + düzeltilmiş yenisini oluştur.
+
+// Kelime/ibare bazlı düzeltme tablosu. Büyük/küçük harf duyarlı, en uzun eşleşme önce.
+const TR_FIX: Array<[RegExp, string]> = [
+  [/Ucretsiz/g, "Ücretsiz"], [/ucretsiz/g, "ücretsiz"],
+  [/Surecleri/g, "Süreçleri"], [/surecleri/g, "süreçleri"],
+  [/Surec/g, "Süreç"], [/surec/g, "süreç"], [/sureclerinizi/g, "süreçlerinizi"], [/sureclerini/g, "süreçlerini"],
+  [/Gelistirme/g, "Geliştirme"], [/gelistirme/g, "geliştirme"], [/Gelistir/g, "Geliştir"],
+  [/Canliya/g, "Canlıya"], [/canliya/g, "canlıya"],
+  [/Aclamasi/g, "Açıklaması"], [/Aciklamasi/g, "Açıklaması"], [/aciklamalari/g, "açıklamaları"], [/Aciklama/g, "Açıklama"],
+  [/Taahhutuz/g, "Taahhütsüz"], [/Taahhutsuz/g, "Taahhütsüz"], [/taahhutsuz/g, "taahhütsüz"],
+  [/Tasarrufu/g, "Tasarrufu"], [/Tasarruf/g, "Tasarruf"], // tasarruf zaten karaktersiz doğru
+  [/Yonetim/g, "Yönetim"], [/yonetim/g, "yönetim"], [/Yonetin/g, "Yönetin"], [/yonetin/g, "yönetin"],
+  [/Musteri/g, "Müşteri"], [/musteri/g, "müşteri"],
+  [/Cozelim/g, "Çözelim"], [/cozun/g, "çözün"], [/Cozum/g, "Çözüm"], [/cozum/g, "çözüm"], [/Cozumleri/g, "Çözümleri"],
+  [/Yavas/g, "Yavaş"], [/yavas/g, "yavaş"], [/Yavasladir/g, "Yavaşladı"], [/yavasladi/g, "yavaşladı"],
+  [/Bakimi/g, "Bakımı"], [/bakimi/g, "bakımı"],
+  [/Guncelleme/g, "Güncelleme"], [/guncelleme/g, "güncelleme"], [/Guncelle/g, "Güncelle"],
+  [/Baglantisi/g, "Bağlantısı"], [/baglantisi/g, "bağlantısı"], [/Baglanti/g, "Bağlantı"],
+  [/Siparis/g, "Sipariş"], [/siparis/g, "sipariş"],
+  [/Coklu/g, "Çoklu"], [/coklu/g, "çoklu"],
+  [/gercek/g, "gerçek"], [/Gercek/g, "Gerçek"], [/gerceklestir/g, "gerçekleştir"],
+  [/Yazilim/g, "Yazılım"], [/yazilim/g, "yazılım"], [/Yazilimi/g, "Yazılımı"],
+  [/Ozel/g, "Özel"], [/ozel/g, "özel"], [/Ozellestir/g, "Özelleştir"],
+  [/Sablonsuz/g, "Şablonsuz"], [/Sablon/g, "Şablon"], [/sablon/g, "şablon"],
+  [/Hizli/g, "Hızlı"], [/hizli/g, "hızlı"], [/Hiz\b/g, "Hız"], [/hizla/g, "hızla"], [/Hizla/g, "Hızla"],
+  [/Fiyati\b/g, "Fiyatı"], [/Fiyatlari/g, "Fiyatları"], [/fiyatlari/g, "fiyatları"],
+  [/Garantisi/g, "Garantisi"], // garanti doğru
+  [/Is Gun/g, "İş Gün"], [/is gun/g, "iş gün"], [/Is Surec/g, "İş Süreç"], [/is surec/g, "iş süreç"],
+  [/Istanbul/g, "İstanbul"], [/istanbul/g, "İstanbul"],
+  [/Iste\b/g, "İste"], [/Edin\b/g, "Edin"],
+  [/Entegrasyon/g, "Entegrasyon"], // doğru
+  [/Uzmani/g, "Uzmanı"], [/uzmani/g, "uzmanı"],
+  [/Turkiye/g, "Türkiye"], [/turkiye/g, "Türkiye"],
+  [/Uretimi/g, "Üretimi"], [/uretimi/g, "üretimi"], [/Uretim/g, "Üretim"], [/uretim/g, "üretim"],
+  [/Uygulama/g, "Uygulama"], // doğru
+  [/Icerik/g, "İçerik"], [/icerik/g, "içerik"],
+  [/Yuzde89/g, "%89"], [/Yuzde/g, "%"],
+  [/danismanlik/g, "danışmanlık"], [/Danismanlik/g, "Danışmanlık"], [/Danismanligi/g, "Danışmanlığı"],
+  [/baslamadan/g, "başlamadan"], [/baslayin/g, "başlayın"],
+  [/yanit/g, "yanıt"], [/Yanit/g, "Yanıt"],
+  [/Kurun\b/g, "Kurun"],
+  [/otomatize/g, "otomatize"], // doğru
+  // ── ikinci tur: kalan spesifik kelimeler ──
+  [/Canliya Alin/g, "Canlıya Alın"], [/\bAlin\b/g, "Alın"],
+  [/\bUrun\b/g, "Ürün"], [/\burun\b/g, "ürün"], [/Urunlerinizi/g, "Ürünlerinizi"],
+  [/\bIs Surec/g, "İş Süreç"], [/\bIs Gun/g, "İş Gün"], [/\bIs \b/g, "İş "],
+  [/Yazilimi Yaptirin/g, "Yazılımı Yaptırın"], [/Yaptirin/g, "Yaptırın"], [/Yaptir\b/g, "Yaptır"],
+  [/Firmasi/g, "Firması"], [/firmasi/g, "firması"],
+  [/Tasarim/g, "Tasarım"], [/tasarim/g, "tasarım"],
+  [/Yavasladir/g, "Yavaşladı"], [/Yavaslamis/g, "Yavaşlamış"],
+  [/Gununde/g, "Gününde"], [/gununde/g, "gününde"], [/Gunu\b/g, "Günü"], [/\bGun\b/g, "Gün"], [/Gunde\b/g, "Günde"],
+  [/Deglendirmesi/g, "Değerlendirmesi"], [/Degerlendirme/g, "Değerlendirme"],
+  [/Yazilimi\b/g, "Yazılımı"],
+  [/Senkronizasyonu/g, "Senkronizasyonu"], // doğru
+  // ── üçüncü tur: küçük harf / cümle içi kalanlar ──
+  [/\bis sürec/g, "iş süreç"], [/\bis gün/g, "iş gün"], [/\bis \b/g, "iş "],
+  [/zamanli/g, "zamanlı"], [/Zamanli/g, "Zamanlı"],
+  [/\balin\b/g, "alın"], [/\balın\b/g, "alın"],
+  [/g[üu]nunde/g, "gününde"], [/\bgunu\b/g, "günü"], [/\bgun\b/g, "gün"],
+];
+
+export function fixTurkish(text: string): string {
+  let out = text;
+  for (const [re, rep] of TR_FIX) out = out.replace(re, rep);
+  return out;
+}
+
+export interface RsaAdSnapshot {
+  adGroupResource: string;
+  adResourceName: string;   // customers/x/adGroupAds/agId~adId
+  finalUrls: string[];
+  headlines: string[];
+  descriptions: string[];
+}
+
+// Satış-niyeti güçlendirici aday başlıklar (≤30 char). Sadece yer varsa + zaten yoksa eklenir.
+const SALES_HEADLINES = ["Sabit Fiyatlı Net Teklif", "Net Fiyat, Gizli Maliyet Yok", "İlk Görüşme Ücretsiz"];
+
+// Bir RSA'yı düzeltir: Türkçe karakter + (yer varsa) satış başlığı. Değişiklik yoksa null döner.
+export function buildFixedRsa(ad: RsaAdSnapshot): { headlines: string[]; descriptions: string[] } | null {
+  const fixedH = ad.headlines.map(fixTurkish);
+  const fixedD = ad.descriptions.map(fixTurkish);
+  const changed =
+    fixedH.some((h, i) => h !== ad.headlines[i]) || fixedD.some((d, i) => d !== ad.descriptions[i]);
+
+  // Satış başlıklarını ekle (15 limiti + duplicate kontrolü)
+  const hset = new Set(fixedH.map((h) => h.toLocaleLowerCase("tr")));
+  let addedSales = false;
+  for (const sh of SALES_HEADLINES) {
+    if (fixedH.length >= 15) break;
+    if ([...sh].length > 30) continue;
+    if (hset.has(sh.toLocaleLowerCase("tr"))) continue;
+    fixedH.push(sh);
+    hset.add(sh.toLocaleLowerCase("tr"));
+    addedSales = true;
+  }
+  if (!changed && !addedSales) return null;
+  // limit guard
+  const okH = fixedH.filter((h) => [...h].length <= 30).slice(0, 15);
+  const okD = fixedD.filter((d) => [...d].length <= 90).slice(0, 4);
+  return { headlines: okH, descriptions: okD };
+}
+
+// Eskisini duraklat + düzeltilmiş yenisini oluştur — TEK atomik mutate.
+// Önce pause sonra create aynı işlemde olduğundan "ENABLED RSA per ad group"
+// limiti aşılmaz (3 limiti). REST mutate (UTF-8).
+export async function recreateRsa(ad: RsaAdSnapshot, fixed: { headlines: string[]; descriptions: string[] }): Promise<string> {
+  const res = await adsRestPost("mutate", {
+    mutateOperations: [
+      {
+        adGroupAdOperation: {
+          update: { resourceName: ad.adResourceName, status: "PAUSED" },
+          updateMask: "status",
+        },
+      },
+      {
+        adGroupAdOperation: {
+          create: {
+            adGroup: ad.adGroupResource,
+            status: "ENABLED",
+            ad: {
+              finalUrls: ad.finalUrls,
+              responsiveSearchAd: {
+                headlines: fixed.headlines.map((text) => ({ text })),
+                descriptions: fixed.descriptions.map((text) => ({ text })),
+              },
+            },
+          },
+        },
+      },
+    ],
+  }) as { mutateOperationResponses: Array<{ adGroupAdResult?: { resourceName: string } }> };
+  // create işlemi ikinci sırada → son adGroupAdResult yeni reklamdır.
+  const results = res.mutateOperationResponses.filter((r) => r.adGroupAdResult);
+  return results[results.length - 1]?.adGroupAdResult?.resourceName ?? "";
+}
+
+// Campaign_asset bağ(lar)ını kaldır (asset silinmez; yalnızca kampanyadan ayrılır).
+// REST mutate (UTF-8) — protobuf Türkçe karakter sorununu by-pass eder.
+export async function removeCampaignAssets(campaignAssetResources: string[]): Promise<number> {
+  if (!campaignAssetResources.length) return 0;
+  await adsRestPost("mutate", {
+    mutateOperations: campaignAssetResources.map((rn) => ({
+      campaignAssetOperation: { remove: rn },
+    })),
+  });
+  return campaignAssetResources.length;
 }
 
 // Language constant ID'leri: İngilizce=1000, Türkçe=1037, Rusça=1031, Sırpça=1035

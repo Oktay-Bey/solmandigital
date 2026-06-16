@@ -69,6 +69,23 @@ export default function HizmetlerPage() {
               Sektörünüzü, iş sürecinizi ve hedeflerinizi dinleyerek başlıyoruz — ardından tam ihtiyacınıza
               göre tasarlanmış çözümü sıfırdan inşa ediyoruz. Projenizi yapan uzmanla, doğrudan.
             </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href="/fiyatlar" className="btn btn-primary">
+                Sabit Fiyatlı Teklif Alın
+                <ArrowRight size={16} />
+              </Link>
+              <Link href="/ucretsiz-analiz" className="btn btn-outline-dark">
+                Ücretsiz Analiz
+              </Link>
+            </div>
+            <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.78rem] text-ondark-muted">
+              {["Sabit fiyat, sürpriz maliyet yok", "Kaynak kodu sizde", "İlk görüşme ücretsiz"].map((t) => (
+                <li key={t} className="flex items-center gap-1.5">
+                  <span className="text-[#4ade80]">✓</span>
+                  {t}
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </section>

@@ -87,14 +87,29 @@ export default function AuditForm() {
         />
       </div>
 
-      {/* Opsiyonel detaylar */}
+      {/* Niyet nitelendirme — görünür ama opsiyonel */}
+      <div>
+        <label htmlFor="serviceInterest" className={labelCls}>Analiz sonrası en çok hangi konuda destek istersiniz?</label>
+        <select
+          id="serviceInterest" name="serviceInterest"
+          value={form.serviceInterest} onChange={handleChange}
+          className="input cursor-pointer text-[16px]"
+        >
+          <option value="">Seçin (opsiyonel)</option>
+          {services.map((s) => (
+            <option key={s.slug} value={s.title}>{s.title}</option>
+          ))}
+        </select>
+      </div>
+
+      {/* Opsiyonel detay */}
       <div>
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
           className="flex w-full items-center justify-between rounded-[8px] border border-ink-200 bg-surface px-4 py-3 text-[0.8rem] font-semibold text-ink-600 hover:border-ink-300 transition-colors"
         >
-          <span>Detay eklemek ister misiniz? (opsiyonel)</span>
+          <span>Sorununuzu kısaca anlatmak ister misiniz? (opsiyonel)</span>
           <ChevronDown
             size={16}
             className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
@@ -103,20 +118,6 @@ export default function AuditForm() {
 
         {expanded && (
           <div className="mt-3 flex flex-col gap-4 rounded-[8px] border border-ink-200 bg-surface px-4 py-4">
-            <div>
-              <label htmlFor="serviceInterest" className={labelCls}>İlgilendiğiniz Hizmet</label>
-              <select
-                id="serviceInterest" name="serviceInterest"
-                value={form.serviceInterest} onChange={handleChange}
-                className="input cursor-pointer text-[16px]"
-              >
-                <option value="">Hizmet seçin (opsiyonel)</option>
-                {services.map((s) => (
-                  <option key={s.slug} value={s.title}>{s.title}</option>
-                ))}
-              </select>
-            </div>
-
             <div>
               <label htmlFor="currentProblem" className={labelCls}>Mevcut Sorunuz Nedir?</label>
               <textarea

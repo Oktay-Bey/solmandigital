@@ -15,10 +15,10 @@ const contentMap = {
   },
   audit: {
     title: "Analiz Talebiniz Alındı!",
-    body: "Sitenizi incelemeye başladık. 24 saat içinde detaylı raporu e-posta adresinize göndereceğiz.",
-    nextTitle: "Daha Hızlı İlerleyin",
-    nextDesc: "Raporu beklemeden 30 dakikalık ücretsiz teknik danışmanlık seansı rezervasyonu yapın.",
-    nextCta: "Danışmanlık Rezervasyonu Yap",
+    body: "Sitenizi incelemeye başladık. 24 saat içinde bulgular ve öncelikli adımları e-posta adresinize göndereceğiz.",
+    nextTitle: "Sıradaki Adım",
+    nextDesc: "Bulguları beklemeden konuşalım: 30 dakikalık ücretsiz görüşmede çözümü ve sabit fiyat teklifini birlikte netleştirelim.",
+    nextCta: "Ücretsiz Görüşme Planla",
     nextHref: "/danismanlik",
   },
   consultation: {

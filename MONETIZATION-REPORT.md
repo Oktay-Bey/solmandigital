@@ -204,6 +204,65 @@ list of, free download, meaning, tutorials). Çift-anlamlılar (best/platform/ai
 ayrı kampanya/white-label funnel'a bölme; kanıtlanmış TR terimleri için phrase/exact + ayrı ad group.
 **İzle:** önümüzdeki günlerde boşa harcama düşmeli + (ölçüm fix'iyle) dönüşümler kaydolmaya başlamalı.
 
+## 7. "Ücretsiz Analiz" → Hizmet Talebi Optimizasyonu (2026-06-16, It.16)
+**Asset verisi (30g, canlı):** Sitelink tıkları — Fiyatlar 219 / **Ücretsiz Analiz 212** / Projelerimiz 206 /
+Hizmetlerimiz 180. En çok tıklanan RSA başlık "Ücretsiz Otomasyon Analizi" (122), açıklama "...Ücretsiz
+analiz alın" (147). "Ücretsiz analiz" hesabın #1 tık mıknatısı.
+**Teşhis:** `/ucretsiz-analiz` sadece "24 saatte bedava rapor" vaat ediyordu — ödemeli hizmete köprü yok,
+0 ölçülen dönüşüm. Yüksek-niyetli/maliyetli trafik "bedavacı rapor" çerçevesinde sızıyordu.
+**Karar (kullanıcı):** (1) trafiği hizmete kaydır, (2) site + Ads birlikte.
+**UYGULANDI ✅ — Site:** `/ucretsiz-analiz` "bedava rapor" → "teşhis + çözüm planı" olarak yeniden çerçevelendi;
+"Analizden Sonra" hizmet köprüsü bölümü (web / AI otomasyon / e-ticaret kartları + iç link); AuditForm
+hizmet-niyeti alanı görünür yapıldı (opsiyonel, friction düşük); `/tesekkurler?type=audit` copy'si sabit
+fiyat teklifi çerçevesine çekildi. Build yeşil.
+**UYGULANDI ✅ — Ads (canlı):** Kampanya 23914856579 sitelink seti **Türkçe karakterle** yeniden kuruldu
+(eski 4 sitelink karaktersizdi: "Ucretsiz Analiz" → **"Ücretsiz Analiz"**). 6 sitelink: Ücretsiz Analiz
+("Önce analiz, sonra çözüm planı" — hizmet-köprüleyen), Fiyatlar, Hizmetlerimiz, Projelerimiz + YENİ
+**AI Otomasyon** (→/ai-otomasyon-hizmeti), **Web Sitesi** (→/web-sitesi-yaptirmak). Eski 4 karaktersiz
+bağ kaldırıldı. REST mutate (UTF-8) ile — protobuf Türkçe karakter sorunu by-pass edildi.
+**Yeni altyapı:** `lib/google-ads/campaigns.ts` → `listSitelinks` + `removeCampaignAssets`;
+`/api/google-ads/campaigns/[id]/sitelinks/rebalance` (dry-run varsayılan, `?apply=true` canlı yazar).
+**Not (ağ):** Standalone node/tsx scripti bu ortamdan `googleads.googleapis.com`'a ulaşamıyor (DNS blok) →
+Ads mutasyonları dev server API route üzerinden çalıştırıldı.
+**Açık (v2 backlog):** RSA başlık/açıklamalarını satış-niyetine kaydırma (B2 — henüz yapılmadı);
+diğer kampanyaların sitelinkleri de Türkçe karaktersiz olabilir → kontrol.
+**İzle (24-72h):** sitelink tık dağılımı "ücretsiz" tek-kanaldan hizmet sayfalarına yayılmalı;
+GA4 `qualify_lead > 0`; /fiyatlar + /ai + /web-sitesi sayfalarına nitelikli trafik artmalı.
+
+## 8. v2 Otonom Optimizasyon (2026-06-16, It.17)
+Kullanıcı otonom yetki verdi (asset/keyword düzeyi; bütçe/yayın/silme hariç — bunlar sorulur).
+**v2-1 (asset dil denetimi):** MK kampanyası sitelinkleri temiz İngilizce; ana TR v1'de düzeltilmişti. Ek iş yok.
+**v2-2 (RSA Türkçe + satış-niyeti) UYGULANDI ✅:** Ana kampanyanın TÜM aktif RSA reklamları (11 reklam, 8 ENABLED
+TR ad group) Türkçe karaktersizdi ("Ucretsiz", "Surec", "Canliya", "Gelistirme", "Tasarim"). RSA metni değişmez →
+düzeltilmiş yeni reklam + eskisini PAUSED yöntemi (atomik tek-mutate, ENABLED-RSA-per-adgroup limiti aşılmaz).
+`fixTurkish()` kelime-bazlı düzeltme tablosu + 3 satış başlığı eklendi ("Sabit Fiyatlı Net Teklif",
+"Net Fiyat, Gizli Maliyet Yok", "İlk Görüşme Ücretsiz"). İngilizce ad group (/en/) atlandı.
+**Doğrulama:** idempotent (recreate=0), tüm ENABLED reklamlar temiz. Eski 11 reklam PAUSED.
+**Yeni kod:** `fixTurkish`, `buildFixedRsa`, `recreateRsa`, `listAdGroupAds`+status (campaigns.ts);
+`/api/google-ads/campaigns/[id]/rsa-fix` route (dry-run + ?apply=true).
+**Bulgu (kullanıcı onayı gerekir — guardrail):** Kampanyada ~7 PAUSED legacy duplicate ad group var
+(199934263169 "AI Otomasyon" dup, 202910299371 "Marka" dup, "TR Test Node" 195942672423,
+"Problem ve Aci Nokta" 199934409249, "Rakip Karsilastirma" 202909321891, "Trendyol" 197279172637,
+"Web Sitesi Yaptirma" 194441505502). Bunlar SERVE ETMİYOR (ad group paused) → kullanıcıya görünmez.
+İçlerindeki karaktersiz reklamlar zararsız ama hesap hijyeni için silinebilir (ad group silme = onay gerekir).
+**v2-3 (search-term ek negatif) UYGULANDI ✅:** Mevcut 173 negatif vardı (memory'deki "22" eskiymiş).
+Search-term verisinde hâlâ sızan niyetsiz İngilizce sorgular için 24 yeni güvenli broad negatif eklendi
+(internet of things, ai systems, it automation, erp, business intelligence, retail innovation,
+accounts payable/receivable, predictive maintenance, gohighlevel, mangoai, level ai, modern ai, vb.).
+Riskli 6 over-broad ("best ai", "ai tools", "ai agent" vb. — EN buyer-intent ad group'u bloklayabilir)
+eklendikten sonra geri alındı. EN "ai automation consulting" buyer-term korundu.
+**v2-4 (callout + structured snippet) UYGULANDI ✅:** Hesapta hiç yoktu. 6 callout eklendi
+("Sabit Fiyat Garantisi", "Kaynak Kodu Sizde", "İstanbul Yazılım Ofisi", "5-10 İş Gününde Teslim",
+"İlk Görüşme Ücretsiz", "Doğrudan Uzman Erişimi") + structured snippet (Services: Web Sitesi, AI Otomasyon,
+E-Ticaret, SaaS Platform, Trendyol Entegrasyonu, SEO). Reklam alanı büyür, CTR + hizmet kapsamı sinyali.
+Yeni kod: `addCallouts`, `addStructuredSnippet` (campaigns.ts), `/api/google-ads/campaigns/[id]/extra-assets` route.
+**v2-5 (hedef sayfa CRO) UYGULANDI ✅:** /fiyatlar (%87 bounce) + /ai-otomasyon-hizmeti (%82) v1'de zaten
+optimize edilmiş ve yeni reklam copy'siyle (Sabit Fiyat/İlk Görüşme Ücretsiz) message-match ediyor → dokunulmadı.
+/hizmetler (yeni sitelink hedefi, 180 tık) hero'sunda above-the-fold CTA YOKTU (ilk aksiyon sayfa sonundaydı +
+TicaretHub off-site link) → hero'ya "Sabit Fiyatlı Teklif" + "Ücretsiz Analiz" CTA çifti + güven şeridi eklendi.
+**Build:** her adımda yeşil. **İzle (24-72h):** callout/snippet CTR etkisi; negatif sonrası İngilizce sızıntı düşüşü;
+RSA Türkçe düzeltmesi sonrası kalite/CTR; sitelink+hizmet sayfası tık dağılımı.
+
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
 canonical durum dosyası. Bu loop aynısını MONETIZATION-REPORT.md ile sürdürür. Monetization hattı:
