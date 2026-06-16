@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { updateCampaignStatus, deleteCampaign, updateCampaignBudget, addAdGroupsToCampaign, listAdGroups, deleteAdGroup, addLanguageTargets } from "@/lib/google-ads/campaigns";
+import { updateCampaignStatus, deleteCampaign, updateCampaignBudget, addAdGroupsToCampaign, listAdGroups, deleteAdGroup, addLanguageTargets, setDeviceBidModifier, setGeoTargetType } from "@/lib/google-ads/campaigns";
 import type { AdGroupInput } from "@/lib/google-ads/campaigns";
 
 // GET /api/google-ads/campaigns/[resourceId] — ad group listesi
@@ -33,11 +33,13 @@ export async function PATCH(
     const rawBody = await req.arrayBuffer();
     const body = JSON.parse(new TextDecoder("utf-8").decode(rawBody));
     console.log("[PATCH] first headline:", body?.adGroups?.[0]?.headlines?.[0]);
-    const { status, dailyBudgetTL, adGroups, languageIds } = body as {
+    const { status, dailyBudgetTL, adGroups, languageIds, deviceBidModifiers, geoTargetType } = body as {
       status?: string;
       dailyBudgetTL?: number;
       adGroups?: AdGroupInput[];
       languageIds?: number[];
+      deviceBidModifiers?: { device: "MOBILE" | "DESKTOP" | "TABLET"; bidModifier: number }[];
+      geoTargetType?: "PRESENCE" | "PRESENCE_OR_INTEREST";
     };
 
     if (status) {
@@ -53,6 +55,16 @@ export async function PATCH(
 
     if (languageIds?.length) {
       await addLanguageTargets(campaignId, languageIds);
+    }
+
+    if (geoTargetType) {
+      await setGeoTargetType(campaignId, geoTargetType);
+    }
+
+    if (deviceBidModifiers?.length) {
+      for (const dbm of deviceBidModifiers) {
+        await setDeviceBidModifier(campaignId, dbm.device, dbm.bidModifier);
+      }
     }
 
     if (adGroups?.length) {

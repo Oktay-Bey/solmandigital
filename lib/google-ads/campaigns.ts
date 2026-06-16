@@ -344,6 +344,41 @@ export async function addLanguageTargets(campaignId: string, languageIds: number
   }
 }
 
+// Device types: MOBILE, DESKTOP, TABLET
+// bidModifier: 0.1–4.0 (0.3 = -70%, 0.5 = -50%, 1.0 = unchanged, 1.5 = +50%)
+export async function setDeviceBidModifier(campaignId: string, deviceType: "MOBILE" | "DESKTOP" | "TABLET", bidModifier: number): Promise<void> {
+  const cid = process.env.GOOGLE_ADS_CUSTOMER_ID!;
+  await adsRestPost("mutate", {
+    mutateOperations: [{
+      campaignCriterionOperation: {
+        create: {
+          campaign: `customers/${cid}/campaigns/${campaignId}`,
+          device: { type: deviceType },
+          bidModifier,
+        },
+      },
+    }],
+  });
+  console.log("[google-ads] Device bid modifier set:", deviceType, bidModifier, "for campaign", campaignId);
+}
+
+// Konum hedefleme tipi: "PRESENCE" (yalnızca fiziksel olarak konumda olanlar) veya
+// "PRESENCE_OR_INTEREST" (konuma ilgi duyanlar da). Düşük bütçede PRESENCE, parayı gerçek
+// yerel alıcılara yoğunlaştırıp "interest" kaynaklı global trafik israfını keser.
+export async function setGeoTargetType(
+  campaignId: string,
+  positiveType: "PRESENCE" | "PRESENCE_OR_INTEREST" = "PRESENCE"
+): Promise<void> {
+  const customer = getCustomer();
+  // PositiveGeoTargetType enum: PRESENCE_OR_INTEREST=5, PRESENCE=7
+  const value = positiveType === "PRESENCE" ? 7 : 5;
+  await customer.campaigns.update([{
+    resource_name: `customers/${process.env.GOOGLE_ADS_CUSTOMER_ID}/campaigns/${campaignId}`,
+    geo_target_type_setting: { positive_geo_target_type: value as unknown as number },
+  }]);
+  console.log("[google-ads] Geo target type set:", positiveType, "for campaign", campaignId);
+}
+
 export async function updateCampaignStatus(campaignId: string, status: "ENABLED" | "PAUSED"): Promise<void> {
   const customer = getCustomer();
   await customer.campaigns.update([{
