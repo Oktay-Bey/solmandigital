@@ -19,8 +19,16 @@
 6. **Veri bug** — Calendly BOM route fix.
 
 **DEPLOY EDİLDİ ✅** (2026-06-16, commit 6b34a21 origin/master'a push edildi → Vercel auto-deploy).
-Kalan gate: (b) deploy sonrası 24-48h GA4 `qualify_lead > 0` doğrulaması (It.1 fix'inin kanıtı),
-(c) Google Ads OAuth re-auth (invalid_grant — koddan çözülemez, kullanıcı yapmalı).
+Kalan gate: (b) deploy sonrası 24-48h GA4 `qualify_lead > 0` doğrulaması (It.1 fix'inin kanıtı).
+
+**Google Ads re-auth ÇÖZÜLDÜ ✅** (It.15): eksik `/api/google-ads/callback` route'u eklendi
+(commit bda4fb4), yeni refresh_token .env.local'e uygulandı, Ads API doğrulandı (4 kampanya).
+Not: Ads = OAuth (service account Ads API'de çalışmaz); GA4 = service account. Mevcut kurulum doğru.
+**Kullanıcı aksiyonu:** refresh_token Vercel env'ine de eklenecek (prod).
+**Ads veri (7g):** tek aktif kampanya "Arama 2025" — 689 TL, 256 tık, %7.2 CTR, 0 dönüşüm
+(ölçüm+CRO fix'i bugün canlıya çıktı → ileriye dönük düzelmeli).
+**Sıradaki loop işi (Ads açıldı):** dönüşümler birikince search-term/negative keyword optimizasyonu,
+Ads conversion action import teyidi.
 
 > ⚠️ **DEPLOY BEKLİYOR:** Lokal `master`, `origin/master`'dan 12 commit ileride. Tüm bu
 > session'ın monetization işi (conversion fix'leri, CRO, RelatedGuides) **canlıda değil**.
