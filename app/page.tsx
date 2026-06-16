@@ -6,6 +6,7 @@ import ServiceCard from "@/components/ServiceCard"
 import Testimonials from "@/components/Testimonials"
 import SocialProofCounters from "@/components/SocialProofCounters"
 import Reveal from "@/components/Reveal"
+import WhatsAppLink from "@/components/WhatsAppLink"
 import { siteConfig } from "@/lib/site-config"
 
 export const metadata: Metadata = {
@@ -247,14 +248,13 @@ export default function HomePage() {
               <Link href="/iletisim" className="btn btn-primary">
                 Projenizi Anlatalım <ArrowRight size={16} />
               </Link>
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, proje hakkında bilgi almak istiyorum.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                message="Merhaba, proje hakkında bilgi almak istiyorum."
+                source="home_hero"
                 className="btn btn-outline-dark"
               >
                 <MessageCircle size={15} /> WhatsApp
-              </a>
+              </WhatsAppLink>
             </div>
           </div>
 
@@ -549,14 +549,13 @@ export default function HomePage() {
             <Link href="/iletisim" className="btn btn-primary !px-8">
               Teklif Al <ArrowRight size={16} />
             </Link>
-            <a
-              href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, proje hakkında bilgi almak istiyorum.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <WhatsAppLink
+              message="Merhaba, proje hakkında bilgi almak istiyorum."
+              source="home_final_cta"
               className="btn btn-outline-dark !px-8"
             >
               <MessageCircle size={15} /> WhatsApp
-            </a>
+            </WhatsAppLink>
           </div>
         </div>
       </section>

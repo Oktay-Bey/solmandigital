@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle2, X, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
 import RelatedGuides from "@/components/RelatedGuides"
+import WhatsAppLink from "@/components/WhatsAppLink"
 import FiyatlarLeadForm from "./FiyatlarLeadForm"
 
 export const metadata: Metadata = {
@@ -163,14 +164,13 @@ export default function FiyatlarPage() {
         <p className="text-[0.78rem] leading-tight text-ondark-muted">
           Hızlı fiyat almak<br />ister misiniz?
         </p>
-        <a
-          href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, fiyat teklifi almak istiyorum.")}`}
-          target="_blank"
-          rel="noopener noreferrer"
+        <WhatsAppLink
+          message="Merhaba, fiyat teklifi almak istiyorum."
+          source="fiyat_sticky"
           className="btn btn-primary shrink-0 py-2 text-[0.82rem]"
         >
           <MessageCircle size={14} /> WhatsApp
-        </a>
+        </WhatsAppLink>
       </div>
 
       <main className="min-h-screen bg-dark-500 pb-20 sm:pb-0">
@@ -199,14 +199,13 @@ export default function FiyatlarPage() {
                   Ücretsiz Kapsam Görüşmesi
                   <ArrowRight size={16} />
                 </Link>
-                <a
-                  href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, fiyat hakkında bilgi almak istiyorum.")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <WhatsAppLink
+                  message="Merhaba, fiyat hakkında bilgi almak istiyorum."
+                  source="fiyat_hero"
                   className="btn btn-outline-dark"
                 >
                   <MessageCircle size={15} /> WhatsApp
-                </a>
+                </WhatsAppLink>
               </div>
             </Reveal>
 
@@ -321,14 +320,13 @@ export default function FiyatlarPage() {
                     {tier.cta}
                     <ArrowRight size={15} />
                   </a>
-                  <a
-                    href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(tier.waMsg)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <WhatsAppLink
+                    message={tier.waMsg}
+                    source="fiyat_tier"
                     className="mt-2 flex items-center justify-center gap-2 text-[0.78rem] font-medium text-ondark-muted hover:text-white transition-colors"
                   >
                     <MessageCircle size={13} /> Bu paketi istiyorum
-                  </a>
+                  </WhatsAppLink>
                 </div>
               </Reveal>
             ))}
@@ -343,14 +341,13 @@ export default function FiyatlarPage() {
                 <p className="text-[0.875rem] text-ondark-muted">
                   Hızlı karar vermek ister misiniz?
                 </p>
-                <a
-                  href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, fiyat hakkında bilgi almak istiyorum.")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <WhatsAppLink
+                  message="Merhaba, fiyat hakkında bilgi almak istiyorum."
+                  source="fiyat_inline"
                   className="btn btn-outline-dark shrink-0 whitespace-nowrap text-[0.8rem]"
                 >
                   <MessageCircle size={14} /> WhatsApp&apos;tan yazın
-                </a>
+                </WhatsAppLink>
               </div>
             </Reveal>
           </div>
