@@ -4,6 +4,7 @@ import { ArrowRight, MessageCircle, Mail, Clock, CheckCircle2, Shield } from "lu
 import ContactFormEn from "@/components/ContactFormEn"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 export const metadata: Metadata = {
   title: "Contact — Let's Discuss Your Project | Solman Digital",
@@ -103,10 +104,8 @@ export default function ContactPage() {
           <div className="flex flex-col gap-4">
             {/* WhatsApp */}
             <Reveal delay={100}>
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace("+", "")}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                source="contact_card"
                 className="block rounded-[10px] border border-[#166534] bg-[#0d1f13] p-6"
               >
                 <div className="mb-3 flex items-center gap-3">
@@ -127,7 +126,7 @@ export default function ContactPage() {
                   <span className="text-[0.85rem] font-bold text-[#4ade80]">{siteConfig.whatsappDisplay}</span>
                   <ArrowRight size={14} className="text-[#4ade80]" />
                 </div>
-              </a>
+              </WhatsAppLink>
             </Reveal>
 
             {/* Next Steps */}

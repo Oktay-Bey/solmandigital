@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowRight, Code2, Zap, Target, Heart, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 export const metadata: Metadata = {
   title: "Hakkımızda — Solman Digital | İstanbul Özel Yazılım Ofisi",
@@ -287,14 +288,13 @@ export default function HakkimizdaPage() {
               <Link href="/ucretsiz-analiz" className="btn btn-primary !px-8">
                 Ücretsiz Analiz İste <ArrowRight size={16} />
               </Link>
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, proje hakkında bilgi almak istiyorum.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                message="Merhaba, proje hakkında bilgi almak istiyorum."
+                source="hakkimizda_cta"
                 className="btn btn-outline-dark"
               >
                 <MessageCircle size={15} /> WhatsApp
-              </a>
+              </WhatsAppLink>
             </div>
           </Reveal>
         </div>

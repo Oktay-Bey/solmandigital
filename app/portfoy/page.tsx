@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowRight, ExternalLink, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 export const metadata: Metadata = {
   title: "Portföy — Tamamlanan Projeler | Solman Digital",
@@ -311,14 +312,13 @@ export default function PortfoyPage() {
               <Link href="/iletisim" className="btn btn-primary !px-8">
                 Projenizi Anlatalım <ArrowRight size={16} />
               </Link>
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Merhaba, portföyü inceledim, proje hakkında bilgi almak istiyorum.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                message="Merhaba, portföyü inceledim, proje hakkında bilgi almak istiyorum."
+                source="portfoy_cta"
                 className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
               >
                 <MessageCircle size={15} /> WhatsApp ile Yazın
-              </a>
+              </WhatsAppLink>
             </div>
           </Reveal>
         </div>

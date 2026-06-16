@@ -3,6 +3,7 @@ import { CheckCircle2, MessageCircle, Shield, Clock, FileText } from "lucide-rea
 import { siteConfig } from "@/lib/site-config"
 import PartnershipForm from "@/components/PartnershipForm"
 import Reveal from "@/components/Reveal"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 export const metadata: Metadata = {
   title: "White-label Development Partner | Solman Digital",
@@ -93,14 +94,13 @@ export default function WhiteLabelPage() {
               </div>
             </Reveal>
             <Reveal delay={400}>
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi, I'm interested in white-label partnership.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                message="Hi, I'm interested in white-label partnership."
+                source="whitelabel_en"
                 className="btn btn-outline-dark"
               >
                 <MessageCircle size={15} /> Prefer to chat? WhatsApp →
-              </a>
+              </WhatsAppLink>
             </Reveal>
           </div>
 

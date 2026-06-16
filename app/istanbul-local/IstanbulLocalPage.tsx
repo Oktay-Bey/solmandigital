@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowRight, CheckCircle, X, MapPin, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
+import WhatsAppLink from "@/components/WhatsAppLink"
 import { services } from "@/lib/data/services"
 import type { IstanbulPage } from "@/lib/data/istanbul-pages"
 import IstanbulLocalLeadForm from "./IstanbulLocalLeadForm"
@@ -98,14 +99,13 @@ export default function IstanbulLocalPage({ config }: Props) {
             <a href="#form" className="btn btn-primary !px-8">
               İletişime Geç <ArrowRight size={16} />
             </a>
-            <a
-              href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Merhaba, ${config.district ?? "İstanbul"} için proje hakkında bilgi almak istiyorum.`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <WhatsAppLink
+              message={`Merhaba, ${config.district ?? "İstanbul"} için proje hakkında bilgi almak istiyorum.`}
+              source="istanbul_local_hero"
               className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
             >
               <MessageCircle size={15} /> WhatsApp ile Yazın
-            </a>
+            </WhatsAppLink>
           </div>
         </div>
       </section>
