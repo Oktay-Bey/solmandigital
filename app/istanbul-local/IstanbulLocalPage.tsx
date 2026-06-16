@@ -2,6 +2,7 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle, X, MapPin, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import WhatsAppLink from "@/components/WhatsAppLink"
+import RelatedGuides from "@/components/RelatedGuides"
 import { services } from "@/lib/data/services"
 import type { IstanbulPage } from "@/lib/data/istanbul-pages"
 import IstanbulLocalLeadForm from "./IstanbulLocalLeadForm"
@@ -293,6 +294,8 @@ export default function IstanbulLocalPage({ config }: Props) {
           </div>
         </div>
       </section>
+
+      <RelatedGuides category={["web-sitesi", "karsilastirma"]} title="Karar Vermeden Önce Rehberler" />
 
       {/* Services CTA */}
       <section className="bg-dark-500 px-6 py-12 text-center">
