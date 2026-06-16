@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle2, X, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
+import RelatedGuides from "@/components/RelatedGuides"
 import FiyatlarLeadForm from "./FiyatlarLeadForm"
 
 export const metadata: Metadata = {
@@ -385,6 +386,13 @@ export default function FiyatlarPage() {
             </div>
           </div>
         </section>
+
+        <RelatedGuides
+          category={["web-sitesi", "karsilastirma"]}
+          theme="dark"
+          title="Fiyat Kararı Vermeden Önce"
+          intro="Bütçe ve kapsam kararınızı netleştiren rehberlerimize göz atın."
+        />
 
         {/* #27 TicaretHub vs Solman Digital — Self-serve karşılaştırma */}
         <section className="border-t border-dark-200 px-6 py-12">
