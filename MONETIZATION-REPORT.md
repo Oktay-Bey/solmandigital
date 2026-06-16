@@ -4,7 +4,7 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 5)
+**Son güncelleme:** 2026-06-16 (Iteration 6)
 **Veri penceresi:** Son 30 gün
 
 ---
@@ -108,6 +108,13 @@ RelatedGuides component + getRehberByCategory helper. /ai-otomasyon-hizmeti'ye "
 rehber bloğu (next-click → bounce ↓, PV/kullanıcı ↑). rehber/[slug]: React key warning fix +
 mid-CTA eşiği 5→4. **Sıradaki:** RelatedGuides'ı diğer landing'lere yay (/fiyatlar→web-sitesi,
 /web-sitesi-yaptirmak, /saas-platform-gelistirme, /trendyol-entegrasyonu).
+
+## 4f. Iteration 6 (tamamlandı, commit 44e98fb) — RelatedGuides yayılımı
+web-sitesi-yaptirmak / saas / trendyol landing'lerine ilgili rehber bloğu. getRehberByCategory
+çoklu kategori fallback kabul ediyor (ince kategoriler komşudan tamamlanır). 4 ana landing artık
+içeriğe iç link veriyor.
+**Sıradaki:** (a) /fiyatlar dark-tema RelatedGuides (theme prop gerekir), (b) anasayfa CRO
+(116 PV, %52 bounce), (c) GA4 verisini yeniden çek → qualify_lead > 0 doğrula (It.1+4 fix etkisi).
 
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
