@@ -4,7 +4,7 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 11)
+**Son güncelleme:** 2026-06-16 (Iteration 12)
 
 > ⚠️ **DEPLOY BEKLİYOR:** Lokal `master`, `origin/master`'dan 12 commit ileride. Tüm bu
 > session'ın monetization işi (conversion fix'leri, CRO, RelatedGuides) **canlıda değil**.
@@ -151,6 +151,19 @@ IstanbulLocalPage şablonuna RelatedGuides eklendi → ~16 lokal SEO sayfası te
 derinliği kazandı. **Sıradaki:** en/web-design + en/ai-automation-service waLink→WhatsAppLink
 (WhatsApp ölçümünü %100 tamamlar), sonra deploy-bağımsız yüksek-değer iş büyük ölçüde biter →
 asıl gate kullanıcı deploy onayı.
+
+## 4l. Iteration 12 (tamamlandı, commit b022849) — WhatsApp ölçümü %100
+en/web-design + en/ai-automation-service waLink→WhatsAppLink. Tüm site WhatsApp tıklamaları izleniyor.
+
+## 4m. Durum & Açık Backlog (Iteration 12 sonu)
+**Tamamlanan (lokal, deploy bekliyor — ~24 commit):** conversion ölçüm onarımı (qualify_lead beacon,
+contact, exit-popup, tek-atış), /fiyatlar + /ai CRO, RelatedGuides (tüm ana landing + fiyatlar +
+~16 ilçe), site geneli WhatsApp ölçümü.
+**Kullanıcı-gate'li:** deploy (push onayı), GA4 qualify_lead doğrulaması (deploy sonrası),
+Google Ads re-auth (OAuth).
+**Sıradaki deploy-bağımsız yüksek-değer (PROJECT.md Faz 2B):** (1) /api/email/* rate limiting
+(lead pipeline'ı spam/Brevo kota suistimalinden korur), (2) per-page OG görselleri, (3) görünür
+breadcrumb komponenti, (4) anasayfa hero inline lead capture CRO.
 
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
