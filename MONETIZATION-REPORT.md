@@ -18,9 +18,9 @@
 5. **Pipeline koruması** — email API rate limiting (spam/kota suistimali).
 6. **Veri bug** — Calendly BOM route fix.
 
-**Tek gate: kullanıcı.** (a) `git push origin master` onayı → 25 commit canlıya + Vercel deploy,
-(b) deploy sonrası GA4 `qualify_lead > 0` doğrulaması, (c) Google Ads OAuth re-auth (invalid_grant).
-Bunlar olmadan deploy-bağımsız yüksek-değer iş tükendi; loop maintenance/bekleme moduna geçti.
+**DEPLOY EDİLDİ ✅** (2026-06-16, commit 6b34a21 origin/master'a push edildi → Vercel auto-deploy).
+Kalan gate: (b) deploy sonrası 24-48h GA4 `qualify_lead > 0` doğrulaması (It.1 fix'inin kanıtı),
+(c) Google Ads OAuth re-auth (invalid_grant — koddan çözülemez, kullanıcı yapmalı).
 
 > ⚠️ **DEPLOY BEKLİYOR:** Lokal `master`, `origin/master`'dan 12 commit ileride. Tüm bu
 > session'ın monetization işi (conversion fix'leri, CRO, RelatedGuides) **canlıda değil**.
