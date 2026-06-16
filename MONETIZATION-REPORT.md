@@ -4,7 +4,7 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 10)
+**Son güncelleme:** 2026-06-16 (Iteration 11)
 
 > ⚠️ **DEPLOY BEKLİYOR:** Lokal `master`, `origin/master`'dan 12 commit ileride. Tüm bu
 > session'ın monetization işi (conversion fix'leri, CRO, RelatedGuides) **canlıda değil**.
@@ -145,6 +145,12 @@ WhatsAppLink'e geçti. **WhatsApp ölçümü artık neredeyse site geneli.** Kal
 en/ai-automation-service (waLink const, düşük trafik — opsiyonel).
 **Sıradaki yüksek-değer:** anasayfa hero inline form / sosyal kanıt CRO; ilçe sayfalarına
 RelatedGuides. **Not:** ~20 commit deploy bekliyor — deploy-bağımsız yüksek-değer iş azalıyor.
+
+## 4k. Iteration 11 (tamamlandı, commit 8ccb7e6) — İlçe sayfalarına RelatedGuides
+IstanbulLocalPage şablonuna RelatedGuides eklendi → ~16 lokal SEO sayfası tek edit'le içerik
+derinliği kazandı. **Sıradaki:** en/web-design + en/ai-automation-service waLink→WhatsAppLink
+(WhatsApp ölçümünü %100 tamamlar), sonra deploy-bağımsız yüksek-değer iş büyük ölçüde biter →
+asıl gate kullanıcı deploy onayı.
 
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
