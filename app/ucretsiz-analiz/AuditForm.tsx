@@ -6,6 +6,7 @@ import { ArrowRight, AlertCircle, ChevronDown } from "lucide-react"
 import { services } from "@/lib/data/services"
 import type { AuditPayload } from "@/lib/types/leads"
 import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
+import { useFunnelTracking } from "@/lib/useFunnelTracking"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -14,6 +15,7 @@ const labelCls =
 
 export default function AuditForm() {
   const router = useRouter()
+  const markStart = useFunnelTracking("audit")
   const [state, setState] = useState<FormState>("idle")
   const [expanded, setExpanded] = useState(false)
   const [gclid, setGclid] = useState<string | null>(null)
@@ -27,6 +29,7 @@ export default function AuditForm() {
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    markStart()
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 

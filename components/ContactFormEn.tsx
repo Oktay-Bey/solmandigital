@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
+import { useFunnelTracking } from "@/lib/useFunnelTracking"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -27,9 +28,14 @@ export default function ContactFormEn() {
 
   useEffect(() => { setGclid(getGclid()) }, [])
 
+  const markStart = useFunnelTracking("contact-en")
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  ) => {
+    markStart()
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

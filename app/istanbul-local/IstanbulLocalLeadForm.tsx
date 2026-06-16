@@ -6,6 +6,7 @@ import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
 import { inputStyle, labelStyle, submitButtonStyle, onFocus, onBlur } from "@/lib/form-utils"
 import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
+import { useFunnelTracking } from "@/lib/useFunnelTracking"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -34,7 +35,10 @@ export default function IstanbulLocalLeadForm({ district }: Props) {
     projectBrief: "",
   })
 
+  const markStart = useFunnelTracking("istanbul-local")
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    markStart()
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 

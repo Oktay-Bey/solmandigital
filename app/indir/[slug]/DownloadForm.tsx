@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { SubscribePayload } from "@/lib/types/leads"
 import { trackEvent } from "@/lib/analytics"
+import { useFunnelTracking } from "@/lib/useFunnelTracking"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -16,7 +17,10 @@ export default function DownloadForm() {
   const [state, setState] = useState<FormState>("idle")
   const [form, setForm] = useState({ firstName: "", email: "" })
 
+  const markStart = useFunnelTracking("download")
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    markStart()
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { X, ArrowRight, MessageCircle, AlertCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import { trackEvent, trackLeadConversion } from "@/lib/analytics"
+import { useFunnelTracking } from "@/lib/useFunnelTracking"
 
 const COOKIE_KEY = "solman_exit_v1"
 const COOKIE_DAYS = 7
@@ -58,7 +59,10 @@ export default function ExitIntentPopup() {
 
   const close = () => setVisible(false)
 
+  const markStart = useFunnelTracking("exit-popup")
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    markStart()
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 

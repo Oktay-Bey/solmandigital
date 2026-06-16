@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import type { LeadPayload } from "@/lib/types/leads"
 import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
+import { useFunnelTracking } from "@/lib/useFunnelTracking"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -32,7 +33,10 @@ export default function TrendyolLeadForm() {
     specificPain: "",
   })
 
+  const markStart = useFunnelTracking("trendyol")
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    markStart()
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 

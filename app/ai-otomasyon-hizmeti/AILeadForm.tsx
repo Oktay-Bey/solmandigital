@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle, ChevronLeft } from "lucide-react"
 import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
+import { useFunnelTracking } from "@/lib/useFunnelTracking"
 
 type FormState = "idle" | "sending" | "error"
 type Step = 1 | 2
@@ -13,6 +14,7 @@ const labelCls =
 
 export default function AILeadForm() {
   const router = useRouter()
+  const markStart = useFunnelTracking("ai")
   const [state, setState] = useState<FormState>("idle")
   const [step, setStep] = useState<Step>(1)
   const [gclid, setGclid] = useState<string | null>(null)
@@ -20,6 +22,7 @@ export default function AILeadForm() {
   const [form, setForm] = useState({ firstName: "", email: "", aiUseCase: "" })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    markStart()
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
@@ -102,7 +105,7 @@ export default function AILeadForm() {
                 <button
                   key={opt.value}
                   type="button"
-                  onClick={() => setForm((prev) => ({ ...prev, aiUseCase: opt.value }))}
+                  onClick={() => { markStart(); setForm((prev) => ({ ...prev, aiUseCase: opt.value })) }}
                   className={`rounded-[8px] border px-3 py-3 text-left text-[0.8rem] font-semibold transition-colors ${
                     form.aiUseCase === opt.value
                       ? "border-accent-600 bg-accent-50 text-accent-700"

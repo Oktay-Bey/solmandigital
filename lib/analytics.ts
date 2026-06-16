@@ -29,3 +29,14 @@ export function trackLeadConversion(label: string) {
   // transport_type: "beacon" olmadan navigasyon collect isteğini iptal ediyor → conversion kaybı.
   gtag("qualify_lead", { event_label: label, value: 1, currency: "TRY", transport_type: "beacon" })
 }
+
+// ── Funnel ara adımları ───────────────────────────────────────────────────
+// Huni: form_view (form göründü) → form_start (ilk etkileşim) → form_submit → qualify_lead
+// label, formun form_submit/qualify_lead label'ı ile aynı olmalı (GA4'te tek huni).
+export function trackFormView(label: string) {
+  gtag("form_view", { event_label: label, event_category: "lead_funnel" })
+}
+
+export function trackFormStart(label: string) {
+  gtag("form_start", { event_label: label, event_category: "lead_funnel" })
+}

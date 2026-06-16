@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import { trackEvent, trackLeadConversion } from "@/lib/analytics"
+import { useFunnelTracking } from "@/lib/useFunnelTracking"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -20,10 +21,12 @@ const serviceOptions = [
 
 export default function FiyatlarLeadForm() {
   const router = useRouter()
+  const markStart = useFunnelTracking("fiyat-talebi")
   const [state, setState] = useState<FormState>("idle")
   const [form, setForm] = useState({ firstName: "", email: "", service: "" })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    markStart()
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
