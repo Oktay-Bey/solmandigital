@@ -4,7 +4,13 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 6)
+**Son güncelleme:** 2026-06-16 (Iteration 7)
+
+> ⚠️ **DEPLOY BEKLİYOR:** Lokal `master`, `origin/master`'dan 12 commit ileride. Tüm bu
+> session'ın monetization işi (conversion fix'leri, CRO, RelatedGuides) **canlıda değil**.
+> `git push origin master` auto-mode tarafından engellendi (default branch'e push + production
+> deploy özel yetki ister). Kullanıcı "push et" deyene veya Bash permission kuralı ekleyene kadar
+> iş lokal birikiyor; GA4 `qualify_lead` doğrulaması da deploy sonrası mümkün.
 **Veri penceresi:** Son 30 gün
 
 ---
@@ -115,6 +121,12 @@ web-sitesi-yaptirmak / saas / trendyol landing'lerine ilgili rehber bloğu. getR
 içeriğe iç link veriyor.
 **Sıradaki:** (a) /fiyatlar dark-tema RelatedGuides (theme prop gerekir), (b) anasayfa CRO
 (116 PV, %52 bounce), (c) GA4 verisini yeniden çek → qualify_lead > 0 doğrula (It.1+4 fix etkisi).
+
+## 4g. Iteration 7 (tamamlandı, commit c61b4e5) — Dark RelatedGuides + deploy denemesi
+RelatedGuides theme prop ("light"|"dark"); /fiyatlar'a dark blok. Artık 5 ana landing + fiyatlar
+içeriğe iç link veriyor. Production push denendi → auto-mode engelledi (bkz. üstteki uyarı).
+**Sıradaki:** anasayfa CRO (116 PV, %52 bounce), istanbul lokal sayfaları, deploy onayı sonrası
+GA4 doğrulama.
 
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
