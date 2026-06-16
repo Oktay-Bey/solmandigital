@@ -192,6 +192,18 @@ Google Ads re-auth (OAuth).
 lib/rate-limit.ts (in-memory, 5 istek/60sn/IP) → lead/audit/contact/consultation/subscribe/popup
 korundu. Form spam + Brevo/Resend kota suistimali engellenir (429 + Retry-After).
 
+## 6. Google Ads Analizi & Aksiyon (2026-06-16, It.15)
+**Kampanya "Arama 2025" (23914856579), 30g:** 689 TL, %7.2 CTR, 0 ölçülen dönüşüm.
+**Bulgu:** Top 100 search-term'in ~%50'si (249 TL) İngilizce/bilgi-amaçlı sorgu (how to / best /
+ai tools / platforms / iot) — alıcı niyeti yok. TR alıcı-niyetli sadece 64 TL (6 terim).
+**Teşhis:** broad match + gevşek dil/coğrafi hedefleme global araştırmacı trafiği çekiyor.
+**UYGULANDI ✅:** 22 broad negatif keyword eklendi (how to, what is, tutorial, course(s), examples,
+ideas, guide, learn, jobs, salary, career, internet of things, iot, tools, systems, vs, top 10,
+list of, free download, meaning, tutorials). Çift-anlamlılar (best/platform/ai/software) dahil edilmedi.
+**Sıradaki (kullanıcı onayıyla):** dil=TR + konum=Türkiye hedefleme sıkılaştırma; EN buyer-intent'i
+ayrı kampanya/white-label funnel'a bölme; kanıtlanmış TR terimleri için phrase/exact + ayrı ad group.
+**İzle:** önümüzdeki günlerde boşa harcama düşmeli + (ölçüm fix'iyle) dönüşümler kaydolmaya başlamalı.
+
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
 canonical durum dosyası. Bu loop aynısını MONETIZATION-REPORT.md ile sürdürür. Monetization hattı:
