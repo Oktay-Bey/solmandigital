@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
-import { trackEvent, getGclid } from "@/lib/analytics"
+import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
 import { useFunnelTracking } from "@/lib/useFunnelTracking"
 
 type FormState = "idle" | "sending" | "error"
@@ -68,6 +68,7 @@ export default function PartnershipForm() {
       })
       if (res.ok) {
         trackEvent("form_submit", "lead", "partnership")
+        trackLeadConversion("partnership")
         router.push("/tesekkurler?type=partnership")
       } else {
         setState("error")
