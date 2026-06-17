@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { updateCampaignStatus, deleteCampaign, updateCampaignBudget, addAdGroupsToCampaign, listAdGroups, deleteAdGroup, addLanguageTargets, setDeviceBidModifier, setGeoTargetType } from "@/lib/google-ads/campaigns";
+import { updateCampaignStatus, deleteCampaign, updateCampaignBudget, addAdGroupsToCampaign, listAdGroups, deleteAdGroup, addLanguageTargets, setDeviceBidModifier, setGeoTargetType, setMaximizeClicks, setManualCpc, setAllKeywordBids } from "@/lib/google-ads/campaigns";
 import type { AdGroupInput } from "@/lib/google-ads/campaigns";
 
 // GET /api/google-ads/campaigns/[resourceId] — ad group listesi
@@ -33,13 +33,16 @@ export async function PATCH(
     const rawBody = await req.arrayBuffer();
     const body = JSON.parse(new TextDecoder("utf-8").decode(rawBody));
     console.log("[PATCH] first headline:", body?.adGroups?.[0]?.headlines?.[0]);
-    const { status, dailyBudgetTL, adGroups, languageIds, deviceBidModifiers, geoTargetType } = body as {
+    const { status, dailyBudgetTL, adGroups, languageIds, deviceBidModifiers, geoTargetType, biddingStrategy, cpcCeilingTL, allKeywordBidTL } = body as {
       status?: string;
       dailyBudgetTL?: number;
       adGroups?: AdGroupInput[];
       languageIds?: number[];
       deviceBidModifiers?: { device: "MOBILE" | "DESKTOP" | "TABLET"; bidModifier: number }[];
       geoTargetType?: "PRESENCE" | "PRESENCE_OR_INTEREST";
+      biddingStrategy?: "MAXIMIZE_CLICKS" | "MANUAL_CPC";
+      cpcCeilingTL?: number;
+      allKeywordBidTL?: number;
     };
 
     if (status) {
@@ -61,6 +64,20 @@ export async function PATCH(
       await setGeoTargetType(campaignId, geoTargetType);
     }
 
+    if (biddingStrategy === "MAXIMIZE_CLICKS") {
+      await setMaximizeClicks(campaignId, cpcCeilingTL);
+    }
+
+    if (biddingStrategy === "MANUAL_CPC") {
+      await setManualCpc(campaignId);
+    }
+
+    // Strateji değişiminden SONRA keyword bid'leri set et (Manual CPC gerektirir)
+    let keywordBidsSet: number | undefined;
+    if (typeof allKeywordBidTL === "number" && allKeywordBidTL > 0) {
+      keywordBidsSet = await setAllKeywordBids(campaignId, allKeywordBidTL);
+    }
+
     if (deviceBidModifiers?.length) {
       for (const dbm of deviceBidModifiers) {
         await setDeviceBidModifier(campaignId, dbm.device, dbm.bidModifier);
@@ -72,12 +89,11 @@ export async function PATCH(
       return NextResponse.json({ success: true, campaignId, adGroupsAdded: added });
     }
 
-    return NextResponse.json({ success: true, campaignId, status, dailyBudgetTL });
+    return NextResponse.json({ success: true, campaignId, status, dailyBudgetTL, biddingStrategy, keywordBidsSet });
   } catch (err) {
-    return NextResponse.json(
-      { error: err instanceof Error ? err.message : "Bilinmeyen hata" },
-      { status: 500 }
-    );
+    const message = err instanceof Error ? err.message : "Bilinmeyen hata";
+    console.error("[campaign PATCH] error:", message);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
 

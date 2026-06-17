@@ -1,6 +1,6 @@
 import { getCustomer } from "./client";
 import { google } from "googleapis";
-import type { services } from "google-ads-api";
+import { enums, type services } from "google-ads-api";
 type IGoogleAdsRow = services.IGoogleAdsRow;
 
 async function getAccessToken(): Promise<string> {
@@ -599,6 +599,78 @@ export async function setGeoTargetType(
   console.log("[google-ads] Geo target type set:", positiveType, "for campaign", campaignId);
 }
 
+/**
+ * Kampanyayı Maximize Clicks (target_spend) teklif stratejisine geçirir.
+ * Soğuk başlangıçta (0 dönüşüm geçmişi) Maximize Conversions yayınlanmaz —
+ * Max Clicks veri toplayana kadar yayınlanmayı garanti eder.
+ * cpcCeilingTL: opsiyonel CPC tavanı (bütçe sızıntısını sınırlar).
+ */
+export async function setMaximizeClicks(campaignId: string, cpcCeilingTL?: number): Promise<void> {
+  const customer = getCustomer();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const targetSpend: any = {};
+  if (cpcCeilingTL && cpcCeilingTL > 0) {
+    targetSpend.cpc_bid_ceiling_micros = Math.round(cpcCeilingTL * 1_000_000);
+  }
+  await customer.campaigns.update([{
+    resource_name: `customers/${process.env.GOOGLE_ADS_CUSTOMER_ID}/campaigns/${campaignId}`,
+    // Diğer otomatik strateji alanlarını null'lar, target_spend'i set eder
+    target_spend: targetSpend,
+  }]);
+  console.log("[google-ads] Maximize Clicks set for campaign", campaignId, "ceiling:", cpcCeilingTL ?? "yok");
+}
+
+/**
+ * Kampanyayı Manual CPC teklif stratejisine geçirir.
+ * 0 dönüşüm geçmişiyle akıllı teklif düşük kalıyor → manuel CPC ile
+ * teklif kontrolü alınır, keyword'lere setKeywordBids ile bid set edilir.
+ */
+export async function setManualCpc(campaignId: string): Promise<void> {
+  const customer = getCustomer();
+  await customer.campaigns.update([{
+    resource_name: `customers/${process.env.GOOGLE_ADS_CUSTOMER_ID}/campaigns/${campaignId}`,
+    // Subfield ile set et — boş {} field mask'i 'manual_cpc' (subfield'lı) yapıp
+    // FIELD_HAS_SUBFIELDS hatası verir. enhanced_cpc_enabled ile mask subfield'a iner.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    manual_cpc: { enhanced_cpc_enabled: false } as any,
+  }]);
+  console.log("[google-ads] Manual CPC set for campaign", campaignId);
+}
+
+/**
+ * Verilen kampanyadaki TÜM ENABLED keyword'lere aynı CPC teklifini (TL) set eder.
+ * Manual CPC stratejisi aktifken çalışır. Döndürdüğü sayı güncellenen keyword adedi.
+ */
+export async function setAllKeywordBids(campaignId: string, cpcTL: number): Promise<number> {
+  const customer = getCustomer();
+  const micros = Math.round(cpcTL * 1_000_000);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const rows: any[] = await customer.query(`
+    SELECT ad_group_criterion.resource_name
+    FROM ad_group_criterion
+    WHERE campaign.id = ${campaignId}
+      AND ad_group_criterion.type = KEYWORD
+      AND ad_group_criterion.status = ENABLED
+      AND ad_group_criterion.negative = FALSE
+      AND ad_group.status != 'REMOVED'
+      AND campaign.status != 'REMOVED'
+  `);
+  const updates = rows.map((r) => ({
+    resource_name: r.ad_group_criterion.resource_name,
+    cpc_bid_micros: micros,
+  }));
+  if (!updates.length) return 0;
+  // Batch'ler halinde (API limiti ~5000/mutate ama güvenli 1000'lik dilimler)
+  let done = 0;
+  for (let i = 0; i < updates.length; i += 1000) {
+    const chunk = updates.slice(i, i + 1000);
+    await customer.adGroupCriteria.update(chunk);
+    done += chunk.length;
+  }
+  console.log("[google-ads] Set CPC", cpcTL, "TL on", done, "keywords (campaign", campaignId + ")");
+  return done;
+}
+
 export async function updateCampaignStatus(campaignId: string, status: "ENABLED" | "PAUSED"): Promise<void> {
   const customer = getCustomer();
   await customer.campaigns.update([{
@@ -834,4 +906,51 @@ export async function getCampaignMetrics(period: DatePeriod = "LAST_7_DAYS"): Pr
     costPerConversionTL: Number(row.metrics?.cost_per_conversion ?? 0) / 1_000_000,
     searchImpressionShare: Number(row.metrics?.search_impression_share ?? 0),
   }));
+}
+
+export interface KeywordIdea {
+  keyword: string;
+  avgMonthlySearches: number;
+  competition: string;
+  lowTopBidTL: number;
+  highTopBidTL: number;
+}
+
+/**
+ * KeywordPlanIdeaService ile bir geo+dil için arama hacmi olan kelime fikirleri.
+ * geoTargetConstantId örn 2807 (Kuzey Makedonya), languageId örn 1000 (EN).
+ */
+export async function generateKeywordIdeas(opts: {
+  seeds: string[];
+  geoTargetConstantId: number;
+  languageId: number;
+}): Promise<KeywordIdea[]> {
+  const customer = getCustomer();
+  const compMap: Record<string | number, string> = {
+    0: "UNSPECIFIED", 1: "UNKNOWN", 2: "LOW", 3: "MEDIUM", 4: "HIGH",
+    UNSPECIFIED: "UNSPECIFIED", UNKNOWN: "UNKNOWN", LOW: "LOW", MEDIUM: "MEDIUM", HIGH: "HIGH",
+  };
+
+  const request = {
+    customer_id: process.env.GOOGLE_ADS_CUSTOMER_ID!,
+    language: `languageConstants/${opts.languageId}`,
+    geo_target_constants: [`geoTargetConstants/${opts.geoTargetConstantId}`],
+    keyword_plan_network: enums.KeywordPlanNetwork.GOOGLE_SEARCH,
+    include_adult_keywords: false,
+    keyword_seed: { keywords: opts.seeds },
+  } as unknown as services.GenerateKeywordIdeasRequest;
+  const resp = await customer.keywordPlanIdeas.generateKeywordIdeas(request);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const results: any[] = (resp as any)?.results ?? (resp as any) ?? [];
+  return results.map((r) => {
+    const m = r.keyword_idea_metrics ?? {};
+    return {
+      keyword: String(r.text ?? ""),
+      avgMonthlySearches: Number(m.avg_monthly_searches ?? 0),
+      competition: compMap[m.competition] ?? String(m.competition ?? "?"),
+      lowTopBidTL: Number(m.low_top_of_page_bid_micros ?? 0) / 1_000_000,
+      highTopBidTL: Number(m.high_top_of_page_bid_micros ?? 0) / 1_000_000,
+    };
+  });
 }

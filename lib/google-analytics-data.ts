@@ -187,6 +187,32 @@ export async function getGA4ConversionEvents(days = 30): Promise<GA4ConversionEv
   }));
 }
 
+// DENETIM: conversion event'leri kaynak (source/medium) + keyEvents kırılımı
+export async function getGA4ConversionDiag(days = 30): Promise<unknown> {
+  const auth = getAuthClient();
+  const analyticsData = google.analyticsdata({ version: "v1beta", auth });
+  const data = await runReport(analyticsData, {
+    dateRanges: [{ startDate: dateString(days), endDate: "today" }],
+    dimensions: [{ name: "eventName" }, { name: "sessionSource" }, { name: "sessionMedium" }],
+    metrics: [{ name: "eventCount" }, { name: "keyEvents" }],
+    dimensionFilter: {
+      filter: {
+        fieldName: "eventName",
+        inListFilter: { values: ["generate_lead", "qualify_lead", "contact", "whatsapp_click", "form_start", "form_submit", "purchase", "sign_up"] },
+      },
+    },
+    orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
+    limit: "50",
+  });
+  return (data?.rows ?? []).map((row) => ({
+    eventName: dim(row, 0),
+    source: dim(row, 1),
+    medium: dim(row, 2),
+    eventCount: parseInt(met(row, 0)),
+    keyEvents: parseFloat(met(row, 1)),
+  }));
+}
+
 export async function getGA4Report(days = 30): Promise<GA4Report> {
   const [overview, topPages, sources, conversions] = await Promise.all([
     getGA4Overview(days),

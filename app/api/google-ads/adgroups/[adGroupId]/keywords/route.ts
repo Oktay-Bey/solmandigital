@@ -50,3 +50,43 @@ export async function POST(
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
+
+// PATCH /api/google-ads/adgroups/[adGroupId]/keywords
+// Body: { pauseTexts: string[] }  → verilen metinli keyword'leri PAUSED yapar
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: Promise<{ adGroupId: string }> }
+) {
+  try {
+    const { adGroupId } = await params;
+    const { pauseTexts } = await req.json() as { pauseTexts: string[] };
+    if (!pauseTexts?.length) {
+      return NextResponse.json({ error: "pauseTexts array gerekli." }, { status: 400 });
+    }
+    const customer = getCustomer();
+    // Mevcut keyword'leri çek, eşleşenleri bul
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const rows: any[] = await customer.query(`
+      SELECT ad_group_criterion.resource_name, ad_group_criterion.keyword.text
+      FROM ad_group_criterion
+      WHERE ad_group.id = ${adGroupId} AND ad_group_criterion.type = KEYWORD
+        AND ad_group_criterion.status != 'REMOVED'
+    `);
+    const norm = (s: string) => s.normalize("NFC").toLocaleLowerCase("tr-TR").trim();
+    const want = new Set(pauseTexts.map(norm));
+    const toPause = rows
+      .filter((r) => want.has(norm(String(r.ad_group_criterion?.keyword?.text ?? ""))))
+      .map((r) => r.ad_group_criterion.resource_name);
+    if (!toPause.length) {
+      return NextResponse.json({ success: true, paused: 0, note: "eşleşen keyword yok" });
+    }
+    await customer.adGroupCriteria.update(
+      toPause.map((resource_name) => ({ resource_name, status: 3 })) // criterion PAUSED=3 (ENABLED=2, REMOVED=4)
+    );
+    return NextResponse.json({ success: true, paused: toPause.length });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Bilinmeyen hata";
+    console.error("[keywords PATCH] error:", message);
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
