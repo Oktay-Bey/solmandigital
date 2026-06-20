@@ -213,6 +213,68 @@ export async function getGA4ConversionDiag(days = 30): Promise<unknown> {
   }));
 }
 
+// SAYFA FUNNEL: landing page bazında oturum → form_start → form_submit → whatsapp_click
+// Hangi sayfa trafik alıp formu tamamlatamıyor (sürtünme) — sayfa optimizasyonu için.
+export async function getGA4PageFunnel(days = 14): Promise<unknown> {
+  const auth = getAuthClient();
+  const analyticsData = google.analyticsdata({ version: "v1beta", auth });
+  const startDate = dateString(days);
+
+  // 1) Landing page bazında oturum + bounce (giriş sayfası = landingPage)
+  const sessionData = await runReport(analyticsData, {
+    dateRanges: [{ startDate, endDate: "today" }],
+    dimensions: [{ name: "landingPage" }],
+    metrics: [{ name: "sessions" }, { name: "bounceRate" }, { name: "averageSessionDuration" }],
+    orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
+    limit: "30",
+  });
+
+  // 2) Sayfa (pagePath) bazında funnel event sayıları
+  const eventData = await runReport(analyticsData, {
+    dateRanges: [{ startDate, endDate: "today" }],
+    dimensions: [{ name: "pagePath" }, { name: "eventName" }],
+    metrics: [{ name: "eventCount" }],
+    dimensionFilter: {
+      filter: {
+        fieldName: "eventName",
+        inListFilter: { values: ["form_start", "form_submit", "generate_lead", "whatsapp_click"] },
+      },
+    },
+    limit: "200",
+  });
+
+  // Event'leri sayfaya göre topla
+  const eventsByPage: Record<string, Record<string, number>> = {};
+  for (const row of eventData?.rows ?? []) {
+    const path = dim(row, 0);
+    const ev = dim(row, 1);
+    const cnt = parseInt(met(row, 0));
+    (eventsByPage[path] ??= {})[ev] = cnt;
+  }
+
+  const pages = (sessionData?.rows ?? []).map((row) => {
+    const landingPage = dim(row, 0);
+    const ev = eventsByPage[landingPage] ?? {};
+    const formStart = ev["form_start"] ?? 0;
+    const formSubmit = (ev["form_submit"] ?? 0) + (ev["generate_lead"] ?? 0);
+    const sessions = parseInt(met(row, 0));
+    return {
+      landingPage,
+      sessions,
+      bounceRate: parseFloat(met(row, 1)),
+      avgSessionDuration: parseFloat(met(row, 2)),
+      formStart,
+      formSubmit,
+      whatsappClick: ev["whatsapp_click"] ?? 0,
+      // sürtünme: form açıldı ama bitmedi → start>0, submit=0 sorunlu
+      startToSubmitRate: formStart > 0 ? Number((formSubmit / formStart).toFixed(3)) : null,
+      sessionToFormRate: sessions > 0 ? Number(((formStart) / sessions).toFixed(3)) : null,
+    };
+  });
+
+  return { days, pages };
+}
+
 export async function getGA4Report(days = 30): Promise<GA4Report> {
   const [overview, topPages, sources, conversions] = await Promise.all([
     getGA4Overview(days),

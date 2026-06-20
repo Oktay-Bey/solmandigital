@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, MessageCircle, Star, Zap, Bot, BarChart3, Cloc
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
 import WhatsAppLink from "@/components/WhatsAppLink"
+import AILeadFormEn from "./AILeadFormEn"
 
 export const metadata: Metadata = {
   title: "AI Automation Service — Solman Digital",
@@ -168,43 +169,70 @@ export default function EnAIAutomationPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero */}
-      <section className="bg-dark-500 px-6 pb-20 pt-24">
-        <div className="mx-auto max-w-[780px] text-center">
-          <Reveal>
-            <p className="mb-6 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
-              GPT-4o · Claude · 3–6 Week Delivery
-            </p>
-          </Reveal>
-          <Reveal delay={100}>
-            <h1 className="mb-5 text-[clamp(1.75rem,5vw,2.85rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
-              AI Automation for Your Business.{" "}
-              <span className="text-accent-700">Built & Deployed in 3–6 Weeks.</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="mx-auto mb-10 max-w-[580px] text-[1.05rem] leading-[1.75] text-ondark-muted">
-              We build custom AI workflows that save your team 10–20 hours per week — chatbots, content automation, report generation, and process integrations. Fixed price, source code is yours.
-            </p>
-          </Reveal>
-          <Reveal delay={300}>
-            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <a href="#contact" className="btn btn-primary">
-                Get Free AI Audit <ArrowRight size={16} />
-              </a>
-              <WhatsAppLink
-                message="Hi, I'd like to discuss an AI automation project."
-                source="ai_en_cta"
-                className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
-              >
-                <MessageCircle size={15} /> WhatsApp
-              </WhatsAppLink>
+      {/* Hero — sol: değer önerisi, sağ: gömülü lead formu (en çok reklam tıkı bu sayfaya, dönüşüm yolu açıldı) */}
+      <section className="bg-dark-500 px-6 pb-16 pt-24">
+        <div className="mx-auto grid max-w-[1100px] grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* Sol */}
+          <div>
+            <Reveal>
+              <p className="mb-5 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
+                GPT-4o · Claude · 3–6 Week Delivery
+              </p>
+            </Reveal>
+            <Reveal delay={100}>
+              <h1 className="mb-5 text-[clamp(1.75rem,4vw,2.6rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
+                AI Automation for Your Business.{" "}
+                <span className="text-accent-700">Built & Deployed in 3–6 Weeks.</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="mb-7 text-[1rem] leading-[1.75] text-ondark-muted">
+                We build custom AI workflows that save your team 10–20 hours per week — chatbots, content automation, report generation, and process integrations. Fixed price, source code is yours.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <ul className="mb-7 flex flex-col gap-2.5">
+                {[
+                  "AI chatbot & support: save 15+ hours/week",
+                  "Content automation: 89% faster output",
+                  "Workflow automation: ROI in 30–60 days",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-[0.875rem] text-ondark-muted">
+                    <span className="mt-0.5 shrink-0 text-[#4ade80]">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal delay={400}>
+              <p className="text-[0.8rem] text-ondark-muted">
+                Packages from €500 · No subscription fees · 50% upfront, 50% on delivery
+              </p>
+            </Reveal>
+          </div>
+
+          {/* Sağ: form — mobilde içeriğin üstüne (order-first lg:order-last) */}
+          <Reveal delay={150} className="order-first lg:order-last">
+            <div className="rounded-[14px] border border-dark-50 bg-white p-8 shadow-xl">
+              <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">Free AI Audit</p>
+              <h2 className="mb-3 text-[1.15rem] font-extrabold tracking-tight text-ink-900">
+                Discover your automation potential
+              </h2>
+              <p className="mb-5 flex items-center gap-1.5 text-[0.78rem] text-ink-500">
+                <span className="text-[#16a34a]">●</span>
+                30-minute call · ROI estimate · no commitment
+              </p>
+              <AILeadFormEn />
+              <div className="mt-4 border-t border-ink-100 pt-4 text-center">
+                <WhatsAppLink
+                  message="Hi, I'd like to discuss an AI automation project."
+                  source="ai_en_hero"
+                  className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-accent-700 hover:underline"
+                >
+                  <MessageCircle size={14} /> Prefer WhatsApp? Message us →
+                </WhatsAppLink>
+              </div>
             </div>
-          </Reveal>
-          <Reveal delay={400}>
-            <p className="mt-6 text-[0.8rem] text-ondark-muted">
-              Packages from €500 · No subscription fees · 50% upfront, 50% on delivery
-            </p>
           </Reveal>
         </div>
       </section>

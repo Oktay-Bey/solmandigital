@@ -52,19 +52,25 @@ export async function POST(
 }
 
 // PATCH /api/google-ads/adgroups/[adGroupId]/keywords
-// Body: { pauseTexts: string[] }  → verilen metinli keyword'leri PAUSED yapar
+// Body: { pauseTexts: string[] }            → verilen metinli keyword'leri PAUSED yapar
+//   veya { enableTexts: string[] }          → verilen metinli keyword'leri ENABLED yapar
+//   veya { bids: { text: string; bidTL: number }[] } → keyword-bazlı CPC teklifi günceller
 export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ adGroupId: string }> }
 ) {
   try {
     const { adGroupId } = await params;
-    const { pauseTexts } = await req.json() as { pauseTexts: string[] };
-    if (!pauseTexts?.length) {
-      return NextResponse.json({ error: "pauseTexts array gerekli." }, { status: 400 });
+    const { pauseTexts, enableTexts, bids } = await req.json() as {
+      pauseTexts?: string[];
+      enableTexts?: string[];
+      bids?: { text: string; bidTL: number }[];
+    };
+    if (!pauseTexts?.length && !enableTexts?.length && !bids?.length) {
+      return NextResponse.json({ error: "pauseTexts, enableTexts veya bids array gerekli." }, { status: 400 });
     }
     const customer = getCustomer();
-    // Mevcut keyword'leri çek, eşleşenleri bul
+    // Mevcut keyword'leri çek (resource_name + metin) — hem pause hem bid için eşleşme kaynağı
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const rows: any[] = await customer.query(`
       SELECT ad_group_criterion.resource_name, ad_group_criterion.keyword.text
@@ -73,7 +79,45 @@ export async function PATCH(
         AND ad_group_criterion.status != 'REMOVED'
     `);
     const norm = (s: string) => s.normalize("NFC").toLocaleLowerCase("tr-TR").trim();
-    const want = new Set(pauseTexts.map(norm));
+    const resByText = new Map<string, string>();
+    for (const r of rows) {
+      resByText.set(norm(String(r.ad_group_criterion?.keyword?.text ?? "")), r.ad_group_criterion.resource_name);
+    }
+
+    // Bid güncelleme
+    if (bids?.length) {
+      const updates = bids
+        .map((b) => {
+          const resource_name = resByText.get(norm(b.text));
+          if (!resource_name) return null;
+          // cpc_bid_micros = TL * 1_000_000
+          return { resource_name, cpc_bid_micros: Math.round(b.bidTL * 1_000_000) };
+        })
+        .filter((u): u is { resource_name: string; cpc_bid_micros: number } => u !== null);
+      if (!updates.length) {
+        return NextResponse.json({ success: true, updated: 0, note: "eşleşen keyword yok" });
+      }
+      await customer.adGroupCriteria.update(updates);
+      return NextResponse.json({ success: true, updated: updates.length });
+    }
+
+    // Enable (status → ENABLED=2)
+    if (enableTexts?.length) {
+      const want = new Set(enableTexts.map(norm));
+      const toEnable = rows
+        .filter((r) => want.has(norm(String(r.ad_group_criterion?.keyword?.text ?? ""))))
+        .map((r) => r.ad_group_criterion.resource_name);
+      if (!toEnable.length) {
+        return NextResponse.json({ success: true, enabled: 0, note: "eşleşen keyword yok" });
+      }
+      await customer.adGroupCriteria.update(
+        toEnable.map((resource_name) => ({ resource_name, status: 2 }))
+      );
+      return NextResponse.json({ success: true, enabled: toEnable.length });
+    }
+
+    // Pause
+    const want = new Set(pauseTexts!.map(norm));
     const toPause = rows
       .filter((r) => want.has(norm(String(r.ad_group_criterion?.keyword?.text ?? ""))))
       .map((r) => r.ad_group_criterion.resource_name);

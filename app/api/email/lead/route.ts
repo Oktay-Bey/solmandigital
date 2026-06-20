@@ -14,6 +14,7 @@ const FUNNEL_LABELS: Record<string, string> = {
   trendyol: "Trendyol Entegrasyonu",
   saas: "SaaS Platform",
   ai: "AI Otomasyon",
+  "ai-en": "AI Automation (EN)",
   "istanbul-dev": "İstanbul Web Developer",
   "istanbul-local": "İstanbul Local",
   "ticarethub-referral": "TicaretHub Referral",
@@ -73,10 +74,12 @@ function buildAdminHtml(data: LeadPayload): string {
     `,
   }
 
+  // ai-en, ai ile aynı alanları (use-case) paylaşır
+  const specificKey = data.funnelType === "ai-en" ? "ai" : data.funnelType
   return `
     <h2>Yeni Lead: ${label}</h2>
     ${sharedRows}
-    ${specificRows[data.funnelType] ?? ""}
+    ${specificRows[specificKey] ?? ""}
   `
 }
 
@@ -141,7 +144,12 @@ export async function POST(req: NextRequest) {
     if (audienceOps.length > 0) await Promise.all(audienceOps)
 
     const clientId = req.cookies.get("_ga")?.value?.replace(/^GA\d+\.\d+\./, "") ?? req.headers.get("x-forwarded-for") ?? "unknown";
-    trackLead(clientId, { form_type: funnelType, page: `/${funnelType}` }).catch(() => {});
+    // GA4 session_id'yi _ga_<container> cookie'sinden çıkar (format: GS1.1.<sessionId>.<...>).
+    // session_id geçilince GA4 event'i mevcut oturuma bağlar → source/medium otomatik atfedilir
+    // (aksi halde server-side event "(not set)" olarak görünür, reklam atfı kopar).
+    const gaSessionCookie = req.cookies.get("_ga_H2QM5NPTED")?.value;
+    const sessionId = gaSessionCookie?.split(".")[2]; // GS1.1.{sessionId}.1.1...
+    trackLead(clientId, { form_type: funnelType, page: `/${funnelType}` }, sessionId).catch(() => {});
     if (gclid) uploadGoogleAdsConversion({ gclid, conversionValue: 500 }).catch(() => {});
 
     return NextResponse.json({ success: true })

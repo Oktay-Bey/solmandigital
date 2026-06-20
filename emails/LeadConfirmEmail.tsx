@@ -36,6 +36,13 @@ const contentMap: Record<LeadFunnelType, { subject: string; headline: string; bo
     ctaHref: "/ucretsiz-analiz",
     ctaText: "Ücretsiz AI Hazırlık Analizi →",
   },
+  "ai-en": {
+    subject: "Your AI Automation Request — Solman Digital",
+    headline: "Request Received!",
+    body: "We've started reviewing your automation potential. We'll get back to you <strong>within 24 hours</strong> to map your workflows and estimate ROI together.",
+    ctaHref: "/en/ai-automation-service",
+    ctaText: "See AI Automation Services →",
+  },
   "istanbul-dev": {
     subject: "Mesajınız Alındı | Solman Digital",
     headline: "Mesajınız İletildi!",

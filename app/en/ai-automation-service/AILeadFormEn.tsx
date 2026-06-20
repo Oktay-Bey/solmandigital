@@ -11,18 +11,18 @@ type FormState = "idle" | "sending" | "error"
 const labelCls =
   "mb-2 block text-[0.775rem] font-bold uppercase tracking-wide text-ink-600"
 
-// Tek-adım form: 2-adımlı versiyonda 5 form_start → 0 submit sürtünmesi gözlendi.
-// Ad + e-posta + use-case tek ekranda → sürtünme minimize. use-case opsiyonel
-// (zorunlu seçim eski adım-2 terk noktasıydı).
-export default function AILeadForm() {
+// Tek-adım İngilizce lead formu — TR AILeadForm ile simetrik. Bu sayfa en çok reklam
+// tıkı alıyordu (43/30g) ama gömülü form yoktu (sadece Calendly/WhatsApp linki) → 0 form_start.
+// use-case opsiyonel; name+email yeterli (düşük sürtünme).
+export default function AILeadFormEn() {
   const router = useRouter()
-  const markStart = useFunnelTracking("ai")
+  const markStart = useFunnelTracking("ai-en")
   const [state, setState] = useState<FormState>("idle")
   const [gclid, setGclid] = useState<string | null>(null)
   useEffect(() => { setGclid(getGclid()) }, [])
   const [form, setForm] = useState({ firstName: "", email: "", aiUseCase: "" })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     markStart()
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
@@ -34,12 +34,12 @@ export default function AILeadForm() {
       const res = await fetch("/api/email/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, funnelType: "ai", gclid }),
+        body: JSON.stringify({ ...form, funnelType: "ai-en", gclid }),
       })
       if (res.ok) {
-        trackEvent("form_submit", "lead", "ai")
-        trackLeadConversion("ai")
-        router.push("/tesekkurler?type=ai")
+        trackEvent("form_submit", "lead", "ai-en")
+        trackLeadConversion("ai-en")
+        router.push("/tesekkurler?type=ai-en")
       } else {
         setState("error")
       }
@@ -51,32 +51,32 @@ export default function AILeadForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
-        <label htmlFor="firstName" className={labelCls}>Adınız *</label>
+        <label htmlFor="firstName" className={labelCls}>Your Name *</label>
         <input
           id="firstName" name="firstName" type="text" required
           value={form.firstName} onChange={handleChange}
-          placeholder="Ahmet"
+          placeholder="Jane Smith"
           className="input text-[16px]"
         />
       </div>
       <div>
-        <label htmlFor="email" className={labelCls}>E-posta *</label>
+        <label htmlFor="email" className={labelCls}>Email *</label>
         <input
           id="email" name="email" type="email" required
           value={form.email} onChange={handleChange}
-          placeholder="ahmet@firma.com"
+          placeholder="jane@company.com"
           className="input text-[16px]"
         />
       </div>
 
       <div>
-        <label className={labelCls}>Hangi alanda AI kullanmak istiyorsunuz?</label>
+        <label className={labelCls}>Where do you want to use AI?</label>
         <div className="grid grid-cols-2 gap-2">
           {[
-            { value: "İçerik / blog yazımı", label: "İçerik & Blog" },
-            { value: "Ürün açıklamaları", label: "Ürün Açıklamaları" },
-            { value: "Müşteri hizmetleri chatbotu", label: "Müşteri Chatbotu" },
-            { value: "Emin değilim, konuşalım", label: "Emin değilim" },
+            { value: "AI chatbot / customer support", label: "Chatbot & Support" },
+            { value: "Content automation", label: "Content Automation" },
+            { value: "Workflow / process automation", label: "Workflow Automation" },
+            { value: "Not sure yet, let's talk", label: "Not sure yet" },
           ].map((opt) => (
             <button
               key={opt.value}
@@ -97,7 +97,7 @@ export default function AILeadForm() {
       {state === "error" && (
         <div className="flex items-center gap-2 rounded-[7px] border border-accent-200 bg-accent-50 px-4 py-3.5 text-[0.875rem] text-accent-700">
           <AlertCircle size={16} />
-          Gönderme sırasında bir hata oluştu. Lütfen tekrar deneyin.
+          Something went wrong. Please try again or reach out via WhatsApp.
         </div>
       )}
 
@@ -106,11 +106,11 @@ export default function AILeadForm() {
         disabled={state === "sending"}
         className="btn btn-primary w-full text-base disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {state === "sending" ? "Gönderiliyor…" : "Ücretsiz AI Analizi İste"}
+        {state === "sending" ? "Sending…" : "Get Your Free AI Audit"}
         {state !== "sending" && <ArrowRight size={18} />}
       </button>
       <p className="text-center text-[0.72rem] text-ink-400">
-        Ücretsiz&nbsp;·&nbsp;Taahhütsüz&nbsp;·&nbsp;24 saatte yanıt
+        Free&nbsp;·&nbsp;No commitment&nbsp;·&nbsp;We reply within 24 hours
       </p>
     </form>
   )

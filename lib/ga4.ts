@@ -48,15 +48,16 @@ export async function sendGA4Event(
 }
 
 // Hazır event yardımcıları
+// sessionId geçilirse event GA4'te mevcut oturuma bağlanır → source/medium doğru atfedilir.
 export function trackLead(clientId: string, params: {
   form_type: string;  // "contact" | "whatsapp" | "audit" vb.
   page?: string;
   value?: number;
-}) {
+}, sessionId?: string) {
   return sendGA4Event(clientId, [{
     name: "generate_lead",
     params: { currency: "TRY", ...params },
-  }]);
+  }], sessionId);
 }
 
 export function trackWhatsApp(clientId: string, page?: string) {
