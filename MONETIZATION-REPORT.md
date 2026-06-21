@@ -30,11 +30,10 @@ Not: Ads = OAuth (service account Ads API'de çalışmaz); GA4 = service account
 **Sıradaki loop işi (Ads açıldı):** dönüşümler birikince search-term/negative keyword optimizasyonu,
 Ads conversion action import teyidi.
 
-> ⚠️ **DEPLOY BEKLİYOR:** Lokal `master`, `origin/master`'dan 12 commit ileride. Tüm bu
-> session'ın monetization işi (conversion fix'leri, CRO, RelatedGuides) **canlıda değil**.
-> `git push origin master` auto-mode tarafından engellendi (default branch'e push + production
-> deploy özel yetki ister). Kullanıcı "push et" deyene veya Bash permission kuralı ekleyene kadar
-> iş lokal birikiyor; GA4 `qualify_lead` doğrulaması da deploy sonrası mümkün.
+> ✅ **DEPLOY DURUMU (2026-06-18 güncellendi):** O zamanki 12 commit'lik birikim `origin/master`'a
+> push edildi; `master` artık remote ile senkron (0 ileride/geride). Conversion fix'leri, CRO ve
+> RelatedGuides işi canlıda. Açık tek iş: `feat/reels-otomasyonu` branch'indeki `dba6104` commit'i
+> (Google Ads düşük görüntülenme + conversion tracking düzeltmeleri) — bu branch push edildi.
 **Veri penceresi:** Son 30 gün
 
 ---
