@@ -77,6 +77,9 @@ export default function HizmetlerPage() {
               <Link href="/ucretsiz-analiz" className="btn btn-outline-dark">
                 Ücretsiz Analiz
               </Link>
+              <Link href="/entegrasyonlar" className="btn btn-outline-dark">
+                Pazaryeri Entegrasyonları
+              </Link>
             </div>
             <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.78rem] text-ondark-muted">
               {["Sabit fiyat, sürpriz maliyet yok", "Kaynak kodu sizde", "İlk görüşme ücretsiz"].map((t) => (

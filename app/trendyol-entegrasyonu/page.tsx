@@ -201,6 +201,44 @@ export default function TrendyolEntegrasyonuPage() {
         </div>
       </section>
 
+      {/* Ürün Bazlı Çözüm Kataloğu */}
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-[900px]">
+          <Reveal>
+            <p className="eyebrow mb-3">Hazır Çözümler</p>
+            <h2 className="mb-3 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+              İhtiyacınıza Tam Uyan Çözümü Seçin
+            </h2>
+            <p className="mb-10 max-w-[620px] text-[0.9rem] leading-[1.7] text-ink-500">
+              Her biri sabit fiyatlı ve kapsamı belli. Tam olarak neye ihtiyacınız olduğunu biliyorsanız, doğrudan o çözümle başlayın.
+            </p>
+          </Reveal>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4">
+            {[
+              { slug: "trendyol-woocommerce-stok-siparis-senkronizasyonu", label: "Trendyol → WooCommerce Senkronizasyonu", desc: "Stok + sipariş otomatik akar" },
+              { slug: "coklu-pazaryeri-stok-senkronizasyonu", label: "Çoklu Pazaryeri Stok Senkronizasyonu", desc: "Trendyol + Hepsiburada + N11 tek panel" },
+              { slug: "otomatik-fiyat-guncelleme", label: "Otomatik Fiyat Güncelleme", desc: "Kurala göre fiyatlama + rakip takibi" },
+            ].map((c) => (
+              <Link
+                key={c.slug}
+                href={`/entegrasyonlar/${c.slug}`}
+                className="group rounded-[10px] border border-ink-200 bg-surface p-6 transition-colors hover:border-accent-300 hover:bg-accent-50"
+              >
+                <p className="mb-1.5 text-[0.9rem] font-bold text-ink-900 group-hover:text-accent-700">
+                  {c.label} →
+                </p>
+                <p className="text-[0.8rem] leading-[1.55] text-ink-500">{c.desc}</p>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-7">
+            <Link href="/entegrasyonlar" className="text-[0.875rem] font-semibold text-accent-700 underline underline-offset-2">
+              Tüm entegrasyon kataloğunu görüntüle →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Marketplace Logos */}
       <section className="border-t border-ink-200 bg-white px-6 py-14 text-center">
         <Reveal>

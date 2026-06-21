@@ -16,7 +16,7 @@ const MARKETPLACES = ["Trendyol", "Hepsiburada", "Amazon TR", "N11", "Çiçeksep
 const labelCls =
   "mb-2 block text-[0.775rem] font-bold uppercase tracking-wide text-ink-600"
 
-export default function TrendyolLeadForm() {
+export default function TrendyolLeadForm({ product }: { product?: string } = {}) {
   const router = useRouter()
   const [state, setState] = useState<FormState>("idle")
   const [gclid, setGclid] = useState<string | null>(null)
@@ -58,6 +58,7 @@ export default function TrendyolLeadForm() {
           ...form,
           funnelType: "trendyol",
           marketplaces: selectedMarkets.join(", "),
+          ...(product ? { integrationProduct: product } : {}),
           gclid,
         }),
       })

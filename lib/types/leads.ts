@@ -40,6 +40,7 @@ export type LeadPayload = {
   currentSolution?: string
   urgency?: string
   specificPain?: string
+  integrationProduct?: string // entegrasyon ürün kataloğu: hangi üründen gelindi
   // saas
   productIdea?: string
   targetUser?: string

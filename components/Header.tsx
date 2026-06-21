@@ -9,6 +9,7 @@ import { siteConfig } from "@/lib/site-config"
 const navLinks = [
   { href: "/", label: "Ana Sayfa" },
   { href: "/hizmetler", label: "Hizmetler" },
+  { href: "/entegrasyonlar", label: "Entegrasyonlar" },
   { href: "/rehber", label: "Rehber" },
   { href: "/portfoy", label: "Projeler" },
   { href: "/hakkimizda", label: "Hakkımızda" },

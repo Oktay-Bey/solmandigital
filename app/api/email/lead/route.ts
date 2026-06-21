@@ -41,6 +41,7 @@ function buildAdminHtml(data: LeadPayload): string {
       ${row("Proje Özeti", data.brief)}
     `,
     trendyol: `
+      ${row("Entegrasyon Ürünü", data.integrationProduct)}
       ${row("Marketplace'ler", data.marketplaces)}
       ${row("Aylık Sipariş", data.monthlyOrders)}
       ${row("Mevcut Çözüm", data.currentSolution)}

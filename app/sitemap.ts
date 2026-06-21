@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next"
 import { services } from "@/lib/data/services"
+import { integrations } from "@/lib/data/integrations"
 import { istanbulPages } from "@/lib/data/istanbul-pages"
 import { rehberPosts } from "@/lib/data/rehber"
 import { siteConfig } from "@/lib/site-config"
@@ -12,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/hizmetler`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
     { url: `${base}/ai-otomasyon-hizmeti`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.92 },
     { url: `${base}/trendyol-entegrasyonu`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.90 },
+    { url: `${base}/entegrasyonlar`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.92 },
     { url: `${base}/web-sitesi-yaptirmak`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.90 },
     { url: `${base}/saas-platform-gelistirme`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.88 },
     { url: `${base}/istanbul-web-developer`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.88 },
@@ -33,6 +35,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: servicePriorityMap[s.tier],
   }))
 
+  const integrationPages: MetadataRoute.Sitemap = integrations.map((p) => ({
+    url: `${base}/entegrasyonlar/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  }))
+
   const istanbulLocalPages: MetadataRoute.Sitemap = istanbulPages.map((p) => ({
     url: `${base}/${p.slug}`,
     lastModified: new Date(),
@@ -51,5 +60,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.80,
   }))
 
-  return [...staticPages, ...servicePages, ...istanbulLocalPages, ...rehberIndexPage, ...rehberDetailPages]
+  return [...staticPages, ...servicePages, ...integrationPages, ...istanbulLocalPages, ...rehberIndexPage, ...rehberDetailPages]
 }
