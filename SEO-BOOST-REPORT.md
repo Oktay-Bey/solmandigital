@@ -93,11 +93,28 @@ Seed kümesi: crm/randevu/muhasebe/whatsapp/kargo/müşteri takip.
 2. **whatsapp-isletme-otomasyonu** (yapay-zeka) → ai-chatbot/randevu cluster'ına bağlı.
 3. Cluster internal link. Build yeşil (144 sayfa) → push → deploy canlı (200) → IndexNow OK.
 
+---
+
+## Iteration 4 — 2026-06-22 (commit c9ca706, DEPLOY CANLI ✅)
+
+### Strateji değişimi: hizmet sayfası boşluk eşleme + sektörel
+services.ts analizi → rehber-linki ALMAYAN hizmet sayfaları: uyelik-abonelik-sistemi,
+dashboard-analitik, dijital-urun-satis, cok-dilli-web-sitesi (0 link). KP cluster (90 fikir).
+
+### Yapılanlar
+1. **kargo-entegrasyonu-rehberi** (e-ticaret) — kargo entegrasyonu 210/ay MEDIUM;
+   e-ticaret operasyon cluster'ı tamamlandı (stok→e-fatura→kargo→iyzico). api-entegrasyonu besler.
+2. **emlak-web-sitesi-rehberi** (web-sitesi) — emlak web sitesi 140+90/ay; ilk SEKTÖREL landing,
+   bölgesel SEO açısı, kurumsal-web-sitesi besler.
+3. Build yeşil (146 sayfa) → push → deploy canlı → IndexNow OK.
+
+### Not: cluster doygunluğu
+üyelik/abonelik/mobil uygulama KP'de zayıf hacim (TR'de düşük arama). Sektörel landing
+(emlak işe yaradı) daha verimli yeni-kitle açma yolu olabilir → sonraki: restoran/klinik/kuaför.
+
 ### Replan — sonraki iterasyon adayları
-- **Yeni kanal:** kargo entegrasyonu, mobil uygulama yaptırma, dijital pazarlama/sosyal medya
-  yönetimi, sektörel landing (restoran/emlak/klinik yazılımı) KP taraması → alıcı boşluğa rehber.
-  services.ts'teki rehbersiz hizmet sayfalarını eşle (içerik→hizmet köprüsü pattern'i işe yarıyor).
-- **İyileştirme:** `(not set)` organik landing (3 oturum, bounce 1.0) kaynağını araştır;
-  düşük-engagement sayfaları güçlendir.
-- **Ölçüm (7-14g):** iter1-3 = 6 yeni rehber `/api/ga4?seo=1` organik landing'de görünüyor mu;
-  organik toplam 11'den yükseliyor mu. İndekslenmeyeni /api/google-index ile tetikle.
+- **Sektörel landing serisi:** restoran/kafe web sitesi, klinik/diş web sitesi, kuaför-güzellik
+  randevu sitesi, avukat/danışmanlık sitesi (her biri bir hizmet sayfasını + randevu/CRM kümesini besler).
+- **İyileştirme:** `(not set)` organik landing kaynağını araştır; düşük-engagement güçlendir.
+- **Ölçüm (7-14g):** iter1-4 = 8 yeni rehber `/api/ga4?seo=1` organik landing'de; organik 11'den
+  yükseliyor mu. İndekslenmeyeni /api/google-index ile tetikle.
