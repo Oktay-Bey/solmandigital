@@ -2970,6 +2970,152 @@ export const rehberPosts: RehberPost[] = [
       "klinik randevu sistemi",
     ],
   },
+  {
+    slug: "e-fatura-entegrasyonu-rehberi",
+    category: "e-ticaret",
+    title: "E-Fatura Entegrasyonu: Web Sitenize Otomatik Faturalama",
+    metaTitle: "E-Fatura Entegrasyonu Rehberi 2026 | Solman Digital",
+    metaDescription:
+      "E-fatura ve e-arşiv entegrasyonu nedir, web sitenize ve e-ticaret sisteminize nasıl bağlanır? Manuel fatura kesmekten otomatik faturalamaya geçiş rehberi.",
+    description:
+      "Her sipariş için manuel fatura kesmek hem zaman alır hem hata kaynağıdır. E-fatura entegrasyonu satış ile faturayı birbirine bağlar — uygulama deneyimiyle nasıl çalıştığını anlatıyoruz.",
+    summary:
+      "E-fatura entegrasyonu, web siteniz veya e-ticaret sisteminizde oluşan satışın otomatik olarak e-fatura / e-arşiv faturasına dönüşmesini sağlar. Az sayıda satış yapan işletmeler faturayı entegratör panelinden manuel kesebilir; ancak sipariş hacmi arttığında manuel faturalama hem zaman kaybı hem de hata ve gecikme kaynağı olur. GİB onaylı bir e-fatura entegratörü (ör. uyumsoft, foriba benzeri sağlayıcılar) ile web sitenizin API üzerinden bağlanması, siparişten faturaya kadar olan süreci tamamen otomatikleştirir. Bu, özellikle çok kanallı satış yapan ve sipariş başına fatura kesmesi gereken işletmeler için operasyonel yükü ciddi şekilde azaltır.",
+    publishDate: "2026-06-22",
+    readTime: 6,
+    sections: [
+      {
+        heading: "E-Fatura Entegrasyonu Tam Olarak Nedir?",
+        body: "E-fatura entegrasyonu, satışın gerçekleştiği sistem (web siteniz, e-ticaret altyapınız) ile GİB onaylı e-fatura entegratörünüz arasında otomatik bir köprü kurar. Bir sipariş tamamlandığında fatura, manuel müdahale olmadan oluşturulup gönderilir. Entegrasyonsuz çalışan işletmeler her faturayı entegratör panelinden tek tek girer — bu, hacim arttıkça sürdürülemez hale gelir.",
+        list: [
+          "Sipariş → fatura otomatik akış, manuel giriş yok",
+          "E-fatura ve e-arşiv ayrımı (mükellef durumuna göre) otomatik yönetilir",
+          "Fatura numarası ve seri takibi tutarlı kalır",
+          "Hatalı / eksik fatura riski azalır",
+        ],
+      },
+      {
+        heading: "Manuel Faturalama Ne Zaman Yetmez?",
+        body: "Düşük hacimli bir işletme faturalarını entegratör panelinden manuel kesebilir ve bu başlangıçta makuldür. Sorun, sipariş sayısı arttığında ve özellikle birden çok satış kanalı devreye girdiğinde ortaya çıkar.",
+        list: [
+          "Günlük sipariş sayısı manuel kesilemeyecek kadar arttı",
+          "Birden çok kanaldan (web, pazaryeri) satış var ve hepsi faturalanmalı",
+          "Fatura gecikmesi nedeniyle müşteri şikayeti / yasal risk doğuyor",
+          "Muhasebe ekibi zamanının büyük kısmını fatura girişine harcıyor",
+        ],
+      },
+      {
+        heading: "Web Sitesi ve E-Ticaret ile Nasıl Bağlanır?",
+        body: "Entegrasyon, e-fatura entegratörünüzün API'si ile web sitenizin sipariş sistemi arasında kurulur. Bir sipariş onaylandığında sistem, müşterinin vergi/kimlik bilgisine göre e-fatura mı e-arşiv mi keseceğine karar verir ve faturayı otomatik oluşturur. Solman Digital olarak geliştirdiğimiz e-ticaret çözümlerinde bu akış, ödeme ve kargo entegrasyonlarıyla birlikte tek bir sipariş hattı olarak tasarlanır.",
+      },
+      {
+        heading: "Entegratör Seçimi ve Teknik Gereksinimler",
+        body: "E-fatura entegrasyonu için GİB onaylı bir entegratörle anlaşmanız gerekir; entegrasyonun kendisi bu entegratörün API'sine bağlanır. Seçim yaparken API dokümantasyonunun olgunluğu, e-arşiv desteği ve test ortamı sunması önemlidir. Hangi entegratörün sizin satış hacminize ve sistem altyapınıza uygun olduğunu birlikte değerlendirebiliriz.",
+      },
+    ],
+    faq: [
+      {
+        q: "E-fatura entegrasyonu için ayrı bir entegratör şart mı?",
+        a: "Evet. E-fatura/e-arşiv kesimi GİB onaylı bir entegratör üzerinden yapılır. Entegrasyon, web sitenizi bu entegratörün API'sine bağlar; böylece sipariş otomatik faturaya dönüşür. Entegratör seçimi satış hacminize ve bütçenize göre yapılır.",
+      },
+      {
+        q: "Hem web sitemden hem pazaryerinden satışı tek yerde faturalayabilir miyim?",
+        a: "Evet. Çok kanallı satışta tüm siparişler tek bir fatura akışına bağlanabilir; her kanaldan gelen sipariş aynı entegratör üzerinden faturalanır. Bu, manuel takip yükünü ve hata riskini ortadan kaldırır.",
+      },
+      {
+        q: "E-fatura entegrasyonu ne kadar sürede kurulur?",
+        a: "Entegratör ve mevcut sistem altyapınıza bağlıdır. Standart bir sipariş→fatura akışı birkaç hafta içinde kurulabilir; e-arşiv, iade/iptal senaryoları ve çok kanallı yapı eklendikçe süre kapsamla planlanır.",
+      },
+    ],
+    cta: {
+      text: "E-ticaret sisteminize e-fatura entegrasyonunu konuşalım",
+      href: "/hizmetler/api-entegrasyonu",
+      label: "API & Entegrasyon Hizmeti",
+    },
+    ctaSecondary: {
+      text: "Önce ihtiyacınızı netleştirelim",
+      href: "/ucretsiz-analiz",
+      label: "Ücretsiz Analiz",
+    },
+    relatedSlugs: ["iyzico-entegrasyonu", "stok-takip-programi-rehberi", "eticaret-sitesi-acmak-turkiye"],
+    keywords: [
+      "e fatura entegrasyonu",
+      "e fatura programı",
+      "fatura kesme programı",
+      "e arşiv entegrasyonu",
+      "otomatik faturalama",
+    ],
+  },
+  {
+    slug: "whatsapp-isletme-otomasyonu",
+    category: "yapay-zeka",
+    title: "WhatsApp İşletme Otomasyonu: Toplu Mesaj ve Otomatik Yanıt",
+    metaTitle: "WhatsApp İşletme Otomasyonu Rehberi 2026 | Solman Digital",
+    metaDescription:
+      "İşletmeler için WhatsApp otomasyonu: toplu mesaj, otomatik yanıt ve sipariş bildirimleri. WhatsApp Business API ile kişisel hesap arasındaki fark ve doğru kullanım.",
+    description:
+      "WhatsApp'tan elle tek tek mesaj atmak ölçeklenmez ve risklidir. İşletme için doğru WhatsApp otomasyonu nasıl kurulur, hangi yöntem yasal ve sürdürülebilir — net bir rehber.",
+    summary:
+      "WhatsApp işletme otomasyonu; sipariş bildirimleri, randevu hatırlatmaları, kampanya duyuruları ve sık sorulan sorulara otomatik yanıt gibi tekrar eden iletişimi otomatikleştirir. Kişisel WhatsApp veya WhatsApp Business uygulamasından elle toplu mesaj atmak hem zaman alır hem de numara engellenme riski taşır. Sürdürülebilir ve yasal yol, WhatsApp Business API üzerinden onaylı şablon mesajlarla çalışan bir entegrasyondur. Bu, web siteniz ve sipariş sisteminizle bağlandığında müşteri her aşamada otomatik bilgilendirilir; müşteri hizmetleri yükü azalırken iletişim profesyonelleşir.",
+    publishDate: "2026-06-22",
+    readTime: 6,
+    sections: [
+      {
+        heading: "İşletme İçin WhatsApp Otomasyonu Ne İşe Yarar?",
+        body: "İşletmelerin müşterileriyle iletişiminin büyük kısmı tekrar eden mesajlardan oluşur: sipariş onayı, kargo bilgisi, randevu hatırlatması, kampanya duyurusu. Bunları elle göndermek hem zaman alır hem unutulur. WhatsApp otomasyonu bu akışı sisteme bağlar; doğru mesaj, doğru anda, otomatik gider.",
+        list: [
+          "Sipariş ve kargo bildirimleri otomatik gönderilir",
+          "Randevu ve ödeme hatırlatmaları zamanında ulaşır",
+          "Sık sorulan sorulara otomatik ilk yanıt verilir",
+          "Müşteri hizmetleri yükü azalır, yanıt hızı artar",
+        ],
+      },
+      {
+        heading: "Kişisel Hesap vs. WhatsApp Business API",
+        body: "Burada en kritik ayrım yasallık ve sürdürülebilirliktir. Kişisel veya standart WhatsApp Business uygulamasından elle toplu mesaj atmak, kullanım koşullarını zorlar ve numaranızın engellenmesine yol açabilir. İşletme ölçeğinde doğru yol WhatsApp Business API'dir: onaylı şablon mesajlarla, izinli alıcılara, sistem üzerinden gönderim yapılır.",
+        list: [
+          "Kişisel/standart uygulama: elle gönderim, engellenme riski, ölçeklenmez",
+          "WhatsApp Business API: onaylı şablon, izinli alıcı, sistemle entegre, ölçeklenir",
+          "Doğru soru: bir kerelik mi mesaj atacaksınız, sürdürülebilir bir kanal mı kuracaksınız?",
+        ],
+      },
+      {
+        heading: "Web Sitesi ve Sipariş Sistemiyle Entegrasyon",
+        body: "WhatsApp otomasyonunun değeri, müşteri verisinin geldiği sistemle bağlandığında ortaya çıkar. Web sitenizde bir sipariş oluştuğunda otomatik onay mesajı, kargo çıktığında takip bilgisi, randevu yaklaştığında hatırlatma — hepsi tetiklenebilir. Solman Digital olarak geliştirdiğimiz çözümlerde WhatsApp Business API, sipariş ve randevu sistemiyle aynı otomasyon hattının parçası olarak kurulur.",
+      },
+      {
+        heading: "İzin ve Şablon: Sürdürülebilir Kullanımın Şartı",
+        body: "WhatsApp Business API'de mesajlar genellikle önceden onaylanmış şablonlarla ve alıcının izniyle gönderilir. Bu, hem yasal uyumu hem de mesajlarınızın spam olarak işaretlenmemesini sağlar. İzinsiz toplu gönderim kısa vadede çekici görünse de uzun vadede kanalı yakar. Doğru kurulan bir otomasyon, izinli ve şablonlu çalışarak kalıcı bir iletişim kanalı olur.",
+      },
+    ],
+    faq: [
+      {
+        q: "WhatsApp'tan toplu mesaj atmak yasal mı?",
+        a: "İşletme ölçeğinde sürdürülebilir ve güvenli yol WhatsApp Business API üzerinden, alıcının izniyle ve onaylı şablon mesajlarla gönderim yapmaktır. Kişisel/standart uygulamadan izinsiz toplu gönderim kullanım koşullarını zorlar ve numaranın engellenmesine yol açabilir.",
+      },
+      {
+        q: "WhatsApp otomasyonu web sitemle entegre olabilir mi?",
+        a: "Evet. Web sitenizde oluşan sipariş, randevu veya form, WhatsApp Business API üzerinden otomatik mesaja dönüştürülebilir — sipariş onayı, kargo bilgisi, randevu hatırlatması gibi. Bu, aynı otomasyon hattının parçası olarak kurulur.",
+      },
+      {
+        q: "WhatsApp Business API kurmak ne gerektirir?",
+        a: "WhatsApp Business API erişimi (bir sağlayıcı üzerinden), onaylı mesaj şablonları ve gönderimi tetikleyecek bir sistem (web sitesi/sipariş altyapısı) gerekir. Kurulum kapsamı, gönderilecek mesaj türlerine ve entegrasyon ihtiyacına göre belirlenir.",
+      },
+    ],
+    cta: {
+      text: "İşletmeniz için WhatsApp otomasyonunu konuşalım",
+      href: "/ucretsiz-analiz",
+      label: "Ücretsiz Analiz ve Fiyat Teklifi",
+    },
+    relatedSlugs: ["ai-chatbot-web-sitesi", "ai-icerik-otomasyonu-nedir", "online-randevu-sistemi-rehberi"],
+    keywords: [
+      "whatsapp otomasyon",
+      "whatsapp toplu mesaj gönderme",
+      "whatsapp business api",
+      "whatsapp işletme otomasyonu",
+      "otomatik whatsapp mesajı",
+    ],
+  },
 ]
 
 export function getRehberBySlug(slug: string): RehberPost | undefined {
