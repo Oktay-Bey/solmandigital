@@ -3116,6 +3116,159 @@ export const rehberPosts: RehberPost[] = [
       "otomatik whatsapp mesajı",
     ],
   },
+  {
+    slug: "kargo-entegrasyonu-rehberi",
+    category: "e-ticaret",
+    title: "Kargo Entegrasyonu: E-Ticarette Otomatik Gönderi Yönetimi",
+    metaTitle: "Kargo Entegrasyonu Rehberi 2026 | Solman Digital",
+    metaDescription:
+      "E-ticaret sitenize kargo entegrasyonu nasıl yapılır? Otomatik kargo etiketi, takip numarası ve çoklu kargo firması yönetimi ile operasyonel yükü azaltın.",
+    description:
+      "Her sipariş için elle kargo kaydı açmak ve takip numarası girmek hata ve zaman kaybıdır. Kargo entegrasyonu bu akışı otomatikleştirir — uygulama deneyimiyle anlatıyoruz.",
+    summary:
+      "Kargo entegrasyonu, e-ticaret sitenizde oluşan siparişin otomatik olarak kargo firmasının sistemine düşmesini, kargo etiketinin oluşturulmasını ve takip numarasının müşteriye iletilmesini sağlar. Düşük sipariş hacminde gönderiler elle açılabilir; ancak hacim arttığında ve birden fazla kargo firmasıyla çalışıldığında manuel süreç hata ve gecikme üretir. Yurtiçi, Aras, MNG gibi kargo firmalarının API'leri ile entegrasyon, siparişten teslimata kadar olan akışı otomatikleştirir ve müşteri takip deneyimini iyileştirir. Çok kanallı satışta tüm kanalların gönderilerini tek panelden yönetmek operasyonel verimliliği belirgin artırır.",
+    publishDate: "2026-06-22",
+    readTime: 6,
+    sections: [
+      {
+        heading: "Kargo Entegrasyonu Neyi Otomatikleştirir?",
+        body: "Kargo entegrasyonu, sipariş ile kargo firması arasındaki manuel adımları ortadan kaldırır. Sipariş onaylandığında kargo kaydı otomatik açılır, etiket oluşturulur ve takip numarası hem sisteme hem müşteriye iletilir. Entegrasyonsuz çalışan işletmeler bu adımları her sipariş için elle yapar.",
+        list: [
+          "Sipariş → kargo kaydı otomatik açılır",
+          "Kargo etiketi / barkod otomatik üretilir",
+          "Takip numarası müşteriye otomatik iletilir (e-posta/SMS/WhatsApp)",
+          "Teslim durumu güncellemeleri sisteme yansır",
+        ],
+      },
+      {
+        heading: "Manuel Kargo Yönetimi Ne Zaman Tıkanır?",
+        body: "Günde birkaç sipariş gönderen bir işletme kargo kayıtlarını elle açabilir. Sorun, hacim büyüdüğünde ve birden çok kargo firmasıyla çalışıldığında ortaya çıkar — her firma farklı panel, farklı süreç demektir.",
+        list: [
+          "Günlük gönderi sayısı elle yönetilemeyecek kadar arttı",
+          "Birden çok kargo firmasıyla çalışılıyor (her biri ayrı panel)",
+          "Takip numarası girişi gecikiyor, müşteri 'kargom nerede' soruyor",
+          "Çok kanallı satışta her kanalın gönderisi ayrı yönetiliyor",
+        ],
+      },
+      {
+        heading: "Çoklu Kargo Firması Tek Panelden Yönetim",
+        body: "Kargo entegrasyonunun en büyük getirisi, farklı kargo firmalarını tek bir akışta toplamasıdır. Hangi siparişin hangi firmayla gideceği kurallara bağlanabilir (örneğin bölgeye veya desiye göre), ve tüm gönderiler tek panelden izlenir. Solman Digital olarak geliştirdiğimiz e-ticaret çözümlerinde kargo entegrasyonu, ödeme ve fatura akışıyla birlikte tek bir sipariş hattının parçası olarak tasarlanır.",
+      },
+      {
+        heading: "Teknik Gereksinimler ve Süreç",
+        body: "Kargo entegrasyonu için ilgili kargo firmalarıyla anlaşmalı müşteri (sözleşmeli) hesabınız ve API erişiminiz olması gerekir. Entegrasyonun kendisi bu API'lere bağlanarak gönderi oluşturma ve takip akışını otomatikleştirir. Hangi kargo firmalarının sizin hacminize ve teslimat bölgenize uygun olduğunu birlikte değerlendirebiliriz.",
+      },
+    ],
+    faq: [
+      {
+        q: "Kargo entegrasyonu için kargo firmasıyla sözleşme şart mı?",
+        a: "Evet. Otomatik gönderi oluşturmak için ilgili kargo firmasıyla sözleşmeli (anlaşmalı) hesabınız ve API erişiminiz olması gerekir. Entegrasyon bu hesaba bağlanarak etiket ve takip akışını otomatikleştirir.",
+      },
+      {
+        q: "Birden fazla kargo firmasını aynı sistemde kullanabilir miyim?",
+        a: "Evet. Birden çok kargo firması tek panelde toplanabilir; hangi siparişin hangi firmayla gideceği bölge, ağırlık veya maliyet kuralına göre otomatik belirlenebilir. Tüm gönderiler tek yerden izlenir.",
+      },
+      {
+        q: "Kargo entegrasyonu mevcut e-ticaret siteme eklenebilir mi?",
+        a: "Mevcut sistemin yapısına bağlıdır. Çoğu e-ticaret altyapısına kargo API entegrasyonu eklenebilir; sipariş oluşturma, etiket ve takip akışı otomatikleştirilir. Kapsam ve süre ihtiyaç görüşmesinde netleşir.",
+      },
+    ],
+    cta: {
+      text: "E-ticaret sisteminize kargo entegrasyonunu konuşalım",
+      href: "/hizmetler/api-entegrasyonu",
+      label: "API & Entegrasyon Hizmeti",
+    },
+    ctaSecondary: {
+      text: "Önce ihtiyacınızı netleştirelim",
+      href: "/ucretsiz-analiz",
+      label: "Ücretsiz Analiz",
+    },
+    relatedSlugs: ["e-fatura-entegrasyonu-rehberi", "iyzico-entegrasyonu", "stok-takip-programi-rehberi"],
+    keywords: [
+      "kargo entegrasyonu",
+      "e-ticaret kargo entegrasyonu",
+      "otomatik kargo etiketi",
+      "çoklu kargo yönetimi",
+      "kargo api entegrasyonu",
+    ],
+  },
+  {
+    slug: "emlak-web-sitesi-rehberi",
+    category: "web-sitesi",
+    title: "Emlak Web Sitesi: Ofisiniz İçin İlan ve Portföy Sitesi",
+    metaTitle: "Emlak Web Sitesi Yaptırma Rehberi 2026 | Solman Digital",
+    metaDescription:
+      "Emlak ofisi için web sitesi nasıl olmalı? İlan yönetimi, harita entegrasyonu, portföy filtreleme ve sahibinden/portallardan farkınızı ortaya koyan özellikler.",
+    description:
+      "Emlak ofisleri ilanlarını portallarda paylaşır ama markasını orada kuramaz. Kendi emlak web siteniz neyi değiştirir, hangi özellikler gerçekten işe yarar — net bir rehber.",
+    summary:
+      "Emlak web sitesi, ofisinizin portföyünü kendi markanız altında, portal komisyonu ve sınırlarına bağlı kalmadan sunmanızı sağlar. Sahibinden ve benzeri portallar hazır trafik verir ancak marka görünürlüğü ve müşteri verisi portala aittir. Kendi sitenizde ilan yönetimi, harita üzerinde konum, oda/fiyat/bölge filtreleme ve doğrudan iletişim formu ile müşteri adaylarını kendi sisteminize toplarsınız. Google'da bölgesel aramalarda (örneğin 'kadıköy satılık daire') görünürlük kazanmak, portallara ödenen vitrin ücretine kıyasla uzun vadede sürdürülebilir bir kanaldır.",
+    publishDate: "2026-06-22",
+    readTime: 6,
+    sections: [
+      {
+        heading: "Portal Yeterken Neden Kendi Emlak Siteniz?",
+        body: "Sahibinden ve benzeri portallar hazır bir alıcı kitlesi sunar ve emlak ofisleri için vazgeçilmezdir. Ancak portalda markanız değil portalın markası öne çıkar, müşteri verisi portala kalır ve her vitrin için ücret ödersiniz. Kendi web siteniz portalı terk etmek değil — onu desteklemek ve markanızı kurmaktır.",
+        list: [
+          "Marka görünürlüğü portalın değil sizin",
+          "Müşteri adayları doğrudan sizin sisteminize düşer",
+          "Google bölgesel aramalarında organik görünürlük",
+          "Portföyünüzü istediğiniz gibi sunma özgürlüğü",
+        ],
+      },
+      {
+        heading: "Emlak Web Sitesinde Gerçekten İşe Yarayan Özellikler",
+        body: "Emlak sitesinin değeri, ziyaretçinin aradığı ilanı hızlı bulmasına ve kolayca iletişime geçmesine bağlıdır. Süslü ama işlevsiz özellikler yerine, satışa yarayan temellere odaklanmak gerekir.",
+        list: [
+          "İlan yönetim paneli — ilanları kolayca ekleyip güncelleme",
+          "Filtreleme: bölge, fiyat, oda sayısı, m², satılık/kiralık",
+          "Harita entegrasyonu — ilanı konumuyla görme",
+          "Galeri ve 360° / video desteği",
+          "Her ilanda doğrudan iletişim ve randevu talebi formu",
+        ],
+      },
+      {
+        heading: "Bölgesel SEO: 'Kadıköy Satılık Daire' Aramalarında Çıkmak",
+        body: "Emlak aramalarının büyük kısmı bölgeseldir: kullanıcı 'beşiktaş kiralık ofis' veya 'çekmeköy satılık villa' arar. Kendi web siteniz, bu bölgesel aramalara yönelik sayfalarla Google'da organik görünürlük kazanabilir. Bu, her ilan için portal vitrin ücreti ödemeye kıyasla zamanla kendi trafiğinizi getiren bir kanaldır. Solman Digital olarak geliştirdiğimiz web sitelerinde bölgesel SEO yapısı baştan kurulur.",
+      },
+      {
+        heading: "İlan Güncelliği ve Otomasyon",
+        body: "Emlak portföyü sürekli değişir; satılan ilanın sitede kalması güven kaybettirir. İyi bir emlak sitesi, ilan ekleme/güncelleme/arşivlemeyi kolaylaştırır ve istenirse mevcut portal ilanlarınızla senkron çalışacak şekilde kurulabilir. Hangi otomasyon seviyesinin sizin iş akışınıza uygun olduğunu birlikte netleştirebiliriz.",
+      },
+    ],
+    faq: [
+      {
+        q: "Sahibinden'de ilan veriyorum, ayrıca web sitesi gerekir mi?",
+        a: "Portal hazır trafik verir ama markanızı ve müşteri verinizi orada kuramazsınız. Kendi web siteniz portalı destekler: bölgesel Google aramalarında görünürlük kazanır, müşteri adaylarını doğrudan size toplar ve markanızı öne çıkarır. İkisi birlikte en güçlü sonucu verir.",
+      },
+      {
+        q: "İlanlarımı portaldan web siteme otomatik aktarabilir miyiz?",
+        a: "İş akışınıza bağlıdır. İlan yönetim paneliyle ilanları kolayca eklemek mümkündür; mevcut portal ilanlarınızla senkronizasyon da kapsam dahilinde değerlendirilebilir. Hangi yöntemin uygun olduğu ofis büyüklüğünüze ve ilan hacminize göre belirlenir.",
+      },
+      {
+        q: "Emlak web sitesi ne kadar sürede hazır olur?",
+        a: "Kapsama bağlıdır. İlan yönetimi, filtreleme ve harita içeren bir emlak sitesi genellikle birkaç hafta içinde kullanıma alınabilir; portal senkronizasyonu ve ileri özellikler eklendikçe süre kapsamla planlanır.",
+      },
+    ],
+    cta: {
+      text: "Emlak ofisiniz için web sitesini konuşalım",
+      href: "/hizmetler/kurumsal-web-sitesi",
+      label: "Kurumsal Web Sitesi Hizmeti",
+    },
+    ctaSecondary: {
+      text: "Önce ihtiyacınızı netleştirelim",
+      href: "/ucretsiz-analiz",
+      label: "Ücretsiz Analiz",
+    },
+    relatedSlugs: ["kurumsal-web-sitesi-fiyatlari", "web-sitesi-seo-teknikleri", "landing-page-nedir"],
+    keywords: [
+      "emlak web sitesi",
+      "emlak konut web sitesi",
+      "emlak ofisi web sitesi",
+      "emlak ilan sitesi",
+      "gayrimenkul web sitesi",
+    ],
+  },
 ]
 
 export function getRehberBySlug(slug: string): RehberPost | undefined {
