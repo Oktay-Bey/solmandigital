@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, MessageCircle, Mail, Clock, CheckCircle2, Shield } from "lucide-react"
+import { ArrowRight, MessageCircle, Mail, Phone, Clock, CheckCircle2, Shield } from "lucide-react"
 import ContactFormEn from "@/components/ContactFormEn"
 import { siteConfig } from "@/lib/site-config"
 import Reveal from "@/components/Reveal"
 import WhatsAppLink from "@/components/WhatsAppLink"
+import PhoneLink from "@/components/PhoneLink"
 
 export const metadata: Metadata = {
   title: "Contact — Let's Discuss Your Project | Solman Digital",
@@ -127,6 +128,30 @@ export default function ContactPage() {
                   <ArrowRight size={14} className="text-[#4ade80]" />
                 </div>
               </WhatsAppLink>
+            </Reveal>
+
+            {/* Phone — callable */}
+            <Reveal delay={120}>
+              <PhoneLink
+                source="contact_card"
+                className="block rounded-[10px] border border-ink-200 bg-white p-6"
+              >
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-lg bg-ink-100">
+                    <Phone size={18} className="text-ink-600" />
+                  </div>
+                  <div>
+                    <p className="text-[0.75rem] font-bold uppercase tracking-wider text-ink-400">
+                      By Phone
+                    </p>
+                    <p className="text-[0.9rem] font-bold text-ink-800">Call Us Now</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[0.85rem] font-bold text-ink-700">{siteConfig.whatsappDisplay}</span>
+                  <ArrowRight size={14} className="text-ink-500" />
+                </div>
+              </PhoneLink>
             </Reveal>
 
             {/* Next Steps */}

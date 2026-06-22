@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Mail, MapPin, MessageCircle, ArrowRight } from "lucide-react"
+import { Mail, MapPin, MessageCircle, Phone, ArrowRight } from "lucide-react"
+import PhoneLink from "@/components/PhoneLink"
 import { siteConfig } from "@/lib/site-config"
 import { services } from "@/lib/data/services"
 import { istanbulPages } from "@/lib/data/istanbul-pages"
@@ -43,6 +44,11 @@ export default function Footer() {
                 <MessageCircle size={13} />
                 {siteConfig.whatsappDisplay}
               </a>
+              <PhoneLink source="footer"
+                style={{ display: "flex", alignItems: "center", gap: 8, fontSize: "0.8rem", color: "#a8a8a8", textDecoration: "none" }}>
+                <Phone size={13} />
+                {siteConfig.whatsappDisplay}
+              </PhoneLink>
               <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: "0.8rem", color: "#666" }}>
                 <MapPin size={13} />
                 {siteConfig.address}

@@ -23,6 +23,14 @@ export function trackEvent(action: string, category: string, label?: string) {
   gtag(action, { event_category: category, event_label: label, transport_type: "beacon" })
 }
 
+// Aranabilir telefon (tel:) tıklaması → GA4 phone_call event'i.
+// tel: linki tıklamada arama uygulamasına geçtiği için transport_type:"beacon" şart
+// (yoksa navigasyon collect isteğini iptal eder → ölçüm kaybı). WhatsApp ile aynı desen.
+// Ads tarafında bu event "import GA4 conversions" ile dönüşüm action'a bağlanır.
+export function trackPhoneCall(label: string) {
+  gtag("phone_call", { event_category: "engagement", event_label: label, transport_type: "beacon" })
+}
+
 export function trackLeadConversion(label: string) {
   // GA4 event — Google Ads conversion action "solmandigitaltr (web) qualify_lead" buna bağlı.
   // KRİTİK: formlar bu event'i tetikledikten hemen sonra router.push("/tesekkurler") çağırıyor.
