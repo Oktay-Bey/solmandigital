@@ -5,6 +5,10 @@
 > aç (öncelik) + mevcut sayfaları iyileştir (ikincil). Değişiklikler live gider.
 > İlgili: [[project-monetization-loop]], [[project-ads-landing-strategy]], [[project-brand-voice]]
 
+**SON ÖLÇÜM (iter8, 22 Haz):** Organik 7g = 3 oturum, yeni rehber henüz organik landing'de YOK
+(beklendi — bugün yayınlandı, Google sıralama 7-14g). 10 kanal canlı + Google Indexing'e gönderildi.
+**Bekleme fazı:** kazanan tema sinyali için ~1 hafta. Bu süreçte körlemesine yeni rehber BASMA.
+
 ## Veri kaynakları (ikisi de canlı, doğrulandı)
 - **GA4 organik:** `GET /api/ga4?seo=1&days=28` → `sessionDefaultChannelGroup=Organic Search`
   bazında landing page performansı + kanal dağılımı. (lib/google-analytics-data.ts → getGA4OrganicReport)
