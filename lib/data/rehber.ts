@@ -3350,6 +3350,99 @@ export const rehberPosts: RehberPost[] = [
       "cafe adisyon sistemi",
     ],
   },
+  {
+    slug: "seo-hizmeti-nedir-nasil-secilir",
+    category: "dijital-pazarlama",
+    title: "SEO Hizmeti: Ne İçerir, Nasıl Seçilir, Fiyatı Neye Bağlı?",
+    metaTitle: "SEO Hizmeti Rehberi 2026: Ne İçerir, Nasıl Seçilir? | Solman Digital",
+    metaDescription:
+      "SEO hizmeti tam olarak ne yapar, hangi kalemleri içerir ve fiyatı neye göre belirlenir? Doğru SEO hizmetini seçerken sorulacak sorular ve dikkat edilecekler.",
+    description:
+      "SEO hizmeti almak isteyen işletmelerin en çok karıştırdığı konu, paranın tam olarak neye gittiğidir. SEO hizmeti hangi kalemlerden oluşur, vaatler nasıl değerlendirilir — şeffafça anlatıyoruz.",
+    summary:
+      "SEO hizmeti, bir web sitesinin Google'da organik (reklamsız) aramalarda daha üst sıralarda çıkması için yapılan teknik, içerik ve otorite çalışmalarının bütünüdür. Üç ana kalemden oluşur: teknik SEO (site hızı, mobil uyum, indekslenebilirlik, yapısal veri), içerik SEO (hedef aramalara yönelik sayfalar) ve otorite/bağlantı çalışması. SEO sonuç vermesi zaman alan bir yatırımdır; ilk anlamlı sonuçlar genellikle birkaç ay içinde görülür. 'İlk sayfa garantisi' veren hizmetlerden kaçınmak gerekir çünkü Google sıralamasını kimse garanti edemez. Doğru SEO hizmeti, hangi metriği (organik trafik, dönüşüm) nasıl iyileştireceğini şeffaf raporlamayla gösterir.",
+    publishDate: "2026-06-22",
+    readTime: 7,
+    sections: [
+      {
+        heading: "SEO Hizmeti Tam Olarak Neyi Kapsar?",
+        body: "SEO hizmeti tek bir iş değil, birbirini destekleyen üç çalışma alanının bütünüdür. Bir SEO hizmetinin neye para aldığını anlamak için bu üç kalemi ayırt etmek gerekir.",
+        list: [
+          "Teknik SEO: site hızı, mobil uyum, indekslenebilirlik, sitemap, yapısal veri (schema)",
+          "İçerik SEO: hedef aramalara yönelik sayfa ve rehber üretimi, mevcut içerik optimizasyonu",
+          "Otorite: iç linkleme yapısı ve nitelikli dış bağlantı (kalite, sayı değil)",
+          "Ölçüm: organik trafik ve dönüşümün düzenli, şeffaf raporlanması",
+        ],
+      },
+      {
+        heading: "SEO Ne Zaman Sonuç Verir?",
+        body: "SEO'nun en yanlış anlaşılan yönü zamanlamadır. Reklamın aksine SEO anında sonuç vermez; Google'ın yeni içeriği taraması, değerlendirmesi ve sıralaması zaman alır. Bu, SEO'yu zayıf değil — aksine kalıcı kılan şeydir: bir kez kazanılan sıralama, reklam gibi her tıklamada ödeme gerektirmez.",
+        list: [
+          "İlk teknik düzeltmelerin etkisi haftalar içinde görülebilir",
+          "İçerik sıralaması genellikle birkaç ay içinde olgunlaşır",
+          "Rekabetçi aramalar daha uzun, niş long-tail aramalar daha hızlı sıralanır",
+          "SEO durduğunda sonuç bir anda kaybolmaz — reklamın tersi",
+        ],
+      },
+      {
+        heading: "Dikkat: 'İlk Sayfa Garantisi' Tuzağı",
+        body: "Hiçbir SEO hizmeti Google'da ilk sıra veya ilk sayfa garantisi veremez — çünkü sıralamayı Google'ın algoritması belirler, hizmet veren değil. Garanti veren hizmetler genellikle ya düşük rekabetli, değersiz aramalarda 'başarı' gösterir ya da Google tarafından cezalandırılabilecek riskli yöntemler kullanır. Şeffaf bir SEO hizmeti garanti yerine süreç, yöntem ve ölçülebilir hedefler sunar.",
+      },
+      {
+        heading: "SEO Hizmeti Fiyatı Neye Göre Belirlenir?",
+        body: "SEO fiyatı tek bir rakam değildir; sitenin mevcut durumu, hedef aramaların rekabeti ve çalışma kapsamına göre belirlenir. Çok düşük fiyatlı 'paket SEO' genellikle otomatik, değer üretmeyen işlerdir; gerçek SEO sitenize özel analiz ve sürekli çalışma gerektirir.",
+        list: [
+          "Sitenin teknik başlangıç durumu (ne kadar düzeltme gerekiyor)",
+          "Hedef aramaların rekabet düzeyi",
+          "İçerik üretim hacmi (kaç sayfa/rehber)",
+          "Raporlama ve danışmanlık derinliği",
+        ],
+      },
+      {
+        heading: "Doğru SEO Hizmetini Seçerken Sorulacak Sorular",
+        body: "SEO hizmetinde şeffaflık, kaliteyi ucuzdan ayıran en net göstergedir. Bir SEO hizmeti alırken şu soruları sorun ve net cevap bekleyin.",
+        list: [
+          "Hangi metriği iyileştireceksiniz — sıralama mı, organik trafik mi, dönüşüm mü?",
+          "Raporlamada gerçek veri (GA4 / Search Console) mı, kendi panel grafikleriniz mi?",
+          "İçerik kim tarafından, hangi araştırmaya dayanarak üretiliyor?",
+          "Dış bağlantı yöntemi nedir — riskli toplu link mi, nitelikli mi?",
+          "Sözleşme bitince yapılan işler (içerik, teknik altyapı) bende kalıyor mu?",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "SEO hizmeti ne kadar sürede sonuç verir?",
+        a: "Teknik düzeltmelerin etkisi haftalar içinde görülebilir; içerik sıralaması genellikle birkaç ay içinde olgunlaşır. Niş, düşük rekabetli aramalar daha hızlı, rekabetçi aramalar daha uzun sürer. SEO kalıcı bir yatırımdır — sonuç reklam gibi durunca anında kaybolmaz.",
+      },
+      {
+        q: "SEO'da ilk sayfa garantisi mümkün mü?",
+        a: "Hayır. Sıralamayı Google'ın algoritması belirler; hiçbir hizmet ilk sıra/sayfa garantisi veremez. Garanti veren hizmetlere temkinli yaklaşın — genellikle değersiz aramalarda 'başarı' gösterir ya da riskli yöntem kullanır. Şeffaf hizmet garanti yerine yöntem ve ölçülebilir hedef sunar.",
+      },
+      {
+        q: "Ucuz SEO paketleri işe yarar mı?",
+        a: "Çok düşük fiyatlı paket SEO genellikle otomatik, sitenize özel olmayan işlerdir ve kalıcı değer üretmez. Gerçek SEO sitenize özel teknik analiz, hedefli içerik ve sürekli çalışma gerektirir; fiyat bu kapsama göre belirlenir.",
+      },
+    ],
+    cta: {
+      text: "Sitenizin SEO durumunu birlikte değerlendirelim",
+      href: "/hizmetler/seo-teknik-altyapi",
+      label: "SEO Teknik Altyapı & Danışmanlık",
+    },
+    ctaSecondary: {
+      text: "Ücretsiz SEO analizi isteyin",
+      href: "/ucretsiz-analiz",
+      label: "Ücretsiz Analiz",
+    },
+    relatedSlugs: ["web-sitesi-seo-teknikleri", "google-ads-vs-seo", "google-reklam-ajansi-mi-kendiniz-mi"],
+    keywords: [
+      "seo hizmeti",
+      "seo fiyatları",
+      "seo hizmeti nedir",
+      "seo danışmanlık",
+      "profesyonel seo hizmeti",
+    ],
+  },
 ]
 
 export function getRehberBySlug(slug: string): RehberPost | undefined {
