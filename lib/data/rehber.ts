@@ -2731,7 +2731,7 @@ export const rehberPosts: RehberPost[] = [
       "özel stok takip yazılımı",
       "pazaryeri stok senkronizasyonu",
     ],
-    relatedSlugs: ["saas-mvp-sureci", "cok-kanalli-marketplace-karsilastirma", "trendyol-satici-web-sitesi"],
+    relatedSlugs: ["crm-yazilimi-rehberi", "cok-kanalli-marketplace-karsilastirma", "trendyol-satici-web-sitesi"],
   },
   {
     slug: "google-reklam-ajansi-mi-kendiniz-mi",
@@ -2807,6 +2807,167 @@ export const rehberPosts: RehberPost[] = [
       "google ads reklam ajansı",
       "google partner ajans",
       "google reklam yönetimi",
+    ],
+  },
+  {
+    slug: "crm-yazilimi-rehberi",
+    category: "saas",
+    title: "CRM Yazılımı: Hazır Paket mi, İşletmenize Özel mi?",
+    metaTitle: "CRM Yazılımı Rehberi 2026: Hazır mı Özel mi? | Solman Digital",
+    metaDescription:
+      "CRM yazılımı nedir, hangi işletmeye ne zaman gerekir, hazır CRM programları ile özel geliştirilen CRM arasındaki fark ve maliyet karşılaştırması.",
+    description:
+      "Müşteri ilişkileri büyüdükçe Excel ve dağınık notlar yetmez olur. CRM yazılımı tam olarak neyi çözer, hazır paket ne zaman tıkanır, özel CRM hangi noktada mantıklı — uygulama deneyimiyle anlatıyoruz.",
+    summary:
+      "CRM (müşteri ilişkileri yönetimi) yazılımı, müşteri verisini, satış sürecini ve takip görevlerini tek yerde toplar. Az sayıda müşterisi olan işletmeler için Excel ya da hazır bir CRM programının ücretsiz planı başlangıçta yeterlidir. Satış ekibi büyüdüğünde, müşteri başına çok sayıda etkileşim biriktiğinde veya CRM'in web sitesi, e-posta ve pazaryeri gibi mevcut sistemlerle entegre olması gerektiğinde hazır paketler yetersiz kalır. İş akışı standart programlara sığmayan işletmeler için özel geliştirilen bir CRM, aylık abonelik yerine tek seferlik yatırımla tam kontrol sağlar.",
+    publishDate: "2026-06-22",
+    readTime: 7,
+    sections: [
+      {
+        heading: "CRM Yazılımı Aslında Neyi Çözer?",
+        body: "CRM yazılımı bir adres defteri değildir. Asıl değeri, bir müşteriyle olan tüm geçmişi — teklifler, görüşmeler, takip tarihleri, satış aşaması — tek bir yerde, herkesin görebileceği şekilde tutmasıdır. Dağınık not ve hafızaya dayanan satış süreçlerinde kaçan takipler ve unutulan müşteriler doğrudan gelir kaybıdır.",
+        list: [
+          "Her müşterinin geçmişi tek ekranda — kim ne zaman ne konuştu",
+          "Takip görevleri ve hatırlatmalar — hiçbir fırsat unutulmaz",
+          "Satış hunisi görünürlüğü — hangi aşamada kaç müşteri var",
+          "Ekip içi devir kolaylığı — bir kişi ayrılınca bilgi kaybolmaz",
+        ],
+      },
+      {
+        heading: "Hangi İşletmeye CRM Gerekir?",
+        body: "Her işletmeye baştan CRM gerekmez. Az müşterili ve tek kişilik bir satış sürecinde Excel uzun süre yeterlidir. CRM ihtiyacı, takip edilecek müşteri ve etkileşim sayısı hafızanın ve tablonun kapasitesini aştığında doğar.",
+        list: [
+          "Birden fazla kişi aynı müşterilerle ilgileniyor",
+          "Müşteri başına çok sayıda görüşme / teklif birikiyor",
+          "Satış sonrası takip (yenileme, ek satış) düzenli yapılması gerekiyor",
+          "Hangi kampanyanın hangi müşteriyi getirdiğini ölçmek isteniyor",
+        ],
+      },
+      {
+        heading: "Hazır CRM Programı mı, Özel CRM mi?",
+        body: "Hazır CRM programları hızlı başlar ve küçük ekipler için genellikle yeterlidir. Sınır, sizin satış sürecinizin standart bir akışa sığmadığı noktada ortaya çıkar. Özel geliştirilen bir CRM ise tam olarak sizin aşamalarınıza, terminolojinize ve entegrasyon ihtiyaçlarınıza göre kurulur.",
+        list: [
+          "Hazır CRM: hızlı kurulum, düşük ilk maliyet, sınırlı özelleştirme, kullanıcı başına aylık ücret",
+          "Özel CRM: iş akışınıza birebir, web sitesi/e-posta/pazaryeri entegrasyonu dahil, tek seferlik geliştirme",
+          "Belirleyici soru: süreciniz programa mı uyacak, program sürecinize mi?",
+        ],
+      },
+      {
+        heading: "CRM'in Web Sitesi ve Lead Formlarıyla Entegrasyonu",
+        body: "CRM'in en büyük getirisi, müşteri verisinin geldiği kaynakla entegre olduğunda ortaya çıkar. Web sitenizdeki bir lead formu doğrudan CRM'e düştüğünde, gelen her talep otomatik kaydedilir, takip görevine dönüşür ve hiçbir müşteri adayı arada kaybolmaz. Solman Digital olarak geliştirdiğimiz çözümlerde web sitesi form altyapısı ile CRM aynı sistemin parçası olarak tasarlanır — manuel veri girişi ortadan kalkar.",
+      },
+      {
+        heading: "Maliyet: Kullanıcı Başına Abonelik vs. Tek Seferlik",
+        body: "Hazır CRM'ler kullanıcı başına aylık ücretlendirilir; ekip büyüdükçe maliyet de doğrusal artar. Özel geliştirilen bir CRM tek seferlik bir yatırımdır ve kullanıcı sayısından bağımsızdır — sahip olduğunuz için aylık abonelik ödemezsiniz. Hangisinin uygun olduğu ekip büyüklüğünüze, süreç karmaşıklığınıza ve entegrasyon ihtiyacınıza bağlıdır; bunu birlikte netleştirebiliriz.",
+      },
+    ],
+    faq: [
+      {
+        q: "Küçük işletme için CRM şart mı?",
+        a: "Hayır. Az müşterili, tek kişilik bir satış sürecinde Excel veya hazır bir CRM'in ücretsiz planı başlangıçta yeterlidir. CRM ihtiyacı, takip edilecek müşteri ve etkileşim sayısı yönetilemez hale geldiğinde doğar.",
+      },
+      {
+        q: "Özel CRM yazılımı ne kadar sürede kurulur?",
+        a: "Kapsama bağlıdır. Temel bir satış takibi ve müşteri kaydı birkaç hafta içinde kullanıma alınabilir; web sitesi, e-posta ve pazaryeri entegrasyonları eklendikçe süre kapsamla birlikte planlanır. Kesin süre ve maliyet ihtiyaç görüşmesinde netleşir.",
+      },
+      {
+        q: "CRM web sitemizle entegre olabilir mi?",
+        a: "Evet. Web sitenizdeki lead formları, iletişim talepleri ve e-posta yazışmaları doğrudan CRM'e bağlanabilir; her talep otomatik kaydedilir ve takip görevine dönüşür. Bu, manuel veri girişini ortadan kaldırır.",
+      },
+    ],
+    cta: {
+      text: "İşletmenize uygun CRM yaklaşımını birlikte değerlendirelim",
+      href: "/ucretsiz-analiz",
+      label: "Ücretsiz Analiz ve Fiyat Teklifi",
+    },
+    relatedSlugs: ["saas-mvp-sureci", "online-randevu-sistemi-rehberi", "stok-takip-programi-rehberi"],
+    keywords: [
+      "crm yazılımı",
+      "crm programları",
+      "müşteri takip programı",
+      "özel crm yazılımı",
+      "crm web sitesi entegrasyonu",
+    ],
+  },
+  {
+    slug: "online-randevu-sistemi-rehberi",
+    category: "saas",
+    title: "Online Randevu Sistemi: İşletmeniz İçin Nasıl Kurulur?",
+    metaTitle: "Online Randevu Sistemi Kurma Rehberi 2026 | Solman Digital",
+    metaDescription:
+      "İşletmeniz için online randevu sistemi nasıl kurulur? Hazır randevu uygulaması ile web sitenize entegre özel randevu sisteminin farkı, özellikler ve maliyet.",
+    description:
+      "Telefonla randevu almak hem zaman alır hem kaçan müşteri demektir. Online randevu sistemi işletmenize ne kazandırır, hazır uygulama ne zaman yetmez, web sitenize entegre özel sistem nasıl çalışır — net bir rehber.",
+    summary:
+      "Online randevu sistemi, müşterilerin telefon beklemeden, mesai dışı saatlerde bile randevu almasını sağlar; bu doğrudan kaçan müşteriyi geri kazandırır. Klinik, güzellik salonu, danışmanlık ve servis gibi randevuyla çalışan işletmeler için hazır randevu uygulamaları hızlı bir başlangıçtır. Ancak marka kimliği, kendi ödeme altyapısı ve mevcut web sitesiyle tam entegrasyon gerektiğinde web sitenize gömülü özel bir randevu sistemi daha profesyonel ve kontrollü bir deneyim sunar. Çift rezervasyonu önleyen takvim senkronizasyonu ve otomatik hatırlatma, sistemin değerini belirleyen kritik özelliklerdir.",
+    publishDate: "2026-06-22",
+    readTime: 6,
+    sections: [
+      {
+        heading: "Online Randevu Sistemi İşletmeye Ne Kazandırır?",
+        body: "Telefonla randevu, çalışma saatleriyle sınırlıdır ve her kaçan çağrı potansiyel bir kayıp müşteridir. Online randevu sistemi bu kapıyı 7/24 açık tutar. Müşteri istediği saatte, uygun zaman dilimini görerek kendi randevusunu oluşturur.",
+        list: [
+          "Mesai dışı ve yoğun saatlerde kaçan randevular geri kazanılır",
+          "Telefon trafiği azalır — ekip asıl işe odaklanır",
+          "Otomatik hatırlatma ile gelmeyime (no-show) düşer",
+          "Müşteri verisi kayıt altına alınır — tekrar pazarlama mümkün olur",
+        ],
+      },
+      {
+        heading: "Hangi İşletmeler İçin Uygun?",
+        body: "Online randevu sistemi, hizmetini zaman dilimlerine bölerek sunan her işletme için değer üretir. Randevu hacmi arttıkça manuel yönetimin maliyeti de artar.",
+        list: [
+          "Klinik, diş hekimi, fizyoterapi ve sağlık hizmetleri",
+          "Güzellik salonu, kuaför, estetik merkezleri",
+          "Danışmanlık, hukuk, muhasebe gibi görüşme bazlı hizmetler",
+          "Servis, bakım ve kurulum randevusu alan işletmeler",
+        ],
+      },
+      {
+        heading: "Hazır Randevu Uygulaması mı, Özel Sistem mi?",
+        body: "Hazır randevu uygulamaları hızlı kurulur ve küçük işletmeler için iyi bir başlangıçtır. Sınır; markanızın uygulamanın markası altında görünmesi, ödeme ve veri üzerinde sınırlı kontrol ve mevcut web sitenizden kopuk bir deneyimdir. Web sitenize entegre özel bir randevu sistemi ise tamamen sizin markanız altında, kendi ödeme altyapınızla ve mevcut sayfalarınızla bütünleşik çalışır.",
+        list: [
+          "Hazır uygulama: hızlı, düşük ilk maliyet, üçüncü taraf markası, aylık ücret",
+          "Özel sistem: kendi markanız, web sitesiyle tam entegre, kendi ödeme altyapısı, tek seferlik",
+          "Müşteri deneyimi: ayrı bir uygulamaya yönlendirmek mi, sitenizde tutmak mı?",
+        ],
+      },
+      {
+        heading: "Kritik Özellik: Takvim Senkronizasyonu ve Hatırlatma",
+        body: "Bir randevu sisteminin değerini belirleyen iki özellik vardır: çift rezervasyonu önleyen gerçek zamanlı takvim senkronizasyonu ve gelmeyimi azaltan otomatik hatırlatma. Aynı saate iki müşteri kaydolursa sistem güven kaybeder; hatırlatma olmazsa randevuların bir kısmı boşa gider. Solman Digital olarak geliştirdiğimiz randevu sistemleri, mevcut takvimlerle senkron çalışacak ve SMS/e-posta hatırlatma gönderecek şekilde web sitesine entegre edilir.",
+      },
+    ],
+    faq: [
+      {
+        q: "Online randevu sistemi mevcut web siteme eklenebilir mi?",
+        a: "Evet. Randevu sistemi mevcut web sitenize gömülü bir bölüm olarak entegre edilebilir; müşteri siteden ayrılmadan, sizin markanız altında randevu alır. Bu, ayrı bir uygulamaya yönlendirmeye kıyasla daha bütünleşik bir deneyim sunar.",
+      },
+      {
+        q: "Çift randevu (aynı saate iki kişi) nasıl önlenir?",
+        a: "Gerçek zamanlı takvim senkronizasyonu ile. Bir zaman dilimi dolduğunda diğer müşterilere o saat gösterilmez; mevcut takvimlerinizle (örneğin Google Takvim) senkron çalışacak şekilde kurulabilir.",
+      },
+      {
+        q: "Randevu sistemi kurmak ne kadar sürer?",
+        a: "Kapsama bağlıdır. Temel bir online randevu akışı birkaç hafta içinde kullanıma alınabilir; ödeme alma, çoklu personel takvimi ve hatırlatma entegrasyonları eklendikçe süre kapsamla birlikte planlanır. Kesin süre ve maliyet ihtiyaç görüşmesinde netleşir.",
+      },
+    ],
+    cta: {
+      text: "İşletmenize özel online randevu sistemini konuşalım",
+      href: "/hizmetler/rezervasyon-sistemi",
+      label: "Rezervasyon & Randevu Sistemi Hizmeti",
+    },
+    ctaSecondary: {
+      text: "Önce ihtiyacınızı birlikte netleştirelim",
+      href: "/ucretsiz-analiz",
+      label: "Ücretsiz Analiz",
+    },
+    relatedSlugs: ["crm-yazilimi-rehberi", "saas-mvp-sureci", "ai-chatbot-web-sitesi"],
+    keywords: [
+      "online randevu sistemi",
+      "randevu sistemi kurma",
+      "randevu alma sistemi",
+      "web sitesi randevu sistemi",
+      "klinik randevu sistemi",
     ],
   },
 ]
