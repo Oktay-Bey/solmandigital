@@ -112,9 +112,25 @@ dashboard-analitik, dijital-urun-satis, cok-dilli-web-sitesi (0 link). KP cluste
 üyelik/abonelik/mobil uygulama KP'de zayıf hacim (TR'de düşük arama). Sektörel landing
 (emlak işe yaradı) daha verimli yeni-kitle açma yolu olabilir → sonraki: restoran/klinik/kuaför.
 
+---
+
+## Iteration 5 — 2026-06-22 (commit 53eb31c, DEPLOY CANLI ✅)
+
+### KRİTİK VERİ DERSİ: sektör+"web sitesi" TR'de ölü
+KP doğruladı: restoran web sitesi 40/ay, kafe/diş/kuaför/güzellik salonu web sitesi = 0/ay.
+emlak (140/ay) istisnaydı. → Sektörel landing'i "X web sitesi" diye yazmak BOŞA. Bunun yerine
+**sektörün asıl İHTİYAÇ sorgusunu** hedefle (ihtiyaç-bazlı seed).
+
+### Yapılanlar
+- İhtiyaç-bazlı tarama → **adisyon programı 590/ay + cluster (~1500/ay toplam)** MEDIUM ₺52-157.
+- **adisyon-programi-qr-menu-rehberi** (saas) → mevcut `/hizmetler/qr-menu-restoran` hizmet
+  sayfasını besliyor (rehbersizdi). QR menü + online sipariş + komisyonsuz kanal açısı.
+- Build yeşil (147 sayfa) → push → deploy canlı → IndexNow OK.
+
 ### Replan — sonraki iterasyon adayları
-- **Sektörel landing serisi:** restoran/kafe web sitesi, klinik/diş web sitesi, kuaför-güzellik
-  randevu sitesi, avukat/danışmanlık sitesi (her biri bir hizmet sayfasını + randevu/CRM kümesini besler).
+- **İhtiyaç-bazlı sektörel (web sitesi DEĞİL):** kuaför/güzellik → "salon randevu programı";
+  klinik/diş → "klinik yönetim/hasta takip programı"; spor salonu → "üye takip programı";
+  avukat → "büro/dava takip programı". Her birini KP ile DOĞRULA (hacim varsa yaz).
 - **İyileştirme:** `(not set)` organik landing kaynağını araştır; düşük-engagement güçlendir.
-- **Ölçüm (7-14g):** iter1-4 = 8 yeni rehber `/api/ga4?seo=1` organik landing'de; organik 11'den
+- **Ölçüm (7-14g):** iter1-5 = 9 yeni rehber `/api/ga4?seo=1` organik landing'de; organik 11'den
   yükseliyor mu. İndekslenmeyeni /api/google-index ile tetikle.
