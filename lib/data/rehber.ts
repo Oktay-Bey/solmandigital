@@ -3269,6 +3269,87 @@ export const rehberPosts: RehberPost[] = [
       "gayrimenkul web sitesi",
     ],
   },
+  {
+    slug: "adisyon-programi-qr-menu-rehberi",
+    category: "saas",
+    title: "Adisyon Programı ve QR Menü: Restoranlar İçin Dijital Sipariş",
+    metaTitle: "Adisyon Programı & QR Menü Rehberi 2026 | Solman Digital",
+    metaDescription:
+      "Restoran ve kafeniz için adisyon programı ve QR menü nasıl seçilir? Hazır POS sistemi ile web tabanlı QR menü + online sipariş arasındaki fark ve maliyet.",
+    description:
+      "Adisyon defterinden dijital sisteme geçiş, restoranlarda hız ve hata azaltma demektir. Adisyon programı, QR menü ve online sipariş nasıl birlikte çalışır — uygulama deneyimiyle anlatıyoruz.",
+    summary:
+      "Adisyon programı, restoran ve kafelerde sipariş alma, masa takibi ve hesap kapatma sürecini dijitalleştirir; QR menü ise müşterinin telefonundan menüyü görüp sipariş vermesini sağlar. Küçük işletmeler hazır POS/adisyon paketleriyle başlayabilir; bunlar hızlı kurulur ama donanıma bağlı ve sınırlı özelleştirme sunar. Web tabanlı bir QR menü + online sipariş sistemi ise ek donanım gerektirmeden, müşterinin kendi telefonundan çalışır ve işletmenin markası altında kurulur. Komisyonlu yemek platformlarına alternatif olarak kendi online sipariş kanalınızı kurmak, sipariş başına komisyon ödemeden doğrudan müşteriye ulaşmanızı sağlar.",
+    publishDate: "2026-06-22",
+    readTime: 7,
+    sections: [
+      {
+        heading: "Adisyon Programı Restoranda Neyi Çözer?",
+        body: "Kağıt adisyon hızlı görünür ama hata, kayıp sipariş ve hesap karışıklığı üretir. Adisyon programı sipariş alma, mutfağa iletme, masa takibi ve hesap kapatmayı tek sistemde toplar. Garson siparişi girer, mutfak anında görür, hesap otomatik hesaplanır.",
+        list: [
+          "Sipariş doğrudan mutfağa/bara iletilir — kayıp sipariş azalır",
+          "Masa bazlı takip — kim ne sipariş etti net",
+          "Hesap otomatik hesaplanır — toplama hatası biter",
+          "Gün sonu satış raporu otomatik çıkar",
+        ],
+      },
+      {
+        heading: "QR Menü: Müşterinin Telefonundan Sipariş",
+        body: "QR menü, masadaki bir karekodu okutarak müşterinin menüyü kendi telefonunda görmesini sağlar. Web tabanlı bir QR menüde uygulama indirme yoktur — tarayıcıda açılır. İstenirse müşteri doğrudan sipariş de verebilir; bu, garson yükünü azaltır ve sipariş hızını artırır.",
+        list: [
+          "Uygulama indirme yok — karekod okut, tarayıcıda aç",
+          "Menü güncelleme anında (fiyat/ürün değişikliği basılı menü beklemez)",
+          "Görsel menü — fotoğraflı ürünler satışı artırır",
+          "İstenirse self-servis sipariş — garson yükü azalır",
+        ],
+      },
+      {
+        heading: "Hazır POS Paketi mi, Web Tabanlı Özel Sistem mi?",
+        body: "Hazır adisyon/POS paketleri hızlı kurulur ama genellikle özel donanıma (POS cihazı) bağlıdır ve aylık ücretlidir. Web tabanlı bir QR menü + adisyon sistemi ise ek donanım gerektirmeden mevcut telefon/tablet üzerinden çalışır ve işletmenizin markası altında kurulur.",
+        list: [
+          "Hazır POS: hızlı kurulum, donanıma bağlı, aylık ücret, sınırlı özelleştirme",
+          "Web tabanlı özel sistem: donanım bağımsız, kendi markanız, tek seferlik, esnek",
+          "Belirleyici: özel donanım mı istiyorsunuz, mevcut cihazlarla mı çalışacak?",
+        ],
+      },
+      {
+        heading: "Komisyonlu Platformlara Alternatif: Kendi Online Sipariş Kanalınız",
+        body: "Yemek sipariş platformları hazır trafik verir ama her siparişten komisyon alır ve müşteri verisi platforma kalır. Kendi QR menü + online sipariş sisteminiz, doğrudan müşteriden komisyonsuz sipariş almanızı sağlar. Bu, platformu terk etmek değil — yüksek hacimli sadık müşteriyi kendi kanalınıza taşımaktır. Solman Digital olarak geliştirdiğimiz çözümlerde QR menü, online sipariş ve ödeme tek bir akış olarak kurulur.",
+      },
+    ],
+    faq: [
+      {
+        q: "QR menü için özel cihaz almam gerekir mi?",
+        a: "Web tabanlı bir QR menüde müşteri kendi telefonunu kullanır, ek cihaz gerekmez. İşletme tarafında sipariş yönetimi mevcut telefon/tablet veya bilgisayardan yapılabilir. Hazır POS paketleri ise genellikle özel donanım gerektirir.",
+      },
+      {
+        q: "Adisyon programı online sipariş ile entegre olabilir mi?",
+        a: "Evet. QR menüden gelen self-servis sipariş, adisyon sistemine düşerek mutfağa iletilebilir; salon ve online siparişler tek akışta yönetilir. Bu, garson yükünü azaltır ve sipariş hatasını düşürür.",
+      },
+      {
+        q: "Yemek platformlarına alternatif kendi sistemim olur mu?",
+        a: "Evet. Kendi QR menü + online sipariş kanalınızla komisyon ödemeden doğrudan müşteriden sipariş alabilirsiniz. Platformları desteklemek için yanında kullanılabilir; sadık müşteriyi kendi kanalınıza taşımak uzun vadede komisyon maliyetini düşürür.",
+      },
+    ],
+    cta: {
+      text: "Restoranınız için QR menü ve adisyon sistemini konuşalım",
+      href: "/hizmetler/qr-menu-restoran",
+      label: "QR Menü & Restoran Teknolojileri",
+    },
+    ctaSecondary: {
+      text: "Önce ihtiyacınızı netleştirelim",
+      href: "/ucretsiz-analiz",
+      label: "Ücretsiz Analiz",
+    },
+    relatedSlugs: ["online-randevu-sistemi-rehberi", "stok-takip-programi-rehberi", "iyzico-entegrasyonu"],
+    keywords: [
+      "adisyon programı",
+      "restoran adisyon programı",
+      "qr menü",
+      "restoran online sipariş sistemi",
+      "cafe adisyon sistemi",
+    ],
+  },
 ]
 
 export function getRehberBySlug(slug: string): RehberPost | undefined {
