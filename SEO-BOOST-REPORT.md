@@ -127,10 +127,27 @@ emlak (140/ay) istisnaydı. → Sektörel landing'i "X web sitesi" diye yazmak B
   sayfasını besliyor (rehbersizdi). QR menü + online sipariş + komisyonsuz kanal açısı.
 - Build yeşil (147 sayfa) → push → deploy canlı → IndexNow OK.
 
-### Replan — sonraki iterasyon adayları
-- **İhtiyaç-bazlı sektörel (web sitesi DEĞİL):** kuaför/güzellik → "salon randevu programı";
-  klinik/diş → "klinik yönetim/hasta takip programı"; spor salonu → "üye takip programı";
-  avukat → "büro/dava takip programı". Her birini KP ile DOĞRULA (hacim varsa yaz).
-- **İyileştirme:** `(not set)` organik landing kaynağını araştır; düşük-engagement güçlendir.
-- **Ölçüm (7-14g):** iter1-5 = 9 yeni rehber `/api/ga4?seo=1` organik landing'de; organik 11'den
-  yükseliyor mu. İndekslenmeyeni /api/google-index ile tetikle.
+---
+
+## Iteration 6 — 2026-06-22 (commit 7012d2e, DEPLOY CANLI ✅)
+
+### Sektörel niş yoruldu → yüksek-hacimli ana temaya dönüş
+KP doğruladı: kuaför/güzellik/spor/dava takip programı seed'leri TR'de çok zayıf (hasta takip
+140/ay en yüksek). Bu nişlerde rehber basmak değersiz → geniş alıcı temaya geçiş.
+
+### Yapılanlar
+- KP geniş tema: **seo hizmeti 1600 + seo hizmet 1300 + seo fiyatları 880/ay** (~3700/ay) MEDIUM.
+- **seo-hizmeti-nedir-nasil-secilir** (dijital-pazarlama) — ALICI niyeti (hizmet seçimi/fiyat),
+  mevcut web-sitesi-seo-teknikleri (DIY) ve google-ads-vs-seo'dan farklı niyet. seo-teknik-altyapi besler.
+- Build yeşil (148 sayfa) → deploy → IndexNow OK.
+
+### STRATEJİK NOT: azalan getiri sinyali
+6 iterasyon = 10 yeni rehber basıldı, HİÇBİRİ henüz ölçülmedi (organik 7-14g ufuklu). Sektörel
+nişler yoruldu. Sürekli yeni içerik basmak azalan getiri. **Sonraki turlarda denge değiştir:**
+1) ÖLÇÜM odağı — /api/ga4?seo=1 ile hangi yeni rehber indekslendi/trafik aldı izle.
+2) Mevcut GÜÇLÜ temaları derinleştir (e-ticaret kurma 1600/ay, web tasarım fiyatları) — yeni niş yerine.
+3) İndekslenmeyen yeni rehberleri /api/google-index (Google Indexing API) ile tetikle.
+
+### Replan
+- Bir sonraki tur: ÖLÇÜM çek (organik landing snapshot) + indeksleme durumu kontrol. Veri henüz
+  yetersizse (24-48h geçmedi) en güçlü kalan tema long-tail'ine 1 rehber, sonra ölçüme geç.
