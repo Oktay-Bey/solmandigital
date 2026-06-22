@@ -16,7 +16,8 @@ async function getAccessToken(): Promise<string> {
   const serviceAccountJson = process.env.GOOGLE_SERVICE_ACCOUNT_JSON
   if (!serviceAccountJson) throw new Error("GOOGLE_SERVICE_ACCOUNT_JSON not set")
 
-  const credentials = JSON.parse(serviceAccountJson)
+  // Env değeri başında BOM (﻿) olabiliyor → JSON.parse patlar. Temizle.
+  const credentials = JSON.parse(serviceAccountJson.replace(/^﻿/, ""))
   const auth = new google.auth.GoogleAuth({
     credentials,
     scopes: ["https://www.googleapis.com/auth/indexing"],

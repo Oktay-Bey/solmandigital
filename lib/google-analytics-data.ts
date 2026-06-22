@@ -20,7 +20,8 @@ function getAuthClient(): any {
   const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
   if (!raw) throw new Error("GOOGLE_SERVICE_ACCOUNT_JSON env değişkeni tanımlı değil.");
 
-  const credentials = JSON.parse(raw);
+  // Env değeri başında BOM (﻿) olabiliyor → JSON.parse patlar. Temizle.
+  const credentials = JSON.parse(raw.replace(/^﻿/, ""));
   return new google.auth.GoogleAuth({
     credentials,
     scopes: ["https://www.googleapis.com/auth/analytics.readonly"],
