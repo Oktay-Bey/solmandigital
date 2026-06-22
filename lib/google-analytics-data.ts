@@ -275,6 +275,140 @@ export async function getGA4PageFunnel(days = 14): Promise<unknown> {
   return { days, pages };
 }
 
+// ORGANİK SEO RAPORU: SEO Boost Loop'un veri belkemiği.
+// sessionDefaultChannelGroup = "Organic Search" filtresiyle SADECE organik arama
+// trafiğini landing page bazında kırar → hangi sayfa organik kazanıyor, hangisi ölü.
+// Ayrıca organik landing page'lerin ülke/cihaz ve ilk-kullanıcı kaynağı kırılımı.
+export interface GA4OrganicPage {
+  landingPage: string;
+  sessions: number;
+  newUsers: number;
+  engagedSessions: number;
+  engagementRate: number;
+  bounceRate: number;
+  avgSessionDuration: number;
+  conversions: number;
+}
+
+export interface GA4OrganicReport {
+  days: number;
+  organicTotal: {
+    sessions: number;
+    newUsers: number;
+    engagementRate: number;
+    conversions: number;
+  };
+  channelMix: { channel: string; sessions: number }[];
+  pages: GA4OrganicPage[];
+}
+
+const ORGANIC_FILTER = {
+  filter: {
+    fieldName: "sessionDefaultChannelGroup",
+    stringFilter: { matchType: "EXACT" as const, value: "Organic Search" },
+  },
+};
+
+export async function getGA4OrganicReport(days = 28): Promise<GA4OrganicReport> {
+  const auth = getAuthClient();
+  const analyticsData = google.analyticsdata({ version: "v1beta", auth });
+  const startDate = dateString(days);
+
+  const [totalData, channelData, pageData, convData] = await Promise.all([
+    // 1) Organik toplam
+    runReport(analyticsData, {
+      dateRanges: [{ startDate, endDate: "today" }],
+      metrics: [
+        { name: "sessions" },
+        { name: "newUsers" },
+        { name: "engagementRate" },
+      ],
+      dimensionFilter: ORGANIC_FILTER,
+    }),
+    // 2) Kanal dağılımı (organiğin payını görmek için tüm kanallar)
+    runReport(analyticsData, {
+      dateRanges: [{ startDate, endDate: "today" }],
+      dimensions: [{ name: "sessionDefaultChannelGroup" }],
+      metrics: [{ name: "sessions" }],
+      orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
+      limit: "12",
+    }),
+    // 3) Organik landing page bazında performans
+    runReport(analyticsData, {
+      dateRanges: [{ startDate, endDate: "today" }],
+      dimensions: [{ name: "landingPage" }],
+      metrics: [
+        { name: "sessions" },
+        { name: "newUsers" },
+        { name: "engagedSessions" },
+        { name: "engagementRate" },
+        { name: "bounceRate" },
+        { name: "averageSessionDuration" },
+      ],
+      dimensionFilter: ORGANIC_FILTER,
+      orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
+      limit: "50",
+    }),
+    // 4) Organik landing page bazında conversion (lead event'leri)
+    runReport(analyticsData, {
+      dateRanges: [{ startDate, endDate: "today" }],
+      dimensions: [{ name: "landingPage" }, { name: "eventName" }],
+      metrics: [{ name: "eventCount" }],
+      dimensionFilter: {
+        andGroup: {
+          expressions: [
+            ORGANIC_FILTER,
+            {
+              filter: {
+                fieldName: "eventName",
+                inListFilter: { values: ["generate_lead", "qualify_lead", "contact", "whatsapp_click"] },
+              },
+            },
+          ],
+        },
+      },
+      limit: "200",
+    }),
+  ]);
+
+  // Conversion'ları landing page'e göre topla
+  const convByPage: Record<string, number> = {};
+  for (const row of convData?.rows ?? []) {
+    const path = dim(row, 0);
+    convByPage[path] = (convByPage[path] ?? 0) + parseInt(met(row, 1));
+  }
+
+  const totalRow = totalData?.rows?.[0];
+  const totalConversions = Object.values(convByPage).reduce((s, n) => s + n, 0);
+
+  return {
+    days,
+    organicTotal: {
+      sessions: totalRow ? parseInt(met(totalRow, 0)) : 0,
+      newUsers: totalRow ? parseInt(met(totalRow, 1)) : 0,
+      engagementRate: totalRow ? parseFloat(met(totalRow, 2)) : 0,
+      conversions: totalConversions,
+    },
+    channelMix: (channelData?.rows ?? []).map((row) => ({
+      channel: dim(row, 0),
+      sessions: parseInt(met(row, 0)),
+    })),
+    pages: (pageData?.rows ?? []).map((row) => {
+      const landingPage = dim(row, 0);
+      return {
+        landingPage,
+        sessions: parseInt(met(row, 0)),
+        newUsers: parseInt(met(row, 1)),
+        engagedSessions: parseInt(met(row, 2)),
+        engagementRate: parseFloat(met(row, 3)),
+        bounceRate: parseFloat(met(row, 4)),
+        avgSessionDuration: parseFloat(met(row, 5)),
+        conversions: convByPage[landingPage] ?? 0,
+      };
+    }),
+  };
+}
+
 export async function getGA4Report(days = 30): Promise<GA4Report> {
   const [overview, topPages, sources, conversions] = await Promise.all([
     getGA4Overview(days),

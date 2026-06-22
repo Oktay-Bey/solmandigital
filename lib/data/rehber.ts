@@ -1469,6 +1469,7 @@ export const rehberPosts: RehberPost[] = [
       },
     ],
     cta: { text: "Ücretsiz SEO Analizi İsteyin", href: "/ucretsiz-analiz", label: "Analiz" },
+    relatedSlugs: ["google-reklam-ajansi-mi-kendiniz-mi", "web-sitesi-seo-teknikleri", "landing-page-nedir"],
     keywords: [
       "google ads mi seo mu",
       "google ads vs seo türkiye",
@@ -2342,7 +2343,7 @@ export const rehberPosts: RehberPost[] = [
   {
     slug: "cok-kanalli-marketplace-karsilastirma",
     category: "karsilastirma",
-    relatedSlugs: ["trendyol-satici-web-sitesi", "ebay-api-entegrasyonu-turkiye", "etsy-api-entegrasyonu-turkiye"],
+    relatedSlugs: ["stok-takip-programi-rehberi", "trendyol-satici-web-sitesi", "ebay-api-entegrasyonu-turkiye"],
     title: "Trendyol mu, eBay mı, Etsy mi? Hangi Platform, Hangi Ürün İçin?",
     metaTitle: "Trendyol vs eBay vs Etsy: Hangi Marketplace? | Solman Digital",
     metaDescription:
@@ -2649,6 +2650,164 @@ export const rehberPosts: RehberPost[] = [
       label: "Ücretsiz Analiz ve Fiyat Teklifi",
     },
     relatedSlugs: ["istanbul-web-sitesi-fiyatlari", "wix-vs-ozel-web-sitesi", "web-sitesi-yaptirmak-istiyorum"],
+  },
+  {
+    slug: "stok-takip-programi-rehberi",
+    category: "saas",
+    title: "Stok Takip Programı: Excel'den Kendi Yazılımınıza Geçiş",
+    metaTitle: "Stok Takip Programı Rehberi 2026 | Solman Digital",
+    metaDescription:
+      "Ücretsiz Excel şablonundan özel stok takip yazılımına: hangi işletme ne zaman geçmeli, hazır program mı özel yazılım mı, maliyet ve özellik karşılaştırması.",
+    description:
+      "Stok takibi büyüyen her işletmenin er ya da geç çarptığı duvar. Excel ne zaman yetmez, hazır programlar nerede tıkanır, özel yazılım hangi noktada mantıklı olur — gerçek proje deneyimiyle anlatıyoruz.",
+    summary:
+      "Küçük işletmeler stok takibine genellikle ücretsiz Excel şablonuyla başlar; bu, tek depo ve düşük SKU sayısında yeterlidir. Birden çok satış kanalı (mağaza + Trendyol + kendi siteniz), birden çok depo veya 500+ ürün devreye girdiğinde Excel'de çift satış ve veri tutarsızlığı kaçınılmaz olur. Bu aşamada hazır stok programları hızlı çözümdür ancak kendi iş akışınıza tam oturmaz; pazaryeri entegrasyonu ve özel raporlama gerekiyorsa özel geliştirilmiş bir stok takip yazılımı uzun vadede daha düşük toplam maliyet sağlar.",
+    publishDate: "2026-06-22",
+    readTime: 7,
+    sections: [
+      {
+        heading: "Excel ile Stok Takibi Ne Zamana Kadar Yeter?",
+        body: "Ücretsiz bir stok takip programı arayan çoğu işletme aslında Excel ya da Google E-Tablolar ile başlar — ve bu, başlangıç için tamamen doğru bir karardır. Tek depo, sınırlı ürün ve tek satış kanalı varken Excel hem ücretsizdir hem de esnek. Sorun, büyüme başladığında ortaya çıkar.",
+        list: [
+          "Tek kişi güncelliyorsa Excel yeterli; ekip ortak girince sürüm karmaşası başlar",
+          "500'ün altında SKU'da yönetilebilir, üstünde formüller yavaşlar ve hata artar",
+          "Tek satış kanalında çalışır; mağaza + pazaryeri + web sitesi olunca senkronizasyon kopar",
+          "Geçmiş hareket ve kâr analizi Excel'de manuel — büyüdükçe vakit yakar",
+        ],
+      },
+      {
+        heading: "Hazır Stok Takip Programı mı, Özel Yazılım mı?",
+        body: "İkinci aşamada çoğu işletme hazır bir stok programına geçer. Bu makul bir adımdır: hızlı kurulur, aylık abonelikle başlar. Ancak hazır programlar genel kitleye göre tasarlandığı için sizin özel iş akışınıza — örneğin kendi üretim reçetenize, özel barkod sisteminize veya pazaryeri stok kurallarınıza — tam oturmaz.",
+        list: [
+          "Hazır program: hızlı başlangıç, düşük ilk maliyet, sınırlı özelleştirme, aylık abonelik birikir",
+          "Özel yazılım: iş akışınıza birebir oturur, pazaryeri entegrasyonu dahil edilebilir, tek seferlik geliştirme",
+          "Kritik soru: programı işinize mi uyduruyorsunuz, yoksa işinizi programa mı?",
+        ],
+      },
+      {
+        heading: "Çok Kanallı Satışta Stok Senkronizasyonu",
+        body: "Stok takibinin en pahalı hatası çift satıştır: aynı ürünü hem mağazada hem Trendyol'da satıp stoğun bitmesi. Birden fazla kanaldan satış yapıyorsanız stok takip yazılımınızın pazaryeri ve kendi web sitenizle gerçek zamanlı senkron olması şarttır. Solman Digital olarak geliştirdiğimiz stok çözümlerinde Trendyol, Hepsiburada ve kendi e-ticaret sitesi tek bir stok havuzundan beslenir — bir kanalda satış olduğunda diğerleri otomatik güncellenir.",
+      },
+      {
+        heading: "Özel Stok Takip Yazılımı Ne Zaman Mantıklı?",
+        body: "Özel yazılım her işletme için değildir. Aşağıdaki durumların ikisi sizde varsa, hazır programın aylık maliyeti ve sınırları yerine kendi yazılımınızı değerlendirmenin tam zamanıdır.",
+        list: [
+          "Birden çok satış kanalı (mağaza, pazaryeri, web) eş zamanlı yönetiliyor",
+          "Birden çok depo veya konsinye / şube stoğu var",
+          "Üretim / montaj reçetesi nedeniyle standart programlar yetmiyor",
+          "Hazır program aboneliği yıllık olarak ciddi bir tutara ulaştı",
+          "Mevcut programdan veri raporu almak sürekli dışa aktarma gerektiriyor",
+        ],
+      },
+      {
+        heading: "Maliyet: Abonelik mi, Tek Seferlik Geliştirme mi?",
+        body: "Hazır programlar düşük aylık ücretle çekici görünür ama çok kullanıcılı ve çok kanallı paketlerde yıllık maliyet hızla yükselir. Özel geliştirilen bir stok takip yazılımı tek seferlik bir yatırımdır; sahip olduğunuz için aylık abonelik ödemezsiniz ve ihtiyaç değiştikçe genişletilebilir. Hangisinin sizin için uygun olduğu satış hacminize, kanal sayınıza ve büyüme planınıza bağlıdır — bu kararı birlikte netleştirebiliriz.",
+      },
+    ],
+    faq: [
+      {
+        q: "Gerçekten ücretsiz stok takip programı var mı?",
+        a: "Excel / Google E-Tablolar şablonları ücretsizdir ve küçük, tek kanallı işletmeler için başlangıçta yeterlidir. Bazı hazır programların ücretsiz başlangıç planı vardır ancak kullanıcı, ürün veya kanal sayısı arttıkça ücretli pakete geçmeniz gerekir.",
+      },
+      {
+        q: "Stok programı pazaryeri ile entegre olabilir mi?",
+        a: "Evet. Trendyol, Hepsiburada gibi pazaryerleri ve kendi e-ticaret siteniz tek stok havuzundan beslenecek şekilde entegre edilebilir. Bu, çift satış riskini ortadan kaldırır. Hazır programların bir kısmı bunu sınırlı sunar; özel yazılımda iş kurallarınıza göre tam kontrol sağlanır.",
+      },
+      {
+        q: "Özel stok takip yazılımı ne kadar sürede hazır olur?",
+        a: "Kapsama bağlıdır. Temel bir çok depolu stok yönetimi birkaç hafta içinde kullanıma alınabilir; pazaryeri entegrasyonu ve özel raporlama eklendikçe süre kapsamla birlikte planlanır. Kesin süre ve maliyet, ihtiyaç görüşmesinde netleşir.",
+      },
+    ],
+    cta: {
+      text: "İşletmenize özel stok takip yazılımı ihtiyacınızı konuşalım",
+      href: "/ucretsiz-analiz",
+      label: "Ücretsiz Analiz ve Fiyat Teklifi",
+    },
+    keywords: [
+      "stok takip programı",
+      "ücretsiz stok takip programı",
+      "excel stok takip programı",
+      "depo stok programı",
+      "özel stok takip yazılımı",
+      "pazaryeri stok senkronizasyonu",
+    ],
+    relatedSlugs: ["saas-mvp-sureci", "cok-kanalli-marketplace-karsilastirma", "trendyol-satici-web-sitesi"],
+  },
+  {
+    slug: "google-reklam-ajansi-mi-kendiniz-mi",
+    category: "dijital-pazarlama",
+    title: "Google Reklam Ajansı mı, Kendiniz mi Yönetmeli?",
+    metaTitle: "Google Reklam Ajansı Seçimi: Nelere Dikkat Etmeli? | Solman Digital",
+    metaDescription:
+      "Google Ads kampanyanızı ajansa mı vermeli, kendiniz mi yönetmelisiniz? Ajans ücret modelleri, Google Partner ne demek, doğru ajansı seçerken sorulacak sorular.",
+    description:
+      "Google reklamı para yakmak ile müşteri kazanmak arasında ince bir çizgide ilerler. Ajansla çalışmak ne zaman mantıklı, ajans seçerken neye bakmalı, ücret modelleri nasıl çalışır — şeffafça anlatıyoruz.",
+    summary:
+      "Küçük bütçeli ve basit kampanyalarda Google Ads'i kendiniz yönetebilirsiniz; arayüz buna izin verir. Ancak dönüşüm takibi, doğru anahtar kelime eşleme türleri, negatif kelime yönetimi ve teklif stratejisi devreye girdiğinde uzmanlık fark yaratır — yanlış kurulmuş bir kampanya bütçeyi alakasız tıklamalara harcar. Bir Google reklam ajansıyla çalışmanın değeri, harcamayı azaltmaktan çok aynı bütçeden daha fazla nitelikli müşteri çıkarmaktır. Ajans seçerken Google Partner rozeti, şeffaf raporlama ve dönüşüm odaklı (tıklama değil) yaklaşım belirleyicidir.",
+    publishDate: "2026-06-22",
+    readTime: 6,
+    sections: [
+      {
+        heading: "Google Ads'i Kendiniz Yönetebilir misiniz?",
+        body: "Google Ads arayüzü herkese açıktır ve küçük, basit bir kampanyayı kendiniz kurabilirsiniz. Sorun kurmakta değil, optimize etmekte. Reklamın ilk haftası genellikle iyi görünür; asıl iş, hangi aramaların müşteriye, hangilerinin boşa harcamaya dönüştüğünü ayıklamaktır.",
+        list: [
+          "Kampanya kurmak kolay; dönüşüm takibini doğru kurmak teknik bilgi ister",
+          "Anahtar kelime eşleme türü (broad / phrase / exact) yanlışsa bütçe alakasız aramalara gider",
+          "Negatif kelime listesi olmadan iş arayanlar, ödevciler ve araştırmacılar tıklar",
+          "Teklif stratejisi yanlışsa Google bütçeyi en kârlı aramaya değil, en kolay tıklamaya harcatır",
+        ],
+      },
+      {
+        heading: "Ajansla Çalışmanın Asıl Değeri Nedir?",
+        body: "Yaygın yanılgı, ajansın reklamı 'ucuzlatacağı'dır. Gerçekte ajansın değeri aynı bütçeden daha fazla nitelikli müşteri çıkarmaktır. İyi yönetilen bir hesapta bütçe azalmaz; her liranın getirisi artar. Solman Digital olarak kendi reklam hesabımızda da uyguladığımız yaklaşım, niyet filtrelemeye dayanır: bilgi amaçlı ve iş arayan trafiği negatiflerle eler, satın almaya yakın aramalara odaklanırız.",
+      },
+      {
+        heading: "Google Partner Rozeti Ne Anlama Gelir?",
+        body: "Bir ajansın 'Google Partner' olması, Google'ın belirlediği harcama eşiğini ve sertifikasyon kriterlerini karşıladığı anlamına gelir. Bu, kalite garantisi değildir ama temel bir yeterlilik göstergesidir. Rozetin tek başına yeterli olmadığını, asıl bakılması gerekenin geçmiş sonuçlar ve raporlama şeffaflığı olduğunu unutmayın.",
+      },
+      {
+        heading: "Ajans Seçerken Sorulacak Sorular",
+        body: "Doğru ajansı yanlış olandan ayıran şey, cevaplardaki şeffaflıktır. Bir ajansla görüşürken şu soruları sorun ve net, ölçülebilir cevap bekleyin.",
+        list: [
+          "Hangi metriği iyileştireceksiniz — tıklama mı, dönüşüm mü, müşteri başına maliyet mi?",
+          "Reklam hesabı kimin adına? Hesap her zaman sizin mülkiyetinizde olmalı",
+          "Raporlamada ham veriyi mi yoksa sadece güzel grafikleri mi görüyorum?",
+          "Dönüşüm takibi nasıl kurulacak (form, arama, WhatsApp)?",
+          "Ücret modeli ne — sabit mi, harcama yüzdesi mi, sonuç bazlı mı?",
+        ],
+      },
+      {
+        heading: "Ücret Modelleri: Sabit, Yüzde, Sonuç Bazlı",
+        body: "Google reklam ajansları genellikle üç modelden biriyle çalışır. Sabit aylık ücret öngörülebilirdir; harcama yüzdesi büyüdükçe maliyetiniz de artar (ajansın çok harcatma motivasyonu doğabilir); sonuç bazlı model en hizalı olandır ama her iş için kurulamaz. Hangi modelin sizin bütçenize ve hedefinize uyduğunu birlikte değerlendirebiliriz.",
+      },
+    ],
+    faq: [
+      {
+        q: "Küçük bütçeyle ajansla çalışmaya değer mi?",
+        a: "Çok küçük bütçelerde ajans ücreti reklam bütçesini gölgede bırakabilir; bu durumda doğru kurulmuş bir kampanya + dönüşüm takibiyle kendiniz başlayabilirsiniz. Bütçe ve kanal sayısı arttıkça, yanlış harcamayı önlemenin getirisi ajans ücretini karşılamaya başlar.",
+      },
+      {
+        q: "Google Partner olmak iyi ajans demek mi?",
+        a: "Partner rozeti temel bir yeterlilik göstergesidir, kalite garantisi değil. Asıl bakılması gereken; geçmiş dönüşüm sonuçları, raporlama şeffaflığı ve hesabın sizin mülkiyetinizde kalmasıdır.",
+      },
+      {
+        q: "Reklam hesabı kimin adına açılmalı?",
+        a: "Her zaman sizin adınıza. Hesap mülkiyeti sizde olmalı ki ajansla yollar ayrılsa bile geçmiş veri, kampanyalar ve dönüşüm geçmişi sizde kalsın. Bu, ajans seçerken en kritik şeffaflık maddesidir.",
+      },
+    ],
+    cta: {
+      text: "Google reklam kurulumunuzu ve dönüşüm takibinizi birlikte gözden geçirelim",
+      href: "/ucretsiz-analiz",
+      label: "Ücretsiz Reklam Analizi",
+    },
+    relatedSlugs: ["google-ads-vs-seo", "web-sitesi-seo-teknikleri", "landing-page-nedir"],
+    keywords: [
+      "google reklam ajansı",
+      "google ads ajansı",
+      "google ads reklam ajansı",
+      "google partner ajans",
+      "google reklam yönetimi",
+    ],
   },
 ]
 

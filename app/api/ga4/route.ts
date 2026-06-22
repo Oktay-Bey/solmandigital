@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getGA4Report, getGA4ConversionDiag, getGA4PageFunnel } from "@/lib/google-analytics-data";
+import { getGA4Report, getGA4ConversionDiag, getGA4PageFunnel, getGA4OrganicReport } from "@/lib/google-analytics-data";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -13,6 +13,10 @@ export async function GET(req: NextRequest) {
     if (searchParams.get("funnel") === "1") {
       const funnel = await getGA4PageFunnel(days);
       return NextResponse.json(funnel);
+    }
+    if (searchParams.get("seo") === "1") {
+      const seo = await getGA4OrganicReport(days);
+      return NextResponse.json(seo);
     }
     const report = await getGA4Report(days);
     return NextResponse.json(report);
