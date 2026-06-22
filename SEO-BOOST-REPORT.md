@@ -151,3 +151,25 @@ nişler yoruldu. Sürekli yeni içerik basmak azalan getiri. **Sonraki turlarda 
 ### Replan
 - Bir sonraki tur: ÖLÇÜM çek (organik landing snapshot) + indeksleme durumu kontrol. Veri henüz
   yetersizse (24-48h geçmedi) en güçlü kalan tema long-tail'ine 1 rehber, sonra ölçüme geç.
+
+---
+
+## Iteration 7 — 2026-06-22 (commit c4bd28a, DEPLOY CANLI ✅) — ÖLÇÜM + BUG FIX
+Strateji değişimi uygulandı: yeni içerik basmak yerine ölçüm + altyapı.
+
+### Ölçüm (3g organik snapshot)
+Organik 3g = 1 oturum (yeni rehberler henüz trafik almıyor — NORMAL, bugün yayınlandılar,
+Google sıralama 7-14g). Erken ölçüm boş; gerçek sinyal için ~1 hafta gerek.
+
+### BUG BULUNDU & DÜZELTİLDİ: Google Indexing API kırıktı
+`GOOGLE_SERVICE_ACCOUNT_JSON` prod env'inde başında BOM (﻿) var → JSON.parse patlıyordu →
+/api/google-index "Auth failed" (Indexing API tamamen kullanılamaz haldeydi). Fix:
+`raw.replace(/^﻿/,"")` (route + GA4 lib savunma). Local + prod 200 doğrulandı.
+→ **10 rehberin tamamı Google Indexing API'ye gönderildi (10/10 OK)** — Google indeksleme hızlandı.
+
+### Replan (iter8+)
+- ÖLÇÜM ağırlıklı devam: her birkaç turda 1 organik snapshot (days=7), trafik alan rehber çıkınca
+  o temayı DERİNLEŞTİR (cluster genişlet). Trafik yoksa sabırlı ol — basmaya devam etme.
+- Veri 24-48h sonra anlamlı: hangi yeni rehber indekslendi (site:solmandigital.com.tr kontrol),
+  organik landing'de görünen ilk yeni rehber = kazanan tema sinyali.
+- Düşük öncelik: 1-2 güçlü kalan tema long-tail (e-ticaret kurma 1600/ay) gerekirse.
