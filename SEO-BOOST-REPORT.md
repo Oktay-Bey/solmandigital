@@ -59,9 +59,30 @@ Mevcut içerik yüksek-hacimli alıcı-niyetli sorgulara denk gelmiyor.
 - Yeni 2 rehber Google'da indekslendi mi → `/api/ga4?seo=1` organik landing'de görünüyor mu (7-14 gün).
 - Organik toplam oturum 11'den yükseliyor mu.
 
+---
+
+## Iteration 2 — 2026-06-22 (commit 51340a8, DEPLOY CANLI ✅)
+
+### Keyword Planner cluster taraması (1700 fikir, geo 2792)
+Seed kümesi: crm/randevu/muhasebe/whatsapp/kargo/müşteri takip.
+- **Niyet tuzağı yakalandı:** "randevu sistemi" hacminin çoğu MHRS/hastane/üniversite/
+  tapu/göç idaresi = mevcut kamu sistemini arayan, **alıcı değil**. Bu sorgulara içerik
+  trafik getirir ama dönüşmez → elendi (geçmiş Ads niyet dersiyle tutarlı).
+- **Alıcı sinyaller seçildi:** crm yazılımı 390 + crm programları 260/ay MEDIUM (₺50+ teklif);
+  online randevu sistemi 320/ay (işletme kurma niyeti, kamu değil).
+
+### Yapılanlar
+1. Yeni rehber: **crm-yazilimi-rehberi** (saas) — temiz boşluk, dedike CRM içeriği yoktu.
+2. Yeni rehber: **online-randevu-sistemi-rehberi** (saas) — mevcut hizmet sayfasını
+   (`/hizmetler/rezervasyon-sistemi`) besliyor: içerik→hizmet internal link (dönüşüm köprüsü).
+3. saas cluster çapraz linkleme (stok↔crm↔randevu birbirine bağlandı).
+4. Build yeşil (142 sayfa) → push → deploy canlı (200) → IndexNow submit (OK).
+
 ### Replan — sonraki iterasyon adayları
-- **Yeni kanal (öncelik):** CRM yazılımı, randevu sistemi, ön muhasebe, WhatsApp otomasyon
-  kümelerini Keyword Planner'dan tara → boşluk olanlara rehber. Hizmet sayfası gerekiyorsa landing.
+- **Yeni kanal (öncelik):** ön muhasebe/muhasebe yazılımı, WhatsApp otomasyon, kargo
+  entegrasyonu kümelerini KP'den tara (kw3.json'da ham veri var) → alıcı-niyetli boşluğa rehber.
+  Diğer hizmet sayfalarını (services.ts) besleyen rehber boşluklarını eşle.
 - **İyileştirme:** organikte giriş alıp engagement düşük sayfaları güçlendir; `(not set)` landing
   (3 oturum, bounce 1.0) kaynağını araştır.
-- Mevcut yüksek-potansiyelli rehberlere FAQ/summary genişletme (AI arama görünürlüğü).
+- **Ölçüm (7-14g):** iter1+iter2 = 4 yeni rehber `/api/ga4?seo=1` organik landing'de görünüyor mu;
+  organik toplam 11'den yükseliyor mu. İndekslenmeyenleri /api/google-index ile tetikle.
