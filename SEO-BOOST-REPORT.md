@@ -20,8 +20,9 @@ raporu güncelle → replan.
 
 ## Operasyonel notlar (tuzaklar)
 - **DNS:** googleapis Node'da IPv6'da takılıyor (ENOTFOUND). Dev server'ı
-  `NODE_OPTIONS="--dns-result-order=ipv4first" npm run dev` ile başlat. Keyword Planner çağrıları
-  yavaş + intermittent → retry loop (4 deneme, 90s timeout).
+  `NODE_OPTIONS="--dns-result-order=ipv4first" npm run dev` ile başlat.
+- **KP timeout:** Keyword Planner sunucu yanıtı ~90s'yi aşabiliyor (server 200 döner ama curl
+  --max-time 90 keser → boş body). **curl --max-time 160 kullan**; çok seed = uzun süre.
 - **git push:** repo `Oktay-Bey`'e ait; gh aktif hesap `sosdream111-png` olabilir → push öncesi
   `gh auth switch --user Oktay-Bey && gh auth setup-git`.
 - **/tmp** Windows Node'da çözülmez; geçici JSON'ları repo köküne `build_seo_*.json` yaz.
@@ -78,11 +79,25 @@ Seed kümesi: crm/randevu/muhasebe/whatsapp/kargo/müşteri takip.
 3. saas cluster çapraz linkleme (stok↔crm↔randevu birbirine bağlandı).
 4. Build yeşil (142 sayfa) → push → deploy canlı (200) → IndexNow submit (OK).
 
+---
+
+## Iteration 3 — 2026-06-22 (commit f66363f, DEPLOY CANLI ✅)
+
+### KP cluster (288 fikir: ön muhasebe/muhasebe/whatsapp/fatura/e-fatura/sipariş)
+- **e fatura programı 590 + fatura kesme programı 480/ay MEDIUM** (₺48-285 = yüksek ticari değer) → temiz alıcı.
+- **whatsapp toplu mesaj gönderme 2400/ay LOW** → hacim yüksek ama DIY/araç-kullanıcı niyeti baskın;
+  "WhatsApp Business API işletme otomasyonu" çerçevesiyle alıcıya çevrildi (DIY tuzağına düşmeden).
+
+### Yapılanlar
+1. **e-fatura-entegrasyonu-rehberi** (e-ticaret) → `/hizmetler/api-entegrasyonu`'nu besler.
+2. **whatsapp-isletme-otomasyonu** (yapay-zeka) → ai-chatbot/randevu cluster'ına bağlı.
+3. Cluster internal link. Build yeşil (144 sayfa) → push → deploy canlı (200) → IndexNow OK.
+
 ### Replan — sonraki iterasyon adayları
-- **Yeni kanal (öncelik):** ön muhasebe/muhasebe yazılımı, WhatsApp otomasyon, kargo
-  entegrasyonu kümelerini KP'den tara (kw3.json'da ham veri var) → alıcı-niyetli boşluğa rehber.
-  Diğer hizmet sayfalarını (services.ts) besleyen rehber boşluklarını eşle.
-- **İyileştirme:** organikte giriş alıp engagement düşük sayfaları güçlendir; `(not set)` landing
-  (3 oturum, bounce 1.0) kaynağını araştır.
-- **Ölçüm (7-14g):** iter1+iter2 = 4 yeni rehber `/api/ga4?seo=1` organik landing'de görünüyor mu;
-  organik toplam 11'den yükseliyor mu. İndekslenmeyenleri /api/google-index ile tetikle.
+- **Yeni kanal:** kargo entegrasyonu, mobil uygulama yaptırma, dijital pazarlama/sosyal medya
+  yönetimi, sektörel landing (restoran/emlak/klinik yazılımı) KP taraması → alıcı boşluğa rehber.
+  services.ts'teki rehbersiz hizmet sayfalarını eşle (içerik→hizmet köprüsü pattern'i işe yarıyor).
+- **İyileştirme:** `(not set)` organik landing (3 oturum, bounce 1.0) kaynağını araştır;
+  düşük-engagement sayfaları güçlendir.
+- **Ölçüm (7-14g):** iter1-3 = 6 yeni rehber `/api/ga4?seo=1` organik landing'de görünüyor mu;
+  organik toplam 11'den yükseliyor mu. İndekslenmeyeni /api/google-index ile tetikle.
