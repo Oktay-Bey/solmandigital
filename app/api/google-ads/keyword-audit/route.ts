@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
         metrics.ctr
       FROM keyword_view
       WHERE campaign.id = '${campaignId}'
-        AND segments.date DURING LAST_90_DAYS
+        AND segments.date DURING LAST_30_DAYS
       ORDER BY metrics.cost_micros DESC
       LIMIT 200
     `);
