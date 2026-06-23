@@ -47,6 +47,17 @@ const jsonLd = {
       },
       areaServed: "TR",
       url: `${siteConfig.url}/saas-platform-gelistirme`,
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "TRY",
+        price: "25000",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "TRY",
+          minPrice: "25000",
+          description: "Kapsama göre sabit fiyat, ₺25.000'den başlayan",
+        },
+      },
     },
     {
       "@type": "FAQPage",
@@ -191,8 +202,37 @@ export default function SaasPlatformGelistirmePage() {
         </div>
       </section>
 
+      {/* Fiyat şeffaflığı — LPE (saas platform keyword'ü için) */}
+      <section className="bg-white px-6 py-16">
+        <div className="mx-auto max-w-[760px]">
+          <Reveal>
+            <p className="eyebrow mb-3">Fiyatlandırma</p>
+            <h2 className="mb-3 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+              ₺25.000&apos;den Başlayan, Sabit Fiyat
+            </h2>
+            <p className="mb-8 max-w-[600px] text-[0.9rem] leading-[1.7] text-ink-500">
+              SaaS projeleri kapsama göre fiyatlanır — temel MVP ₺25.000&apos;den başlar,
+              çok kiracılı mimari, abonelik altyapısı ve özel modüllerle kapsam genişledikçe
+              artar. Proje kapsamı netleştikten sonra sabit fiyat teklifi sunuyoruz; saat
+              bazlı faturalandırma yok. Sözleşme + e-fatura, kaynak kodu size aittir.
+            </p>
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-[0.85rem] text-ink-600">
+              <span className="inline-flex items-center gap-2">
+                <span className="text-accent-700">●</span> MVP başlangıç: <strong className="text-ink-900">₺25.000+</strong>
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <span className="text-accent-700">●</span> Sabit fiyat, sürpriz maliyet yok
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <span className="text-accent-700">●</span> Kaynak kodu sizin
+              </span>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Tech Choices */}
-      <section className="bg-white px-6 py-20">
+      <section className="bg-surface px-6 py-20">
         <div className="mx-auto max-w-[760px]">
           <Reveal>
             <h2 className="mb-10 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">

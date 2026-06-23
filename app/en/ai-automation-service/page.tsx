@@ -7,10 +7,11 @@ import WhatsAppLink from "@/components/WhatsAppLink"
 import AILeadFormEn from "./AILeadFormEn"
 
 export const metadata: Metadata = {
-  title: "AI Automation Service — Solman Digital",
+  title: "AI Automation Agency — Solman Digital",
   description:
-    "Custom AI automation solutions for businesses. GPT-4o & Claude-powered workflows, process automation, AI chatbots, and content systems. Live in 3–6 weeks. Free AI audit.",
+    "Your AI automation agency: custom GPT-4o & Claude-powered workflows, process automation, AI chatbots, and content systems. Fixed price, source code yours, automations delivered in 1 week. Free AI audit.",
   keywords: [
+    "ai automation agency",
     "ai automation service",
     "ai automation consulting",
     "ai systems integration",
@@ -26,9 +27,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: `${siteConfig.url}/en/ai-automation-service` },
   openGraph: {
-    title: "AI Automation Service — Solman Digital",
+    title: "AI Automation Agency — Solman Digital",
     description:
-      "Custom AI automation for your business. GPT-4o & Claude-powered workflows. Free AI audit, fixed price, 3–6 weeks delivery.",
+      "Your AI automation agency. GPT-4o & Claude-powered workflows. Free AI audit, fixed price, 1-week delivery.",
     url: `${siteConfig.url}/en/ai-automation-service`,
     siteName: siteConfig.name,
     locale: "en_US",
@@ -88,7 +89,7 @@ const packages = [
   {
     name: "AI Starter",
     price: "From €500",
-    weeks: "2–3 weeks",
+    weeks: "1 week",
     highlight: false,
     features: [
       "Single automation workflow",
@@ -176,18 +177,18 @@ export default function EnAIAutomationPage() {
           <div>
             <Reveal>
               <p className="mb-5 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
-                GPT-4o · Claude · 3–6 Week Delivery
+                AI Automation Agency · GPT-4o · Claude
               </p>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mb-5 text-[clamp(1.75rem,4vw,2.6rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
                 AI Automation for Your Business.{" "}
-                <span className="text-accent-700">Built & Deployed in 3–6 Weeks.</span>
+                <span className="text-accent-700">Delivered in 1 Week.</span>
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p className="mb-7 text-[1rem] leading-[1.75] text-ondark-muted">
-                We build custom AI workflows that save your team 10–20 hours per week — chatbots, content automation, report generation, and process integrations. Fixed price, source code is yours.
+                As a focused AI automation agency, we build custom AI workflows that save your team 10–20 hours per week — chatbots, content automation, report generation, and process integrations. Fixed price, source code is yours.
               </p>
             </Reveal>
             <Reveal delay={300}>
@@ -246,7 +247,7 @@ export default function EnAIAutomationPage() {
               "Fixed price — no surprises",
               "Source code is yours",
               "Free AI audit call",
-              "Deploy in 3–6 weeks",
+              "Delivered in 1 week",
             ].map((b) => (
               <div key={b} className="flex items-center gap-2">
                 <CheckCircle size={14} className="shrink-0 text-accent-700" />

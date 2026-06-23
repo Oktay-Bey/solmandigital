@@ -7,9 +7,9 @@ import Reveal from "@/components/Reveal"
 import RelatedGuides from "@/components/RelatedGuides"
 
 export const metadata: Metadata = {
-  title: "AI Otomasyon Hizmeti — 3 Haftada Canlıya | Solman Digital İstanbul",
+  title: "AI Otomasyon Hizmeti — 1 Haftada Teslim | Solman Digital İstanbul",
   description:
-    "Tekrarlayan iş yükünüzü AI ile otomatize edin: içerik üretimi, ürün açıklamaları, müşteri chatbotu. GPT-4o & Claude entegrasyonu, 3–6 hafta kurulum, somut ROI.",
+    "Tekrarlayan iş yükünüzü AI ile otomatize edin: içerik üretimi, ürün açıklamaları, müşteri chatbotu. GPT-4o & Claude entegrasyonu, 1 haftada teslim, somut ROI.",
   keywords: [
     "yapay zeka otomasyon",
     "ai içerik otomasyonu",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${siteConfig.url}/ai-otomasyon-hizmeti` },
   openGraph: {
     title: "Yapay Zeka & AI Otomasyon Hizmeti | Solman Digital",
-    description: "GPT-4o ile içerik otomasyonu, chatbot ve iş süreci otomasyonu. 3-6 hafta kurulum.",
+    description: "GPT-4o ile içerik otomasyonu, chatbot ve iş süreci otomasyonu. 1 haftada teslim.",
     url: `${siteConfig.url}/ai-otomasyon-hizmeti`,
     siteName: siteConfig.name,
     locale: "tr_TR",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "AI otomasyon kurulumu ne kadar sürer?",
-    a: "Projenin kapsamına göre 3-6 hafta arasında değişir. İçerik otomasyonu gibi tek bir süreç için 2-3 haftada canlıya geçebiliriz.",
+    a: "Çoğu otomasyonu 1 haftada teslim ediyoruz. İçerik üretimi, ürün açıklaması veya chatbot gibi tek bir süreç için bir hafta içinde canlıya geçebiliriz; çok katmanlı entegrasyonlarda süreyi başlangıçta net olarak paylaşıyoruz.",
   },
   {
     q: "Hangi AI modellerini kullanıyorsunuz?",
@@ -139,18 +139,18 @@ export default function AIOtomasyonPage() {
           <div>
             <Reveal>
               <p className="mb-5 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
-                3–6 Hafta Kurulum · GPT-4o · Claude
+                1 Haftada Teslim · GPT-4o · Claude
               </p>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mb-5 text-[clamp(2rem,4vw,2.75rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
-                Tekrarlayan İş Yükünüzü AI ile Otomatize Edin — 3 Haftada Canlıya
+                Tekrarlayan İş Yükünüzü AI ile Otomatize Edin — 1 Haftada Teslim
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p className="mb-7 text-[1rem] leading-[1.75] text-ondark-muted">
                 İçerik üretimi, ürün açıklamaları, müşteri soruları — tekrar eden iş yükünüzü AI ile otomatize ediyoruz.{" "}
-                <span className="font-semibold text-white">3–6 hafta kurulum,</span>{" "}
+                <span className="font-semibold text-white">1 haftada teslim,</span>{" "}
                 somut ROI hedefiyle.
               </p>
             </Reveal>
