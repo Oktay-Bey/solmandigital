@@ -17,10 +17,8 @@ export async function GET(
         asset.structured_snippet_asset.header, asset.structured_snippet_asset.values
       FROM campaign_asset
       WHERE campaign.id='${campaignId}' AND campaign_asset.status='ENABLED'
-        AND campaign_asset.field_type IN ('CALLOUT','STRUCTURED_SNIPPET')
     `);
     const callouts = rows
-      .filter((r) => r.campaign_asset?.field_type === "CALLOUT" || r.campaign_asset?.field_type === 2)
       .map((r) => r.asset?.callout_asset?.callout_text)
       .filter(Boolean);
     const snippets = rows
