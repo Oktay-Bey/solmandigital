@@ -175,13 +175,13 @@ img {
   }
   .btn-outline-dark {
     background-color: transparent;
-    color: var(--color-ondark-muted);
-    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--color-ondark);
+    border: 1px solid rgba(255,255,255,0.38);
   }
   .btn-outline-dark:hover {
     color: #ffffff;
-    border-color: rgba(255,255,255,0.45);
-    background-color: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.7);
+    background-color: rgba(255,255,255,0.08);
   }
 
   /* Form inputları */

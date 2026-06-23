@@ -87,7 +87,7 @@ export default function DownloadForm() {
       </button>
 
       <p className="text-center text-[0.72rem] text-ink-400">
-        Rehber e-posta adresinize gönderilir. Spam değil, yalnızca değerli içerik.
+        Rehber e-posta adresinize gönderilir. Dilediğiniz an çıkabilirsiniz.
       </p>
     </form>
   )

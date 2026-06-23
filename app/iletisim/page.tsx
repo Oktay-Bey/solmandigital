@@ -104,7 +104,7 @@ export default function IletisimPage() {
               <div className="mt-4 flex items-center gap-2 px-1">
                 <Shield size={13} className="text-ink-400" />
                 <span className="text-[0.72rem] text-ink-400">
-                  Bilgileriniz üçüncü taraflarla paylaşılmaz. Spam göndermiyoruz.
+                  Bilgileriniz yalnızca projeniz için kullanılır, üçüncü taraflarla paylaşılmaz.
                 </span>
               </div>
             </div>

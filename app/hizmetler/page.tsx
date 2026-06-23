@@ -114,7 +114,7 @@ export default function HizmetlerPage() {
                 href="https://ticarethub.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 rounded-[8px] border border-accent-700 px-5 py-2.5 text-[0.85rem] font-bold text-accent-700 transition-colors hover:bg-accent-700 hover:text-white"
+                className="shrink-0 rounded-[8px] bg-accent-600 px-5 py-2.5 text-[0.85rem] font-bold text-white transition-colors hover:bg-accent-500"
               >
                 TicaretHub&apos;u Dene →
               </a>
