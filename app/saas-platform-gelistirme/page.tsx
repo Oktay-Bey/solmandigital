@@ -129,7 +129,7 @@ export default function SaasPlatformGelistirmePage() {
               <WhatsAppLink
                 message="Merhaba, SaaS platform geliştirmek istiyorum, bilgi almak istiyorum."
                 source="saas_hero"
-                className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+                className="btn btn-outline-dark"
               >
                 <MessageCircle size={15} /> WhatsApp ile Yazın
               </WhatsAppLink>

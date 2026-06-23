@@ -147,7 +147,7 @@ export default function TrendyolEntegrasyonuPage() {
               </a>
               <WhatsAppLink
                 source="trendyol_hero"
-                className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+                className="btn btn-outline-dark"
               >
                 WhatsApp ile Yazın
               </WhatsAppLink>

@@ -177,7 +177,7 @@ export default function EnWebDesignPage() {
               <WhatsAppLink
                 message="Hi, I'd like to discuss a website project."
                 source="web_en_cta"
-                className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+                className="btn btn-outline-dark"
               >
                 <MessageCircle size={15} /> WhatsApp
               </WhatsAppLink>
@@ -390,7 +390,7 @@ export default function EnWebDesignPage() {
               <WhatsAppLink
                 message="Hi, I'd like to discuss a website project."
                 source="web_en_cta"
-                className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+                className="btn btn-outline-dark"
               >
                 <MessageCircle size={15} /> WhatsApp
               </WhatsAppLink>

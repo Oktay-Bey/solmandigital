@@ -430,7 +430,7 @@ export default function EnAIAutomationPage() {
               <WhatsAppLink
                 message="Hi, I'd like to discuss an AI automation project."
                 source="ai_en_cta"
-                className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+                className="btn btn-outline-dark"
               >
                 <MessageCircle size={15} /> WhatsApp
               </WhatsAppLink>

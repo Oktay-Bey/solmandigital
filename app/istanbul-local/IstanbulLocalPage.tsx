@@ -122,7 +122,7 @@ export default function IstanbulLocalPage({ config }: Props) {
             <WhatsAppLink
               message={`Merhaba, ${config.district ?? "İstanbul"} için proje hakkında bilgi almak istiyorum.`}
               source="istanbul_local_hero"
-              className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+              className="btn btn-outline-dark"
             >
               <MessageCircle size={15} /> WhatsApp ile Yazın
             </WhatsAppLink>

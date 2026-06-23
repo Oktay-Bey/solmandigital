@@ -149,7 +149,7 @@ export default async function EntegrasyonDetayPage({
               </a>
               <WhatsAppLink
                 source={`entegrasyon_${product.slug}`}
-                className="btn btn-outline border-ondark-faint text-ondark hover:border-ondark"
+                className="btn btn-outline-dark"
               >
                 WhatsApp ile Yazın
               </WhatsAppLink>
