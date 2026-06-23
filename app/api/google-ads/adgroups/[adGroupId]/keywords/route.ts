@@ -61,13 +61,15 @@ export async function PATCH(
 ) {
   try {
     const { adGroupId } = await params;
-    const { pauseTexts, enableTexts, bids } = await req.json() as {
+    const { pauseTexts, enableTexts, bids, moveTexts } = await req.json() as {
       pauseTexts?: string[];
       enableTexts?: string[];
       bids?: { text: string; bidTL: number }[];
+      // moveTexts: keyword'ü bu gruptan kaldır + hedef grupta yeniden ekle (QS düzeltme)
+      moveTexts?: { text: string; toAdGroupId: string; matchType?: "BROAD" | "PHRASE" | "EXACT" }[];
     };
-    if (!pauseTexts?.length && !enableTexts?.length && !bids?.length) {
-      return NextResponse.json({ error: "pauseTexts, enableTexts veya bids array gerekli." }, { status: 400 });
+    if (!pauseTexts?.length && !enableTexts?.length && !bids?.length && !moveTexts?.length) {
+      return NextResponse.json({ error: "pauseTexts, enableTexts, bids veya moveTexts array gerekli." }, { status: 400 });
     }
     const customer = getCustomer();
     // Mevcut keyword'leri çek (resource_name + metin) — hem pause hem bid için eşleşme kaynağı
@@ -82,6 +84,32 @@ export async function PATCH(
     const resByText = new Map<string, string>();
     for (const r of rows) {
       resByText.set(norm(String(r.ad_group_criterion?.keyword?.text ?? "")), r.ad_group_criterion.resource_name);
+    }
+
+    // Taşıma: kaynak gruptan kaldır (status REMOVED=4) + hedef grupta yeniden ekle
+    if (moveTexts?.length) {
+      const cid = process.env.GOOGLE_ADS_CUSTOMER_ID!;
+      const moved: { text: string; status: "moved" | "skipped"; note?: string }[] = [];
+      for (const mv of moveTexts) {
+        const srcRes = resByText.get(norm(mv.text));
+        if (!srcRes) { moved.push({ text: mv.text, status: "skipped", note: "kaynak grupta yok" }); continue; }
+        try {
+          // 1) hedef grupta ENABLED keyword oluştur
+          await customer.adGroupCriteria.create([{
+            ad_group: `customers/${cid}/adGroups/${mv.toAdGroupId}`,
+            status: 2,
+            keyword: { text: mv.text, match_type: MATCH[mv.matchType ?? "PHRASE"] ?? 3 },
+          }]);
+          // 2) kaynaktan kaldır (REMOVED=4)
+          await customer.adGroupCriteria.update([{ resource_name: srcRes, status: 4 }]);
+          moved.push({ text: mv.text, status: "moved" });
+        } catch (e) {
+          const errs = ((e as Record<string, unknown>)?.errors as unknown[]) ?? [];
+          console.warn("[keywords] MOVE SKIPPED:", mv.text, JSON.stringify(errs));
+          moved.push({ text: mv.text, status: "skipped", note: "create/remove hatası" });
+        }
+      }
+      return NextResponse.json({ success: true, moved });
     }
 
     // Bid güncelleme
