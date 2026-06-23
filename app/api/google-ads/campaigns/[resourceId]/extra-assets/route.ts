@@ -65,7 +65,12 @@ export async function POST(
   try {
     const { resourceId } = await params;
     const campaignId = decodeURIComponent(resourceId);
-    const apply = new URL(req.url).searchParams.get("apply") === "true";
+    const sp = new URL(req.url).searchParams;
+    const apply = sp.get("apply") === "true";
+    // ?only=callouts → snippet'i atla (zaten varsa duplike etme)
+    const only = sp.get("only");
+    const doSnippet = only !== "callouts";
+    const doCallouts = only !== "snippet";
 
     const errs = [...check(CALLOUTS, 25), ...check(SNIPPET_VALUES, 25)];
     if (errs.length) return NextResponse.json({ error: "Karakter limiti", errs }, { status: 400 });
@@ -73,16 +78,16 @@ export async function POST(
     const plan = {
       campaignId,
       mode: apply ? "APPLY" : "DRY-RUN",
-      callouts: CALLOUTS,
-      snippet: { header: SNIPPET_HEADER, values: SNIPPET_VALUES },
+      callouts: doCallouts ? CALLOUTS : [],
+      snippet: doSnippet ? { header: SNIPPET_HEADER, values: SNIPPET_VALUES } : null,
     };
 
     if (!apply) {
       return NextResponse.json({ ...plan, note: "DRY-RUN — yazılmadı. ?apply=true ile uygula." });
     }
 
-    const calloutsAdded = await addCallouts(campaignId, CALLOUTS);
-    const snippetResource = await addStructuredSnippet(campaignId, SNIPPET_HEADER, SNIPPET_VALUES);
+    const calloutsAdded = doCallouts ? await addCallouts(campaignId, CALLOUTS) : 0;
+    const snippetResource = doSnippet ? await addStructuredSnippet(campaignId, SNIPPET_HEADER, SNIPPET_VALUES) : null;
 
     return NextResponse.json({ ...plan, calloutsAdded, snippetResource });
   } catch (err) {
