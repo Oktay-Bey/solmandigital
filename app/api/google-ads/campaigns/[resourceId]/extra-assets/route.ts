@@ -56,6 +56,41 @@ function check(items: string[], max: number): string[] {
   return items.filter((t) => [...t].length > max).map((t) => `"${t}" > ${max}`);
 }
 
+// DELETE — duplicate callout temizliği. Her callout text'in ilkini tutar, fazlalarını kaldırır.
+export async function DELETE(
+  _req: NextRequest,
+  { params }: { params: Promise<{ resourceId: string }> }
+) {
+  try {
+    const { resourceId } = await params;
+    const campaignId = decodeURIComponent(resourceId);
+    const customer = getCustomer();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const rows: any[] = await customer.query(`
+      SELECT campaign.id, campaign_asset.resource_name, asset.callout_asset.callout_text
+      FROM campaign_asset
+      WHERE campaign.id='${campaignId}' AND campaign_asset.status='ENABLED'
+    `);
+    const seen = new Set<string>();
+    const toRemove: string[] = [];
+    for (const r of rows) {
+      const text = r.asset?.callout_asset?.callout_text;
+      const res = r.campaign_asset?.resource_name;
+      if (!text || !res) continue;
+      if (seen.has(text)) toRemove.push(res);
+      else seen.add(text);
+    }
+    if (!toRemove.length) {
+      return NextResponse.json({ success: true, removed: 0, note: "duplicate yok" });
+    }
+    await customer.campaignAssets.remove(toRemove);
+    return NextResponse.json({ success: true, removed: toRemove.length, kept: seen.size });
+  } catch (err) {
+    const detail = (err as { errors?: { message: string }[] })?.errors?.[0]?.message || String(err);
+    return NextResponse.json({ error: detail }, { status: 500 });
+  }
+}
+
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ resourceId: string }> }
