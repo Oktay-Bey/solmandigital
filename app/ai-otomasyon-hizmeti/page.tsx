@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, FileText, ShoppingCart, Bot } from "lucide-react"
+import { ArrowRight, FileText, ShoppingCart, Bot, MapPin, FileCheck, ShieldCheck } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import AILeadForm from "./AILeadForm"
 import Reveal from "@/components/Reveal"
@@ -31,6 +31,30 @@ export const metadata: Metadata = {
   },
 }
 
+// Tek kaynak: hem JSON-LD FAQPage hem görünür FAQ bölümü buradan beslenir.
+const faqs = [
+  {
+    q: "AI otomasyon kurulumu ne kadar sürer?",
+    a: "Projenin kapsamına göre 3-6 hafta arasında değişir. İçerik otomasyonu gibi tek bir süreç için 2-3 haftada canlıya geçebiliriz.",
+  },
+  {
+    q: "Hangi AI modellerini kullanıyorsunuz?",
+    a: "OpenAI GPT-4o, Anthropic Claude ve Serper API'yi kullanıyoruz. Projeye göre en uygun modeli birlikte seçiyoruz.",
+  },
+  {
+    q: "Mevcut sistemlerimize entegrasyon yapılabilir mi?",
+    a: "Evet. WordPress, Shopify, Trendyol/Hepsiburada panelleri, CRM sistemleri ve REST API'ye sahip her platforma entegrasyon yapabiliyoruz.",
+  },
+  {
+    q: "Fiyat nasıl belirleniyor? Sürpriz maliyet olur mu?",
+    a: "Proje kapsamı netleştikten sonra sabit fiyat teklifi sunuyoruz — saat bazlı faturalandırma yok. Sözleşme ve e-fatura ile çalışıyoruz.",
+  },
+  {
+    q: "Geliştirilen sistemin sahibi kim olur?",
+    a: "Tüm kaynak kodu ve sistem size aittir. Teslimde kodu ve dokümantasyonu devrediyoruz; kilitli bir platforma bağımlı kalmazsınız.",
+  },
+]
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -49,32 +73,11 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "AI otomasyon kurulumu ne kadar sürer?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Projenin kapsamına göre 3-6 hafta arasında değişir. İçerik otomasyonu gibi tek bir süreç için 2-3 haftada canlıya geçebiliriz.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Hangi AI modellerini kullanıyorsunuz?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "OpenAI GPT-4o, Anthropic Claude ve Serper API'yi kullanıyoruz. Projeye göre en uygun modeli birlikte seçiyoruz.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Mevcut sistemlerimize entegrasyon yapılabilir mi?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Evet. WordPress, Shopify, Trendyol/Hepsiburada panelleri, CRM sistemleri ve REST API'ye sahip her platforma entegrasyon yapabiliyoruz.",
-          },
-        },
-      ],
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
     },
   ],
 }
@@ -184,6 +187,21 @@ export default function AIOtomasyonPage() {
         </div>
       </section>
 
+      {/* Güven şeridi — şeffaflık (LPE + dönüşüm): kim olduğumuz, yasal güvence */}
+      <section className="border-b border-ink-200 bg-surface px-6 py-5">
+        <div className="mx-auto flex max-w-[900px] flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[0.8rem] text-ink-600">
+          <span className="inline-flex items-center gap-2">
+            <MapPin size={15} className="text-accent-700" /> Beşiktaş, İstanbul merkezli yazılım ofisi
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <FileCheck size={15} className="text-accent-700" /> Sözleşme + e-fatura
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <ShieldCheck size={15} className="text-accent-700" /> Sabit fiyat, saat bazlı fatura yok
+          </span>
+        </div>
+      </section>
+
       {/* AI Ne Zaman Mantıklı? */}
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-[900px]">
@@ -237,64 +255,6 @@ export default function AIOtomasyonPage() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* TicaretHub Cross-Promo */}
-      <section className="border-t border-ink-200 bg-white px-6 py-14">
-        <div className="mx-auto max-w-[900px]">
-          <Reveal>
-            <div className="rounded-[12px] border border-accent-200 bg-accent-50 p-8 sm:p-10">
-              <p className="eyebrow mb-3">Önce Kendiniz Deneyin</p>
-              <h2 className="mb-3 text-[1.15rem] font-extrabold tracking-[-0.02em] text-ink-900">
-                Küçük Ölçekte Başlamak Mı İstiyorsunuz?
-              </h2>
-              <p className="mb-7 max-w-[560px] text-[0.875rem] leading-[1.7] text-ink-600">
-                Özel otomasyon geliştirmeden önce yapay zekanın e-ticaret süreçlerinize nasıl uyduğunu test etmek isterseniz,{" "}
-                <a
-                  href="https://ticarethub.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-accent-700 underline underline-offset-2"
-                >
-                  TicaretHub
-                </a>
-                &apos;un hazır AI araçlarıyla hemen başlayabilirsiniz.
-              </p>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-3">
-                {[
-                  {
-                    href: "https://ticarethub.com/yapay-zeka-icerik-motoru",
-                    label: "AI İçerik Motoru",
-                    desc: "Blog ve sosyal medya içeriği üret",
-                  },
-                  {
-                    href: "https://ticarethub.com/yapay-zeka-urun-aciklamasi",
-                    label: "Ürün Açıklama Üretici",
-                    desc: "Trendyol/Hepsiburada için SEO içerik",
-                  },
-                  {
-                    href: "https://ticarethub.com/ucretsiz-yapay-zeka-e-ticaret",
-                    label: "Ücretsiz AI Araçları",
-                    desc: "E-ticaret için tüm AI araçları",
-                  },
-                ].map((tool) => (
-                  <a
-                    key={tool.href}
-                    href={tool.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group rounded-[8px] border border-accent-200 bg-white p-4 transition-colors hover:border-accent-400 hover:bg-accent-100"
-                  >
-                    <p className="mb-1 text-[0.825rem] font-bold text-ink-900 group-hover:text-accent-700">
-                      {tool.label} →
-                    </p>
-                    <p className="text-[0.775rem] leading-[1.5] text-ink-500">{tool.desc}</p>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 
@@ -363,6 +323,27 @@ export default function AIOtomasyonPage() {
         </div>
       </section>
 
+      {/* Görünür FAQ — şeffaflık/itiraz giderme (LPE useful content + dönüşüm) */}
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-[760px]">
+          <Reveal>
+            <h2 className="mb-10 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+              Sık Sorulan Sorular
+            </h2>
+          </Reveal>
+          <div className="flex flex-col gap-6">
+            {faqs.map((item, i) => (
+              <Reveal key={item.q} delay={i * 60}>
+                <div className="border-b border-ink-200 pb-6">
+                  <h3 className="m-0 mb-2 text-[0.95rem] font-bold text-ink-900">{item.q}</h3>
+                  <p className="m-0 text-[0.875rem] leading-relaxed text-ink-500">{item.a}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* İlgili Rehberler — içeriğe next-click, bounce ↓ */}
       <RelatedGuides
         category={["yapay-zeka", "e-ticaret"]}
@@ -379,6 +360,24 @@ export default function AIOtomasyonPage() {
           <Link href="/ucretsiz-analiz" className="btn btn-outline-dark">
             Ücretsiz Site Analizi <ArrowRight size={15} />
           </Link>
+        </div>
+      </section>
+
+      {/* TicaretHub — diskret alt referans (odak dağıtmaz, dış kaçışı en aza indirir) */}
+      <section className="bg-white px-6 py-8">
+        <div className="mx-auto max-w-[760px] text-center">
+          <p className="text-[0.8rem] leading-[1.6] text-ink-400">
+            Küçük ölçekte denemek isterseniz hazır AI araçlarımız{" "}
+            <a
+              href="https://ticarethub.com"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="font-semibold text-ink-500 underline underline-offset-2 hover:text-accent-700"
+            >
+              TicaretHub
+            </a>
+            &apos;ta.
+          </p>
         </div>
       </section>
     </>
