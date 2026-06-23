@@ -78,6 +78,7 @@ export default function Footer() {
 
           {/* İstanbul Bölgeleri */}
           <Col title="İstanbul Bölgeleri">
+            <ColLink href="/istanbul-ilceleri">Tüm İlçeler →</ColLink>
             {istanbulPages.map((p) => <ColLink key={p.slug} href={`/${p.slug}`}>{p.title}</ColLink>)}
           </Col>
 

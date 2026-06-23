@@ -321,6 +321,12 @@ export default function IstanbulLocalPage({ config }: Props) {
                 </Link>
               ))}
             </div>
+            <Link
+              href="/istanbul-ilceleri"
+              className="mt-5 inline-flex items-center gap-1.5 text-[0.85rem] font-semibold text-accent-700 underline underline-offset-2 hover:text-accent-600"
+            >
+              İstanbul&apos;un tüm ilçelerini görün <ArrowRight size={14} />
+            </Link>
           </div>
         </section>
       )}

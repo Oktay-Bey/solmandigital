@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/web-sitesi-yaptirmak`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.90 },
     { url: `${base}/saas-platform-gelistirme`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.88 },
     { url: `${base}/istanbul-web-developer`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.88 },
+    { url: `${base}/istanbul-ilceleri`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.86 },
     { url: `${base}/fiyatlar`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.88 },
     { url: `${base}/ucretsiz-analiz`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.88 },
     { url: `${base}/danismanlik`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
