@@ -39,10 +39,10 @@ export async function GET(req: NextRequest) {
       SELECT
         campaign_criterion.keyword.text,
         campaign_criterion.keyword.match_type,
-        campaign_criterion.negative
+        campaign_criterion.negative,
+        campaign_criterion.type
       FROM campaign_criterion
       WHERE campaign.id = '${campaignId}'
-        AND campaign_criterion.type = 'KEYWORD'
         AND campaign_criterion.negative = true
       LIMIT 500
     `);
@@ -64,10 +64,12 @@ export async function GET(req: NextRequest) {
       ctr: Number((Number(r.metrics?.ctr ?? 0) * 100).toFixed(1)),
     }));
 
-    const negatives = negRows.map((r) => ({
-      text: r.campaign_criterion?.keyword?.text,
-      matchType: matchTypeLabel(r.campaign_criterion?.keyword?.match_type),
-    }));
+    const negatives = negRows
+      .filter((r) => r.campaign_criterion?.keyword?.text) // sadece keyword negatifleri
+      .map((r) => ({
+        text: r.campaign_criterion?.keyword?.text,
+        matchType: matchTypeLabel(r.campaign_criterion?.keyword?.match_type),
+      }));
 
     return NextResponse.json({
       campaignId,
@@ -77,8 +79,16 @@ export async function GET(req: NextRequest) {
       negatives,
     });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "Bilinmeyen hata";
+    // GoogleAdsFailure'da err.message boş olabilir → detayı çıkar
+    let detail = "";
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const e = err as any;
+      detail = e?.errors?.[0]?.message || e?.message || JSON.stringify(e)?.slice(0, 500) || String(e);
+    } catch {
+      detail = String(err);
+    }
     console.error("[google-ads] keyword-audit error:", err);
-    return NextResponse.json({ error: message }, { status: 500 });
+    return NextResponse.json({ error: detail || "Bilinmeyen hata" }, { status: 500 });
   }
 }
