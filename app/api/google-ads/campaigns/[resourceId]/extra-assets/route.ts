@@ -13,7 +13,7 @@ export async function GET(
     const customer = getCustomer();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const rows: any[] = await customer.query(`
-      SELECT campaign_asset.field_type, asset.callout_asset.callout_text,
+      SELECT campaign.id, campaign_asset.field_type, asset.callout_asset.callout_text,
         asset.structured_snippet_asset.header, asset.structured_snippet_asset.values
       FROM campaign_asset
       WHERE campaign.id='${campaignId}' AND campaign_asset.status='ENABLED'
