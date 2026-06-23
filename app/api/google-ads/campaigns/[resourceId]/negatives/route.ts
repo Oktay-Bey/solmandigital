@@ -10,11 +10,18 @@ export async function POST(
   try {
     const { resourceId } = await params;
     const campaignId = decodeURIComponent(resourceId);
-    const { keywords } = await req.json() as { keywords: string[] };
+    const { keywords, matchType } = await req.json() as {
+      keywords: string[];
+      matchType?: "BROAD" | "PHRASE" | "EXACT";
+    };
 
     if (!keywords?.length) {
       return NextResponse.json({ error: "keywords array gerekli." }, { status: 400 });
     }
+
+    // Cerrahi negatif için PHRASE/EXACT istenebilir; uyumluluk için default BROAD.
+    const MATCH: Record<string, number> = { EXACT: 2, PHRASE: 3, BROAD: 4 };
+    const mt = MATCH[matchType ?? "BROAD"] ?? 4;
 
     const customer = getCustomer();
     const campaignResource = `customers/${process.env.GOOGLE_ADS_CUSTOMER_ID}/campaigns/${campaignId}`;
@@ -25,7 +32,7 @@ export async function POST(
         const res = await customer.campaignCriteria.create([{
           campaign: campaignResource,
           negative: true,
-          keyword: { text, match_type: 4 }, // BROAD negatif — en geniş kapsam
+          keyword: { text, match_type: mt },
         }]);
         const resource = (res as unknown as { results: { resource_name: string }[] }).results[0]?.resource_name;
         results.push({ text, status: "ok", resource });
