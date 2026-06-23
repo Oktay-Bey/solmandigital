@@ -1,5 +1,38 @@
 import { NextRequest, NextResponse } from "next/server";
-import { addCallouts, addStructuredSnippet } from "@/lib/google-ads/campaigns";
+import { addCallouts, addStructuredSnippet, listSitelinks } from "@/lib/google-ads/campaigns";
+import { getCustomer } from "@/lib/google-ads/client";
+
+// GET — mevcut callout/snippet/sitelink asset'lerini oku (duplicate önleme).
+export async function GET(
+  _req: NextRequest,
+  { params }: { params: Promise<{ resourceId: string }> }
+) {
+  try {
+    const { resourceId } = await params;
+    const campaignId = decodeURIComponent(resourceId);
+    const customer = getCustomer();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const rows: any[] = await customer.query(`
+      SELECT campaign_asset.field_type, asset.callout_asset.callout_text,
+        asset.structured_snippet_asset.header, asset.structured_snippet_asset.values
+      FROM campaign_asset
+      WHERE campaign.id='${campaignId}' AND campaign_asset.status='ENABLED'
+        AND campaign_asset.field_type IN ('CALLOUT','STRUCTURED_SNIPPET')
+    `);
+    const callouts = rows
+      .filter((r) => r.campaign_asset?.field_type === "CALLOUT" || r.campaign_asset?.field_type === 2)
+      .map((r) => r.asset?.callout_asset?.callout_text)
+      .filter(Boolean);
+    const snippets = rows
+      .filter((r) => r.asset?.structured_snippet_asset?.header)
+      .map((r) => ({ header: r.asset.structured_snippet_asset.header, values: r.asset.structured_snippet_asset.values }));
+    const sitelinks = await listSitelinks(campaignId);
+    return NextResponse.json({ campaignId, calloutCount: callouts.length, callouts, snippets, sitelinkCount: sitelinks.length, sitelinks });
+  } catch (err) {
+    const detail = (err as { errors?: { message: string }[] })?.errors?.[0]?.message || String(err);
+    return NextResponse.json({ error: detail }, { status: 500 });
+  }
+}
 
 // POST /api/google-ads/campaigns/[campaignId]/extra-assets?apply=true
 //

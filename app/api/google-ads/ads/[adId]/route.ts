@@ -124,3 +124,32 @@ export async function PUT(
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
+
+// PATCH — reklam durumunu değiştir (pause/enable). Duplicate RSA temizliği için.
+// Body: { adGroupResource, status: "PAUSED" | "ENABLED" }
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: Promise<{ adId: string }> }
+) {
+  try {
+    const { adId } = await params;
+    const { adGroupResource, status } = await req.json() as {
+      adGroupResource: string;
+      status: "PAUSED" | "ENABLED";
+    };
+    if (!adGroupResource || !status) {
+      return NextResponse.json({ error: "adGroupResource ve status gerekli." }, { status: 400 });
+    }
+    const adGroupId = adGroupResource.split("/").pop();
+    const resourceName = `customers/${process.env.GOOGLE_ADS_CUSTOMER_ID}/adGroupAds/${adGroupId}~${adId}`;
+    const statusEnum = status === "ENABLED" ? 2 : 3; // PAUSED=3
+    const customer = getCustomer();
+    await customer.adGroupAds.update([{ resource_name: resourceName, status: statusEnum }]);
+    return NextResponse.json({ success: true, adId, status });
+  } catch (err) {
+    const detail = (err as { errors?: { message: string }[] })?.errors?.[0]?.message
+      || (err instanceof Error ? err.message : String(err));
+    console.error("[google-ads] ad pause error:", err);
+    return NextResponse.json({ error: detail }, { status: 500 });
+  }
+}
