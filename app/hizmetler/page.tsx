@@ -41,6 +41,14 @@ const itemListSchema = {
   })),
 }
 
+const heroChips = [
+  { slug: "kurumsal-web-sitesi", label: "Web Sitesi" },
+  { slug: "eticaret-kurulum", label: "E-Ticaret" },
+  { slug: "trendyol-entegrasyonu", label: "Trendyol Entegrasyonu" },
+  { slug: "ai-musteri-chatbotu", label: "AI Chatbot" },
+  { slug: "saas-web-uygulama", label: "SaaS Platform" },
+]
+
 export default function HizmetlerPage() {
   const tier1 = getServicesByTier(1)
   const tier2 = getServicesByTier(2)
@@ -58,37 +66,45 @@ export default function HizmetlerPage() {
         <div className="mx-auto max-w-[1200px]">
           <Reveal delay={0}>
             <p className="eyebrow mb-5 !text-accent-700">
-              Kişiye &amp; Firmaya Özel Yazılım Stüdyosu
+              22 Hizmet · Tek Çatı
             </p>
             <h1 className="mb-5 max-w-[640px] text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-tight text-white">
-              Her İşletme Farklı İhtiyaçlarla Gelir.
+              Hangi Hizmete
               <br />
-              <span className="text-accent-700">Hizmetlerimiz De Öyle Şekillenir.</span>
+              <span className="text-accent-700">İhtiyacınız Var?</span>
             </h1>
-            <p className="max-w-[560px] text-[0.95rem] leading-[1.75] text-ink-500">
-              Sektörünüzü, iş sürecinizi ve hedeflerinizi dinleyerek başlıyoruz — ardından tam ihtiyacınıza
-              göre tasarlanmış çözümü sıfırdan inşa ediyoruz. Projenizi yapan uzmanla, doğrudan.
+            <p className="max-w-[520px] text-[0.95rem] leading-[1.75] text-ondark-muted">
+              Aşağıdan ilgilendiğiniz hizmete gidin — kapsamı, teslim süresini ve başlangıç fiyatını saniyeler içinde görün.
             </p>
+
+            {/* Hizmet çipleri — doğrudan etkileşim */}
+            <div className="mt-7 flex flex-wrap gap-2.5">
+              {heroChips.map((c) => (
+                <a
+                  key={c.slug}
+                  href={`/hizmetler/${c.slug}`}
+                  className="rounded-full border border-white/25 bg-white/[0.06] px-4 py-2 text-[0.82rem] font-medium text-white transition-colors hover:border-accent-600 hover:bg-accent-700"
+                >
+                  {c.label}
+                </a>
+              ))}
+              <a
+                href="#tum-hizmetler"
+                className="rounded-full border border-accent-700 bg-accent-700/15 px-4 py-2 text-[0.82rem] font-semibold text-accent-500 transition-colors hover:bg-accent-700 hover:text-white"
+              >
+                Tümünü Gör ↓
+              </a>
+            </div>
+
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/fiyatlar" className="btn btn-primary">
-                Sabit Fiyatlı Teklif Alın
+              <Link href="/iletisim" className="btn btn-primary">
+                Projenizi Anlatın
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/ucretsiz-analiz" className="btn btn-outline-dark">
-                Ücretsiz Analiz
-              </Link>
-              <Link href="/entegrasyonlar" className="btn btn-outline-dark">
-                Pazaryeri Entegrasyonları
+              <Link href="/fiyatlar" className="btn btn-outline-dark">
+                Fiyatları Gör
               </Link>
             </div>
-            <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.78rem] text-ondark-muted">
-              {["Sabit fiyat, sürpriz maliyet yok", "Kaynak kodu sizde", "İlk görüşme ücretsiz"].map((t) => (
-                <li key={t} className="flex items-center gap-1.5">
-                  <span className="text-[#4ade80]">✓</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
           </Reveal>
         </div>
       </section>
@@ -124,16 +140,16 @@ export default function HizmetlerPage() {
       </section>
 
       {/* Tier 1 — Popüler */}
-      <section className="bg-white px-6 py-18">
+      <section id="tum-hizmetler" className="scroll-mt-20 bg-white px-6 py-18">
         <div className="mx-auto max-w-[1200px]">
           <Reveal delay={0}>
             <div className="mb-10">
               <p className="eyebrow mb-3">En Çok Tercih Edilenler</p>
               <h2 className="mb-2 text-2xl font-extrabold tracking-tight text-ink-900">
-                Hızlı Sonuç Veren Çözümler
+                E-Ticaret, Web &amp; Entegrasyon
               </h2>
               <p className="max-w-[540px] text-[0.875rem] text-ink-500">
-                Hangi hizmetten başlayacağınızı bilmiyor olabilirsiniz — bu tamamen normal. Size özel kapsam belirliyoruz.
+                Kısa sürede başlayan, somut iş sonucu veren temel hizmetler.
               </p>
             </div>
           </Reveal>

@@ -1191,6 +1191,17 @@ export const services: Service[] = [
   },
 ]
 
+// Cannibalization önleme: bazı hizmetlerin daha güçlü, ticari niyetli bir
+// top-level landing sayfası var. O hizmetin /hizmetler/[slug] versiyonu,
+// kanonik olarak top-level rotaya işaret eder ve sitemap'ten çıkarılır.
+// key = /hizmetler/[slug], value = kanonik top-level path
+export const canonicalRouteOverrides: Record<string, string> = {
+  "trendyol-entegrasyonu": "/trendyol-entegrasyonu",
+  "kurumsal-web-sitesi": "/web-sitesi-yaptirmak",
+  "saas-web-uygulama": "/saas-platform-gelistirme",
+  "ai-icerik-otomasyonu": "/ai-otomasyon-hizmeti",
+}
+
 export function getServiceBySlug(slug: string): Service | undefined {
   return services.find((s) => s.slug === slug)
 }

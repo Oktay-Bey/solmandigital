@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle, X, MapPin, MessageCircle } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import WhatsAppLink from "@/components/WhatsAppLink"
 import RelatedGuides from "@/components/RelatedGuides"
-import { services } from "@/lib/data/services"
+import { services, canonicalRouteOverrides } from "@/lib/data/services"
 import { istanbulPages, type IstanbulPage } from "@/lib/data/istanbul-pages"
 import IstanbulLocalLeadForm from "./IstanbulLocalLeadForm"
 
@@ -57,6 +57,9 @@ type Props = {
 }
 
 export default function IstanbulLocalPage({ config }: Props) {
+  // İlçeye özgü ek FAQ varsa genel FAQ'a ekle — hem schema hem görünür liste.
+  const allFaq = [...config.faq, ...(config.localFaq ?? [])]
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -71,7 +74,7 @@ export default function IstanbulLocalPage({ config }: Props) {
       },
       {
         "@type": "FAQPage",
-        mainEntity: config.faq.map((item) => ({
+        mainEntity: allFaq.map((item) => ({
           "@type": "Question",
           name: item.q,
           acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -168,6 +171,20 @@ export default function IstanbulLocalPage({ config }: Props) {
         </div>
       </section>
 
+      {/* İlçeye Özgü Yerel Bağlam — benzersiz içerik (soft-duplicate kırar) */}
+      {config.localContext && (
+        <section className="bg-white px-6 pt-10">
+          <div className="mx-auto max-w-[760px]">
+            <h2 className="mb-4 text-[clamp(1.25rem,2.5vw,1.75rem)] font-extrabold tracking-tight text-ink-900">
+              {config.localContext.heading}
+            </h2>
+            <p className="text-[0.975rem] leading-loose text-ink-600">
+              {config.localContext.body}
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* Comparison Table */}
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-[900px]">
@@ -216,7 +233,7 @@ export default function IstanbulLocalPage({ config }: Props) {
           </h2>
           <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">
             {featuredServices.map((service) => (
-              <Link key={service.slug} href={`/hizmetler/${service.slug}`} className="group">
+              <Link key={service.slug} href={canonicalRouteOverrides[service.slug] ?? `/hizmetler/${service.slug}`} className="group">
                 <div className="card card-interactive flex h-full flex-col gap-2 p-6 group-hover:border-accent-700">
                   <p className="m-0 text-[0.95rem] font-bold text-ink-900">{service.title}</p>
                   <p className="m-0 text-[0.8rem] leading-relaxed text-ink-500">{service.shortDesc}</p>
@@ -288,7 +305,7 @@ export default function IstanbulLocalPage({ config }: Props) {
             Sık Sorulan Sorular
           </h2>
           <div className="flex flex-col gap-6">
-            {config.faq.map((item) => (
+            {allFaq.map((item) => (
               <div key={item.q} className="border-b border-ink-200 pb-6">
                 <h3 className="m-0 mb-2 text-[0.95rem] font-bold text-ink-900">{item.q}</h3>
                 <p className="m-0 text-[0.875rem] leading-relaxed text-ink-500">{item.a}</p>

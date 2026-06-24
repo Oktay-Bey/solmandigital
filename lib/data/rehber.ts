@@ -3494,3 +3494,31 @@ export function getRehberByCategory(
   }
   return out
 }
+
+// Bir hizmet sayfası için ilgili rehber yazılarını döndürür.
+// Hizmet ve rehber keyword/title kesişimiyle skorlar — hizmet→rehber çapraz
+// linki topical authority kurar ve rehber sayfalarının keşfedilmesine yardım eder.
+export function getRehberForService(
+  service: { keywords: string[]; category: string; title: string },
+  limit = 3
+): RehberPost[] {
+  const norm = (s: string) => s.toLowerCase()
+  const svcTerms = new Set(
+    [...service.keywords, service.category, service.title]
+      .flatMap((t) => norm(t).split(/[\s&,/]+/))
+      .filter((w) => w.length > 3)
+  )
+
+  return rehberPosts
+    .map((p) => {
+      const terms = [...p.keywords, p.title]
+        .flatMap((t) => norm(t).split(/[\s&,/]+/))
+        .filter((w) => w.length > 3)
+      const score = terms.reduce((n, w) => n + (svcTerms.has(w) ? 1 : 0), 0)
+      return { post: p, score }
+    })
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((x) => x.post)
+}

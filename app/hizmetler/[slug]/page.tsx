@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { services, getServiceBySlug, getRelatedServices } from "@/lib/data/services"
+import { services, getServiceBySlug, getRelatedServices, canonicalRouteOverrides } from "@/lib/data/services"
+import { getRehberForService } from "@/lib/data/rehber"
 import ServiceDetail from "@/components/ServiceDetail"
 import { siteConfig } from "@/lib/site-config"
 
@@ -19,15 +20,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = getServiceBySlug(slug)
   if (!service) return {}
 
+  // Çakışan hizmetlerde kanonik, daha güçlü top-level landing'e işaret eder.
+  const canonicalPath = canonicalRouteOverrides[slug] ?? `/hizmetler/${slug}`
+  const canonicalUrl = `${siteConfig.url}${canonicalPath}`
+
   return {
     title: service.metaTitle,
     description: service.metaDescription,
     keywords: service.keywords,
-    alternates: { canonical: `${siteConfig.url}/hizmetler/${slug}` },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       title: service.metaTitle,
       description: service.metaDescription,
-      url: `${siteConfig.url}/hizmetler/${slug}`,
+      url: canonicalUrl,
       locale: "tr_TR",
     },
   }
@@ -39,6 +44,7 @@ export default async function HizmetDetayPage({ params }: Props) {
   if (!service) notFound()
 
   const related = getRelatedServices(slug)
+  const relatedRehber = getRehberForService(service)
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -90,7 +96,7 @@ export default async function HizmetDetayPage({ params }: Props) {
       {faqSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       )}
-      <ServiceDetail service={service} related={related} />
+      <ServiceDetail service={service} related={related} relatedRehber={relatedRehber} />
     </>
   )
 }

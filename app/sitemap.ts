@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next"
-import { services } from "@/lib/data/services"
+import { services, canonicalRouteOverrides } from "@/lib/data/services"
 import { integrations } from "@/lib/data/integrations"
 import { istanbulPages } from "@/lib/data/istanbul-pages"
 import { rehberPosts } from "@/lib/data/rehber"
@@ -29,12 +29,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const servicePriorityMap: Record<1 | 2 | 3, number> = { 1: 0.90, 2: 0.80, 3: 0.70 }
 
-  const servicePages: MetadataRoute.Sitemap = services.map((s) => ({
-    url: `${base}/hizmetler/${s.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: servicePriorityMap[s.tier],
-  }))
+  // Kanonik'i top-level rotaya işaret eden çakışan hizmetleri sitemap'e koyma.
+  const servicePages: MetadataRoute.Sitemap = services
+    .filter((s) => !canonicalRouteOverrides[s.slug])
+    .map((s) => ({
+      url: `${base}/hizmetler/${s.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: servicePriorityMap[s.tier],
+    }))
 
   const integrationPages: MetadataRoute.Sitemap = integrations.map((p) => ({
     url: `${base}/entegrasyonlar/${p.slug}`,

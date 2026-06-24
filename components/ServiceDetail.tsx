@@ -3,6 +3,7 @@ import { CheckCircle2, ArrowRight, ChevronRight, MessageCircle } from "lucide-re
 import { siteConfig } from "@/lib/site-config"
 import * as Icons from "lucide-react"
 import type { Service } from "@/lib/data/services"
+import type { RehberPost } from "@/lib/data/rehber"
 import ServiceCard from "./ServiceCard"
 import LeadMagnetBanner from "./LeadMagnetBanner"
 import { categoryLeadMagnetMap } from "@/lib/data/leadMagnets"
@@ -10,6 +11,7 @@ import { categoryLeadMagnetMap } from "@/lib/data/leadMagnets"
 type Props = {
   service: Service
   related: Service[]
+  relatedRehber?: RehberPost[]
 }
 
 const faqSchema = (faq: Service["faq"]) => ({
@@ -43,7 +45,7 @@ const breadcrumbSchema = (service: Service, siteUrl: string) => ({
   ],
 })
 
-export default function ServiceDetail({ service, related }: Props) {
+export default function ServiceDetail({ service, related, relatedRehber = [] }: Props) {
   const IconComponent = (Icons as unknown as Record<string, React.ComponentType<{ size?: number; className?: string }>>)[service.icon]
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://solmandigital.com.tr"
 
@@ -217,6 +219,43 @@ export default function ServiceDetail({ service, related }: Props) {
             <div className="related-grid">
               {related.map((s) => (
                 <ServiceCard key={s.slug} service={s} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* İlgili Rehberler — hizmet→rehber çapraz linki (topical authority) */}
+      {relatedRehber.length > 0 && (
+        <section className="bg-surface px-6 py-18">
+          <div className="mx-auto max-w-[1200px]">
+            <p className="eyebrow mb-3">Daha Fazla Bilgi</p>
+            <h2 className="mb-2 text-[1.375rem] font-extrabold tracking-tight text-ink-900">
+              İlgili Rehberler
+            </h2>
+            <p className="mb-8 text-[0.875rem] text-ink-400">
+              {service.title} hakkında bilmeniz gerekenler
+            </p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedRehber.map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/rehber/${r.slug}`}
+                  className="card group flex flex-col p-6 transition-shadow hover:shadow-card-hover"
+                >
+                  <span className="mb-2 text-[0.7rem] font-bold uppercase tracking-wider text-accent-700">
+                    Rehber · {r.readTime} dk okuma
+                  </span>
+                  <h3 className="mb-2 text-[0.95rem] font-bold leading-snug tracking-tight text-ink-900 group-hover:text-accent-700">
+                    {r.title}
+                  </h3>
+                  <p className="mb-4 line-clamp-2 flex-1 text-[0.825rem] leading-relaxed text-ink-500">
+                    {r.description}
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-[0.8rem] font-semibold text-accent-700">
+                    Oku <ArrowRight size={14} />
+                  </span>
+                </Link>
               ))}
             </div>
           </div>

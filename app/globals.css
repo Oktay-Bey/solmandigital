@@ -174,14 +174,14 @@ img {
     background-color: var(--color-ink-50);
   }
   .btn-outline-dark {
-    background-color: transparent;
-    color: var(--color-ondark);
-    border: 1px solid rgba(255,255,255,0.38);
+    background-color: rgba(255,255,255,0.06);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.55);
   }
   .btn-outline-dark:hover {
     color: #ffffff;
-    border-color: rgba(255,255,255,0.7);
-    background-color: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.85);
+    background-color: rgba(255,255,255,0.14);
   }
 
   /* Form inputları */

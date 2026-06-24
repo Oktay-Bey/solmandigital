@@ -8,6 +8,11 @@ export type IstanbulPage = {
   heroH1: string
   heroSubtitle: string
   uniqueSection: { heading: string; body: string }
+  /** İlçeye özgü ikinci içerik bloğu — yerel iş ortamı / sektör profili.
+   *  Soft-duplicate'i kırmak için her sayfaya benzersiz ~120+ kelime metin. */
+  localContext?: { heading: string; body: string }
+  /** İlçeye özgü ek FAQ — genel FAQ'a eklenir, benzersiz içerik artırır. */
+  localFaq?: Array<{ q: string; a: string }>
   keywords: string[]
   faq: Array<{ q: string; a: string }>
   geo: { latitude: number; longitude: number }
@@ -193,6 +198,16 @@ export const istanbulPages: IstanbulPage[] = [
       heading: "Anadolu Yakasının Girişimci Merkezi Kadıköy",
       body: "Kadıköy, İstanbul'un en dinamik girişim ve KOBİ ekosistemlerinden birini barındırır. Moda, Bağdat Caddesi ve Fikirtepe ekseninde gelişen iş dünyasının dijital ihtiyaçları hız ve özgünlük gerektirir. Kadıköy'deki işletmelerle yüz yüze görüşme, dijital dönüşüm danışmanlığı ve doğrudan geliştirme sürecinde yanlarında oluyoruz. Ajans katmanı ve gereksiz toplantılar olmadan — brief'ten teslimata kısa yol.",
     },
+    localContext: {
+      heading: "Bağdat Caddesi'nden Moda'ya: Kadıköy'de Hangi İşler Neye İhtiyaç Duyuyor?",
+      body: "Kadıköy'ün ticari dokusu mahalle mahalle değişir. Bağdat Caddesi hattındaki perakende ve moda markaları, fiziksel mağazasını çevrimiçine taşıyan bir e-ticaret altyapısı ve Trendyol–Hepsiburada gibi pazaryeri entegrasyonu ister. Moda ve Yeldeğirmeni'ndeki kafe, bar ve yaratıcı işletmeler ise marka kimliğini yansıtan, görsel ağırlıklı tanıtım siteleri ve online rezervasyon arar. Fikirtepe ve çevresindeki yeni girişimler için ise MVP hızında çıkılabilen SaaS ve uygulama geliştirme önceliklidir. Anadolu yakasının bu girişimci enerjisine, her birine ayrı kapsamla yanıt veriyoruz — hazır şablon değil, işin gerçek ihtiyacına göre.",
+    },
+    localFaq: [
+      {
+        q: "Kadıköy'deki fiziksel mağazamı e-ticarete taşımak istiyorum, nereden başlamalıyım?",
+        a: "Önce mevcut ürün kataloğunuzu, stok yönetimi ihtiyacınızı ve hedef pazaryerlerinizi (Trendyol, Hepsiburada vb.) konuşuyoruz. Buna göre İyzico/Stripe ödeme entegreli bir e-ticaret altyapısı ve istenirse pazaryeri stok-sipariş senkronizasyonu kuruyoruz. İlk görüşme ücretsiz; mevcut durumunuza göre net bir yol haritası çıkarıyoruz.",
+      },
+    ],
     keywords: [
       "kadıköy web tasarım",
       "kadıköy web sitesi yaptırma",
@@ -405,6 +420,16 @@ export const istanbulPages: IstanbulPage[] = [
       heading: "Neden Beşiktaş Merkezli Çalışıyoruz?",
       body: "Solman Digital'in ofisi Beşiktaş'ta. Bu sadece bir adres değil — Beşiktaş ve çevresindeki (Nişantaşı, Levent, Etiler, Sarıyer) işletmelerle yüz yüze, aynı gün toplantı yapabildiğimiz gerçek bir yakınlık. Kafe, co-working veya ofis — nerede uygunsa orada buluşuyoruz. Fiziksel yakınlık + doğrudan geliştirici erişimi kombinasyonu; İstanbul'da yazılım yaptırmanın en az sürtüşmeli yolu.",
     },
+    localContext: {
+      heading: "Beşiktaş'ın İş Profili ve Dijital İhtiyaçları",
+      body: "Beşiktaş; Levent ve Zincirlikuyu hattındaki kurumsal merkez ofislerden Çarşı'daki butik işletmelere, Ortaköy ve Bebek'teki kafe-restoran ve butik markalara kadar geniş bir yelpazeyi barındırır. Bu çeşitlilik tek tip bir çözümle karşılanmaz: bir hukuk veya danışmanlık firması kurumsal güven veren, hızlı yüklenen bir tanıtım sitesi isterken; Bebek'teki bir restoran online rezervasyon ve QR menü, bir butik marka ise İyzico entegreli e-ticaret ister. Beşiktaş'taki işletmelerle aynı dili konuşmamızın sebebi, bu sektörlerin her birine ayrı ayrı proje teslim etmiş olmamız. Tanıtım sitesinden satış yapan platforma — kapsamı işinize göre kuruyoruz.",
+    },
+    localFaq: [
+      {
+        q: "Levent veya Zincirlikuyu'daki ofisimize gelebilir misiniz?",
+        a: "Evet. Beşiktaş merkezli olduğumuz için Levent, Zincirlikuyu, Etiler ve Maslak hattındaki kurumsal ofislere yerinde toplantıya gelebiliyoruz. Genelde ilk tanışma + kapsam toplantısını yüz yüze yapıp, sonraki süreci uzaktan ve şeffaf güncellemelerle yürütüyoruz.",
+      },
+    ],
     keywords: [
       "beşiktaş yazılım geliştirme",
       "beşiktaş web tasarım",
@@ -776,6 +801,16 @@ export const istanbulPages: IstanbulPage[] = [
       heading: "İstanbul'un Üretim Kalbinde Dijital Dönüşüm",
       body: "Bağcılar ve Güngören, İstanbul'un tekstil, hazır giyim ve küçük imalat sanayinin en yoğun olduğu ilçeleri. Bu bölgedeki işletmelerin büyük çoğunluğu toptan satışın yanında Trendyol veya Hepsiburada'da online satış yapıyor ya da kendi e-ticaret kanalını açmak istiyor. Ürün katalog aktarımı, İyzico ödeme entegrasyonu ve çok kanallı stok yönetimi bu ilçelerde en sık karşılaştığımız ihtiyaçlar. Hızlı proje teslimi ve net fiyatlandırma ile Bağcılar ve çevre ilçelere hizmet veriyoruz.",
     },
+    localContext: {
+      heading: "Toptancıdan Pazaryeri Satıcısına: Bağcılar'da Stok ve Entegrasyon",
+      body: "Bağcılar–Güngören hattındaki tekstil ve hazır giyim üreticilerinin en büyük dijital zorluğu satış değil, senkronizasyondur. Aynı ürün toptan müşteriye, kendi e-ticaret sitesine ve Trendyol–Hepsiburada–N11 gibi birden çok pazaryerine aynı anda sunulduğunda; stok, fiyat ve sipariş tek tek elle takip edilemez. Yüzlerce SKU'lu bir hazır giyim kataloğunda bu, gün sonunda yanlış stok ve iptal siparişe dönüşür. Bu işletmeler için kurduğumuz çözüm; XML/Excel ile toplu ürün aktarımı, pazaryerleri arası otomatik stok-fiyat senkronizasyonu ve tek panelden sipariş yönetimi. Üretim hızınıza ayak uyduran, elle giriş gerektirmeyen bir altyapı.",
+    },
+    localFaq: [
+      {
+        q: "Birden fazla pazaryerinde satıyorum, stok karışıyor. Bunu çözebilir misiniz?",
+        a: "Evet — bu, Bağcılar ve Güngören'deki tekstil işletmelerinde en sık çözdüğümüz sorun. Trendyol, Hepsiburada, N11 ve kendi sitenizdeki stoğu tek merkezden senkronize eden bir entegrasyon kuruyoruz: bir kanalda satış olduğunda diğer tüm kanallarda stok otomatik düşer, fiyat güncellemeleri toplu yapılır. Yüzlerce ürünlük katalogları XML/Excel ile toplu aktarıyoruz.",
+      },
+    ],
     keywords: [
       "bağcılar yazılım geliştirme",
       "bağcılar e-ticaret sitesi",

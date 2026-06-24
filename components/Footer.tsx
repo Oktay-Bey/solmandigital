@@ -2,8 +2,14 @@ import Link from "next/link"
 import { Mail, MapPin, MessageCircle, Phone, ArrowRight } from "lucide-react"
 import PhoneLink from "@/components/PhoneLink"
 import { siteConfig } from "@/lib/site-config"
-import { services } from "@/lib/data/services"
+import { services, canonicalRouteOverrides } from "@/lib/data/services"
 import { istanbulPages } from "@/lib/data/istanbul-pages"
+
+// Çakışan hizmetlerde footer linki kanonik top-level rotaya gitsin —
+// internal link equity'yi canonical URL'de topla.
+function serviceHref(slug: string): string {
+  return canonicalRouteOverrides[slug] ?? `/hizmetler/${slug}`
+}
 
 export default function Footer() {
   const tier1 = services.filter((s) => s.tier === 1)
@@ -66,14 +72,14 @@ export default function Footer() {
 
           {/* Popüler Hizmetler */}
           <Col title="Popüler Hizmetler">
-            {tier1.map((s) => <ColLink key={s.slug} href={`/hizmetler/${s.slug}`}>{s.title}</ColLink>)}
+            {tier1.map((s) => <ColLink key={s.slug} href={serviceHref(s.slug)}>{s.title}</ColLink>)}
           </Col>
 
           {/* Diğer & Özel Hizmetler */}
           <Col title="Diğer Hizmetler">
-            {tier2.map((s) => <ColLink key={s.slug} href={`/hizmetler/${s.slug}`}>{s.title}</ColLink>)}
+            {tier2.map((s) => <ColLink key={s.slug} href={serviceHref(s.slug)}>{s.title}</ColLink>)}
             <div style={{ margin: "8px 0", height: 1, backgroundColor: "#1e1e1e" }} />
-            {tier3.map((s) => <ColLink key={s.slug} href={`/hizmetler/${s.slug}`}>{s.title}</ColLink>)}
+            {tier3.map((s) => <ColLink key={s.slug} href={serviceHref(s.slug)}>{s.title}</ColLink>)}
           </Col>
 
           {/* İstanbul Bölgeleri */}
