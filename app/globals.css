@@ -67,41 +67,48 @@
   --font-sans: var(--font-geist-sans);
 }
 
-/* ── Base ──────────────────────────────────────────────────────── */
+/* ── Base ──────────────────────────────────────────────────────────
+   @layer base içinde — böylece bu reset'ler components/utilities
+   layer'larındaki renk kurallarını (text-white, .btn-outline-dark)
+   EZMEZ. Tailwind v4'te layer'sız kural tüm @layer'ları yener; bu
+   yüzden `a { color: inherit }` daha önce buton metinlerini eziyordu.
+   ────────────────────────────────────────────────────────────────── */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  font-family: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
-  color: var(--color-ink-900);
-  background: #ffffff;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+  body {
+    font-family: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
+    color: var(--color-ink-900);
+    background: #ffffff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 
-/* Görünür klavye focus halkası (a11y) */
-:focus-visible {
-  outline: 2px solid var(--color-accent-600);
-  outline-offset: 2px;
-  border-radius: 4px;
+  /* Görünür klavye focus halkası (a11y) */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-600);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 }
 
 /* ── Component katmanı — tekrar eden kalıplar ─────────────────── */
