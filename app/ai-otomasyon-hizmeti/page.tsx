@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowRight, FileText, ShoppingCart, Bot, MapPin, FileCheck, ShieldCheck } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import AILeadForm from "./AILeadForm"
+import OpenChatButton from "@/components/OpenChatButton"
 import Reveal from "@/components/Reveal"
 import RelatedGuides from "@/components/RelatedGuides"
 
@@ -182,6 +183,14 @@ export default function AIOtomasyonPage() {
                 Son 30 günde 5 firma sürece başladı
               </p>
               <AILeadForm />
+              <div className="mt-4 border-t border-ink-200 pt-4 text-center">
+                <p className="mb-2 text-[0.78rem] text-ink-500">Form doldurmak istemez misiniz?</p>
+                <OpenChatButton
+                  label="Sohbette hemen sorun — anında yanıt"
+                  source="ai_landing_form"
+                  variant="ghost"
+                />
+              </div>
             </div>
           </Reveal>
         </div>

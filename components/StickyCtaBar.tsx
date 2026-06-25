@@ -1,8 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { X, MessageCircle, ArrowRight } from "lucide-react"
-import { siteConfig } from "@/lib/site-config"
+import { X, ArrowRight } from "lucide-react"
 import { trackEvent } from "@/lib/analytics"
 
 export default function StickyCtaBar() {
@@ -30,8 +29,6 @@ export default function StickyCtaBar() {
 
   if (dismissed || !visible) return null
 
-  const waHref = `https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=Merhaba%2C%20projem%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum.`
-
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-4 border-t border-dark-50 bg-dark-400 px-6 py-3 animate-[slideUp_0.3s_ease]">
       <p className="m-0 shrink-0 whitespace-nowrap text-[0.8rem] text-ondark-muted">
@@ -40,14 +37,11 @@ export default function StickyCtaBar() {
 
       <div className="flex flex-wrap items-center gap-2.5">
         <a
-          href={waHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => trackEvent("whatsapp_click", "engagement", "sticky_cta")}
-          className="flex items-center gap-1.5 whitespace-nowrap rounded-md bg-[#25D366] px-4 py-2 text-[0.8rem] font-bold text-white transition-colors hover:bg-[#1eb955]"
+          href="/iletisim"
+          onClick={() => trackEvent("cta_click", "engagement", "sticky_iletisim")}
+          className="flex items-center gap-1.5 whitespace-nowrap rounded-md border border-dark-50 bg-dark-300 px-4 py-2 text-[0.8rem] font-bold text-ondark transition-colors hover:bg-dark-200"
         >
-          <MessageCircle size={14} />
-          WhatsApp
+          İletişim
         </a>
 
         <a

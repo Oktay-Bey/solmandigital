@@ -7,7 +7,7 @@ import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import WhatsAppFloat from "@/components/WhatsAppFloat"
 import StickyCtaBar from "@/components/StickyCtaBar"
-import ExitIntentPopup from "@/components/ExitIntentPopup"
+import LiveChat from "@/components/LiveChat"
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -241,7 +241,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppFloat />
         <StickyCtaBar />
-        <ExitIntentPopup />
+        <LiveChat />
       </body>
     </html>
   )

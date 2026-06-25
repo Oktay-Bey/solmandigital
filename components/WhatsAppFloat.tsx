@@ -1,10 +1,15 @@
 "use client"
 
 import { MessageCircle } from "lucide-react"
+import { usePathname } from "next/navigation"
 import { siteConfig } from "@/lib/site-config"
 import { trackEvent } from "@/lib/analytics"
 
 export default function WhatsAppFloat() {
+  const pathname = usePathname()
+  // WhatsApp yalnızca iletişim sayfasında — diğer sayfalarda canlı sohbet birincil.
+  if (!pathname?.startsWith("/iletisim")) return null
+
   const href = `https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}`
 
   return (
