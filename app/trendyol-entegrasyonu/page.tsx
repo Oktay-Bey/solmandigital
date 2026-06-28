@@ -127,12 +127,12 @@ export default function TrendyolEntegrasyonuPage() {
           </Reveal>
           <Reveal delay={100}>
             <h1 className="mb-5 text-[clamp(1.75rem,5vw,2.75rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
-              Tek Panelden Tüm Marketplace&apos;lerinizi Yönetin
+              Trendyol Entegrasyonu — Tek Panelden Tüm Marketplace&apos;lerinizi Yönetin
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="mx-auto mb-6 max-w-[580px] text-[1.05rem] leading-[1.75] text-ondark-muted">
-              Her sabah 3-4 ayrı paneli açarak sipariş mi kontrol ediyorsunuz? Özel satıcı paneliyle tüm marketplace&apos;leri tek ekrandan yönetin.
+              Her sabah 3-4 ayrı paneli açarak sipariş mi kontrol ediyorsunuz? Trendyol ve pazaryeri entegrasyonu ile özel satıcı paneli kurup tüm marketplace&apos;leri tek ekrandan yönetin.
             </p>
           </Reveal>
           <Reveal delay={250}>

@@ -67,64 +67,49 @@ export function trackWhatsApp(clientId: string, page?: string) {
   }]);
 }
 
-// Google Ads offline conversion upload — gclid varsa çağır
+// Google Ads offline conversion upload — gclid varsa çağır.
+// google-ads-api paketi (v23) üzerinden gider — elle v19 REST çağrısı 404 veriyordu;
+// paket sürümüyle senkron kalsın diye conversionUploads service'i kullanılır.
 export async function uploadGoogleAdsConversion(params: {
   gclid: string;
   conversionValue?: number;
 }): Promise<void> {
   const conversionActionId = process.env.GOOGLE_ADS_CONVERSION_ACTION_ID;
   const customerId = process.env.GOOGLE_ADS_CUSTOMER_ID;
-  const devToken = process.env.GOOGLE_ADS_DEVELOPER_TOKEN;
-  const loginCustomerId = process.env.GOOGLE_ADS_LOGIN_CUSTOMER_ID;
 
-  if (!conversionActionId || !customerId || !devToken) {
-    console.warn("[AdsConversion] Env eksik, atlandı.");
+  if (!conversionActionId || !customerId) {
+    console.warn("[AdsConversion] Env eksik (action ID / customer ID), atlandı.");
     return;
   }
-
-  const { google } = await import("googleapis");
-  const auth = new google.auth.OAuth2(
-    process.env.GOOGLE_ADS_CLIENT_ID,
-    process.env.GOOGLE_ADS_CLIENT_SECRET,
-  );
-  auth.setCredentials({ refresh_token: process.env.GOOGLE_ADS_REFRESH_TOKEN });
-  const { token } = await auth.getAccessToken();
-  if (!token) return;
 
   const now = new Date();
   const pad = (n: number) => String(n).padStart(2, "0");
   const conversionDateTime = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}+03:00`;
 
-  const headers: Record<string, string> = {
-    Authorization: `Bearer ${token}`,
-    "developer-token": devToken,
-    "Content-Type": "application/json",
-  };
-  if (loginCustomerId && loginCustomerId !== customerId) {
-    headers["login-customer-id"] = loginCustomerId;
-  }
-
-  const res = await fetch(
-    `https://googleads.googleapis.com/v19/customers/${customerId}:uploadClickConversions`,
-    {
-      method: "POST",
-      headers,
-      body: JSON.stringify({
-        conversions: [{
-          gclid: params.gclid,
-          conversionAction: `customers/${customerId}/conversionActions/${conversionActionId}`,
-          conversionDateTime,
-          conversionValue: params.conversionValue ?? 1,
-          currencyCode: "TRY",
-        }],
-        partialFailure: false,
-      }),
+  try {
+    const { getCustomer } = await import("@/lib/google-ads/client");
+    const customer = getCustomer();
+    // Request tipi generated proto (validate_only/toJSON içerir); diğer route'lardaki
+    // gibi gevşek obje gönderip cast'liyoruz — runtime paket bu alanları doldurur.
+    const response = await customer.conversionUploads.uploadClickConversions({
+      customer_id: customerId,
+      conversions: [{
+        gclid: params.gclid,
+        conversion_action: `customers/${customerId}/conversionActions/${conversionActionId}`,
+        conversion_date_time: conversionDateTime,
+        conversion_value: params.conversionValue ?? 1,
+        currency_code: "TRY",
+      }],
+      partial_failure: true,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any);
+    const partialErr = (response as { partial_failure_error?: unknown }).partial_failure_error;
+    if (partialErr) {
+      console.error("[AdsConversion] partial failure:", JSON.stringify(partialErr));
+    } else {
+      console.log("[AdsConversion] Yüklendi:", params.gclid);
     }
-  );
-
-  if (!res.ok) {
-    console.error("[AdsConversion] Hata:", await res.text());
-  } else {
-    console.log("[AdsConversion] Yüklendi:", params.gclid);
+  } catch (err) {
+    console.error("[AdsConversion] Hata:", err instanceof Error ? err.message : err);
   }
 }

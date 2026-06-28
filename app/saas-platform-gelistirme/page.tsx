@@ -129,7 +129,7 @@ export default function SaasPlatformGelistirmePage() {
           </Reveal>
           <Reveal delay={200}>
             <p className="mx-auto mb-10 max-w-[580px] text-[1.05rem] leading-[1.75] text-ondark-muted">
-              Aylarca geliştirme yerine hazır SaaS altyapısıyla pazara erken çıkın. Auth, billing, multi-tenant — hepsi hazır.
+              SaaS platform ve web uygulama geliştirme: aylarca süren geliştirme yerine hazır altyapıyla pazara erken çıkın. Auth, billing, multi-tenant — hepsi hazır.
             </p>
           </Reveal>
           <Reveal delay={300}>

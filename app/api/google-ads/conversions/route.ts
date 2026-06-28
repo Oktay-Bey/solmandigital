@@ -1,6 +1,57 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCustomer } from "@/lib/google-ads/client";
 
+// PATCH /api/google-ads/conversions — bir conversion action'ın birincil/dahil ayarını değiştir.
+// Body: { id: string, primaryForGoal?: boolean, includeInConversionsMetric?: boolean }
+//   primaryForGoal=false → action Smart Bidding optimizasyonundan çıkar.
+//   includeInConversionsMetric=false → action "Conversions" metriğinden çıkar (çift sayım önleme).
+//   İkisini birlikte false yapmak action'ı tam "Secondary" yapar (veri GA4'te kalır).
+//   En az biri gönderilmeli. Action önce hesapta var olmalı (GA4'ten import edilmiş olmalı).
+export async function PATCH(req: NextRequest) {
+  try {
+    const body = (await req.json()) as {
+      id?: string;
+      primaryForGoal?: boolean;
+      includeInConversionsMetric?: boolean;
+    };
+    const id = String(body.id ?? "").trim();
+    const hasPrimary = typeof body.primaryForGoal === "boolean";
+    const hasInclude = typeof body.includeInConversionsMetric === "boolean";
+    if (!id || (!hasPrimary && !hasInclude)) {
+      return NextResponse.json(
+        { error: "Body: { id, primaryForGoal? ve/veya includeInConversionsMetric? } gerekli." },
+        { status: 400 }
+      );
+    }
+    const customer = getCustomer();
+    const resourceName = `customers/${process.env.GOOGLE_ADS_CUSTOMER_ID}/conversionActions/${id}`;
+    // Ads API primary_for_goal ve include_in_conversions_metric'i AYNI mutate'te
+    // güncellemeye izin vermiyor — ayrı update'ler olarak gönder. Önce primary
+    // (include=false yapılacaksa action'ın önce optimizasyondan çıkması tutarlı olur).
+    if (hasPrimary) {
+      await customer.conversionActions.update([
+        { resource_name: resourceName, primary_for_goal: body.primaryForGoal },
+      ]);
+    }
+    if (hasInclude) {
+      await customer.conversionActions.update([
+        { resource_name: resourceName, include_in_conversions_metric: body.includeInConversionsMetric },
+      ]);
+    }
+    return NextResponse.json({
+      ok: true,
+      id,
+      ...(hasPrimary ? { primaryForGoal: body.primaryForGoal } : {}),
+      ...(hasInclude ? { includeInConversionsMetric: body.includeInConversionsMetric } : {}),
+    });
+  } catch (err) {
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : "Bilinmeyen hata" },
+      { status: 500 }
+    );
+  }
+}
+
 // GET /api/google-ads/conversions — hesaptaki conversion action'ları listele
 // ?stats=1 → son 30 günde her conversion action'ın kayıt sayısını ekle (denetim)
 export async function GET(req: NextRequest) {

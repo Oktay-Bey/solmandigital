@@ -20,7 +20,7 @@ export default function AILeadForm() {
   const [state, setState] = useState<FormState>("idle")
   const [gclid, setGclid] = useState<string | null>(null)
   useEffect(() => { setGclid(getGclid()) }, [])
-  const [form, setForm] = useState({ firstName: "", email: "", aiUseCase: "" })
+  const [form, setForm] = useState({ firstName: "", email: "", phone: "", aiUseCase: "" })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     markStart()
@@ -70,12 +70,23 @@ export default function AILeadForm() {
       </div>
 
       <div>
+        <label htmlFor="phone" className={labelCls}>Telefon / WhatsApp (opsiyonel)</label>
+        <input
+          id="phone" name="phone" type="tel"
+          value={form.phone} onChange={handleChange}
+          placeholder="Hızlı dönüş için"
+          className="input text-[16px]"
+        />
+      </div>
+
+      <div>
         <label className={labelCls}>Hangi alanda AI kullanmak istiyorsunuz?</label>
         <div className="grid grid-cols-2 gap-2">
           {[
             { value: "İçerik / blog yazımı", label: "İçerik & Blog" },
             { value: "Ürün açıklamaları", label: "Ürün Açıklamaları" },
             { value: "Müşteri hizmetleri chatbotu", label: "Müşteri Chatbotu" },
+            { value: "İş süreçleri otomasyonu", label: "İş Süreçleri" },
             { value: "Emin değilim, konuşalım", label: "Emin değilim" },
           ].map((opt) => (
             <button

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react"
 import { MessageSquare, X, Send } from "lucide-react"
-import { trackEvent } from "@/lib/analytics"
+import { trackEvent, trackLeadConversion } from "@/lib/analytics"
 
 interface ChatMsg {
   id: string
@@ -167,6 +167,9 @@ export default function LiveChat() {
         setLeadState("sent")
         setShowLead(false)
         trackEvent("chat_lead_submit", "lead", "live_chat")
+        // Sohbette iletişim bırakan = nitelikli lead → primary conversion (qualify_lead).
+        // Formlarla aynı action; WhatsApp yerine kanalize edilen lead burada sayılır.
+        trackLeadConversion("live-chat")
         poll() // teyit mesajını çek
       } else {
         setLeadState("idle")

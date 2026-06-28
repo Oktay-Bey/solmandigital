@@ -145,14 +145,15 @@ export default function AIOtomasyonPage() {
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mb-5 text-[clamp(2rem,4vw,2.75rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
-                Tekrarlayan İş Yükünüzü AI ile Otomatize Edin — 1 Haftada Teslim
+                Yapay Zeka Otomasyon Hizmeti — İş Süreçlerinizi AI ile Otomatize Ediyoruz
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p className="mb-7 text-[1rem] leading-[1.75] text-ondark-muted">
-                İçerik üretimi, ürün açıklamaları, müşteri soruları — tekrar eden iş yükünüzü AI ile otomatize ediyoruz.{" "}
-                <span className="font-semibold text-white">1 haftada teslim,</span>{" "}
-                somut ROI hedefiyle.
+                İçerik üretimi, ürün açıklamaları, müşteri soruları — tekrar eden iş süreçlerinizi
+                GPT-4o ve Claude ile otomatize ediyoruz. Hazır bir araç değil; işinize özel kurulan,{" "}
+                <span className="font-semibold text-white">kaynak kodu size ait</span> yapay zeka otomasyonu.{" "}
+                İstanbul merkezli, <span className="font-semibold text-white">1 haftada teslim.</span>
               </p>
             </Reveal>
             <Reveal delay={300}>

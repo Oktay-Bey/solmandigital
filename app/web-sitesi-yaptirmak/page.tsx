@@ -136,12 +136,13 @@ export default function WebSitesiYaptirmakPage() {
           </Reveal>
           <Reveal delay={100}>
             <h1 className="mb-5 text-[clamp(1.75rem,5vw,2.75rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
-              Web Sitesi Yaptırın — Şablon Yok, Gecikme Yok
+              Web Sitesi Yaptırın — Kurumsal Web Sitesi, Şablon Yok, Gecikme Yok
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="mx-auto mb-10 max-w-[580px] text-[1.05rem] leading-[1.75] text-ondark-muted">
-              Büyük yazılım ofisi maliyeti olmadan, net takvim ve sabit fiyatla garantili teslim.
+              Kurumsal web sitesi ve landing page&apos;leri Next.js ile sıfırdan geliştiriyoruz.
+              Net takvim, sabit fiyat ve şeffaf web tasarım fiyatlarıyla garantili teslim.
             </p>
           </Reveal>
           <Reveal delay={300}>
