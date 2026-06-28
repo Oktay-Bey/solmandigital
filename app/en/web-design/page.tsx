@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     "web developer",
     "e-commerce website",
     "online store development",
+    "web design Istanbul",
+    "website development Istanbul",
+    "web design company Istanbul",
+    "web design Besiktas",
+    "web design Sisli",
     "web design Macedonia",
     "website development Skopje",
     "web design Syria",
@@ -51,9 +56,21 @@ const jsonLd = {
         name: siteConfig.name,
         url: siteConfig.url,
         email: siteConfig.email,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Beşiktaş",
+          addressRegion: "İstanbul",
+          addressCountry: "TR",
+        },
       },
       priceRange: "€400–€2.000",
-      areaServed: ["MK", "TR", "EU"],
+      areaServed: [
+        { "@type": "City", name: "İstanbul" },
+        { "@type": "City", name: "Beşiktaş" },
+        { "@type": "City", name: "Şişli" },
+        { "@type": "Country", name: "Turkey" },
+        { "@type": "Country", name: "North Macedonia" },
+      ],
       url: `${siteConfig.url}/en/web-design`,
     },
   ],
@@ -203,6 +220,21 @@ export default function EnWebDesignPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Based in Istanbul — local geo signal */}
+      <section className="bg-white px-6 pt-16">
+        <div className="mx-auto max-w-[760px]">
+          <Reveal>
+            <p className="eyebrow mb-3">Based in Istanbul</p>
+            <h2 className="mb-4 text-[clamp(1.25rem,2.5vw,1.75rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+              A Web Design Studio in Beşiktaş, Istanbul
+            </h2>
+            <p className="text-[0.975rem] leading-[1.8] text-ink-600">
+              Solman Digital is a software studio based in Beşiktaş, on Istanbul&apos;s European side and minutes from Şişli, Levent and Nişantaşı. For Istanbul businesses we can meet in person to align on design direction, then run the rest of the build remotely with transparent updates. For international clients across Turkey, Europe and North Macedonia, we work entirely online — same specialist, start to finish. Every site is built from scratch in Next.js: fast, mobile-first and SEO-ready, with the source code yours to keep.
+            </p>
+          </Reveal>
         </div>
       </section>
 

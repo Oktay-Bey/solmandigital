@@ -10,23 +10,26 @@ import WhatsAppLink from "@/components/WhatsAppLink"
 import { siteConfig } from "@/lib/site-config"
 
 export const metadata: Metadata = {
-  title: "Solman Digital — İstanbul Özel Yazılım Ofisi | E-Ticaret, SaaS, AI",
+  title: "Özel Yazılım & Kurumsal Web Tasarımı | Solman Digital İstanbul",
   description:
-    "İstanbul merkezli özel yazılım ofisi. E-ticaret, SaaS ve AI otomasyon projelerini sıfırdan, şablonsuz geliştiriyoruz. Doğrudan uzman erişimi, net takvim, taahhüt edilen teslim.",
+    "İstanbul merkezli özel yazılım ofisi. Kurumsal web tasarımı, e-ticaret, özel iş panelleri ve yapay zeka otomasyonu — işinizin nasıl çalıştığını anlayıp sıfırdan, şablonsuz geliştiriyoruz. Net takvim, taahhüt edilen teslim.",
   keywords: [
     "solman digital",
-    "özel yazılım geliştirme istanbul",
+    "özel yazılım geliştirme",
+    "kurumsal web tasarımı",
+    "kurumsal web sitesi",
     "yazılım ofisi istanbul",
-    "full stack developer istanbul",
-    "ai otomasyon",
+    "yapay zeka otomasyon",
+    "yapay zeka chatbot",
+    "whatsapp otomasyon",
+    "e-ticaret sitesi",
     "trendyol entegrasyonu",
-    "next.js developer",
   ],
   alternates: { canonical: siteConfig.url },
   openGraph: {
-    title: "Solman Digital — İstanbul Özel Yazılım Ofisi",
+    title: "Özel Yazılım & Kurumsal Web Tasarımı | Solman Digital",
     description:
-      "İstanbul merkezli özel yazılım ofisi. E-ticaret, SaaS ve AI otomasyon — sıfırdan, şablonsuz, doğrudan uzmanla.",
+      "Kurumsal web tasarımı, e-ticaret, özel iş panelleri ve yapay zeka otomasyonu — işinize özel, sıfırdan, şablonsuz.",
     url: siteConfig.url,
     siteName: siteConfig.name,
     locale: "tr_TR",
@@ -43,7 +46,15 @@ const homeFaqSchema = {
       name: "Solman Digital nedir ve ne yapar?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Solman Digital, İstanbul Beşiktaş merkezli özel yazılım ofisidir. E-ticaret, SaaS ve yapay zeka otomasyon projelerinde uzmanlaşmıştır. 2023'ten bu yana Türk pazarına yönelik özel yazılım çözümleri üretmektedir. Tüm projeler şablonsuz, sıfırdan geliştirilir.",
+        text: "Solman Digital, İstanbul Beşiktaş merkezli özel yazılım ofisidir. Kurumsal web tasarımı, e-ticaret siteleri, özel iş panelleri (sipariş, CRM, raporlama) ve yapay zeka otomasyonu — chatbot ve WhatsApp otomasyonu dahil — alanlarında çalışır. 2023'ten bu yana Türk pazarına yönelik özel yazılım çözümleri üretmektedir. Tüm projeler şablonsuz, işin sürecine göre sıfırdan geliştirilir.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "İşletmeme özel yazılım mı yaptırmalıyım, hazır paket mi yeterli?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Hazır paketler herkese aynı akışı dayatır; işinize uymayan kısımları siz taşırsınız. Özel yazılım geliştirmede ise sipariş, stok, CRM veya raporlama panelinizi tam sizin iş akışınıza göre kurarız. Süreciniz standart bir kurumsal web sitesiyle çözülüyorsa hazır altyapı yeterlidir; akışınız kendine özgüyse veya birden çok sistemi tek panelde toplamak istiyorsanız özel yazılım daha doğru ve uzun vadede daha ekonomiktir. İlk görüşmede hangisinin sizin için mantıklı olduğunu net söyleriz.",
       },
     },
     {
@@ -155,15 +166,15 @@ const pricingCards = [
 const agencyVsUs = [
   { agency: "Standart proje akışı, sabit adımlar", us: "İşinizi anlayarak, size özel süreç kuruyoruz" },
   { agency: "Sabit paket çözümler", us: "İhtiyaca göre şekillenen kapsam ve teknoloji" },
-  { agency: "Uzak iletişim katmanları", us: "Doğrudan, başından sonuna aynı uzmanla" },
+  { agency: "Hazır şablon, herkese aynı akış", us: "İş akışınıza birebir oturan özel sistem" },
   { agency: "Belirsiz takvim ve uzayan süreçler", us: "Net takvim, söz verilen günde teslim" },
 ]
 
 const whyUs = [
   {
     icon: Users,
-    title: "Doğrudan Uzman Erişimi",
-    desc: "Projenizi anlatan biriyle değil, yapacak biriyle konuşursunuz. Aracı yok, katman yok.",
+    title: "İşinize Özel Kurgulanır",
+    desc: "Önce iş akışınızı anlıyoruz, sonra yazıyoruz. Hazır pakete sığmaya çalışmazsınız; yazılım sizin sürecinize göre şekillenir.",
   },
   {
     icon: CheckCircle2,
@@ -185,7 +196,7 @@ const whyUs = [
 const steps = [
   { num: "01", title: "İşinizi Anlıyoruz", desc: "Sektörünüzü, sürecinizi ve gerçek ihtiyacınızı dinleyerek başlıyoruz. Kısa, odaklı bir görüşme — size özel kapsam buradan şekilleniyor." },
   { num: "02", title: "Size Özel Teklif", desc: "Dinlediklerimize göre kapsam, teknoloji seçimi ve takvim belirliyoruz. Standart paket değil, sizin projenize özel bir yol haritası." },
-  { num: "03", title: "Doğrudan Geliştirme", desc: "Aynı uzmanla, aracısız iletişimle ilerliyoruz. Haftalık güncellemeler, şeffaf süreç." },
+  { num: "03", title: "Sürecinize Göre Geliştirme", desc: "Belirlediğimiz kapsamı iş akışınıza birebir oturtarak inşa ediyoruz. Haftalık güncellemeler, şeffaf ilerleme." },
   { num: "04", title: "Teslim & Yanınızdayız", desc: "Söz verilen tarihte deploy, test ve lansman. Proje biter, destek bitmez." },
 ]
 
@@ -216,7 +227,7 @@ export default function HomePage() {
           {/* Sol */}
           <div>
             <p className="eyebrow mb-7 !text-accent-500">
-              Kişiye &amp; Firmaya Özel Yazılım Stüdyosu
+              Özel Yazılım &amp; Kurumsal Web Çözümleri
             </p>
 
             <h1 className="mb-6 text-h1 font-extrabold leading-[1.1] tracking-tight text-white">
@@ -228,14 +239,14 @@ export default function HomePage() {
             </h1>
 
             <p className="mb-8 max-w-[480px] text-base leading-relaxed text-ondark-muted">
-              Her projeyi sizin iş sürecinizi anlayarak, sıfırdan ve sadece size özel inşa ediyoruz. Trendyol satıcısından kurumsal firmaya — aynı uzman, net takvim.
+              Kurumsal web sitesinden e-ticarete, özel iş panellerinden yapay zeka otomasyonuna — işinizin nasıl çalıştığını anlayıp, tam ona göre yazılım kuruyoruz. Hazır şablon değil, sürecinize özel.
             </p>
 
             <div className="mb-10 flex flex-col gap-2.5">
               {[
-                "Sizi dinleyen aynı uzman, başından sonuna",
-                "Net kapsam ve takvim — söz verilen günde teslim",
-                "Projeniz biter, destek bitmez",
+                "İş akışınızı anlayıp ona özel kurguluyoruz",
+                "Kurumsal web, e-ticaret, özel panel, AI otomasyon",
+                "Net takvim — söz verilen günde teslim",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2.5">
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-600" />
@@ -365,7 +376,7 @@ export default function HomePage() {
           <div className="mb-12">
             <p className="eyebrow mb-3.5">Fark Yaratan Unsurlar</p>
             <h2 className="max-w-[560px] text-h2 font-extrabold tracking-tight text-ink-900">
-              Doğrudan uzmanla çalışmanın farkı
+              İşinize özel yazılımın farkı
             </h2>
           </div>
 

@@ -11,7 +11,7 @@
 |---------|-------|-------|
 | Gönderim aracı | `scripts/email-push.mjs` | `leads-batch-N.json` okur, Brevo API'ye doğrudan ÇAĞIRI yapar (5'li paralel, 300ms delay) |
 | Mail üreticiler | `scripts/build-mails-batch-N.mjs` | Her batch için ayrı script — hardcoded lead listesi + şablon → `leads-batch-N.json` |
-| Preview scriptleri | `scripts/preview-batch-N.mjs` | Tüm mailleri tek emailde `solmanoktay@gmail.com`'a gönderir, onay beklenir |
+| Preview scriptleri | `scripts/preview-batch-N.mjs` | **Temsilî 10 örneği** tek emailde `solmanoktay@gmail.com`'a gönderir, onay beklenir (tüm batch değil — 2026-06-17 kuralı) |
 | Push endpoint | `app/api/email/push/route.ts` | Bearer-auth toplu gönderim (artık kullanılmıyor — lokal script daha güvenilir) |
 | Suppress listesi | `scripts/suppress-list.json` | Bounce/unsubscribe adresleri — her batch üretiminde filtrelenir |
 | US lead havuzu | `scripts/us-leads-100.json` | 104 US ajansı — batch 12'nin kaynağı |
@@ -46,6 +46,16 @@
 - Tek kart tasarım — beyaz arka plan, ince border
 - Bölgeye/ülkeye özel opening + close tonu
 
+### V4 — İkinci Mail / Follow-up (batch 23) ← 2026-06-17
+- Hedef: ilk white-label mailini **açan/tıklayan** havuz (`scripts/batch2-openers.json`)
+- 2 segment: 🔥 tıklayan (direkt CTA) / · açan (yumuşak CTA) — ton aynı, sadece kapanış farkı
+- **Süre belirtilmez** ("our previous message", "last month" değil)
+- **Takipçi/hatırlatıcı tavır yok** ("ilginizi çekti gibi" yasak)
+- Odak: partnership'in **ortaya çıkardığı değer** — daha fazla brief/gelir, payroll'suz kapasite
+- Düşük-sürtünme kanca: tek overflow projesiyle başlama ("değeri görerek, güvenerek değil")
+- Landing: `/en/white-label` (PartnershipForm artık qualify_lead tetikliyor), `utm_campaign=eu-whitelabel-followup-1`
+- Exclude: `305.nl`/`label305.nl` ("müşterimiz yok" yanıtı), bounce, suppress
+
 ### Şablon Kuralları (değişmez)
 1. Korku temelli ton yasak — tebrik/fırsat dili
 2. Subject: `White label partnership — development capacity for [Ajans]`
@@ -64,7 +74,7 @@ node scripts/build-mails-batch-N.mjs
 
 # 2. Preview
 node scripts/preview-batch-N.mjs
-# → solmanoktay@gmail.com'a tüm mailleri gönderir
+# → solmanoktay@gmail.com'a temsilî 10 örnek gönderir (tüm batch değil)
 
 # 3. Onay → Gönderim
 node scripts/email-push.mjs scripts/leads-batch-N.json
@@ -115,7 +125,11 @@ node scripts/email-push.mjs scripts/leads-batch-N.json
 | 16 | UK+NL+DE+AT+SE+NO+DK+FI+CZ+HU — Brevo loop run 1 (EN) | 82 | eu-whitelabel-3 | 2026-06-11 |
 | 17 | Brevo loop run 2 — 29 fresh + 82 duplicate (dedup bug) (EN) | 111 | eu-whitelabel-3 | 2026-06-11 |
 | 18 | UK+NL+DE+AT+SE+NO+DK+FI+CZ+SK+HU+BE — Resend (EN) | 73 | eu-whitelabel-4 | 2026-06-11 |
-| **TOPLAM** | | **793** | | |
+| 20 | İstanbul Güzellik & Estetik Klinikleri (TR) | 22 | guzellik-estetik-1 | 2026-06-12 |
+| 21 | İstanbul yerel/butik diş klinikleri — fayda odaklı şablon (TR) | 14 | dis-klinik-1 | 2026-06-17 |
+| 22 | İstanbul bağımsız butik oteller — direkt rezervasyon açısı (TR) | 21 | otel-istanbul-1 | 2026-06-17 |
+| 23 | **İKİNCİ MAIL** — ilk white-label mailini açan/tıklayan ajanslar (EN) | 89 | eu-whitelabel-followup-1 | 2026-06-17 |
+| **TOPLAM** | | **939** | | |
 
 ---
 

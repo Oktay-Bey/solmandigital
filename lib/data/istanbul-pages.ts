@@ -408,14 +408,14 @@ export const istanbulPages: IstanbulPage[] = [
   {
     slug: "besiktas-yazilim-gelistirme",
     title: "Beşiktaş Yazılım Geliştirme",
-    metaTitle: "Beşiktaş Yazılım Geliştirme & Web Sitesi Yaptırma | Solman Digital",
+    metaTitle: "Beşiktaş Web Tasarım & Yazılım Geliştirme Ofisi | Solman Digital",
     metaDescription:
-      "Beşiktaş merkezli yazılım geliştirme ofisi. Web sitesi, e-ticaret ve SaaS uygulaması — sıfırdan, şablonsuz. Doğrudan uzman, net takvim, taahhüt edilen teslim.",
+      "Beşiktaş merkezli yazılım ofisi. Web tasarım, e-ticaret, SaaS ve AI otomasyon — sıfırdan, şablonsuz. Doğrudan uzman, net takvim, taahhüt edilen teslim.",
     district: "Beşiktaş",
     heroLabel: "Beşiktaş · İstanbul Merkezi",
-    heroH1: "Beşiktaş'tan Türkiye Geneline Yazılım Geliştirme",
+    heroH1: "Beşiktaş'tan Web Tasarım ve Yazılım Geliştirme",
     heroSubtitle:
-      "Solman Digital, Beşiktaş merkezli özel yazılım ofisidir. Web sitesi yaptırma, e-ticaret ve SaaS geliştirme — ajans katmanı yok, doğrudan uzman ile başından sonuna.",
+      "Solman Digital, Beşiktaş merkezli özel yazılım ofisidir. Web tasarım, web sitesi yaptırma, e-ticaret, SaaS ve AI otomasyon — katmansız iletişim, doğrudan uzman ile başından sonuna.",
     uniqueSection: {
       heading: "Neden Beşiktaş Merkezli Çalışıyoruz?",
       body: "Solman Digital'in ofisi Beşiktaş'ta. Bu sadece bir adres değil — Beşiktaş ve çevresindeki (Nişantaşı, Levent, Etiler, Sarıyer) işletmelerle yüz yüze, aynı gün toplantı yapabildiğimiz gerçek bir yakınlık. Kafe, co-working veya ofis — nerede uygunsa orada buluşuyoruz. Fiziksel yakınlık + doğrudan geliştirici erişimi kombinasyonu; İstanbul'da yazılım yaptırmanın en az sürtüşmeli yolu.",
@@ -440,6 +440,8 @@ export const istanbulPages: IstanbulPage[] = [
       "beşiktaş next.js geliştirici",
       "beşiktaş kurumsal web sitesi",
       "beşiktaş dijital ajans",
+      "beşiktaş ai çözümleri",
+      "beşiktaş yapay zeka otomasyon",
       "istanbul avrupa yakası yazılım",
     ],
     faq: [
@@ -466,6 +468,195 @@ export const istanbulPages: IstanbulPage[] = [
       "eticaret-kurulum",
       "saas-web-uygulama",
       "ai-icerik-otomasyonu",
+    ],
+  },
+  {
+    slug: "besiktas-web-tasarim",
+    title: "Beşiktaş Web Tasarım",
+    metaTitle: "Beşiktaş Web Tasarım — Hızlı, Mobil Uyumlu, SEO Hazır | Solman Digital",
+    metaDescription:
+      "Beşiktaş işletmeleri için modern web tasarım. Next.js ile hızlı, mobil uyumlu, SEO hazır web siteleri. Beşiktaş merkezli ofis, yüz yüze görüşme, doğrudan uzman.",
+    district: "Beşiktaş",
+    heroLabel: "Beşiktaş · İstanbul Merkezi",
+    heroH1: "Beşiktaş İşletmeleri İçin Web Tasarım",
+    heroSubtitle:
+      "Solman Digital olarak Beşiktaş'taki ofisimizden işletmenizin web sitesini başından sonuna kuruyoruz — şablonsuz, hızlı, mobil öncelikli ve SEO uyumlu. Aynı uzmanla, katmansız.",
+    uniqueSection: {
+      heading: "Beşiktaş'ta Web Tasarımın Doğru Yolu",
+      body: "Beşiktaş'ta yüzlerce işletme web sitesi yaptırmak istiyor; farkımız şablon çekmeden, projeyi anlatan kişiyle değil yapan kişiyle konuşmanızda. Beşiktaş merkezli ofisimiz sayesinde Çarşı, Nişantaşı, Levent ve Etiler hattındaki işletmelerle aynı gün yüz yüze görüşebiliyoruz: tasarım yönünü birlikte belirliyor, sonraki süreci şeffaf güncellemelerle yürütüyoruz. Kurumsal tanıtım sitesinden açılış sayfasına, çok dilli siteden SEO teknik altyapıya kadar her web tasarım ihtiyacını tek adresten karşılıyoruz.",
+    },
+    localContext: {
+      heading: "Beşiktaş'ın İşletme Profili ve Web Tasarım İhtiyaçları",
+      body: "Beşiktaş; Levent–Zincirlikuyu hattındaki kurumsal merkez ofislerden Çarşı'daki butik işletmelere, Ortaköy ve Bebek'teki kafe-restoran ve markalara kadar geniş bir yelpazeyi barındırır. Bu çeşitlilik tek tip bir tasarımla karşılanmaz: bir danışmanlık firması kurumsal güven veren, hızlı yüklenen bir tanıtım sitesi isterken; Bebek'teki bir mekân görsel ağırlıklı, rezervasyona yönlendiren bir site, bir butik marka ise satışa dönük bir vitrin ister. Her sektöre ayrı ayrı proje teslim etmiş olmamız, doğru tasarım dilini ilk görüşmede yakalamamızı sağlıyor. Hız (Core Web Vitals), mobil uyum ve arama görünürlüğü her tasarımın standart parçası.",
+    },
+    localFaq: [
+      {
+        q: "Beşiktaş'taki işyerimize gelip tasarım görüşmesi yapabilir misiniz?",
+        a: "Evet. Beşiktaş merkezli olduğumuz için Çarşı, Nişantaşı, Levent ve Etiler hattındaki işletmelere yerinde görüşmeye gelebiliyoruz. Genelde ilk tasarım ve kapsam toplantısını yüz yüze yapıp sonraki süreci uzaktan, şeffaf güncellemelerle yürütüyoruz.",
+      },
+    ],
+    keywords: [
+      "beşiktaş web tasarım",
+      "beşiktaş web tasarımı",
+      "beşiktaş web sitesi yaptırma",
+      "beşiktaş kurumsal web tasarım",
+      "beşiktaş internet sitesi tasarımı",
+      "beşiktaş web tasarım ajansı",
+      "beşiktaş mobil uyumlu web sitesi",
+      "beşiktaş landing page tasarım",
+      "beşiktaş seo uyumlu web sitesi",
+      "istanbul avrupa yakası web tasarım",
+    ],
+    faq: [
+      {
+        q: "Beşiktaş'taki bir işletme için web sitesi ne kadar tutar?",
+        a: "Kurumsal web siteleri 8.000 ₺'den, e-ticaret siteleri 20.000 ₺'den başlamaktadır. Kesin fiyat proje kapsamına göre belirlenir; ücretsiz analiz formumuzu doldurarak ön bilgi alabilirsiniz.",
+      },
+      {
+        q: "Web tasarım projem ne kadar sürer?",
+        a: "Kurumsal web sitesi projeleri genellikle 5–10 iş günü, e-ticaret projeleri 10–20 iş günü sürer. Projenin kapsamına göre kesin süre başlangıç görüşmesinde paylaşılır.",
+      },
+      {
+        q: "Tasarım hazır şablon mu, yoksa size özel mi?",
+        a: "Size özel. Hazır tema satmıyoruz; markanıza ve hedef kitlenize göre sıfırdan, Next.js ile hızlı ve SEO uyumlu bir tasarım kuruyoruz.",
+      },
+    ],
+    geo: { latitude: 41.0426, longitude: 28.9965 },
+    areaServed: ["Beşiktaş", "İstanbul", "Türkiye"],
+    schemaServiceType: "Web Tasarım ve Geliştirme",
+    googleMapsUrl: "https://maps.google.com/?q=Beşiktaş,İstanbul",
+    sitemapPriority: 0.9,
+    featuredServiceSlugs: [
+      "kurumsal-web-sitesi",
+      "landing-page-tasarimi",
+      "seo-teknik-altyapi",
+      "cok-dilli-web-sitesi",
+    ],
+  },
+  {
+    slug: "sisli-web-tasarim",
+    title: "Şişli Web Tasarım",
+    metaTitle: "Şişli & Mecidiyeköy Web Tasarım — Hızlı, SEO Hazır | Solman Digital",
+    metaDescription:
+      "Şişli, Mecidiyeköy ve Nişantaşı işletmeleri için modern web tasarım. Next.js ile hızlı, mobil uyumlu, SEO hazır web siteleri. Doğrudan uzman, yüz yüze görüşme.",
+    district: "Şişli",
+    heroLabel: "Şişli · Mecidiyeköy · Nişantaşı",
+    heroH1: "Şişli ve Mecidiyeköy İşletmeleri İçin Web Tasarım",
+    heroSubtitle:
+      "Solman Digital olarak Şişli, Mecidiyeköy ve Nişantaşı'daki işletmeler için hızlı, mobil uyumlu ve SEO hazır web siteleri tasarlıyoruz. Beşiktaş merkezli ofisimizden bölgeye yakınız — aynı uzmanla, katmansız.",
+    uniqueSection: {
+      heading: "Şişli'de Web Tasarımın Doğru Yolu",
+      body: "Şişli, İstanbul'un en yoğun ticaret ve hizmet bölgelerinden biri: Mecidiyeköy'ün iş hanları, Nişantaşı'nın butik markaları ve Şişli merkezindeki klinik, hukuk ve danışmanlık ofisleri. Bu işletmelerin ortak ihtiyacı; kurumsal güven veren, hızlı yüklenen ve mobilde kusursuz çalışan bir web sitesi. Solman Digital olarak şablon çekmeden, markanıza özel tasarım yapıyoruz. Beşiktaş'taki ofisimiz Şişli'ye dakikalar mesafede olduğu için tasarım görüşmelerini yüz yüze yapıp süreci şeffaf güncellemelerle yürütüyoruz.",
+    },
+    localContext: {
+      heading: "Şişli ve Nişantaşı'nın İşletme Profili",
+      body: "Şişli; Mecidiyeköy ve Fulya'daki finans, sigorta ve B2B hizmet ofislerinden Nişantaşı'nın moda ve perakende markalarına, Şişli merkezindeki sağlık kliniği ve danışmanlık bürolarına kadar farklı kitlelere hitap eder. Nişantaşı'ndaki bir butik marka görsel ağırlıklı, satışa yönlendiren bir vitrin isterken; Mecidiyeköy'deki bir danışmanlık firması kurumsal ciddiyet ve hız ister. Bu sektörlerin her birine proje teslim etmiş olmamız, doğru tasarım dilini ilk görüşmede yakalamamızı sağlıyor. Hız, mobil uyum ve arama görünürlüğü her tasarımın standart parçası.",
+    },
+    localFaq: [
+      {
+        q: "Şişli veya Nişantaşı'daki ofisimize gelebilir misiniz?",
+        a: "Evet. Beşiktaş merkezli olduğumuz için Şişli, Mecidiyeköy ve Nişantaşı'a yerinde görüşmeye rahatlıkla gelebiliyoruz. İlk tasarım ve kapsam toplantısını yüz yüze yapıp sonraki süreci uzaktan yürütüyoruz.",
+      },
+    ],
+    keywords: [
+      "şişli web tasarım",
+      "şişli web tasarımı",
+      "mecidiyeköy web tasarım",
+      "nişantaşı web tasarım",
+      "şişli web sitesi yaptırma",
+      "şişli kurumsal web tasarım",
+      "şişli internet sitesi tasarımı",
+      "şişli mobil uyumlu web sitesi",
+      "şişli seo uyumlu web sitesi",
+      "istanbul avrupa yakası web tasarım",
+    ],
+    faq: [
+      {
+        q: "Şişli'deki bir işletme için web sitesi ne kadar tutar?",
+        a: "Kurumsal web siteleri 8.000 ₺'den, e-ticaret siteleri 20.000 ₺'den başlamaktadır. Kesin fiyat proje kapsamına göre belirlenir; ücretsiz analiz formumuzu doldurarak ön bilgi alabilirsiniz.",
+      },
+      {
+        q: "Web tasarım projem ne kadar sürer?",
+        a: "Kurumsal web sitesi projeleri genellikle 5–10 iş günü, e-ticaret projeleri 10–20 iş günü sürer. Projenin kapsamına göre kesin süre başlangıç görüşmesinde paylaşılır.",
+      },
+      {
+        q: "Tasarım size özel mi, hazır şablon mu?",
+        a: "Size özel. Hazır tema kullanmıyoruz; markanıza ve hedef kitlenize göre sıfırdan, Next.js ile hızlı ve SEO uyumlu bir tasarım kuruyoruz.",
+      },
+    ],
+    geo: { latitude: 41.0602, longitude: 28.9877 },
+    areaServed: ["Şişli", "Mecidiyeköy", "Nişantaşı", "İstanbul", "Türkiye"],
+    schemaServiceType: "Web Tasarım ve Geliştirme",
+    googleMapsUrl: "https://maps.google.com/?q=Şişli,İstanbul",
+    sitemapPriority: 0.87,
+    featuredServiceSlugs: [
+      "kurumsal-web-sitesi",
+      "landing-page-tasarimi",
+      "seo-teknik-altyapi",
+      "cok-dilli-web-sitesi",
+    ],
+  },
+  {
+    slug: "besiktas-yapay-zeka-otomasyon",
+    title: "Beşiktaş AI & Yapay Zeka Otomasyon",
+    metaTitle: "Beşiktaş Yapay Zeka & AI Otomasyon Çözümleri | Solman Digital",
+    metaDescription:
+      "Beşiktaş işletmeleri için AI otomasyon: müşteri chatbotu, içerik otomasyonu ve süreç otomasyonu. Beşiktaş merkezli yazılım ofisi, doğrudan uzman, hızlı kurulum.",
+    district: "Beşiktaş",
+    heroLabel: "Beşiktaş · AI Otomasyon",
+    heroH1: "Beşiktaş İşletmeleri İçin Yapay Zeka & AI Otomasyon",
+    heroSubtitle:
+      "Solman Digital olarak Beşiktaş'taki işletmeler için AI destekli müşteri chatbotu, içerik üretimi ve süreç otomasyonu kuruyoruz — gösterişli değil, işe yarayan otomasyon. Doğrudan uzman, net teslim.",
+    uniqueSection: {
+      heading: "Beşiktaş'ta Yapay Zekayı İşinize Bağlıyoruz",
+      body: "AI bir reklam sloganı değil, doğru kurulduğunda zaman ve maliyet kazandıran bir araç. Beşiktaş'taki işletmeler için en çok değer üreten üç alanda çalışıyoruz: 7/24 yanıt veren ve sık soruları karşılayan müşteri chatbotu, içerik ve ürün açıklaması üreten otomasyonlar, ve tekrar eden ofis süreçlerini (form, e-posta, raporlama) otomatikleştiren entegrasyonlar. Beşiktaş merkezli ofisimiz sayesinde ihtiyacı yüz yüze analiz ediyor, abartılı vaatler yerine ölçülebilir kazanım odaklı bir çözüm kuruyoruz.",
+    },
+    localContext: {
+      heading: "Beşiktaş İşletmeleri AI'dan Nasıl Fayda Sağlıyor?",
+      body: "Beşiktaş'ın iş profili çeşitli: Levent–Zincirlikuyu'daki kurumsal ofisler iç operasyonlarını otomatikleştirmek, Çarşı ve Nişantaşı'daki perakende-hizmet işletmeleri ise müşteri iletişimini hızlandırmak istiyor. Bir danışmanlık firması için gelen e-postaları sınıflandıran bir otomasyon kurarken, bir butik marka için ürün açıklamalarını ve sosyal içeriği üreten bir akış kurabiliyoruz. AI çözümünü mevcut web siteniz, WhatsApp ve e-posta altyapınızla entegre ediyoruz; ayrı bir sistem öğrenmenize gerek kalmıyor. Çözümü kurar, devreder ve ihtiyaç halinde destek veririz.",
+    },
+    localFaq: [
+      {
+        q: "AI otomasyon için Beşiktaş'taki ofisimizde analiz yapabilir misiniz?",
+        a: "Evet. Beşiktaş merkezli olduğumuz için süreç analizini yerinde yapmayı tercih ediyoruz — hangi adımların otomasyona uygun olduğunu birlikte belirleyip net bir kapsam çıkarıyoruz.",
+      },
+    ],
+    keywords: [
+      "beşiktaş yapay zeka",
+      "beşiktaş ai otomasyon",
+      "beşiktaş ai çözümleri",
+      "beşiktaş yapay zeka otomasyon",
+      "beşiktaş müşteri chatbotu",
+      "beşiktaş ai chatbot",
+      "beşiktaş içerik otomasyonu",
+      "beşiktaş süreç otomasyonu",
+      "istanbul yapay zeka çözümleri",
+      "istanbul ai otomasyon",
+    ],
+    faq: [
+      {
+        q: "AI chatbot kurulumu ne kadar sürer?",
+        a: "Temel bir müşteri chatbotu (sık sorular + yönlendirme) genellikle 1–2 hafta içinde canlıya alınır. WhatsApp veya site entegrasyonu, veri tabanı bağlantısı gibi ek özellikler süreyi etkiler.",
+      },
+      {
+        q: "AI çözümü aylık abonelik gerektiriyor mu?",
+        a: "Çözümün türüne göre değişir. Bazı modeller (örn. dil modeli API'leri) kullanım bazlı ücretlendirilir; bunu en baştan şeffaf şekilde paylaşıyoruz. Altyapıyı kendi hesabınıza kuruyoruz, sistemi siz sahipleniyorsunuz.",
+      },
+      {
+        q: "Mevcut web sitemize entegre olur mu?",
+        a: "Evet. AI chatbot ve otomasyonları mevcut web sitenize, WhatsApp ve e-posta altyapınıza entegre ediyoruz. Sıfırdan site gerekmez.",
+      },
+    ],
+    geo: { latitude: 41.0426, longitude: 28.9965 },
+    areaServed: ["Beşiktaş", "İstanbul", "Türkiye"],
+    schemaServiceType: "Yapay Zeka ve AI Otomasyon Çözümleri",
+    googleMapsUrl: "https://maps.google.com/?q=Beşiktaş,İstanbul",
+    sitemapPriority: 0.87,
+    featuredServiceSlugs: [
+      "ai-musteri-chatbotu",
+      "ai-icerik-otomasyonu",
+      "saas-web-uygulama",
+      "kurumsal-web-sitesi",
     ],
   },
   {
