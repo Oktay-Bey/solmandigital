@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: base, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
     { url: `${base}/hizmetler`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
     { url: `${base}/ai-otomasyon-hizmeti`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.92 },
+    { url: `${base}/musteri-yanit-sistemi`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.90 },
     { url: `${base}/trendyol-entegrasyonu`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.90 },
     { url: `${base}/entegrasyonlar`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.92 },
     { url: `${base}/web-sitesi-yaptirmak`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.90 },

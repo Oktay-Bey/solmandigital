@@ -64,6 +64,13 @@ const contentMap: Record<LeadFunnelType, { subject: string; headline: string; bo
     ctaHref: "/danismanlik",
     ctaText: "Ücretsiz Danışmanlık Rezervasyonu Yap →",
   },
+  "musteri-yaniti": {
+    subject: "Müşteri Yanıt Otomasyonu Talebiniz Alındı | Solman Digital",
+    headline: "Talebiniz Alındı!",
+    body: "İşletmenize özel müşteri yanıt otomasyonu (WhatsApp / telefon 7/24 yanıt) talebinizi aldık. Kurulumu ve sabit fiyatı netleştirmek için <strong>24 saat içinde</strong> sizi telefonla arayacağız.",
+    ctaHref: "/hizmetler",
+    ctaText: "Tüm Hizmetleri İncele →",
+  },
 }
 
 export default function LeadConfirmEmail({ firstName, funnelType, siteUrl = "https://solmandigital.com.tr" }: Props) {

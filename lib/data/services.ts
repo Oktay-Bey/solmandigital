@@ -673,52 +673,52 @@ export const services: Service[] = [
     tier: 2,
     category: "SaaS & Platform",
     icon: "Calendar",
-    title: "Rezervasyon & Randevu Sistemi",
-    metaTitle: "Online Randevu & Rezervasyon Sistemi Geliştirme | Solman Digital",
+    title: "Müşteri Yanıt & Randevu Otomasyonu",
+    metaTitle: "WhatsApp Otomatik Cevap & Müşteri Yanıt Otomasyonu | Solman Digital",
     metaDescription:
-      "Klinik, kuaför, restoran veya otel için özel online randevu ve rezervasyon sistemi geliştiriyoruz. Takvim entegrasyonu, SMS/e-posta bildirimleri.",
+      "Telefon, WhatsApp ve sitenizden gelen müşteri talebini 7/24 otomatik yanıtlayan sistem. QR menü sipariş, randevu, fiyat sorusu otomasyonu. ₺15.000'dan, 1 haftada.",
     shortDesc:
-      "Online rezervasyon sistemi. Klinik, kuaför, restoran için takvim entegrasyonlu randevu altyapısı.",
+      "Telefon ve WhatsApp'ınızı 7/24 karşılayan, talebi randevuya/siparişe/lead'e çeviren yanıt otomasyonu.",
     longDesc:
-      "Telefon veya WhatsApp ile alınan randevular hem zaman alır hem de kaçırılabilir. Solman Digital olarak müşterilerinizin 7/24 online randevu alabileceği, personel takvimleriyle senkronize çalışan, otomatik hatırlatma gönderen rezervasyon sistemleri geliştiriyoruz.\n\nGoogle Takvim entegrasyonu ile çift yönlü senkronizasyon sağlanır. SMS ve e-posta ile randevu onayı, hatırlatma ve iptal bildirimleri otomatik gönderilir. Çoklu hizmet ve personel yönetimi, müşteri kaydı ve geçmiş randevu görüntüleme gibi özellikler dahildir.\n\nKlinik, güzellik merkezi, diş hekimi, kuaför, spor salonu, restoran ve konaklama tesisleri için özelleştirilmiş çözümler geliştiriyoruz.",
+      "Telefonu açamadığınız ya da WhatsApp mesajına geç döndüğünüz her an müşteri kaçar. Solman Digital olarak telefon ve WhatsApp'ınızı 7/24 karşılayan, sık soruları (fiyat, müsaitlik, adres, menü) yanıtlayıp talebi randevuya, siparişe veya sıcak lead'e çeviren bir yanıt otomasyonu kuruyoruz.\n\nWhatsApp Business otomatik cevap, istenirse telefonda tuşlamalı/sesli karşılama (bulut santral / sesli yanıt), restoran için QR menü + sipariş akışı ve mevcut takvim/CRM entegrasyonu kurulabilir. Yap-kur-çık modeliyle çalışıyoruz: kurulum tek seferliktir, sistem ve kontrol size geçer; aylık bağımlılık yoktur.\n\nRestoran ve kafe, güzellik merkezi ve kuaför, emlak ofisi, oto servis, klinik ve konaklama tesisleri için sektörüne özelleştirilmiş çözümler geliştiriyoruz.",
     features: [
-      "7/24 online randevu alma",
-      "Google Takvim senkronizasyonu",
-      "SMS ve e-posta hatırlatma",
-      "Çoklu hizmet ve personel yönetimi",
-      "Müşteri kaydı ve geçmiş görüntüleme",
-      "Online ödeme (opsiyonel)",
+      "WhatsApp 7/24 otomatik cevap (fiyat, müsaitlik, adres)",
+      "Telefon karşılama: tuşlamalı/sesli menü (IVR), bulut santral",
+      "Talebi randevuya / siparişe / sıcak lead'e çevirme",
+      "QR menü + WhatsApp sipariş (restoran/kafe)",
+      "Mevcut takvim, sipariş ve CRM entegrasyonu",
+      "Sabit fiyat, 1 haftada teslim, kaynak/erişim sizde",
     ],
-    techStack: ["Next.js 16", "Prisma", "Supabase", "Twilio/SMS", "TypeScript"],
+    techStack: ["WhatsApp Business API", "Next.js 16", "Bulut IVR", "GPT-4o / Claude", "TypeScript"],
     deliverables: [
-      "Rezervasyon sistemi",
-      "Müşteri paneli",
-      "Admin yönetim paneli",
-      "Bildirim sistemi",
+      "Müşteri yanıt otomasyonu",
+      "WhatsApp / telefon entegrasyonu",
+      "Senaryo ve akış kurgusu",
+      "Admin / izleme paneli",
       "Deploy ve kurulum",
     ],
     keywords: [
-      "online randevu sistemi",
-      "rezervasyon uygulaması",
-      "randevu yazılımı türkiye",
-      "klinik randevu sistemi",
-      "güzellik salonu rezervasyon",
+      "whatsapp otomatik cevap",
+      "whatsapp business otomatik mesaj",
+      "müşteri yanıt otomasyonu",
+      "yapay zeka müşteri hizmetleri",
+      "qr menü sipariş sistemi",
     ],
     faq: [
       {
-        q: "Mevcut web siteme rezervasyon özelliği ekleyebilir misiniz?",
-        a: "Evet. Mevcut web sitenize entegre edilebilecek rezervasyon widget'ı veya tam sayfa rezervasyon akışı geliştiriyoruz.",
+        q: "WhatsApp otomatik cevap kendi numaramla mı çalışır?",
+        a: "Evet. Kendi WhatsApp Business numaranıza bağlanır; gelen mesaja sık sorulara anında yanıt verir, randevu/sipariş bilgisini toplar. Numara ve veriler size aittir.",
       },
       {
-        q: "Birden fazla şube yönetilebilir mi?",
-        a: "Evet. Çok şubeli işletmeler için her şubenin ayrı takvim ve personel yönetimi yapılabilir.",
+        q: "Telefonu da karşılıyor mu?",
+        a: "İstenirse evet. Tuşlamalı/sesli kurumsal karşılama (IVR) ve bulut santral ile sık soruları yanıtlar, gerekiyorsa ilgili kişiye aktarır. Donanım gerekmez.",
       },
       {
-        q: "Sistem randevu iptali ve yeniden planlama destekliyor mu?",
-        a: "Evet. Müşteriler ve personel, belirlenen kural dahilinde randevuları iptal veya yeniden planlayabilir.",
+        q: "Sistem bize mi ait, aylık bağımlılık var mı?",
+        a: "Yap-kur-çık modeli: kurulum tek seferliktir, kontrol size geçer. İşleyen kalemler (hat, WhatsApp API, AI kullanımı) sizin adınıza sağlayıcıdan kurulur; bize aylık bağımlılık yoktur.",
       },
     ],
-    relatedSlugs: ["kurumsal-web-sitesi", "saas-web-uygulama", "odeme-entegrasyonu"],
+    relatedSlugs: ["kurumsal-web-sitesi", "saas-web-uygulama", "ai-icerik-otomasyonu"],
   },
 
   // ─── TİER 3: NİCHE / UZUN VADELİ ────────────────────────────────────────
@@ -1200,6 +1200,7 @@ export const canonicalRouteOverrides: Record<string, string> = {
   "kurumsal-web-sitesi": "/web-sitesi-yaptirmak",
   "saas-web-uygulama": "/saas-platform-gelistirme",
   "ai-icerik-otomasyonu": "/ai-otomasyon-hizmeti",
+  "rezervasyon-sistemi": "/musteri-yanit-sistemi",
 }
 
 export function getServiceBySlug(slug: string): Service | undefined {

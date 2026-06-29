@@ -18,6 +18,7 @@ const FUNNEL_LABELS: Record<string, string> = {
   "istanbul-dev": "İstanbul Web Developer",
   "istanbul-local": "İstanbul Local",
   "ticarethub-referral": "TicaretHub Referral",
+  "musteri-yaniti": "Müşteri Yanıt Otomasyonu",
 }
 
 function buildAdminHtml(data: LeadPayload): string {
@@ -73,6 +74,12 @@ function buildAdminHtml(data: LeadPayload): string {
       ${row("İlçe", data.district)}
       ${row("Proje Özeti", data.projectBrief)}
     `,
+    "musteri-yaniti": `
+      ${row("Sektör", data.sector)}
+      ${row("Kanal", data.channel)}
+      ${row("Mevcut Çözüm", data.currentSolution)}
+      ${row("Çağrı/Mesaj Hacmi", data.currentVolume)}
+    `,
   }
 
   // ai-en, ai ile aynı alanları (use-case) paylaşır
@@ -95,10 +102,22 @@ export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const body = (await req.json()) as Partial<LeadPayload> & { gclid?: string; utmSource?: string }
-    const { funnelType, firstName, email, gclid, utmSource } = body
+    const { funnelType, firstName, email, phone, gclid, utmSource } = body
     const referralSource = utmSource ?? req.headers.get("referer") ?? ""
 
-    if (!email || !EMAIL_REGEX.test(email)) {
+    // musteri-yaniti telefon-merkezli: e-posta opsiyonel, telefon zorunlu.
+    // Diğer funnel'larda e-posta zorunlu kalır.
+    const phoneFirst = funnelType === "musteri-yaniti"
+    const hasValidEmail = !!email && EMAIL_REGEX.test(email)
+
+    if (phoneFirst) {
+      if (!phone) {
+        return NextResponse.json({ error: "Lütfen telefon numaranızı girin." }, { status: 400 })
+      }
+      if (email && !hasValidEmail) {
+        return NextResponse.json({ error: "Geçerli bir e-posta adresi girin." }, { status: 400 })
+      }
+    } else if (!hasValidEmail) {
       return NextResponse.json({ error: "Geçerli bir e-posta adresi girin." }, { status: 400 })
     }
     if (!firstName) {
@@ -110,22 +129,25 @@ export async function POST(req: NextRequest) {
 
     const data = body as LeadPayload
 
-    const confirmHtml = await render(
-      LeadConfirmEmail({ firstName, funnelType, siteUrl: siteConfig.url })
-    )
+    // Kullanıcıya onay maili — yalnızca geçerli e-posta varsa.
+    if (hasValidEmail) {
+      const confirmHtml = await render(
+        LeadConfirmEmail({ firstName, funnelType, siteUrl: siteConfig.url })
+      )
+      await resend.emails.send({
+        from: `Solman Digital <${siteConfig.resendFromEmail}>`,
+        to: email!,
+        subject: `Talebiniz Alındı | Solman Digital`,
+        html: confirmHtml,
+      })
+    }
 
-    await resend.emails.send({
-      from: `Solman Digital <${siteConfig.resendFromEmail}>`,
-      to: email,
-      subject: `Talebiniz Alındı | Solman Digital`,
-      html: confirmHtml,
-    })
-
+    // Admin bildirimi her halükârda gider; replyTo yalnızca e-posta varsa.
     await resend.emails.send({
       from: `Solman Digital <${siteConfig.resendFromEmail}>`,
       to: siteConfig.adminEmail,
-      replyTo: email,
-      subject: `[Lead: ${funnelType}${referralSource.includes("ticarethub") ? " 🔗TH" : ""}] ${firstName} — ${data.budget ?? "bütçe belirtilmedi"}`,
+      ...(hasValidEmail ? { replyTo: email! } : {}),
+      subject: `[Lead: ${funnelType}${referralSource.includes("ticarethub") ? " 🔗TH" : ""}] ${firstName} — ${data.phone ?? data.budget ?? "iletişim formda"}`,
       headers: {
         "X-Priority": "1",
         "X-MSMail-Priority": "High",
@@ -134,15 +156,18 @@ export async function POST(req: NextRequest) {
       html: buildAdminHtml(data),
     })
 
-    const segmentAudienceId = getLeadAudienceId(funnelType)
-    const audienceOps: Promise<unknown>[] = []
-    if (segmentAudienceId) {
-      audienceOps.push(resend.contacts.create({ email, firstName, audienceId: segmentAudienceId, unsubscribed: false }))
+    // Resend audience'a ekleme yalnızca geçerli e-posta varsa anlamlı.
+    if (hasValidEmail) {
+      const segmentAudienceId = getLeadAudienceId(funnelType)
+      const audienceOps: Promise<unknown>[] = []
+      if (segmentAudienceId) {
+        audienceOps.push(resend.contacts.create({ email: email!, firstName, audienceId: segmentAudienceId, unsubscribed: false }))
+      }
+      if (siteConfig.resendAudienceId && siteConfig.resendAudienceId !== segmentAudienceId) {
+        audienceOps.push(resend.contacts.create({ email: email!, firstName, audienceId: siteConfig.resendAudienceId, unsubscribed: false }))
+      }
+      if (audienceOps.length > 0) await Promise.all(audienceOps)
     }
-    if (siteConfig.resendAudienceId && siteConfig.resendAudienceId !== segmentAudienceId) {
-      audienceOps.push(resend.contacts.create({ email, firstName, audienceId: siteConfig.resendAudienceId, unsubscribed: false }))
-    }
-    if (audienceOps.length > 0) await Promise.all(audienceOps)
 
     const clientId = req.cookies.get("_ga")?.value?.replace(/^GA\d+\.\d+\./, "") ?? req.headers.get("x-forwarded-for") ?? "unknown";
     // GA4 session_id'yi _ga_<container> cookie'sinden çıkar (format: GS1.1.<sessionId>.<...>).

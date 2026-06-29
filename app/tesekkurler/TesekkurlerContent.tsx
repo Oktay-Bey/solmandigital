@@ -101,6 +101,14 @@ const contentMap = {
     nextCta: "Ücretsiz Danışmanlık Rezervasyonu",
     nextHref: "/danismanlik",
   },
+  "musteri-yaniti": {
+    title: "Talebiniz Alındı!",
+    body: "Müşteri yanıt otomasyonu talebinizi aldık. İşletmenize özel kurulumu ve sabit fiyatı netleştirmek için 24 saat içinde sizi telefonla arayacağız. Daha hızlı dönüş için WhatsApp'tan da yazabilirsiniz: +90 543 967 52 50",
+    nextTitle: "Sıradaki Adım",
+    nextDesc: "Beklemeden konuşalım: WhatsApp'tan yazın, kaçan çağrı/mesaj akışınızı ve çözümü birlikte 10 dakikada netleştirelim.",
+    nextCta: "Hizmetleri İncele",
+    nextHref: "/hizmetler",
+  },
 }
 
 export default function TesekkurlerContent() {

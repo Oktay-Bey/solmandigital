@@ -20,12 +20,14 @@ export type ConsultationPayload = {
   projectBrief: string
 }
 
-export type LeadFunnelType = "web-sitesi" | "trendyol" | "saas" | "ai" | "ai-en" | "istanbul-dev" | "istanbul-local" | "ticarethub-referral"
+export type LeadFunnelType = "web-sitesi" | "trendyol" | "saas" | "ai" | "ai-en" | "istanbul-dev" | "istanbul-local" | "ticarethub-referral" | "musteri-yaniti"
 
 export type LeadPayload = {
   funnelType: LeadFunnelType
   firstName: string
-  email: string
+  // musteri-yaniti funnel'ı telefon-merkezli: e-posta opsiyonel, telefon zorunlu.
+  // Diğer funnel'lar e-postayı her zaman gönderir; route doğrulaması funnelType'a göre.
+  email?: string
   phone?: string
   companyName?: string
   budget?: string
@@ -57,4 +59,7 @@ export type LeadPayload = {
   prefersMeeting?: string
   projectBrief?: string
   district?: string
+  // musteri-yaniti (sektörel müşteri yanıt otomasyonu)
+  sector?: string // restoran | güzellik | emlak | oto | diğer
+  channel?: string // whatsapp | telefon | web | hepsi
 }
