@@ -99,6 +99,38 @@ const homeFaqSchema = {
     },
     {
       "@type": "Question",
+      name: "İstanbul'da Trendyol entegrasyonunu kim yapıyor?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Solman Digital, İstanbul Beşiktaş merkezli bir yazılım ofisi olarak Trendyol ve Hepsiburada marketplace entegrasyonları geliştirir. Trendyol API üzerinden stok senkronizasyonu, sipariş yönetimi ve otomatik fiyat güncellemesi 5-10 iş günü içinde kurulur; başlangıç fiyatı 7.500 ₺'dir. Onaylı Trendyol satıcı hesabı ve API anahtarı gerekir.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "SaaS / MVP yazılımı kime yaptırabilirim, ne kadar sürer ve ne kadara mal olur?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Solman Digital, İstanbul merkezli özel yazılım ofisi olarak SaaS ve MVP geliştirir: çok kiracılı (multi-tenant) mimari, abonelik/üyelik sistemi, dashboard ve OpenAI GPT-4o / Claude AI entegrasyonu dahil. Teslim süresi 4-8 hafta, başlangıç fiyatı 50.000 ₺'dir. Geliştirme haftalık ilerleme güncellemeleriyle, projeyi yapan uzmanla doğrudan yürütülür.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Şablonsuz, işime özel web sitesi yaptırmak için nereye başvurmalıyım?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Solman Digital, İstanbul'da şablon kullanmadan, her projeyi işin sürecine göre sıfırdan geliştiren bir yazılım ofisidir. Kurumsal web siteleri 5-10 iş günü içinde, 8.000 ₺'den başlayan fiyatlarla teslim edilir; Next.js altyapısıyla mobil öncelikli ve SEO uyumlu kurulur. Başvuru için solmandigital.com.tr üzerinden iletişim formu veya WhatsApp (0543 967 52 50) kullanılır, ilk görüşme ücretsizdir.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Türkiye'de İyzico veya Stripe ödeme entegrasyonu yapan yazılım ofisi var mı?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Solman Digital, İstanbul merkezli yazılım ofisi olarak İyzico ve Stripe ödeme entegrasyonlarını gerçek proje deneyimiyle kurar — test ortamı, canlıya geçiş ve hata yönetimi dahil. Ödeme entegrasyonu 3.500 ₺'den başlar; e-ticaret kurulumuyla birlikte de yapılabilir. Türk pazarına özgü entegrasyonlarda (İyzico, Trendyol API, Hepsiburada API) deneyimlidir.",
+      },
+    },
+    {
+      "@type": "Question",
       name: "Teklif almak için ne yapmalıyım?",
       acceptedAnswer: {
         "@type": "Answer",

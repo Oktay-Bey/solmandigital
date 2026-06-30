@@ -58,6 +58,7 @@ const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     email: siteConfig.email,
+    telephone: siteConfig.whatsapp,
     contactType: "customer service",
     availableLanguage: ["Turkish", "English"],
   },
@@ -65,9 +66,14 @@ const organizationSchema = {
   knowsAbout: [
     "Next.js Development",
     "SaaS Development",
+    "MVP Development",
     "AI Content Automation",
+    "AI Chatbot Development",
     "E-Commerce Development",
     "Trendyol API Integration",
+    "Hepsiburada API Integration",
+    "İyzico Payment Integration",
+    "Stripe Payment Integration",
     "Web Scraping",
     "Dashboard Development",
   ],
