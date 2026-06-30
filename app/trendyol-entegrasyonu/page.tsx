@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   keywords: [
     "trendyol entegrasyonu",
     "trendyol api entegrasyonu",
+    "trendyol api",
+    "trendyol marketplace api",
+    "trendyol api nasıl yapılır",
     "trendyol satıcı paneli",
     "hepsiburada entegrasyon",
     "marketplace otomasyon",
@@ -51,6 +54,14 @@ const jsonLd = {
     {
       "@type": "FAQPage",
       mainEntity: [
+        {
+          "@type": "Question",
+          name: "Trendyol API entegrasyonu nasıl yapılır?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Trendyol Marketplace API'sine satıcı panelinizden alınan supplierId ve API Key/Secret ile bağlanılır. Ürün, stok, fiyat ve sipariş uçları kendi sisteminize entegre edilir; entegrasyonu sıfırdan, işinizin akışına göre kurarız.",
+          },
+        },
         {
           "@type": "Question",
           name: "Trendyol entegrasyonu ne kadar sürer?",
@@ -108,6 +119,27 @@ const features = [
 ]
 
 const marketplaces = ["Trendyol", "Hepsiburada", "eBay", "Amazon TR", "N11", "Çiçeksepeti", "Etsy"]
+
+// Trendyol Marketplace API teknik yetenekleri — "trendyol api" / "trendyol api entegrasyonu"
+// arayan teknik niyetli kullanıcıyı karşılar (hedef sorgu + E-E-A-T sinyali).
+const apiCapabilities = [
+  {
+    title: "Ürün & Stok API",
+    desc: "supplierId bazlı ürün listeleme, fiyat ve stok güncelleme uçları. Toplu güncelleme batch endpoint'i ile binlerce SKU tek istekte senkronize edilir.",
+  },
+  {
+    title: "Sipariş (Order) API",
+    desc: "Yeni siparişlerin çekilmesi, paket durumu (Picking → Invoiced → Shipped) güncellemesi ve kargo takip numarası yazımı. Webhook yerine periyodik polling ile güvenli senkronizasyon.",
+  },
+  {
+    title: "Kimlik Doğrulama",
+    desc: "Trendyol API, supplierId + API Key/Secret ile Basic Auth kullanır. Anahtarlar Satıcı Paneli → Entegrasyon Bilgileri'nden alınır ve yalnızca sunucu tarafında saklanır.",
+  },
+  {
+    title: "Rate Limit & Güvenilirlik",
+    desc: "Uç bazında dakikalık istek limitleri vardır; biz idempotent kuyruk + exponential backoff ile limit aşımını ve veri kaybını önleriz.",
+  },
+]
 
 export default function TrendyolEntegrasyonuPage() {
   return (
@@ -201,8 +233,35 @@ export default function TrendyolEntegrasyonuPage() {
         </div>
       </section>
 
-      {/* Ürün Bazlı Çözüm Kataloğu */}
+      {/* Trendyol API — Teknik */}
       <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-[900px]">
+          <Reveal>
+            <p className="eyebrow mb-3">Teknik Altyapı</p>
+            <h2 className="mb-3 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+              Trendyol Marketplace API Nasıl Çalışır?
+            </h2>
+            <p className="mb-10 max-w-[640px] text-[0.9rem] leading-[1.7] text-ink-500">
+              Trendyol entegrasyonu, Trendyol Marketplace API'si (REST/JSON) üzerinden kurulur. Satıcı
+              panelinizdeki ürün, stok, fiyat ve sipariş verileri kendi sisteminize bağlanır; manuel panel
+              girişi ortadan kalkar. Entegrasyonu sıfırdan, işinizin akışına göre kuruyoruz — hazır eklenti değil.
+            </p>
+          </Reveal>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-4">
+            {apiCapabilities.map((c, i) => (
+              <Reveal key={c.title} delay={i * 60}>
+                <div className="h-full rounded-[10px] border border-ink-200 bg-surface p-6">
+                  <p className="mb-2 text-[0.95rem] font-bold text-ink-900">{c.title}</p>
+                  <p className="text-[0.85rem] leading-[1.6] text-ink-500">{c.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Ürün Bazlı Çözüm Kataloğu */}
+      <section className="bg-surface px-6 py-20">
         <div className="mx-auto max-w-[900px]">
           <Reveal>
             <p className="eyebrow mb-3">Hazır Çözümler</p>
@@ -315,6 +374,7 @@ export default function TrendyolEntegrasyonuPage() {
           </Reveal>
           <div className="flex flex-col">
             {[
+              { q: "Trendyol API entegrasyonu nasıl yapılır?", a: "Trendyol Marketplace API'sine satıcı panelinizden alınan supplierId ve API Key/Secret ile bağlanılır. Ürün, stok, fiyat ve sipariş uçları kendi sisteminize entegre edilir; biz bu entegrasyonu sıfırdan, işinizin akışına göre kurarız. Hazır eklenti değil, size özel ve sürdürülebilir bir yapı." },
               { q: "Trendyol entegrasyonu ne kadar sürer?", a: "Tek marketplace için 7–10 iş günü, birden fazla marketplace (Trendyol + Hepsiburada + eBay gibi) için 12–15 iş günü teslim ediyoruz." },
               { q: "Hangi marketplace'lerle çalışıyorsunuz?", a: "Trendyol, Hepsiburada, eBay, Amazon Türkiye, N11, Çiçeksepeti ve Etsy API entegrasyonu yapıyoruz. Listelenmeyenler için de teknik değerlendirme yapıyoruz." },
               { q: "Mevcut e-ticaret sitemle entegre edebilir misiniz?", a: "Evet. WordPress/WooCommerce, Shopify ve özel geliştirilmiş sistemlerle entegrasyon yapabiliyoruz. Mevcut altyapınızı değerlendirmek için teklifle birlikte teknik analiz sunuyoruz." },
