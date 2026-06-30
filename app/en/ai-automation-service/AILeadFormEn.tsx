@@ -16,7 +16,7 @@ const labelCls =
 // use-case opsiyonel; name+email yeterli (düşük sürtünme).
 export default function AILeadFormEn() {
   const router = useRouter()
-  const markStart = useFunnelTracking("ai-en")
+  const { markStart, formRef } = useFunnelTracking("ai-en")
   const [state, setState] = useState<FormState>("idle")
   const [gclid, setGclid] = useState<string | null>(null)
   useEffect(() => { setGclid(getGclid()) }, [])
@@ -49,7 +49,7 @@ export default function AILeadFormEn() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
         <label htmlFor="firstName" className={labelCls}>Your Name *</label>
         <input

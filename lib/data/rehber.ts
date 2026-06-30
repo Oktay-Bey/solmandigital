@@ -1907,9 +1907,9 @@ export const rehberPosts: RehberPost[] = [
     category: "e-ticaret",
     relatedSlugs: ["ebay-api-entegrasyonu-turkiye", "hepsiburada-api-entegrasyonu", "eticaret-sitesi-acmak-turkiye"],
     title: "Etsy API Entegrasyonu: Türk El Yapımı Satıcıları İçin Teknik Rehber",
-    metaTitle: "Etsy API Entegrasyonu Türkiye | Solman Digital",
+    metaTitle: "Etsy API Entegrasyonu: v3 Adım Adım Rehber (2026)",
     metaDescription:
-      "Etsy Open API v3 ile ürün listeleme, sipariş yönetimi ve stok senkronizasyonu. Türk el yapımı ve el sanatları satıcıları için OAuth 2.0, sandbox ve canlıya geçiş rehberi.",
+      "Etsy Open API v3 ile ürün listeleme, sipariş ve stok senkronizasyonu nasıl yapılır? OAuth 2.0, sandbox ve canlıya geçiş adımları + Türk satıcılar için USD/Payoneer notları.",
     description:
       "El yapımı ürün veya özgün tasarımlarınızı Etsy üzerinden dünya pazarına sunuyorsanız, API entegrasyonuyla yönetim yükünü drastik biçimde azaltabilirsiniz.",
     summary:

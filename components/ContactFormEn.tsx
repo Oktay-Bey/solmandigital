@@ -28,7 +28,7 @@ export default function ContactFormEn() {
 
   useEffect(() => { setGclid(getGclid()) }, [])
 
-  const markStart = useFunnelTracking("contact-en")
+  const { markStart, formRef } = useFunnelTracking("contact-en")
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -59,7 +59,7 @@ export default function ContactFormEn() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div>
         <label htmlFor="isim" className={labelCls}>Your Name</label>
         <input id="isim" name="isim" type="text" required value={form.isim} onChange={handleChange} placeholder="Jane Smith" className="input" />

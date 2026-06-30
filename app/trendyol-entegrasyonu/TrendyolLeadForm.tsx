@@ -33,7 +33,7 @@ export default function TrendyolLeadForm({ product }: { product?: string } = {})
     specificPain: "",
   })
 
-  const markStart = useFunnelTracking("trendyol")
+  const { markStart, formRef } = useFunnelTracking("trendyol")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     markStart()
@@ -76,7 +76,7 @@ export default function TrendyolLeadForm({ product }: { product?: string } = {})
 
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="firstName" className={labelCls}>Adınız *</label>

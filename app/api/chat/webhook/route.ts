@@ -33,7 +33,27 @@ export async function POST(req: NextRequest) {
 
     const session = await resolveSessionFromTelegram(replyTo.message_id)
     if (!session) {
-      // Eşleşme yok (eski/TTL dolmuş mesaj). Sessizce yut.
+      // Bu reply solmandigital'e ait değil. Aynı botu paylaşan başka bir site
+      // (Postpilot) varsa, reply'i ona forward et → o kendi session'ında çözer.
+      // Geriye uyumlu: PEER_CHAT_WEBHOOK_URL yoksa eski davranış (sessizce yut).
+      const peer = process.env.PEER_CHAT_WEBHOOK_URL
+      if (peer) {
+        try {
+          await fetch(peer, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              // Postpilot webhook'u bu secret'ı bekler (her iki tarafta aynı).
+              "x-telegram-bot-api-secret-token":
+                process.env.TELEGRAM_WEBHOOK_SECRET ?? "",
+            },
+            // Telegram'ın gönderdiği update şeklini aynen ilet.
+            body: JSON.stringify(update),
+          })
+        } catch {
+          /* peer ulaşılamazsa solmandigital etkilenmesin */
+        }
+      }
       return NextResponse.json({ ok: true, unmatched: true })
     }
 

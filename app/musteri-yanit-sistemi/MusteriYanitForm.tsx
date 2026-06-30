@@ -16,7 +16,7 @@ const labelCls =
 // Formu doldurmak istemeyen için hero'da WhatsApp CTA birincil eylemdir.
 export default function MusteriYanitForm() {
   const router = useRouter()
-  const markStart = useFunnelTracking("musteri-yaniti")
+  const { markStart, formRef } = useFunnelTracking("musteri-yaniti")
   const [state, setState] = useState<FormState>("idle")
   const [gclid, setGclid] = useState<string | null>(null)
   useEffect(() => { setGclid(getGclid()) }, [])
@@ -49,7 +49,7 @@ export default function MusteriYanitForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
         <label htmlFor="firstName" className={labelCls}>Adınız *</label>
         <input

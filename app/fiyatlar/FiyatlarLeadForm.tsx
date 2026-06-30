@@ -21,7 +21,7 @@ const serviceOptions = [
 
 export default function FiyatlarLeadForm() {
   const router = useRouter()
-  const markStart = useFunnelTracking("fiyat-talebi")
+  const { markStart, formRef } = useFunnelTracking("fiyat-talebi")
   const [state, setState] = useState<FormState>("idle")
   const [form, setForm] = useState({ firstName: "", email: "", service: "" })
 
@@ -57,7 +57,7 @@ export default function FiyatlarLeadForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]">
+    <form ref={formRef} onSubmit={handleSubmit} className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]">
       <div>
         <label htmlFor="fiyat-firstName" className={labelCls}>Adınız *</label>
         <input

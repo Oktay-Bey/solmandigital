@@ -41,7 +41,7 @@ export default function PartnershipForm() {
     volume: "",
   })
 
-  const markStart = useFunnelTracking("partnership")
+  const { markStart, formRef } = useFunnelTracking("partnership")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     markStart()
@@ -79,7 +79,7 @@ export default function PartnershipForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="isim" className={labelCls}>Your Name *</label>

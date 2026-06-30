@@ -52,6 +52,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: siteConfig.name,
+  alternateName: ["Solman", "Solman Digital İstanbul"],
   url: siteConfig.url,
   logo: `${siteConfig.url}/logo.webp`,
   contactPoint: {
@@ -90,6 +91,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: siteConfig.name,
+  alternateName: "Solman",
   url: siteConfig.url,
   inLanguage: "tr-TR",
   potentialAction: {

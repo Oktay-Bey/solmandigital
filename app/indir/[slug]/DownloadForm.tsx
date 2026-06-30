@@ -17,7 +17,7 @@ export default function DownloadForm() {
   const [state, setState] = useState<FormState>("idle")
   const [form, setForm] = useState({ firstName: "", email: "" })
 
-  const markStart = useFunnelTracking("download")
+  const { markStart, formRef } = useFunnelTracking("download")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     markStart()
@@ -53,7 +53,7 @@ export default function DownloadForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
         <label htmlFor="firstName" className={labelCls}>Adınız *</label>
         <input

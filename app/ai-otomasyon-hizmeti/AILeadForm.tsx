@@ -16,7 +16,7 @@ const labelCls =
 // (zorunlu seçim eski adım-2 terk noktasıydı).
 export default function AILeadForm() {
   const router = useRouter()
-  const markStart = useFunnelTracking("ai")
+  const { markStart, formRef } = useFunnelTracking("ai")
   const [state, setState] = useState<FormState>("idle")
   const [gclid, setGclid] = useState<string | null>(null)
   useEffect(() => { setGclid(getGclid()) }, [])
@@ -49,7 +49,7 @@ export default function AILeadForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
         <label htmlFor="firstName" className={labelCls}>Adınız *</label>
         <input

@@ -30,7 +30,7 @@ export default function IstanbulDevLeadForm() {
     projectBrief: "",
   })
 
-  const markStart = useFunnelTracking("istanbul-dev")
+  const { markStart, formRef } = useFunnelTracking("istanbul-dev")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     markStart()
@@ -62,7 +62,7 @@ export default function IstanbulDevLeadForm() {
   const meetingOptions = ["Zoom", "Yüz yüze İstanbul", "Farketmez"]
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="firstName" className={labelCls}>Adınız *</label>

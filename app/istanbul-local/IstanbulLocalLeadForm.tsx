@@ -35,7 +35,7 @@ export default function IstanbulLocalLeadForm({ district }: Props) {
     projectBrief: "",
   })
 
-  const markStart = useFunnelTracking("istanbul-local")
+  const { markStart, formRef } = useFunnelTracking("istanbul-local")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     markStart()
@@ -68,7 +68,7 @@ export default function IstanbulLocalLeadForm({ district }: Props) {
     : ["Zoom", "Yüz yüze İstanbul", "Farketmez"]
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+    <form ref={formRef} onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-two-col">
         <div>
           <label htmlFor="firstName" style={labelStyle}>Adınız *</label>

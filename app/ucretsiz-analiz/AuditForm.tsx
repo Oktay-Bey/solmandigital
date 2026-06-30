@@ -15,7 +15,7 @@ const labelCls =
 
 export default function AuditForm() {
   const router = useRouter()
-  const markStart = useFunnelTracking("audit")
+  const { markStart, formRef } = useFunnelTracking("audit")
   const [state, setState] = useState<FormState>("idle")
   const [expanded, setExpanded] = useState(false)
   const [gclid, setGclid] = useState<string | null>(null)
@@ -57,7 +57,7 @@ export default function AuditForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
       {/* Zorunlu alanlar */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
