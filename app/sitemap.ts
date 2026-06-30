@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/portfoy`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/hakkimizda`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.65 },
     { url: `${base}/iletisim`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.60 },
+    { url: `${base}/llms-full.txt`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.50 },
   ]
 
   const servicePriorityMap: Record<1 | 2 | 3, number> = { 1: 0.90, 2: 0.80, 3: 0.70 }

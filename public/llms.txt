@@ -265,6 +265,8 @@ Büyük ajanslarda proje account manager, tasarımcı, geliştirici ve test ekib
 
 ## Rehberler ve Kaynaklar
 
+> Tüm rehberlerin tam metni tek dosyada: https://solmandigital.com.tr/llms-full.txt
+
 - Trendyol Satıcısı Neden Web Sitesi Yaptırmalı?: https://solmandigital.com.tr/rehber/trendyol-satici-web-sitesi
 - AI İçerik Otomasyonu Nedir?: https://solmandigital.com.tr/rehber/ai-icerik-otomasyonu-nedir
 - İstanbul'da Web Sitesi Fiyatları 2025: https://solmandigital.com.tr/rehber/istanbul-web-sitesi-fiyatlari
