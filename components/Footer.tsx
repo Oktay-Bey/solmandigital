@@ -11,10 +11,19 @@ function serviceHref(slug: string): string {
   return canonicalRouteOverrides[slug] ?? `/hizmetler/${slug}`
 }
 
+// Footer her sayfada görünür. Tüm hizmet + ilçe linklerini her sayfada vermek
+// site-wide link dilution yaratır (Google footer link'lerini değersizleştirir).
+// Bu yüzden footer'da yalnızca en güçlü sayfaları gösterip, derin sayfalara
+// crawl yolunu /hizmetler ve /istanbul-ilceleri hub'ları üzerinden veriyoruz.
+const FOOTER_LOCATION_LIMIT = 8
+
 export default function Footer() {
   const tier1 = services.filter((s) => s.tier === 1)
   const tier2 = services.filter((s) => s.tier === 2)
-  const tier3 = services.filter((s) => s.tier === 3)
+  // Footer'da öne çıkan ilçeler: sitemapPriority'ye göre en güçlü N tanesi.
+  const topLocations = [...istanbulPages]
+    .sort((a, b) => b.sitemapPriority - a.sitemapPriority)
+    .slice(0, FOOTER_LOCATION_LIMIT)
   const waHref = `https://wa.me/${siteConfig.whatsapp.replace("+", "")}`
 
   return (
@@ -46,6 +55,7 @@ export default function Footer() {
                 {siteConfig.email}
               </a>
               <a href={waHref} target="_blank" rel="noopener noreferrer"
+                aria-label={`WhatsApp: ${siteConfig.whatsappDisplay}`}
                 style={{ display: "flex", alignItems: "center", gap: 8, fontSize: "0.8rem", color: "#a8a8a8", textDecoration: "none" }}>
                 <MessageCircle size={13} />
                 {siteConfig.whatsappDisplay}
@@ -71,25 +81,26 @@ export default function Footer() {
           </div>
 
           {/* Popüler Hizmetler */}
-          <Col title="Popüler Hizmetler">
+          <Col title="Popüler Hizmetler" navLabel="Popüler hizmetler">
             {tier1.map((s) => <ColLink key={s.slug} href={serviceHref(s.slug)}>{s.title}</ColLink>)}
           </Col>
 
-          {/* Diğer & Özel Hizmetler */}
-          <Col title="Diğer Hizmetler">
+          {/* Diğer Hizmetler — tier-3 bloat'ı /hizmetler hub'ına devredildi */}
+          <Col title="Diğer Hizmetler" navLabel="Diğer hizmetler">
             {tier2.map((s) => <ColLink key={s.slug} href={serviceHref(s.slug)}>{s.title}</ColLink>)}
             <div style={{ margin: "8px 0", height: 1, backgroundColor: "#1e1e1e" }} />
-            {tier3.map((s) => <ColLink key={s.slug} href={serviceHref(s.slug)}>{s.title}</ColLink>)}
+            <ColLink href="/hizmetler">Tüm Hizmetler →</ColLink>
           </Col>
 
-          {/* İstanbul Bölgeleri */}
-          <Col title="İstanbul Bölgeleri">
+          {/* İstanbul Bölgeleri — yalnızca en güçlü sayfalar; geri kalanı hub'da */}
+          <Col title="İstanbul Bölgeleri" navLabel="İstanbul bölgeleri">
+            {topLocations.map((p) => <ColLink key={p.slug} href={`/${p.slug}`}>{p.title}</ColLink>)}
+            <div style={{ margin: "8px 0", height: 1, backgroundColor: "#1e1e1e" }} />
             <ColLink href="/istanbul-ilceleri">Tüm İlçeler →</ColLink>
-            {istanbulPages.map((p) => <ColLink key={p.slug} href={`/${p.slug}`}>{p.title}</ColLink>)}
           </Col>
 
           {/* Şirket */}
-          <Col title="Şirket">
+          <Col title="Şirket" navLabel="Şirket">
             {[
               { href: "/portfoy", label: "Portföy" },
               { href: "/rehber", label: "Rehber" },
@@ -122,16 +133,16 @@ export default function Footer() {
   )
 }
 
-function Col({ title, children }: { title: string; children: React.ReactNode }) {
+function Col({ title, navLabel, children }: { title: string; navLabel?: string; children: React.ReactNode }) {
   return (
-    <div>
-      <p style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555", marginBottom: 14 }}>
+    <nav aria-label={navLabel ?? title}>
+      <h2 style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555", marginBottom: 14 }}>
         {title}
-      </p>
+      </h2>
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {children}
       </div>
-    </div>
+    </nav>
   )
 }
 
