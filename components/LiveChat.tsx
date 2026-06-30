@@ -14,6 +14,15 @@ interface ChatMsg {
 const SESSION_KEY = "solman_chat_session"
 const POLL_MS = 3000
 
+// Açılışta sürtünmeyi kaldıran hazır sorular — tıkla, otomatik mesaj olarak gider.
+// Boş input yerine tek tıkla sohbeti başlatır → "açtı ama yazmadı" düşüşünü kırar.
+const QUICK_PROMPTS = [
+  "Projemin maliyeti ne olur?",
+  "AI otomasyon nasıl çalışıyor?",
+  "Web sitesi / e-ticaret yaptırmak istiyorum",
+  "Ne kadar sürede teslim edersiniz?",
+]
+
 function getSession(): string {
   if (typeof window === "undefined") return ""
   let s = localStorage.getItem(SESSION_KEY)
@@ -124,13 +133,13 @@ export default function LiveChat() {
     }
   }
 
-  const send = async () => {
-    const text = input.trim()
+  const send = async (preset?: string) => {
+    const text = (preset ?? input).trim()
     if (!text || sending) return
     setSending(true)
     const optimistic: ChatMsg = { id: "tmp-" + Date.now(), role: "visitor", text, ts: Date.now() }
     setMessages((prev) => [...prev, optimistic])
-    setInput("")
+    if (!preset) setInput("")
     scrollToBottom()
     try {
       const res = await fetch("/api/chat", {
@@ -254,9 +263,23 @@ export default function LiveChat() {
           {/* Mesajlar */}
           <div ref={scrollRef} className="flex-1 space-y-2.5 overflow-y-auto px-4 py-4">
             {messages.length === 0 && (
-              <div className="rounded-lg bg-dark-300 px-3.5 py-3 text-[0.825rem] leading-relaxed text-ondark-muted">
-                Merhaba 👋 Aklınızdaki soruyu yazın — projeniz, fiyat ya da AI otomasyon hakkında hızlıca yardımcı olalım.
-              </div>
+              <>
+                <div className="rounded-lg bg-dark-300 px-3.5 py-3 text-[0.825rem] leading-relaxed text-ondark-muted">
+                  Merhaba 👋 Size nasıl yardımcı olabiliriz? Aşağıdan seçin ya da sorunuzu yazın.
+                </div>
+                <div className="mt-3 flex flex-col gap-1.5">
+                  {QUICK_PROMPTS.map((q) => (
+                    <button
+                      key={q}
+                      onClick={() => send(q)}
+                      disabled={sending}
+                      className="cursor-pointer rounded-lg border border-dark-50 bg-dark-300 px-3.5 py-2.5 text-left text-[0.8rem] leading-snug text-ondark transition-colors hover:border-accent-700 hover:bg-dark-200 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </div>
+              </>
             )}
             {messages.map((m) => (
               <div
@@ -289,7 +312,7 @@ export default function LiveChat() {
                 maxLength={2000}
               />
               <button
-                onClick={send}
+                onClick={() => send()}
                 disabled={sending || !input.trim()}
                 aria-label="Gönder"
                 className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-md bg-accent-700 text-white transition-colors hover:bg-accent-800 disabled:cursor-not-allowed disabled:opacity-50"
