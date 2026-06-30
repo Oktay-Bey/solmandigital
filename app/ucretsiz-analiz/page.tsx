@@ -144,8 +144,10 @@ export default function UcretsizAnalizPage() {
             </Reveal>
           </div>
 
-          {/* Sağ: form */}
-          <Reveal delay={150} className="order-first lg:order-last">
+          {/* Sağ: form — mobilde içerikten SONRA gelir (order-first kaldırıldı;
+              soğuk trafik başlık+değeri görmeden formla karşılaşmasın). Bu sayfada
+              teklifin kendisi form olduğu için form hero'da kalır. */}
+          <Reveal delay={150}>
             <div className="rounded-[14px] border border-dark-50 bg-white p-8 shadow-xl">
               <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">Ücretsiz Analiz</p>
               <h2 className="mb-3 text-[1.1rem] font-extrabold tracking-tight text-ink-900">

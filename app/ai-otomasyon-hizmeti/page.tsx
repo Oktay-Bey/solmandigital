@@ -133,66 +133,62 @@ export default function AIOtomasyonPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero */}
-      <section className="bg-dark-500 px-6 pb-16 pt-24">
-        <div className="mx-auto grid max-w-[1100px] grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          {/* Sol: başlık + değer önerisi */}
-          <div>
-            <Reveal>
-              <p className="mb-5 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
-                1 Haftada Teslim · GPT-4o · Claude
-              </p>
-            </Reveal>
-            <Reveal delay={100}>
-              <h1 className="mb-5 text-[clamp(2rem,4vw,2.75rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
-                Yapay Zeka Otomasyon Hizmeti — İş Süreçlerinizi AI ile Otomatize Ediyoruz
-              </h1>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="mb-7 text-[1rem] leading-[1.75] text-ondark-muted">
-                İçerik üretimi, ürün açıklamaları, müşteri soruları — tekrar eden iş süreçlerinizi
-                GPT-4o ve Claude ile otomatize ediyoruz. Hazır bir araç değil; işinize özel kurulan,{" "}
-                <span className="font-semibold text-white">kaynak kodu size ait</span> yapay zeka otomasyonu.{" "}
-                İstanbul merkezli, <span className="font-semibold text-white">1 haftada teslim.</span>
-              </p>
-            </Reveal>
-            <Reveal delay={300}>
-              <ul className="flex flex-col gap-2.5">
-                {[
-                  "İçerik otomasyonu: haftada 3 saat → 20 dakika",
-                  "200 ürün açıklaması: 40 saat → 2 saat",
-                  "Müşteri soruları: %60 destek maliyeti azalır",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-[0.875rem] text-ondark-muted">
-                    <span className="mt-0.5 shrink-0 text-[#4ade80]">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
+      {/* Hero — soğuk reklam trafiği için: önce ikna (değer + kanıt), sonra
+          düşük-sürtünmeli CTA. Form yukarıda DEĞİL; ikna katmanından sonra
+          (#analiz-formu) konumlanır, hero CTA oraya scroll eder. */}
+      <section className="bg-dark-500 px-6 pb-20 pt-24">
+        <div className="mx-auto max-w-[760px] text-center">
+          <Reveal>
+            <p className="mb-6 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
+              1 Haftada Teslim · GPT-4o · Claude
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h1 className="mb-6 text-[clamp(2rem,4.5vw,3rem)] font-black leading-[1.12] tracking-[-0.03em] text-white">
+              İş Süreçlerinizi Yapay Zeka ile Otomatize Ediyoruz
+            </h1>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="mx-auto mb-8 max-w-[620px] text-[1.05rem] leading-[1.75] text-ondark-muted">
+              İçerik üretimi, ürün açıklamaları, müşteri soruları — tekrar eden iş yükünüzü
+              GPT-4o ve Claude ile otomatize ediyoruz. Hazır bir araç değil; işinize özel kurulan,{" "}
+              <span className="font-semibold text-white">kaynak kodu size ait</span> yapay zeka otomasyonu.
+            </p>
+          </Reveal>
 
-          {/* Sağ: form — mobilde içeriğin hemen altına gelir (order-first lg:order-last) */}
-          <Reveal delay={150} className="order-first lg:order-last">
-            <div className="rounded-[14px] border border-dark-50 bg-white p-8 shadow-xl">
-              <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">Ücretsiz Analiz</p>
-              <h2 className="mb-3 text-[1.15rem] font-extrabold tracking-tight text-ink-900">
-                Otomasyon potansiyelinizi keşfedin
-              </h2>
-              <p className="mb-5 flex items-center gap-1.5 text-[0.78rem] text-ink-500">
-                <span className="text-[#16a34a]">●</span>
-                Son 30 günde 5 firma sürece başladı
-              </p>
-              <AILeadForm />
-              <div className="mt-4 border-t border-ink-200 pt-4 text-center">
-                <p className="mb-2 text-[0.78rem] text-ink-500">Form doldurmak istemez misiniz?</p>
-                <OpenChatButton
-                  label="Sohbette hemen sorun — anında yanıt"
-                  source="ai_landing_form"
-                  variant="ghost"
-                />
-              </div>
+          {/* Somut kanıt — karar öncesi güven */}
+          <Reveal delay={300}>
+            <ul className="mx-auto mb-9 flex max-w-[560px] flex-col gap-2.5 text-left sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6">
+              {[
+                "İçerik: 3 saat → 20 dakika",
+                "200 ürün açıklaması: 40 saat → 2 saat",
+                "Destek maliyeti: -%60",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-[0.9rem] text-ondark-muted">
+                  <span className="mt-0.5 shrink-0 text-[#4ade80]">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          {/* Düşük-sürtünmeli ikili CTA — soğuk trafik buradan içeri akar */}
+          <Reveal delay={400}>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a href="#analiz-formu" className="btn btn-primary w-full text-base sm:w-auto">
+                Ücretsiz Otomasyon Analizi <ArrowRight size={18} />
+              </a>
+              <OpenChatButton
+                label="Önce sohbette sorun"
+                source="ai_hero"
+                variant="solid"
+                className="w-full sm:w-auto"
+              />
             </div>
+            <p className="mt-4 flex items-center justify-center gap-1.5 text-[0.8rem] text-ondark-muted">
+              <span className="text-[#4ade80]">●</span>
+              Ücretsiz · Taahhütsüz · Son 30 günde 5 firma sürece başladı
+            </p>
           </Reveal>
         </div>
       </section>
@@ -328,6 +324,53 @@ export default function AIOtomasyonPage() {
                   <p className="text-[0.85rem] leading-[1.6] text-ink-500">{pkg.desc}</p>
                 </div>
               ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Lead formu — ikna katmanından SONRA (değer→süreç→fiyat→form).
+          Hero CTA buraya scroll eder (#analiz-formu). */}
+      <section id="analiz-formu" className="scroll-mt-20 bg-white px-6 py-20">
+        <div className="mx-auto grid max-w-[1000px] grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
+          {/* Sol: form öncesi son ikna + güven */}
+          <Reveal>
+            <div>
+              <p className="eyebrow mb-3">Ücretsiz Analiz</p>
+              <h2 className="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+                Otomasyon potansiyelinizi keşfedin
+              </h2>
+              <p className="mb-6 text-[0.95rem] leading-[1.7] text-ink-500">
+                Hangi süreçlerinizin AI ile otomatize edilebileceğini ücretsiz değerlendiriyoruz.
+                Taahhüt yok; sadece somut bir yol haritası.
+              </p>
+              <ul className="flex flex-col gap-3 text-[0.875rem] text-ink-600">
+                {[
+                  "24 saat içinde size dönüş",
+                  "Sabit fiyat — saat bazlı fatura yok",
+                  "Kaynak kodu size ait, kilitli platform yok",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 shrink-0 text-success">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-7 border-t border-ink-200 pt-6">
+                <p className="mb-2 text-[0.8rem] text-ink-500">Form yerine konuşmayı mı tercih edersiniz?</p>
+                <OpenChatButton
+                  label="Sohbette hemen sorun — anında yanıt"
+                  source="ai_landing_form"
+                  variant="ghost"
+                />
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Sağ: form kartı */}
+          <Reveal delay={150}>
+            <div className="rounded-[14px] border border-ink-200 bg-surface p-8 shadow-card">
+              <AILeadForm />
             </div>
           </Reveal>
         </div>

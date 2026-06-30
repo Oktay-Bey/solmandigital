@@ -50,35 +50,8 @@ export default function AILeadForm() {
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div>
-        <label htmlFor="firstName" className={labelCls}>Adınız *</label>
-        <input
-          id="firstName" name="firstName" type="text" required
-          value={form.firstName} onChange={handleChange}
-          placeholder="Ahmet"
-          className="input text-[16px]"
-        />
-      </div>
-      <div>
-        <label htmlFor="email" className={labelCls}>E-posta *</label>
-        <input
-          id="email" name="email" type="email" required
-          value={form.email} onChange={handleChange}
-          placeholder="ahmet@firma.com"
-          className="input text-[16px]"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="phone" className={labelCls}>Telefon / WhatsApp (opsiyonel)</label>
-        <input
-          id="phone" name="phone" type="tel"
-          value={form.phone} onChange={handleChange}
-          placeholder="Hızlı dönüş için"
-          className="input text-[16px]"
-        />
-      </div>
-
+      {/* Use-case en üstte: en düşük sürtünmeli ilk adım — soğuk trafiği
+          kimlik bilgisi istemeden forma "sokar". */}
       <div>
         <label className={labelCls}>Hangi alanda AI kullanmak istiyorsunuz?</label>
         <div className="grid grid-cols-2 gap-2">
@@ -103,6 +76,37 @@ export default function AILeadForm() {
             </button>
           ))}
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="firstName" className={labelCls}>Adınız *</label>
+          <input
+            id="firstName" name="firstName" type="text" required
+            value={form.firstName} onChange={handleChange}
+            placeholder="Ahmet"
+            className="input text-[16px]"
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className={labelCls}>Telefon (opsiyonel)</label>
+          <input
+            id="phone" name="phone" type="tel"
+            value={form.phone} onChange={handleChange}
+            placeholder="Hızlı dönüş için"
+            className="input text-[16px]"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="email" className={labelCls}>E-posta *</label>
+        <input
+          id="email" name="email" type="email" required
+          value={form.email} onChange={handleChange}
+          placeholder="ahmet@firma.com"
+          className="input text-[16px]"
+        />
       </div>
 
       {state === "error" && (

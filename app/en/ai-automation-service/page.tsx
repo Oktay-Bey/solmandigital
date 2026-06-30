@@ -186,70 +186,59 @@ export default function EnAIAutomationPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero — sol: değer önerisi, sağ: gömülü lead formu (en çok reklam tıkı bu sayfaya, dönüşüm yolu açıldı) */}
-      <section className="bg-dark-500 px-6 pb-16 pt-24">
-        <div className="mx-auto grid max-w-[1100px] grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          {/* Sol */}
-          <div>
-            <Reveal>
-              <p className="mb-5 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
-                AI Automation Agency · GPT-4o · Claude
-              </p>
-            </Reveal>
-            <Reveal delay={100}>
-              <h1 className="mb-5 text-[clamp(1.75rem,4vw,2.6rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
-                AI Automation for Your Business.{" "}
-                <span className="text-accent-700">Delivered in 1 Week.</span>
-              </h1>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="mb-7 text-[1rem] leading-[1.75] text-ondark-muted">
-                As a focused AI automation agency, we build custom AI workflows that save your team 10–20 hours per week — chatbots, content automation, report generation, and process integrations. Fixed price, source code is yours.
-              </p>
-            </Reveal>
-            <Reveal delay={300}>
-              <ul className="mb-7 flex flex-col gap-2.5">
-                {[
-                  "AI chatbot & support: save 15+ hours/week",
-                  "Content automation: 89% faster output",
-                  "Workflow automation: ROI in 30–60 days",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-[0.875rem] text-ondark-muted">
-                    <span className="mt-0.5 shrink-0 text-[#4ade80]">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-            <Reveal delay={400}>
-              <p className="text-[0.8rem] text-ondark-muted">
-                Packages from €500 · No subscription fees · 50% upfront, 50% on delivery
-              </p>
-            </Reveal>
-          </div>
+      {/* Hero — cold ad traffic: persuade first (value + proof), then a
+          low-friction CTA. Form is NOT here; it sits after the persuasion
+          layer (#audit-form) and the hero CTA scrolls to it. */}
+      <section className="bg-dark-500 px-6 pb-20 pt-24">
+        <div className="mx-auto max-w-[760px] text-center">
+          <Reveal>
+            <p className="mb-6 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
+              AI Automation Agency · GPT-4o · Claude
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h1 className="mb-6 text-[clamp(1.9rem,4.5vw,2.85rem)] font-black leading-[1.12] tracking-[-0.03em] text-white">
+              AI Automation for Your Business.{" "}
+              <span className="text-accent-700">Delivered in 1 Week.</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="mx-auto mb-8 max-w-[620px] text-[1.05rem] leading-[1.75] text-ondark-muted">
+              As a focused AI automation agency, we build custom AI workflows that save your team 10–20 hours per week — chatbots, content automation, report generation, and process integrations. Fixed price, source code is yours.
+            </p>
+          </Reveal>
+          <Reveal delay={300}>
+            <ul className="mx-auto mb-9 flex max-w-[600px] flex-col gap-2.5 text-left sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6">
+              {[
+                "AI chatbot & support: save 15+ hrs/week",
+                "Content automation: 89% faster output",
+                "Workflow automation: ROI in 30–60 days",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-[0.9rem] text-ondark-muted">
+                  <span className="mt-0.5 shrink-0 text-[#4ade80]">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
 
-          {/* Sağ: form — mobilde içeriğin üstüne (order-first lg:order-last) */}
-          <Reveal delay={150} className="order-first lg:order-last">
-            <div className="rounded-[14px] border border-dark-50 bg-white p-8 shadow-xl">
-              <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-accent-700">Free AI Audit</p>
-              <h2 className="mb-3 text-[1.15rem] font-extrabold tracking-tight text-ink-900">
-                Discover your automation potential
-              </h2>
-              <p className="mb-5 flex items-center gap-1.5 text-[0.78rem] text-ink-500">
-                <span className="text-[#16a34a]">●</span>
-                30-minute call · ROI estimate · no commitment
-              </p>
-              <AILeadFormEn />
-              <div className="mt-4 border-t border-ink-100 pt-4 text-center">
-                <WhatsAppLink
-                  message="Hi, I'd like to discuss an AI automation project."
-                  source="ai_en_hero"
-                  className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-accent-700 hover:underline"
-                >
-                  <MessageCircle size={14} /> Prefer WhatsApp? Message us →
-                </WhatsAppLink>
-              </div>
+          {/* Low-friction dual CTA — cold traffic flows in from here */}
+          <Reveal delay={400}>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a href="#audit-form" className="btn btn-primary w-full text-base sm:w-auto">
+                Get Your Free AI Audit <ArrowRight size={18} />
+              </a>
+              <WhatsAppLink
+                message="Hi, I'd like to discuss an AI automation project."
+                source="ai_en_hero"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent-700 px-5 py-3 text-[0.9rem] font-bold text-white transition-colors hover:bg-accent-800 sm:w-auto"
+              >
+                <MessageCircle size={17} /> Message us on WhatsApp
+              </WhatsAppLink>
             </div>
+            <p className="mt-4 text-[0.8rem] text-ondark-muted">
+              Packages from €500 · No subscription fees · 50% upfront, 50% on delivery
+            </p>
           </Reveal>
         </div>
       </section>
@@ -397,6 +386,52 @@ export default function EnAIAutomationPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Lead form — placed AFTER the persuasion layer (value→pricing→process→form).
+          Hero CTA scrolls here (#audit-form). */}
+      <section id="audit-form" className="scroll-mt-20 bg-surface px-6 py-20">
+        <div className="mx-auto grid max-w-[1000px] grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
+          <Reveal>
+            <div>
+              <p className="eyebrow mb-3">Free AI Audit</p>
+              <h2 className="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.02em] text-ink-900">
+                Discover your automation potential
+              </h2>
+              <p className="mb-6 text-[0.95rem] leading-[1.7] text-ink-500">
+                A free 30-minute call to map which of your processes can be automated — with a concrete ROI estimate. No commitment.
+              </p>
+              <ul className="flex flex-col gap-3 text-[0.875rem] text-ink-600">
+                {[
+                  "We reply within 24 hours",
+                  "Fixed price — no hourly billing",
+                  "Source code is yours, no platform lock-in",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 shrink-0 text-success">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-7 border-t border-ink-200 pt-6">
+                <p className="mb-2 text-[0.8rem] text-ink-500">Prefer to talk first?</p>
+                <WhatsAppLink
+                  message="Hi, I'd like to discuss an AI automation project."
+                  source="ai_en_form"
+                  className="inline-flex items-center gap-1.5 text-[0.85rem] font-semibold text-accent-700 hover:underline"
+                >
+                  <MessageCircle size={15} /> Message us on WhatsApp →
+                </WhatsAppLink>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={150}>
+            <div className="rounded-[14px] border border-ink-200 bg-white p-8 shadow-card">
+              <AILeadFormEn />
+            </div>
+          </Reveal>
         </div>
       </section>
 
