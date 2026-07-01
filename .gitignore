@@ -38,6 +38,32 @@ yarn-error.log*
 /sample-reel.mp4
 scripts/reels/sample-reel.mp4
 
+# tek kullanımlık analiz/rapor çıktıları (loop iterasyonları — yeniden üretilebilir)
+/ads_*.json
+/build_*.json
+/build_*.txt
+/ga4*.json
+/gsc*.json
+/kw_audit*.json
+/hub.html
+/scripts/.gd.json
+
+# loglar
+*.log
+
+# lead verileri (PII — repo'ya girmez)
+/scripts/leads-batch-*.json
+/scripts/*-raw.json
+/scripts/found-emails.json
+/scripts/verified-*.json
+/scripts/sent-emails.json
+/scripts/suppress-list.json
+/scripts/us-leads-100.json
+/scripts/scrape-input.json
+/scripts/test-klinik34.json
+/scripts/batch2-openers.json
+/scripts/preview-*.json
+
 # vercel
 .vercel
 
