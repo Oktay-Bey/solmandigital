@@ -1265,6 +1265,18 @@ export const rehberPosts: RehberPost[] = [
         q: "Trendyol entegrasyonu ne işe yarar?",
         a: "Trendyol API entegrasyonu; stok, sipariş ve fiyat yönetimini otomatikleştirir. Manuel giriş hataları ortadan kalkar, operasyonel maliyet düşer.",
       },
+      {
+        q: "Trendyol kâr hesaplama nasıl yapılır?",
+        a: "Net kâr = Satış fiyatı − (komisyon + KDV + kargo + hizmet bedeli + ürün maliyeti). Yani sadece komisyonu değil, kargo ve platform hizmet bedellerini de düşmeniz gerekir. Pratik formül: önce satış fiyatından kategori komisyonunu ve KDV'yi çıkarın, ardından kargo ve varsa reklam/kupon maliyetini düşün, kalan tutardan ürün alış maliyetini çıkarın — elde kalan net kârınızdır. Bu kalemleri gerçek zamanlı hesaplayan ücretsiz aracımızı kullanabilirsiniz.",
+      },
+      {
+        q: "Trendyol kargo ücreti kâra nasıl etki eder?",
+        a: "Kargo, komisyondan sonra en çok gözden kaçan maliyet kalemidir. Trendyol desi bazlı kargo ücreti uygular; düşük fiyatlı ama hacimli ürünlerde kargo, kârın büyük kısmını yiyebilir. Fiyatlandırmadan önce ürünün desisini ve güncel kargo tarifesini net kâr hesabına dahil etmek şarttır — aksi halde 'komisyon düşük' diye seçtiğiniz kategori kargo yüzünden zararlı çıkabilir.",
+      },
+      {
+        q: "Trendyol'da ne satmak daha kârlı?",
+        a: "Kârlılık kategori komisyonu, ürün desisi (kargo maliyeti) ve rekabet yoğunluğunun birleşimidir. Genel kural: yüksek fiyatlı, düşük desili (küçük/hafif) ve komisyon oranı düşük kategorilerdeki ürünler birim başına daha yüksek net kâr bırakır. Ancak düşük komisyon her zaman yüksek kâr demek değildir — kargo ve iade oranı da hesaba katılmalıdır. Kategori bazında gerçek kârı görmek için satış fiyatı, desi ve komisyonu birlikte hesaplayın.",
+      },
     ],
     cta: { text: "Trendyol Entegrasyonu Hakkında Bilgi Al", href: "/trendyol-entegrasyonu", label: "Detay" },
     ctaSecondary: {
@@ -1275,6 +1287,9 @@ export const rehberPosts: RehberPost[] = [
     keywords: [
       "trendyol komisyon oranları 2025",
       "trendyol kâr hesaplama",
+      "trendyol kar hesaplama",
+      "trendyol maliyet hesaplama",
+      "trendyol kargo ücreti",
       "trendyol satıcı maliyetleri",
       "trendyol komisyon kategoriler",
       "trendyol net kâr marjı",
@@ -2341,6 +2356,14 @@ export const rehberPosts: RehberPost[] = [
         q: "N11 entegrasyonu ne kadar sürer?",
         a: "Yalnızca N11 entegrasyonu 5–8 iş günü içinde tamamlanır. Trendyol + Hepsiburada + N11 gibi çok kanallı projeler 3–5 haftada canlıya geçer.",
       },
+      {
+        q: "N11 developer API erişimi nasıl alınır?",
+        a: "N11 API'sine erişim için N11 mağaza panelinizden API anahtarı (appKey) ve gizli anahtar (appSecret) alınır. Bu bilgiler SOAP/REST servis çağrılarında kimlik doğrulama için kullanılır ve yalnızca sunucu tarafında saklanmalıdır. Ayrı bir developer başvurusu gerekmez; aktif satıcı hesabınız API erişimi için yeterlidir. Entegrasyonu bu anahtarlarla sıfırdan, iş akışınıza göre kurarız.",
+      },
+      {
+        q: "N11'de fiyat güncelleme API ile otomatik yapılabilir mi?",
+        a: "Evet. N11 API'nin ürün servisi üzerinden fiyat ve stok toplu olarak güncellenebilir; kur değişimi, rakip takibi veya kampanya kuralına göre otomatik fiyatlama kurulabilir. Böylece her fiyat değişikliğini panelden manuel girmek yerine, tanımladığınız kurallar fiyatları otomatik günceller — çok sayıda üründe zaman ve hata kaybını ortadan kaldırır.",
+      },
     ],
     cta: {
       text: "N11 API entegrasyonu veya çok kanallı marketplace otomasyonu için",
@@ -2349,6 +2372,8 @@ export const rehberPosts: RehberPost[] = [
     },
     keywords: [
       "n11 api entegrasyonu",
+      "n11 developer api",
+      "n11 fiyat güncelleme",
       "n11 marketplace api",
       "n11 satıcı api",
       "n11 stok senkronizasyonu",
@@ -2734,6 +2759,18 @@ export const rehberPosts: RehberPost[] = [
         q: "Özel stok takip yazılımı ne kadar sürede hazır olur?",
         a: "Kapsama bağlıdır. Temel bir çok depolu stok yönetimi birkaç hafta içinde kullanıma alınabilir; pazaryeri entegrasyonu ve özel raporlama eklendikçe süre kapsamla birlikte planlanır. Kesin süre ve maliyet, ihtiyaç görüşmesinde netleşir.",
       },
+      {
+        q: "En iyi stok takip programı hangisi?",
+        a: "Tek bir 'en iyi' program yoktur — doğru seçim iş modelinize bağlıdır. Tek depo ve düşük ürün sayısında ücretsiz Excel/Google E-Tablolar en verimlisidir. Orta ölçekte hazır bir stok programı (aylık abonelikli) hızlı çözümdür. Çok kanallı satış, çok depo veya özel üretim reçetesi varsa hazır programlar iş akışınıza tam oturmadığından özel yazılım daha düşük toplam maliyet sağlar. Yani 'en iyi', ölçeğinize ve kanal sayınıza göre değişir; hangisinin size uyduğunu birlikte netleştirebiliriz.",
+      },
+      {
+        q: "Sektöre özel (gıda, tekstil, mama, kozmetik) stok takip programı gerekir mi?",
+        a: "Hazır programlar genel kitleye göre tasarlanır; gıda ve mama gibi son kullanma tarihi (SKT) / parti (lot) takibi gerektiren, tekstilde beden-renk varyantı yoğun olan sektörlerde bu özellikler ya eksik kalır ya da ek modül olarak ücretlendirilir. Bu tür sektörel kurallar (SKT uyarısı, FIFO, parti bazlı geri çağırma, varyant matrisi) gerektiğinde özel geliştirilmiş bir stok yazılımı iş akışınıza birebir oturur.",
+      },
+      {
+        q: "Web tabanlı (bulut) stok takip programı mı, masaüstü mü?",
+        a: "Birden fazla şube, uzaktan erişim veya pazaryeri entegrasyonu gerekiyorsa web tabanlı (bulut) bir stok yazılımı doğru tercihtir: her yerden erişilir, otomatik yedeklenir ve e-ticaret sitenizle gerçek zamanlı senkron olur. Geliştirdiğimiz özel stok çözümleri web tabanlıdır; tarayıcıdan çalışır, kurulum gerektirmez.",
+      },
     ],
     cta: {
       text: "İşletmenize özel stok takip yazılımı ihtiyacınızı konuşalım",
@@ -2742,6 +2779,8 @@ export const rehberPosts: RehberPost[] = [
     },
     keywords: [
       "stok takip programı",
+      "en iyi stok takip programı",
+      "web stok takip programı",
       "ücretsiz stok takip programı",
       "excel stok takip programı",
       "depo stok programı",
@@ -2891,6 +2930,10 @@ export const rehberPosts: RehberPost[] = [
         q: "CRM web sitemizle entegre olabilir mi?",
         a: "Evet. Web sitenizdeki lead formları, iletişim talepleri ve e-posta yazışmaları doğrudan CRM'e bağlanabilir; her talep otomatik kaydedilir ve takip görevine dönüşür. Bu, manuel veri girişini ortadan kaldırır.",
       },
+      {
+        q: "Hazır CRM mi, özel CRM geliştirme mi?",
+        a: "Hazır CRM'ler hızlı başlar ve düşük aylık ücretle çekicidir; standart bir satış hunisi için yeterlidir. Ancak sizin sürecinize özgü aşamalar, özel alanlar, pazaryeri/ERP entegrasyonu veya kullanıcı başına biriken abonelik maliyeti devreye girdiğinde özel CRM geliştirme mantıklı hale gelir. Özel geliştirilen CRM iş akışınıza birebir oturur, sahibi sizsiniz ve kullanıcı başına ödeme yapmazsınız. Hangisinin size uygun olduğunu müşteri hacminiz ve süreç karmaşıklığınıza göre birlikte netleştirebiliriz.",
+      },
     ],
     cta: {
       text: "İşletmenize uygun CRM yaklaşımını birlikte değerlendirelim",
@@ -2901,6 +2944,7 @@ export const rehberPosts: RehberPost[] = [
     keywords: [
       "crm yazılımı",
       "crm programları",
+      "özel crm geliştirme",
       "müşteri takip programı",
       "özel crm yazılımı",
       "crm web sitesi entegrasyonu",
