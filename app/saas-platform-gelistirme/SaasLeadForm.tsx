@@ -3,37 +3,28 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
-import type { LeadPayload } from "@/lib/types/leads"
 import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
 import { useFunnelTracking } from "@/lib/useFunnelTracking"
 
 type FormState = "idle" | "sending" | "error"
 
-type FormData = Pick<LeadPayload, "firstName" | "email" | "companyName" | "productIdea" | "targetUser" | "fundingStage" | "budget" | "timeline" | "existingTech">
-
 const labelCls =
   "mb-2 block text-[0.775rem] font-bold uppercase tracking-wide text-ink-600"
 
+// Düşük sürtünmeli tek-adım form — AILeadForm kalıbı (form_start %19.6 ile en
+// sağlıklı funnel). Eski 9 alanlı / 7'si zorunlu versiyon (finansman durumu,
+// bütçe, süre…) 0 form_start üretti; üstelik bütçe seçenekleri ₺50.000'den
+// başlayıp sayfadaki "₺25.000'den başlayan" vaadiyle çelişiyordu. Proje tipi
+// çipleri EN ÜSTTE: kimlik bilgisi istemeden ilk etkileşimi alır.
 export default function SaasLeadForm() {
   const router = useRouter()
+  const { markStart, formRef } = useFunnelTracking("saas")
   const [state, setState] = useState<FormState>("idle")
   const [gclid, setGclid] = useState<string | null>(null)
   useEffect(() => { setGclid(getGclid()) }, [])
-  const [form, setForm] = useState<FormData>({
-    firstName: "",
-    email: "",
-    companyName: "",
-    productIdea: "",
-    targetUser: "",
-    fundingStage: "",
-    budget: "",
-    timeline: "",
-    existingTech: "",
-  })
+  const [form, setForm] = useState({ firstName: "", email: "", phone: "", projectType: "", productIdea: "" })
 
-  const { markStart, formRef } = useFunnelTracking("saas")
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     markStart()
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
@@ -59,117 +50,73 @@ export default function SaasLeadForm() {
     }
   }
 
-
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <div>
+        <label className={labelCls}>Ne geliştirmek istiyorsunuz?</label>
+        <div className="grid grid-cols-2 gap-2">
+          {[
+            { value: "SaaS ürünü (abonelikli)", label: "SaaS Ürünü" },
+            { value: "CRM / iç yönetim aracı", label: "CRM & İç Araç" },
+            { value: "Müşteri paneli / portal", label: "Müşteri Paneli" },
+            { value: "Web uygulaması", label: "Web Uygulaması" },
+            { value: "Emin değilim, konuşalım", label: "Emin değilim" },
+          ].map((opt) => (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => { markStart(); setForm((prev) => ({ ...prev, projectType: opt.value })) }}
+              className={`rounded-[8px] border px-3 py-3 text-left text-[0.8rem] font-semibold transition-colors ${
+                form.projectType === opt.value
+                  ? "border-accent-600 bg-accent-50 text-accent-700"
+                  : "border-ink-200 bg-white text-ink-700 hover:border-accent-300"
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="firstName" className={labelCls}>Adınız *</label>
           <input
             id="firstName" name="firstName" type="text" required
             value={form.firstName} onChange={handleChange}
-            placeholder="Ahmet" className="input"
+            placeholder="Ahmet"
+            className="input text-[16px]"
           />
         </div>
         <div>
-          <label htmlFor="email" className={labelCls}>E-posta *</label>
+          <label htmlFor="phone" className={labelCls}>Telefon (opsiyonel)</label>
           <input
-            id="email" name="email" type="email" required
-            value={form.email} onChange={handleChange}
-            placeholder="ahmet@firma.com" className="input"
+            id="phone" name="phone" type="tel"
+            value={form.phone} onChange={handleChange}
+            placeholder="Hızlı dönüş için"
+            className="input text-[16px]"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="companyName" className={labelCls}>Şirket / Startup Adı</label>
+        <label htmlFor="email" className={labelCls}>E-posta *</label>
         <input
-          id="companyName" name="companyName" type="text"
-          value={form.companyName} onChange={handleChange}
-          placeholder="Firma adı (opsiyonel)" className="input"
+          id="email" name="email" type="email" required
+          value={form.email} onChange={handleChange}
+          placeholder="ahmet@firma.com"
+          className="input text-[16px]"
         />
       </div>
 
       <div>
-        <label htmlFor="productIdea" className={labelCls}>SaaS ürün fikrinizi kısaca anlatın *</label>
+        <label htmlFor="productIdea" className={labelCls}>Projenizi kısaca anlatın (opsiyonel)</label>
         <textarea
-          id="productIdea" name="productIdea" required
-          rows={4}
+          id="productIdea" name="productIdea"
+          rows={3}
           value={form.productIdea} onChange={handleChange}
-          placeholder="Ör: KOBİler için muhasebe + fatura SaaS'ı, abonelik modeliyle…"
-          className="input min-h-[100px] resize-y"
-        />
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="targetUser" className={labelCls}>Hedef kullanıcı kitlesi? *</label>
-          <select
-            id="targetUser" name="targetUser" required
-            value={form.targetUser} onChange={handleChange}
-            className="input cursor-pointer"
-          >
-            <option value="">Seçin</option>
-            <option value="B2B (işletmeler)">B2B (işletmeler)</option>
-            <option value="B2C (bireyler)">B2C (bireyler)</option>
-            <option value="Her ikisi">Her ikisi</option>
-            <option value="Henüz karar vermedim">Henüz karar vermedim</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="fundingStage" className={labelCls}>Finansman durumu? *</label>
-          <select
-            id="fundingStage" name="fundingStage" required
-            value={form.fundingStage} onChange={handleChange}
-            className="input cursor-pointer"
-          >
-            <option value="">Seçin</option>
-            <option value="Kendi kaynağımla">Kendi kaynağımla</option>
-            <option value="Angel yatırım aldım">Angel yatırım aldım</option>
-            <option value="VC destekli">VC destekli</option>
-            <option value="Kurumsal iç proje">Kurumsal iç proje</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="budget" className={labelCls}>Proje bütçesi? *</label>
-          <select
-            id="budget" name="budget" required
-            value={form.budget} onChange={handleChange}
-            className="input cursor-pointer"
-          >
-            <option value="">Seçin</option>
-            <option value="₺50.000–₺150.000">₺50.000–₺150.000</option>
-            <option value="₺150.000–₺300.000">₺150.000–₺300.000</option>
-            <option value="₺300.000+">₺300.000+</option>
-            <option value="Konuşmaya açığım">Konuşmaya açığım</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="timeline" className={labelCls}>MVP için hedef süre? *</label>
-          <select
-            id="timeline" name="timeline" required
-            value={form.timeline} onChange={handleChange}
-            className="input cursor-pointer"
-          >
-            <option value="">Seçin</option>
-            <option value="1-2 ay">1-2 ay</option>
-            <option value="2-4 ay">2-4 ay</option>
-            <option value="4-6 ay">4-6 ay</option>
-            <option value="Esnek">Esnek</option>
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <label htmlFor="existingTech" className={labelCls}>Mevcut teknik altyapı / kod tabanı var mı?</label>
-        <input
-          id="existingTech" name="existingTech" type="text"
-          value={form.existingTech} onChange={handleChange}
-          placeholder="Ör: Yok / React prototipi var / Başka ekip yazdı"
-          className="input"
+          placeholder="Ör: Sahadaki ekibimizin iş takibi için panel / KOBİ'lere abonelikli muhasebe SaaS'ı…"
+          className="input min-h-[80px] resize-y"
         />
       </div>
 
@@ -183,14 +130,14 @@ export default function SaasLeadForm() {
       <button
         type="submit"
         disabled={state === "sending"}
-        className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-80"
+        className="btn btn-primary w-full text-base disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {state === "sending" ? "Gönderiliyor…" : "SaaS Proje Teklifi Al"}
-        {state !== "sending" && <ArrowRight size={16} />}
+        {state === "sending" ? "Gönderiliyor…" : "Sabit Fiyat Teklifi Al"}
+        {state !== "sending" && <ArrowRight size={18} />}
       </button>
 
       <p className="text-center text-[0.72rem] text-ink-400">
-        Bilgileriniz üçüncü taraflarla paylaşılmaz. 24 saat içinde dönüş yapılır.
+        Bilgileriniz üçüncü taraflarla paylaşılmaz · 24 saat içinde dönüş yapılır
       </p>
     </form>
   )

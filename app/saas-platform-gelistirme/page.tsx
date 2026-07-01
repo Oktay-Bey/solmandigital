@@ -8,9 +8,9 @@ import RelatedGuides from "@/components/RelatedGuides"
 import WhatsAppLink from "@/components/WhatsAppLink"
 
 export const metadata: Metadata = {
-  title: "SaaS Platform Geliştirme Türkiye — MVP'den Ürüne | Solman Digital",
+  title: "SaaS Platform & Web Uygulama Geliştirme — 4-8 Haftada MVP | Solman Digital",
   description:
-    "Next.js, Supabase ve Stripe ile SaaS uygulamanızı geliştirelim. Multi-tenant mimari, abonelik sistemi, kullanıcı yönetimi. İstanbul merkezli, global standart. 4-8 haftada MVP.",
+    "SaaS ürünü, CRM, müşteri paneli veya işinize özel web uygulaması — Next.js, Supabase ve Stripe ile geliştirelim. ₺25.000'den sabit fiyat, kaynak kodu sizin. 4-8 haftada MVP.",
   keywords: [
     "saas platform geliştirme",
     "saas yazılım geliştirme türkiye",
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: `${siteConfig.url}/saas-platform-gelistirme` },
   openGraph: {
-    title: "SaaS Platform Geliştirme Türkiye — MVP'den Ürüne | Solman Digital",
-    description: "Next.js, Supabase ve Stripe ile SaaS platformu. 4-8 haftada MVP, multi-tenant, abonelik sistemi.",
+    title: "SaaS Platform & Web Uygulama Geliştirme — 4-8 Haftada MVP | Solman Digital",
+    description: "SaaS ürünü, CRM, panel veya web uygulaması. ₺25.000'den sabit fiyat, 4-8 haftada MVP, kaynak kodu sizin.",
     url: `${siteConfig.url}/saas-platform-gelistirme`,
     siteName: siteConfig.name,
     locale: "tr_TR",
@@ -119,23 +119,23 @@ export default function SaasPlatformGelistirmePage() {
         <div className="mx-auto max-w-[760px] text-center">
           <Reveal>
             <p className="mb-6 inline-block rounded border border-accent-900 px-3 py-[0.3rem] text-[0.7rem] font-bold uppercase tracking-[0.12em] text-accent-700">
-              Multi-Tenant · Auth · Abonelik · Dashboard
+              SaaS · CRM · Panel · Web Uygulaması
             </p>
           </Reveal>
           <Reveal delay={100}>
             <h1 className="mb-5 text-[clamp(1.75rem,5vw,2.75rem)] font-black leading-[1.15] tracking-[-0.03em] text-white">
-              SaaS Fikrinizi Ürüne Dönüştürün — 4-8 Haftada MVP
+              İşinize Özel Web Uygulaması — 4-8 Haftada Canlıda
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="mx-auto mb-10 max-w-[580px] text-[1.05rem] leading-[1.75] text-ondark-muted">
-              SaaS platform ve web uygulama geliştirme: aylarca süren geliştirme yerine hazır altyapıyla pazara erken çıkın. Auth, billing, multi-tenant — hepsi hazır.
+              Abonelikli SaaS ürünü, müşteri paneli, CRM veya iş süreci uygulaması — hazır altyapı modülleriyle (auth, ödeme, dashboard) aylar değil haftalar içinde kullanıma alın.
             </p>
           </Reveal>
           <Reveal delay={300}>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <a href="#form" className="btn btn-primary">
-                SaaS Proje Teklifi Al <ArrowRight size={16} />
+                Sabit Fiyat Teklifi Al <ArrowRight size={16} />
               </a>
               <WhatsAppLink
                 message="Merhaba, SaaS platform geliştirmek istiyorum, bilgi almak istiyorum."
@@ -294,10 +294,10 @@ export default function SaasPlatformGelistirmePage() {
           <Reveal>
             <p className="eyebrow mb-3">Proje Teklifi</p>
             <h2 className="mb-3 text-[clamp(1.5rem,3vw,1.875rem)] font-extrabold tracking-[-0.02em] text-ink-900">
-              SaaS Projenizi Anlatalım
+              Projenizi Anlatalım
             </h2>
             <p className="mb-8 text-[0.9rem] leading-[1.7] text-ink-500">
-              Fikrinizi ve hedeflerinizi paylaşın, 24 saat içinde teknik fizibilite ve fiyat teklifi gönderelim.
+              Ne geliştirmek istediğinizi seçin, iletişim bilginizi bırakın — 24 saat içinde teknik fizibilite ve sabit fiyat teklifi gönderelim.
             </p>
           </Reveal>
           <div className="rounded-[12px] border border-ink-200 bg-white p-10">

@@ -51,25 +51,8 @@ export default function AILeadFormEn() {
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div>
-        <label htmlFor="firstName" className={labelCls}>Your Name *</label>
-        <input
-          id="firstName" name="firstName" type="text" required
-          value={form.firstName} onChange={handleChange}
-          placeholder="Jane Smith"
-          className="input text-[16px]"
-        />
-      </div>
-      <div>
-        <label htmlFor="email" className={labelCls}>Email *</label>
-        <input
-          id="email" name="email" type="email" required
-          value={form.email} onChange={handleChange}
-          placeholder="jane@company.com"
-          className="input text-[16px]"
-        />
-      </div>
-
+      {/* Use-case chips FIRST — lowest-friction entry point; cold traffic starts
+          the form without giving identity (TR form: %19.6 form_start vs EN %4.8). */}
       <div>
         <label className={labelCls}>Where do you want to use AI?</label>
         <div className="grid grid-cols-2 gap-2">
@@ -93,6 +76,25 @@ export default function AILeadFormEn() {
             </button>
           ))}
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="firstName" className={labelCls}>Your Name *</label>
+        <input
+          id="firstName" name="firstName" type="text" required
+          value={form.firstName} onChange={handleChange}
+          placeholder="Jane Smith"
+          className="input text-[16px]"
+        />
+      </div>
+      <div>
+        <label htmlFor="email" className={labelCls}>Email *</label>
+        <input
+          id="email" name="email" type="email" required
+          value={form.email} onChange={handleChange}
+          placeholder="jane@company.com"
+          className="input text-[16px]"
+        />
       </div>
 
       {state === "error" && (
