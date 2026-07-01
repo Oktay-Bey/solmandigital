@@ -1,7 +1,7 @@
 // Brevo API ile doğrudan toplu mail gönderimi (lokalde çalışır, IP sorunu yok)
 // Kullanım: node scripts/email-push.mjs <leads.json>
 
-import { readFileSync } from "node:fs"
+import { readFileSync, writeFileSync, existsSync } from "node:fs"
 
 const file = process.argv[2]
 if (!file) { console.error("Kullanım: node scripts/email-push.mjs <leads.json>"); process.exit(1) }
@@ -50,6 +50,7 @@ async function sendOne(msg) {
 }
 
 let sent = 0, failed = 0
+const sentNow = []
 
 for (let i = 0; i < messages.length; i += CONCURRENCY) {
   const chunk = messages.slice(i, i + CONCURRENCY)
@@ -58,6 +59,7 @@ for (let i = 0; i < messages.length; i += CONCURRENCY) {
     const r = results[j]
     if (r.status === "fulfilled") {
       sent++
+      sentNow.push(chunk[j].to.toLowerCase())
       console.log(`  ✓ [${sent}/${messages.length}] ${chunk[j].to}`)
     } else {
       failed++
@@ -67,4 +69,12 @@ for (let i = 0; i < messages.length; i += CONCURRENCY) {
   if (i + CONCURRENCY < messages.length) await new Promise(r => setTimeout(r, DELAY_MS))
 }
 
+// Başarılı gönderilen adresleri kalıcı kayda ekle (tekrar gönderimi önler)
+const sentPath = new URL("./sent-emails.json", import.meta.url)
+const prev = existsSync(sentPath)
+  ? JSON.parse(readFileSync(sentPath, "utf8").replace(/^﻿/, ""))
+  : []
+const merged = [...new Set([...prev.map(e => e.toLowerCase()), ...sentNow])].sort()
+writeFileSync(sentPath, JSON.stringify(merged, null, 2), "utf8")
 console.log(`\nTamamlandı. Gönderilen: ${sent} | Hatalı: ${failed}`)
+console.log(`sent-emails.json güncellendi → toplam ${merged.length} adres (+${merged.length - prev.length} yeni)`)

@@ -14,6 +14,7 @@
 | Preview scriptleri | `scripts/preview-batch-N.mjs` | **Temsilî 10 örneği** tek emailde `solmanoktay@gmail.com`'a gönderir, onay beklenir (tüm batch değil — 2026-06-17 kuralı) |
 | Push endpoint | `app/api/email/push/route.ts` | Bearer-auth toplu gönderim (artık kullanılmıyor — lokal script daha güvenilir) |
 | Suppress listesi | `scripts/suppress-list.json` | Bounce/unsubscribe adresleri — her batch üretiminde filtrelenir |
+| Gönderilenler kaydı | `scripts/sent-emails.json` | Daha önce gönderilmiş TÜM adresler — `email-push.mjs` her gönderimde otomatik ekler; batch builder bunu filtreler → aynı adrese asla 2. kez gitmez |
 | US lead havuzu | `scripts/us-leads-100.json` | 104 US ajansı — batch 12'nin kaynağı |
 
 ### Teknik Notlar
@@ -129,7 +130,10 @@ node scripts/email-push.mjs scripts/leads-batch-N.json
 | 21 | İstanbul yerel/butik diş klinikleri — fayda odaklı şablon (TR) | 14 | dis-klinik-1 | 2026-06-17 |
 | 22 | İstanbul bağımsız butik oteller — direkt rezervasyon açısı (TR) | 21 | otel-istanbul-1 | 2026-06-17 |
 | 23 | **İKİNCİ MAIL** — ilk white-label mailini açan/tıklayan ajanslar (EN) | 89 | eu-whitelabel-followup-1 | 2026-06-17 |
-| **TOPLAM** | | **939** | | |
+| 24 | İstanbul sağlık & estetik klinikleri — AI otomasyon, fiyat-mailde şablon (TR) | 15 | ai-saglik-istanbul-1 | 2026-06-28 |
+| 25 | İstanbul sağlık & estetik klinikleri 2. parti — fiyat-mailde şablon (TR) | 29 | ai-saglik-istanbul-1 | 2026-06-28 |
+| 26 | İstanbul sağlık/psikolog/kurum — web-kazıma + MX-doğrulama, tipe göre uyarlı (TR) | 34 | ai-saglik-istanbul-1 | 2026-06-28 |
+| **TOPLAM** | | **1017** | | |
 
 ---
 

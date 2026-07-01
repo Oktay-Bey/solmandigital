@@ -25,15 +25,25 @@ type ReceivingEmail = {
 // Resend inbound webhook (email.received) SADECE metadata gönderir —
 // gövde (text/html) ve ekler payload'da yoktur. Bunlar email_id ile
 // GET /emails/receiving/{id} çağrısıyla ayrıca çekilir.
-async function fetchReceivedEmail(emailId: string): Promise<ReceivingEmail | null> {
-  const res = await fetch(`${RESEND_API}/emails/receiving/${emailId}`, {
-    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}` },
-  })
-  if (!res.ok) {
-    console.error("[inbound] içerik çekilemedi", emailId, res.status, await res.text())
-    return null
+//
+// DİKKAT: Webhook, Resend gövdeyi (text/html) parse edip kaydetmeden ÖNCE
+// tetiklenebilir; o an endpoint boş text/html döner ve bildirim "Mesaj
+// içeriği boş." çıkar. Bu yüzden gövde gelene kadar artan aralıkla retry edilir.
+async function fetchReceivedEmail(emailId: string, tries = 4): Promise<ReceivingEmail | null> {
+  for (let i = 0; i < tries; i++) {
+    const res = await fetch(`${RESEND_API}/emails/receiving/${emailId}`, {
+      headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}` },
+    })
+    if (!res.ok) {
+      console.error("[inbound] içerik çekilemedi", emailId, res.status, await res.text())
+      return null
+    }
+    const data: ReceivingEmail = await res.json()
+    // Gövde geldiyse (veya son deneme) döndür; aksi halde bekleyip tekrar dene.
+    if (data.text?.trim() || data.html?.trim() || i === tries - 1) return data
+    await new Promise((r) => setTimeout(r, 1500 * (i + 1))) // 1.5s → 3s → 4.5s
   }
-  return res.json()
+  return null
 }
 
 // Eklerin imzalı download_url'i kısa ömürlüdür (≈2 saat). Bildirim mailinde
