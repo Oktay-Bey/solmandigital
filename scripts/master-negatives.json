@@ -1,0 +1,59 @@
+{
+  "_note": "PROAKTİF master negatif şablonu. Geçmiş sızıntı verisinden çıkarılan KATEGORİK kök tuzaklar — gelecekteki öngörülemeyen alakasız aramaları da yakalar. PHRASE match (yakın-varyasyon sapmasını da kapsar). 'tr' seti Türkçe kampanyalara, 'en' seti İngilizce kampanyalara, 'universal' her ikisine. createFullCampaign'in negativeKeywords'üne EK olarak, mevcut kampanyalara da uygulanır. Yanlış-pozitif riski olan kökler (salt 'software','app') KASITLI dışarıda — onlar meşru keyword'lere çakışır; bunun yerine birlikte-gelen tuzak ifadeler (örn 'software developer maaş' değil ama 'maaş','iş ilanı' köklerini ayrı yakalıyoruz).",
+
+  "universal": [
+    "nedir", "ne demek", "nasıl yapılır", "nasil yapilir", "nasıl kullanılır",
+    "nasıl yapılır", "ne işe yarar", "farkı nedir",
+    "what is", "how to", "meaning", "definition", "difference between",
+    "tutorial", "tutorials", "ders", "dersi", "kursu", "course", "courses",
+    "ödev", "odev", "sınav", "sinav", "konu anlatımı", "konu anlatimi",
+    "ders kitabı", "ders kitabi", "müfredat", "mufredat", "sınıf", "11 sınıf", "12 sınıf",
+    "pdf", "ppt", "sunum", "örnekleri", "ornekleri", "examples", "ideas", "örnek proje",
+    "ücretsiz", "ucretsiz", "bedava", "free", "açık kaynak", "acik kaynak", "open source",
+    "indir", "download", "crack", "nulled", "apk",
+    "iş ilanı", "is ilani", "iş ilanları", "is ilanlari", "eleman", "eleman aranıyor",
+    "iş arıyorum", "is ariyorum", "iş başvurusu", "is basvurusu", "cv", "özgeçmiş", "ozgecmis",
+    "maaş", "maas", "salary", "kariyer", "career", "careers", "jobs", "job", "hiring",
+    "vacancy", "internship", "intern", "staj", "stajyer", "junior", "freelance iş",
+    "ne kadar maaş", "kaç para kazanır",
+    "soru çözümü", "soru çözümü için", "soru çözen", "soru çöz", "ödev yapan", "homework solver"
+  ],
+
+  "tr": [
+    "emlak", "emlakçı", "emlakci", "gayrimenkul", "otel", "kuyumcu", "restoran menü",
+    "kuaför", "kuafor", "berber", "nakliyat", "oto kiralama", "düğün", "dugun",
+    "yapay zekaya web sitesi yaptırmak", "web sitesi yapan yapay zeka",
+    "site yapan yapay zeka", "yapay zeka ile web sitesi",
+    "hazır site", "hazir site", "hazır tema", "hazir tema", "wordpress tema", "şablon", "sablon",
+    "hosting", "domain", "logo tasarımı", "logo tasarimi", "sosyal medya yönetimi",
+    "dijital pazarlama ajansı", "dijital pazarlama ajansi", "reklam ajansı",
+    "wix", "webflow", "webnode", "google site kurma", "blogger",
+    "stok takip programı", "muhasebe programı", "ön muhasebe",
+    "micro saas", "mikro saas", "saas nedir", "crm nedir", "crm sistemi nasıl",
+    "restoran web sitesi", "restoran sitesi", "kobidirekt", "rnd yazılım",
+    "google flow ai", "ai productivity", "ai business advertising", "sales ads ai"
+  ],
+
+  "en": [
+    "real estate", "hotel website", "restaurant menu", "jewelry", "moving company",
+    "car rental", "wedding website",
+    "customer success software", "saas ai", "machine learning saas", "saas industry",
+    "saas market", "saas charges", "saas access control", "saas and iaas", "saas ppt",
+    "saas application", "micro saas", "buy saas", "saas starter kit", "saasykit",
+    "ai chatbot", "ai chat", "chatbot online", "open ai", "openai", "chatgpt", "chat gpt",
+    "chat gtp", "ai chat online", "ai tools", "ai for business", "ai productivity",
+    "ai automation companies", "ai solution providers", "ai solutions companies",
+    "ai agentic workflows", "best ai", "ai tools for business",
+    "providers", "companies", "solutions for", "best ", "top 10", "review", "comparison",
+    "alternatives", "vs", "pricing", "cheap", "outsourcing",
+    "axure", "figma", "canva", "wix", "webflow", "shopify app", "no code", "nocode",
+    "software engineer", "sdet", "sdlc", "agile", "scrum", "agile manifesto", "waterfall",
+    "wordpress theme", "template", "templates", "plugin", "course", "bootcamp",
+    "health and wellness", "wellness",
+    "iot development", "iot app development", "junior web developer", "junior developer", "software developer",
+    "ai business solutions", "ai for business solutions", "website and brand",
+    "how to build", "marketplace platform",
+    "in usa", "development services company", "solutions company",
+    "automation tools", "powered by", "web design contractor", "designer and developer"
+  ]
+}

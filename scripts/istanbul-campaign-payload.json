@@ -1,0 +1,122 @@
+{
+  "campaignName": "Solman Digital — İstanbul Yerel 2026",
+  "dailyBudgetTL": 70,
+  "geoTargetConstantIds": [21069],
+  "negativeKeywords": [
+    "ücretsiz", "bedava", "freelancer", "eleman", "iş ilanı", "iş ilanları",
+    "maaş", "kurs", "eğitim", "nasıl yapılır", "ne demek", "indir", "şablon",
+    "wordpress tema", "ücretsiz site", "staj", "hosting", "domain", "öğren",
+    "örnekleri", "nedir"
+  ],
+  "adGroups": [
+    {
+      "name": "İstanbul Web Tasarım & Kurumsal",
+      "targetUrl": "https://solmandigital.com.tr/istanbul-web-tasarim",
+      "cpcBidMicros": 12500000,
+      "headlines": [
+        "İstanbul Web Tasarım",
+        "İstanbul Kurumsal Web Sitesi",
+        "Web Sitesi Yaptırma",
+        "Doğrudan Uzman Erişimi",
+        "Şablonsuz, Özel Tasarım",
+        "Hızlı ve SEO Uyumlu Site",
+        "Mobil Öncelikli Web Sitesi",
+        "5-10 İş Gününde Teslim",
+        "Net Fiyat, Sürpriz Yok",
+        "Katmansız İletişim",
+        "90+ PageSpeed Skoru",
+        "İstanbul Yazılım Ofisi"
+      ],
+      "descriptions": [
+        "Solman Digital olarak İstanbul işletmeleri için hızlı, SEO uyumlu web siteleri kuruyoruz.",
+        "Şablon yok, gecikme yok. Projeyi anlatan değil, yapan uzmanla doğrudan konuşursunuz.",
+        "Next.js altyapısı, tam mobil uyum, teknik SEO. 5-10 iş gününde garantili teslim.",
+        "Şeffaf fiyat, katmansız iletişim. İstanbul merkezli yazılım ofisi."
+      ],
+      "keywords": [
+        { "text": "istanbul web tasarım", "matchType": "PHRASE" },
+        { "text": "istanbul web sitesi yaptırma", "matchType": "PHRASE" },
+        { "text": "istanbul web tasarım firması", "matchType": "PHRASE" },
+        { "text": "istanbul web geliştirme", "matchType": "PHRASE" },
+        { "text": "istanbul kurumsal web sitesi", "matchType": "PHRASE" },
+        { "text": "profesyonel web sitesi istanbul", "matchType": "PHRASE" },
+        { "text": "istanbul mobil uyumlu web sitesi", "matchType": "PHRASE" },
+        { "text": "istanbul şirket web sitesi", "matchType": "PHRASE" },
+        { "text": "istanbul kurumsal web tasarım", "matchType": "PHRASE" },
+        { "text": "istanbul web sitesi yaptırma fiyat", "matchType": "PHRASE" },
+        { "text": "istanbul next.js geliştirici", "matchType": "PHRASE" },
+        { "text": "istanbul seo uyumlu web sitesi", "matchType": "PHRASE" }
+      ]
+    },
+    {
+      "name": "İstanbul E-Ticaret & Trendyol",
+      "targetUrl": "https://solmandigital.com.tr/istanbul-e-ticaret-yazilim",
+      "cpcBidMicros": 12500000,
+      "headlines": [
+        "İstanbul E-Ticaret Yazılım",
+        "Online Mağaza Kurulumu",
+        "Trendyol Entegrasyonu",
+        "Pazaryeri Entegrasyonu",
+        "E-Ticaret Sitesi Kurulum",
+        "İyzico Ödeme Entegrasyonu",
+        "Stok Senkronizasyonu",
+        "Çift Kanal Yönetimi",
+        "Doğrudan Uzman Erişimi",
+        "Ölçeklenebilir Mağaza",
+        "Ürün Yönetim Sistemi",
+        "Katmansız İletişim"
+      ],
+      "descriptions": [
+        "Solman Digital olarak İstanbul işletmeleri için e-ticaret altyapısını kuruyoruz.",
+        "Trendyol/Hepsiburada entegrasyonu, sipariş senkronizasyonu, ürün listeleme otomasyonu.",
+        "İyzico ve Stripe ödeme entegrasyonu. Next.js ile hızlı, ölçeklenebilir online mağaza.",
+        "Sıfırdan kurulum veya mevcut altyapıda geliştirme. Net fiyat, doğrudan uzman."
+      ],
+      "keywords": [
+        { "text": "istanbul e-ticaret yazılım", "matchType": "PHRASE" },
+        { "text": "istanbul online mağaza kurulum", "matchType": "PHRASE" },
+        { "text": "istanbul trendyol entegrasyonu", "matchType": "PHRASE" },
+        { "text": "istanbul e-ticaret sitesi", "matchType": "PHRASE" },
+        { "text": "istanbul e-ticaret geliştirici", "matchType": "PHRASE" },
+        { "text": "istanbul pazaryeri entegrasyonu", "matchType": "PHRASE" },
+        { "text": "istanbul ürün yönetim sistemi", "matchType": "PHRASE" },
+        { "text": "istanbul next.js e-ticaret", "matchType": "PHRASE" },
+        { "text": "istanbul ödeme sistemi entegrasyonu", "matchType": "PHRASE" }
+      ]
+    },
+    {
+      "name": "İstanbul AI Otomasyon & SaaS",
+      "targetUrl": "https://solmandigital.com.tr/ai-otomasyon-hizmeti",
+      "cpcBidMicros": 12500000,
+      "headlines": [
+        "İstanbul AI Otomasyon",
+        "Yapay Zeka İş Otomasyonu",
+        "SaaS Platform Geliştirme",
+        "İş Süreci Otomasyonu",
+        "3 Haftada Canlıya",
+        "MVP Geliştirme",
+        "Tekrarlayan İşi Otomatize Edin",
+        "Doğrudan Uzman Erişimi",
+        "Özel Yazılım Çözümü",
+        "Katmansız İletişim",
+        "İstanbul Yazılım Ofisi"
+      ],
+      "descriptions": [
+        "Solman Digital olarak tekrarlayan iş yükünüzü AI ile otomatize ediyoruz.",
+        "SaaS fikrinizi ürüne dönüştürüyoruz. 4-8 haftada çalışan MVP, doğrudan uzmanla.",
+        "İş süreçlerinize özel AI ve otomasyon çözümleri. Şeffaf fiyat, katmansız iletişim.",
+        "İstanbul merkezli yazılım ofisi. Projeyi yapan uzmanla başından sonuna çalışırsınız."
+      ],
+      "keywords": [
+        { "text": "istanbul yapay zeka otomasyon", "matchType": "PHRASE" },
+        { "text": "istanbul ai otomasyon", "matchType": "PHRASE" },
+        { "text": "istanbul iş otomasyonu", "matchType": "PHRASE" },
+        { "text": "istanbul süreç otomasyonu", "matchType": "PHRASE" },
+        { "text": "istanbul saas geliştirme", "matchType": "PHRASE" },
+        { "text": "istanbul saas platform", "matchType": "PHRASE" },
+        { "text": "istanbul mvp geliştirme", "matchType": "PHRASE" },
+        { "text": "istanbul özel yazılım", "matchType": "PHRASE" }
+      ]
+    }
+  ]
+}

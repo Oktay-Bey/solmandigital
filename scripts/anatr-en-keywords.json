@@ -1,0 +1,16 @@
+{
+  "_note": "Ana TR (ulusal+İstanbul) — sadece yüksek-niyetli EN, EXACT. AI Automation EN ad group (→ /en/ai-automation-service, İngilizce sayfa, en iyi performer). EXACT seçildi çünkü kampanyada İngilizce/bilgi-amaçlı sızıntı geçmişi var.",
+  "campaignId": "23914856579",
+  "adGroupId": "195708928285",
+  "adGroupName": "AI Automation EN",
+  "keywords": [
+    { "text": "software developer", "matchType": "EXACT" },
+    { "text": "custom software development", "matchType": "EXACT" },
+    { "text": "software development company", "matchType": "EXACT" },
+    { "text": "ai automation", "matchType": "EXACT" },
+    { "text": "ai automation agency", "matchType": "EXACT" },
+    { "text": "saas development", "matchType": "EXACT" },
+    { "text": "custom software", "matchType": "EXACT" },
+    { "text": "business process automation", "matchType": "EXACT" }
+  ]
+}

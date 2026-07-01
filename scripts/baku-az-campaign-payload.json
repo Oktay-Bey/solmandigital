@@ -1,0 +1,93 @@
+{
+  "_note": "Bakü (Azerbaycan) EN test kampanyası. Geo: Baku 1000998, PRESENCE-only (kurulumdan sonra). Dil: EN 1000 (PATCH ile). SIKI keyword: BROAD YOK, EXACT+PHRASE. KW Planner (geo 1000998/EN): web/mobil dev yüksek hacim+LOW rekabet; AI/crm/chatbot DIY tuzağı → negatif. Macedonia EN yapısı uyarlaması.",
+  "campaignName": "Solman Digital — Baku AZ EN 2026",
+  "dailyBudgetTL": 80,
+  "geoTargetConstantIds": [1000998],
+  "negativeKeywords": [
+    "agile", "scrum", "sdlc", "agile manifesto", "manifesto for agile software development",
+    "agile system development", "adaptive software development", "waterfall",
+    "software engineer", "software engineering", "back end developer", "front end developer",
+    "developer salary", "developer jobs", "developer cv", "developer resume",
+    "jobs", "job", "career", "careers", "hiring", "vacancy", "internship", "intern", "salary",
+    "course", "courses", "tutorial", "learn", "training", "certification", "bootcamp", "how to",
+    "free", "template", "templates", "builder", "wix", "wordpress theme", "no code", "nocode",
+    "crm", "crm software", "free crm", "best crm", "ai chatbot", "ai chat", "chat bot", "chatbot online",
+    "open ai", "openai", "chatgpt", "chat gpt", "chat gtp", "online chat with ai", "ai chat online",
+    "artificial intelligence chat", "ai tools", "what is", "meaning", "examples", "ideas",
+    "hosting", "domain", "logo", "social media", "digital marketing agency",
+    "ionic", "ionic software", "portfolio website", "portfolio websites"
+  ],
+  "adGroups": [
+    {
+      "name": "Web & Software Development — EN",
+      "targetUrl": "https://solmandigital.com.tr/en/web-design",
+      "cpcBidMicros": 14000000,
+      "headlines": [
+        "Baku Web Development",
+        "Website Development Baku",
+        "Custom Software Development",
+        "Web & App Development",
+        "Direct Expert Access",
+        "No Templates, Built to Order",
+        "Fast, SEO-Ready Websites",
+        "Delivered in 5-10 Days",
+        "Fixed Price, No Surprises",
+        "Next.js & React Experts",
+        "Mobile App Development",
+        "Modern Software, Built Right"
+      ],
+      "descriptions": [
+        "Solman Digital builds fast, modern websites and software for businesses in Baku.",
+        "No templates, no delays. You talk directly to the expert who builds your project.",
+        "Next.js stack, full mobile support, technical SEO. Delivered in 5-10 business days.",
+        "Custom web and mobile development. Fixed price, direct expert access, no agency layers."
+      ],
+      "keywords": [
+        { "text": "website development", "matchType": "EXACT" },
+        { "text": "web development", "matchType": "EXACT" },
+        { "text": "web design", "matchType": "EXACT" },
+        { "text": "website design", "matchType": "EXACT" },
+        { "text": "web developer", "matchType": "EXACT" },
+        { "text": "mobile app development", "matchType": "PHRASE" },
+        { "text": "mobile applications development", "matchType": "PHRASE" },
+        { "text": "custom website development", "matchType": "PHRASE" },
+        { "text": "next.js developer", "matchType": "PHRASE" },
+        { "text": "react developer", "matchType": "PHRASE" },
+        { "text": "ui ux design", "matchType": "PHRASE" }
+      ]
+    },
+    {
+      "name": "Custom Software & Automation — EN",
+      "targetUrl": "https://solmandigital.com.tr/en/ai-automation-service",
+      "cpcBidMicros": 14000000,
+      "headlines": [
+        "Baku Custom Software",
+        "Custom Software Development",
+        "Business Process Automation",
+        "Software Built for You",
+        "Direct Expert Access",
+        "Automate Repetitive Work",
+        "MVP Development",
+        "SaaS Development",
+        "Fixed Price, Clear Process",
+        "No Agency Layers",
+        "AI & Automation Solutions",
+        "Istanbul Software Office"
+      ],
+      "descriptions": [
+        "Solman Digital builds custom software and automation for businesses in Baku.",
+        "Not a template — a solution built for your business. Direct access to the builder.",
+        "Automate repetitive workflows, free your team for high-value work. Fixed price.",
+        "Custom software, MVP and SaaS development. Direct expert access, no agency layers."
+      ],
+      "keywords": [
+        { "text": "custom software development", "matchType": "EXACT" },
+        { "text": "software development company", "matchType": "EXACT" },
+        { "text": "software development services", "matchType": "PHRASE" },
+        { "text": "business process automation", "matchType": "PHRASE" },
+        { "text": "mvp development", "matchType": "PHRASE" },
+        { "text": "saas development", "matchType": "PHRASE" }
+      ]
+    }
+  ]
+}

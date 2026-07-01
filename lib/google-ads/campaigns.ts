@@ -70,7 +70,7 @@ export interface FullCampaignInput {
   adGroups?: AdGroupInput[];
   negativeKeywords?: string[];
   // geoTargetConstantIds: Google Ads geo target constant ID'leri
-  // İstanbul = 1012867, Türkiye = 2792
+  // İstanbul = 21069 (TR/Province), Türkiye = 2792. DİKKAT: 1012867 İstanbul DEĞİL — Kherson/Ukrayna'dır.
   geoTargetConstantIds?: number[];
   startDate?: string; // YYYYMMDD
   endDate?: string;

@@ -1,0 +1,53 @@
+{
+  "_note": "İstanbul kampanyası PRESENCE-only (sadece İstanbul'dakiler) → geo-suz keyword güvenli. Hepsi PHRASE.",
+  "campaignId": "23955887164",
+  "adGroups": {
+    "197797703259": {
+      "name": "İstanbul Web Tasarım & Kurumsal",
+      "keywords": [
+        { "text": "web tasarım", "matchType": "PHRASE" },
+        { "text": "web sitesi yaptırma", "matchType": "PHRASE" },
+        { "text": "kurumsal web sitesi", "matchType": "PHRASE" },
+        { "text": "web tasarım firması", "matchType": "PHRASE" },
+        { "text": "profesyonel web sitesi", "matchType": "PHRASE" },
+        { "text": "next js geliştirici", "matchType": "PHRASE" },
+        { "text": "next.js developer", "matchType": "PHRASE" },
+        { "text": "react geliştirici", "matchType": "PHRASE" },
+        { "text": "frontend developer", "matchType": "PHRASE" },
+        { "text": "web developer", "matchType": "PHRASE" },
+        { "text": "web design", "matchType": "PHRASE" },
+        { "text": "website development", "matchType": "PHRASE" }
+      ]
+    },
+    "197797720699": {
+      "name": "İstanbul E-Ticaret & Trendyol",
+      "keywords": [
+        { "text": "e-ticaret yazılım", "matchType": "PHRASE" },
+        { "text": "online mağaza kurulum", "matchType": "PHRASE" },
+        { "text": "trendyol entegrasyonu", "matchType": "PHRASE" },
+        { "text": "e-ticaret sitesi", "matchType": "PHRASE" },
+        { "text": "e-ticaret geliştirici", "matchType": "PHRASE" },
+        { "text": "ecommerce developer", "matchType": "PHRASE" },
+        { "text": "ecommerce website", "matchType": "PHRASE" },
+        { "text": "online store development", "matchType": "PHRASE" },
+        { "text": "shopify developer", "matchType": "PHRASE" }
+      ]
+    },
+    "197797730299": {
+      "name": "İstanbul AI Otomasyon & SaaS",
+      "keywords": [
+        { "text": "yapay zeka otomasyon", "matchType": "PHRASE" },
+        { "text": "iş otomasyonu", "matchType": "PHRASE" },
+        { "text": "süreç otomasyonu", "matchType": "PHRASE" },
+        { "text": "saas geliştirme", "matchType": "PHRASE" },
+        { "text": "mvp geliştirme", "matchType": "PHRASE" },
+        { "text": "özel yazılım", "matchType": "PHRASE" },
+        { "text": "software developer", "matchType": "PHRASE" },
+        { "text": "custom software development", "matchType": "PHRASE" },
+        { "text": "ai automation", "matchType": "PHRASE" },
+        { "text": "saas development", "matchType": "PHRASE" },
+        { "text": "software development company", "matchType": "PHRASE" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "_note": "Şişli·Beşiktaş·Beyoğlu hiper-lokal kampanya. PRESENCE-only geo (kurulumdan sonra setGeoTargetType). SIKI keyword: BROAD YOK, sadece EXACT+PHRASE. TR+EN ikili dil (6 ad group). Geo: Şişli 9198790, Beşiktaş 9198329, Beyoğlu 9198916 (District).",
+  "campaignName": "Solman Digital — Şişli·Beşiktaş·Beyoğlu Lokal 2026",
+  "dailyBudgetTL": 150,
+  "geoTargetConstantIds": [9198790, 9198329, 9198916],
+  "negativeKeywords": [
+    "iş ilanı", "is ilani", "iş ilanları", "is ilanlari", "iş başvurusu", "is basvurusu",
+    "cv", "özgeçmiş", "ozgecmis", "eleman", "eleman arıyorum", "eleman ariyorum",
+    "iş arıyorum", "is ariyorum", "iş arayan", "is arayan", "staj", "stajyer",
+    "kariyer", "maaş", "maas", "ücret ne kadar", "yazılımcı iş ilanı", "junior developer",
+    "jobs", "job", "career", "careers", "hiring", "vacancy", "internship", "intern", "resume", "part time",
+    "nasıl yapılır", "nasil yapilir", "kendim yaparım", "kendim", "ücretsiz", "ucretsiz",
+    "bedava", "şablon", "sablon", "wordpress tema", "öğren", "ogren", "kurs", "eğitim", "egitim",
+    "nedir", "ne demek", "örnekleri", "ornekleri", "indir",
+    "how to", "tutorial", "learn", "free", "course",
+    "enterprise ai platforms", "ai systems", "internet of things", "work automation",
+    "automation software", "best ai tools", "chatbot platforms", "marketplace platform",
+    "customer success software", "how to start a saas", "saas business ideas",
+    "web sitesi yapan yapay zeka", "site yapan yapay zeka", "yapay zeka ile web sitesi yapma",
+    "hosting", "domain", "logo tasarımı", "logo tasarimi", "sosyal medya yönetimi",
+    "sosyal medya yonetimi", "dijital pazarlama ajansı", "dijital pazarlama ajansi"
+  ],
+  "adGroups": [
+    {
+      "name": "Web Tasarım — TR",
+      "targetUrl": "https://solmandigital.com.tr/besiktas-web-tasarim",
+      "cpcBidMicros": 18000000,
+      "headlines": [
+        "Beşiktaş Web Tasarım",
+        "Şişli Web Sitesi Yaptırma",
+        "Beyoğlu Web Tasarım",
+        "Kurumsal Web Sitesi",
+        "Doğrudan Uzman Erişimi",
+        "Şablonsuz, Özel Tasarım",
+        "Hızlı ve SEO Uyumlu Site",
+        "5-10 İş Gününde Teslim",
+        "Net Fiyat, Sürpriz Yok",
+        "Katmansız İletişim",
+        "90+ PageSpeed Skoru",
+        "Yerinde Görüşme İmkanı"
+      ],
+      "descriptions": [
+        "Şişli, Beşiktaş ve Beyoğlu işletmelerine hızlı, SEO uyumlu web siteleri kuruyoruz.",
+        "Şablon yok, gecikme yok. Projeyi anlatan değil, yapan uzmanla doğrudan konuşursunuz.",
+        "Next.js altyapısı, tam mobil uyum, teknik SEO. 5-10 iş gününde net fiyatla teslim.",
+        "Beşiktaş merkezli yazılım ofisi. Yerinde görüşme imkanı, katmansız iletişim."
+      ],
+      "keywords": [
+        { "text": "web sitesi yaptırma", "matchType": "EXACT" },
+        { "text": "kurumsal web sitesi", "matchType": "EXACT" },
+        { "text": "web tasarım firması", "matchType": "EXACT" },
+        { "text": "web sitesi yaptırma fiyat", "matchType": "PHRASE" },
+        { "text": "profesyonel web sitesi", "matchType": "PHRASE" },
+        { "text": "şirket web sitesi yaptırma", "matchType": "PHRASE" },
+        { "text": "kurumsal web sitesi yaptırma", "matchType": "PHRASE" }
+      ]
+    },
+    {
+      "name": "Web Design — EN",
+      "targetUrl": "https://solmandigital.com.tr/en/web-design",
+      "cpcBidMicros": 8000000,
+      "headlines": [
+        "Istanbul Web Design",
+        "Web Design Agency",
+        "Custom Website Development",
+        "Direct Expert Access",
+        "No Templates, Built to Order",
+        "Fast, SEO-Ready Websites",
+        "Delivered in 5-10 Days",
+        "Fixed Price, No Surprises",
+        "Next.js & React Experts",
+        "On-Site Meetings Available",
+        "Mobile-First Websites",
+        "Istanbul Software Office"
+      ],
+      "descriptions": [
+        "Fast, SEO-ready websites for businesses in Şişli, Beşiktaş and Beyoğlu.",
+        "No templates, no delays. You talk directly to the expert who builds your project.",
+        "Next.js stack, full mobile support, technical SEO. Delivered in 5-10 business days.",
+        "Istanbul-based software office. On-site meetings available, no agency layers."
+      ],
+      "keywords": [
+        { "text": "web design agency", "matchType": "EXACT" },
+        { "text": "website development company", "matchType": "EXACT" },
+        { "text": "professional website design", "matchType": "PHRASE" },
+        { "text": "corporate website development", "matchType": "PHRASE" },
+        { "text": "next.js developer", "matchType": "PHRASE" },
+        { "text": "react developer", "matchType": "PHRASE" }
+      ]
+    },
+    {
+      "name": "Yazılım Geliştirme — TR",
+      "targetUrl": "https://solmandigital.com.tr/besiktas-yazilim-gelistirme",
+      "cpcBidMicros": 18000000,
+      "headlines": [
+        "Beşiktaş Yazılım Geliştirme",
+        "Şişli Özel Yazılım",
+        "Özel Yazılım Geliştirme",
+        "Web Uygulama Geliştirme",
+        "Doğrudan Uzman Erişimi",
+        "İşinize Özel Çözüm",
+        "Next.js ile Geliştirme",
+        "Mobil Uygulama Geliştirme",
+        "Net Fiyat, Şeffaf Süreç",
+        "Katmansız İletişim",
+        "Yerinde Görüşme İmkanı",
+        "İstanbul Yazılım Ofisi"
+      ],
+      "descriptions": [
+        "Şişli, Beşiktaş, Beyoğlu için işinize özel yazılımı baştan sona geliştiriyoruz.",
+        "Şablon değil, işinize özel çözüm. Yapan uzmanla doğrudan, katmansız iletişim.",
+        "Next.js, modern web uygulamaları ve mobil. Şeffaf süreç, net fiyat, hızlı ilerleme.",
+        "Beşiktaş merkezli yazılım ofisi. Yerinde görüşme imkanı, doğrudan uzman erişimi."
+      ],
+      "keywords": [
+        { "text": "özel yazılım", "matchType": "EXACT" },
+        { "text": "yazılım geliştirme", "matchType": "EXACT" },
+        { "text": "web developer", "matchType": "EXACT" },
+        { "text": "özel yazılım geliştirme", "matchType": "PHRASE" },
+        { "text": "yazılım geliştirme firması", "matchType": "PHRASE" },
+        { "text": "mobil uygulama geliştirme", "matchType": "PHRASE" },
+        { "text": "next.js geliştirici", "matchType": "PHRASE" }
+      ]
+    },
+    {
+      "name": "Software Development — EN",
+      "targetUrl": "https://solmandigital.com.tr/en/web-design",
+      "cpcBidMicros": 8000000,
+      "headlines": [
+        "Istanbul Software Development",
+        "Custom Software Company",
+        "Custom Software Development",
+        "Web App Development",
+        "Direct Expert Access",
+        "Built for Your Business",
+        "Next.js Development",
+        "MVP Development",
+        "Fixed Price, Clear Process",
+        "No Agency Layers",
+        "On-Site Meetings Available",
+        "Istanbul Software Office"
+      ],
+      "descriptions": [
+        "Custom software for businesses in Şişli, Beşiktaş and Beyoğlu, end to end.",
+        "Not a template — a solution built for your business. Direct access to the builder.",
+        "Next.js, modern web apps and mobile. Transparent process, fixed price.",
+        "Istanbul-based software office. On-site meetings available, no agency layers."
+      ],
+      "keywords": [
+        { "text": "software development company", "matchType": "EXACT" },
+        { "text": "custom software development", "matchType": "EXACT" },
+        { "text": "software development services", "matchType": "PHRASE" },
+        { "text": "mobile app development", "matchType": "PHRASE" },
+        { "text": "mvp development", "matchType": "PHRASE" }
+      ]
+    },
+    {
+      "name": "AI Otomasyon — TR",
+      "targetUrl": "https://solmandigital.com.tr/besiktas-yapay-zeka-otomasyon",
+      "cpcBidMicros": 18000000,
+      "headlines": [
+        "Beşiktaş AI Otomasyon",
+        "Şişli Yapay Zeka Otomasyon",
+        "İş Süreci Otomasyonu",
+        "Yapay Zeka İş Otomasyonu",
+        "Tekrarlayan İşi Otomatize Edin",
+        "Doğrudan Uzman Erişimi",
+        "İşinize Özel AI Çözümü",
+        "3 Haftada Canlıya",
+        "Net Fiyat, Şeffaf Süreç",
+        "Katmansız İletişim",
+        "Yerinde Görüşme İmkanı",
+        "İstanbul Yazılım Ofisi"
+      ],
+      "descriptions": [
+        "Şişli, Beşiktaş, Beyoğlu için tekrarlayan iş yükünüzü yapay zeka ile otomatize ediyoruz.",
+        "İş süreçlerinize özel AI çözümleri. Yapan uzmanla doğrudan, katmansız iletişim.",
+        "Tekrarlayan işleri otomatize edin, ekibinizi değerli işe ayırın. Net fiyat, şeffaf süreç.",
+        "Beşiktaş merkezli yazılım ofisi. Yerinde görüşme imkanı, doğrudan uzman erişimi."
+      ],
+      "keywords": [
+        { "text": "yapay zeka otomasyon", "matchType": "EXACT" },
+        { "text": "iş otomasyonu", "matchType": "EXACT" },
+        { "text": "süreç otomasyonu", "matchType": "PHRASE" },
+        { "text": "yapay zeka çözümleri", "matchType": "PHRASE" },
+        { "text": "ai otomasyon hizmeti", "matchType": "PHRASE" },
+        { "text": "iş süreçleri otomasyonu", "matchType": "PHRASE" }
+      ]
+    },
+    {
+      "name": "AI Automation — EN",
+      "targetUrl": "https://solmandigital.com.tr/en/ai-automation-service",
+      "cpcBidMicros": 8000000,
+      "headlines": [
+        "Istanbul AI Automation",
+        "AI Automation Consulting",
+        "Business Process Automation",
+        "Automate Repetitive Work",
+        "Direct Expert Access",
+        "AI Built for Your Business",
+        "Live in 3 Weeks",
+        "Workflow Automation",
+        "Fixed Price, Clear Process",
+        "No Agency Layers",
+        "On-Site Meetings Available",
+        "Istanbul Software Office"
+      ],
+      "descriptions": [
+        "We automate your repetitive workload with AI in Şişli, Beşiktaş and Beyoğlu.",
+        "Custom AI and automation for your workflows. Direct access to the builder.",
+        "Automate repetitive tasks, free your team for high-value work. Fixed price.",
+        "Istanbul-based software office. On-site meetings available, no agency layers."
+      ],
+      "keywords": [
+        { "text": "ai automation consulting", "matchType": "EXACT" },
+        { "text": "business process automation", "matchType": "EXACT" },
+        { "text": "ai automation services", "matchType": "PHRASE" },
+        { "text": "workflow automation company", "matchType": "PHRASE" },
+        { "text": "ai consulting services", "matchType": "PHRASE" }
+      ]
+    }
+  ]
+}
