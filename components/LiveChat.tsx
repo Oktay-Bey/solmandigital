@@ -18,6 +18,7 @@ const POLL_MS = 3000
 // Boş input yerine tek tıkla sohbeti başlatır → "açtı ama yazmadı" düşüşünü kırar.
 const QUICK_PROMPTS = [
   "Projemin maliyeti ne olur?",
+  "Hemen fiyat teklifi almak istiyorum",
   "AI otomasyon nasıl çalışıyor?",
   "Web sitesi / e-ticaret yaptırmak istiyorum",
   "Ne kadar sürede teslim edersiniz?",

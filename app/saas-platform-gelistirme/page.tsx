@@ -140,11 +140,14 @@ export default function SaasPlatformGelistirmePage() {
               <WhatsAppLink
                 message="Merhaba, SaaS platform geliştirmek istiyorum, bilgi almak istiyorum."
                 source="saas_hero"
-                className="btn btn-outline-dark"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-accent-700 px-5 py-3 text-[0.9rem] font-bold text-white transition-colors hover:bg-accent-800"
               >
                 <MessageCircle size={15} /> WhatsApp ile Yazın
               </WhatsAppLink>
             </div>
+            <p className="mt-4 text-[0.8rem] text-ondark-muted">
+              ₺25.000&apos;den sabit fiyat · Kaynak kodu sizin · 4-8 haftada MVP
+            </p>
           </Reveal>
         </div>
       </section>

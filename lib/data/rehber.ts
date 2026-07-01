@@ -2006,12 +2006,14 @@ export const rehberPosts: RehberPost[] = [
       },
     ],
     cta: {
-      text: "Etsy API entegrasyonu veya çok kanallı marketplace otomasyonu için",
-      href: "/trendyol-entegrasyonu",
-      label: "Entegrasyon Teklifi Al",
+      text: "Etsy API entegrasyonu veya çok kanallı marketplace otomasyonu için Solman Digital olarak uçtan uca kurulum sağlıyoruz.",
+      href: "/hizmetler/api-entegrasyonu",
+      label: "API Entegrasyonu Teklifi Al",
     },
     keywords: [
+      "etsy api",
       "etsy api entegrasyonu",
+      "developers etsy",
       "etsy api key",
       "etsy api key nasıl alınır",
       "etsy developer api",

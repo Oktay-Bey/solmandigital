@@ -32,7 +32,13 @@ export const metadata: Metadata = {
     "professional website Syria",
     "business website Damascus",
   ],
-  alternates: { canonical: `${siteConfig.url}/en/web-design` },
+  alternates: {
+    canonical: `${siteConfig.url}/en/web-design`,
+    languages: {
+      en: `${siteConfig.url}/en/web-design`,
+      "x-default": `${siteConfig.url}/en/web-design`,
+    },
+  },
   openGraph: {
     title: "Web Design & Development — Solman Digital",
     description: "Custom websites from scratch. Fixed price, direct expert access, live in 5–10 days.",

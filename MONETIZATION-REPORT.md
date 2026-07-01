@@ -4,7 +4,7 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-06-16 (Iteration 14 — konsolidasyon)
+**Son güncelleme:** 2026-07-01 (Iteration 19 — GSC ülke & sayfa fırsat analizi)
 
 ## 0. DEPLOY-HAZIR ÖZET (25 commit, build yeşil)
 13 iterasyonun monetization işi tamamlandı ve canlıya çıkmayı bekliyor:
@@ -261,6 +261,105 @@ optimize edilmiş ve yeni reklam copy'siyle (Sabit Fiyat/İlk Görüşme Ücrets
 TicaretHub off-site link) → hero'ya "Sabit Fiyatlı Teklif" + "Ücretsiz Analiz" CTA çifti + güven şeridi eklendi.
 **Build:** her adımda yeşil. **İzle (24-72h):** callout/snippet CTR etkisi; negatif sonrası İngilizce sızıntı düşüşü;
 RSA Türkçe düzeltmesi sonrası kalite/CTR; sitelink+hizmet sayfası tık dağılımı.
+
+## 9. Iteration 18 — 7 Günlük GA4 Analizi (2026-07-01)
+Taze veri çekildi (yeni IntersectionObserver `form_view` ölçümü aktif; eski şişik funnel geçersiz).
+Kaynak: `ga4-perf-live.json` (7g), `ga4-funnel-7.json`, `ga4-diag-7.json`, `ga4-seo-7.json`.
+
+**Trend (7g vs önceki 7g):** Oturum 247 (−16%), kullanıcı 240 (−19%). Trafik daraldı **ama**
+engagement %41.7'ye yükseldi (28g ort. %33), bounce %58.3'e düştü (28g %67). Son CRO commit'leri
+(f2e944b form'u hero'dan kaldırma vb.) kalite yönünde çalışıyor — daha az ama daha nitelikli trafik.
+
+**Kanal:** Paid Search 170 ot / 5 dönüşüm (tek motor). Organik **6 ot / 0 dönüşüm** (pratikte durgun).
+Email 1 ot (batch arası). Tüm dönüşümler `google/cpc` (diag teyit).
+
+**Dönüşüm gerçeği (7g):** WhatsApp 6 tık → 4 conv · form_submit 1 → 1 conv · chat_lead_submit 3 ·
+chat_open 26 (nudge 86 → %30 açılma). **Lead'in çoğu form-DIŞI** (WhatsApp + canlı sohbet).
+Chat funnel'ı form funnel'ından verimli: nudge→open %30, buna karşı form_view→form_start %6.
+
+**Funnel darboğazı (landing bazında, TAZE):**
+- `/ai-otomasyon-hizmeti` (TR): 46 ot, form_start %19.6, submit 1 → **sağlıklı**, en iyi form landing.
+- `/en/ai-automation-service` (EN): 62 ot, form_start %4.8, **submit 0**, WhatsApp'a kaçıyor →
+  EN landing form ikna TR'nin ~1/4'ü. Aynı hizmet, aynı iskelet; sorun EN kopya/mesaj-uyumu.
+- `/saas-platform-gelistirme`: 26 ot, **bounce %84.6, avgDur 5.4s, form_start 0** → **ölü sayfa**,
+  CPC trafik alıp hiç etkileşim üretmiyor. En net UX açığı.
+- `/fiyatlar`: 7g'de yalnız 1-2 oturum → istatistiksel anlamsız, bu hafta karar verilemez.
+
+**Key event API:** Google Analytics **Admin** API projede kapalı (`analyticsadmin.googleapis.com
+disabled`, project 159309592970) → `/api/ga4/key-events` çalışmıyor. Ama `diag`'da whatsapp_click /
+form_submit / qualify_lead zaten `keyEvents>0` → conversion tanımları GA4'te MEVCUT, sadece bu API
+üzerinden yönetilemiyor. Engel değil; yönetim gerekirse Cloud Console'dan API açılmalı.
+
+**Öncelikli aksiyonlar (etki/efor):**
+1. **`/saas-platform-gelistirme` UX** — ölü sayfa; hero/teklif netliği + above-fold CTA. (yüksek etki)
+2. **`/en/ai-automation-service` form ikna** — EN kopya/güven; WhatsApp'ı da açık alternatif yap. (yüksek)
+3. **Chat kaldıracı** — chat form'dan iyi dönüştürüyor; `QUICK_PROMPTS` genişlet, nudge→open→lead yolunu güçlendir. (orta)
+4. **Organik/GEO** — 7g'de veri yok; içerik/GEO uzun vadeli, ölçüm penceresi büyütülmeli. (düşük acil, uzun vade)
+
+## 10. Iteration 19 — GSC Ülke & Sayfa Fırsat Analizi (2026-07-01)
+Yeni araç: `scripts/gsc-country-opportunities.mjs [gün]` → `gsc-country-opps.json` (ülke, sorgu×sayfa,
+ülke×sayfa, ülke×sorgu; poz 8-20 fırsat filtresi). 7g + 28g çekildi.
+
+**Genel gerçek (28g):** toplam 380 gösterim, **5 tık**, ort. poz 37.7. Site GSC'de HÂLÂ genç →
+"poz 10-12 fırsat kümesi" beklenenden ince. Ama net ticari desenler + coğrafi asimetri var.
+
+**Coğrafi asimetri (kullanıcı içgörüsü — DOĞRULANDI, nüanslı):**
+- TR: 324 gösterim ama poz **37.7** (hacim burada, sıralama berbat — görünmüyoruz).
+- TR-DIŞI ilk-sayfa/zirve: **AZE poz 1.0 · BRA 4.0 · CAN 4.5 · COL 5.0 · NLD 5.7 · GBR 8.0**.
+- ⚠️ **Ama** bu ülkelerde hacim 1-7 gösterim ve GSC anonimlik eşiği yüzünden hangi sayfa/sorgu
+  gizli → üstüne strateji kurulacak veri yok. Sinyal: TR long-tail içeriğimiz (rehber/hizmet)
+  yurtdışı Türkçe aramalarda organik geliyor; İngilizce ticari niyet DEĞİL.
+- 🔴 **KRİTİK AÇIK:** `/en/*` sayfaları GSC 28g'de **HİÇ görünmüyor** — halbuki reklam+GA4'te en
+  yüksek trafikli sayfalarımız (`/en/ai-automation-service` 62 ot). İngilizce içerik organikte
+  indekslenmiyor/sıralanmıyor. AZE'de reklam kampanyası var; oraya organik İngilizce köprü yok.
+
+**Sayfa/sorgu fırsatları (öncelik sırası):**
+1. 🎯 **`/rehber/etsy-api-entegrasyonu-turkiye`** — `etsy api` poz **4.7** (7 gör), `developers etsy`
+   poz 6.6-19. Zaten ilk sayfada, ticari niyet, hacimli. **En olgun tek fırsat.** → CTR/pozisyon itme.
+2. 🎯 **Marka sorgusu `solman` poz 7.3** (21 gör) — kendi markamızda 1. DEĞİLİZ. `/` ana sayfa.
+   Marka SERP'i güçlendir (title/H1'de "Solman Digital" netliği, Organization schema, sameAs).
+3. ⚠️ **Marka karışıklığı:** `katman dijital` (3.7), `akman dijital` (37.8), `genresman/genresman panel`
+   — bizi benzer/yanlış markalarla karıştıran sorgular alıyoruz; niyet uyumsuz, dönüşmez.
+4. **Entegrasyon rehber kümesi** poz 55-75 (`trendyol api entegrasyonu`, `n11 api`, `ticimax/trendyol
+   komisyon hesaplama`) — hacim var ama 2. sayfanın altında; içerik/iç link derinleştirme (uzun vade).
+
+### Plan — İki eksen (ülke + sayfa)
+**Eksen A — Sayfa fırsatı (kısa vade, yüksek kesinlik):**
+- **A1 UYGULANDI ✅** `/rehber/etsy-api-entegrasyonu-turkiye` (`lib/data/rehber.ts`):
+  (1) `keywords`'e GSC'nin kazandıran saf sorguları eklendi (`etsy api`, `developers etsy` — poz
+  4.7/6.6). (2) Birincil CTA hedefi `/trendyol-entegrasyonu` → **`/hizmetler/api-entegrasyonu`**
+  olarak değiştirildi: Etsy API rehberine gelen ticari-niyetli organik trafik artık doğru hizmete
+  + lead yoluna bağlanıyor (Trendyol köprüsü zaten faq/section içinde duruyor). CTA metni marka
+  sesine uyarlandı ("Solman Digital olarak … sağlıyoruz"). Render sayfası (Article/FAQ/Breadcrumb
+  schema, mid+son CTA, E-E-A-T) zaten güçlüydü — mimariye dokunulmadı. Build yeşil, canlıda teyit.
+- **A2 GEREKSİZ ⏭️** Marka SERP (`solman` poz 7.3): `app/layout.tsx` schema'sı zaten EKSİKSİZ —
+  Organization + WebSite + ProfessionalService + LocalBusiness, `alternateName:["Solman",…]`,
+  dolu `sameAs` (linkedin/twitter/github), logo. Teknik açık yok. Poz 7.3'ün nedeni domain
+  yaşı/otoritesi (site 2023, organik genç) → schema ile çözülmez, zaman + backlink işi. Dokunulmadı.
+
+**Eksen B — Coğrafi/İngilizce açık (UYGULANDI ✅):**
+- **Teşhis:** `/en/*` sayfaları GSC'de görünmüyordu çünkü (1) 🔴 **sitemap'te HİÇ yoktu**
+  (`app/sitemap.ts` `staticPages`'te tek EN rota yok → Google keşfetmiyor) — birincil neden.
+  (2) 🟡 **hreflang yoktu** (`alternates` sadece `canonical`, `languages` yok → EN↔TR dil
+  eşlemesi kurulmamış). robots.txt EN'i engellemiyordu (`Allow: /`), canonical'lar doğruydu
+  (self), noindex kazası yoktu → sayfalar indekslenebilirdi, sadece keşfedilmiyordu.
+- **B1 düzeltme:** `app/sitemap.ts`'e 3 EN rota eklendi (`/en/ai-automation-service` pri .85,
+  `/en/white-label` .80, `/en/web-design` .80). Canlı sitemap.xml'de teyit: 3 EN URL.
+- **B2 düzeltme (hreflang):** En kesin dil çifti **çift yönlü** bağlandı —
+  `/en/ai-automation-service` ↔ `/ai-otomasyon-hizmeti` (her ikisinde `languages: {tr, en,
+  x-default}`, self-canonical korundu). `/en/white-label` ve `/en/web-design` TR karşılığı
+  belirsiz olduğu için yalnız `en`+`x-default` self-referans (yanlış eşleme riskinden kaçınıldı).
+  Build HTML'inde `<link rel="alternate" hrefLang="tr|en|x-default">` teyit edildi.
+- **Değişen dosyalar:** `app/sitemap.ts`, `app/en/ai-automation-service/page.tsx`,
+  `app/ai-otomasyon-hizmeti/page.tsx`, `app/en/white-label/page.tsx`, `app/en/web-design/page.tsx`.
+- **B3 (bekliyor, veri artınca):** hreflang/indeksleme oturduktan sonra EN sayfalara on-page SEO
+  + AZE reklam pazarında organik İngilizce köprü. GSC'de `/en/*` görünmeye başlayınca değerlendir.
+- **Ölçüm:** GSC'de yeni sitemap gönderimi (Search Console → Sitemaps) + 7-14g sonra `/en/*`
+  URL'lerinin "Discovered/Indexed" durumu; `gsc-country-opportunities.mjs 14` ile EN sorgu girişi.
+
+**Ölçüm:** değişiklikten 7-14g sonra `node scripts/gsc-country-opportunities.mjs 14` → etsy sayfası
+pozisyon/CTR, `solman` marka pozisyonu, `/en/*` GSC'de görünmeye başladı mı. Hacim düşük olduğu için
+pencere geniş tutulmalı (7g çok gürültülü). Not: bu analiz GA4 CRO işiyle (It.18) paralel yürütüldü.
 
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,

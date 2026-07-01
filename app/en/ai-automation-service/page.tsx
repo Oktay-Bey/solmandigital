@@ -28,7 +28,14 @@ export const metadata: Metadata = {
     "ai automation besiktas",
     "ai chatbot istanbul",
   ],
-  alternates: { canonical: `${siteConfig.url}/en/ai-automation-service` },
+  alternates: {
+    canonical: `${siteConfig.url}/en/ai-automation-service`,
+    languages: {
+      en: `${siteConfig.url}/en/ai-automation-service`,
+      tr: `${siteConfig.url}/ai-otomasyon-hizmeti`,
+      "x-default": `${siteConfig.url}/en/ai-automation-service`,
+    },
+  },
   openGraph: {
     title: "AI Automation Agency — Solman Digital",
     description:

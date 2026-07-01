@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { ArrowRight, AlertCircle } from "lucide-react"
 import { trackEvent, trackLeadConversion, getGclid } from "@/lib/analytics"
 import { useFunnelTracking } from "@/lib/useFunnelTracking"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 type FormState = "idle" | "sending" | "error"
 
@@ -111,6 +112,16 @@ export default function AILeadFormEn() {
       </button>
       <p className="text-center text-[0.72rem] text-ink-400">
         Free&nbsp;·&nbsp;No commitment&nbsp;·&nbsp;We reply within 24 hours
+      </p>
+      <p className="text-center text-[0.78rem] text-ink-500">
+        Prefer to chat first?{" "}
+        <WhatsAppLink
+          message="Hi, I'd like to discuss an AI automation project."
+          source="ai_en_form"
+          className="font-semibold text-accent-700 hover:underline"
+        >
+          Message us on WhatsApp
+        </WhatsAppLink>
       </p>
     </form>
   )

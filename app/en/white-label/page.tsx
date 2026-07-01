@@ -9,7 +9,13 @@ export const metadata: Metadata = {
   title: "White-label Development Partner | Solman Digital",
   description:
     "Scale your agency with senior-level white-label development. Next.js, React, TypeScript, AI integrations. Istanbul-based, fixed price or retainer. NDA available.",
-  alternates: { canonical: `${siteConfig.url}/en/white-label` },
+  alternates: {
+    canonical: `${siteConfig.url}/en/white-label`,
+    languages: {
+      en: `${siteConfig.url}/en/white-label`,
+      "x-default": `${siteConfig.url}/en/white-label`,
+    },
+  },
   openGraph: {
     title: "White-label Development Partner | Solman Digital",
     description: "Add senior dev capacity to your agency — without the hiring overhead. Next.js, AI, SaaS, e-commerce.",

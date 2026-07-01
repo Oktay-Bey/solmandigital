@@ -21,7 +21,14 @@ export const metadata: Metadata = {
     "otomasyon yazılımı türkiye",
     "ai otomasyon istanbul",
   ],
-  alternates: { canonical: `${siteConfig.url}/ai-otomasyon-hizmeti` },
+  alternates: {
+    canonical: `${siteConfig.url}/ai-otomasyon-hizmeti`,
+    languages: {
+      tr: `${siteConfig.url}/ai-otomasyon-hizmeti`,
+      en: `${siteConfig.url}/en/ai-automation-service`,
+      "x-default": `${siteConfig.url}/en/ai-automation-service`,
+    },
+  },
   openGraph: {
     title: "Yapay Zeka & AI Otomasyon Hizmeti | Solman Digital",
     description: "GPT-4o ile içerik otomasyonu, chatbot ve iş süreci otomasyonu. 1 haftada teslim.",
