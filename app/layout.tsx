@@ -45,6 +45,7 @@ export const metadata: Metadata = {
   },
   verification: {
     google: siteConfig.googleVerification || undefined,
+    yandex: "d85f2e961a59e672",
   },
 }
 
