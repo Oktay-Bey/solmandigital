@@ -4,7 +4,7 @@
 > Veri kaynağı: GA4 (`/api/dashboard/today`, `/api/ga4`) + Google Ads API.
 > Amaç: gerçek trafik/dönüşüm verisiyle beslenip monetization odaklı geliştirme.
 
-**Son güncelleme:** 2026-07-01 (Iteration 19 — GSC ülke & sayfa fırsat analizi)
+**Son güncelleme:** 2026-07-02 (Iteration 20 — QS etki ölçümü + ölü sayfa CRO + EN form)
 
 ## 0. DEPLOY-HAZIR ÖZET (25 commit, build yeşil)
 13 iterasyonun monetization işi tamamlandı ve canlıya çıkmayı bekliyor:
@@ -360,6 +360,36 @@ Yeni araç: `scripts/gsc-country-opportunities.mjs [gün]` → `gsc-country-opps
 **Ölçüm:** değişiklikten 7-14g sonra `node scripts/gsc-country-opportunities.mjs 14` → etsy sayfası
 pozisyon/CTR, `solman` marka pozisyonu, `/en/*` GSC'de görünmeye başladı mı. Hacim düşük olduğu için
 pencere geniş tutulmalı (7g çok gürültülü). Not: bu analiz GA4 CRO işiyle (It.18) paralel yürütüldü.
+
+## 11. Iteration 20 — QS Etki Ölçümü + Ölü Sayfa CRO + EN Form (2026-07-02)
+
+**Ads canlı ölçüm (14g, API):** Aktif kampanyalar artık "İstanbul Yerel 2026" + "Ana TR Arama v2"
+(23-24 Haz başladı). Ana TR v2 CTR %9-13 (çok iyi) ama CPC 28 Haz sonrası 2-3₺ → 5-7.7₺ (bid
+artışının bedeli), dönüşüm 14 günde 4. GA4'teki %21 trafik düşüşünün nedeni kampanya geçişi +
+İstanbul Yerel'in 1 Tem'de veri üretmemesi (durdu mu kontrol et).
+
+**🔴 SİSTEMİK BULGU — LP kalitesi:** QS'i olan TÜM keyword'lerde `post_click_quality_score = 2`
+(ortalamanın altı). Impression share %10, kayıp %90 **rank kaynaklı** (bütçe değil) → QS düşük
+olduğu için pahalıya az gösterim alıyoruz. Reklam-sonrası deneyim (hız + mesaj uyumu) sistemik
+zayıflık; CRO işleri doğrudan QS/CPC'ye yazar. Ayrıca "ai automation" (QS 1, 92₺/7g, en pahalı
+keyword) TR ad group'unda — EN sorgu TR landing'e gidiyor olabilir; **ad group final URL /
+EN-TR keyword ayrımı bir sonraki Ads işi.**
+
+**Uygulanan CRO (commit 93927f9):**
+1. `/saas-platform-gelistirme` (ölü sayfa: %84.6 bounce, 5.4s, 0 form_start):
+   - Form 9 alan/7 zorunlu → AILeadForm kalıbı (çip + ad + e-posta + opsiyonel açıklama).
+     Eski formda bütçe seçenekleri ₺50.000'den başlıyordu, sayfa "₺25.000'den" diyordu (çelişki giderildi).
+   - Hero mesaj-uyumu: "SaaS Fikrinizi" → "İşinize Özel Web Uygulaması" (CRM/panel/web-app
+     niyetli reklam trafiği kendini bulamıyordu). Meta/OG güncellendi.
+2. `/en/ai-automation-service` AILeadFormEn: use-case çipleri en üste taşındı — TR %19.6 vs
+   EN %4.8 form_start farkının yapısal nedeni (TR'de ilk etkileşim kimliksiz çip, EN'de isim alanıydı).
+
+**Repo hijyeni:** ~90 analiz JSON'u gitignore+arşiv, lead PII dosyaları repo dışı, 118 dosya
+7 konu-odaklı commit'te toplandı (email pipeline, ads scriptleri, GA4/GSC scriptleri, Yandex
+doğrulama, docs). Working tree temiz. **Push bekliyor (kullanıcı onayı).**
+
+**Ölçüm (7-14g):** saas form_start > 0 mu; ai-en form_start %4.8 → ? ; Ana TR v2 CPC/QS
+(LP fix'leri yansıyınca); İstanbul Yerel 2026 neden durdu.
 
 ## 5b. CEO Notu — Yöntem (geçmiş raporlardan)
 PROJECT.md'deki çalışma yöntemi: faz bazlı, etki/efor önceliklendirilmiş backlog, checkbox takibi,
